@@ -1,0 +1,48 @@
+@model IEnumerable<sga_stif.Models.Utilizador>
+
+@{
+  ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+  <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>
+        @Html.DisplayNameFor(model => model.Nome)
+      </th>
+      <th>
+        @Html.DisplayNameFor(model => model.Apelido)
+      </th>
+      <th>
+        @Html.DisplayNameFor(model => model.Foto)
+      </th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var item in Model)
+    {
+      <tr>
+        <td>
+          @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.Apelido)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.Foto)
+        </td>
+        <td>
+          <a asp-action="Edit" asp-route-id="@item.IdUtilizador">Edit</a> |
+          <a asp-action="Details" asp-route-id="@item.IdUtilizador">Details</a> |
+          <a asp-action="Delete" asp-route-id="@item.IdUtilizador">Delete</a>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

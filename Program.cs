@@ -1,7 +1,13 @@
+using sga_stif.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//builder.Services.AddDbContext<ContextoBaseDados>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddEntityFrameworkSqlite().AddDbContext<ContextoBaseDados>();
+
 
 var app = builder.Build();
 
