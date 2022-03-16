@@ -4,45 +4,73 @@
   ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
 
-<p>
-  <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-  <thead>
-    <tr>
-      <th>
-        @Html.DisplayNameFor(model => model.Nome)
-      </th>
-      <th>
-        @Html.DisplayNameFor(model => model.Apelido)
-      </th>
-      <th>
-        @Html.DisplayNameFor(model => model.Foto)
-      </th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    @foreach (var item in Model)
-    {
-      <tr>
-        <td>
-          @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-          @Html.DisplayFor(modelItem => item.Apelido)
-        </td>
-        <td>
-          @Html.DisplayFor(modelItem => item.Foto)
-        </td>
-        <td>
-          <a asp-action="Edit" asp-route-id="@item.IdUtilizador">Edit</a> |
-          <a asp-action="Details" asp-route-id="@item.IdUtilizador">Details</a> |
-          <a asp-action="Delete" asp-route-id="@item.IdUtilizador">Delete</a>
-        </td>
-      </tr>
-    }
-  </tbody>
-</table>
+
+
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">DataTable with minimal features & hover style</h3>
+  </div>
+  <div class="card-body">
+    <table id="example2" class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>
+            @Html.DisplayNameFor(model => model.Nome)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.Apelido)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.Foto)
+          </th>
+            <th>
+            @Html.DisplayNameFor(model => model.DataCriacao)
+          </th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (var item in Model)
+        {
+          <tr>
+            <td>
+              @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.Apelido)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.Foto)
+            </td>
+             <td>
+              @Html.DisplayFor(modelItem => item.DataCriacao)
+            </td>
+            <td>
+              <a asp-action="Edit" asp-route-id="@item.IdUtilizador">Edit</a> |
+              <a asp-action="Details" asp-route-id="@item.IdUtilizador">Details</a> |
+              <a asp-action="Delete" asp-route-id="@item.IdUtilizador">Delete</a>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+
+
+  </div>
+</div>
+
+
+<script>
+  $(function () {
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
