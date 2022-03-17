@@ -18,6 +18,13 @@ namespace sga_stif.Models
       modelBuilder.Entity<Perfil>().ToTable("Perfil");
 
 
+      // modelBuilder.Entity<Utilizador>()
+      // .HasOne(d => d.Perfil)
+      // .WithMany(s => s.Utilizador)
+      // .HasForeignKey(d => d.IdPerfil)
+      // .IsRequired();
+
+
     }
 
 

@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using sga_stif.Models;
@@ -18,7 +19,8 @@ namespace sga_stif.Controllers
 
     public async Task<IActionResult> Index()
     {
-      return View(await _context.Utilizador.ToListAsync());
+      var T =await _context.Utilizador.Include(c => c.Perfil).ToListAsync();
+      return View(T);
     }
 
     [HttpGet]
@@ -26,14 +28,14 @@ namespace sga_stif.Controllers
     {
       var perfils =_context.Perfil.ToList();
       var perfilr =  from g  in perfils select new SelectListItem { Value = g.IdPerfil.ToString(), Text = g.Descricao }; 
-      ViewBag.Perfils = perfilr;
+      ViewBag.IdPerfil = perfilr;
 
       return View();
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("Nome,Apelido,Foto,PalavraPasse,PalavraPasseSalt,Email,IdPerfil")] Utilizador utilizador)
+    public IActionResult Create([Bind("Nome,Apelido,Foto,PalavraPasse,PalavraPasseSalt,Email,IdPerfil,NomeUtilizador")] Utilizador utilizador)
     {
 
       try
@@ -41,9 +43,13 @@ namespace sga_stif.Controllers
         if (ModelState.IsValid)
         {
           _context.Utilizador.Add(utilizador);
-          await _context.SaveChangesAsync();
+          _context.SaveChanges();
           return RedirectToAction(nameof(Index));
         }
+
+
+        IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+        var ee = 2;
       }
       catch (DbUpdateException /* ex */)
       {
@@ -56,9 +62,9 @@ namespace sga_stif.Controllers
 
       var perfils =_context.Perfil.ToList();
       var perfilr =  from g  in perfils select new SelectListItem { Value = g.IdPerfil.ToString(), Text = g.Descricao }; 
-      ViewBag.Perfils = perfilr;
+      ViewBag.IdPerfil = perfilr;
 
-      return View(await _context.Utilizador.ToListAsync());
+      return View(utilizador);
     }
 
   }

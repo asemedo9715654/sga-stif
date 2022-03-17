@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using sga_stif.Models;
 
@@ -10,9 +11,10 @@ using sga_stif.Models;
 namespace sga_stif.Migrations
 {
     [DbContext(typeof(ContextoBaseDados))]
-    partial class ContextoBaseDadosModelSnapshot : ModelSnapshot
+    [Migration("20220317105432_AtualizaTabelaUtilizadorAdicionandoCampoNomeUtilizador")]
+    partial class AtualizaTabelaUtilizadorAdicionandoCampoNomeUtilizador
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.3");
@@ -33,7 +35,7 @@ namespace sga_stif.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<bool?>("Eliminado")
+                    b.Property<bool>("Eliminado")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("IdPerfil");
@@ -57,7 +59,7 @@ namespace sga_stif.Migrations
                     b.Property<DateTime?>("DataCriacao")
                         .HasColumnType("TEXT");
 
-                    b.Property<bool?>("Eliminado")
+                    b.Property<bool>("Eliminado")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Email")
@@ -68,7 +70,7 @@ namespace sga_stif.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("IdPerfil")
+                    b.Property<int>("IdPerfil")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Nome")
@@ -87,9 +89,12 @@ namespace sga_stif.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("PerfilIdPerfil")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("IdUtilizador");
 
-                    b.HasIndex("IdPerfil");
+                    b.HasIndex("PerfilIdPerfil");
 
                     b.ToTable("Utilizador", (string)null);
                 });
@@ -98,7 +103,9 @@ namespace sga_stif.Migrations
                 {
                     b.HasOne("sga_stif.Models.Perfil", "Perfil")
                         .WithMany("Utilizador")
-                        .HasForeignKey("IdPerfil");
+                        .HasForeignKey("PerfilIdPerfil")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Perfil");
                 });
