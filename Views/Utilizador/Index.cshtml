@@ -24,8 +24,17 @@
           <th>
             @Html.DisplayNameFor(model => model.Foto)
           </th>
-            <th>
+          <th>
+            @Html.DisplayNameFor(model => model.Email)
+          </th>
+          <th>
             @Html.DisplayNameFor(model => model.DataCriacao)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.DataAtualizacao)
+          </th>
+           <th>
+            @Html.DisplayNameFor(model => model.Perfil.Descricao)
           </th>
           <th>Acao</th>
         </tr>
@@ -43,8 +52,17 @@
             <td>
               @Html.DisplayFor(modelItem => item.Foto)
             </td>
-             <td>
+            <td>
+              @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
               @Html.DisplayFor(modelItem => item.DataCriacao)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.DataAtualizacao)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.Perfil.Descricao)
             </td>
             <td>
               <a asp-action="Edit" asp-route-id="@item.IdUtilizador">Edit</a> |
@@ -61,6 +79,7 @@
 </div>
 
 
+@* @section Scripts { *@
 <script>
   $(function () {
     $('#example2').DataTable({
@@ -74,3 +93,5 @@
     });
   });
 </script>
+
+@* } *@

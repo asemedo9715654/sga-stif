@@ -7,6 +7,13 @@ namespace sga_stif.Models
         [Key]
         public int IdPerfil { get; set; }
         public string Descricao { get; set; }
-         public List<Utilizador> Utilizador { get; set; }
+        public virtual  ICollection<Utilizador> Utilizador { get; set; }
+
+
+        public Perfil()
+        {
+            this.Utilizador = new HashSet<Utilizador>();
+        }
+
     }
 }
