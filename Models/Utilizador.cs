@@ -8,11 +8,12 @@ namespace sga_stif.Models
         public int IdUtilizador { get; set; }
         public string Nome { get; set; }
         public string Apelido { get; set; }
+        public string Email { get; set; }
         public string Foto { get; set; }
         public string PalavraPasse { get; set; }
         public string PalavraPasseSalt { get; set; }
-
-
+        public int IdPerfil { get; set; }
+        public Perfil Perfil { get; set; }
         public string PegarNomeCompleto(){
             return Nome +" "+ Apelido;
         }

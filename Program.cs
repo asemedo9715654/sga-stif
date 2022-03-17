@@ -2,11 +2,20 @@ using sga_stif.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+
+builder.Services.AddSession(options => {
+          options.IdleTimeout = TimeSpan.FromMinutes(1);
+          }); 
+          
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
 //builder.Services.AddDbContext<ContextoBaseDados>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddEntityFrameworkSqlite().AddDbContext<ContextoBaseDados>();
+
+
+
 
 
 var app = builder.Build();
@@ -19,6 +28,8 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseSession(); 
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
@@ -28,6 +39,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Login}/{action=Index}/{id?}");
 
 app.Run();
