@@ -10,6 +10,9 @@ namespace sga_stif.Models
         public string Nome { get; set; }
         public string NomeUtilizador { get; set; }
         public string Apelido { get; set; }
+        
+        [DataType(DataType.EmailAddress)]
+        [EmailAddress]
         public string Email { get; set; }
         public string Foto { get; set; }
         public string PalavraPasse { get; set; }

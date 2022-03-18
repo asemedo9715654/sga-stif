@@ -4,12 +4,10 @@
   ViewData["Title"] = "Index";
 }
 
-
-<a asp-action="Create">Novo</a>
-
 <div class="card">
   <div class="card-header">
-    <h3 class="card-title">DataTable with minimal features & hover style</h3>
+    <a asp-action="Create" class="btn btn-danger btn-xs">Novo</a> &nbsp;
+    <h3 class="card-title">Lista de utilizadores</h3>
   </div>
   <div class="card-body">
     <table id="example2" class="table table-bordered table-hover">
@@ -65,9 +63,9 @@
               @Html.DisplayFor(modelItem => item.Perfil.Descricao)
             </td>
             <td>
-              <a asp-action="Edit" asp-route-id="@item.IdUtilizador">Edit</a> |
-              <a asp-action="Details" asp-route-id="@item.IdUtilizador">Details</a> |
-              <a asp-action="Delete" asp-route-id="@item.IdUtilizador">Delete</a>
+              <a class="btn btn-success btn-xs" asp-action="Edit" asp-route-id="@item.IdUtilizador">Editar</a> 
+              <a class="btn btn-default btn-xs" asp-action="Details" asp-route-id="@item.IdUtilizador">Detalhes</a> 
+              <a class="btn btn-danger btn-xs" asp-action="Delete" asp-route-id="@item.IdUtilizador">Eliminar</a>
             </td>
           </tr>
         }
@@ -78,8 +76,6 @@
   </div>
 </div>
 
-
-@* @section Scripts { *@
 <script>
   $(function () {
     $('#example2').DataTable({
@@ -93,5 +89,3 @@
     });
   });
 </script>
-
-@* } *@
