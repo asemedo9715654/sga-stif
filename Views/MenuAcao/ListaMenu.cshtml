@@ -1,0 +1,82 @@
+@model IEnumerable<sga_stif.Models.Menu>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="card">
+    <div class="card-header">
+        <a asp-action="Create" class="btn btn-success btn-xs">Novo</a>
+        <h3 class="card-title">Lista Menus</h3>
+    </div>
+    <div class="card-body">
+        <table id="example2" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Descricao)
+                    </th>
+                      <th>
+                         @Html.DisplayName("Tipo")
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DataCriacao)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DataAtualizacao)
+                    </th>
+                    
+                    <th>
+                        Ação
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Descricao)
+                        </td>
+                         <td>
+                             @item.Categoria()
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataCriacao)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataAtualizacao)
+                        </td>
+                        <td>
+                            <a class="btn btn-success btn-xs" asp-action="GerirAcao" asp-route-idMenu="@item.IdMenu" asp-route-nomeMenu="@item.Nome">Gerir Ação</a>
+                           
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+        });
+    });
+</script>
