@@ -4,12 +4,10 @@
   ViewData["Title"] = "Index";
 }
 
-
-<a asp-action="Create">Novo</a>
-
 <div class="card">
   <div class="card-header">
-    <h3 class="card-title">DataTable with minimal features & hover style</h3>
+    <a asp-action="Create" class="btn btn-success btn-xs">Novo</a>
+    <h3 class="card-title">Lista Perfil</h3>
   </div>
   <div class="card-body">
     <table id="example2" class="table table-bordered table-hover">
@@ -23,6 +21,9 @@
           </th>
           <th>
             @Html.DisplayNameFor(model => model.DataAtualizacao)
+          </th>
+          <th>
+           Acao
           </th>
         
         </tr>
@@ -39,6 +40,11 @@
             </td>
             <td>
               @Html.DisplayFor(modelItem => item.DataAtualizacao)
+            </td>
+             <td>
+              <a class="btn btn-success btn-xs" asp-action="Edit" asp-route-id="@item.IdPerfil">Editar</a> 
+              <a class="btn btn-default btn-xs" asp-action="Details" asp-route-id="@item.IdPerfil">Detalhes</a> 
+              <a class="btn btn-danger btn-xs" asp-action="Delete" asp-route-id="@item.IdPerfil">Eliminar</a>
             </td>
           </tr>
         }
