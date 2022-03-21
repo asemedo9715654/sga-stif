@@ -6,21 +6,32 @@
 
 <div class="card">
   <div class="card-header">
-    <a asp-action="Create" class="btn btn-danger btn-xs">Novo</a> &nbsp;
-    <h3 class="card-title">Lista de utilizadores</h3>
+
+    <div class="row">
+      <div class="col-md-11">
+        <h4 class="w-75 p-3">Lista de Utilizadores</h3>
+      </div>
+      <div class="col-md-1 float-right">
+        <a class="btn btn-primary" asp-action="Create">Novo</a>
+        @* <button class="btn btn-primary" style="margin-left: 1em" (click)="onAddCategoieModal(content)">Edit</button> *@
+      </div>
+    </div>
+
+
   </div>
   <div class="card-body">
     <table id="example2" class="table table-bordered table-hover">
       <thead>
         <tr>
+
+          <th>
+            @Html.DisplayNameFor(model => model.Foto)
+          </th>
           <th>
             @Html.DisplayNameFor(model => model.Nome)
           </th>
           <th>
             @Html.DisplayNameFor(model => model.Apelido)
-          </th>
-          <th>
-            @Html.DisplayNameFor(model => model.Foto)
           </th>
           <th>
             @Html.DisplayNameFor(model => model.Email)
@@ -31,7 +42,7 @@
           <th>
             @Html.DisplayNameFor(model => model.DataAtualizacao)
           </th>
-           <th>
+          <th>
             @Html.DisplayNameFor(model => model.Perfil.Descricao)
           </th>
           <th>Ação</th>
@@ -41,15 +52,25 @@
         @foreach (var item in Model)
         {
           <tr>
+
+            <td>
+              @if (@item.Foto != null)
+              {
+                <img class="img-circle img-size-32 mr-2" src="data:image/jpeg;base64,@Convert.ToBase64String(item.Foto)" />
+
+              }
+              else
+              {
+                <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
+              }
+            </td>
             <td>
               @Html.DisplayFor(modelItem => item.Nome)
             </td>
             <td>
               @Html.DisplayFor(modelItem => item.Apelido)
             </td>
-            <td>
-              @Html.DisplayFor(modelItem => item.Foto)
-            </td>
+
             <td>
               @Html.DisplayFor(modelItem => item.Email)
             </td>
@@ -63,8 +84,8 @@
               @Html.DisplayFor(modelItem => item.Perfil.Descricao)
             </td>
             <td>
-              <a class="btn btn-success btn-xs" asp-action="Edit" asp-route-id="@item.IdUtilizador">Editar</a> 
-              <a class="btn btn-default btn-xs" asp-action="Details" asp-route-id="@item.IdUtilizador">Detalhes</a> 
+              <a class="btn btn-success btn-xs" asp-action="Edit" asp-route-id="@item.IdUtilizador">Editar</a>
+              <a class="btn btn-default btn-xs" asp-action="Details" asp-route-id="@item.IdUtilizador">Detalhes</a>
               <a class="btn btn-danger btn-xs" asp-action="Delete" asp-route-id="@item.IdUtilizador">Eliminar</a>
             </td>
           </tr>

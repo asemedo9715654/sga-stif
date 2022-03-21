@@ -11,8 +11,8 @@ using sga_stif.Models;
 namespace sga_stif.Migrations
 {
     [DbContext(typeof(ContextoBaseDados))]
-    [Migration("20220318114241_AdicaoDaTabelaMenuAcao")]
-    partial class AdicaoDaTabelaMenuAcao
+    [Migration("20220319231635_inicioDoComit")]
+    partial class inicioDoComit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -46,24 +46,24 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAcao = 1,
-                            DataAtualizacao = new DateTime(2022, 3, 18, 10, 42, 41, 13, DateTimeKind.Local).AddTicks(1019),
-                            DataCriacao = new DateTime(2022, 3, 18, 10, 42, 41, 13, DateTimeKind.Local).AddTicks(1002),
+                            DataAtualizacao = new DateTime(2022, 3, 19, 22, 16, 34, 781, DateTimeKind.Local).AddTicks(9020),
+                            DataCriacao = new DateTime(2022, 3, 19, 22, 16, 34, 781, DateTimeKind.Local).AddTicks(8990),
                             Eliminado = false,
                             Nome = "Criar"
                         },
                         new
                         {
                             IdAcao = 2,
-                            DataAtualizacao = new DateTime(2022, 3, 18, 10, 42, 41, 13, DateTimeKind.Local).AddTicks(1030),
-                            DataCriacao = new DateTime(2022, 3, 18, 10, 42, 41, 13, DateTimeKind.Local).AddTicks(1029),
+                            DataAtualizacao = new DateTime(2022, 3, 19, 22, 16, 34, 781, DateTimeKind.Local).AddTicks(9040),
+                            DataCriacao = new DateTime(2022, 3, 19, 22, 16, 34, 781, DateTimeKind.Local).AddTicks(9030),
                             Eliminado = false,
                             Nome = "Editar"
                         },
                         new
                         {
                             IdAcao = 3,
-                            DataAtualizacao = new DateTime(2022, 3, 18, 10, 42, 41, 13, DateTimeKind.Local).AddTicks(1032),
-                            DataCriacao = new DateTime(2022, 3, 18, 10, 42, 41, 13, DateTimeKind.Local).AddTicks(1031),
+                            DataAtualizacao = new DateTime(2022, 3, 19, 22, 16, 34, 781, DateTimeKind.Local).AddTicks(9070),
+                            DataCriacao = new DateTime(2022, 3, 19, 22, 16, 34, 781, DateTimeKind.Local).AddTicks(9070),
                             Eliminado = false,
                             Nome = "Eliminar"
                         });
@@ -103,17 +103,17 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenu = 1,
-                            DataAtualizacao = new DateTime(2022, 3, 18, 10, 42, 41, 13, DateTimeKind.Local).AddTicks(1306),
-                            DataCriacao = new DateTime(2022, 3, 18, 10, 42, 41, 13, DateTimeKind.Local).AddTicks(1304),
-                            Descricao = "Gestão dos utilizadores",
+                            DataAtualizacao = new DateTime(2022, 3, 19, 22, 16, 34, 781, DateTimeKind.Local).AddTicks(9100),
+                            DataCriacao = new DateTime(2022, 3, 19, 22, 16, 34, 781, DateTimeKind.Local).AddTicks(9100),
+                            Descricao = "Administração do Sistema SGA-STIF",
                             Eliminado = false,
-                            Nome = "Utilizador"
+                            Nome = "Administração"
                         },
                         new
                         {
                             IdMenu = 2,
-                            DataAtualizacao = new DateTime(2022, 3, 18, 10, 42, 41, 13, DateTimeKind.Local).AddTicks(1312),
-                            DataCriacao = new DateTime(2022, 3, 18, 10, 42, 41, 13, DateTimeKind.Local).AddTicks(1311),
+                            DataAtualizacao = new DateTime(2022, 3, 19, 22, 16, 34, 781, DateTimeKind.Local).AddTicks(9110),
+                            DataCriacao = new DateTime(2022, 3, 19, 22, 16, 34, 781, DateTimeKind.Local).AddTicks(9110),
                             Descricao = "Gestão dos utilizadores",
                             Eliminado = false,
                             IdMenuPai = 1,
@@ -122,12 +122,22 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenu = 3,
-                            DataAtualizacao = new DateTime(2022, 3, 18, 10, 42, 41, 13, DateTimeKind.Local).AddTicks(1315),
-                            DataCriacao = new DateTime(2022, 3, 18, 10, 42, 41, 13, DateTimeKind.Local).AddTicks(1314),
+                            DataAtualizacao = new DateTime(2022, 3, 19, 22, 16, 34, 781, DateTimeKind.Local).AddTicks(9110),
+                            DataCriacao = new DateTime(2022, 3, 19, 22, 16, 34, 781, DateTimeKind.Local).AddTicks(9110),
                             Descricao = "Gestão dos utilizadores",
                             Eliminado = false,
                             IdMenuPai = 1,
                             Nome = "Perfil"
+                        },
+                        new
+                        {
+                            IdMenu = 4,
+                            DataAtualizacao = new DateTime(2022, 3, 19, 22, 16, 34, 781, DateTimeKind.Local).AddTicks(9120),
+                            DataCriacao = new DateTime(2022, 3, 19, 22, 16, 34, 781, DateTimeKind.Local).AddTicks(9120),
+                            Descricao = "Gestão dos utilizadores",
+                            Eliminado = false,
+                            IdMenuPai = 1,
+                            Nome = "Menu"
                         });
                 });
 
@@ -183,6 +193,24 @@ namespace sga_stif.Migrations
                     b.HasKey("IdPerfil");
 
                     b.ToTable("Perfil", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            IdPerfil = 1,
+                            DataAtualizacao = new DateTime(2022, 3, 19, 22, 16, 34, 240, DateTimeKind.Local).AddTicks(7030),
+                            DataCriacao = new DateTime(2022, 3, 19, 22, 16, 34, 240, DateTimeKind.Local).AddTicks(7000),
+                            Descricao = "Administrador",
+                            Eliminado = false
+                        },
+                        new
+                        {
+                            IdPerfil = 2,
+                            DataAtualizacao = new DateTime(2022, 3, 19, 22, 16, 34, 240, DateTimeKind.Local).AddTicks(7050),
+                            DataCriacao = new DateTime(2022, 3, 19, 22, 16, 34, 240, DateTimeKind.Local).AddTicks(7050),
+                            Descricao = "Operador",
+                            Eliminado = false
+                        });
                 });
 
             modelBuilder.Entity("sga_stif.Models.Utilizador", b =>
@@ -208,9 +236,8 @@ namespace sga_stif.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Foto")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<byte[]>("Foto")
+                        .HasColumnType("BLOB");
 
                     b.Property<int?>("IdPerfil")
                         .HasColumnType("INTEGER");
@@ -227,15 +254,52 @@ namespace sga_stif.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("PalavraPasseSalt")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.HasKey("IdUtilizador");
 
                     b.HasIndex("IdPerfil");
 
                     b.ToTable("Utilizador", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            IdUtilizador = 1,
+                            Apelido = "Semedo",
+                            DataAtualizacao = new DateTime(2022, 3, 19, 22, 16, 34, 240, DateTimeKind.Local).AddTicks(7210),
+                            DataCriacao = new DateTime(2022, 3, 19, 22, 16, 34, 240, DateTimeKind.Local).AddTicks(7200),
+                            Eliminado = false,
+                            Email = "angelosemedo@sgastif.cv",
+                            IdPerfil = 1,
+                            Nome = "Angelo",
+                            NomeUtilizador = "angelosemedo",
+                            PalavraPasse = "$2a$11$6cbodHrGQfY8GXu53Kd7g.voZ49pqI66K36py7TI1HWOMLl2qc4C."
+                        },
+                        new
+                        {
+                            IdUtilizador = 2,
+                            Apelido = "Veiga",
+                            DataAtualizacao = new DateTime(2022, 3, 19, 22, 16, 34, 420, DateTimeKind.Local).AddTicks(1320),
+                            DataCriacao = new DateTime(2022, 3, 19, 22, 16, 34, 420, DateTimeKind.Local).AddTicks(1290),
+                            Eliminado = false,
+                            Email = "odailtonveiga@sgastif.cv",
+                            IdPerfil = 1,
+                            Nome = "Odailton",
+                            NomeUtilizador = "odailtonveiga",
+                            PalavraPasse = "$2a$11$fX0yhLZ17JTouIHm9IpO4utW/wrOTziEREkY4uwq.wqbau0CKJz2K"
+                        },
+                        new
+                        {
+                            IdUtilizador = 3,
+                            Apelido = "Varela",
+                            DataAtualizacao = new DateTime(2022, 3, 19, 22, 16, 34, 600, DateTimeKind.Local).AddTicks(1890),
+                            DataCriacao = new DateTime(2022, 3, 19, 22, 16, 34, 600, DateTimeKind.Local).AddTicks(1850),
+                            Eliminado = false,
+                            Email = "manuelvarela@sgastif.cv",
+                            IdPerfil = 1,
+                            Nome = "Manuel",
+                            NomeUtilizador = "manuelvarela",
+                            PalavraPasse = "$2a$11$QLngQxQNs3rpsuivgaXx6e/ueMOLWlnaHEltlzBYBYB3u92GINj8G"
+                        });
                 });
 
             modelBuilder.Entity("sga_stif.Models.MenuAcao", b =>

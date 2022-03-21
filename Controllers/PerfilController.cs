@@ -1,3 +1,4 @@
+using AspNetCoreHero.ToastNotification.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
@@ -9,11 +10,14 @@ namespace sga_stif.Controllers
     {
         private readonly ContextoBaseDados _context;
 
+        private readonly INotyfService _notyf;
 
 
-        public PerfilController(ContextoBaseDados context)
+
+        public PerfilController(ContextoBaseDados context,INotyfService notyf)
         {
             _context = context;
+            _notyf = notyf;
         }
 
 
@@ -46,6 +50,7 @@ namespace sga_stif.Controllers
                 {
                     _context.Perfil.Add(perfil);
                     _context.SaveChanges();
+                    _notyf.Success("Perfil adicionado com sucesso!");
                     return RedirectToAction(nameof(Index));
                 }
 
@@ -60,6 +65,8 @@ namespace sga_stif.Controllers
                     "Try again, and if the problem persists " +
                     "see your system administrator.");
             }
+
+            _notyf.Error("Erro na adicao dde perfil");
 
             return View(perfil);
         }
