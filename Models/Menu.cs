@@ -17,8 +17,9 @@ namespace sga_stif.Models
             this.MenuAcao = new HashSet<MenuAcao>();
         }
 
-        public string Categoria(){
-            return IdMenuPai==null?"Menu":"Sub-Menu";
+        public string Categoria()
+        {
+            return IdMenuPai == null ? "Menu" : "Sub-Menu";
         }
     }
 }

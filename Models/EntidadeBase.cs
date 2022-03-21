@@ -7,6 +7,7 @@ namespace sga_stif.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? DataCriacao { get; set; } = DateTime.Now;
+        
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? DataAtualizacao { get; set; } = DateTime.Now;
