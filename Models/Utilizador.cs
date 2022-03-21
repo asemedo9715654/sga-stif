@@ -14,9 +14,8 @@ namespace sga_stif.Models
         [DataType(DataType.EmailAddress)]
         [EmailAddress]
         public string Email { get; set; }
-        public string Foto { get; set; }
+        public byte[]? Foto{ get; set; }
         public string PalavraPasse { get; set; }
-        public string PalavraPasseSalt { get; set; }
 
         [ForeignKey("Perfil")]
         public int? IdPerfil { get; set; }

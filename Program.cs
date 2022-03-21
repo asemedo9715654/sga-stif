@@ -1,3 +1,5 @@
+using AspNetCoreHero.ToastNotification;
+using AspNetCoreHero.ToastNotification.Extensions;
 using sga_stif.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,7 +17,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddEntityFrameworkSqlite().AddDbContext<ContextoBaseDados>();
 
 
-
+builder.Services.AddNotyf(config=> { config.DurationInSeconds = 10;config.IsDismissable = true;config.Position = NotyfPosition.TopCenter; });
 
 
 var app = builder.Build();
@@ -27,6 +29,8 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+app.UseNotyf();
 
 app.UseSession(); 
 

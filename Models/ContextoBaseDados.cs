@@ -35,9 +35,9 @@ namespace sga_stif.Models
 
 
       modelBuilder.Entity<Utilizador>().HasData(
-       new Utilizador { Nome = "Angelo", Apelido = "Semedo", Foto = "", Email = "angelosemedo@sgastif.cv", NomeUtilizador = "angelosemedo", PalavraPasse = "1234", PalavraPasseSalt = "4321", IdPerfil = 1, IdUtilizador = 1 },
-       new Utilizador { Nome = "Odailton", Apelido = "Veiga", Foto = "", Email = "odailtonveiga@sgastif.cv", NomeUtilizador = "odailtonveiga", PalavraPasse = "1234", PalavraPasseSalt = "4321", IdPerfil = 1, IdUtilizador = 2 },
-       new Utilizador { Nome = "Manuel", Apelido = "Varela", Foto = "", Email = "manuelvarela@sgastif.cv", NomeUtilizador = "manuelvarela", PalavraPasse = "1234", PalavraPasseSalt = "4321", IdPerfil = 1, IdUtilizador = 3 }
+       new Utilizador { Nome = "Angelo", Apelido = "Semedo", Foto = null, Email = "angelosemedo@sgastif.cv", NomeUtilizador = "angelosemedo",PalavraPasse= BCrypt.Net.BCrypt.HashPassword("1234"), IdPerfil = 1, IdUtilizador = 1 },
+       new Utilizador { Nome = "Odailton", Apelido = "Veiga", Foto = null, Email = "odailtonveiga@sgastif.cv", NomeUtilizador = "odailtonveiga", PalavraPasse= BCrypt.Net.BCrypt.HashPassword("1234"),  IdPerfil = 1, IdUtilizador = 2 },
+       new Utilizador { Nome = "Manuel", Apelido = "Varela", Foto = null, Email = "manuelvarela@sgastif.cv", NomeUtilizador = "manuelvarela",PalavraPasse= BCrypt.Net.BCrypt.HashPassword("1234"),  IdPerfil = 1, IdUtilizador = 3 }
 
      );
 
