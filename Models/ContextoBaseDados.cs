@@ -56,22 +56,22 @@ namespace sga_stif.Models
 
 
 
-          modelBuilder.Entity<TipologiaSocio>().HasData(
-            new TipologiaSocio { Descricao="Normal",Montante=0,Prioridicidade=1,DataFim=DateTime.Now,DataInicio=DateTime.Now,Tipo=TipoTipologiaSocio.Normal,IdTipologiaSocio=1 },
-            new TipologiaSocio { Descricao="Honorário",Montante=0,Prioridicidade=1,DataFim=DateTime.Now,DataInicio=DateTime.Now,Tipo=TipoTipologiaSocio.Honorario,IdTipologiaSocio=2 }
-            
-               
-           );
-            
-            
-            
+            modelBuilder.Entity<TipologiaSocio>().HasData(
+              new TipologiaSocio { Descricao = "Normal", Montante = 0, Prioridicidade = 1, DataFim = DateTime.Now, DataInicio = DateTime.Now, Tipo = TipoTipologiaSocio.Normal, IdTipologiaSocio = 1 },
+              new TipologiaSocio { Descricao = "Honorário", Montante = 0, Prioridicidade = 1, DataFim = DateTime.Now, DataInicio = DateTime.Now, Tipo = TipoTipologiaSocio.Honorario, IdTipologiaSocio = 2 }
+
+
+             );
+
+
+
             modelBuilder.Entity<TipoQuota>().HasData(
-            new TipoQuota { Priodicidade=1,Descricao="Quinzenal",Montante =0,IdTipoQuota=1,Tipo=TipoTipoQuota.TipoQutoA },
-            new TipoQuota { Priodicidade=1,Descricao="Mensal",Montante =0,IdTipoQuota=2,Tipo=TipoTipoQuota.TipoQutoA },
-            new TipoQuota { Priodicidade=1,Descricao="Trimestral",Montante =0,IdTipoQuota=3,Tipo=TipoTipoQuota.TipoQutoA },
-            new TipoQuota { Priodicidade=1,Descricao="Semestral",Montante =0,IdTipoQuota=4,Tipo=TipoTipoQuota.TipoQutoA },
-            new TipoQuota { Priodicidade=1,Descricao="Anual",Montante =0,IdTipoQuota=5,Tipo=TipoTipoQuota.TipoQutoA }
-               
+            new TipoQuota { Priodicidade = 1, Descricao = "Quinzenal", Montante = 0, IdTipoQuota = 1, Tipo = TipoTipoQuota.TipoQutoA },
+            new TipoQuota { Priodicidade = 1, Descricao = "Mensal", Montante = 0, IdTipoQuota = 2, Tipo = TipoTipoQuota.TipoQutoA },
+            new TipoQuota { Priodicidade = 1, Descricao = "Trimestral", Montante = 0, IdTipoQuota = 3, Tipo = TipoTipoQuota.TipoQutoA },
+            new TipoQuota { Priodicidade = 1, Descricao = "Semestral", Montante = 0, IdTipoQuota = 4, Tipo = TipoTipoQuota.TipoQutoA },
+            new TipoQuota { Priodicidade = 1, Descricao = "Anual", Montante = 0, IdTipoQuota = 5, Tipo = TipoTipoQuota.TipoQutoA }
+
            );
 
 
@@ -86,32 +86,30 @@ namespace sga_stif.Models
             new Ilha { Nome = "Santiago", IdIlha = 8 },
             new Ilha { Nome = "Fogo", IdIlha = 9 },
             new Ilha { Nome = "Brava", IdIlha = 10 }
-               
+
            );
 
-Praia
-Outro
-Mindelo
-Santa Maria
-Vila do Maio
-Santa Cruz
-Sal Rei
-Porto Novo
-Ribeira Grande
-Ribeira Brava
-Tarrafal
-Espargos
-Assomada
-São Domingos
-São Filipe
-Mosteiros
-Nova Sintra
-Tarrafal
 
             modelBuilder.Entity<Cidade>().HasData(
-            new Cidade { IdCidade=1, Nome="",IdIlha=1, },
-            
-               
+            new Cidade { IdCidade = 1, IdIlha = 8, Nome = "Praia" },
+            new Cidade { IdCidade = 2, IdIlha = 8, Nome = "Outro" },
+            new Cidade { IdCidade = 3, IdIlha = 2, Nome = "Mindelo" },
+            new Cidade { IdCidade = 4, IdIlha = 5, Nome = "Santa Maria" },
+            new Cidade { IdCidade = 5, IdIlha = 7, Nome = "Vila do Maio" },
+            new Cidade { IdCidade = 6, IdIlha = 8, Nome = "Santa Cruz" },
+            new Cidade { IdCidade = 7, IdIlha = 6, Nome = "Sal Rei" },
+            new Cidade { IdCidade = 8, IdIlha = 1, Nome = "Porto Novo" },
+            new Cidade { IdCidade = 9, IdIlha = 8, Nome = "Ribeira Grande" },
+            new Cidade { IdCidade = 10, IdIlha = 10, Nome = "Ribeira Brava" },
+            new Cidade { IdCidade = 11, IdIlha = 1, Nome = "Tarrafal" },
+            new Cidade { IdCidade = 12, IdIlha = 5, Nome = "Espargos" },
+            new Cidade { IdCidade = 13, IdIlha = 8, Nome = "Assomada" },
+            new Cidade { IdCidade = 14, IdIlha = 8, Nome = "São Domingos" },
+            new Cidade { IdCidade = 15, IdIlha = 9, Nome = "São Filipe" },
+            new Cidade { IdCidade = 16, IdIlha = 9, Nome = "Mosteiros" },
+            new Cidade { IdCidade = 17, IdIlha = 1, Nome = "Nova Sintra" },
+            new Cidade { IdCidade = 18, IdIlha = 8, Nome = "Tarrafal (Santiano)" }
+
            );
 
 
