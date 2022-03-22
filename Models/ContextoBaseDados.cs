@@ -25,6 +25,7 @@ namespace sga_stif.Models
         public DbSet<Beneficiario> Beneficiario { get; set; }
         public DbSet<EstadoSocio> EstadoSocio { get; set; }
         public DbSet<PerfilMenuAcao> PerfilMenuAcao { get; set; }
+        public DbSet<TipologiaSocio> TipologiaSocio { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -46,6 +47,7 @@ namespace sga_stif.Models
             modelBuilder.Entity<Beneficiario>().ToTable("Beneficiario");
             modelBuilder.Entity<EstadoSocio>().ToTable("EstadoSocio");
             modelBuilder.Entity<PerfilMenuAcao>().ToTable("PerfilMenuAcao");
+            modelBuilder.Entity<TipologiaSocio>().ToTable("TipologiaSocio");
 
 
             #region seed dados de inicializacao do sistema
@@ -53,6 +55,24 @@ namespace sga_stif.Models
 
 
 
+
+          modelBuilder.Entity<TipologiaSocio>().HasData(
+            new TipologiaSocio { Descricao="Normal",Montante=0,Prioridicidade=1,DataFim=DateTime.Now,DataInicio=DateTime.Now,Tipo=TipoTipologiaSocio.Normal,IdTipologiaSocio=1 },
+            new TipologiaSocio { Descricao="Honorário",Montante=0,Prioridicidade=1,DataFim=DateTime.Now,DataInicio=DateTime.Now,Tipo=TipoTipologiaSocio.Honorario,IdTipologiaSocio=2 }
+            
+               
+           );
+            
+            
+            
+            modelBuilder.Entity<TipoQuota>().HasData(
+            new TipoQuota { Priodicidade=1,Descricao="Quinzenal",Montante =0,IdTipoQuota=1,Tipo=TipoTipoQuota.TipoQutoA },
+            new TipoQuota { Priodicidade=1,Descricao="Mensal",Montante =0,IdTipoQuota=2,Tipo=TipoTipoQuota.TipoQutoA },
+            new TipoQuota { Priodicidade=1,Descricao="Trimestral",Montante =0,IdTipoQuota=3,Tipo=TipoTipoQuota.TipoQutoA },
+            new TipoQuota { Priodicidade=1,Descricao="Semestral",Montante =0,IdTipoQuota=4,Tipo=TipoTipoQuota.TipoQutoA },
+            new TipoQuota { Priodicidade=1,Descricao="Anual",Montante =0,IdTipoQuota=5,Tipo=TipoTipoQuota.TipoQutoA }
+               
+           );
 
 
             modelBuilder.Entity<Ilha>().HasData(
@@ -66,6 +86,31 @@ namespace sga_stif.Models
             new Ilha { Nome = "Santiago", IdIlha = 8 },
             new Ilha { Nome = "Fogo", IdIlha = 9 },
             new Ilha { Nome = "Brava", IdIlha = 10 }
+               
+           );
+
+Praia
+Outro
+Mindelo
+Santa Maria
+Vila do Maio
+Santa Cruz
+Sal Rei
+Porto Novo
+Ribeira Grande
+Ribeira Brava
+Tarrafal
+Espargos
+Assomada
+São Domingos
+São Filipe
+Mosteiros
+Nova Sintra
+Tarrafal
+
+            modelBuilder.Entity<Cidade>().HasData(
+            new Cidade { IdCidade=1, Nome="",IdIlha=1, },
+            
                
            );
 
