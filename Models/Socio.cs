@@ -14,11 +14,14 @@ namespace sga_stif.Models
         public string CinBi { get; set; }
         public string NumeroPassaporte { get; set; }
         [ForeignKey("Agencia")]
-        public int IdICidade { get; set; }
+        public int IdAgencia { get; set; }
         [ForeignKey("TipologiaSocio")]
         public int IdTipologiaSocio { get; set; }
+         [ForeignKey("TipoQuota")]
+        public int IdTipoQuota { get; set; }
         public virtual Agencia Agencia { get; set; }
         public virtual TipologiaSocio TipologiaSocio { get; set; }
+        public virtual TipoQuota TipoQuota { get; set; }
         public virtual ICollection<JoiaSocio> JoiaSocio { get; set; }
         public virtual ICollection<QuotaSocio> QuotaSocio { get; set; }
          public virtual ICollection<Beneficiario> Beneficiario { get; set; }

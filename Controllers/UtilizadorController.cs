@@ -1,3 +1,4 @@
+using AspNetCoreHero.ToastNotification.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -11,9 +12,12 @@ namespace sga_stif.Controllers
 
     private readonly ContextoBaseDados _context;
 
-    public UtilizadorController(ContextoBaseDados context)
+     private readonly INotyfService _notyf;
+
+    public UtilizadorController(ContextoBaseDados context,INotyfService notyf)
     {
       _context = context;
+       _notyf = notyf;
     }
 
 
@@ -44,7 +48,6 @@ namespace sga_stif.Controllers
         {
 
           if (Image != null)
-
           {
             if (Image.Length > 0)
 
@@ -64,13 +67,7 @@ namespace sga_stif.Controllers
             }
           }
 
-
-
-
-
-
-
-
+           _notyf.Success("Utilizador adicionado com sucesso!");
           utilizador.PalavraPasse = BCrypt.Net.BCrypt.HashPassword(utilizador.PalavraPasse);
           _context.Utilizador.Add(utilizador);
           _context.SaveChanges();
@@ -89,6 +86,7 @@ namespace sga_stif.Controllers
             "see your system administrator.");
       }
 
+       _notyf.Error("Erro na insercao de utilizador!");
 
       var perfils = _context.Perfil.ToList();
       var perfilr = from g in perfils select new SelectListItem { Value = g.IdPerfil.ToString(), Text = g.Descricao };
