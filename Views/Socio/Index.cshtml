@@ -1,0 +1,111 @@
+@model IEnumerable<sga_stif.Models.Socio>
+
+@{
+  ViewData["Title"] = "Index";
+}
+
+<div class="card">
+  <div class="card-header">
+
+    <div class="row">
+      <div class="col-md-11">
+        <h5 class="w-75 p-3">lista de socios</h5>
+      </div>
+      <div class="col-md-1 float-right">
+        <a class="btn btn-primary" asp-action="Create">Novo</a>
+      </div>
+    </div>
+
+
+  </div>
+  <div class="card-body">
+    <table id="example2" class="table table-bordered table-hover">
+      <thead>
+        <tr>
+
+          <th>
+            @Html.DisplayNameFor(model => model.Foto)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.Nome)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.Apelido)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.Nif)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.CinBi)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.NumeroPassaporte)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.DataCriacao)
+          </th>
+          <th>Ação</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (var item in Model)
+        {
+          <tr>
+
+            <td>
+              @if (@item.Foto != null)
+              {
+                <img class="img-circle img-size-32 mr-2" src="data:image/jpeg;base64,@Convert.ToBase64String(item.Foto)" />
+
+              }
+              else
+              {
+                <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
+              }
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.Apelido)
+            </td>
+
+            <td>
+              @Html.DisplayFor(modelItem => item.Nif)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.CinBi)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.NumeroPassaporte)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.DataCriacao)
+            </td>
+            <td>
+              <a class="btn btn-success btn-xs" asp-action="Edit" asp-route-id="@item.IdSocio">Editar</a>
+              <a class="btn btn-default btn-xs" asp-action="Details" asp-route-id="@item.IdSocio">Detalhes</a>
+              <a class="btn btn-danger btn-xs" asp-action="Delete" asp-route-id="@item.IdSocio">Eliminar</a>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+
+
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>

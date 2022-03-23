@@ -14,6 +14,11 @@ namespace sga_stif.Models
         public TipoTipoQuota Tipo { get; set; }
         public virtual ICollection<Socio> Socio { get; set; }
 
+        public TipoQuota()
+        {
+            Socio = new HashSet<Socio>();
+        }
+
 
     }
 
