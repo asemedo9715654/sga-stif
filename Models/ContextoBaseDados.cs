@@ -120,6 +120,18 @@ namespace sga_stif.Models
            );
 
 
+          modelBuilder.Entity<InstituicaoFinanceira>().HasData(
+                new InstituicaoFinanceira(){IdInstituicaoFinanceira=1,Nome="BCA"}
+
+           );
+
+
+           modelBuilder.Entity<Agencia>().HasData(
+                new Agencia(){IdInstituicaoFinanceira=1,Nome="BCA",IdAgencia=1,IdCidade=8}
+
+           );
+
+
 
             modelBuilder.Entity<Utilizador>().HasData(
              new Utilizador { Nome = "Angelo", Apelido = "Semedo", Foto = null, Email = "angelosemedo@sgastif.cv", NomeUtilizador = "angelosemedo", PalavraPasse = BCrypt.Net.BCrypt.HashPassword("1234"), IdPerfil = 1, IdUtilizador = 1 },
