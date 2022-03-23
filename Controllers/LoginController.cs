@@ -29,12 +29,22 @@ namespace sga_stif.Controllers
 
       if (ModelState.IsValid)
       {
+        var utilizador = Authenticate( loginViewModel);
 
-        if (loginViewModel.NomeUtilizador != null && loginViewModel.PalavraPasse != null &&  Authenticate( loginViewModel))
+        if (loginViewModel.NomeUtilizador != null && loginViewModel.PalavraPasse != null &&  utilizador != null)
         {
-           _notyf.Success("seja benvindo ao sga-stif");
 
+          _notyf.Success("seja benvindo ao sga-stif");
+
+          //caregar variaveis de sessão
           HttpContext.Session.SetString("NomeUtilizador", loginViewModel.NomeUtilizador);
+          HttpContext.Session.SetString("NomeCompleto", utilizador.PegarNomeCompleto());
+          HttpContext.Session.SetString("IdUtilizador", utilizador.IdUtilizador.ToString());
+          
+
+
+
+
           return RedirectToAction("Index", "Utilizador");
 
         }
@@ -56,25 +66,28 @@ namespace sga_stif.Controllers
     public IActionResult Logout()
     {
       HttpContext.Session.Remove("NomeUtilizador");
+      HttpContext.Session.Remove("NomeCompleto");
+      HttpContext.Session.Remove("IdUtilizador");
+
       return RedirectToAction("Index");
     }
 
 
-    public bool Authenticate(LoginViewModel model)
+    public Utilizador Authenticate(LoginViewModel model)
         {
             // get account from database
-            var account = _context.Utilizador.SingleOrDefault(x => x.NomeUtilizador == model.NomeUtilizador);
+            var utilizador = _context.Utilizador.SingleOrDefault(x => x.NomeUtilizador == model.NomeUtilizador);
 
             // check account found and verify password
-            if (account == null || !BC.Verify(model.PalavraPasse, account.PalavraPasse))
+            if (utilizador == null || !BC.Verify(model.PalavraPasse, utilizador.PalavraPasse))
             {
                 // authentication failed
-                return false;
+                return null;
             }
             else
             {
                 // authentication successful
-                return true;
+                return utilizador;
             }
         }
 

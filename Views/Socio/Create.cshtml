@@ -1,4 +1,4 @@
-@model sga_stif.Models.Socio
+@model sga_stif.ViewModel.Socio.SocioViewModel
 
 @{
   ViewData["Title"] = "Novo";
@@ -64,31 +64,51 @@
 
         <div class="col-md-6">
 
-           <div class="form-group">
-             <label asp-for="NumeroPassaporte" class="control-label"></label>
+          <div class="form-group">
+            <label asp-for="NumeroPassaporte" class="control-label"></label>
             <input asp-for="NumeroPassaporte" class="form-control" />
             <span asp-validation-for="NumeroPassaporte" class="text-danger"></span>
           </div>
 
           <div class="form-group">
             <label asp-for="IdTipoQuota" class="control-label"></label>
-            <select asp-for="IdTipoQuota" asp-items="@ViewBag.IdTipoQuota" class="form-control"></select>
+            <select asp-for="IdTipoQuota" asp-items="@ViewBag.IdTipoQuota" class="form-control">
+               <option disabled selected>--- seleccione ---</option>
+            </select>
             <span asp-validation-for="IdTipoQuota" class="text-danger"></span>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
             <label asp-for="IdTipologiaSocio" class="control-label"></label>
-            <select asp-for="IdTipologiaSocio" asp-items="@ViewBag.IdTipologiaSocio" class="form-control"></select>
+            <select asp-for="IdTipologiaSocio" asp-items="@ViewBag.IdTipologiaSocio" class="form-control">
+               <option disabled selected>--- seleccione ---</option>
+            </select>
             <span asp-validation-for="IdTipologiaSocio" class="text-danger"></span>
           </div>
 
           <div class="form-group">
             <label asp-for="IdAgencia" class="control-label"></label>
-            <select asp-for="IdAgencia" asp-items="@ViewBag.IdAgencia" class="form-control"></select>
+            <select asp-for="IdAgencia" asp-items="@ViewBag.IdAgencia" class="form-control">
+               <option disabled selected>--- seleccione ---</option>
+            </select>
             <span asp-validation-for="IdAgencia" class="text-danger"></span>
           </div>
         </div>
+
+      </div>
+
+
+      <div class="row">
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label asp-for="Nif" class="control-label"></label>
+            <input asp-for="Nif" class="form-control" />
+            <span asp-validation-for="Nif" class="text-danger"></span>
+          </div>
+        </div>
+
 
       </div>
 

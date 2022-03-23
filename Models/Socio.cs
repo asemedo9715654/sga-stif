@@ -19,6 +19,9 @@ namespace sga_stif.Models
         public int IdTipologiaSocio { get; set; }
          [ForeignKey("TipoQuota")]
         public int IdTipoQuota { get; set; }
+
+
+        //propriedades de navegacao
         public virtual Agencia Agencia { get; set; }
         public virtual TipologiaSocio TipologiaSocio { get; set; }
         public virtual TipoQuota TipoQuota { get; set; }

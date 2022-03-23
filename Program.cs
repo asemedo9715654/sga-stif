@@ -1,15 +1,19 @@
 using AspNetCoreHero.ToastNotification;
 using AspNetCoreHero.ToastNotification.Extensions;
+using AutoMapper;
+using sga_stif.Mapeamento;
 using sga_stif.Models;
+using sga_stif.ViewModel.Socio;
 
 var builder = WebApplication.CreateBuilder(args);
 
 
 
-builder.Services.AddSession(options => {
-          options.IdleTimeout = TimeSpan.FromMinutes(1);
-          }); 
-          
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(1);
+});
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -17,7 +21,20 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddEntityFrameworkSqlite().AddDbContext<ContextoBaseDados>();
 
 
-builder.Services.AddNotyf(config=> { config.DurationInSeconds = 10;config.IsDismissable = true;config.Position = NotyfPosition.TopCenter; });
+
+// Auto Mapper Configurations
+var mapperConfig = new MapperConfiguration(mc =>
+{
+    mc.AddProfile(new PerfiDeMapeamento());
+});
+
+IMapper mapper = mapperConfig.CreateMapper();
+builder.Services.AddSingleton(mapper);
+
+
+
+
+builder.Services.AddNotyf(config => { config.DurationInSeconds = 10; config.IsDismissable = true; config.Position = NotyfPosition.TopCenter; });
 
 
 var app = builder.Build();
@@ -32,7 +49,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseNotyf();
 
-app.UseSession(); 
+app.UseSession();
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
