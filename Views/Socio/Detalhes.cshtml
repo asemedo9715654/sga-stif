@@ -1,11 +1,11 @@
-@model sga_stif.ViewModel.Socio.SocioViewModel
+@model sga_stif.ViewModel.Socio.DestalhesSocioViewModel
 
 <div class="invoice p-3 mb-3">
     <!-- title row -->
     <div class="row">
         <div class="col-12">
             <h4>
-                <i class="fas fa-globe"></i> Detalhes do Sócio
+                <i class="fas fa-user"></i> Detalhes do Sócio
                 <small class="float-right">@DateTime.Now</small>
             </h4>
         </div>
@@ -42,49 +42,66 @@
     <!-- /.row -->
     <br>
     <br>
-     <!-- Table row -->
-    <div class="row">
+
+    <div class="row no-print">
         <p class="lead">Lista de beneficiarios</p>
+        <div class="col-12">
+            @* <a href="invoice-print.html" rel="noopener" target="_blank" class="btn btn-default"><i
+                    class="fas fa-print"></i> Print</a> *@
+            @* <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Submit
+                Payment
+            </button> *@
+            @* <button type="button" class="btn btn-success float-right" style="margin-right: 5px;">
+                <i class="fas fa-download"></i> Novo Beneficiario
+            </button> *@
+
+            <a asp-action="NovoBeneficiario" asp-controller="Beneficiario" asp-route-idSocio="@Model.IdSocio" class="btn btn-success float-right" style="margin-right: 5px;">Novo beneficiario</a>
+
+        </div>
+    </div>
+    <!-- Table row -->
+    <div class="row">
+        @* <p class="lead">Lista de beneficiarios</p> *@
         <div class="col-12 table-responsive">
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Qty</th>
-                        <th>Product</th>
-                        <th>Serial #</th>
-                        <th>Description</th>
-                        <th>Subtotal</th>
+                        <th>
+                            Nome
+                        </th>
+                        <th>
+                            CinBi
+                        </th>
+                        <th>
+                           Nif
+                        </th>
+                        <th>
+                            Número Passaport
+                        </th>
+
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Call of Duty</td>
-                        <td>455-981-221</td>
-                        <td>El snort testosterone trophy driving gloves handsome</td>
-                        <td>$64.50</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Need for Speed IV</td>
-                        <td>247-925-726</td>
-                        <td>Wes Anderson umami biodiesel</td>
-                        <td>$50.00</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Monsters DVD</td>
-                        <td>735-845-642</td>
-                        <td>Terry Richardson helvetica tousled street art master</td>
-                        <td>$10.70</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Grown Ups Blue Ray</td>
-                        <td>422-568-642</td>
-                        <td>Tousled lomo letterpress</td>
-                        <td>$25.99</td>
-                    </tr>
+                    @foreach (var item in Model.ListaBeneficiarioViewModel)
+                    {
+                        <tr>
+
+                            <th>
+                                @Html.DisplayFor(modelItem => item.Nome)
+                            </th>
+                            <th>
+                                @Html.DisplayFor(modelItem => item.CinBi)
+                            </th>
+                            <th>
+                                @Html.DisplayFor(modelItem => item.Nif)
+                            </th>
+                            <th>
+                                @Html.DisplayFor(modelItem => item.NumeroPassaporte)
+                            </th>
+
+
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>
@@ -95,7 +112,7 @@
     <!-- /.row -->
 
     <!-- this row will not appear when printing -->
-    <div class="row no-print">
+    @* <div class="row no-print">
         <div class="col-12">
             <a href="invoice-print.html" rel="noopener" target="_blank" class="btn btn-default"><i
                     class="fas fa-print"></i> Print</a>
@@ -106,5 +123,5 @@
                 <i class="fas fa-download"></i> Generate PDF
             </button>
         </div>
-    </div>
+    </div> *@
 </div>

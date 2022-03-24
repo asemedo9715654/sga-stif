@@ -130,7 +130,8 @@ namespace sga_stif.Controllers
                                         .Include(c => c.Agencia).FirstOrDefaultAsync();
 
 
-            var sociocc = _mapper.Map<SocioViewModel>(socios);
+            var sociocc = _mapper.Map<DestalhesSocioViewModel>(socios);
+            //  sociocc.ListaBeneficiarioViewModel = _mapper.Map<DestalhesSocioViewModel>(socios);
 
             return View(sociocc);
         }

@@ -1,5 +1,6 @@
 using AutoMapper;
 using sga_stif.Models;
+using sga_stif.ViewModel.Beneficiario;
 using sga_stif.ViewModel.Socio;
 
 namespace sga_stif.Mapeamento
@@ -13,8 +14,14 @@ namespace sga_stif.Mapeamento
             CreateMap<Socio, SocioViewModel>();
             CreateMap<SocioViewModel, Socio>();
 
-        }
+            CreateMap<Beneficiario, ListaBeneficiarioViewModel>();
+            CreateMap<NovoBeneficiarioViewModel,Beneficiario>();
 
+            CreateMap<Socio, DestalhesSocioViewModel>().ForMember(dest =>
+            dest.ListaBeneficiarioViewModel,
+            opt => opt.MapFrom(src => src.Beneficiario));
+
+        }
 
     }
 }
