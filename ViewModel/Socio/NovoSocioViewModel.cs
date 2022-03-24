@@ -1,8 +1,9 @@
 using System.ComponentModel.DataAnnotations;
+using sga_stif.Models;
 
 namespace sga_stif.ViewModel.Socio
 {
-    public class SocioViewModel
+    public class NovoSocioViewModel
     {
         [Key]
         public int IdSocio { get; set; }
@@ -16,6 +17,15 @@ namespace sga_stif.ViewModel.Socio
         public string CinBi { get; set; }
         [Display(Name = "Número de Passaporte")]
         public string NumeroPassaporte { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Data de Nascimento")]
+        public DateTime DataDeNascimento { get; set; }
+        public Sexo Sexo { get; set; }
+        [Display(Name = "Número de Telefone")]
+        public string NumeroDeTelefone { get; set; }
+
         [Display(Name = "Agência")]
         public int IdAgencia { get; set; }
         [Display(Name = "Tipológia de Socio")]

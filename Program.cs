@@ -49,6 +49,9 @@ if (!app.Environment.IsDevelopment())
 
 app.UseNotyf();
 
+
+app.UseStatusCodePages();
+
 app.UseSession();
 
 app.UseHttpsRedirection();

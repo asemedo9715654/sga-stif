@@ -22,7 +22,7 @@ namespace sga_stif.Controllers
 
 
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> ListaPerfil()
         {
             return View(await _context.Perfil.ToListAsync());
         }
@@ -30,7 +30,7 @@ namespace sga_stif.Controllers
 
 
         [HttpGet]
-        public IActionResult Create()
+        public IActionResult NovoPerfil()
         {
         
             return View();
@@ -39,7 +39,7 @@ namespace sga_stif.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Descricao")] Perfil perfil)
+        public IActionResult NovoPerfil([Bind("Descricao")] Perfil perfil)
         {
 
             try
@@ -51,7 +51,7 @@ namespace sga_stif.Controllers
                     _context.Perfil.Add(perfil);
                     _context.SaveChanges();
                     _notyf.Success("Perfil adicionado com sucesso!");
-                    return RedirectToAction(nameof(Index));
+                    return RedirectToAction("ListaPerfil");
                 }
 
                  IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);

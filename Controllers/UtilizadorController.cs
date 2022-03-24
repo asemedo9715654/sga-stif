@@ -21,14 +21,14 @@ namespace sga_stif.Controllers
     }
 
 
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> ListaUtilizador()
     {
       var T = await _context.Utilizador.Include(c => c.Perfil).ToListAsync();
       return View(T);
     }
 
     [HttpGet]
-    public IActionResult Create()
+    public IActionResult NovoUtilizador()
     {
       var perfils = _context.Perfil.ToList();
       var perfilr = from g in perfils select new SelectListItem { Value = g.IdPerfil.ToString(), Text = g.Descricao };
@@ -39,7 +39,7 @@ namespace sga_stif.Controllers
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Create([Bind("Nome,Apelido,Foto,PalavraPasse,PalavraPasseSalt,Email,IdPerfil,NomeUtilizador")] Utilizador utilizador, IFormFile Image)
+    public IActionResult NovoUtilizador([Bind("Nome,Apelido,Foto,PalavraPasse,PalavraPasseSalt,Email,IdPerfil,NomeUtilizador")] Utilizador utilizador, IFormFile Image)
     {
 
       try
@@ -71,7 +71,7 @@ namespace sga_stif.Controllers
           utilizador.PalavraPasse = BCrypt.Net.BCrypt.HashPassword(utilizador.PalavraPasse);
           _context.Utilizador.Add(utilizador);
           _context.SaveChanges();
-          return RedirectToAction(nameof(Index));
+          return RedirectToAction("ListaUtilizador");
         }
 
 

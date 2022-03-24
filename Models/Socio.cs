@@ -13,11 +13,15 @@ namespace sga_stif.Models
         public string Nif { get; set; }
         public string CinBi { get; set; }
         public string NumeroPassaporte { get; set; }
+        public DateTime DataDeNascimento { get; set; }
+        public Sexo Sexo { get; set; }
+        public string NumeroDeTelefone { get; set; }
+
         [ForeignKey("Agencia")]
         public int IdAgencia { get; set; }
         [ForeignKey("TipologiaSocio")]
         public int IdTipologiaSocio { get; set; }
-         [ForeignKey("TipoQuota")]
+        [ForeignKey("TipoQuota")]
         public int IdTipoQuota { get; set; }
 
 
@@ -27,14 +31,20 @@ namespace sga_stif.Models
         public virtual TipoQuota TipoQuota { get; set; }
         public virtual ICollection<JoiaSocio> JoiaSocio { get; set; }
         public virtual ICollection<QuotaSocio> QuotaSocio { get; set; }
-         public virtual ICollection<Beneficiario> Beneficiario { get; set; }
+        public virtual ICollection<Beneficiario> Beneficiario { get; set; }
 
-        public Socio( )
+        public Socio()
         {
             this.JoiaSocio = new HashSet<JoiaSocio>();
             this.QuotaSocio = new HashSet<QuotaSocio>();
             this.Beneficiario = new HashSet<Beneficiario>();
         }
 
+    }
+
+
+    public enum Sexo{
+        Feminino,
+        Masculino
     }
 }
