@@ -6,14 +6,18 @@
 
 <div class="card">
   <div class="card-header">
-      <div class="row">
-      <div class="col-md-11">
-        <h4 class="w-75 p-3">lista de perfil</h3>
-      </div>
-      <div class="col-md-1 float-right">
-        <a class="btn btn-primary" asp-action="Create">Novo</a>
+
+    <div class="row no-print">
+
+      <div class="col-12">
+        <p class="lead">Lista de Perfil</p>
+
+        <a asp-action="NovoPerfil" class="btn btn-success float-right" style="margin-right: 5px;">Novo</a>
+
       </div>
     </div>
+
+
   </div>
   <div class="card-body">
     <table id="example2" class="table table-bordered table-hover">
@@ -29,9 +33,9 @@
             @Html.DisplayNameFor(model => model.DataAtualizacao)
           </th>
           <th>
-           Ação
+            Ação
           </th>
-        
+
         </tr>
       </thead>
       <tbody>
@@ -47,10 +51,10 @@
             <td>
               @Html.DisplayFor(modelItem => item.DataAtualizacao)
             </td>
-             <td>
-              <a class="btn btn-success btn-xs" asp-action="Edit" asp-route-id="@item.IdPerfil">Editar</a> 
-              <a class="btn btn-default btn-xs" asp-action="Details" asp-route-id="@item.IdPerfil">Detalhes</a> 
-              <a class="btn btn-danger btn-xs" asp-action="Delete" asp-route-id="@item.IdPerfil">Eliminar</a>
+            <td>
+              <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.IdPerfil">Editar</a>
+              <a class="btn btn-default" asp-action="Details" asp-route-id="@item.IdPerfil">Detalhes</a>
+              <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.IdPerfil">Eliminar</a>
             </td>
           </tr>
         }
@@ -74,4 +78,3 @@
     });
   });
 </script>
-

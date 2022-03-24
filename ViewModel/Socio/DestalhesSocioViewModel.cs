@@ -21,8 +21,19 @@ namespace sga_stif.ViewModel.Socio
         public int IdAgencia { get; set; }
         [Display(Name = "Tipológia de Socio")]
         public int IdTipologiaSocio { get; set; }
+
+         public string NumeroDeTelefone { get; set; }
+         
         [Display(Name = "Tipo de Quota")]
         public int IdTipoQuota { get; set; }
+        public string NomeAgencia { get; set; }
+        public string NomeIlha { get; set; }
+        public string NomeCidade { get; set; }
+        public string NomeTipologia { get; set; }
+        public string NomeTipoQuota { get; set; }
+
+
+
         public List<ListaBeneficiarioViewModel> ListaBeneficiarioViewModel { get; set; }
         
 

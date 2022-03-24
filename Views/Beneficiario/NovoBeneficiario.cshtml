@@ -2,7 +2,7 @@
 
 
 @{
-    ViewData["Title"] = "Novo";
+    ViewData["Title"] = "Novo Beneficiario";
 }
 
 
@@ -17,7 +17,7 @@
         <div class="card-body">
 
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-           
+
 
 
             <div class="row">
@@ -29,15 +29,12 @@
                         <span asp-validation-for="Nome" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="Nif" class="control-label"></label>
-                        <input asp-for="Nif" class="form-control" />
-                        <span asp-validation-for="Nif" class="text-danger"></span>
+                        <label asp-for="Apelido" class="control-label"></label>
+                        <input asp-for="Apelido" class="form-control" />
+                        <span asp-validation-for="Apelido" class="text-danger"></span>
                     </div>
-                    <div class="form-group hidden">
-                        <label asp-for="IdSocio" class="control-label"></label>
-                        <input asp-for="IdSocio" class="form-control" />
-                        <span asp-validation-for="IdSocio" class="text-danger"></span>
-                    </div>
+
+                   
                 </div>
 
 
@@ -58,6 +55,42 @@
 
             </div>
 
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="DataDeNascimento" class="control-label"></label>
+                        <input asp-for="DataDeNascimento" class="form-control" />
+                        <span asp-validation-for="DataDeNascimento" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Nif" class="control-label"></label>
+                        <input asp-for="Nif" class="form-control" />
+                        <span asp-validation-for="Nif" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="GrauDeParentesco" class="control-label"></label>
+                        @* <input asp-for="GrauDeParentesco" class="form-control" /> *@
+                        <select asp-for="GrauDeParentesco" class="form-control"  asp-items="Html.GetEnumSelectList<GrauDeParentesco>()"></select>
+                        <span asp-validation-for="Nif" class="text-danger"></span>
+                    </div>
+                     <div class="form-group hidden">
+                        <label asp-for="IdSocio" class="control-label"></label>
+                        <input asp-for="IdSocio" class="form-control" />
+                        <span asp-validation-for="IdSocio" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
         </div>
 
         <div class="card-footer">
@@ -67,5 +100,3 @@
     </form>
 
 </div>
-
-

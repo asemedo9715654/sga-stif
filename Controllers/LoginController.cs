@@ -45,7 +45,7 @@ namespace sga_stif.Controllers
 
 
 
-          return RedirectToAction("Index", "Utilizador");
+          return RedirectToAction("ListaUtilizador", "Utilizador");
 
         }
         else

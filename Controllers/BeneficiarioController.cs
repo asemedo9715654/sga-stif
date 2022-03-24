@@ -36,7 +36,7 @@ namespace sga_stif.Controllers
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult NovoBeneficiario([Bind("Nome,Nif,IdSocio, CinBi,NumeroPassaporte")] NovoBeneficiarioViewModel novoBeneficiarioViewModel)
+    public IActionResult NovoBeneficiario([Bind("Nome,Apelido,DataDeNascimento,GrauDeParentesco,Nif,IdSocio, CinBi,NumeroPassaporte")] NovoBeneficiarioViewModel novoBeneficiarioViewModel)
     {
 
       try
@@ -45,12 +45,12 @@ namespace sga_stif.Controllers
         if (ModelState.IsValid)
         {
 
-          var sociocc = _mapper.Map<Beneficiario>(novoBeneficiarioViewModel);
+          var beneficiario = _mapper.Map<Beneficiario>(novoBeneficiarioViewModel);
 
-          _context.Beneficiario.Add(sociocc);
+          _context.Beneficiario.Add(beneficiario);
           _context.SaveChanges();
           _notyf.Success("Beneficiario adicionado com sucesso!");
-          return RedirectToAction(nameof(Index));
+          return RedirectToAction("DetalhesSocio","Socio",new{idSocio=beneficiario.IdSocio});
         }
 
       }
