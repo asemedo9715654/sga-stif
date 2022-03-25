@@ -23,8 +23,13 @@ namespace sga_stif.Controllers
 
     public async Task<IActionResult> ListaUtilizador()
     {
-      var T = await _context.Utilizador.Include(c => c.Perfil).ToListAsync();
+      var T = await _context.Utilizador.Where(  t=>t.Eliminado==false).Include(c => c.Perfil).ToListAsync();
       return View(T);
+    }
+    public async Task<IActionResult> ListaUtilizadorInativos()
+    {
+      var utilizadores = await _context.Utilizador.Where(  t=>t.Eliminado==true).Include(c => c.Perfil).ToListAsync();
+      return View(utilizadores);
     }
 
     [HttpGet]
@@ -94,6 +99,36 @@ namespace sga_stif.Controllers
 
       return View(utilizador);
     }
+
+
+     public async Task<IActionResult> EliminaUtilizador(int? idUtilizador)
+        {
+            if (idUtilizador == null)
+            {
+                return NotFound();
+            }
+            var utilizador = await _context.Utilizador.FirstOrDefaultAsync(m => m.IdUtilizador == idUtilizador);
+
+            return View(utilizador);
+        }
+
+
+
+        // POST: Employees/Delete/1
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EliminaUtilizador(int idUtilizador)
+        {
+            var utilizador = await _context.Utilizador.FindAsync(idUtilizador);
+            utilizador.Eliminado = true;
+            //_context.Socio.Remove(employee);
+            //_context.Socio.Remove(employee);
+            await _context.SaveChangesAsync();
+              _notyf.Success("Utilizador eliminado com sucesso!");
+
+
+            return RedirectToAction("ListaUtilizador");
+        }
 
   }
 }

@@ -7,6 +7,7 @@ namespace sga_stif.Models
     {
         [Key]
         public int IdSocio { get; set; }
+        public string NumeroDeSocio { get; set; }
         public byte[]? Foto { get; set; }
         public string Nome { get; set; }
         public string Apelido { get; set; }
@@ -24,7 +25,6 @@ namespace sga_stif.Models
         [ForeignKey("TipoQuota")]
         public int IdTipoQuota { get; set; }
 
-
         //propriedades de navegacao
         public virtual Agencia Agencia { get; set; }
         public virtual TipologiaSocio TipologiaSocio { get; set; }
@@ -40,10 +40,19 @@ namespace sga_stif.Models
             this.Beneficiario = new HashSet<Beneficiario>();
         }
 
+
+        public void GerarNumeroSocio()
+        {
+            Random random = new Random();
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"; 
+            this.NumeroDeSocio = new string(Enumerable.Repeat(chars, 20).Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
     }
 
 
-    public enum Sexo{
+    public enum Sexo
+    {
         Feminino,
         Masculino
     }

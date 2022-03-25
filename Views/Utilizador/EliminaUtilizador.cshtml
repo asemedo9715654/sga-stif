@@ -1,0 +1,63 @@
+@model sga_stif.Models.Utilizador
+
+@{
+    ViewData["Title"] = "Elimina Utilizador";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="card">
+    <div class="card-header">
+
+        <div class="row no-print">
+
+            <div class="col-12">
+                <p class="lead">Tens a certeza que pretende Eliminar o utilizador?</p>
+                @* <a asp-action="NovoSocio" class="btn btn-success float-right" style="margin-right: 5px;">Novo</a> *@
+
+            </div>
+        </div>
+
+
+    </div>
+    <div class="card-body">
+
+        <div class="container p-3 my-3 border">
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Nome)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Nome)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Apelido)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Apelido)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.DataAtualizacao)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.DataAtualizacao)
+                </dd>
+
+            </dl>
+
+            <form asp-action="EliminaUtilizador">
+                <input type="hidden" asp-for="IdUtilizador" />
+                <input class="btn btn-primary" type="submit" value="Sim" />
+                <a class="btn btn-danger" asp-action="ListaUtilizador">Não</a>
+            </form>
+
+        </div>
+
+
+    </div>
+
+
+
+</div>

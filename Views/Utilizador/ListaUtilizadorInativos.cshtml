@@ -1,4 +1,4 @@
-@model IEnumerable<sga_stif.ViewModel.Socio.ListaSocioViewModel>
+@model IEnumerable<sga_stif.Models.Utilizador>
 
 @{
   ViewData["Title"] = "Index";
@@ -7,18 +7,16 @@
 <div class="card">
   <div class="card-header">
 
-     <div class="row no-print">
+    <div class="row no-print">
 
       <div class="col-12">
-        <p class="lead">Lista de Socios</p>
+        <p class="lead">Lista de Utilizadores Inativos</p>
 
 
-       
-        <a asp-action="NovoSocio" class="btn btn-success float-right" style="margin-right: 5px;">Novo</a>
-        <a asp-action="ListaSocioInativos" class="btn btn-default float-right" style="margin-right: 5px;">Ver Sócios Inativos</a>
+        <a asp-action="ListaUtilizador" class="btn btn-primary float-right" style="margin-right: 5px;">Utilizadores Ativos</a>
+
       </div>
     </div>
-
 
   </div>
   <div class="card-body">
@@ -30,25 +28,22 @@
             @Html.DisplayNameFor(model => model.Foto)
           </th>
           <th>
-            @Html.DisplayNameFor(model => model.NumeroDeSocio)
-          </th>
-          <th>
             @Html.DisplayNameFor(model => model.Nome)
           </th>
           <th>
             @Html.DisplayNameFor(model => model.Apelido)
           </th>
           <th>
-            @Html.DisplayNameFor(model => model.Nif)
+            @Html.DisplayNameFor(model => model.Email)
           </th>
           <th>
-            @Html.DisplayNameFor(model => model.CinBi)
+            @Html.DisplayNameFor(model => model.DataCriacao)
           </th>
           <th>
-            @Html.DisplayNameFor(model => model.NumeroPassaporte)
+            @Html.DisplayNameFor(model => model.DataAtualizacao)
           </th>
           <th>
-            @Html.DisplayNameFor(model => model.DataDeNascimento)
+            @Html.DisplayNameFor(model => model.Perfil.Descricao)
           </th>
           <th>Ação</th>
         </tr>
@@ -66,11 +61,8 @@
               }
               else
               {
-                <img src="dist/img/default-150x150.png" alt="RSS" class="img-circle img-size-32 mr-2">
+                <img src="~/dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
               }
-            </td>
-              <td>
-              @Html.DisplayFor(modelItem => item.NumeroDeSocio)
             </td>
             <td>
               @Html.DisplayFor(modelItem => item.Nome)
@@ -80,21 +72,20 @@
             </td>
 
             <td>
-              @Html.DisplayFor(modelItem => item.Nif)
+              @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
-              @Html.DisplayFor(modelItem => item.CinBi)
+              @Html.DisplayFor(modelItem => item.DataCriacao)
             </td>
             <td>
-              @Html.DisplayFor(modelItem => item.NumeroPassaporte)
-            </td>
-             <td>
-              @Html.DisplayFor(modelItem => item.DataDeNascimento)
+              @Html.DisplayFor(modelItem => item.DataAtualizacao)
             </td>
             <td>
-              <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.IdSocio">Editar</a>
-              <a class="btn btn-default" asp-action="DetalhesSocio" asp-route-idSocio="@item.IdSocio">Detalhes</a>
-              <a class="btn btn-danger" asp-action="EliminaSocio" asp-route-idSocio="@item.IdSocio">Eliminar</a>
+              @Html.DisplayFor(modelItem => item.Perfil.Descricao)
+            </td>
+            <td>
+             
+              <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.IdUtilizador">Reativar</a>
             </td>
           </tr>
         }
@@ -110,7 +101,7 @@
     $('#example2').DataTable({
       "paging": true,
       "lengthChange": false,
-      "searching": true,
+      "searching": false,
       "ordering": true,
       "info": true,
       "autoWidth": false,
