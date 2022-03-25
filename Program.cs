@@ -50,7 +50,7 @@ if (!app.Environment.IsDevelopment())
 app.UseNotyf();
 
 
-app.UseStatusCodePages();
+// app.UseStatusCodePages();
 
 app.UseSession();
 
