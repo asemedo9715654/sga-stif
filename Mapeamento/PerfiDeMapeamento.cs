@@ -12,7 +12,7 @@ namespace sga_stif.Mapeamento
         {
             // Add as many of these lines as you need to map your objects
             CreateMap<Socio, NovoSocioViewModel>();
-            CreateMap<List<Socio>, List<ListaSocioViewModel>>();
+            CreateMap<Socio, ListaSocioViewModel>();
             CreateMap<NovoSocioViewModel, Socio>();
 
             CreateMap<Beneficiario, ListaBeneficiarioViewModel>();
