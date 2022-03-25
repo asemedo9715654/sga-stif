@@ -6,79 +6,83 @@ using BC = BCrypt.Net.BCrypt;
 
 namespace sga_stif.Controllers
 {
-  public class LoginController : Controller
-  {
-
-
-    private readonly ContextoBaseDados _context;
-     private readonly INotyfService _notyf;
-
-    public LoginController(ContextoBaseDados context,INotyfService notyf)
-    {
-      _context = context;
-      _notyf = notyf;
-    }
-    public IActionResult Index()
-    {
-      return View();
-    }
-
-    [HttpPost]
-    public IActionResult Index(LoginViewModel loginViewModel)
+    public class LoginController : Controller
     {
 
-      if (ModelState.IsValid)
-      {
-        var utilizador = Authenticate( loginViewModel);
 
-        if (loginViewModel.NomeUtilizador != null && loginViewModel.PalavraPasse != null &&  utilizador != null)
+        private readonly ContextoBaseDados _context;
+        private readonly INotyfService _notyf;
+
+        public LoginController(ContextoBaseDados context, INotyfService notyf)
+        {
+            _context = context;
+            _notyf = notyf;
+        }
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Index(LoginViewModel loginViewModel)
         {
 
-          _notyf.Success("seja benvindo ao sga-stif");
+            if (ModelState.IsValid)
+            {
+                var utilizador = Authenticate(loginViewModel);
 
-          //caregar variaveis de sessão
-          HttpContext.Session.SetString("NomeUtilizador", loginViewModel.NomeUtilizador);
-          HttpContext.Session.SetString("NomeCompleto", utilizador.PegarNomeCompleto());
-          HttpContext.Session.SetString("IdUtilizador", utilizador.IdUtilizador.ToString());
+                if (loginViewModel.NomeUtilizador != null && loginViewModel.PalavraPasse != null && utilizador != null)
+                {
 
-          if(utilizador.Foto!=null){
-              string imageDataURL = string.Format("data:image/png;base64,{0}", utilizador.Foto);
-              HttpContext.Session.SetString("Foto", imageDataURL);
-          }else{
-            HttpContext.Session.SetString("Foto", "");
+                    _notyf.Success("seja benvindo ao sga-stif");
 
-          }
-         
+                    //caregar variaveis de sessão
+                    HttpContext.Session.SetString("NomeUtilizador", loginViewModel.NomeUtilizador);
+                    HttpContext.Session.SetString("NomeCompleto", utilizador.PegarNomeCompleto());
+                    HttpContext.Session.SetString("IdUtilizador", utilizador.IdUtilizador.ToString());
 
-          return RedirectToAction("ListaUtilizador", "Utilizador");
+                    if (utilizador.Foto != null)
+                    {
+                        string imageDataURL = string.Format("data:image/png;base64,{0}", utilizador.Foto);
+                        HttpContext.Session.SetString("Foto", imageDataURL);
+                    }
+                    else
+                    {
+                        HttpContext.Session.SetString("Foto", "");
 
+                    }
+
+
+                    return RedirectToAction("ListaSocio", "Socio");
+
+                }
+                else
+                {
+                    _notyf.Error("Dados Incorrecto");
+                    return View(loginViewModel);
+                }
+            }
+
+            _notyf.Error("Dados Incorrecto");
+
+            return View(loginViewModel);
         }
-        else
+
+
+        [Route("logout")]
+        [HttpGet]
+        public IActionResult Logout()
         {
-          _notyf.Error("Dados Incorrecto");
-          return View(loginViewModel);
+            HttpContext.Session.Remove("NomeUtilizador");
+            HttpContext.Session.Remove("NomeCompleto");
+            HttpContext.Session.Remove("IdUtilizador");
+            HttpContext.Session.Remove("Foto");
+            
+            return RedirectToAction("Index");
         }
-      }
-
-      _notyf.Error("Dados Incorrecto");
-
-      return View(loginViewModel);
-    }
 
 
-    [Route("logout")]
-    [HttpGet]
-    public IActionResult Logout()
-    {
-      HttpContext.Session.Remove("NomeUtilizador");
-      HttpContext.Session.Remove("NomeCompleto");
-      HttpContext.Session.Remove("IdUtilizador");
-
-      return RedirectToAction("Index");
-    }
-
-
-    public Utilizador Authenticate(LoginViewModel model)
+        public Utilizador Authenticate(LoginViewModel model)
         {
             // get account from database
             var utilizador = _context.Utilizador.SingleOrDefault(x => x.NomeUtilizador == model.NomeUtilizador);
@@ -96,5 +100,5 @@ namespace sga_stif.Controllers
             }
         }
 
-  }
+    }
 }

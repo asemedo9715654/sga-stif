@@ -47,7 +47,7 @@
         
         <div class="col-12">
             <p class="lead">Lista de beneficiarios</p>
-            <a asp-action="NovoBeneficiario" asp-controller="Beneficiario" asp-route-idSocio="@Model.IdSocio" rel="noopener"   class="btn btn-success"><i class="fas fa-user"></i> Adicionar Beneficiario</a>
+            <a asp-action="ListaSocio" rel="noopener"   class="btn btn-default"><i class="fas fa-arrow-left"></i> Voltar Para Lista</a>
             @* <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Submit
                 Payment
             </button> *@
@@ -55,7 +55,7 @@
                 <i class="fas fa-download"></i> Novo Beneficiario
             </button> *@
 
-            @* <a asp-action="NovoBeneficiario" asp-controller="Beneficiario" asp-route-idSocio="@Model.IdSocio" class="btn btn-success float-right" style="margin-right: 5px;">Novo beneficiario</a> *@
+            <a asp-action="NovoBeneficiario" asp-controller="Beneficiario" asp-route-idSocio="@Model.IdSocio" class="btn btn-success float-right" style="margin-right: 5px;"> <i class="fas fa-plus"></i> Adicionar Beneficiario</a>
 
         </div>
     </div>

@@ -10,12 +10,12 @@
      <div class="row no-print">
 
       <div class="col-12">
-        <p class="lead">Lista de Socios</p>
+        <p class="lead">Lista de Socios Inativos</p>
 
 
        
-        <a asp-action="NovoSocio" class="btn btn-success float-right" style="margin-right: 5px;">Novo</a>
-        <a asp-action="ListaSocioInativos" class="btn btn-default float-right" style="margin-right: 5px;">Ver Sócios Inativos</a>
+        @* <a asp-action="NovoSocio" class="btn btn-success float-right" style="margin-right: 5px;">Novo</a> *@
+        <a asp-action="ListaSocio" class="btn btn-primary float-right" style="margin-right: 5px;">Ver Sócios Ativos</a>
       </div>
     </div>
 
@@ -69,10 +69,10 @@
                 <img src="dist/img/default-150x150.png" alt="RSS" class="img-circle img-size-32 mr-2">
               }
             </td>
-              <td>
+            <td>
               @Html.DisplayFor(modelItem => item.NumeroDeSocio)
             </td>
-            <td>
+             <td>
               @Html.DisplayFor(modelItem => item.Nome)
             </td>
             <td>
@@ -92,9 +92,9 @@
               @Html.DisplayFor(modelItem => item.DataDeNascimento)
             </td>
             <td>
-              <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.IdSocio">Editar</a>
+             
               <a class="btn btn-default" asp-action="DetalhesSocio" asp-route-idSocio="@item.IdSocio">Detalhes</a>
-              <a class="btn btn-danger" asp-action="EliminaSocio" asp-route-idSocio="@item.IdSocio">Eliminar</a>
+              <a class="btn btn-primary" asp-action="EliminaSocio" asp-route-idSocio="@item.IdSocio">Reativar</a>
             </td>
           </tr>
         }

@@ -28,7 +28,19 @@ namespace sga_stif.Controllers
 
         public async Task<IActionResult> ListaSocio()
         {
-            var socios = await _context.Socio.Include(c => c.Agencia)
+            var socios = await _context.Socio.Where(r=>r.Eliminado!=true).Include(c => c.Agencia)
+                                        .Include(c => c.TipologiaSocio)
+                                        .Include(c => c.TipoQuota)
+                                        .ToListAsync();
+
+            var sociocc = _mapper.Map<List<ListaSocioViewModel>>(socios);
+
+            return View(sociocc);
+        }
+
+        public async Task<IActionResult> ListaSocioInativos()
+        {
+            var socios = await _context.Socio.Where(r=>r.Eliminado==true).Include(c => c.Agencia)
                                         .Include(c => c.TipologiaSocio)
                                         .Include(c => c.TipoQuota)
                                         .ToListAsync();
@@ -41,11 +53,11 @@ namespace sga_stif.Controllers
         [HttpGet]
         public IActionResult NovoSocio()
         {
-            var angencia = _context.Agencia.Include(j=>j.Cidade).ToList();
+            var angencia = _context.Agencia.Include(j => j.Cidade).ToList();
             var tipologiaSocios = _context.TipologiaSocio.ToList();
             var tipoQuotas = _context.TipoQuota.ToList();
 
-            var angenciaListItem = from g in angencia select new SelectListItem { Value = g.IdAgencia.ToString(), Text = g.Nome+" - "+g.Cidade.Nome };
+            var angenciaListItem = from g in angencia select new SelectListItem { Value = g.IdAgencia.ToString(), Text = g.Nome + " - " + g.Cidade.Nome };
             var tipologiaSociosListItem = from g in tipologiaSocios select new SelectListItem { Value = g.IdTipologiaSocio.ToString(), Text = g.Descricao };
             var tipoQuotasListItem = from g in tipoQuotas select new SelectListItem { Value = g.IdTipoQuota.ToString(), Text = g.Descricao };
 
@@ -90,6 +102,8 @@ namespace sga_stif.Controllers
 
                     _notyf.Success("Sócio adicionado com sucesso!");
 
+                    sociocc.GerarNumeroSocio();
+
                     _context.Socio.Add(sociocc);
                     _context.SaveChanges();
                     return RedirectToAction("ListaSocio");
@@ -108,7 +122,7 @@ namespace sga_stif.Controllers
             _notyf.Error("Erro na inserção de sócio!");
 
 
-             var angencia = _context.Agencia.Include(j=>j.Cidade).ToList();
+            var angencia = _context.Agencia.Include(j => j.Cidade).ToList();
             var tipologiaSocios = _context.TipologiaSocio.ToList();
             var tipoQuotas = _context.TipoQuota.ToList();
 
@@ -132,13 +146,47 @@ namespace sga_stif.Controllers
                                         .Include(c => c.TipologiaSocio)
                                         .Include(c => c.Beneficiario)
                                         .Include(c => c.TipoQuota)
-                                        .Include(c => c.Agencia).ThenInclude(c=> c.Cidade).ThenInclude(c=>c.Ilha).FirstOrDefaultAsync();
+                                        .Include(c => c.Agencia).ThenInclude(c => c.Cidade).ThenInclude(c => c.Ilha).FirstOrDefaultAsync();
 
 
             var destalhesSocioViewModel = _mapper.Map<DestalhesSocioViewModel>(socios);
-            
+
             return View(destalhesSocioViewModel);
         }
+
+
+        public async Task<IActionResult> EliminaSocio(int? idSocio)
+        {
+            if (idSocio == null)
+            {
+                return NotFound();
+            }
+            var employee = await _context.Socio.FirstOrDefaultAsync(m => m.IdSocio == idSocio);
+
+            return View(employee);
+        }
+
+
+
+        // POST: Employees/Delete/1
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EliminaSocio(int idSocio)
+        {
+            var socio = await _context.Socio.FindAsync(idSocio);
+            socio.Eliminado = true;
+            //_context.Socio.Remove(employee);
+            //_context.Socio.Remove(employee);
+            await _context.SaveChangesAsync();
+              _notyf.Success("Sócio eliminado com sucesso!");
+
+
+            return RedirectToAction("ListaSocio");
+        }
+
+
+
+
 
     }
 }
