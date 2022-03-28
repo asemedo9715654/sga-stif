@@ -285,7 +285,10 @@ namespace sga_stif.Models
               new Menu { IdMenu = 3, Nome = "Perfil", Descricao = "Gestão dos utilizadores", IdMenuPai = 1,NomeDaAction="ListaPerfil",NomeDoController="Perfil",Icone="k" },
               new Menu { IdMenu = 4, Nome = "Menu", Descricao = "Gestão dos utilizadores", IdMenuPai = 1,NomeDaAction="ListaMenu",NomeDoController="MenuAcao",Icone="k" },
 
-              new Menu { IdMenu = 5, Nome = "Gestao de Socios", Descricao = "Gestao de Socios", IdMenuPai = null ,NomeDaAction="ListaSocio",NomeDoController="Socio",Icone=""}
+              new Menu { IdMenu = 5, Nome = "Gestao de Socios", Descricao = "Gestao de Socios", IdMenuPai = null ,NomeDaAction="ListaSocio",NomeDoController="Socio",Icone=""},
+              new Menu { IdMenu = 6, Nome = "Estatística", Descricao = "Estatística", IdMenuPai = null ,NomeDaAction="Inicio",NomeDoController="Estatistica",Icone=""},
+              new Menu { IdMenu = 7, Nome = "Sga-Stif", Descricao = "Sga-Stif", IdMenuPai = null ,NomeDaAction="Inicio",NomeDoController="Estatistica",Icone=""},
+              new Menu { IdMenu = 8, Nome = "Sobre", Descricao = "Sobre", IdMenuPai = 7 ,NomeDaAction="Inicio",NomeDoController="Estatistica",Icone=""}
 
 
             );

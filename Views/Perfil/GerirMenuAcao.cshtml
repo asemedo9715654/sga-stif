@@ -1,4 +1,4 @@
-@model IEnumerable<sga_stif.Models.Perfil>
+@model IEnumerable<sga_stif.ViewModel.Perfil.ListaMenuAcaoViewModel>
 
 @{
   ViewData["Title"] = "Index";
@@ -10,9 +10,9 @@
     <div class="row no-print">
 
       <div class="col-12">
-        <p class="lead">Lista de Perfil</p>
+        <p class="lead">Associar ao perfil : <small> @ViewBag.NomePerfil</small></p>
 
-        <a asp-action="NovoPerfil" class="btn btn-success float-right" style="margin-right: 5px;">Novo</a>
+       
 
       </div>
     </div>
@@ -33,7 +33,7 @@
             @Html.DisplayNameFor(model => model.DataAtualizacao)
           </th>
           <th>
-            Ação
+            Associar
           </th>
 
         </tr>
@@ -52,10 +52,8 @@
               @Html.DisplayFor(modelItem => item.DataAtualizacao)
             </td>
             <td>
-              <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.IdPerfil">Editar</a>
-              <a class="btn btn-default" asp-action="Details" asp-route-id="@item.IdPerfil">Detalhes</a>
-              <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.IdPerfil">Eliminar</a>
-              <a class="btn btn-success" asp-action="GerirMenuAcao" asp-route-idPerfil="@item.IdPerfil">Gerir Ações</a>
+              <input  id="sfddsf" type="checkbox" onchange="EnviaDados(@ViewBag.IdPerfil,@item.IdMenuAcao)" /> 
+            
             </td>
           </tr>
         }
@@ -65,6 +63,8 @@
 
   </div>
 </div>
+
+@Html.Hidden("RecuperaLinkGuarda", Url.Action("Guarda", "Perfil"))
 
 <script>
   $(function () {
@@ -78,4 +78,19 @@
       "responsive": true,
     });
   });
+
+
+    function EnviaDados(idPerfilAux, idMenuAcaoAux) {
+            $.ajax({
+                url: $("#RecuperaLinkGuarda").val(),
+                data: { idPerfil: idPerfilAux, idMenuAcao: idMenuAcaoAux },
+                type: "post",
+                dataType: "json",
+                success: function (result) {
+                    console.log(result)
+                }
+            });
+        }
+
+
 </script>

@@ -2,6 +2,7 @@ using AutoMapper;
 using sga_stif.Models;
 using sga_stif.ViewModel;
 using sga_stif.ViewModel.Beneficiario;
+using sga_stif.ViewModel.Perfil;
 using sga_stif.ViewModel.Socio;
 using sga_stif.ViewModel.TipoQuota;
 using sga_stif.ViewModel.Utilizador;
@@ -22,6 +23,10 @@ namespace sga_stif.Mapeamento
             CreateMap<NovoBeneficiarioViewModel,Beneficiario>();
 
             CreateMap<TipoQuota,ListaTipoQuotaViewModel>();
+
+
+            CreateMap< MenuAcao,ListaMenuAcaoViewModel>()
+            .ForMember(dest =>dest.Descricao,opt => opt.MapFrom(src => src.Menu.Nome +" --- "+src.Acao.Nome));
 
 
             CreateMap<Utilizador,ListaUtilizadorViewModel>()

@@ -15,6 +15,10 @@ namespace sga_stif.Models
         public virtual Acao? Acao { get; set; }
         public virtual Menu? Menu { get; set; }
         public virtual ICollection<PerfilMenuAcao> PerfilMenuAcao { get; set; }
+        public MenuAcao()
+        {
+            this.PerfilMenuAcao = new HashSet<PerfilMenuAcao>();
+        }
 
 
     }

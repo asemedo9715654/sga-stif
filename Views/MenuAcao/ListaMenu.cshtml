@@ -6,9 +6,13 @@
 
 <div class="card">
     <div class="card-header">
-           <div class="row">
-      <div class="col-md-11">
-        <h4 class="w-75 p-3">lista de menus</h3>
+       <div class="row no-print">
+
+      <div class="col-12">
+        <p class="lead">Lista de Menus</p>
+
+        @* <a asp-action="NovoPerfil" class="btn btn-success float-right" style="margin-right: 5px;">Novo</a> *@
+
       </div>
     </div>
     </div>
@@ -22,8 +26,8 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Descricao)
                     </th>
-                      <th>
-                         @Html.DisplayName("Tipo")
+                    <th>
+                        @Html.DisplayName("Tipo")
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.DataCriacao)
@@ -31,7 +35,7 @@
                     <th>
                         @Html.DisplayNameFor(model => model.DataAtualizacao)
                     </th>
-                    
+
                     <th>
                         Ação
                     </th>
@@ -48,8 +52,8 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Descricao)
                         </td>
-                         <td>
-                             @item.Categoria()
+                        <td>
+                            @item.Categoria()
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.DataCriacao)
@@ -58,8 +62,8 @@
                             @Html.DisplayFor(modelItem => item.DataAtualizacao)
                         </td>
                         <td>
-                            <a class="btn btn-success" asp-action="GerirAcao" asp-route-idMenu="@item.IdMenu" asp-route-nomeMenu="@item.Nome">Gerir Ação</a>
-                           
+                            <a class="btn btn-success" asp-action="GerirAcao" asp-route-idMenu="@item.IdMenu" asp-route-nomeMenu="@item.Nome">Gerir Ações</a>
+
                         </td>
                     </tr>
                 }
