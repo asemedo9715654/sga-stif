@@ -66,11 +66,11 @@ namespace sga_stif.Models
 
 
             modelBuilder.Entity<TipoQuota>().HasData(
-            new TipoQuota { Priodicidade = 1, Descricao = "Quinzenal", Montante = 0, IdTipoQuota = 1, Tipo = TipoTipoQuota.TipoQutoA },
-            new TipoQuota { Priodicidade = 1, Descricao = "Mensal", Montante = 0, IdTipoQuota = 2, Tipo = TipoTipoQuota.TipoQutoA },
-            new TipoQuota { Priodicidade = 1, Descricao = "Trimestral", Montante = 0, IdTipoQuota = 3, Tipo = TipoTipoQuota.TipoQutoA },
-            new TipoQuota { Priodicidade = 1, Descricao = "Semestral", Montante = 0, IdTipoQuota = 4, Tipo = TipoTipoQuota.TipoQutoA },
-            new TipoQuota { Priodicidade = 1, Descricao = "Anual", Montante = 0, IdTipoQuota = 5, Tipo = TipoTipoQuota.TipoQutoA }
+            new TipoQuota { Priodicidade = 1, Descricao = "Quinzenal", Montante = 500, IdTipoQuota = 1, Tipo = TipoTipoQuota.TipoQutoA },
+            new TipoQuota { Priodicidade = 2, Descricao = "Mensal", Montante = 1000, IdTipoQuota = 2, Tipo = TipoTipoQuota.TipoQutoA },
+            new TipoQuota { Priodicidade = 3, Descricao = "Trimestral", Montante = 3000, IdTipoQuota = 3, Tipo = TipoTipoQuota.TipoQutoA },
+            new TipoQuota { Priodicidade = 4, Descricao = "Semestral", Montante = 6000, IdTipoQuota = 4, Tipo = TipoTipoQuota.TipoQutoB },
+            new TipoQuota { Priodicidade = 5, Descricao = "Anual", Montante = 12000, IdTipoQuota = 5, Tipo = TipoTipoQuota.TipoQutoB }
 
            );
 
@@ -136,9 +136,9 @@ namespace sga_stif.Models
                 new Agencia{IdAgencia=1	      ,IdCidade=1, IdInstituicaoFinanceira= 2	    ,Nome="Ag. Fazenda"},
                 new Agencia{IdAgencia=2	      ,IdCidade=1, IdInstituicaoFinanceira= 2	    ,Nome="Ag. Mindelo"},
                 new Agencia{IdAgencia=3	      ,IdCidade=1, IdInstituicaoFinanceira= 2	    ,Nome="Ag. ASA"},
-                new Agencia{IdAgencia=4	      ,IdCidade=1, IdInstituicaoFinanceira= 2	    ,Nome="Ag. Assomada"},
+                new Agencia{IdAgencia=4	      ,IdCidade=13, IdInstituicaoFinanceira= 2	    ,Nome="Ag. Assomada"},
                 new Agencia{IdAgencia=5	      ,IdCidade=1, IdInstituicaoFinanceira= 2	    ,Nome="Ag. Espargos"},
-                new Agencia{IdAgencia=6	      ,IdCidade=1, IdInstituicaoFinanceira= 2	    ,Nome="Ag. Rª Grande"},
+                new Agencia{IdAgencia=6	      ,IdCidade=9, IdInstituicaoFinanceira= 2	    ,Nome="Ag. Rª Grande"},
                 new Agencia{IdAgencia=7	      ,IdCidade=1, IdInstituicaoFinanceira= 2	    ,Nome="Ag. St. Maria"},
                 new Agencia{IdAgencia=8	      ,IdCidade=1, IdInstituicaoFinanceira= 2	    ,Nome="Ag. Plateau"},
                 new Agencia{IdAgencia=9	      ,IdCidade=1, IdInstituicaoFinanceira= 2	    ,Nome="Ag. Monte Sossego"},
@@ -146,11 +146,11 @@ namespace sga_stif.Models
                 new Agencia{IdAgencia=11	    ,IdCidade=1, IdInstituicaoFinanceira= 2	    ,Nome="Ag. São Filipe"},
                 new Agencia{IdAgencia=12	    ,IdCidade=1, IdInstituicaoFinanceira= 2	    ,Nome="Ag. Calheta S. Miguel"},
                 new Agencia{IdAgencia=13	    ,IdCidade=1, IdInstituicaoFinanceira= 2	    ,Nome="Ag. Aeroporto da Praia"},
-                new Agencia{IdAgencia=14	    ,IdCidade=1, IdInstituicaoFinanceira= 2	    ,Nome="Ag. Boavista"},
+                new Agencia{IdAgencia=14	    ,IdCidade=7, IdInstituicaoFinanceira= 2	    ,Nome="Ag. Boavista"},
                 new Agencia{IdAgencia=15	    ,IdCidade=1, IdInstituicaoFinanceira= 2	    ,Nome="Ag. Aeroporto do Sal"},
                 new Agencia{IdAgencia=16	    ,IdCidade=1, IdInstituicaoFinanceira= 2	    ,Nome="Ag. Sucupira"},
                 new Agencia{IdAgencia=17	    ,IdCidade=1, IdInstituicaoFinanceira= 2	    ,Nome="Ag. CCV – São Domingos"},
-                new Agencia{IdAgencia=18	    ,IdCidade=1, IdInstituicaoFinanceira= 2	    ,Nome="Ag. Tarrafal"},
+                new Agencia{IdAgencia=18	    ,IdCidade=18, IdInstituicaoFinanceira= 2	    ,Nome="Ag. Tarrafal"},
                 new Agencia{IdAgencia=19	    ,IdCidade=1, IdInstituicaoFinanceira= 2	    ,Nome="Ag. Santa Cruz"},
                 new Agencia{IdAgencia=20	    ,IdCidade=1, IdInstituicaoFinanceira= 2	    ,Nome="Ag. CCV – Porto Novo"},
                 new Agencia{IdAgencia=21	    ,IdCidade=1, IdInstituicaoFinanceira= 2	    ,Nome="Ag. CCV - Plateau"},
@@ -160,20 +160,20 @@ namespace sga_stif.Models
                 new Agencia{IdAgencia=25	    ,IdCidade=1, IdInstituicaoFinanceira= 2	    ,Nome="Ag. Coculi"},
                 new Agencia{IdAgencia=26	    ,IdCidade=1, IdInstituicaoFinanceira= 2	    ,Nome="Ag. Paul"},
                 new Agencia{IdAgencia=27	    ,IdCidade=1, IdInstituicaoFinanceira= 2	    ,Nome="Ag. Fonte Cónego"},
-                new Agencia{IdAgencia=28	    ,IdCidade=1, IdInstituicaoFinanceira= 2	    ,Nome="Ag. Aeroporto Boavista"},
+                new Agencia{IdAgencia=28	    ,IdCidade=7, IdInstituicaoFinanceira= 2	    ,Nome="Ag. Aeroporto Boavista"},
                 new Agencia{IdAgencia=29	    ,IdCidade=1, IdInstituicaoFinanceira= 2	    ,Nome="Ag. Maio"},
                 new Agencia{IdAgencia=30	    ,IdCidade=1, IdInstituicaoFinanceira= 2	    ,Nome="Ag. Porto Novo"},
                 new Agencia{IdAgencia=31	    ,IdCidade=1, IdInstituicaoFinanceira= 2	    ,Nome="Ag. Ribeira Brava"},
                 new Agencia{IdAgencia=32	    ,IdCidade=1, IdInstituicaoFinanceira= 2	    ,Nome="Ag. Ribeira Brava"},
-                new Agencia{IdAgencia=33	    ,IdCidade=1, IdInstituicaoFinanceira= 2	    ,Nome="Ag. Tarrafal"},
+                new Agencia{IdAgencia=33	    ,IdCidade=18, IdInstituicaoFinanceira= 2	    ,Nome="Ag. Tarrafal"},
                 new Agencia{IdAgencia=34	    ,IdCidade=1, IdInstituicaoFinanceira= 3	    ,Nome="Ag. Praia"},
                 new Agencia{IdAgencia=35	    ,IdCidade=1, IdInstituicaoFinanceira= 3	    ,Nome="Ag. S. Vicente "},
                 new Agencia{IdAgencia=36	    ,IdCidade=1, IdInstituicaoFinanceira= 3	    ,Nome="Ag. Sal"},
                 new Agencia{IdAgencia=37	    ,IdCidade=1, IdInstituicaoFinanceira= 3	    ,Nome="Ag. S. Filipe"},
-                new Agencia{IdAgencia=38	    ,IdCidade=1, IdInstituicaoFinanceira= 3	    ,Nome="Ag. Tarrafal"},
+                new Agencia{IdAgencia=38	    ,IdCidade=18, IdInstituicaoFinanceira= 3	    ,Nome="Ag. Tarrafal"},
                 new Agencia{IdAgencia=39	    ,IdCidade=1, IdInstituicaoFinanceira= 3	    ,Nome="Ag. S. Catarina"},
                 new Agencia{IdAgencia=40	    ,IdCidade=1, IdInstituicaoFinanceira= 3	    ,Nome="Ag. Porto Novo"},
-                new Agencia{IdAgencia=41	    ,IdCidade=1, IdInstituicaoFinanceira= 3	    ,Nome="Ag. Rª Grande"},
+                new Agencia{IdAgencia=41	    ,IdCidade=9, IdInstituicaoFinanceira= 3	    ,Nome="Ag. Rª Grande"},
                 new Agencia{IdAgencia=42	    ,IdCidade=1, IdInstituicaoFinanceira= 3	    ,Nome="Ag. Brava"},
                 new Agencia{IdAgencia=43	    ,IdCidade=1, IdInstituicaoFinanceira= 3	    ,Nome="Ag. Boavista"},
                 new Agencia{IdAgencia=44	    ,IdCidade=1, IdInstituicaoFinanceira= 3	    ,Nome="Ag. S. Nicolau"},
@@ -186,7 +186,7 @@ namespace sga_stif.Models
                 new Agencia{IdAgencia=51	    ,IdCidade=1, IdInstituicaoFinanceira= 3	    ,Nome="Ag. Fonte Filipe"},
                 new Agencia{IdAgencia=52	    ,IdCidade=1, IdInstituicaoFinanceira= 3	    ,Nome="Ag. Santa Maria"},
                 new Agencia{IdAgencia=53	    ,IdCidade=1, IdInstituicaoFinanceira= 3	    ,Nome="Ag. Mosteiros"},
-                new Agencia{IdAgencia=54	    ,IdCidade=1, IdInstituicaoFinanceira= 3	    ,Nome="Ag. Tarrafal S. Nicolau"},
+                new Agencia{IdAgencia=54	    ,IdCidade=11, IdInstituicaoFinanceira= 3	    ,Nome="Ag. Tarrafal S. Nicolau"},
                 new Agencia{IdAgencia=55	    ,IdCidade=1, IdInstituicaoFinanceira= 3	    ,Nome="Ag. ASA II"},
                 new Agencia{IdAgencia=56	    ,IdCidade=1, IdInstituicaoFinanceira= 3	    ,Nome="Gabinete Empresas Sul"},
                 new Agencia{IdAgencia=57	    ,IdCidade=1, IdInstituicaoFinanceira= 3	    ,Nome="Gabinete Empresas Norte"},
@@ -197,7 +197,7 @@ namespace sga_stif.Models
                 new Agencia{IdAgencia=62	    ,IdCidade=1, IdInstituicaoFinanceira= 3	    ,Nome="Prol. Ach. São Filipe"},
                 new Agencia{IdAgencia=63	    ,IdCidade=1, IdInstituicaoFinanceira= 4	    ,Nome="Ag. Praia"},
                 new Agencia{IdAgencia=64	    ,IdCidade=1, IdInstituicaoFinanceira= 4	    ,Nome="Ag. Mindelo"},
-                new Agencia{IdAgencia=65	    ,IdCidade=1, IdInstituicaoFinanceira= 4	    ,Nome="Ag. Assomada"},
+                new Agencia{IdAgencia=65	    ,IdCidade=13, IdInstituicaoFinanceira= 4	    ,Nome="Ag. Assomada"},
                 new Agencia{IdAgencia=66	    ,IdCidade=1, IdInstituicaoFinanceira= 4	    ,Nome="Ag. Aeroporto do Sal"},
                 new Agencia{IdAgencia=67	    ,IdCidade=1, IdInstituicaoFinanceira= 4	    ,Nome="Ag. Boavista"},
                 new Agencia{IdAgencia=68	    ,IdCidade=1, IdInstituicaoFinanceira= 4	    ,Nome="Ag. Porto Novo"},
@@ -206,7 +206,7 @@ namespace sga_stif.Models
                 new Agencia{IdAgencia=71	    ,IdCidade=1, IdInstituicaoFinanceira= 4	    ,Nome="Ag. Monte Sossego"},
                 new Agencia{IdAgencia=72	    ,IdCidade=1, IdInstituicaoFinanceira= 4	    ,Nome="Ag. Santa Maria"},
                 new Agencia{IdAgencia=73	    ,IdCidade=1, IdInstituicaoFinanceira= 4	    ,Nome="Ag. São Filipe"},
-                new Agencia{IdAgencia=74	    ,IdCidade=1, IdInstituicaoFinanceira= 4	    ,Nome="Ag. Rª Grande"},
+                new Agencia{IdAgencia=74	    ,IdCidade=9, IdInstituicaoFinanceira= 4	    ,Nome="Ag. Rª Grande"},
                 new Agencia{IdAgencia=75	    ,IdCidade=1, IdInstituicaoFinanceira= 4	    ,Nome="ASA – Private Banking"},
                 new Agencia{IdAgencia=76	    ,IdCidade=1, IdInstituicaoFinanceira= 4	    ,Nome="Ag. Fazenda"},
                 new Agencia{IdAgencia=77	    ,IdCidade=1, IdInstituicaoFinanceira= 4	    ,Nome="Ag. Órgãos"},
@@ -223,8 +223,8 @@ namespace sga_stif.Models
                 new Agencia{IdAgencia=88	    ,IdCidade=1, IdInstituicaoFinanceira= 5	    ,Nome="Ag. Plateau"},
                 new Agencia{IdAgencia=89	    ,IdCidade=1, IdInstituicaoFinanceira= 5	    ,Nome="Ag. Espargos"},
                 new Agencia{IdAgencia=90	    ,IdCidade=1, IdInstituicaoFinanceira= 5	    ,Nome="Ag. Santa Maria"},
-                new Agencia{IdAgencia=91	    ,IdCidade=1, IdInstituicaoFinanceira= 5	    ,Nome="ag. Sal Rei – Boavista"},
-                new Agencia{IdAgencia=92	    ,IdCidade=1, IdInstituicaoFinanceira= 5	    ,Nome="Ag. Assomada"},
+                new Agencia{IdAgencia=91	    ,IdCidade=7, IdInstituicaoFinanceira= 5	    ,Nome="ag. Sal Rei – Boavista"},
+                new Agencia{IdAgencia=92	    ,IdCidade=13, IdInstituicaoFinanceira= 5	    ,Nome="Ag. Assomada"},
                 new Agencia{IdAgencia=93	    ,IdCidade=1, IdInstituicaoFinanceira= 5	    ,Nome="Ag. Achada Grande Trás"},
                 new Agencia{IdAgencia=94	    ,IdCidade=1, IdInstituicaoFinanceira= 5	    ,Nome="Gab. Particulares (Praia)"},
                 new Agencia{IdAgencia=95	    ,IdCidade=1, IdInstituicaoFinanceira= 5	    ,Nome="Gab. Empresas (Praia)"},
@@ -252,7 +252,7 @@ namespace sga_stif.Models
                 new Agencia{IdAgencia=117	    ,IdCidade=1, IdInstituicaoFinanceira= 9	    ,Nome="PME Nacionais Sal"},
                 new Agencia{IdAgencia=118	    ,IdCidade=1, IdInstituicaoFinanceira= 9	    ,Nome="Grandes Empresas Nacionais Sal"},
                 new Agencia{IdAgencia=119	    ,IdCidade=1, IdInstituicaoFinanceira= 11    ,Nome="Ag. Sede - Praia"},
-                new Agencia{IdAgencia=120	    ,IdCidade=1, IdInstituicaoFinanceira= 8	    ,Nome="Ag. Assomada"},
+                new Agencia{IdAgencia=120	    ,IdCidade=13, IdInstituicaoFinanceira= 8	    ,Nome="Ag. Assomada"},
                 new Agencia{IdAgencia=121	    ,IdCidade=1, IdInstituicaoFinanceira= 8	    ,Nome="Ag. Sta Maria "},
                 new Agencia{IdAgencia=122	    ,IdCidade=1, IdInstituicaoFinanceira= 8	    ,Nome="Agencia Sal-Rei "},
                 new Agencia{IdAgencia=123	    ,IdCidade=1, IdInstituicaoFinanceira= 8	    ,Nome="Agencia S.Filipe "},
@@ -280,10 +280,13 @@ namespace sga_stif.Models
 
 
             modelBuilder.Entity<Menu>().HasData(
-              new Menu { IdMenu = 1, Nome = "Administração", Descricao = "Administração do Sistema SGA-STIF", IdMenuPai = null },
-              new Menu { IdMenu = 2, Nome = "Utilizador", Descricao = "Gestão dos utilizadores", IdMenuPai = 1 },
-              new Menu { IdMenu = 3, Nome = "Perfil", Descricao = "Gestão dos utilizadores", IdMenuPai = 1 },
-              new Menu { IdMenu = 4, Nome = "Menu", Descricao = "Gestão dos utilizadores", IdMenuPai = 1 }
+              new Menu { IdMenu = 1, Nome = "Administração", Descricao = "Administração do Sistema SGA-STIF", IdMenuPai = null ,NomeDaAction="",NomeDoController="",Icone=""},
+              new Menu { IdMenu = 2, Nome = "Utilizador", Descricao = "Gestão dos utilizadores", IdMenuPai = 1,NomeDaAction="ListaUtilizador",NomeDoController="Utilizador",Icone="k" },
+              new Menu { IdMenu = 3, Nome = "Perfil", Descricao = "Gestão dos utilizadores", IdMenuPai = 1,NomeDaAction="ListaPerfil",NomeDoController="Perfil",Icone="k" },
+              new Menu { IdMenu = 4, Nome = "Menu", Descricao = "Gestão dos utilizadores", IdMenuPai = 1,NomeDaAction="ListaMenu",NomeDoController="MenuAcao",Icone="k" },
+
+              new Menu { IdMenu = 5, Nome = "Gestao de Socios", Descricao = "Gestao de Socios", IdMenuPai = null ,NomeDaAction="ListaSocio",NomeDoController="Socio",Icone=""}
+
 
             );
 

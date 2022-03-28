@@ -2,6 +2,7 @@
 <html lang="en">
 @using Microsoft.AspNetCore.Http
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -65,9 +66,36 @@
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
       <!-- Left navbar links -->
-      <ul class="navbar-nav">
+
+
+      @* @await Component.InvokeAsync("PriorityList", new { maxPriority = 4, isDone = true }) *@
+      @await Component.InvokeAsync("NavigationMenu")
+
+
+      @* <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Gestão de Sócios
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" asp-action="ListaSocio" asp-controller="Socio">Lista de Sócios Ativos</a>
+            <a class="dropdown-item" asp-action="ListaSocioInativos" asp-controller="Socio">Lista de Socios Inativos</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Lista Periodo Quotas</a>
+            <a class="dropdown-item" asp-action="ListaTipoQuota" asp-controller="TipoQuota">Tipo Quota</a>
+            <a class="dropdown-item" href="#">Tipologia Sócio</a>Î
+          </div>
+        </li>
+
+
+        <li class="nav-item d-none d-sm-inline-block">
+          <a asp-action="ListaSocio" asp-controller="Socio" class="nav-link">Sócios</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
           <a asp-action="ListaUtilizador" asp-controller="Utilizador" class="nav-link">Utilizador</a>
@@ -79,36 +107,39 @@
           <a class="nav-link" asp-action="ListaMenu" asp-controller="MenuAcao">Menu</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
+          <a class="nav-link" asp-action="Inicio" asp-controller="Estatistica">Estatística</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
           <a href="#" class="nav-link">Sobre</a>
         </li>
-      </ul>
+      </ul> *@
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
         <!-- Navbar Search -->
         @* <li class="nav-item">
           <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-            <i class="fas fa-search"></i>
+          <i class="fas fa-search"></i>
           </a>
           <div class="navbar-search-block">
-            <form class="form-inline">
-              <div class="input-group input-group-sm">
-                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                <div class="input-group-append">
-                  <button class="btn btn-navbar" type="submit">
-                    <i class="fas fa-search"></i>
-                  </button>
-                  <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                    <i class="fas fa-times"></i>
-                  </button>
-                </div>
-              </div>
-            </form>
+          <form class="form-inline">
+          <div class="input-group input-group-sm">
+          <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+          <button class="btn btn-navbar" type="submit">
+          <i class="fas fa-search"></i>
+          </button>
+          <button class="btn btn-navbar" type="button" data-widget="navbar-search">
+          <i class="fas fa-times"></i>
+          </button>
           </div>
-        </li> *@
+          </div>
+          </form>
+          </div>
+          </li> *@
 
         <!-- Messages Dropdown Menu -->
-       
+
 
         <li class="nav-item dropdown user-menu">
           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
@@ -122,11 +153,11 @@
               <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
 
               <p>
-                 @HttpContextAccessor.HttpContext.Session.GetString("NomeCompleto")
+                @HttpContextAccessor.HttpContext.Session.GetString("NomeCompleto")
                 <small>Criado em 2022</small>
               </p>
             </li>
-          
+
             <!-- Menu Footer-->
             <li class="user-footer">
               <a href="#" class="btn btn-default btn-flat">Perfil</a>
@@ -189,21 +220,21 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a asp-action="Index" asp-controller="Utilizador" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                  <a asp-action="ListaUtilizador" asp-controller="Utilizador" class="nav-link">
+                    <i class="far fa-user nav-icon"></i>
                     <p>Utilizadores</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a asp-action="ListaMenu" asp-controller="MenuAcao" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="fas fa-hands-holding-circle nav-icon"></i>
                     <p>Gestão de Ações</p>
                   </a>
                 </li>
 
                 <li class="nav-item">
                   <a asp-action="Index" asp-controller="Perfil" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="fas fa-user-id nav-icon"></i>
                     <p>Gestão de Perfil</p>
                   </a>
                 </li>
@@ -215,7 +246,7 @@
             <li class="nav-header">Gestão de Socios</li>
             <li class="nav-item">
               <a asp-action="ListaSocio" asp-controller="Socio" class="nav-link">
-                <i class="nav-icon far fa-users"></i>
+                <i class="nav-icon fas fa-user"></i>
                 <p>
                   Socios
                   <span class="badge badge-info right">2</span>
@@ -224,7 +255,7 @@
             </li>
             <li class="nav-item">
               <a href="pages/gallery.html" class="nav-link">
-                <i class="nav-icon far fa-image"></i>
+                <i class="nav-icon fas fa-image"></i>
                 <p>
                   Estatistica
                 </p>
@@ -254,8 +285,8 @@
                 <p>Sobre</p>
               </a>
             </li>
-           
-           
+
+
           </ul>
         </nav>
         <!-- /.sidebar-menu -->

@@ -8,6 +8,9 @@ namespace sga_stif.Models
         public int IdMenu { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }
+        public string NomeDoController { get; set; }
+        public string NomeDaAction { get; set; }
+        public string Icone { get; set; }
         public int? IdMenuPai { get; set; }
         public virtual ICollection<MenuAcao> MenuAcao { get; set; }
 
