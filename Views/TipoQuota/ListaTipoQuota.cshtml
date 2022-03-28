@@ -1,4 +1,4 @@
-@model IEnumerable<sga_stif.Models.Perfil>
+@model IEnumerable<sga_stif.ViewModel.TipoQuota.ListaTipoQuotaViewModel>
 
 @{
   ViewData["Title"] = "Index";
@@ -10,9 +10,9 @@
     <div class="row no-print">
 
       <div class="col-12">
-        <p class="lead">Lista de Perfil</p>
+        <p class="lead">Lista de Tipo Quota</p>
 
-        <a asp-action="NovoPerfil" class="btn btn-success float-right" style="margin-right: 5px;">Novo</a>
+        @* <a asp-action="NovoPerfil" class="btn btn-success float-right" style="margin-right: 5px;">Novo</a> *@
 
       </div>
     </div>
@@ -27,10 +27,10 @@
             @Html.DisplayNameFor(model => model.Descricao)
           </th>
           <th>
-            @Html.DisplayNameFor(model => model.DataCriacao)
+            @Html.DisplayNameFor(model => model.Priodicidade)
           </th>
           <th>
-            @Html.DisplayNameFor(model => model.DataAtualizacao)
+            @Html.DisplayNameFor(model => model.Montante)
           </th>
           <th>
             Ação
@@ -46,15 +46,14 @@
               @Html.DisplayFor(modelItem => item.Descricao)
             </td>
             <td>
-              @Html.DisplayFor(modelItem => item.DataCriacao)
+              @Html.DisplayFor(modelItem => item.Priodicidade)
             </td>
             <td>
-              @Html.DisplayFor(modelItem => item.DataAtualizacao)
+              @Html.DisplayFor(modelItem => item.Montante)
             </td>
             <td>
-              <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.IdPerfil">Editar</a>
-              <a class="btn btn-default" asp-action="Details" asp-route-id="@item.IdPerfil">Detalhes</a>
-              <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.IdPerfil">Eliminar</a>
+              <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.IdTipoQuota"><i class="fa-solid fa-file-magnifying-glass"></i>Ver Socios</a>
+              <a class="btn btn-default" asp-action="Details" asp-route-id="@item.IdTipoQuota">Inativar</a>
             </td>
           </tr>
         }

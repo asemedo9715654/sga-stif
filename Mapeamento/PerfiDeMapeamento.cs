@@ -1,7 +1,10 @@
 using AutoMapper;
 using sga_stif.Models;
+using sga_stif.ViewModel;
 using sga_stif.ViewModel.Beneficiario;
 using sga_stif.ViewModel.Socio;
+using sga_stif.ViewModel.TipoQuota;
+using sga_stif.ViewModel.Utilizador;
 
 namespace sga_stif.Mapeamento
 {
@@ -18,11 +21,18 @@ namespace sga_stif.Mapeamento
             CreateMap<Beneficiario, ListaBeneficiarioViewModel>();
             CreateMap<NovoBeneficiarioViewModel,Beneficiario>();
 
+            CreateMap<TipoQuota,ListaTipoQuotaViewModel>();
+
+
+            CreateMap<Utilizador,ListaUtilizadorViewModel>()
+             .ForMember(dest =>dest.NomePerfil,opt => opt.MapFrom(src => src.Perfil.Descricao))
+            ;
+
             CreateMap<Socio, DestalhesSocioViewModel>()
             .ForMember(dest =>dest.ListaBeneficiarioViewModel,opt => opt.MapFrom(src => src.Beneficiario))
             .ForMember(dest =>dest.NomeAgencia,opt => opt.MapFrom(src => src.Agencia.Nome))
             .ForMember(dest =>dest.NomeTipoQuota,opt => opt.MapFrom(src => src.TipoQuota.Descricao))
-            .ForMember(dest =>dest.NomeTipologia,opt => opt.MapFrom(src => src.TipologiaSocio.Descricao))
+            .ForMember(dest =>dest.NomeTipologia,opt => opt.MapFrom(src => src.TipologiaSocio.Descricao+"( "+src.TipologiaSocio.Montante+" )"))
             .ForMember(dest =>dest.NomeIlha,opt => opt.MapFrom(src => src.Agencia.Cidade.Ilha.Nome))
             .ForMember(dest =>dest.NomeCidade,opt => opt.MapFrom(src => src.Agencia.Cidade.Nome))
             ;
