@@ -10,9 +10,9 @@ namespace sga_stif.Controllers
     {
 
         private readonly ContextoBaseDados _context;
-           private readonly IMapper _mapper;
+        private readonly IMapper _mapper;
 
-        public MenuAcaoController(ContextoBaseDados context,Mapper mapper)
+        public MenuAcaoController(ContextoBaseDados context,IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
@@ -22,7 +22,7 @@ namespace sga_stif.Controllers
         public async Task<IActionResult> ListaMenu()
         {
             var menus = await _context.Menu.ToListAsync();
-             var listaMenuViewModels = _mapper.Map<List<ListaMenuViewModel>>(menus);
+            var listaMenuViewModels = _mapper.Map<List<ListaMenuViewModel>>(menus);
             return View(listaMenuViewModels);
         }
 

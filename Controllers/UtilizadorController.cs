@@ -34,7 +34,8 @@ namespace sga_stif.Controllers
     public async Task<IActionResult> ListaUtilizadorInativos()
     {
       var utilizadores = await _context.Utilizador.Where(t => t.Eliminado == true).Include(c => c.Perfil).ToListAsync();
-      return View(utilizadores);
+      var listaUtilizadorViewModels = _mapper.Map<List<ListaUtilizadorViewModel>>(utilizadores);
+      return View(listaUtilizadorViewModels);
     }
 
     [HttpGet]

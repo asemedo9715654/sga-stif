@@ -27,11 +27,13 @@ namespace sga_stif.ViewModel.Socio
         public string NumeroDeTelefone { get; set; }
 
         [Display(Name = "Agência")]
-        [Required(ErrorMessage = "Tipológia de Socio é necessario")]
+        [Required(ErrorMessage = "Agência de Sócio é necessário")]
         public int IdAgencia { get; set; }
-        [Display(Name = "Tipológia de Socio")]
+        [Display(Name = "Tipológia de Sócio")]
+         [Required(ErrorMessage = "Tipológia de Sócio é necessário")]
         public int IdTipologiaSocio { get; set; }
         [Display(Name = "Tipo de Quota")]
+        [Required(ErrorMessage = "Tipo quota de Sócio é necessário")]
         public int IdTipoQuota { get; set; }
 
     }

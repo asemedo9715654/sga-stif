@@ -10,9 +10,9 @@
     <div class="row no-print">
 
       <div class="col-12">
-        <p class="lead">Associar ao perfil : <small> @ViewBag.NomePerfil</small></p>
+        <p class="lead">Associar ao perfil : <b>  @ViewBag.NomePerfil </b></p>
 
-       
+
 
       </div>
     </div>
@@ -24,6 +24,9 @@
       <thead>
         <tr>
           <th>
+            Associar
+          </th>
+          <th>
             @Html.DisplayNameFor(model => model.Descricao)
           </th>
           <th>
@@ -32,16 +35,19 @@
           <th>
             @Html.DisplayNameFor(model => model.DataAtualizacao)
           </th>
-          <th>
-            Associar
-          </th>
+
 
         </tr>
       </thead>
       <tbody>
         @foreach (var item in Model)
         {
+          
           <tr>
+            <td>
+            
+              @await Component.InvokeAsync("VereficaCheck", new {   idPerfil=@ViewBag.IdPerfil,   idMenuAcao= @item.IdMenuAcao}) 
+            </td>
             <td>
               @Html.DisplayFor(modelItem => item.Descricao)
             </td>
@@ -51,10 +57,7 @@
             <td>
               @Html.DisplayFor(modelItem => item.DataAtualizacao)
             </td>
-            <td>
-              <input  id="sfddsf" type="checkbox" onchange="EnviaDados(@ViewBag.IdPerfil,@item.IdMenuAcao)" /> 
-            
-            </td>
+
           </tr>
         }
       </tbody>
@@ -70,8 +73,8 @@
   $(function () {
     $('#example2').DataTable({
       "paging": true,
-      "lengthChange": false,
-      "searching": false,
+      "lengthChange": true,
+      "searching": true,
       "ordering": true,
       "info": true,
       "autoWidth": false,
@@ -80,17 +83,17 @@
   });
 
 
-    function EnviaDados(idPerfilAux, idMenuAcaoAux) {
-            $.ajax({
-                url: $("#RecuperaLinkGuarda").val(),
-                data: { idPerfil: idPerfilAux, idMenuAcao: idMenuAcaoAux },
-                type: "post",
-                dataType: "json",
-                success: function (result) {
-                    console.log(result)
-                }
-            });
-        }
+  function EnviaDados(idPerfilAux, idMenuAcaoAux) {
+    $.ajax({
+      url: $("#RecuperaLinkGuarda").val(),
+      data: { idPerfil: idPerfilAux, idMenuAcao: idMenuAcaoAux },
+      type: "post",
+      dataType: "json",
+      success: function (result) {
+        console.log(result)
+      }
+    });
+  }
 
 
 </script>
