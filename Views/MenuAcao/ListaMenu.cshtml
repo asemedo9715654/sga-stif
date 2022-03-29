@@ -1,4 +1,4 @@
-@model IEnumerable<sga_stif.Models.Menu>
+@model IEnumerable<sga_stif.ViewModel.MenuAcao.ListaMenuViewModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -10,8 +10,6 @@
 
       <div class="col-12">
         <p class="lead">Lista de Menus</p>
-
-        @* <a asp-action="NovoPerfil" class="btn btn-success float-right" style="margin-right: 5px;">Novo</a> *@
 
       </div>
     </div>
@@ -27,7 +25,7 @@
                         @Html.DisplayNameFor(model => model.Descricao)
                     </th>
                     <th>
-                        @Html.DisplayName("Tipo")
+                         @Html.DisplayNameFor(model => model.TipoMenu)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.DataCriacao)
@@ -53,7 +51,7 @@
                             @Html.DisplayFor(modelItem => item.Descricao)
                         </td>
                         <td>
-                            @item.Categoria()
+                            @Html.DisplayFor(modelItem => item.TipoMenu)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.DataCriacao)
@@ -62,7 +60,7 @@
                             @Html.DisplayFor(modelItem => item.DataAtualizacao)
                         </td>
                         <td>
-                            <a class="btn btn-success" asp-action="GerirAcao" asp-route-idMenu="@item.IdMenu" asp-route-nomeMenu="@item.Nome">Gerir Ações</a>
+                            <a class="btn btn-success" asp-action="GerirAcao" asp-route-idMenu="@item.IdMenu" asp-route-nomeMenu="@item.Nome"> <i class="fas fa-seal"></i> Gerir Ações</a>
 
                         </td>
                     </tr>
