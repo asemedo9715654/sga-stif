@@ -1,9 +1,10 @@
 @model IEnumerable<sga_stif.ViewModel.Utilizador.ListaUtilizadorViewModel>
 
 @{
-  ViewData["Title"] = "Index";
+  ViewData["Title"] = "Lista de Utilizadores";
 }
  <link rel="stylesheet" href="~/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
 <div class="card">
   <div class="card-header">
 
@@ -24,7 +25,6 @@
     <table id="example2" class="table table-bordered table-striped">
       <thead>
         <tr>
-
           <th>
             @Html.DisplayNameFor(model => model.Foto)
           </th>
@@ -84,9 +84,9 @@
               @Html.DisplayFor(modelItem => item.NomePerfil)
             </td>
             <td>
-              <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.IdUtilizador">Editar</a>
-              <a class="btn btn-default" asp-action="Details" asp-route-id="@item.IdUtilizador">Detalhes</a>
-              <a class="btn btn-danger" asp-action="EliminaUtilizador" asp-route-idUtilizador="@item.IdUtilizador">Eliminar</a>
+              <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.IdUtilizador"><i class="fas fa-pen"></i> Editar</a>
+              <a class="btn btn-default" asp-action="Details" asp-route-id="@item.IdUtilizador"> <i class="fas fa-info"></i> Detalhes</a>
+              <a class="btn btn-warning" asp-action="EliminaUtilizador" asp-route-idUtilizador="@item.IdUtilizador"><i class="fas fa-user-slash"></i> Inativar</a>
             </td>
           </tr>
         }
@@ -97,7 +97,7 @@
   </div>
 </div>
 
-<script src="~/plugins/jquery/jquery.min.js"></script>
+@* <script src="~/plugins/jquery/jquery.min.js"></script> *@
 <!-- Bootstrap 4 -->
 <script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- DataTables  & Plugins -->

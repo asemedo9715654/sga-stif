@@ -1,4 +1,4 @@
-@model IEnumerable<sga_stif.Models.Utilizador>
+@model IEnumerable<sga_stif.ViewModel.Utilizador.ListaUtilizadorViewModel>
 
 @{
   ViewData["Title"] = "Index";
@@ -43,7 +43,7 @@
             @Html.DisplayNameFor(model => model.DataAtualizacao)
           </th>
           <th>
-            @Html.DisplayNameFor(model => model.Perfil.Descricao)
+            @Html.DisplayNameFor(model => model.NomePerfil)
           </th>
           <th>Ação</th>
         </tr>
@@ -81,7 +81,7 @@
               @Html.DisplayFor(modelItem => item.DataAtualizacao)
             </td>
             <td>
-              @Html.DisplayFor(modelItem => item.Perfil.Descricao)
+              @Html.DisplayFor(modelItem => item.NomePerfil)
             </td>
             <td>
              

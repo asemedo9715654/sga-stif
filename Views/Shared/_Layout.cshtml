@@ -384,7 +384,7 @@
 
 
   @await Component.InvokeAsync("Notyf")
-  @* @RenderSection("Scripts", required: true) *@
+  @await RenderSectionAsync("Scripts", required: false) 
 </body>
 
 </html>
