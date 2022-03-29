@@ -1,6 +1,8 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using sga_stif.Models;
+using sga_stif.ViewModel.MenuAcao;
 
 namespace sga_stif.Controllers
 {
@@ -8,17 +10,20 @@ namespace sga_stif.Controllers
     {
 
         private readonly ContextoBaseDados _context;
+           private readonly IMapper _mapper;
 
-        public MenuAcaoController(ContextoBaseDados context)
+        public MenuAcaoController(ContextoBaseDados context,Mapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
 
         public async Task<IActionResult> ListaMenu()
         {
             var menus = await _context.Menu.ToListAsync();
-            return View(menus);
+             var listaMenuViewModels = _mapper.Map<List<ListaMenuViewModel>>(menus);
+            return View(listaMenuViewModels);
         }
 
 
