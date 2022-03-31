@@ -25,6 +25,8 @@ namespace sga_stif.Mapeamento
 
             CreateMap<TipoQuota,ListaTipoQuotaViewModel>();
 
+            CreateMap<Perfil,ListaPerfilViewModel>();
+
             CreateMap<Menu,ListaMenuViewModel>()
               .ForMember(dest =>dest.TipoMenu,opt => opt.MapFrom(src => src.Categoria()));
 

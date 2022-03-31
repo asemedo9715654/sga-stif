@@ -42,7 +42,7 @@ namespace sga_stif.Controllers
     public IActionResult NovoUtilizador()
     {
       var perfils = _context.Perfil.ToList();
-      var perfilr = from g in perfils select new SelectListItem { Value = g.IdPerfil.ToString(), Text = g.Descricao };
+      var perfilr = from g in perfils select new SelectListItem { Value = g.IdPerfil.ToString(), Text = g.Nome };
       ViewBag.IdPerfil = perfilr;
 
       return View();
@@ -100,7 +100,7 @@ namespace sga_stif.Controllers
       _notyf.Error("Erro na insercao de utilizador!");
 
       var perfils = _context.Perfil.ToList();
-      var perfilr = from g in perfils select new SelectListItem { Value = g.IdPerfil.ToString(), Text = g.Descricao };
+      var perfilr = from g in perfils select new SelectListItem { Value = g.IdPerfil.ToString(), Text = g.Nome };
       ViewBag.IdPerfil = perfilr;
 
       return View(utilizador);

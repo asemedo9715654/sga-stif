@@ -6,6 +6,7 @@ namespace sga_stif.Models
     {
         [Key]
         public int IdPerfil { get; set; }
+        public string Nome { get; set; }
         public string Descricao { get; set; }
         public virtual  ICollection<Utilizador> Utilizador { get; set; }
         public virtual  ICollection<PerfilMenuAcao> PerfilMenuAcao { get; set; }
