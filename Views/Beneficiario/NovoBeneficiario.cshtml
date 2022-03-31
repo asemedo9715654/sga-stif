@@ -2,7 +2,7 @@
 
 
 @{
-    ViewData["Title"] = "Novo Beneficiario";
+    ViewData["Title"] = "Novo Beneficiário";
 }
 
 
@@ -80,8 +80,8 @@
                         <span asp-validation-for="Nif" class="text-danger"></span>
                     </div>
                      <div class="form-group hidden">
-                        <label asp-for="IdSocio" class="control-label"></label>
-                        <input asp-for="IdSocio" class="form-control" />
+                        @* <label asp-for="IdSocio" class="control-label"></label> *@
+                        <input  type="hidden" asp-for="IdSocio" class="form-control" />
                         <span asp-validation-for="IdSocio" class="text-danger"></span>
                     </div>
 
@@ -94,7 +94,7 @@
         </div>
 
         <div class="card-footer">
-            <a  asp-action="ListaSocio" class="btn btn-secondary">Cancelar</a>
+            <a  asp-action="DetalhesSocio" asp-controller="Socio" asp-route-idSocio="@Model.IdSocio" class="btn btn-secondary">Cancelar</a>
             <button type="submit" class="btn btn-success">Guardar</button>
         </div>
 
