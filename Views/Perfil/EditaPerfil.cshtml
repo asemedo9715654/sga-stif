@@ -1,19 +1,20 @@
 @model sga_stif.Models.Perfil
 
 @{
-    ViewData["Title"] = "Novo";
+    ViewData["Title"] = "Novo Perfil";
 }
 
 <hr />
 
 <div class="card card-primary">
     <div class="card-header">
-        <h3 class="card-title">Novo Perfil</h3>
+        <h3 class="card-title">Editar Perfil</h3>
     </div>
-    <form asp-action="NovoPerfil">
+    <form asp-action="EditaPerfil">
         <div class="card-body">
 
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -36,16 +37,15 @@
                 </div>
 
             </div>
-           
+
+
+            <input type="hidden" asp-for="IdPerfil" />
+
         </div>
 
         <div class="card-footer">
-            <a  asp-action="ListaPerfil" class="btn btn-secondary">Cancelar</a>
             <button type="submit" class="btn btn-success">Guardar</button>
         </div>
     </form>
 
 </div>
-
-
-

@@ -57,8 +57,8 @@ namespace sga_stif.Models
 
 
             modelBuilder.Entity<TipologiaSocio>().HasData(
-              new TipologiaSocio { Descricao = "Normal", Montante = 0, Prioridicidade = 1, DataFim = DateTime.Now, DataInicio = DateTime.Now, Tipo = TipoTipologiaSocio.Normal, IdTipologiaSocio = 1 },
-              new TipologiaSocio { Descricao = "Honorário", Montante = 0, Prioridicidade = 1, DataFim = DateTime.Now, DataInicio = DateTime.Now, Tipo = TipoTipologiaSocio.Honorario, IdTipologiaSocio = 2 }
+              new TipologiaSocio { Descricao = "Normal", Montante = 4000, Prioridicidade = 2, DataFim = DateTime.Now, DataInicio = DateTime.Now, Tipo = TipoTipologiaSocio.Normal, IdTipologiaSocio = 1 },
+              new TipologiaSocio { Descricao = "Honorário", Montante = 5000, Prioridicidade = 3, DataFim = DateTime.Now, DataInicio = DateTime.Now, Tipo = TipoTipologiaSocio.Honorario, IdTipologiaSocio = 2 }
 
 
              );
@@ -114,8 +114,8 @@ namespace sga_stif.Models
 
 
             modelBuilder.Entity<Perfil>().HasData(
-             new Perfil { Descricao = "Administrador", IdPerfil = 1 },
-             new Perfil { Descricao = "Operador", IdPerfil = 2 }
+             new Perfil {Nome="Administrador", Descricao = "Perfil de Administrador", IdPerfil = 1 },
+             new Perfil {Nome="Operado", Descricao = "Perfil de Operador", IdPerfil = 2 }
 
            );
 

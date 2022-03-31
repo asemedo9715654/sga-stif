@@ -87,13 +87,25 @@
             <span asp-validation-for="IdTipologiaSocio" class="text-danger"></span>
           </div>
 
+
           <div class="form-group">
-            <label asp-for="IdAgencia" class="control-label"></label>
-            <select asp-for="IdAgencia" asp-items="@ViewBag.IdAgencia" class="form-control">
+            <label asp-for="IdInstituicaoFinanceira" class="control-label"></label>
+            <select asp-for="IdInstituicaoFinanceira" asp-items="@ViewBag.IdInstituicaoFinanceira" class="form-control"
+              id="IdInstituicaoFinanceira">
               <option disabled selected>--- seleccione ---</option>
             </select>
+            <span asp-validation-for="IdInstituicaoFinanceira" class="text-danger"></span>
+          </div>
+
+          <div class="form-group" id="div-agencia">
+            @* <label asp-for="IdAgencia" class="control-label"></label> *@
+            @* <select asp-for="IdAgencia" asp-items="@ViewBag.IdAgencia" class="form-control">
+              <option disabled selected>--- seleccione ---</option>
+              </select> *@
             <span asp-validation-for="IdAgencia" class="text-danger"></span>
           </div>
+
+
         </div>
 
       </div>
@@ -137,9 +149,59 @@
     </div>
 
     <div class="card-footer">
+       <a  asp-action="ListaSocio" class="btn btn-secondary">Cancelar</a>
       <button type="submit" class="btn btn-success">Guardar</button>
     </div>
 
   </form>
 
 </div>
+
+
+@Html.Hidden("RecuperaLinkPegarAgencia", Url.Action("PegarAgencia", "Socio"))
+
+
+<script>
+  $(function () {
+
+
+
+    $('#IdInstituicaoFinanceira').on('change', function () {
+      //alert(this.value);
+
+      $.ajax({
+        url: $("#RecuperaLinkPegarAgencia").val(),
+        data: { idInstituicaoFinanceira: this.value },
+        type: "get",
+        dataType: "json",
+        success: function (result) {
+          console.log(result)
+
+          var $label = $("<label>").text('Agencia :');
+
+          var select = $("<select></select>").attr("id", "IdAgencia").attr("name", "IdAgencia");
+
+          select.addClass("form-control")
+
+          select.append($("<option></option>").attr("value", result.idAgencia).text("--seleccione--").attr('disabled','disabled'));
+
+          $.each(result, function (index, result) {
+            select.append($("<option></option>").attr("value", result.idAgencia).text(result.nome));
+          });
+
+          $("#div-agencia").html($label);
+
+          $("#div-agencia").append(select);
+
+
+
+        }
+      });
+
+
+    });
+
+
+
+  });
+</script>
