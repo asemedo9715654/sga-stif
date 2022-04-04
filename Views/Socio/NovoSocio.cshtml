@@ -9,7 +9,7 @@
 
 <div class="card card-primary">
   <div class="card-header">
-    <h3 class="card-title">Novo Socio</h3>
+    <h3 class="card-title">Novo Sócio <small>(preencha os dados)</small></h3>
   </div>
 
   <form asp-action="NovoSocio" enctype="multipart/form-data">
@@ -31,6 +31,13 @@
             <input asp-for="Apelido" class="form-control" />
             <span asp-validation-for="Apelido" class="text-danger"></span>
           </div>
+             <div class="form-group">
+            <label asp-for="EstadoCivil" class="control-label"></label>
+            <select asp-for="EstadoCivil" class="form-control" asp-items="Html.GetEnumSelectList<EstadoCivil>()">
+                <option disabled selected>--- seleccione ---</option>
+            </select>
+            <span asp-validation-for="EstadoCivil" class="text-danger"></span>
+          </div>
         </div>
 
 
@@ -39,6 +46,12 @@
             <label asp-for="CinBi" class="control-label"></label>
             <input asp-for="CinBi" class="form-control" />
             <span asp-validation-for="CinBi" class="text-danger"></span>
+          </div>
+
+           <div class="form-group">
+            <label asp-for="ValidadeCinBi" class="control-label"></label>
+            <input asp-for="ValidadeCinBi" class="form-control" />
+            <span asp-validation-for="ValidadeCinBi" class="text-danger"></span>
           </div>
 
           <div class="form-group">
@@ -68,6 +81,12 @@
             <label asp-for="NumeroPassaporte" class="control-label"></label>
             <input asp-for="NumeroPassaporte" class="form-control" />
             <span asp-validation-for="NumeroPassaporte" class="text-danger"></span>
+          </div>
+
+            <div class="form-group">
+            <label asp-for="ValidadePassaporte" class="control-label"></label>
+            <input asp-for="ValidadePassaporte" class="form-control" />
+            <span asp-validation-for="ValidadePassaporte" class="text-danger"></span>
           </div>
 
           <div class="form-group">
@@ -116,6 +135,9 @@
       <div class="row">
 
         <div class="col-md-6">
+
+         
+
           <div class="form-group">
             <label asp-for="Nif" class="control-label"></label>
             <input asp-for="Nif" class="form-control" />
@@ -138,6 +160,12 @@
             <label asp-for="NumeroDeTelefone" class="control-label"></label>
             <input type="tel" asp-for="NumeroDeTelefone" class="form-control" />
             <span asp-validation-for="NumeroDeTelefone" class="text-danger"></span>
+          </div>
+
+           <div class="form-group">
+            <label asp-for="NumeroDeTelemovel" class="control-label"></label>
+            <input type="tel" asp-for="NumeroDeTelemovel" class="form-control" />
+            <span asp-validation-for="NumeroDeTelemovel" class="text-danger"></span>
           </div>
 
         </div>
