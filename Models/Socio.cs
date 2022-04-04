@@ -13,10 +13,14 @@ namespace sga_stif.Models
         public string Apelido { get; set; }
         public string Nif { get; set; }
         public string CinBi { get; set; }
+        public DateTime ValidadeCinBi { get; set; }
         public string NumeroPassaporte { get; set; }
+        public DateTime ValidadePassaporte { get; set; }
         public DateTime DataDeNascimento { get; set; }
         public Sexo Sexo { get; set; }
-        public string NumeroDeTelefone { get; set; }
+        public EstadoCivil EstadoCivil { get; set; }
+        public string? NumeroDeTelefone { get; set; }
+        public string? NumeroDeTelemovel { get; set; }
 
         [ForeignKey("Agencia")]
         public int IdAgencia { get; set; }
@@ -55,5 +59,16 @@ namespace sga_stif.Models
     {
         Feminino,
         Masculino
+    }
+
+
+     public enum EstadoCivil
+    {
+        Solteiro,
+        Viuvo,
+        Casado,
+        Divorciado,
+        SeparacaoJudicial,
+
     }
 }
