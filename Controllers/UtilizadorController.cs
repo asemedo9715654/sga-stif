@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using NLog.Web;
 using sga_stif.Models;
 using sga_stif.ViewModel.Utilizador;
 
@@ -17,11 +18,14 @@ namespace sga_stif.Controllers
     private readonly INotyfService _notyf;
     private readonly IMapper _mapper;
 
-    public UtilizadorController(ContextoBaseDados context, INotyfService notyf, IMapper mapper)
+    private readonly ILogger<UtilizadorController> _logger;  
+
+    public UtilizadorController(ContextoBaseDados context, INotyfService notyf, IMapper mapper,ILogger<UtilizadorController> logger)
     {
       _context = context;
       _notyf = notyf;
       _mapper = mapper;
+      _logger = logger;  
     }
 
 
@@ -29,6 +33,8 @@ namespace sga_stif.Controllers
     {
       var utilizadores = await _context.Utilizador.Where(t => t.Eliminado == false).Include(c => c.Perfil).ToListAsync();
       var listaUtilizadorViewModels = _mapper.Map<List<ListaUtilizadorViewModel>>(utilizadores);
+
+      _logger.LogInformation("UtilizadorController.ListaUtilizadormetodo foi chamado!!!"); 
       return View(listaUtilizadorViewModels);
     }
     public async Task<IActionResult> ListaUtilizadorInativos()
