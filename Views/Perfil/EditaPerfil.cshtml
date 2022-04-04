@@ -1,4 +1,4 @@
-@model sga_stif.Models.Perfil
+@model sga_stif.ViewModel.Perfil.EditaPerfilViewModel
 
 @{
     ViewData["Title"] = "Novo Perfil";
@@ -14,6 +14,7 @@
         <div class="card-body">
 
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdPerfil" />
 
             <div class="row">
                 <div class="col-md-6">
@@ -39,7 +40,7 @@
             </div>
 
 
-            <input type="hidden" asp-for="IdPerfil" />
+
 
         </div>
 
