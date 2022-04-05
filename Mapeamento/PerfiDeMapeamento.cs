@@ -21,7 +21,12 @@ namespace sga_stif.Mapeamento
             CreateMap<NovoSocioViewModel, Socio>();
 
             CreateMap<Beneficiario, ListaBeneficiarioViewModel>();
+
+
             CreateMap<NovoBeneficiarioViewModel,Beneficiario>();
+
+            CreateMap<EditaBeneficiarioViewModel,Beneficiario>();
+            CreateMap<Beneficiario,EditaBeneficiarioViewModel>();
 
             CreateMap<TipoQuota,ListaTipoQuotaViewModel>();
 
@@ -48,6 +53,7 @@ namespace sga_stif.Mapeamento
             .ForMember(dest =>dest.NomeTipologia,opt => opt.MapFrom(src => src.TipologiaSocio.Descricao+" ( "+src.TipologiaSocio.Montante+" )"))
             .ForMember(dest =>dest.NomeIlha,opt => opt.MapFrom(src => src.Agencia.Cidade.Ilha.Nome))
             .ForMember(dest =>dest.NomeCidade,opt => opt.MapFrom(src => src.Agencia.Cidade.Nome))
+            .ForMember(dest =>dest.NomeInstituicaoFinanceira,opt => opt.MapFrom(src => src.Agencia.InstituicaoFinanceira.Nome))
             ;
 
         }

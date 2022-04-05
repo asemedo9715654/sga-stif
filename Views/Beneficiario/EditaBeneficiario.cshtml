@@ -1,0 +1,100 @@
+@model sga_stif.ViewModel.Beneficiario.EditaBeneficiarioViewModel
+
+
+@{
+    ViewData["Title"] = "Novo Beneficiário";
+}
+
+
+<hr />
+
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title">Novo Beneficiario</h3>
+    </div>
+
+    <form asp-action="EditaBeneficiario" enctype="multipart/form-data">
+        <div class="card-body">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+             <input type="hidden" asp-for="IdBeneficiario" />
+             <input type="hidden" asp-for="IdSocio" />
+
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Nome" class="control-label"></label>
+                        <input asp-for="Nome" class="form-control" />
+                        <span asp-validation-for="Nome" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Apelido" class="control-label"></label>
+                        <input asp-for="Apelido" class="form-control" />
+                        <span asp-validation-for="Apelido" class="text-danger"></span>
+                    </div>
+
+                   
+                </div>
+
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="CinBi" class="control-label"></label>
+                        <input asp-for="CinBi" class="form-control" />
+                        <span asp-validation-for="CinBi" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="NumeroPassaporte" class="control-label"></label>
+                        <input asp-for="NumeroPassaporte" class="form-control" />
+                        <span asp-validation-for="NumeroPassaporte" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="DataDeNascimento" class="control-label"></label>
+                        <input asp-for="DataDeNascimento" class="form-control" />
+                        <span asp-validation-for="DataDeNascimento" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Nif" class="control-label"></label>
+                        <input asp-for="Nif" class="form-control" />
+                        <span asp-validation-for="Nif" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="GrauDeParentesco" class="control-label"></label>
+                        @* <input asp-for="GrauDeParentesco" class="form-control" /> *@
+                        <select asp-for="GrauDeParentesco" class="form-control"  asp-items="Html.GetEnumSelectList<GrauDeParentesco>()"></select>
+                        <span asp-validation-for="Nif" class="text-danger"></span>
+                    </div>
+                    
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+        <div class="card-footer">
+            <a  asp-action="DetalhesSocio" asp-controller="Socio" asp-route-idSocio="@Model.IdSocio" class="btn btn-secondary">Cancelar</a>
+            <button type="submit" class="btn btn-success">Atualizar</button>
+        </div>
+
+    </form>
+
+</div>

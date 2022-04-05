@@ -52,8 +52,8 @@
               @Html.DisplayFor(modelItem => item.Montante)
             </td>
             <td>
-              <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.IdTipoQuota"><i class="fa-solid fa-file-magnifying-glass"></i>Ver Socios</a>
-              <a class="btn btn-default" asp-action="Details" asp-route-id="@item.IdTipoQuota">Inativar</a>
+              <a class="btn btn-success btn-xs" asp-action="Edit" asp-route-id="@item.IdTipoQuota"><i class="fa-solid fa-file-magnifying-glass"></i>Ver Socios</a>
+              <a class="btn btn-warning btn-xs" asp-action="Details" asp-route-id="@item.IdTipoQuota">Inativar</a>
             </td>
           </tr>
         }

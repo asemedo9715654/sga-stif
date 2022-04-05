@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using sga_stif.ViewModel.Beneficiario;
+using sga_stif.Models;
 
 namespace sga_stif.ViewModel.Socio
 {
@@ -22,10 +23,14 @@ namespace sga_stif.ViewModel.Socio
         [Display(Name = "Tipológia de Socio")]
         public int IdTipologiaSocio { get; set; }
 
+           public Sexo Sexo { get; set; }
+        public EstadoCivil EstadoCivil { get; set; }
+
          public string NumeroDeTelefone { get; set; }
          
         [Display(Name = "Tipo de Quota")]
         public int IdTipoQuota { get; set; }
+        public string NomeInstituicaoFinanceira { get; set; }
         public string NomeAgencia { get; set; }
         public string NomeIlha { get; set; }
         public string NomeCidade { get; set; }
