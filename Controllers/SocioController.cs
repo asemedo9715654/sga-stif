@@ -154,6 +154,7 @@ namespace sga_stif.Controllers
                                   .Include(c => c.TipologiaSocio)
                                   .Include(c => c.Beneficiario)
                                   .Include(c => c.TipoQuota)
+                                   .Include(c => c.Agencia).ThenInclude(c => c.InstituicaoFinanceira)
                                   .Include(c => c.Agencia).ThenInclude(c => c.Cidade).ThenInclude(c => c.Ilha).FirstOrDefaultAsync();
 
 

@@ -6,8 +6,9 @@ namespace sga_stif.Models
     {
         [Key]
         public int IdAcao { get; set; }
-        
         public string Nome { get; set; }
+        public bool AcaoMaster { get; set; } = false;
+
         public virtual ICollection<MenuAcao> MenuAcao { get; set; }
 
 

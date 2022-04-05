@@ -198,16 +198,54 @@ namespace sga_stif.Controllers
         }
 
 
+        [HttpGet]
+        public JsonResult GerarAcaoMaster()
+        {
+
+            var menus = _context.Menu.ToList();
+
+            foreach (var item in menus)
+            {
+                var a = new Acao()
+                {
+                    Nome = item.Nome,
+                    AcaoMaster = true
+                };
+
+                _context.Acao.Add(a);
+                _context.SaveChanges();
+
+
+                var menuAcao = new MenuAcao()
+                {
+                    IdAcao = a.IdAcao,
+                    IdMenu = item.IdMenu,
+                    MenuAcaoMaster = true,
+                    
+                };
+
+                _context.MenuAcao.Add(menuAcao);
+                _context.SaveChanges();
+
+            }
+
+
+
+            return Json(2);
+
+        }
+
+
         ///outros 
-        public async Task<IActionResult> ListaUtilizadorPorPerfil(int idPerfil,string nomePerfil)
+        public async Task<IActionResult> ListaUtilizadorPorPerfil(int idPerfil, string nomePerfil)
         {
 
 
-          ViewBag.NomePerfil = nomePerfil;
+            ViewBag.NomePerfil = nomePerfil;
 
 
 
-            var utilizadores = await _context.Utilizador.Where(t => t.Eliminado == false && t.IdPerfil==idPerfil).Include(c => c.Perfil).ToListAsync();
+            var utilizadores = await _context.Utilizador.Where(t => t.Eliminado == false && t.IdPerfil == idPerfil).Include(c => c.Perfil).ToListAsync();
             var listaUtilizadorViewModels = _mapper.Map<List<ListaUtilizadorViewModel>>(utilizadores);
 
             return View(listaUtilizadorViewModels);

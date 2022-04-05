@@ -23,13 +23,16 @@
             <br>
             <b>Nome :</b> @Model.Nome<br>
             <b>Apelido :</b> @Model.Apelido<br>
+            <b>Sexo :</b> @Model.Sexo<br>
+            <b>Estádo Civil :</b> @Model.EstadoCivil<br>
             <b>Número de Identificação Fiscal :</b> @Model.Nif
         </div>
         <!-- /.col -->
         <div class="col-sm-4 invoice-col">
             <b>Dados Instituição Financeira</b><br>
             <br>
-            <b>Agência :</b> @Model.NomeAgencia<br>
+            <b>Instituição :</b> @Model.NomeInstituicaoFinanceira<br>
+             <b>Agência :</b> @Model.NomeAgencia<br>
             <b>Cidade :</b> @Model.NomeCidade<br>
             <b>Ilha :</b> @Model.NomeIlha
         </div>
@@ -51,7 +54,7 @@
 
         <div class="col-12">
             <p class="lead">Lista de beneficiarios</p>
-            <a asp-action="ListaSocio" rel="noopener" class="btn btn-default"><i class="fas fa-arrow-left"></i> Voltar
+            <a asp-action="ListaSocio" rel="noopener" class="btn btn-default btn-sm"><i class="fas fa-arrow-left"></i> Voltar
                 Para Lista</a>
             @* <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Submit
                 Payment
@@ -61,10 +64,10 @@
                 </button> *@
 
             <a asp-action="NovoBeneficiario" asp-controller="Beneficiario" asp-route-idSocio="@Model.IdSocio"
-                class="btn btn-success float-right" style="margin-right: 5px;"> <i class="fas fa-plus"></i> Adicionar
+                class="btn btn-success btn-sm float-right" style="margin-right: 5px;"> <i class="fas fa-plus"></i> Adicionar
                 Beneficiario</a>
             <a asp-action="NovoBeneficiario" asp-controller="Beneficiario" asp-route-idSocio="@Model.IdSocio"
-                class="btn btn-warning float-right" style="margin-right: 5px;"> <i class="fas fa-user-slash"></i>
+                class="btn btn-warning btn-sm float-right" style="margin-right: 5px;"> <i class="fas fa-user-slash"></i>
                 Inativar</a>
 
         </div>
@@ -78,25 +81,32 @@
                 <thead>
                     <tr>
                         <th>
-                            Nome
+                            @Html.DisplayNameFor(model => model.ListaBeneficiarioViewModel[0].Nome)
+                            
                         </th>
                         <th>
-                            Apelido
+                             @Html.DisplayNameFor(model => model.ListaBeneficiarioViewModel[0].Apelido)
+                             
                         </th>
                         <th>
-                            Data de Nascimento
+                             @Html.DisplayNameFor(model => model.ListaBeneficiarioViewModel[0].DataDeNascimento)
+                            
                         </th>
                         <th>
-                            Grau de Parentesco
+                              @Html.DisplayNameFor(model => model.ListaBeneficiarioViewModel[0].GrauDeParentesco)
+                             
                         </th>
                         <th>
-                            CinBi
+                              @Html.DisplayNameFor(model => model.ListaBeneficiarioViewModel[0].CinBi)
+                             
                         </th>
                         <th>
-                            Nif
+                              @Html.DisplayNameFor(model => model.ListaBeneficiarioViewModel[0].Nif)
+                             
                         </th>
                         <th>
-                            Número Passaporte
+                              @Html.DisplayNameFor(model => model.ListaBeneficiarioViewModel[0].NumeroPassaporte)
+
                         </th>
 
                         <th>
@@ -133,9 +143,9 @@
                                 @Html.DisplayFor(modelItem => item.NumeroPassaporte)
                             </td>
                             <td>
-                                <a class="btn btn-success"><i class="fas fa-pen"></i> Editar</a>
-                                <a class="btn btn-default"> <i class="fas fa-info"></i> Detalhes</a>
-                                <a class="btn btn-danger"> <i class="fas fa-user-slash"></i> Retirar</a>
+                                <a class="btn btn-success btn-xs" asp-action="EditaBeneficiario" asp-controller="Beneficiario" asp-route-idSocio="@item.IdSocio"  asp-route-idBeneficiario="@item.IdBeneficiario"><i class="fas fa-pen"></i> Editar</a>
+                                <a class="btn btn-default btn-xs"> <i class="fas fa-info"></i> Detalhes</a>
+                                <a class="btn btn-danger btn-xs"> <i class="fas fa-user-slash"></i> Retirar</a>
                             </td>
 
 
