@@ -4,9 +4,15 @@
   ViewData["Title"] = "Lista de Utilizadores";
 }
 
-<link rel="stylesheet" href="~/plugins/jsgrid/jsgrid.min.css">
+@* <link rel="stylesheet" href="~/plugins/jsgrid/jsgrid.min.css">
 <link rel="stylesheet" href="~/plugins/jsgrid/jsgrid-theme.min.css">
-<link rel="stylesheet" href="~/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+<link rel="stylesheet" href="~/plugins/datatables-buttons/css/buttons.bootstrap4.min.css"> *@
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
+
+
+
 
 <div class="card">
   <div class="card-header">
@@ -17,8 +23,8 @@
         <p class="lead">Lista de Utilizadores</p>
 
 
-        <a asp-action="NovoUtilizador" class="btn btn-success float-right" style="margin-right: 5px;">Novo</a>
-        <a asp-action="ListaUtilizadorInativos" class="btn btn-default float-right" style="margin-right: 5px;">Lista de
+        <a asp-action="NovoUtilizador" class="btn btn-success btn-sm float-right" style="margin-right: 5px;">Novo</a>
+        <a asp-action="ListaUtilizadorInativos" class="btn btn-default btn-sm  float-right" style="margin-right: 5px;">Lista de
           Utilizadores Inativos</a>
 
       </div>
@@ -88,12 +94,9 @@
               @Html.DisplayFor(modelItem => item.NomePerfil)
             </td>
             <td>
-              <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.IdUtilizador"><i class="fas fa-pen"></i>
-                Editar</a>
-              <a class="btn btn-default" asp-action="Details" asp-route-id="@item.IdUtilizador"> <i
-                class="fas fa-info"></i> Detalhes</a>
-              <a class="btn btn-warning" asp-action="EliminaUtilizador" asp-route-idUtilizador="@item.IdUtilizador"><i
-                class="fas fa-user-slash"></i> Inativar</a>
+              <a class="btn btn-success btn-xs" asp-action="Edit" asp-route-id="@item.IdUtilizador"><i class="fas fa-pen"></i> Editar</a>
+              <a class="btn btn-default btn-xs" asp-action="Details" asp-route-id="@item.IdUtilizador"> <i class="fas fa-info"></i> Detalhes</a>
+              <a class="btn btn-warning btn-xs" asp-action="EliminaUtilizador" asp-route-idUtilizador="@item.IdUtilizador"><i class="fas fa-user-slash"></i> Inativar</a>
             </td>
           </tr>
         }
@@ -122,13 +125,14 @@
 <script src="~/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
 <script>
-  $(function () {
 
-    $("#example2").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-
+  $(document).ready(function () {
+    $('#example2').DataTable({
+      dom: 'Bfrtip',
+      buttons: [
+        'copy', 'csv', 'excel', 'pdf', 'print'
+      ]
+    });
   });
 
 </script>

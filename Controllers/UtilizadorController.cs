@@ -35,6 +35,7 @@ namespace sga_stif.Controllers
       var listaUtilizadorViewModels = _mapper.Map<List<ListaUtilizadorViewModel>>(utilizadores);
 
       _logger.LogInformation("UtilizadorController.ListaUtilizadormetodo foi chamado!!!"); 
+      
       return View(listaUtilizadorViewModels);
     }
     public async Task<IActionResult> ListaUtilizadorInativos()
