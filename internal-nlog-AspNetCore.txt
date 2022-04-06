@@ -173,3 +173,187 @@
 2022-04-05 16:04:22.9195 Info Adding target FileTarget(Name=ownFile-web)
 2022-04-05 16:04:22.9474 Info Adding target ConsoleTarget(Name=lifetimeConsole)
 2022-04-05 16:04:23.0465 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=60, FilePath=C:\Users\angelosemedo\Documents\WORKSPACE\sga-stif\bin\Debug\net6.0\NLog.config
+2022-04-05 16:56:34.5137 Info Shutdown() called. Logger closing...
+2022-04-05 16:56:34.5436 Info Closing old configuration.
+2022-04-05 16:56:34.5718 Info Logger has been closed down.
+2022-04-05 16:56:34.5958 Info AppDomain Shutting down. Logger closing...
+2022-04-05 16:56:34.6199 Info Logger has been shut down.
+2022-04-05 16:57:00.6470 Info Message Template Auto Format enabled
+2022-04-05 16:57:00.6852 Info Loading assembly: NLog.Web.AspNetCore
+2022-04-05 16:57:00.7674 Info Adding target FileTarget(Name=allfile)
+2022-04-05 16:57:00.8032 Info Adding target FileTarget(Name=ownFile-web)
+2022-04-05 16:57:00.8250 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2022-04-05 16:57:00.9058 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=60, FilePath=C:\Users\angelosemedo\Documents\WORKSPACE\sga-stif\bin\Debug\net6.0\NLog.config
+2022-04-06 09:31:02.4794 Info Shutdown() called. Logger closing...
+2022-04-06 09:31:02.4986 Info Closing old configuration.
+2022-04-06 09:31:02.5372 Info Logger has been closed down.
+2022-04-06 09:31:02.5601 Info AppDomain Shutting down. Logger closing...
+2022-04-06 09:31:02.5825 Info Logger has been shut down.
+2022-04-06 09:56:59.4770 Info Message Template Auto Format enabled
+2022-04-06 09:56:59.5131 Info Loading assembly: NLog.Web.AspNetCore
+2022-04-06 09:56:59.5905 Info Adding target FileTarget(Name=allfile)
+2022-04-06 09:56:59.6165 Info Adding target FileTarget(Name=ownFile-web)
+2022-04-06 09:56:59.6351 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2022-04-06 09:56:59.6915 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=60, FilePath=C:\Users\angelosemedo\Documents\WORKSPACE\sga-stif\bin\Debug\net6.0\NLog.config
+2022-04-06 10:18:21.6004 Info Message Template Auto Format enabled
+2022-04-06 10:18:21.6736 Info Loading assembly: NLog.Web.AspNetCore
+2022-04-06 10:18:21.8685 Info Adding target FileTarget(Name=allfile)
+2022-04-06 10:18:21.9316 Info Adding target FileTarget(Name=ownFile-web)
+2022-04-06 10:18:21.9757 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2022-04-06 10:18:22.1608 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=60, FilePath=C:\Users\angelosemedo\Documents\WORKSPACE\sga-stif\bin\Debug\net6.0\NLog.config
+2022-04-06 11:23:18.9902 Info Message Template Auto Format enabled
+2022-04-06 11:23:19.0313 Info Loading assembly: NLog.Web.AspNetCore
+2022-04-06 11:23:19.1022 Info Adding target FileTarget(Name=allfile)
+2022-04-06 11:23:19.1290 Info Adding target FileTarget(Name=ownFile-web)
+2022-04-06 11:23:19.1514 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2022-04-06 11:23:19.2143 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=60, FilePath=C:\Users\angelosemedo\Documents\WORKSPACE\sga-stif\bin\Debug\net6.0\NLog.config
+2022-04-06 11:23:53.8373 Info Shutdown() called. Logger closing...
+2022-04-06 11:23:53.8609 Info Closing old configuration.
+2022-04-06 11:23:53.8933 Info Logger has been closed down.
+2022-04-06 11:23:53.9158 Info AppDomain Shutting down. Logger closing...
+2022-04-06 11:23:53.9338 Info Logger has been shut down.
+2022-04-06 11:24:16.9230 Info Message Template Auto Format enabled
+2022-04-06 11:24:17.0168 Info Loading assembly: NLog.Web.AspNetCore
+2022-04-06 11:24:17.1367 Info Adding target FileTarget(Name=allfile)
+2022-04-06 11:24:17.1701 Info Adding target FileTarget(Name=ownFile-web)
+2022-04-06 11:24:17.2056 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2022-04-06 11:24:17.2844 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=60, FilePath=C:\Users\angelosemedo\Documents\WORKSPACE\sga-stif\bin\Debug\net6.0\NLog.config
+2022-04-06 16:19:36.8442 Warn Exception in layout renderer. Exception: System.TypeLoadException: Could not load type 'AspNetCoreGeneratedDocument.Views_Perfil_GerirMenuAcaoV1+<ExecuteAsync>d__0#6' from assembly 'sga-stif, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'.
+   at System.Reflection.CustomAttribute._CreateCaObject(RuntimeModule pModule, RuntimeType type, IRuntimeMethodInfo pCtor, Byte** ppBlob, Byte* pEndBlob, Int32* pcNamedArgs)
+   at System.Reflection.CustomAttribute.AddCustomAttributes(ListBuilder`1& attributes, RuntimeModule decoratedModule, Int32 decoratedMetadataToken, RuntimeType attributeFilterType, Boolean mustBeInheritable, ListBuilder`1 derivedAttributes)
+   at System.Reflection.CustomAttribute.GetCustomAttributes(RuntimeMethodInfo method, RuntimeType caType, Boolean inherit)
+   at System.Attribute.GetCustomAttributes(MemberInfo element, Type attributeType, Boolean inherit)
+   at System.Reflection.CustomAttributeExtensions.GetCustomAttributes[T](MemberInfo element, Boolean inherit)
+   at System.Diagnostics.StackTrace.TryResolveStateMachineMethod(MethodBase& method, Type& declaringType)
+   at System.Diagnostics.StackTrace.ToString(TraceFormat traceFormat, StringBuilder sb)
+   at System.Diagnostics.StackTrace.ToString(TraceFormat traceFormat)
+   at System.Exception.get_StackTrace()
+   at System.Exception.ToString()
+   at NLog.LayoutRenderers.ExceptionLayoutRenderer.AppendToString(StringBuilder sb, Exception ex)
+   at NLog.LayoutRenderers.ExceptionLayoutRenderer.<.ctor>b__8_3(StringBuilder sb, Exception ex, Exception aggex)
+   at NLog.LayoutRenderers.ExceptionLayoutRenderer.AppendException(Exception currentException, List`1 renderFormats, StringBuilder builder, Exception aggregateException)
+   at NLog.LayoutRenderers.ExceptionLayoutRenderer.Append(StringBuilder builder, LogEventInfo logEvent)
+   at NLog.LayoutRenderers.LayoutRenderer.RenderAppendBuilder(LogEventInfo logEvent, StringBuilder builder)
+2022-04-06 16:19:36.9043 Warn Exception in layout renderer. Exception: System.TypeLoadException: Could not load type 'AspNetCoreGeneratedDocument.Views_Perfil_GerirMenuAcaoV1+<ExecuteAsync>d__0#6' from assembly 'sga-stif, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'.
+   at System.Reflection.CustomAttribute._CreateCaObject(RuntimeModule pModule, RuntimeType type, IRuntimeMethodInfo pCtor, Byte** ppBlob, Byte* pEndBlob, Int32* pcNamedArgs)
+   at System.Reflection.CustomAttribute.AddCustomAttributes(ListBuilder`1& attributes, RuntimeModule decoratedModule, Int32 decoratedMetadataToken, RuntimeType attributeFilterType, Boolean mustBeInheritable, ListBuilder`1 derivedAttributes)
+   at System.Reflection.CustomAttribute.GetCustomAttributes(RuntimeMethodInfo method, RuntimeType caType, Boolean inherit)
+   at System.Attribute.GetCustomAttributes(MemberInfo element, Type attributeType, Boolean inherit)
+   at System.Reflection.CustomAttributeExtensions.GetCustomAttributes[T](MemberInfo element, Boolean inherit)
+   at System.Diagnostics.StackTrace.TryResolveStateMachineMethod(MethodBase& method, Type& declaringType)
+   at System.Diagnostics.StackTrace.ToString(TraceFormat traceFormat, StringBuilder sb)
+   at System.Diagnostics.StackTrace.ToString(TraceFormat traceFormat)
+   at System.Exception.get_StackTrace()
+   at System.Exception.ToString()
+   at NLog.LayoutRenderers.ExceptionLayoutRenderer.AppendToString(StringBuilder sb, Exception ex)
+   at NLog.LayoutRenderers.ExceptionLayoutRenderer.<.ctor>b__8_3(StringBuilder sb, Exception ex, Exception aggex)
+   at NLog.LayoutRenderers.ExceptionLayoutRenderer.AppendException(Exception currentException, List`1 renderFormats, StringBuilder builder, Exception aggregateException)
+   at NLog.LayoutRenderers.ExceptionLayoutRenderer.Append(StringBuilder builder, LogEventInfo logEvent)
+   at NLog.LayoutRenderers.LayoutRenderer.RenderAppendBuilder(LogEventInfo logEvent, StringBuilder builder)
+2022-04-06 16:19:37.0593 Warn Exception in layout renderer. Exception: System.TypeLoadException: Could not load type 'AspNetCoreGeneratedDocument.Views_Perfil_GerirMenuAcaoV1+<ExecuteAsync>d__0#6' from assembly 'sga-stif, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'.
+   at System.Reflection.CustomAttribute._CreateCaObject(RuntimeModule pModule, RuntimeType type, IRuntimeMethodInfo pCtor, Byte** ppBlob, Byte* pEndBlob, Int32* pcNamedArgs)
+   at System.Reflection.CustomAttribute.AddCustomAttributes(ListBuilder`1& attributes, RuntimeModule decoratedModule, Int32 decoratedMetadataToken, RuntimeType attributeFilterType, Boolean mustBeInheritable, ListBuilder`1 derivedAttributes)
+   at System.Reflection.CustomAttribute.GetCustomAttributes(RuntimeMethodInfo method, RuntimeType caType, Boolean inherit)
+   at System.Attribute.GetCustomAttributes(MemberInfo element, Type attributeType, Boolean inherit)
+   at System.Reflection.CustomAttributeExtensions.GetCustomAttributes[T](MemberInfo element, Boolean inherit)
+   at System.Diagnostics.StackTrace.TryResolveStateMachineMethod(MethodBase& method, Type& declaringType)
+   at System.Diagnostics.StackTrace.ToString(TraceFormat traceFormat, StringBuilder sb)
+   at System.Diagnostics.StackTrace.ToString(TraceFormat traceFormat)
+   at System.Exception.get_StackTrace()
+   at System.Exception.ToString()
+   at NLog.LayoutRenderers.ExceptionLayoutRenderer.AppendToString(StringBuilder sb, Exception ex)
+   at NLog.LayoutRenderers.ExceptionLayoutRenderer.<.ctor>b__8_3(StringBuilder sb, Exception ex, Exception aggex)
+   at NLog.LayoutRenderers.ExceptionLayoutRenderer.AppendException(Exception currentException, List`1 renderFormats, StringBuilder builder, Exception aggregateException)
+   at NLog.LayoutRenderers.ExceptionLayoutRenderer.Append(StringBuilder builder, LogEventInfo logEvent)
+   at NLog.LayoutRenderers.LayoutRenderer.RenderAppendBuilder(LogEventInfo logEvent, StringBuilder builder)
+2022-04-06 16:19:37.1090 Warn Exception in layout renderer. Exception: System.TypeLoadException: Could not load type 'AspNetCoreGeneratedDocument.Views_Perfil_GerirMenuAcaoV1+<ExecuteAsync>d__0#6' from assembly 'sga-stif, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'.
+   at System.Reflection.CustomAttribute._CreateCaObject(RuntimeModule pModule, RuntimeType type, IRuntimeMethodInfo pCtor, Byte** ppBlob, Byte* pEndBlob, Int32* pcNamedArgs)
+   at System.Reflection.CustomAttribute.AddCustomAttributes(ListBuilder`1& attributes, RuntimeModule decoratedModule, Int32 decoratedMetadataToken, RuntimeType attributeFilterType, Boolean mustBeInheritable, ListBuilder`1 derivedAttributes)
+   at System.Reflection.CustomAttribute.GetCustomAttributes(RuntimeMethodInfo method, RuntimeType caType, Boolean inherit)
+   at System.Attribute.GetCustomAttributes(MemberInfo element, Type attributeType, Boolean inherit)
+   at System.Reflection.CustomAttributeExtensions.GetCustomAttributes[T](MemberInfo element, Boolean inherit)
+   at System.Diagnostics.StackTrace.TryResolveStateMachineMethod(MethodBase& method, Type& declaringType)
+   at System.Diagnostics.StackTrace.ToString(TraceFormat traceFormat, StringBuilder sb)
+   at System.Diagnostics.StackTrace.ToString(TraceFormat traceFormat)
+   at System.Exception.get_StackTrace()
+   at System.Exception.ToString()
+   at NLog.LayoutRenderers.ExceptionLayoutRenderer.AppendToString(StringBuilder sb, Exception ex)
+   at NLog.LayoutRenderers.ExceptionLayoutRenderer.<.ctor>b__8_3(StringBuilder sb, Exception ex, Exception aggex)
+   at NLog.LayoutRenderers.ExceptionLayoutRenderer.AppendException(Exception currentException, List`1 renderFormats, StringBuilder builder, Exception aggregateException)
+   at NLog.LayoutRenderers.ExceptionLayoutRenderer.Append(StringBuilder builder, LogEventInfo logEvent)
+   at NLog.LayoutRenderers.LayoutRenderer.RenderAppendBuilder(LogEventInfo logEvent, StringBuilder builder)
+2022-04-06 16:19:51.4829 Warn Exception in layout renderer. Exception: System.TypeLoadException: Could not load type 'AspNetCoreGeneratedDocument.Views_Perfil_GerirMenuAcaoV1+<ExecuteAsync>d__0#6' from assembly 'sga-stif, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'.
+   at System.Reflection.CustomAttribute._CreateCaObject(RuntimeModule pModule, RuntimeType type, IRuntimeMethodInfo pCtor, Byte** ppBlob, Byte* pEndBlob, Int32* pcNamedArgs)
+   at System.Reflection.CustomAttribute.AddCustomAttributes(ListBuilder`1& attributes, RuntimeModule decoratedModule, Int32 decoratedMetadataToken, RuntimeType attributeFilterType, Boolean mustBeInheritable, ListBuilder`1 derivedAttributes)
+   at System.Reflection.CustomAttribute.GetCustomAttributes(RuntimeMethodInfo method, RuntimeType caType, Boolean inherit)
+   at System.Attribute.GetCustomAttributes(MemberInfo element, Type attributeType, Boolean inherit)
+   at System.Reflection.CustomAttributeExtensions.GetCustomAttributes[T](MemberInfo element, Boolean inherit)
+   at System.Diagnostics.StackTrace.TryResolveStateMachineMethod(MethodBase& method, Type& declaringType)
+   at System.Diagnostics.StackTrace.ToString(TraceFormat traceFormat, StringBuilder sb)
+   at System.Diagnostics.StackTrace.ToString(TraceFormat traceFormat)
+   at System.Exception.get_StackTrace()
+   at System.Exception.ToString()
+   at NLog.LayoutRenderers.ExceptionLayoutRenderer.AppendToString(StringBuilder sb, Exception ex)
+   at NLog.LayoutRenderers.ExceptionLayoutRenderer.<.ctor>b__8_3(StringBuilder sb, Exception ex, Exception aggex)
+   at NLog.LayoutRenderers.ExceptionLayoutRenderer.AppendException(Exception currentException, List`1 renderFormats, StringBuilder builder, Exception aggregateException)
+   at NLog.LayoutRenderers.ExceptionLayoutRenderer.Append(StringBuilder builder, LogEventInfo logEvent)
+   at NLog.LayoutRenderers.LayoutRenderer.RenderAppendBuilder(LogEventInfo logEvent, StringBuilder builder)
+2022-04-06 16:19:51.5229 Warn Exception in layout renderer. Exception: System.TypeLoadException: Could not load type 'AspNetCoreGeneratedDocument.Views_Perfil_GerirMenuAcaoV1+<ExecuteAsync>d__0#6' from assembly 'sga-stif, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'.
+   at System.Reflection.CustomAttribute._CreateCaObject(RuntimeModule pModule, RuntimeType type, IRuntimeMethodInfo pCtor, Byte** ppBlob, Byte* pEndBlob, Int32* pcNamedArgs)
+   at System.Reflection.CustomAttribute.AddCustomAttributes(ListBuilder`1& attributes, RuntimeModule decoratedModule, Int32 decoratedMetadataToken, RuntimeType attributeFilterType, Boolean mustBeInheritable, ListBuilder`1 derivedAttributes)
+   at System.Reflection.CustomAttribute.GetCustomAttributes(RuntimeMethodInfo method, RuntimeType caType, Boolean inherit)
+   at System.Attribute.GetCustomAttributes(MemberInfo element, Type attributeType, Boolean inherit)
+   at System.Reflection.CustomAttributeExtensions.GetCustomAttributes[T](MemberInfo element, Boolean inherit)
+   at System.Diagnostics.StackTrace.TryResolveStateMachineMethod(MethodBase& method, Type& declaringType)
+   at System.Diagnostics.StackTrace.ToString(TraceFormat traceFormat, StringBuilder sb)
+   at System.Diagnostics.StackTrace.ToString(TraceFormat traceFormat)
+   at System.Exception.get_StackTrace()
+   at System.Exception.ToString()
+   at NLog.LayoutRenderers.ExceptionLayoutRenderer.AppendToString(StringBuilder sb, Exception ex)
+   at NLog.LayoutRenderers.ExceptionLayoutRenderer.<.ctor>b__8_3(StringBuilder sb, Exception ex, Exception aggex)
+   at NLog.LayoutRenderers.ExceptionLayoutRenderer.AppendException(Exception currentException, List`1 renderFormats, StringBuilder builder, Exception aggregateException)
+   at NLog.LayoutRenderers.ExceptionLayoutRenderer.Append(StringBuilder builder, LogEventInfo logEvent)
+   at NLog.LayoutRenderers.LayoutRenderer.RenderAppendBuilder(LogEventInfo logEvent, StringBuilder builder)
+2022-04-06 16:19:51.5804 Warn Exception in layout renderer. Exception: System.TypeLoadException: Could not load type 'AspNetCoreGeneratedDocument.Views_Perfil_GerirMenuAcaoV1+<ExecuteAsync>d__0#6' from assembly 'sga-stif, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'.
+   at System.Reflection.CustomAttribute._CreateCaObject(RuntimeModule pModule, RuntimeType type, IRuntimeMethodInfo pCtor, Byte** ppBlob, Byte* pEndBlob, Int32* pcNamedArgs)
+   at System.Reflection.CustomAttribute.AddCustomAttributes(ListBuilder`1& attributes, RuntimeModule decoratedModule, Int32 decoratedMetadataToken, RuntimeType attributeFilterType, Boolean mustBeInheritable, ListBuilder`1 derivedAttributes)
+   at System.Reflection.CustomAttribute.GetCustomAttributes(RuntimeMethodInfo method, RuntimeType caType, Boolean inherit)
+   at System.Attribute.GetCustomAttributes(MemberInfo element, Type attributeType, Boolean inherit)
+   at System.Reflection.CustomAttributeExtensions.GetCustomAttributes[T](MemberInfo element, Boolean inherit)
+   at System.Diagnostics.StackTrace.TryResolveStateMachineMethod(MethodBase& method, Type& declaringType)
+   at System.Diagnostics.StackTrace.ToString(TraceFormat traceFormat, StringBuilder sb)
+   at System.Diagnostics.StackTrace.ToString(TraceFormat traceFormat)
+   at System.Exception.get_StackTrace()
+   at System.Exception.ToString()
+   at NLog.LayoutRenderers.ExceptionLayoutRenderer.AppendToString(StringBuilder sb, Exception ex)
+   at NLog.LayoutRenderers.ExceptionLayoutRenderer.<.ctor>b__8_3(StringBuilder sb, Exception ex, Exception aggex)
+   at NLog.LayoutRenderers.ExceptionLayoutRenderer.AppendException(Exception currentException, List`1 renderFormats, StringBuilder builder, Exception aggregateException)
+   at NLog.LayoutRenderers.ExceptionLayoutRenderer.Append(StringBuilder builder, LogEventInfo logEvent)
+   at NLog.LayoutRenderers.LayoutRenderer.RenderAppendBuilder(LogEventInfo logEvent, StringBuilder builder)
+2022-04-06 16:19:51.6257 Warn Exception in layout renderer. Exception: System.TypeLoadException: Could not load type 'AspNetCoreGeneratedDocument.Views_Perfil_GerirMenuAcaoV1+<ExecuteAsync>d__0#6' from assembly 'sga-stif, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'.
+   at System.Reflection.CustomAttribute._CreateCaObject(RuntimeModule pModule, RuntimeType type, IRuntimeMethodInfo pCtor, Byte** ppBlob, Byte* pEndBlob, Int32* pcNamedArgs)
+   at System.Reflection.CustomAttribute.AddCustomAttributes(ListBuilder`1& attributes, RuntimeModule decoratedModule, Int32 decoratedMetadataToken, RuntimeType attributeFilterType, Boolean mustBeInheritable, ListBuilder`1 derivedAttributes)
+   at System.Reflection.CustomAttribute.GetCustomAttributes(RuntimeMethodInfo method, RuntimeType caType, Boolean inherit)
+   at System.Attribute.GetCustomAttributes(MemberInfo element, Type attributeType, Boolean inherit)
+   at System.Reflection.CustomAttributeExtensions.GetCustomAttributes[T](MemberInfo element, Boolean inherit)
+   at System.Diagnostics.StackTrace.TryResolveStateMachineMethod(MethodBase& method, Type& declaringType)
+   at System.Diagnostics.StackTrace.ToString(TraceFormat traceFormat, StringBuilder sb)
+   at System.Diagnostics.StackTrace.ToString(TraceFormat traceFormat)
+   at System.Exception.get_StackTrace()
+   at System.Exception.ToString()
+   at NLog.LayoutRenderers.ExceptionLayoutRenderer.AppendToString(StringBuilder sb, Exception ex)
+   at NLog.LayoutRenderers.ExceptionLayoutRenderer.<.ctor>b__8_3(StringBuilder sb, Exception ex, Exception aggex)
+   at NLog.LayoutRenderers.ExceptionLayoutRenderer.AppendException(Exception currentException, List`1 renderFormats, StringBuilder builder, Exception aggregateException)
+   at NLog.LayoutRenderers.ExceptionLayoutRenderer.Append(StringBuilder builder, LogEventInfo logEvent)
+   at NLog.LayoutRenderers.LayoutRenderer.RenderAppendBuilder(LogEventInfo logEvent, StringBuilder builder)
+2022-04-06 16:20:01.5821 Info Shutdown() called. Logger closing...
+2022-04-06 16:20:01.6242 Info Closing old configuration.
+2022-04-06 16:20:01.6667 Info Logger has been closed down.
+2022-04-06 16:20:01.7049 Info AppDomain Shutting down. Logger closing...
+2022-04-06 16:20:01.7491 Info Logger has been shut down.
+2022-04-06 16:21:03.8427 Info Message Template Auto Format enabled
+2022-04-06 16:21:03.9233 Info Loading assembly: NLog.Web.AspNetCore
+2022-04-06 16:21:04.0963 Info Adding target FileTarget(Name=allfile)
+2022-04-06 16:21:04.1469 Info Adding target FileTarget(Name=ownFile-web)
+2022-04-06 16:21:04.1808 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2022-04-06 16:21:04.3037 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=60, FilePath=C:\Users\angelosemedo\Documents\WORKSPACE\sga-stif\bin\Debug\net6.0\NLog.config

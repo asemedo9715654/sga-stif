@@ -1,0 +1,76 @@
+@model IEnumerable<sga_stif.ViewModel.Perfil.OutossssViewModel>
+
+@{
+  ViewData["Title"] = "Gerir Menu Ação";
+}
+
+<div class="card">
+  <div class="card-header">
+
+    <div class="row no-print">
+
+      <div class="col-12">
+        <p class="lead">Associar ao perfil : <b> @ViewBag.NomePerfil </b></p>
+
+
+
+      </div>
+    </div>
+
+
+  </div>
+  <div class="card-body">
+
+    <ul style="list-style-type:none">
+      @foreach (var item in Model)
+      {
+        <li>@await Component.InvokeAsync("VereficaCheck", new { idPerfil=@ViewBag.IdPerfil, idMenuAcao= @item.IdMenuAcao}) <b>@item.Descricao</b> </li>
+
+        if(item.Dadosdddd.Count>0){
+
+          <ul style="list-style-type:none">
+            @foreach (var fffffff in item.Dadosdddd)
+            {
+                <li>@await Component.InvokeAsync("VereficaCheck", new { idPerfil=@ViewBag.IdPerfil, idMenuAcao= @fffffff.IdMenuAcao}) @fffffff.Descricao</li>
+              
+            }
+          </ul>
+
+        }
+
+      }
+    </ul>
+
+  </div>
+</div>
+
+@Html.Hidden("RecuperaLinkGuarda", Url.Action("Guarda", "Perfil"))
+
+<script>
+  $(function () {
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+
+
+  function EnviaDados(idPerfilAux, idMenuAcaoAux) {
+    $.ajax({
+      url: $("#RecuperaLinkGuarda").val(),
+      data: { idPerfil: idPerfilAux, idMenuAcao: idMenuAcaoAux },
+      type: "post",
+      dataType: "json",
+      success: function (result) {
+        console.log(result)
+      }
+    });
+  }
+
+
+</script>

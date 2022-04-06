@@ -1,5 +1,5 @@
 @model sga_stif.ViewModel.Perfil.DadosComponente
-<div class="icheck-primary">
+@* <div class="icheck-primary"> *@
     @if (Model.Preenchido==true)
     {
         <input id="@Model.IdMenuAcao" type="checkbox" checked onchange="EnviaDados(@Model.IdPerfil,@Model.IdMenuAcao)" />
@@ -9,5 +9,5 @@
         <input id="@Model.IdMenuAcao" type="checkbox" onchange="EnviaDados(@Model.IdPerfil,@Model.IdMenuAcao)" />
 
     }
-    <label for="@Model.IdMenuAcao">Associar</label>
-</div>
+    @* <label for="@Model.IdMenuAcao"></label> *@
+@* </div> *@
