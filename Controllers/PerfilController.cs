@@ -229,8 +229,6 @@ namespace sga_stif.Controllers
 
             }
 
-
-
             return Json(2);
 
         }
