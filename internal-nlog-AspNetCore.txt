@@ -309,3 +309,5 @@
 2022-04-07 18:18:52.7650 Info Adding target FileTarget(Name=ownFile-web)
 2022-04-07 18:18:52.7658 Info Adding target ConsoleTarget(Name=lifetimeConsole)
 2022-04-07 18:18:52.9687 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=60, FilePath=/Users/angelosemedo/Desktop/projecto sindicato/sga-stif/bin/Debug/net6.0/NLog.config
+2022-04-07 18:22:18.3940 Info AppDomain Shutting down. Logger closing...
+2022-04-07 18:22:18.4134 Info Logger has been shut down.
