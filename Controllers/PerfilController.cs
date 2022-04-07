@@ -168,6 +168,59 @@ namespace sga_stif.Controllers
         }
 
 
+        public async Task<IActionResult> GerirMenuAcaoV1(int idPerfil)
+        {
+
+            var perfil = _context.Perfil.FirstOrDefault(p => p.IdPerfil == idPerfil);
+            if (perfil != null)
+            {
+                ViewBag.NomePerfil = perfil.Descricao;
+                ViewBag.IdPerfil = perfil.IdPerfil;
+            }
+            else
+            {
+                ViewBag.NomePerfil = "Sem Perfil";
+            }
+
+
+            var menuAcao = await _context.MenuAcao.Where(t => t.Eliminado == false && t.MenuAcaoMaster==true)
+            .Include(c => c.Menu)
+            .Include(c => c.Acao)
+            .ToListAsync();
+
+            var vvvv = new List<OutossssViewModel>();
+
+            foreach (var item in menuAcao)
+            {
+
+                OutossssViewModel bbb =  new OutossssViewModel();
+                  var menuAcaosssss = await _context.MenuAcao.Where(t => t.Eliminado == false && t.MenuAcaoMaster==false && t.IdMenu ==item.IdMenu )
+                    .Include(c => c.Menu)
+                    .Include(c => c.Acao)
+                    .ToListAsync();
+
+                    bbb.Descricao = item.Menu.Nome;
+                    bbb.IdMenuAcao = item.IdMenuAcao;
+                    bbb.Dadosdddd = new List<Dadosdddd>();
+
+
+                    foreach (var fffff in menuAcaosssss)
+                    {
+                        bbb.Dadosdddd.Add(new Dadosdddd(){
+                            Descricao = fffff.Acao.Nome,
+                            IdMenuAcao = fffff.IdMenuAcao
+                        });
+                        
+                    }
+                    vvvv.Add(bbb);
+
+
+            }
+
+            return View(vvvv);
+        }
+
+
 
         [HttpPost]
         public JsonResult Guarda(int idPerfil, int idMenuAcao)
@@ -194,42 +247,6 @@ namespace sga_stif.Controllers
                 _context.SaveChanges();
             }
             return Json(new object());
-
-        }
-
-
-        [HttpGet]
-        public JsonResult GerarAcaoMaster()
-        {
-
-            var menus = _context.Menu.ToList();
-
-            foreach (var item in menus)
-            {
-                var a = new Acao()
-                {
-                    Nome = item.Nome,
-                    AcaoMaster = true
-                };
-
-                _context.Acao.Add(a);
-                _context.SaveChanges();
-
-
-                var menuAcao = new MenuAcao()
-                {
-                    IdAcao = a.IdAcao,
-                    IdMenu = item.IdMenu,
-                    MenuAcaoMaster = true,
-                    
-                };
-
-                _context.MenuAcao.Add(menuAcao);
-                _context.SaveChanges();
-
-            }
-
-            return Json(2);
 
         }
 

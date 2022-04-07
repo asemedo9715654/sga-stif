@@ -29,6 +29,7 @@ namespace sga_stif.Controllers
         {
             NovoBeneficiarioViewModel novoBeneficiarioViewModel = new NovoBeneficiarioViewModel();
             novoBeneficiarioViewModel.IdSocio = idSocio;
+           
 
             return View(novoBeneficiarioViewModel);
         }
