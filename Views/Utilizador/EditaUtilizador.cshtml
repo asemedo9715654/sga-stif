@@ -1,4 +1,4 @@
-@model sga_stif.ViewModel.Utilizador.NovoUtilizadorViewModel
+@model sga_stif.ViewModel.Utilizador.EditaUtilizadorViewModel
 
 @{
     ViewData["Title"] = "Novo";
@@ -9,15 +9,15 @@
 
 <div class="card card-primary">
     <div class="card-header">
-        <h3 class="card-title">Novo Utilizador</h3>
+        <h3 class="card-title">Edita Utilizador</h3>
     </div>
 
-    <form asp-action="NovoUtilizador" enctype="multipart/form-data">
+    <form asp-action="EditaUtilizador" enctype="multipart/form-data">
         <div class="card-body">
 
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-
+            <input type="hidden" asp-for="IdUtilizador" />
             <div class="row">
 
                 <div class="col-md-6">
@@ -40,19 +40,12 @@
                         <input asp-for="NomeUtilizador" class="form-control" />
                         <span asp-validation-for="NomeUtilizador" class="text-danger"></span>
                     </div>
-
                     <div class="form-group">
-                        <label for="exampleInputFile">Foto</label>
-                        <div class="input-group">
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" name="Image" id="Imageinput">
-                                <label class="custom-file-label" for="Imageinput">Escolhe a foto</label>
-                            </div>
-                            <div class="input-group-append">
-                                <span class="input-group-text">Upload</span>
-                            </div>
-                        </div>
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
+
 
                 </div>
 
@@ -63,27 +56,15 @@
             <div class="row">
 
                 <div class="col-md-6">
-                    <div class="form-group">
-                        <label asp-for="Email" class="control-label"></label>
-                        <input asp-for="Email" class="form-control" />
-                        <span asp-validation-for="Email" class="text-danger"></span>
-                    </div>
+                    
 
-                    <div class="form-group">
-                        <label asp-for="PalavraPasse" class="control-label"></label>
-                        <input asp-for="PalavraPasse" class="form-control" />
-                        <span asp-validation-for="PalavraPasse" class="text-danger"></span>
-                    </div>
-                </div>
-
-
-                <div class="col-md-6">
-                    <div class="form-group">
+                     <div class="form-group">
                         <label asp-for="IdPerfil" class="control-label"></label>
                         <select asp-for="IdPerfil" asp-items="@ViewBag.IdPerfil" class="form-control"></select>
                         <span asp-validation-for="IdPerfil" class="text-danger"></span>
                     </div>
                 </div>
+
 
             </div>
 

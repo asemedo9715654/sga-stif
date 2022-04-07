@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="~/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
 @* <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css"> *@
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css"> *@
 
 
 
@@ -24,7 +24,8 @@
 
 
         <a asp-action="NovoUtilizador" class="btn btn-success btn-sm float-right" style="margin-right: 5px;">Novo</a>
-        <a asp-action="ListaUtilizadorInativos" class="btn btn-default btn-sm  float-right" style="margin-right: 5px;">Lista de
+        <a asp-action="ListaUtilizadorInativos" class="btn btn-default btn-sm  float-right"
+          style="margin-right: 5px;">Lista de
           Utilizadores Inativos</a>
 
       </div>
@@ -94,8 +95,10 @@
               @Html.DisplayFor(modelItem => item.NomePerfil)
             </td>
             <td>
-              <a class="btn btn-success btn-xs" asp-action="Edit" asp-route-id="@item.IdUtilizador"><i class="fas fa-pen"></i> Editar</a>
-              <a class="btn btn-default btn-xs" asp-action="Details" asp-route-id="@item.IdUtilizador"> <i class="fas fa-info"></i> Detalhes</a>
+
+              <a class="btn btn-success btn-xs" asp-action="ResetePalavraPasseUtilizador" asp-route-idUtilizador="@item.IdUtilizador"><i class="fas fa-user-secret"></i> </a>
+              <a class="btn btn-success btn-xs" asp-action="EditaUtilizador" asp-route-idUtilizador="@item.IdUtilizador"><i class="fas fa-pen"></i> Editar</a>
+              <a class="btn btn-default btn-xs" asp-action="DetalhesUtilizador" asp-route-idUtilizador="@item.IdUtilizador"> <i class="fas fa-info"></i> Detalhes</a>
               <a class="btn btn-warning btn-xs" asp-action="EliminaUtilizador" asp-route-idUtilizador="@item.IdUtilizador"><i class="fas fa-user-slash"></i> Inativar</a>
             </td>
           </tr>

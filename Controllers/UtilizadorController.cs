@@ -10,138 +10,258 @@ using sga_stif.ViewModel.Utilizador;
 
 namespace sga_stif.Controllers
 {
-  public class UtilizadorController : Controller
-  {
-
-    private readonly ContextoBaseDados _context;
-
-    private readonly INotyfService _notyf;
-    private readonly IMapper _mapper;
-
-    private readonly ILogger<UtilizadorController> _logger;  
-
-    public UtilizadorController(ContextoBaseDados context, INotyfService notyf, IMapper mapper,ILogger<UtilizadorController> logger)
-    {
-      _context = context;
-      _notyf = notyf;
-      _mapper = mapper;
-      _logger = logger;  
-    }
-
-
-    public async Task<IActionResult> ListaUtilizador()
-    {
-      var utilizadores = await _context.Utilizador.Where(t => t.Eliminado == false).Include(c => c.Perfil).ToListAsync();
-      var listaUtilizadorViewModels = _mapper.Map<List<ListaUtilizadorViewModel>>(utilizadores);
-
-      _logger.LogInformation("UtilizadorController.ListaUtilizadormetodo foi chamado!!!"); 
-      
-      return View(listaUtilizadorViewModels);
-    }
-    public async Task<IActionResult> ListaUtilizadorInativos()
-    {
-      var utilizadores = await _context.Utilizador.Where(t => t.Eliminado == true).Include(c => c.Perfil).ToListAsync();
-      var listaUtilizadorViewModels = _mapper.Map<List<ListaUtilizadorViewModel>>(utilizadores);
-      return View(listaUtilizadorViewModels);
-    }
-
-    [HttpGet]
-    public IActionResult NovoUtilizador()
-    {
-      var perfils = _context.Perfil.ToList();
-      var perfilr = from g in perfils select new SelectListItem { Value = g.IdPerfil.ToString(), Text = g.Nome };
-      ViewBag.IdPerfil = perfilr;
-
-      return View();
-    }
-
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public IActionResult NovoUtilizador([Bind("Nome,Apelido,Foto,PalavraPasse,PalavraPasseSalt,Email,IdPerfil,NomeUtilizador")] Utilizador utilizador, IFormFile Image)
+    public class UtilizadorController : Controller
     {
 
-      try
-      {
-        if (ModelState.IsValid)
+        private readonly ContextoBaseDados _context;
+
+        private readonly INotyfService _notyf;
+        private readonly IMapper _mapper;
+
+        //private readonly ILogger<UtilizadorController> _logger;  
+        private readonly ILogger _logger;
+
+        public UtilizadorController(ContextoBaseDados context, INotyfService notyf, IMapper mapper, ILogger<UtilizadorController> logger)
         {
-
-          if (Image != null)
-          {
-            if (Image.Length > 0)
-
-            //Convert Image to byte and save to database
-
-            {
-
-              byte[] p1 = null;
-              using (var fs1 = Image.OpenReadStream())
-              using (var ms1 = new MemoryStream())
-              {
-                fs1.CopyTo(ms1);
-                p1 = ms1.ToArray();
-              }
-              utilizador.Foto = p1;
-
-            }
-          }
-
-          _notyf.Success("Utilizador adicionado com sucesso!");
-          utilizador.PalavraPasse = BCrypt.Net.BCrypt.HashPassword(utilizador.PalavraPasse);
-          _context.Utilizador.Add(utilizador);
-          _context.SaveChanges();
-          return RedirectToAction("ListaUtilizador");
+            _context = context;
+            _notyf = notyf;
+            _mapper = mapper;
+            _logger = logger;
         }
 
 
-        IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
-        var ee = 2;
-      }
-      catch (DbUpdateException /* ex */)
-      {
-        //Log the error (uncomment ex variable name and write a log.
-        ModelState.AddModelError("", "Unable to save changes. " +
-            "Try again, and if the problem persists " +
-            "see your system administrator.");
-      }
+        public async Task<IActionResult> ListaUtilizador()
+        {
+            var utilizadores = await _context.Utilizador.Where(t => t.Eliminado == false).Include(c => c.Perfil).ToListAsync();
+            var listaUtilizadorViewModels = _mapper.Map<List<ListaUtilizadorViewModel>>(utilizadores);
 
-      _notyf.Error("Erro na insercao de utilizador!");
+            _logger.LogError("UtilizadorController.ListaUtilizadormetodo foi chamado!!!");
 
-      var perfils = _context.Perfil.ToList();
-      var perfilr = from g in perfils select new SelectListItem { Value = g.IdPerfil.ToString(), Text = g.Nome };
-      ViewBag.IdPerfil = perfilr;
+            return View(listaUtilizadorViewModels);
+        }
+        public async Task<IActionResult> ListaUtilizadorInativos()
+        {
+            var utilizadores = await _context.Utilizador.Where(t => t.Eliminado == true).Include(c => c.Perfil).ToListAsync();
+            var listaUtilizadorViewModels = _mapper.Map<List<ListaUtilizadorViewModel>>(utilizadores);
+            return View(listaUtilizadorViewModels);
+        }
 
-      return View(utilizador);
+        [HttpGet]
+        public IActionResult NovoUtilizador()
+        {
+            var perfils = _context.Perfil.ToList();
+            var perfilr = from g in perfils select new SelectListItem { Value = g.IdPerfil.ToString(), Text = g.Nome };
+            ViewBag.IdPerfil = perfilr;
+
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult NovoUtilizador([Bind("Nome,Apelido,Foto,PalavraPasse,PalavraPasseSalt,Email,IdPerfil,NomeUtilizador")] NovoUtilizadorViewModel novoUtilizadorViewModel, IFormFile Image)
+        {
+
+            try
+            {
+                if (ModelState.IsValid)
+                {
+
+                    if (Image != null)
+                    {
+                        if (Image.Length > 0)
+
+                        //Convert Image to byte and save to database
+
+                        {
+
+                            byte[] p1 = null;
+                            using (var fs1 = Image.OpenReadStream())
+                            using (var ms1 = new MemoryStream())
+                            {
+                                fs1.CopyTo(ms1);
+                                p1 = ms1.ToArray();
+                            }
+                            novoUtilizadorViewModel.Foto = p1;
+
+                        }
+                    }
+
+                    _notyf.Success("Utilizador adicionado com sucesso!");
+                    novoUtilizadorViewModel.PalavraPasse = BCrypt.Net.BCrypt.HashPassword(novoUtilizadorViewModel.PalavraPasse);
+
+                    var utilizador = _mapper.Map<Utilizador>(novoUtilizadorViewModel);
+
+                    _context.Utilizador.Add(utilizador);
+                    _context.SaveChanges();
+                    return RedirectToAction("ListaUtilizador");
+                }
+
+
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                var ee = 2;
+            }
+            catch (DbUpdateException /* ex */)
+            {
+                //Log the error (uncomment ex variable name and write a log.
+                ModelState.AddModelError("", "Unable to save changes. " +
+                    "Try again, and if the problem persists " +
+                    "see your system administrator.");
+            }
+
+            _notyf.Error("Erro na insercao de utilizador!");
+
+            var perfils = _context.Perfil.ToList();
+            var perfilr = from g in perfils select new SelectListItem { Value = g.IdPerfil.ToString(), Text = g.Nome };
+            ViewBag.IdPerfil = perfilr;
+
+            return View(novoUtilizadorViewModel);
+        }
+
+
+        public async Task<IActionResult> EliminaUtilizador(int? idUtilizador)
+        {
+            if (idUtilizador == null)
+            {
+                return NotFound();
+            }
+            var utilizador = await _context.Utilizador.FirstOrDefaultAsync(m => m.IdUtilizador == idUtilizador);
+
+            return View(utilizador);
+        }
+
+
+
+        // POST: Employees/Delete/1
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EliminaUtilizador(int idUtilizador)
+        {
+            var utilizador = await _context.Utilizador.FindAsync(idUtilizador);
+            utilizador.Eliminado = true;
+            //_context.Socio.Remove(employee);
+            //_context.Socio.Remove(employee);
+            await _context.SaveChangesAsync();
+            _notyf.Success("Utilizador eliminado com sucesso!");
+
+
+            return RedirectToAction("ListaUtilizador");
+        }
+
+
+        public async Task<IActionResult> DetalhesUtilizador(int? idUtilizador)
+        {
+            if (idUtilizador == null)
+            {
+                return NotFound();
+            }
+            var utilizador = await _context.Utilizador.FirstOrDefaultAsync(m => m.IdUtilizador == idUtilizador);
+
+            return View(utilizador);
+        }
+
+
+        [HttpGet]
+        public IActionResult EditaUtilizador(int idUtilizador)
+        {
+            var perfils = _context.Perfil.ToList();
+            var perfilr = from g in perfils select new SelectListItem { Value = g.IdPerfil.ToString(), Text = g.Nome };
+            ViewBag.IdPerfil = perfilr;
+
+            var utilizador = _context.Utilizador.FirstOrDefault(g => g.IdUtilizador == idUtilizador);
+
+            var listaPerfilViewModels = _mapper.Map<EditaUtilizadorViewModel>(utilizador);
+
+            return View(listaPerfilViewModels);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult EditaUtilizador([Bind("IdUtilizador,Nome,Apelido,Email,IdPerfil,NomeUtilizador")] EditaUtilizadorViewModel editaUtilizadorViewModel)
+        {
+
+            try
+            {
+                if (ModelState.IsValid)
+                {
+
+
+
+                    //editaUtilizadorViewModel.PalavraPasse = BCrypt.Net.BCrypt.HashPassword(editaUtilizadorViewModel.PalavraPasse);
+
+                    var utilizador = _mapper.Map<Utilizador>(editaUtilizadorViewModel);
+
+
+                    _context.Utilizador.Add(utilizador);
+                    _context.SaveChanges();
+                    _notyf.Success("Utilizador editado com sucesso!");
+                    return RedirectToAction("ListaUtilizador");
+                }
+
+
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                var ee = 2;
+            }
+            catch (DbUpdateException /* ex */)
+            {
+                //Log the error (uncomment ex variable name and write a log.
+                ModelState.AddModelError("", "Unable to save changes. " +
+                    "Try again, and if the problem persists " +
+                    "see your system administrator.");
+            }
+
+            _notyf.Error("Erro na insercao de utilizador!");
+
+            var perfils = _context.Perfil.ToList();
+            var perfilr = from g in perfils select new SelectListItem { Value = g.IdPerfil.ToString(), Text = g.Nome };
+            ViewBag.IdPerfil = perfilr;
+
+            return View(editaUtilizadorViewModel);
+        }
+
+
+        [HttpGet]
+        public IActionResult ResetePalavraPasseUtilizador(int idUtilizador)
+        {
+            ResetePalavraPasseViewModel resetePalavraPasseViewModel = new ResetePalavraPasseViewModel()
+            {
+                IdUtilizador = idUtilizador
+            };
+
+            return View(resetePalavraPasseViewModel);
+        }
+
+
+        [HttpPost]
+        public IActionResult ResetePalavraPasseUtilizador([Bind("IdUtilizador,PalavraPasse,ConfirmacaoPalavraPasse")] ResetePalavraPasseViewModel resetePalavraPasseViewModel)
+        {
+            var utilizador = _context.Utilizador.FirstOrDefault(u => u.IdUtilizador == resetePalavraPasseViewModel.IdUtilizador);
+
+            if (utilizador == null)
+            {
+                _notyf.Error("Utilizador não encontrado!");
+                return View(resetePalavraPasseViewModel);
+            }
+
+            if (resetePalavraPasseViewModel.ConfirmacaoPalavraPasse != resetePalavraPasseViewModel.PalavraPasse)
+            {
+                _notyf.Error("Palavra passe não coicidem!");
+                return View(resetePalavraPasseViewModel);
+            }
+
+            utilizador.PalavraPasse = BCrypt.Net.BCrypt.HashPassword(resetePalavraPasseViewModel.PalavraPasse);
+            utilizador.DataAtualizacao = DateTime.Now;
+
+            _context.Update(utilizador);
+
+
+            _notyf.Success("Palavra passe resetado com sucesso!");
+
+            return RedirectToAction("ListaUtilizador"); ;
+        }
+
+
+
+
+
     }
-
-
-    public async Task<IActionResult> EliminaUtilizador(int? idUtilizador)
-    {
-      if (idUtilizador == null)
-      {
-        return NotFound();
-      }
-      var utilizador = await _context.Utilizador.FirstOrDefaultAsync(m => m.IdUtilizador == idUtilizador);
-
-      return View(utilizador);
-    }
-
-
-
-    // POST: Employees/Delete/1
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> EliminaUtilizador(int idUtilizador)
-    {
-      var utilizador = await _context.Utilizador.FindAsync(idUtilizador);
-      utilizador.Eliminado = true;
-      //_context.Socio.Remove(employee);
-      //_context.Socio.Remove(employee);
-      await _context.SaveChangesAsync();
-      _notyf.Success("Utilizador eliminado com sucesso!");
-
-
-      return RedirectToAction("ListaUtilizador");
-    }
-
-  }
 }
