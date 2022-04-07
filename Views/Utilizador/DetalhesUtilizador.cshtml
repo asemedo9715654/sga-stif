@@ -1,0 +1,53 @@
+@model sga_stif.Models.Utilizador
+
+@{
+    ViewData["Title"] = "Elimina Utilizador";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<br>
+<br>
+<br>
+<br>
+<div class="invoice p-3 mb-3 html-content" id="conteudoDetalhes">
+    <!-- title row -->
+    <div class="row">
+        <div class="col-12">
+            <h4>
+                <i class="fas fa-user"></i> Detalhes do Utilizador - <small>@Model.Nome @Model.Apelido</small>
+                @* <small class="float-right">@DateTime.Now</small> *@
+            </h4>
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- info row -->
+    <div class="row invoice-info">
+
+        <div class="col-sm-4 invoice-col">
+            <b>Dados Utilizador</b><br>
+            <br>
+            <b>Nome :</b> @Model.Nome<br>
+            <b>Apelido :</b> @Model.Apelido<br>
+            <b>Email :</b> @Model.Email<br>
+           
+        </div>
+        <!-- /.col -->
+        <div class="col-sm-4 invoice-col">
+            <b>Criação</b><br>
+            <br>
+            <b>Data Criação :</b> @Model.DataCriacao<br>
+            <b>Data Atualização :</b> @Model.DataAtualizacao<br>
+            
+        </div>
+        <!-- /.col -->
+        <div class="col-sm-4 invoice-col">
+          
+        </div>
+        <!-- /.col -->
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+</div>

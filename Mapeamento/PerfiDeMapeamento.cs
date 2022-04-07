@@ -34,6 +34,12 @@ namespace sga_stif.Mapeamento
             CreateMap<Perfil,EditaPerfilViewModel>();
             CreateMap<EditaPerfilViewModel,Perfil>();
 
+
+            CreateMap<EditaUtilizadorViewModel,Utilizador>();
+            CreateMap<NovoUtilizadorViewModel,Utilizador>();
+            CreateMap<Utilizador,EditaUtilizadorViewModel>();
+            CreateMap<Utilizador,NovoUtilizadorViewModel>();
+
             CreateMap<Menu,ListaMenuViewModel>()
               .ForMember(dest =>dest.TipoMenu,opt => opt.MapFrom(src => src.Categoria()));
 
