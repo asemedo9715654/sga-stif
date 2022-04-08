@@ -64,9 +64,10 @@ namespace sga_stif.Controllers
                 var ee = 2;
 
             }
-            catch (DbUpdateException /* ex */)
+            catch (DbUpdateException ex )
             {
-                ModelState.AddModelError("", "Unable to save changes. " + "Try again, and if the problem persists " + "see your system administrator.");
+                
+                ModelState.AddModelError("", "Não foi possível salvar as alterações. Tente novamente e, se o problema persistir, consulte o administrador do sistema. Erro => "+ex.Message);
             }
 
             _notyf.Error("Erro na adição de perfil");
@@ -123,13 +124,13 @@ namespace sga_stif.Controllers
                     return RedirectToAction("ListaPerfil");
                 }
 
-                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
-                var ee = 2;
+                // IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                // var ee = 2;
 
             }
-            catch (DbUpdateException /* ex */)
+            catch (DbUpdateException  ex )
             {
-                ModelState.AddModelError("", "Unable to save changes. " + "Try again, and if the problem persists " + "see your system administrator.");
+                ModelState.AddModelError("", "Não foi possível salvar as alterações. Tente novamente e, se o problema persistir, consulte o administrador do sistema. Erro => "+ex.Message);
             }
 
             _notyf.Error("Erro na atualização de perfil");

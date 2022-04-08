@@ -12,8 +12,8 @@
             <div class="col-12">
                 <p class="lead">Lista de Instituicao Financeira</p>
 
-                @* <a asp-action="NovoPerfil" class="btn btn-success btn-sm float-right"
-                    style="margin-right: 5px;">Novo</a> *@
+                <a asp-action="NovoInstituicaoFinanceira" class="btn btn-success btn-sm float-right"
+                    style="margin-right: 5px;">Novo</a>
 
             </div>
         </div>
@@ -26,6 +26,12 @@
                 <tr>
                     <th>
                         @Html.DisplayNameFor(model => model.Nome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TotalDeAgencias)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TotalDeSocios)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.DataCriacao)
@@ -47,14 +53,24 @@
                             @Html.DisplayFor(modelItem => item.Nome)
                         </td>
                         <td>
+                            <span class="badge badge-pill badge-info"> @Html.DisplayFor(modelItem =>item.TotalDeAgencias)</span> Agência(s)
+
+                        </td>
+                        <td>
+                            <span class="badge badge-pill badge-info"> @Html.DisplayFor(modelItem =>
+                            item.TotalDeSocios)</span> Sócio(s)
+
+                        </td>
+                        <td>
                             @Html.DisplayFor(modelItem => item.DataCriacao)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.DataAtualizacao)
                         </td>
                         <td>
-                            <a class="btn btn-success btn-xs" asp-action="EditaPerfil"
-                            asp-route-idPerfil="@item.IdInstituicaoFinanceira"><i class="fas fa-pen"></i> Editar</a>
+                            <a class="btn btn-success btn-xs" asp-action="EditaInstituicaoFinanceira"
+                            asp-route-idInstituicaoFinanceira="@item.IdInstituicaoFinanceira"><i class="fas fa-pen"></i>
+                                Editar</a>
                             <a class="btn btn-warning btn-xs" asp-action="Delete"
                             asp-route-id="@item.IdInstituicaoFinanceira">Inativar</a>
                             <a class="btn btn-default btn-xs" asp-action="ListaUtilizadorPorPerfil"
