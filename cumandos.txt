@@ -7,3 +7,6 @@ dotnet restore
 dotnet watch run
 
 dotnet build
+
+
+dotnet publish --configuration Release 

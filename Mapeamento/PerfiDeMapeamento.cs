@@ -1,7 +1,9 @@
 using AutoMapper;
 using sga_stif.Models;
 using sga_stif.ViewModel;
+using sga_stif.ViewModel.Agencia;
 using sga_stif.ViewModel.Beneficiario;
+using sga_stif.ViewModel.InstituicaoFinanceira;
 using sga_stif.ViewModel.MenuAcao;
 using sga_stif.ViewModel.Perfil;
 using sga_stif.ViewModel.Socio;
@@ -16,6 +18,10 @@ namespace sga_stif.Mapeamento
         public PerfiDeMapeamento()
         {
             // Add as many of these lines as you need to map your objects
+            CreateMap<Agencia, ListaAgenciaViewModel>() 
+              .ForMember(dest =>dest.NomeCidade,opt => opt.MapFrom(src => src.Cidade.Nome))
+              .ForMember(dest =>dest.NomeInstituicaoFinanceira,opt => opt.MapFrom(src => src.InstituicaoFinanceira.Nome));
+
             CreateMap<Socio, NovoSocioViewModel>();
             CreateMap<Socio, ListaSocioViewModel>();
             CreateMap<NovoSocioViewModel, Socio>();
@@ -33,6 +39,8 @@ namespace sga_stif.Mapeamento
             CreateMap<Perfil,ListaPerfilViewModel>();
             CreateMap<Perfil,EditaPerfilViewModel>();
             CreateMap<EditaPerfilViewModel,Perfil>();
+
+            CreateMap<InstituicaoFinanceira,ListaInstituicaoFinanceiraViewModel>();
 
 
             CreateMap<EditaUtilizadorViewModel,Utilizador>();

@@ -1,8 +1,9 @@
 using System.ComponentModel.DataAnnotations;
+using sga_stif.ViewModel.Base;
 
 namespace sga_stif.ViewModel.Utilizador
 {
-  public class ListaUtilizadorViewModel
+  public class ListaUtilizadorViewModel : BaseViewModel
   {
     [Key]
     public int IdUtilizador { get; set; }
@@ -20,15 +21,7 @@ namespace sga_stif.ViewModel.Utilizador
     [Display(Name = "Nome do Perfil")]
     public string NomePerfil { get; set; }
 
-    [DataType(DataType.Date)]
-    [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-    [Display(Name = "Data de Criação")]
-    public DateTime? DataCriacao { get; set; }
-
-    [DataType(DataType.Date)]
-    [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-    [Display(Name = "Data de Atualização")]
-    public DateTime? DataAtualizacao { get; set; }
+   
 
   }
 
