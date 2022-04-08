@@ -8,15 +8,6 @@ using sga_stif.Mapeamento;
 using sga_stif.Models;
 
 
-// using NLog;
-// using NLog.Web;
-
-
-var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
-logger.Debug("init main");
-
-// try
-// {
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Logging.ClearProviders();
@@ -54,13 +45,6 @@ builder.Services.AddSingleton(mapper);
 
 
 builder.Services.AddNotyf(config => { config.DurationInSeconds = 10; config.IsDismissable = true; config.Position = NotyfPosition.BottomCenter; });
-
-
-
-//NLog: Setup NLog for Dependency injection
-builder.Logging.ClearProviders();
-builder.Logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
-///builder.Host.UseNLog();
 
 
 
@@ -110,15 +94,4 @@ app.MapControllerRoute(
 app.Run();
 
 
-// }
-// catch (Exception exception)
-// {
-//     // NLog: catch setup errors
-//     logger.Error(exception, "Programa Parraou por causa de uma excepcao");
-//     throw;
-// }
-// finally
-// {
-//     // Ensure to flush and stop internal timers/threads before application-exit (Avoid segmentation fault on Linux)
-//     NLog.LogManager.Shutdown();
-// }
+

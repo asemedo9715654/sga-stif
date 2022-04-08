@@ -303,3 +303,11 @@
 2022-04-07 16:21:32.2558 Info Adding target FileTarget(Name=ownFile-web)
 2022-04-07 16:21:32.2887 Info Adding target ConsoleTarget(Name=lifetimeConsole)
 2022-04-07 16:21:32.3616 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=60, FilePath=C:\Users\angelosemedo\Documents\WORKSPACE\sga-stif\bin\Debug\net6.0\NLog.config
+2022-04-07 18:18:52.6726 Info Message Template Auto Format enabled
+2022-04-07 18:18:52.7039 Info Loading assembly: NLog.Web.AspNetCore
+2022-04-07 18:18:52.7625 Info Adding target FileTarget(Name=allfile)
+2022-04-07 18:18:52.7650 Info Adding target FileTarget(Name=ownFile-web)
+2022-04-07 18:18:52.7658 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2022-04-07 18:18:52.9687 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=60, FilePath=/Users/angelosemedo/Desktop/projecto sindicato/sga-stif/bin/Debug/net6.0/NLog.config
+2022-04-07 18:22:18.3940 Info AppDomain Shutting down. Logger closing...
+2022-04-07 18:22:18.4134 Info Logger has been shut down.
