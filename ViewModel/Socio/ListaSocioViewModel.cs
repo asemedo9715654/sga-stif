@@ -14,7 +14,7 @@ namespace sga_stif.ViewModel.Socio
         public string Apelido { get; set; }
         [Display(Name = "Número de Identificação Fiscal")]
         public string Nif { get; set; }
-        [Display(Name = "CNI BI")]
+        [Display(Name = "CNI/BI")]
         public string CinBi { get; set; }
         [Display(Name = "Número de Passaporte")]
         public string NumeroPassaporte { get; set; }

@@ -12,5 +12,21 @@ namespace sga_stif.Models
         {
             this.Agencia = new HashSet<Agencia>();
         }
+
+        public int TotalAgencias()
+        {
+            return Agencia.Count();
+        }
+        public int TotalSocios()
+        {
+            int somaSocios = 0;
+            foreach (var item in Agencia)
+            {
+                somaSocios += item.TotalSocios();
+            } 
+
+
+            return somaSocios;
+        }
     }
 }
