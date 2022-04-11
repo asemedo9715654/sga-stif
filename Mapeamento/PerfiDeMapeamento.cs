@@ -7,6 +7,7 @@ using sga_stif.ViewModel.InstituicaoFinanceira;
 using sga_stif.ViewModel.MenuAcao;
 using sga_stif.ViewModel.Perfil;
 using sga_stif.ViewModel.Socio;
+using sga_stif.ViewModel.TipologiaSocio;
 using sga_stif.ViewModel.TipoQuota;
 using sga_stif.ViewModel.Utilizador;
 
@@ -19,12 +20,17 @@ namespace sga_stif.Mapeamento
         {
             // Add as many of these lines as you need to map your objects
             CreateMap<Agencia, ListaAgenciaViewModel>()
+              .ForMember(dest => dest.TotalDeSocios, opt => opt.MapFrom(src => src.TotalSocios()))
               .ForMember(dest => dest.NomeCidade, opt => opt.MapFrom(src => src.Cidade.Nome))
               .ForMember(dest => dest.NomeInstituicaoFinanceira, opt => opt.MapFrom(src => src.InstituicaoFinanceira.Nome));
 
 
 
             CreateMap<Beneficiario, ListaBeneficiarioViewModel>();
+
+
+            CreateMap<TipologiaSocio, ListaTipologiaSocioViewModel>()
+               .ForMember(dest => dest.TotalDeSocios, opt => opt.MapFrom(src => src.TotalDeSocios()));
 
 
             CreateMap<NovoBeneficiarioViewModel, Beneficiario>();

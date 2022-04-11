@@ -105,16 +105,17 @@
   </div>
 </div>
 
+
 <script>
-  $(function () {
+
+  $(document).ready(function () {
     $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": true,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
+      dom: 'Bfrtip',
+      buttons: [
+        //'copy', 'csv', 'excel', 'pdf', 'print'
+        'copy', 'csv', 'excel', 'print'
+      ]
     });
   });
+
 </script>

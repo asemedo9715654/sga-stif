@@ -10,7 +10,7 @@
         <div class="row no-print">
 
             <div class="col-12">
-                <p class="lead">Lista de Agências</p>
+                <p class="lead">Lista de Agências de : <b>@ViewBag.NomeInstituicaoFinanceira</b></p>
 
                 @* <a asp-action="NovoPerfil" class="btn btn-success btn-sm float-right"
                     style="margin-right: 5px;">Novo</a> *@
@@ -33,7 +33,7 @@
                     <th>
                         @Html.DisplayNameFor(model => model.NomeCidade)
                     </th>
-                     <th>
+                      <th>
                         @Html.DisplayNameFor(model => model.TotalDeSocios)
                     </th>
                     <th>
@@ -55,7 +55,7 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.NomeCidade)
                         </td>
-                           <td>
+                          <td>
                             @Html.DisplayFor(modelItem => item.TotalDeSocios)
                         </td>
                         <td>

@@ -287,10 +287,10 @@ namespace sga_stif.Models
 
         new Menu { IdMenu = 5, Nome = "Gestao de Socios", Descricao = "Gestao de Socios", IdMenuPai = null, NomeDaAction = "ListaSocio", NomeDoController = "Socio", Icone = "" },
         new Menu { IdMenu = 6, Nome = "Parametrização", Descricao = "Estatística", IdMenuPai = null, NomeDaAction = "Inicio", NomeDoController = "Estatistica", Icone = "" },
-        new Menu { IdMenu = 7, Nome = "Instituição Financeira", Descricao = "Estatística", IdMenuPai = 6, NomeDaAction = "ListaInstituicaoFinanceira", NomeDoController = "InstituicaoFinanceira", Icone = "" },
-        new Menu { IdMenu = 8, Nome = "Agência", Descricao = "Estatística", IdMenuPai = 6, NomeDaAction = "ListaAgencia", NomeDoController = "Agencia", Icone = "" },
-        new Menu { IdMenu = 9, Nome = "Tipo Quotas", Descricao = "Estatística", IdMenuPai = 6, NomeDaAction = "ListaTipoQuota", NomeDoController = "TipoQuota", Icone = "" },
-        new Menu { IdMenu = 10, Nome = "Tipologia Sócio", Descricao = "Estatística", IdMenuPai = 6, NomeDaAction = "Inicio", NomeDoController = "Estatistica", Icone = "" },
+        new Menu { IdMenu = 7, Nome = "Instituição Financeira", Descricao = "Instituição Financeira", IdMenuPai = 6, NomeDaAction = "ListaInstituicaoFinanceira", NomeDoController = "InstituicaoFinanceira", Icone = "" },
+        new Menu { IdMenu = 8, Nome = "Agência", Descricao = "Agência", IdMenuPai = 6, NomeDaAction = "ListaAgencia", NomeDoController = "Agencia", Icone = "" },
+        new Menu { IdMenu = 9, Nome = "Tipo Quotas", Descricao = "Tipo Quotas", IdMenuPai = 6, NomeDaAction = "ListaTipoQuota", NomeDoController = "TipoQuota", Icone = "" },
+        new Menu { IdMenu = 10, Nome = "Tipologia Sócio", Descricao = "Estatística", IdMenuPai = 6, NomeDaAction = "ListaTipologiaSocio", NomeDoController = "TipologiaSocio", Icone = "" },
 
 
         new Menu { IdMenu = 11, Nome = "Estatística", Descricao = "Estatística", IdMenuPai = null, NomeDaAction = "Inicio", NomeDoController = "Estatistica", Icone = "" },
