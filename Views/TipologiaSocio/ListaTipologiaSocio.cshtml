@@ -1,0 +1,92 @@
+@model IEnumerable<sga_stif.ViewModel.TipologiaSocio.ListaTipologiaSocioViewModel>
+
+@{
+  ViewData["Title"] = "Lisa de Quotas";
+}
+
+<div class="card">
+  <div class="card-header">
+
+    <div class="row no-print">
+
+      <div class="col-12">
+        <p class="lead">Lista de Tipologia Sócio</p>
+
+        @* <a asp-action="NovoPerfil" class="btn btn-success float-right" style="margin-right: 5px;">Novo</a> *@
+
+      </div>
+    </div>
+
+
+  </div>
+  <div class="card-body">
+    <table id="example2" class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.Prioridicidade)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.Montante)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.Tipo)
+          </th>
+           <th>
+            @Html.DisplayNameFor(model => model.TotalDeSocios)
+          </th>
+          <th>
+            Ação
+          </th>
+
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (var item in Model)
+        {
+          <tr>
+            <td>
+              @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.Prioridicidade)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.Montante)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.Tipo)
+            </td>
+            <td>
+              <span class="badge badge-pill badge-info"> @Html.DisplayFor(modelItem => item.TotalDeSocios)</span> Sócio(s)
+            </td>
+            <td>
+              <a class="btn btn-success btn-xs" asp-action="Edit" asp-route-id="@item.IdTipologiaSocio"><i
+                class="fa-solid fa-file-magnifying-glass"></i>Ver Socios</a>
+              <a class="btn btn-warning btn-xs" asp-action="Details" asp-route-id="@item.IdTipologiaSocio">Inativar</a>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+
+
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>

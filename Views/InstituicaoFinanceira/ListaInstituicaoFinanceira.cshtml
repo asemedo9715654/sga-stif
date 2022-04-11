@@ -10,7 +10,7 @@
         <div class="row no-print">
 
             <div class="col-12">
-                <p class="lead">Lista de Instituicao Financeira</p>
+                <p class="lead">Lista de Instituição Financeira</p>
 
                 <a asp-action="NovoInstituicaoFinanceira" class="btn btn-success btn-sm float-right"
                     style="margin-right: 5px;">Novo</a>
@@ -73,8 +73,8 @@
                                 Editar</a>
                             <a class="btn btn-warning btn-xs" asp-action="Delete"
                             asp-route-id="@item.IdInstituicaoFinanceira">Inativar</a>
-                            <a class="btn btn-default btn-xs" asp-action="ListaUtilizadorPorPerfil"
-                            asp-route-idPerfil="@item.IdInstituicaoFinanceira" asp-route-nomePerfil="@item.Nome"> <i
+                            <a class="btn btn-default btn-xs" asp-action="ListaAgenciaPorInstitucaoFinanceira" asp-controller="Agencia"
+                            asp-route-idInstituicaoFinanceira="@item.IdInstituicaoFinanceira" asp-route-nomeInstituicao="@item.Nome"> <i
                                 class="fas fa-file-magnifying-glass"></i> Ver Agências</a>
 
                         </td>

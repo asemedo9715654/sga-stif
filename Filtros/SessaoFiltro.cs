@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Mvc.Filters;
-
 namespace sga_stif.Filtros
 {
     public class SessaoFiltro : ActionFilterAttribute, IActionFilter
@@ -11,7 +9,10 @@ namespace sga_stif.Filtros
 
         public void OnActionExecuting(ActionExecutingContext context)
         {
-            // var nomeController = context.ActionDescriptor.;
+
+            string actionName = context.ActionDescriptor.ActionName;
+            // string controllerName = context.ActionDescriptor.ControllerDescriptor.ControllerName;
+            // // var nomeController = context.ActionDescriptor.;
             // var nomeAction = context.ActionDescriptor.ActionName;
             // //var nomeController = filterContext.ActionDescriptor.ControllerDescriptor.;
 

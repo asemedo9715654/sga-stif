@@ -28,7 +28,17 @@ namespace sga_stif.Controllers
 
     public async Task<IActionResult> ListaAgencia()
     {
-      var agencia = await _context.Agencia.Include(g=>g.Cidade).Include(h=>h.InstituicaoFinanceira).ToListAsync();
+      var agencia = await _context.Agencia.Include(g=>g.Cidade).Include(h=>h.InstituicaoFinanceira).Include(h=>h.Socio).ToListAsync();
+      var listaAgenciaViewModel = _mapper.Map<List<ListaAgenciaViewModel>>(agencia);
+      return View(listaAgenciaViewModel);
+    }
+
+
+     public async Task<IActionResult> ListaAgenciaPorInstitucaoFinanceira(int idInstituicaoFinanceira,string nomeInstituicao)
+    {
+
+      ViewBag.NomeInstituicaoFinanceira = nomeInstituicao;
+      var agencia = await _context.Agencia.Where(r=>r.IdInstituicaoFinanceira==idInstituicaoFinanceira).Include(g=>g.Cidade).Include(h=>h.InstituicaoFinanceira).Include(h=>h.Socio).ToListAsync();
       var listaAgenciaViewModel = _mapper.Map<List<ListaAgenciaViewModel>>(agencia);
       return View(listaAgenciaViewModel);
     }

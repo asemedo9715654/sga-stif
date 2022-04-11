@@ -12,6 +12,8 @@ namespace sga_stif.ViewModel.Agencia
         public string NomeCidade { get; set; }
         [Display(Name = "Instituição Financeira")]
         public string NomeInstituicaoFinanceira { get; set; }
+         [Display(Name = "Total de Sócios")]
+        public int TotalDeSocios { get; set; }
         public int IdCidade { get; set; }
         public int IdInstituicaoFinanceira { get; set; }
     }
