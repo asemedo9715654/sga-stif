@@ -56,7 +56,8 @@
                             @Html.DisplayFor(modelItem => item.NomeCidade)
                         </td>
                            <td>
-                            @Html.DisplayFor(modelItem => item.TotalDeSocios)
+                             <span class="badge badge-pill badge-info"> @Html.DisplayFor(modelItem =>
+                            item.TotalDeSocios)</span> Sócio(s)
                         </td>
                         <td>
                             <a class="btn btn-success btn-xs" asp-action="EditaPerfil"
@@ -78,15 +79,15 @@
 </div>
 
 <script>
-    $(function () {
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": true,
-            "searching": true,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-        });
+
+  $(document).ready(function () {
+    $('#example2').DataTable({
+      dom: 'Bfrtip',
+      buttons: [
+        //'copy', 'csv', 'excel', 'pdf', 'print'
+        'copy', 'csv', 'excel', 'print'
+      ]
     });
+  });
+
 </script>

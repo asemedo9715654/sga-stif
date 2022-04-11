@@ -41,18 +41,9 @@ namespace sga_stif.Controllers
                     HttpContext.Session.SetString("NomeCompleto", utilizador.PegarNomeCompleto());
                     HttpContext.Session.SetString("IdUtilizador", utilizador.IdUtilizador.ToString());
 
-                    if (utilizador.Foto != null)
-                    {
-                        string imageDataURL = string.Format("data:image/png;base64,{0}", utilizador.Foto);
-                        HttpContext.Session.SetString("Foto", imageDataURL);
-                    }
-                    else
-                    {
-                        HttpContext.Session.SetString("Foto", "");
+                    HttpContext.Session.SetString("Foto", utilizador.PegarLinkFoto());
 
-                    }
-
-
+        
                     return RedirectToAction("ListaSocio", "Socio");
 
                 }

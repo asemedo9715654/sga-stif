@@ -54,15 +54,7 @@
           <tr>
 
             <td>
-              @if (@item.Foto != null)
-              {
-                <img class="img-circle img-size-32 mr-2" src="data:image/jpeg;base64,@Convert.ToBase64String(item.Foto)" />
-
-              }
-              else
-              {
-                <img src="~/dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
-              }
+               <img class="img-circle img-size-32 mr-2" src="@item.Foto" />
             </td>
             <td>
               @Html.DisplayFor(modelItem => item.Nome)

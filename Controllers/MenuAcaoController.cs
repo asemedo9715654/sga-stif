@@ -31,7 +31,7 @@ namespace sga_stif.Controllers
         {
             ViewBag.idMenu = idMenu;
             ViewBag.NomeMenu = nomeMenu;
-            var acao = await _context.Acao.ToListAsync();
+            var acao = await _context.Acao.Where(j=>j.AcaoMaster==false).ToListAsync();
             return View(acao);
         }
 

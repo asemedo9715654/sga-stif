@@ -8,6 +8,7 @@ using sga_stif.Mapeamento;
 using sga_stif.Models;
 
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Logging.ClearProviders();
@@ -21,14 +22,12 @@ builder.Services.AddSession(options =>
 });
 
 
-builder.Services.AddControllers(config =>
+
+// Add services to the container.
+builder.Services.AddControllersWithViews(config =>
 {
     config.Filters.Add(new SessaoFiltro());
 });
-
-
-// Add services to the container.
-builder.Services.AddControllersWithViews();
 
 //builder.Services.AddDbContext<ContextoBaseDados>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddEntityFrameworkSqlite().AddDbContext<ContextoBaseDados>();
@@ -74,8 +73,6 @@ app.Use(async (ctx, next) =>
         await next();
     }
 });
-
-
 
 
 app.UseSession();

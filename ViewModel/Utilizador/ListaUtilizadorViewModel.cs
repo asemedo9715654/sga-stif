@@ -16,7 +16,7 @@ namespace sga_stif.ViewModel.Utilizador
     [EmailAddress]
     [Display(Name = "E-mail")]
     public string Email { get; set; }
-    public byte[]? Foto { get; set; }
+    public string Foto { get; set; }
     public string PalavraPasse { get; set; }
     [Display(Name = "Nome do Perfil")]
     public string NomePerfil { get; set; }
