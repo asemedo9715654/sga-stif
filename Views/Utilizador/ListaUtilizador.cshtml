@@ -4,9 +4,6 @@
   ViewData["Title"] = "Lista de Utilizadores";
 }
 
-@* <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css"> *@
-
 <div class="card">
   <div class="card-header">
 
@@ -16,7 +13,9 @@
         <p class="lead">Lista de Utilizadores</p>
 
 
-        <a asp-action="NovoUtilizador" class="btn btn-success btn-sm float-right" style="margin-right: 5px;">Novo</a>
+        <a asp-action="NovoUtilizador" class="btn btn-success btn-sm float-right" style="margin-right: 5px;">
+           <i class="fas fa-user"></i> Novo
+          </a>
         <a asp-action="ListaUtilizadorInativos" class="btn btn-default btn-sm  float-right"
           style="margin-right: 5px;">Lista de
           Utilizadores Inativos</a>
@@ -59,15 +58,7 @@
           <tr>
 
             <td>
-              @if (@item.Foto != null)
-              {
-                <img class="img-circle img-size-32 mr-2" src="data:image/jpeg;base64,@Convert.ToBase64String(item.Foto)" />
-
-              }
-              else
-              {
-                <img src="~/dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
-              }
+              <img class="img-circle img-size-32 mr-2" src="@item.Foto" />
             </td>
             <td>
               @Html.DisplayFor(modelItem => item.Nome)

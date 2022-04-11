@@ -61,6 +61,7 @@ namespace sga_stif.Mapeamento
             CreateMap<Utilizador, EditaUtilizadorViewModel>();
             CreateMap<Utilizador, NovoUtilizadorViewModel>();
             CreateMap<Utilizador, ListaUtilizadorViewModel>()
+             .ForMember(dest => dest.Foto, opt => opt.MapFrom(src => src.PegarLinkFoto()))
              .ForMember(dest => dest.NomePerfil, opt => opt.MapFrom(src => src.Perfil.Descricao))
             ;
 
