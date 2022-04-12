@@ -20,15 +20,38 @@ namespace sga_stif.ViewComponents
 
         public NavigationMenuViewComponent(ContextoBaseDados context)
         {
+
             _context = context;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            // var items = await _context.Menu(HttpContext.User);
-            var items = await _context.Menu.ToListAsync();
 
-            return View(items);
+            int idPerfil = int.Parse(HttpContext.Session.GetString("IdPerfil").ToString());
+
+            var menu = new List<Menu>();
+
+            var items = await _context.Menu.Include(j => j.MenuAcao).ThenInclude(k => k.PerfilMenuAcao).ToListAsync();
+
+
+            foreach (var item in items)
+            {
+                var menuAcao = _context.MenuAcao.FirstOrDefault(j => j.IdMenu == item.IdMenu);
+
+                if (menuAcao != null)
+                {
+
+                    var perfilMenuAcao = _context.PerfilMenuAcao.FirstOrDefault(i => i.IdPPerfil == idPerfil && menuAcao.IdMenuAcao == i.IdMenuAcao);
+                    if (perfilMenuAcao != null)
+                    {
+                        menu.Add(item);
+
+                    }
+
+                }
+            }
+
+            return View(menu);
         }
 
 

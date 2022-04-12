@@ -19,10 +19,10 @@
             if (item.IdMenuPai == null) //Level one items will have null parent id
             {
 
-                var children = Model.Where(x => x.IdMenuPai == item.IdMenu).ToList();
+                var subMenus = Model.Where(x => x.IdMenuPai == item.IdMenu).ToList();
 
 
-                if (children.Count > 0)
+                if (subMenus.Count > 0)
                 {
 
                 }
@@ -30,13 +30,13 @@
 
 
 
-                if (children.Count > 0) //Level one item has children so append them
+                if (subMenus.Count > 0) //Level one item has children so append them
                 {
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false"> @item.Nome</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown01">
-                            @foreach (var itm in children)
+                            @foreach (var itm in subMenus)
                             {
                                 @* <a class="dropdown-item" asp-area="" asp-controller="@itm.ControllerName"
                                     asp-action="@itm.ActionName">@itm.Name</a> *@

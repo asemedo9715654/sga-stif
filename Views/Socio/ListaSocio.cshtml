@@ -92,7 +92,7 @@
               @Html.DisplayFor(modelItem => item.DataDeNascimento)
             </td>
             <td>
-              <a class="btn btn-success btn-xs " asp-action="Edit" asp-route-id="@item.IdSocio"><i class="fas fa-pen"></i> Editar</a>
+              <a class="btn btn-success btn-xs " asp-action="EditaSocio" asp-route-idSocio="@item.IdSocio"><i class="fas fa-pen"></i> Editar</a>
               <a class="btn btn-default btn-xs " asp-action="DetalhesSocio" asp-route-idSocio="@item.IdSocio"><i class="fas fa-info"></i> Detalhes</a>
               <a class="btn btn-warning btn-xs " asp-action="EliminaSocio" asp-route-idSocio="@item.IdSocio"><i class="fas fa-user-slash"></i> Inativar</a>
             </td>
