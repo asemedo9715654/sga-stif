@@ -313,9 +313,11 @@ namespace sga_stif.Models
           .AddJsonFile("appsettings.json")
           .Build();
 
-      var connectionString = configuration.GetConnectionString("AppDb");
-      //optionsBuilder.UseSqlServer(connectionString);
-      optionsBuilder.UseSqlite("Filename=sga-stif.db");
+      var connectionString = configuration.GetConnectionString("sgastif");
+      optionsBuilder.UseSqlServer(connectionString);
+
+      //optionsBuilder.UseSqlServer(configuration.GetConnectionString("WebApiDatabase"));
+      //optionsBuilder.UseSqlite("Filename=sga-stif.db");
     }
 
   }
