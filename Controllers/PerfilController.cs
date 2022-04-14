@@ -47,7 +47,7 @@ namespace sga_stif.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult NovoPerfil([Bind("Descricao")] Perfil perfil)
+        public IActionResult NovoPerfil([Bind("Nome,Descricao")] NovoPerfilViewModel novoPerfilViewModel)
         {
 
             try
@@ -55,24 +55,23 @@ namespace sga_stif.Controllers
 
                 if (ModelState.IsValid)
                 {
+                    var perfil = _mapper.Map<Perfil>(novoPerfilViewModel);
+                    _context.Perfil.Add(perfil);
                     _context.SaveChanges();
                     _notyf.Success("Perfil adicionado com sucesso!");
                     return RedirectToAction("ListaPerfil");
                 }
 
-                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
-                var ee = 2;
-
             }
-            catch (DbUpdateException ex )
+            catch (DbUpdateException ex)
             {
-                
-                ModelState.AddModelError("", "Não foi possível salvar as alterações. Tente novamente e, se o problema persistir, consulte o administrador do sistema. Erro => "+ex.Message);
+
+                ModelState.AddModelError("", "Não foi possível salvar as alterações. Tente novamente e, se o problema persistir, consulte o administrador do sistema. Erro => " + ex.Message);
             }
 
             _notyf.Error("Erro na adição de perfil");
 
-            return View(perfil);
+            return View(novoPerfilViewModel);
         }
 
 
@@ -113,9 +112,8 @@ namespace sga_stif.Controllers
                 if (ModelState.IsValid)
                 {
 
+
                     var perfil = _mapper.Map<Perfil>(editaPerfilViewModel);
-
-
                     perfil.DataAtualizacao = DateTime.Now;
 
                     _context.Update(perfil);
@@ -128,9 +126,9 @@ namespace sga_stif.Controllers
                 // var ee = 2;
 
             }
-            catch (DbUpdateException  ex )
+            catch (DbUpdateException ex)
             {
-                ModelState.AddModelError("", "Não foi possível salvar as alterações. Tente novamente e, se o problema persistir, consulte o administrador do sistema. Erro => "+ex.Message);
+                ModelState.AddModelError("", "Não foi possível salvar as alterações. Tente novamente e, se o problema persistir, consulte o administrador do sistema. Erro => " + ex.Message);
             }
 
             _notyf.Error("Erro na atualização de perfil");
@@ -184,7 +182,7 @@ namespace sga_stif.Controllers
             }
 
 
-            var menuAcao = await _context.MenuAcao.Where(t => t.Eliminado == false && t.MenuAcaoMaster==true)
+            var menuAcao = await _context.MenuAcao.Where(t => t.Eliminado == false && t.MenuAcaoMaster == true)
             .Include(c => c.Menu)
             .Include(c => c.Acao)
             .ToListAsync();
@@ -194,26 +192,27 @@ namespace sga_stif.Controllers
             foreach (var item in menuAcao)
             {
 
-                OutossssViewModel bbb =  new OutossssViewModel();
-                  var menuAcaosssss = await _context.MenuAcao.Where(t => t.Eliminado == false && t.MenuAcaoMaster==false && t.IdMenu ==item.IdMenu )
-                    .Include(c => c.Menu)
-                    .Include(c => c.Acao)
-                    .ToListAsync();
+                OutossssViewModel bbb = new OutossssViewModel();
+                var menuAcaosssss = await _context.MenuAcao.Where(t => t.Eliminado == false && t.MenuAcaoMaster == false && t.IdMenu == item.IdMenu)
+                  .Include(c => c.Menu)
+                  .Include(c => c.Acao)
+                  .ToListAsync();
 
-                    bbb.Descricao = item.Menu.Nome;
-                    bbb.IdMenuAcao = item.IdMenuAcao;
-                    bbb.Dadosdddd = new List<Dadosdddd>();
+                bbb.Descricao = item.Menu.Nome;
+                bbb.IdMenuAcao = item.IdMenuAcao;
+                bbb.Dadosdddd = new List<Dadosdddd>();
 
 
-                    foreach (var fffff in menuAcaosssss)
+                foreach (var fffff in menuAcaosssss)
+                {
+                    bbb.Dadosdddd.Add(new Dadosdddd()
                     {
-                        bbb.Dadosdddd.Add(new Dadosdddd(){
-                            Descricao = fffff.Acao.Nome,
-                            IdMenuAcao = fffff.IdMenuAcao
-                        });
-                        
-                    }
-                    vvvv.Add(bbb);
+                        Descricao = fffff.Acao.Nome,
+                        IdMenuAcao = fffff.IdMenuAcao
+                    });
+
+                }
+                vvvv.Add(bbb);
 
 
             }

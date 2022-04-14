@@ -3,11 +3,10 @@ using sga_stif.Models;
 
 namespace sga_stif.ViewModel.Perfil
 {
-    public class EditaPerfilViewModel
+    public class NovoPerfilViewModel
     {
-        public int IdPerfil { get; set; }
         public string Nome { get; set; }
-        [Display(Name ="Descrição")]
+           [Display(Name ="Descrição")]
         public string Descricao { get; set; }
 
        

@@ -19,41 +19,31 @@
             if (item.IdMenuPai == null) //Level one items will have null parent id
             {
 
-                var children = Model.Where(x => x.IdMenuPai == item.IdMenu).ToList();
+                var subMenus = Model.Where(x => x.IdMenuPai == item.IdMenu).ToList();
 
 
-                if (children.Count > 0)
+                if (subMenus.Count > 0)
                 {
 
                 }
 
-
-
-
-                if (children.Count > 0) //Level one item has children so append them
+                if (subMenus.Count > 0) //Level one item has children so append them
                 {
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false"> @item.Nome</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown01">
-                            @foreach (var itm in children)
+                            @foreach (var itm in subMenus)
                             {
-                                @* <a class="dropdown-item" asp-area="" asp-controller="@itm.ControllerName"
-                                    asp-action="@itm.ActionName">@itm.Name</a> *@
-                                <a class="dropdown-item" asp-controller="@itm.NomeDoController"
-                    asp-action="@itm.NomeDaAction">@itm.Nome</a>
+                                <a class="dropdown-item" asp-controller="@itm.NomeDoController" asp-action="@itm.NomeDaAction" title="@item.Descricao">@itm.Nome</a>
                             }
                         </div>
                     </li>
                 }
                 else
                 {
-
                     <li class="nav-item active">
-                        @* <a class="nav-link text" asp-area="" asp-controller="@item.ControllerName"
-                            asp-action="@item.ActionName">@item.Name</a> *@
-                        <a class="nav-link text" asp-controller="@item.NomeDoController"
-                asp-action="@item.NomeDaAction">@item.Nome</a>
+                        <a class="nav-link text" asp-controller="@item.NomeDoController" asp-action="@item.NomeDaAction">@item.Nome</a>
                     </li>
 
                 }

@@ -72,14 +72,16 @@
 
         <li class="nav-item dropdown user-menu">
           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-            <img src='@HttpContextAccessor.HttpContext.Session.GetString("Foto")' class="user-image img-circle elevation-2" alt="User Image">
+            <img src='@HttpContextAccessor.HttpContext.Session.GetString("Foto")'
+              class="user-image img-circle elevation-2" alt="User Image">
             <span class="d-none d-md-inline">@HttpContextAccessor.HttpContext.Session.GetString("NomeCompleto")</span>
           </a>
           <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <!-- User image -->
             <li class="user-header bg-primary">
 
-              <img src='@HttpContextAccessor.HttpContext.Session.GetString("Foto")' class="img-circle elevation-2" alt="User Image">
+              <img src='@HttpContextAccessor.HttpContext.Session.GetString("Foto")' class="img-circle elevation-2"
+                alt="User Image">
 
               <p>
                 @HttpContextAccessor.HttpContext.Session.GetString("NomeCompleto")
@@ -112,7 +114,7 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
-      <a href="index3.html" class="brand-link">
+      <a asp-action="ListaSocio" asp-controller="Socio" class="brand-link">
         <img src="~/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
           style="opacity: .8">
         <span class="brand-text font-weight-light">SGA - STIF</span>
@@ -324,6 +326,9 @@
   <script src="~/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
   <script src="~/plugins/datatables-buttons/js/buttons.print.min.js"></script>
   <script src="~/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
 
 
 

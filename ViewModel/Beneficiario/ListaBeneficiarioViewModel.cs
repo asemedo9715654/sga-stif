@@ -18,7 +18,7 @@ namespace sga_stif.ViewModel.Beneficiario
         public DateTime DataDeNascimento { get; set; }
         [Display(Name = "Número de Identificação Fiscal")]
         public string Nif { get; set; }
-        [Display(Name = "Cni/BI")]
+        [Display(Name = "CNI/BI")]
         public string CinBi { get; set; }
         [Display(Name = "Número de Passaporte")]
         public string NumeroPassaporte { get; set; }

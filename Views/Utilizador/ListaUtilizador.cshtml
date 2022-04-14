@@ -40,14 +40,15 @@
           <th>
             @Html.DisplayNameFor(model => model.Email)
           </th>
+         
           <th>
+            @Html.DisplayNameFor(model => model.NomePerfil)
+          </th>
+           <th>
             @Html.DisplayNameFor(model => model.DataCriacao)
           </th>
           <th>
             @Html.DisplayNameFor(model => model.DataAtualizacao)
-          </th>
-          <th>
-            @Html.DisplayNameFor(model => model.NomePerfil)
           </th>
           <th>Ação</th>
         </tr>
@@ -69,18 +70,19 @@
             <td>
               @Html.DisplayFor(modelItem => item.Email)
             </td>
+           
             <td>
+              @Html.DisplayFor(modelItem => item.NomePerfil)
+            </td>
+             <td>
               @Html.DisplayFor(modelItem => item.DataCriacao)
             </td>
             <td>
               @Html.DisplayFor(modelItem => item.DataAtualizacao)
             </td>
             <td>
-              @Html.DisplayFor(modelItem => item.NomePerfil)
-            </td>
-            <td>
 
-              <a class="btn btn-success btn-xs" asp-action="ResetePalavraPasseUtilizador" asp-route-idUtilizador="@item.IdUtilizador"><i class="fas fa-user-secret"></i> </a>
+            
               <a class="btn btn-success btn-xs" asp-action="EditaUtilizador" asp-route-idUtilizador="@item.IdUtilizador"><i class="fas fa-pen"></i> Editar</a>
               <a class="btn btn-default btn-xs" asp-action="DetalhesUtilizador" asp-route-idUtilizador="@item.IdUtilizador"> <i class="fas fa-info"></i> Detalhes</a>
               <a class="btn btn-warning btn-xs" asp-action="EliminaUtilizador" asp-route-idUtilizador="@item.IdUtilizador"><i class="fas fa-user-slash"></i> Inativar</a>

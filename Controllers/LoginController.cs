@@ -40,6 +40,7 @@ namespace sga_stif.Controllers
                     HttpContext.Session.SetString("NomeUtilizador", loginViewModel.NomeUtilizador);
                     HttpContext.Session.SetString("NomeCompleto", utilizador.PegarNomeCompleto());
                     HttpContext.Session.SetString("IdUtilizador", utilizador.IdUtilizador.ToString());
+                    HttpContext.Session.SetString("IdPerfil", utilizador.IdPerfil.ToString());
 
                     HttpContext.Session.SetString("Foto", utilizador.PegarLinkFoto());
 
@@ -67,6 +68,7 @@ namespace sga_stif.Controllers
             HttpContext.Session.Remove("NomeUtilizador");
             HttpContext.Session.Remove("NomeCompleto");
             HttpContext.Session.Remove("IdUtilizador");
+            HttpContext.Session.Remove("IdPerfil");
             HttpContext.Session.Remove("Foto");
             
             return RedirectToAction("Index");

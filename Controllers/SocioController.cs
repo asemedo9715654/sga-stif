@@ -103,13 +103,14 @@ namespace sga_stif.Controllers
                         }
                     }
 
-                    var sociocc = _mapper.Map<Socio>(novoSocioViewModel);
+                    var socio = _mapper.Map<Socio>(novoSocioViewModel);
+                    socio.NumeroColaborador = "0";
 
                     _notyf.Success("Sócio adicionado com sucesso!");
 
-                    sociocc.GerarNumeroSocio();
+                    socio.GerarNumeroSocio();
 
-                    _context.Socio.Add(sociocc);
+                    _context.Socio.Add(socio);
                     _context.SaveChanges();
                     return RedirectToAction("ListaSocio");
                 }
@@ -144,6 +145,109 @@ namespace sga_stif.Controllers
 
 
             return View(novoSocioViewModel);
+        }
+
+
+
+
+        [HttpGet]
+        public IActionResult EditaSocio(int idSocio)
+        {
+            var angencia = _context.Agencia.Include(j => j.Cidade).ToList();
+            var tipologiaSocios = _context.TipologiaSocio.ToList();
+            var tipoQuotas = _context.TipoQuota.ToList();
+
+            var instituicaoFinanceiras = _context.InstituicaoFinanceira.ToList();
+
+            var angenciaListItem = from g in angencia select new SelectListItem { Value = g.IdAgencia.ToString(), Text = g.Cidade.Nome + " - " + g.Nome };
+            var tipologiaSociosListItem = from g in tipologiaSocios select new SelectListItem { Value = g.IdTipologiaSocio.ToString(), Text = g.Descricao };
+            var tipoQuotasListItem = from g in tipoQuotas select new SelectListItem { Value = g.IdTipoQuota.ToString(), Text = g.Descricao };
+
+            var instituicaoFinanceirasItem = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome };
+
+            ViewBag.IdAgencia = angenciaListItem;
+            ViewBag.IdTipologiaSocio = tipologiaSociosListItem;
+            ViewBag.IdTipoQuota = tipoQuotasListItem;
+            ViewBag.IdInstituicaoFinanceira = instituicaoFinanceirasItem;
+
+            var socio = _context.Socio.FirstOrDefault(s => s.IdSocio == idSocio);
+
+            var editaSocioViewModel = _mapper.Map<EditaSocioViewModel>(socio);
+
+            return View(editaSocioViewModel);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult EditaSocio([Bind("IdSocio,Nome,NumeroDeTelefone,DataDeNascimento,Sexo,Apelido,CinBi,Foto,NumeroPassaporte,IdTipologiaSocio ,IdTipoQuota,IdAgencia,Nif ")] EditaSocioViewModel editaSocioViewModel, IFormFile Image)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+
+                    if (Image != null)
+                    {
+                        if (Image.Length > 0)
+
+                        //Convert Image to byte and save to database
+
+                        {
+
+                            byte[] p1 = null;
+                            using (var fs1 = Image.OpenReadStream())
+                            using (var ms1 = new MemoryStream())
+                            {
+                                fs1.CopyTo(ms1);
+                                p1 = ms1.ToArray();
+                            }
+                            editaSocioViewModel.Foto = p1;
+
+                        }
+                    }
+
+                    var socio = _mapper.Map<Socio>(editaSocioViewModel);
+
+                    _notyf.Success("Sócio editado com sucesso!");
+
+                    socio.DataAtualizacao = DateTime.Now;
+
+                    _context.Update(socio);
+                    _context.SaveChanges();
+                    return RedirectToAction("ListaSocio");
+                }
+
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                var ee = 2;
+
+            }
+            catch (DbUpdateException ex)
+            {
+                ModelState.AddModelError("", "Não foi possível salvar as alterações. Tente novamente e, se o problema persistir, consulte o administrador do sistema. Erro => " + ex.Message);
+                throw;
+            }
+
+            _notyf.Error("Erro na edição de sócio!");
+
+
+            var angencia = _context.Agencia.Include(j => j.Cidade).ToList();
+            var tipologiaSocios = _context.TipologiaSocio.ToList();
+            var tipoQuotas = _context.TipoQuota.ToList();
+            var instituicaoFinanceiras = _context.InstituicaoFinanceira.ToList();
+
+            var angenciaListItem = from g in angencia select new SelectListItem { Value = g.IdAgencia.ToString(), Text = g.Nome };
+            var tipologiaSociosListItem = from g in tipologiaSocios select new SelectListItem { Value = g.IdTipologiaSocio.ToString(), Text = g.Descricao };
+            var tipoQuotasListItem = from g in tipoQuotas select new SelectListItem { Value = g.IdTipoQuota.ToString(), Text = g.Descricao };
+            var instituicaoFinanceirasItem = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome };
+
+            ViewBag.IdAgencia = angenciaListItem;
+            ViewBag.IdTipologiaSocio = tipologiaSociosListItem;
+            ViewBag.IdTipoQuota = tipoQuotasListItem;
+            ViewBag.IdInstituicaoFinanceira = instituicaoFinanceirasItem;
+
+
+            return View(editaSocioViewModel);
         }
 
 
@@ -205,6 +309,20 @@ namespace sga_stif.Controllers
 
             return Json(res);
 
+        }
+
+
+
+         [AcceptVerbs("GET", "POST")]
+        public IActionResult VereficaCniBi(string cniBi)
+        {
+            var socio =_context.Socio.FirstOrDefault(k=>k.CinBi==cniBi);
+            if (socio!=null)
+            {
+                return Json($"O CNI/BI {cniBi} já foi inserida no sistema");
+            }
+
+            return Json(true);
         }
 
 
