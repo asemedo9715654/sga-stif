@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc;
 using sga_stif.Models;
 
 namespace sga_stif.ViewModel.Socio
@@ -14,6 +15,7 @@ namespace sga_stif.ViewModel.Socio
         [Display(Name = "Número de Identificação Fiscal")]
         public string Nif { get; set; }
         [Display(Name = "CIN/BI")]
+        [Remote(action: "VereficaCniBi", controller: "Socio")]
         public string CinBi { get; set; }
 
         [Display(Name = "Válidade CIN/BI")]

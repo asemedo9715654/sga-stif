@@ -103,13 +103,14 @@ namespace sga_stif.Controllers
                         }
                     }
 
-                    var sociocc = _mapper.Map<Socio>(novoSocioViewModel);
+                    var socio = _mapper.Map<Socio>(novoSocioViewModel);
+                    socio.NumeroColaborador = "0";
 
                     _notyf.Success("Sócio adicionado com sucesso!");
 
-                    sociocc.GerarNumeroSocio();
+                    socio.GerarNumeroSocio();
 
-                    _context.Socio.Add(sociocc);
+                    _context.Socio.Add(socio);
                     _context.SaveChanges();
                     return RedirectToAction("ListaSocio");
                 }
@@ -149,7 +150,7 @@ namespace sga_stif.Controllers
 
 
 
-         [HttpGet]
+        [HttpGet]
         public IActionResult EditaSocio(int idSocio)
         {
             var angencia = _context.Agencia.Include(j => j.Cidade).ToList();
@@ -169,7 +170,7 @@ namespace sga_stif.Controllers
             ViewBag.IdTipoQuota = tipoQuotasListItem;
             ViewBag.IdInstituicaoFinanceira = instituicaoFinanceirasItem;
 
-            var socio =_context.Socio.FirstOrDefault(s=>s.IdSocio ==idSocio );
+            var socio = _context.Socio.FirstOrDefault(s => s.IdSocio == idSocio);
 
             var editaSocioViewModel = _mapper.Map<EditaSocioViewModel>(socio);
 
@@ -177,7 +178,7 @@ namespace sga_stif.Controllers
         }
 
 
-         [HttpPost]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult EditaSocio([Bind("IdSocio,Nome,NumeroDeTelefone,DataDeNascimento,Sexo,Apelido,CinBi,Foto,NumeroPassaporte,IdTipologiaSocio ,IdTipoQuota,IdAgencia,Nif ")] EditaSocioViewModel editaSocioViewModel, IFormFile Image)
         {
@@ -206,13 +207,13 @@ namespace sga_stif.Controllers
                         }
                     }
 
-                    var sociocc = _mapper.Map<Socio>(editaSocioViewModel);
+                    var socio = _mapper.Map<Socio>(editaSocioViewModel);
 
                     _notyf.Success("Sócio editado com sucesso!");
 
-                    // sociocc.GerarNumeroSocio();
+                    socio.DataAtualizacao = DateTime.Now;
 
-                    _context.Update(sociocc);
+                    _context.Update(socio);
                     _context.SaveChanges();
                     return RedirectToAction("ListaSocio");
                 }
@@ -308,6 +309,20 @@ namespace sga_stif.Controllers
 
             return Json(res);
 
+        }
+
+
+
+         [AcceptVerbs("GET", "POST")]
+        public IActionResult VereficaCniBi(string cniBi)
+        {
+            var socio =_context.Socio.FirstOrDefault(k=>k.CinBi==cniBi);
+            if (socio!=null)
+            {
+                return Json($"O CNI/BI {cniBi} já foi inserida no sistema");
+            }
+
+            return Json(true);
         }
 
 

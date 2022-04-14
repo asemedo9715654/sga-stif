@@ -45,6 +45,8 @@ namespace sga_stif.Mapeamento
             CreateMap<Perfil, ListaPerfilViewModel>();
             CreateMap<Perfil, EditaPerfilViewModel>();
             CreateMap<EditaPerfilViewModel, Perfil>();
+            CreateMap<NovoPerfilViewModel, Perfil>();
+            CreateMap<Perfil,NovoPerfilViewModel >();
 
             //instituicao financeira
             CreateMap<InstituicaoFinanceira, ListaInstituicaoFinanceiraViewModel>()
@@ -59,10 +61,14 @@ namespace sga_stif.Mapeamento
             CreateMap<EditaUtilizadorViewModel, Utilizador>();
             CreateMap<NovoUtilizadorViewModel, Utilizador>();
             CreateMap<Utilizador, EditaUtilizadorViewModel>();
+            CreateMap<Utilizador, DetalhesUtilizadorViewModel>()
+              .ForMember(dest => dest.NomePerfil, opt => opt.MapFrom(src => src.Perfil.Nome))
+            ;
+
             CreateMap<Utilizador, NovoUtilizadorViewModel>();
             CreateMap<Utilizador, ListaUtilizadorViewModel>()
              .ForMember(dest => dest.Foto, opt => opt.MapFrom(src => src.PegarLinkFoto()))
-             .ForMember(dest => dest.NomePerfil, opt => opt.MapFrom(src => src.Perfil.Descricao))
+             .ForMember(dest => dest.NomePerfil, opt => opt.MapFrom(src => src.Perfil.Nome))
             ;
 
             CreateMap<Menu, ListaMenuViewModel>()

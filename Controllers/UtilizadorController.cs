@@ -58,7 +58,7 @@ namespace sga_stif.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult NovoUtilizador([Bind("Nome,Apelido,Foto,PalavraPasse,PalavraPasseSalt,Email,IdPerfil,NomeUtilizador")] NovoUtilizadorViewModel novoUtilizadorViewModel, IFormFile Image)
+        public async Task<IActionResult> NovoUtilizador([Bind("Nome,Apelido,Foto,PalavraPasse,PalavraPasseSalt,Email,IdPerfil,NomeUtilizador")] NovoUtilizadorViewModel novoUtilizadorViewModel, IFormFile Image)
         {
 
             try
@@ -92,7 +92,7 @@ namespace sga_stif.Controllers
                     var utilizador = _mapper.Map<Utilizador>(novoUtilizadorViewModel);
 
                     _context.Utilizador.Add(utilizador);
-                    _context.SaveChanges();
+                    await  _context.SaveChangesAsync();
                     return RedirectToAction("ListaUtilizador");
                 }
 
@@ -106,7 +106,7 @@ namespace sga_stif.Controllers
                
             }
 
-            _notyf.Error("Erro na insercao de utilizador!");
+            _notyf.Error("Erro na inserção de utilizador!");
 
             var perfils = _context.Perfil.ToList();
             var perfilr = from g in perfils select new SelectListItem { Value = g.IdPerfil.ToString(), Text = g.Nome };
@@ -136,8 +136,7 @@ namespace sga_stif.Controllers
         {
             var utilizador = await _context.Utilizador.FindAsync(idUtilizador);
             utilizador.Eliminado = true;
-            //_context.Socio.Remove(employee);
-            //_context.Socio.Remove(employee);
+            
             await _context.SaveChangesAsync();
             _notyf.Success("Utilizador eliminado com sucesso!");
 
@@ -152,9 +151,11 @@ namespace sga_stif.Controllers
             {
                 return NotFound();
             }
-            var utilizador = await _context.Utilizador.FirstOrDefaultAsync(m => m.IdUtilizador == idUtilizador);
+            var utilizador = await _context.Utilizador.Include(o=>o.Perfil).FirstOrDefaultAsync(m => m.IdUtilizador == idUtilizador);
 
-            return View(utilizador);
+             var detalhesUtilizadorViewModel = _mapper.Map<DetalhesUtilizadorViewModel>(utilizador);
+
+            return View(detalhesUtilizadorViewModel);
         }
 
 
@@ -174,7 +175,7 @@ namespace sga_stif.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult EditaUtilizador([Bind("IdUtilizador,Nome,Apelido,Email,IdPerfil,NomeUtilizador")] EditaUtilizadorViewModel editaUtilizadorViewModel)
+        public async Task<IActionResult> EditaUtilizador([Bind("IdUtilizador,Nome,Apelido,Email,IdPerfil,NomeUtilizador")] EditaUtilizadorViewModel editaUtilizadorViewModel)
         {
 
             try
@@ -182,22 +183,14 @@ namespace sga_stif.Controllers
                 if (ModelState.IsValid)
                 {
 
-
-
-                    //editaUtilizadorViewModel.PalavraPasse = BCrypt.Net.BCrypt.HashPassword(editaUtilizadorViewModel.PalavraPasse);
-
                     var utilizador = _mapper.Map<Utilizador>(editaUtilizadorViewModel);
 
 
                     _context.Utilizador.Add(utilizador);
-                    _context.SaveChanges();
+                    await  _context.SaveChangesAsync();
                     _notyf.Success("Utilizador editado com sucesso!");
                     return RedirectToAction("ListaUtilizador");
                 }
-
-
-                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
-                var ee = 2;
             }
             catch (DbUpdateException ex )
             {
@@ -250,7 +243,7 @@ namespace sga_stif.Controllers
             _context.Update(utilizador);
 
 
-            _notyf.Success("Palavra passe resetado com sucesso!");
+            _notyf.Success("Palavra passe resetada com sucesso!");
 
             return RedirectToAction("ListaUtilizador"); ;
         }

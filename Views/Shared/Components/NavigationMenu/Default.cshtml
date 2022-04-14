@@ -27,9 +27,6 @@
 
                 }
 
-
-
-
                 if (subMenus.Count > 0) //Level one item has children so append them
                 {
                     <li class="nav-item dropdown">
@@ -38,22 +35,15 @@
                         <div class="dropdown-menu" aria-labelledby="dropdown01">
                             @foreach (var itm in subMenus)
                             {
-                                @* <a class="dropdown-item" asp-area="" asp-controller="@itm.ControllerName"
-                                    asp-action="@itm.ActionName">@itm.Name</a> *@
-                                <a class="dropdown-item" asp-controller="@itm.NomeDoController"
-                    asp-action="@itm.NomeDaAction">@itm.Nome</a>
+                                <a class="dropdown-item" asp-controller="@itm.NomeDoController" asp-action="@itm.NomeDaAction" title="@item.Descricao">@itm.Nome</a>
                             }
                         </div>
                     </li>
                 }
                 else
                 {
-
                     <li class="nav-item active">
-                        @* <a class="nav-link text" asp-area="" asp-controller="@item.ControllerName"
-                            asp-action="@item.ActionName">@item.Name</a> *@
-                        <a class="nav-link text" asp-controller="@item.NomeDoController"
-                asp-action="@item.NomeDaAction">@item.Nome</a>
+                        <a class="nav-link text" asp-controller="@item.NomeDoController" asp-action="@item.NomeDaAction">@item.Nome</a>
                     </li>
 
                 }

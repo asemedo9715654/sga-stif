@@ -28,6 +28,9 @@ namespace sga_stif.Models
         public int IdTipologiaSocio { get; set; }
         [ForeignKey("TipoQuota")]
         public int IdTipoQuota { get; set; }
+        public DateTime? DataInicio { get; set; }
+        public DateTime? DataAtivacao { get; set; }
+        public string NumeroColaborador  { get; set; }
 
         //propriedades de navegacao
         public virtual Agencia Agencia { get; set; }

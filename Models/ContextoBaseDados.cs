@@ -66,11 +66,11 @@ namespace sga_stif.Models
 
 
       modelBuilder.Entity<TipoQuota>().HasData(
-      new TipoQuota { Priodicidade = 1, Descricao = "Quinzenal", Montante = 500, IdTipoQuota = 1, Tipo = TipoTipoQuota.TipoQutoA },
-      new TipoQuota { Priodicidade = 2, Descricao = "Mensal", Montante = 1000, IdTipoQuota = 2, Tipo = TipoTipoQuota.TipoQutoA },
-      new TipoQuota { Priodicidade = 3, Descricao = "Trimestral", Montante = 3000, IdTipoQuota = 3, Tipo = TipoTipoQuota.TipoQutoA },
-      new TipoQuota { Priodicidade = 4, Descricao = "Semestral", Montante = 6000, IdTipoQuota = 4, Tipo = TipoTipoQuota.TipoQutoB },
-      new TipoQuota { Priodicidade = 5, Descricao = "Anual", Montante = 12000, IdTipoQuota = 5, Tipo = TipoTipoQuota.TipoQutoB }
+      new TipoQuota { Priodicidade = 1, Descricao = "Quinzenal", Montante = 500, IdTipoQuota = 1, Tipo = TipoTipoQuota.Fixo },
+      new TipoQuota { Priodicidade = 2, Descricao = "Mensal", Montante = 1000, IdTipoQuota = 2, Tipo = TipoTipoQuota.Fixo },
+      new TipoQuota { Priodicidade = 3, Descricao = "Trimestral", Montante = 3000, IdTipoQuota = 3, Tipo = TipoTipoQuota.Fixo },
+      new TipoQuota { Priodicidade = 4, Descricao = "Semestral", Montante = 6000, IdTipoQuota = 4, Tipo = TipoTipoQuota.Fixo },
+      new TipoQuota { Priodicidade = 5, Descricao = "Anual", Montante = 12000, IdTipoQuota = 5, Tipo = TipoTipoQuota.Variavel }
 
      );
 

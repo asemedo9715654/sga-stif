@@ -2,12 +2,12 @@ using AspNetCoreHero.ToastNotification;
 using AspNetCoreHero.ToastNotification.Extensions;
 using AutoMapper;
 using NLog;
-using SmartBreadcrumbs;
+
 using NLog.Web;
 using sga_stif.Filtros;
 using sga_stif.Mapeamento;
 using sga_stif.Models;
-using SmartBreadcrumbs.Extensions;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -45,7 +45,7 @@ builder.Services.AddSingleton(mapper);
 
 builder.Services.AddNotyf(config => { config.DurationInSeconds = 10; config.IsDismissable = true; config.Position = NotyfPosition.BottomCenter; });
 
-// builder.Services.AddBreadcrumbs(assembly: GetType().Assembly);
+//builder.Services.AddBreadcrumbs(GetType().Assembly);
 // builder.Services.AddBreadcrumbs(args);
 
 

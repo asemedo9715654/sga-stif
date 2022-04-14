@@ -9,14 +9,14 @@ namespace sga_stif.Models
         public string Descricao { get; set; }
         public int Priodicidade { get; set; }
         public decimal Montante { get; set; }
-        // public DateTime DataInicio { get; set; }
-        // public DateTime DataFim { get; set; }
         public TipoTipoQuota Tipo { get; set; }
         public virtual ICollection<Socio> Socio { get; set; }
+        // public virtual ICollection<PeriodoQuota> PeriodoQuota { get; set; }
 
         public TipoQuota()
         {
             Socio = new HashSet<Socio>();
+            // PeriodoQuota = new HashSet<PeriodoQuota>();
         }
 
 
@@ -25,7 +25,7 @@ namespace sga_stif.Models
 
     public enum TipoTipoQuota
     {
-        TipoQutoA,
-        TipoQutoB
+        Variavel,
+        Fixo
     }
 }

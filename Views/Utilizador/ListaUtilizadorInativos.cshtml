@@ -36,14 +36,15 @@
           <th>
             @Html.DisplayNameFor(model => model.Email)
           </th>
+        
           <th>
+            @Html.DisplayNameFor(model => model.NomePerfil)
+          </th>
+            <th>
             @Html.DisplayNameFor(model => model.DataCriacao)
           </th>
           <th>
             @Html.DisplayNameFor(model => model.DataAtualizacao)
-          </th>
-          <th>
-            @Html.DisplayNameFor(model => model.NomePerfil)
           </th>
           <th>Ação</th>
         </tr>
@@ -66,14 +67,15 @@
             <td>
               @Html.DisplayFor(modelItem => item.Email)
             </td>
+           
             <td>
+              @Html.DisplayFor(modelItem => item.NomePerfil)
+            </td>
+             <td>
               @Html.DisplayFor(modelItem => item.DataCriacao)
             </td>
             <td>
               @Html.DisplayFor(modelItem => item.DataAtualizacao)
-            </td>
-            <td>
-              @Html.DisplayFor(modelItem => item.NomePerfil)
             </td>
             <td>
              

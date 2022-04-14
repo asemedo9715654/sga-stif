@@ -1,4 +1,4 @@
-@model sga_stif.Models.Utilizador
+@model sga_stif.ViewModel.Utilizador.DetalhesUtilizadorViewModel
 
 @{
     ViewData["Title"] = "Elimina Utilizador";
@@ -30,19 +30,21 @@
             <b>Nome :</b> @Model.Nome<br>
             <b>Apelido :</b> @Model.Apelido<br>
             <b>Email :</b> @Model.Email<br>
-           
+
+
         </div>
         <!-- /.col -->
         <div class="col-sm-4 invoice-col">
-            <b>Criação</b><br>
+            <b>Criação/Outros</b><br>
             <br>
+            <b>Perfil :</b> @Model.NomePerfil<br>
             <b>Data Criação :</b> @Model.DataCriacao<br>
             <b>Data Atualização :</b> @Model.DataAtualizacao<br>
-            
+
         </div>
         <!-- /.col -->
         <div class="col-sm-4 invoice-col">
-          
+
         </div>
         <!-- /.col -->
     </div>
@@ -50,4 +52,19 @@
     <br>
     <br>
     <br>
+    <div class="row no-print">
+
+        <div class="col-12">
+            @* <p class="lead">Lista de beneficiarios</p> *@
+
+
+            <a class="btn btn-warning btn-sm" asp-action="EliminaUtilizador"
+                asp-route-idUtilizador="@Model.IdUtilizador"><i class="fas fa-user-slash"></i> Inativar</a>
+
+            <a class="btn btn-success btn-sm float-right" asp-action="ResetePalavraPasseUtilizador"
+                asp-route-idUtilizador="@Model.IdUtilizador"><i class="fas fa-user-secret"> Resetar Palavra Passe</i>
+            </a>
+
+        </div>
+    </div>
 </div>
