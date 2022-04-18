@@ -11,6 +11,8 @@ namespace sga_stif.ViewModel.Perfil
         [Display(Name = "Descrição")]
         public string Descricao { get; set; }
 
+        public bool Editavel { get; set; } 
+
         
 
     }
