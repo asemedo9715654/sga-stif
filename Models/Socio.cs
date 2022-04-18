@@ -29,7 +29,7 @@ namespace sga_stif.Models
         [ForeignKey("TipoQuota")]
         public int IdTipoQuota { get; set; }
         public DateTime? DataInicio { get; set; }
-        public DateTime? DataAtivacao { get; set; }
+        public DateTime? DataAtivacao { get; set; } = DateTime.Now.Date;
         public string NumeroColaborador  { get; set; }
 
         //propriedades de navegacao

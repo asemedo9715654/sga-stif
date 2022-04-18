@@ -27,6 +27,8 @@ builder.Services.AddSession(options =>
 builder.Services.AddControllersWithViews(config =>
 {
     config.Filters.Add(new SessaoFiltro());
+    // config.Filters.Add(new LogFiltro());
+    config.Filters.Add(typeof(LogFiltro));
 });
 
 //builder.Services.AddDbContext<ContextoBaseDados>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));

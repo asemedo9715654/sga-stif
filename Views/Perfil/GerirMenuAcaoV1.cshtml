@@ -1,4 +1,4 @@
-@model IEnumerable<sga_stif.ViewModel.Perfil.OutossssViewModel>
+@model IEnumerable<sga_stif.ViewModel.Perfil.ListaMenuAcaoViewModelV1>
 
 @{
   ViewData["Title"] = "Gerir Menu Ação";
@@ -26,12 +26,12 @@
       {
         <li>@await Component.InvokeAsync("VereficaCheck", new { idPerfil=@ViewBag.IdPerfil, idMenuAcao= @item.IdMenuAcao}) <b>@item.Descricao</b> </li>
 
-        if(item.Dadosdddd.Count>0){
+        if(item.ListaMenuAcaoViewModelV1Helper.Count>0){
 
           <ul style="list-style-type:none">
-            @foreach (var fffffff in item.Dadosdddd)
+            @foreach (var ListaMenuAcaoViewModelV1HelperItem in item.ListaMenuAcaoViewModelV1Helper)
             {
-                <li>@await Component.InvokeAsync("VereficaCheck", new { idPerfil=@ViewBag.IdPerfil, idMenuAcao= @fffffff.IdMenuAcao}) @fffffff.Descricao</li>
+                <li>@await Component.InvokeAsync("VereficaCheck", new { idPerfil=@ViewBag.IdPerfil, idMenuAcao= @ListaMenuAcaoViewModelV1HelperItem.IdMenuAcao}) @ListaMenuAcaoViewModelV1HelperItem.Descricao</li>
               
             }
           </ul>

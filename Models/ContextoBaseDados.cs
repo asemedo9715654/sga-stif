@@ -26,6 +26,7 @@ namespace sga_stif.Models
     public DbSet<EstadoSocio> EstadoSocio { get; set; }
     public DbSet<PerfilMenuAcao> PerfilMenuAcao { get; set; }
     public DbSet<TipologiaSocio> TipologiaSocio { get; set; }
+    public DbSet<LogAtividade> LogAtividade { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -286,16 +287,19 @@ namespace sga_stif.Models
         new Menu { IdMenu = 4, Nome = "Menu", Descricao = "Gestão dos utilizadores", IdMenuPai = 1, NomeDaAction = "ListaMenu", NomeDoController = "MenuAcao", Icone = "k" },
 
         new Menu { IdMenu = 5, Nome = "Gestao de Socios", Descricao = "Gestao de Socios", IdMenuPai = null, NomeDaAction = "ListaSocio", NomeDoController = "Socio", Icone = "" },
+        
         new Menu { IdMenu = 6, Nome = "Parametrização", Descricao = "Estatística", IdMenuPai = null, NomeDaAction = "Inicio", NomeDoController = "Estatistica", Icone = "" },
         new Menu { IdMenu = 7, Nome = "Instituição Financeira", Descricao = "Instituição Financeira", IdMenuPai = 6, NomeDaAction = "ListaInstituicaoFinanceira", NomeDoController = "InstituicaoFinanceira", Icone = "" },
         new Menu { IdMenu = 8, Nome = "Agência", Descricao = "Agência", IdMenuPai = 6, NomeDaAction = "ListaAgencia", NomeDoController = "Agencia", Icone = "" },
         new Menu { IdMenu = 9, Nome = "Tipo Quotas", Descricao = "Tipo Quotas", IdMenuPai = 6, NomeDaAction = "ListaTipoQuota", NomeDoController = "TipoQuota", Icone = "" },
         new Menu { IdMenu = 10, Nome = "Tipologia Sócio", Descricao = "Estatística", IdMenuPai = 6, NomeDaAction = "ListaTipologiaSocio", NomeDoController = "TipologiaSocio", Icone = "" },
+        
+        new Menu { IdMenu = 11, Nome = "Monitor", Descricao = "Monitor", IdMenuPai = null, NomeDaAction = "ListaQuotasVencidas", NomeDoController = "Monitor", Icone = "" },
 
 
-        new Menu { IdMenu = 11, Nome = "Estatística", Descricao = "Estatística", IdMenuPai = null, NomeDaAction = "Inicio", NomeDoController = "Estatistica", Icone = "" },
-        new Menu { IdMenu = 12, Nome = "Sga-Stif", Descricao = "Sga-Stif", IdMenuPai = null, NomeDaAction = "Inicio", NomeDoController = "Estatistica", Icone = "" },
-        new Menu { IdMenu = 13, Nome = "Sobre", Descricao = "Sobre", IdMenuPai = 12, NomeDaAction = "Inicio", NomeDoController = "Estatistica", Icone = "" }
+        new Menu { IdMenu = 12, Nome = "Estatística", Descricao = "Estatística", IdMenuPai = null, NomeDaAction = "Inicio", NomeDoController = "Estatistica", Icone = "" },
+        new Menu { IdMenu = 13, Nome = "Sga-Stif", Descricao = "Sga-Stif", IdMenuPai = null, NomeDaAction = "Inicio", NomeDoController = "Estatistica", Icone = "" },
+        new Menu { IdMenu = 14, Nome = "Sobre", Descricao = "Sobre", IdMenuPai = 13, NomeDaAction = "Inicio", NomeDoController = "Estatistica", Icone = "" }
 
 
       );
@@ -314,10 +318,8 @@ namespace sga_stif.Models
           .Build();
 
       var connectionString = configuration.GetConnectionString("sgastif");
-      optionsBuilder.UseSqlServer(connectionString);
-
-      //optionsBuilder.UseSqlServer(configuration.GetConnectionString("WebApiDatabase"));
-      //optionsBuilder.UseSqlite("Filename=sga-stif.db");
+      //optionsBuilder.UseSqlServer(connectionString);
+      optionsBuilder.UseSqlite("Filename=sga-stif.db");
     }
 
   }
