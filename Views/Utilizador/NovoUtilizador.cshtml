@@ -80,7 +80,9 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label asp-for="IdPerfil" class="control-label"></label>
-                        <select asp-for="IdPerfil" asp-items="@ViewBag.IdPerfil" class="form-control"></select>
+                        <select asp-for="IdPerfil" asp-items="@ViewBag.IdPerfil" class="form-control">
+                              <option disabled selected>--- seleccione ---</option>
+                        </select>
                         <span asp-validation-for="IdPerfil" class="text-danger"></span>
                     </div>
                 </div>

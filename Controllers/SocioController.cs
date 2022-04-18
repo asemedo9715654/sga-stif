@@ -76,7 +76,7 @@ namespace sga_stif.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult NovoSocio([Bind("Nome,NumeroDeTelefone,DataDeNascimento,Sexo,Apelido,CinBi,Foto,NumeroPassaporte,IdTipologiaSocio ,IdTipoQuota,IdAgencia,Nif ")] NovoSocioViewModel novoSocioViewModel, IFormFile Image)
+        public async Task<IActionResult> NovoSocio([Bind("Nome,NumeroDeTelemovel,NumeroDeTelefone,DataDeNascimento,Sexo,Apelido,CinBi,Foto,NumeroPassaporte,IdTipologiaSocio ,IdTipoQuota,IdAgencia,Nif ")] NovoSocioViewModel novoSocioViewModel, IFormFile Image)
         {
             try
             {
@@ -111,12 +111,9 @@ namespace sga_stif.Controllers
                     socio.GerarNumeroSocio();
 
                     _context.Socio.Add(socio);
-                    _context.SaveChanges();
+                    await _context.SaveChangesAsync();
                     return RedirectToAction("ListaSocio");
                 }
-
-                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
-                var ee = 2;
 
             }
             catch (DbUpdateException ex)
@@ -180,7 +177,7 @@ namespace sga_stif.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult EditaSocio([Bind("IdSocio,Nome,NumeroDeTelefone,DataDeNascimento,Sexo,Apelido,CinBi,Foto,NumeroPassaporte,IdTipologiaSocio ,IdTipoQuota,IdAgencia,Nif ")] EditaSocioViewModel editaSocioViewModel, IFormFile Image)
+        public async Task<IActionResult> EditaSocio([Bind("IdSocio,Nome,NumeroDeTelemovel,NumeroDeTelefone,DataDeNascimento,Sexo,Apelido,CinBi,ValidadeCinBi,Foto,NumeroPassaporte,ValidadePassaporte,IdTipologiaSocio ,IdTipoQuota,IdAgencia,Nif ")] EditaSocioViewModel editaSocioViewModel, IFormFile Image)
         {
             try
             {
@@ -214,12 +211,9 @@ namespace sga_stif.Controllers
                     socio.DataAtualizacao = DateTime.Now;
 
                     _context.Update(socio);
-                    _context.SaveChanges();
+                   await _context.SaveChangesAsync();
                     return RedirectToAction("ListaSocio");
                 }
-
-                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
-                var ee = 2;
 
             }
             catch (DbUpdateException ex)
@@ -305,9 +299,9 @@ namespace sga_stif.Controllers
 
             var perfilMenuAcao = _context.Agencia.Where(a => a.IdInstituicaoFinanceira == idInstituicaoFinanceira).ToList();
 
-            var res = from g in perfilMenuAcao select new { g.IdAgencia, g.Nome };
+            var dadosAgencia = from g in perfilMenuAcao select new { g.IdAgencia, g.Nome };
 
-            return Json(res);
+            return Json(dadosAgencia);
 
         }
 

@@ -12,7 +12,16 @@ namespace sga_stif.Models
         public int IdSocio { get; set; }
         [ForeignKey("Joia")]
         public int IdJoia { get; set; }
+        public EstadoJoiaSocio Estado { get; set; }
         public virtual Socio Socio { get; set; }
         public virtual Joia Joia { get; set; }
+    }
+
+
+
+    public enum EstadoJoiaSocio
+    {
+        NaoPago=0,
+        Pago=1
     }
 }
