@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using sga_stif.Models.ResultadoStoredProcedure;
 using System.Collections.Generic;
 
 namespace sga_stif.Models
@@ -29,6 +30,9 @@ namespace sga_stif.Models
         public DbSet<TipologiaSocio> TipologiaSocio { get; set; }
         public DbSet<LogAtividade> LogAtividade { get; set; }
 
+        //resultado storedd procedure
+        public DbSet<ListaQuotasVencidasResultado> ListaQuotasVencidasResultado { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -52,6 +56,11 @@ namespace sga_stif.Models
             modelBuilder.Entity<TipologiaSocio>().ToTable("TipologiaSocio");
 
 
+            //nao vai ser criado na base de dados
+
+            modelBuilder.Entity<ListaQuotasVencidasResultado>().HasNoKey();
+
+
             #region seed dados de inicializacao do sistema
 
 
@@ -68,11 +77,11 @@ namespace sga_stif.Models
 
 
             modelBuilder.Entity<TipoQuota>().HasData(
-            new TipoQuota { Priodicidade = 1, Descricao = "Quinzenal", Montante = 500, IdTipoQuota = 1, Tipo = TipoTipoQuota.Fixo },
-            new TipoQuota { Priodicidade = 2, Descricao = "Mensal", Montante = 1000, IdTipoQuota = 2, Tipo = TipoTipoQuota.Fixo },
-            new TipoQuota { Priodicidade = 3, Descricao = "Trimestral", Montante = 3000, IdTipoQuota = 3, Tipo = TipoTipoQuota.Fixo },
-            new TipoQuota { Priodicidade = 4, Descricao = "Semestral", Montante = 6000, IdTipoQuota = 4, Tipo = TipoTipoQuota.Fixo },
-            new TipoQuota { Priodicidade = 5, Descricao = "Anual", Montante = 12000, IdTipoQuota = 5, Tipo = TipoTipoQuota.Variavel }
+            new TipoQuota { Priodicidade = 0, Descricao = "Quinzenal", Montante = 0, IdTipoQuota = 1, Tipo = TipoTipoQuota.Fixo },
+            new TipoQuota { Priodicidade = 1, Descricao = "Mensal", Montante = 0, IdTipoQuota = 2, Tipo = TipoTipoQuota.Variavel },
+            new TipoQuota { Priodicidade = 3, Descricao = "Trimestral", Montante = 0, IdTipoQuota = 3, Tipo = TipoTipoQuota.Fixo },
+            new TipoQuota { Priodicidade = 6, Descricao = "Semestral", Montante = 0, IdTipoQuota = 4, Tipo = TipoTipoQuota.Fixo },
+            new TipoQuota { Priodicidade = 12, Descricao = "Anual", Montante = 0, IdTipoQuota = 5, Tipo = TipoTipoQuota.Fixo }
 
            );
 
@@ -285,51 +294,56 @@ namespace sga_stif.Models
            );
 
 
-
-
-
-
-
-
-
-
+            modelBuilder.Entity<Joia>().HasData(
+              new Joia {IdJoia=1, Montante=1000,DataInicio=DateTime.Now,DataFim=null,Descricao="Jóia STIF" }
+          
+           );
 
 
             var menus = new List<Menu>(){
-            new Menu { IdMenu = 1, Nome = "Administração", Descricao = "Administração do Sistema SGA-STIF", IdMenuPai = null, NomeDaAction = "", NomeDoController = "", Icone = "" },
-              new Menu { IdMenu = 2, Nome = "Utilizador", Descricao = "Gestão dos utilizadores", IdMenuPai = 1, NomeDaAction = "ListaUtilizador", NomeDoController = "Utilizador", Icone = "k" },
-              new Menu { IdMenu = 3, Nome = "Perfil", Descricao = "Gestão dos utilizadores", IdMenuPai = 1, NomeDaAction = "ListaPerfil", NomeDoController = "Perfil", Icone = "k" },
-              new Menu { IdMenu = 4, Nome = "Menu", Descricao = "Gestão dos utilizadores", IdMenuPai = 1, NomeDaAction = "ListaMenu", NomeDoController = "MenuAcao", Icone = "k" },
-
-              new Menu { IdMenu = 5, Nome = "Gestao de Socios", Descricao = "Gestao de Socios", IdMenuPai = null, NomeDaAction = "ListaSocio", NomeDoController = "Socio", Icone = "" },
-
-              new Menu { IdMenu = 6, Nome = "Parametrização", Descricao = "Estatística", IdMenuPai = null, NomeDaAction = "Inicio", NomeDoController = "Estatistica", Icone = "" },
-              new Menu { IdMenu = 7, Nome = "Instituição Financeira", Descricao = "Instituição Financeira", IdMenuPai = 6, NomeDaAction = "ListaInstituicaoFinanceira", NomeDoController = "InstituicaoFinanceira", Icone = "" },
-              new Menu { IdMenu = 8, Nome = "Agência", Descricao = "Agência", IdMenuPai = 6, NomeDaAction = "ListaAgencia", NomeDoController = "Agencia", Icone = "" },
-              new Menu { IdMenu = 9, Nome = "Tipo Quotas", Descricao = "Tipo Quotas", IdMenuPai = 6, NomeDaAction = "ListaTipoQuota", NomeDoController = "TipoQuota", Icone = "" },
-              new Menu { IdMenu = 10, Nome = "Tipologia Sócio", Descricao = "Estatística", IdMenuPai = 6, NomeDaAction = "ListaTipologiaSocio", NomeDoController = "TipologiaSocio", Icone = "" },
-
-              new Menu { IdMenu = 11, Nome = "Monitor", Descricao = "Monitor", IdMenuPai = null, NomeDaAction = "ListaQuotasVencidas", NomeDoController = "Monitor", Icone = "" },
 
 
-              new Menu { IdMenu = 12, Nome = "Estatística", Descricao = "Estatística", IdMenuPai = null, NomeDaAction = "Inicio", NomeDoController = "Estatistica", Icone = "" },
-              new Menu { IdMenu = 13, Nome = "Sga-Stif", Descricao = "Sga-Stif", IdMenuPai = null, NomeDaAction = "Inicio", NomeDoController = "Estatistica", Icone = "" },
-              new Menu { IdMenu = 14, Nome = "Sobre", Descricao = "Sobre", IdMenuPai = 13, NomeDaAction = "Inicio", NomeDoController = "Estatistica", Icone = "" }
+
+               new Menu { IdMenu = 1, Nome = "Gestão de Sócios", Descricao = "Gestão de Sócios", IdMenuPai = null, NomeDaAction = "", NomeDoController = "", Icone = "" },
+               new Menu { IdMenu = 2, Nome = "Lista  Sócios", Descricao = "Lista de Sócios", IdMenuPai = 1, NomeDaAction = "ListaSocio", NomeDoController = "Socio", Icone = "" },
+               new Menu { IdMenu = 3, Nome = "Ranquing Sócios", Descricao = "Ranquing de Sócios", IdMenuPai = 1, NomeDaAction = "", NomeDoController = "", Icone = "" },
+               new Menu { IdMenu = 4, Nome = "Quotas Por Pagar", Descricao = "Quotas Por Pagar", IdMenuPai = 1, NomeDaAction = "", NomeDoController = "", Icone = "k" },
+               new Menu { IdMenu = 5, Nome = "Quotas Paga", Descricao = "Quotas Paga", IdMenuPai = 1, NomeDaAction = "", NomeDoController = "", Icone = "k" },
+               new Menu { IdMenu = 6, Nome = "Quotas Vencidas", Descricao = "Quotas Vencidas", IdMenuPai = 1, NomeDaAction = "", NomeDoController = "", Icone = "k" },
+
+
+              new Menu { IdMenu = 7, Nome = "Contas Correntes", Descricao = "Contas Correntes", IdMenuPai = null, NomeDaAction = "", NomeDoController = "", Icone = "" },
+               new Menu { IdMenu = 8, Nome = "Quotas Pendentes", Descricao = "Quotas Pendentes", IdMenuPai = 7, NomeDaAction = "ListaQuotasPendente", NomeDoController = "ContaCorrentes", Icone = "k" },
+              new Menu { IdMenu = 9, Nome = "Quotas Por Pagar", Descricao = "Quotas Por Pagar", IdMenuPai = 7, NomeDaAction = "ListaQuotasPorPagar", NomeDoController = "ContaCorrentes", Icone = "k" },
+              new Menu { IdMenu = 10, Nome = "Quotas Paga", Descricao = "Quotas Paga", IdMenuPai = 7, NomeDaAction = "ListaQuotasPagas", NomeDoController = "ContaCorrentes", Icone = "k" },
+              new Menu { IdMenu = 11, Nome = "Quotas Vencidas", Descricao = "Quotas Vencidas", IdMenuPai = 7, NomeDaAction = "ListaQuotasVencidas", NomeDoController = "ContaCorrentes", Icone = "k" },
+              new Menu { IdMenu = 12, Nome = "Gestão de Jóias", Descricao = "Gestão de Jóias", IdMenuPai = 7, NomeDaAction = "", NomeDoController = "", Icone = "k" },
+
+             
+             
+
+              new Menu { IdMenu = 13, Nome = "Posição de IF", Descricao = "Posição de IF", IdMenuPai = null, NomeDaAction = "", NomeDoController = "", Icone = "k" },
+
+              new Menu { IdMenu = 14, Nome = "Projeção de Quotas", Descricao = "Projeção de Quotas", IdMenuPai = null, NomeDaAction = "", NomeDoController = "", Icone = "k" },
+
+              new Menu { IdMenu = 15, Nome = "Estatística", Descricao = "Estatística", IdMenuPai = null, NomeDaAction = "Inicio", NomeDoController = "Estatística", Icone = "" },
+             
+
+             
+
+              new Menu { IdMenu = 16, Nome = "Configurações", Descricao = "Configurações", IdMenuPai = null, NomeDaAction = "", NomeDoController = "", Icone = "" },
+              new Menu { IdMenu = 17, Nome = "Utilizadores", Descricao = "Instituição Financeira", IdMenuPai = 16, NomeDaAction = "ListaUtilizador", NomeDoController = "Utilizador", Icone = "" },
+              new Menu { IdMenu = 18, Nome = "Perfil", Descricao = "Instituição Financeira", IdMenuPai = 16, NomeDaAction = "ListaPerfil", NomeDoController = "Perfil", Icone = "" },
+              new Menu { IdMenu = 19, Nome = "Menu", Descricao = "Gestão de Menu", IdMenuPai = 16, NomeDaAction = "ListaMenu", NomeDoController = "MenuAcao", Icone = "" },
+              new Menu { IdMenu = 20, Nome = "Instituição Financeira", Descricao = "Instituição Financeira", IdMenuPai = 16, NomeDaAction = "ListaInstituicaoFinanceira", NomeDoController = "InstituicaoFinanceira", Icone = "" },
+              new Menu { IdMenu = 21, Nome = "Agência", Descricao = "Agência", IdMenuPai = 16, NomeDaAction = "ListaAgencia", NomeDoController = "Agencia", Icone = "" },
+              new Menu { IdMenu = 22, Nome = "Tipo Quotas", Descricao = "Tipo Quotas", IdMenuPai = 16, NomeDaAction = "ListaTipoQuota", NomeDoController = "TipoQuota", Icone = "" },
+              new Menu { IdMenu = 23, Nome = "Tipologia Sócio", Descricao = "Tipologia Sócio", IdMenuPai = 16, NomeDaAction = "ListaTipologiaSocio", NomeDoController = "TipologiaSocio", Icone = "" },
+
 
           };
 
             modelBuilder.Entity<Menu>().HasData(menus);
-
-
-
-          //   modelBuilder.Entity<MenuAcao>().HasData(
-          //    new MenuAcao { IdMenuAcao = 1, IdAcao = 1, IdMenu = 1, MenuAcaoMaster = true },
-          //    new MenuAcao { IdMenuAcao = 2, IdAcao = 1, IdMenu = 2, MenuAcaoMaster = true },
-          //    new MenuAcao { IdMenuAcao = 3, IdAcao = 1, IdMenu = 3, MenuAcaoMaster = true },
-          //    new MenuAcao { IdMenuAcao = 4, IdAcao = 1, IdMenu = 4, MenuAcaoMaster = true }
-
-
-          //  );
 
             var menuAcaos = new List<MenuAcao>();
 
@@ -376,8 +390,8 @@ namespace sga_stif.Models
                 .Build();
 
             var connectionString = configuration.GetConnectionString("sgastif-remote");
-            //optionsBuilder.UseSqlServer(connectionString);
-            optionsBuilder.UseSqlite("Filename=sga-stif.db");
+            optionsBuilder.UseSqlServer(connectionString);
+            //optionsBuilder.UseSqlite("Filename=sga-stif.db");
         }
 
     }

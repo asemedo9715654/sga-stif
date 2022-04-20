@@ -1,0 +1,158 @@
+@model IEnumerable<sga_stif.Models.ResultadoStoredProcedure.ListaQuotasVencidasResultado>
+
+@{
+  ViewData["Title"] = "Lista de Quotas Vencidas";
+}
+
+<div class="card">
+  <div class="card-header">
+
+    <div class="row no-print">
+
+      <div class="col-12">
+        <p class="lead">Lista de Quotas Pendentes</p>
+
+        <div class="row align-items-end">
+          <div class="col-md-3">
+            <div class="form-group align-items-end">
+              <label class="control-label">Mes</label>
+              <select class="form-control">
+                 <option disabled selected>--- todos ---</option>
+                <option value="1">Janeiro</option>
+                <option value="2">Fevereiro</option>
+                <option value="3">Março</option>
+                <option value="4">Abril</option>
+                <option value="5">Maio</option>
+                <option value="6">Junho</option>
+                <option value="7">Julho</option>
+                <option value="8">Agosto</option>
+                <option value="9">Setembro</option>
+                <option value="10">Outubro</option>
+                <option value="11">Novembro</option>
+                <option value="12">Dezemmbro</option>
+              </select>
+             
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group align-items-end">
+              <label class="control-label">Intituição Financeira</label>
+              <select  asp-items="@ViewBag.IdInstituicaoFinanceira" class="form-control" id="IdInstituicaoFinanceira">
+                <option disabled selected>--- todos ---</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group align-items-end">
+              <label class="control-label"></label>
+              <input type="submit" class="btn btn-primary" value="Filtrar" />
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  <div class="card-body">
+    <table id="example2" class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>
+            @Html.DisplayNameFor(model => model.Nome)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.IdSocio)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.IFS)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.AgenciaNome)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.ano)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.Mes)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.descricao)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.Montante)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.Estado)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.Estado)
+          </th>
+          <th>
+            Ação
+          </th>
+
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (var item in Model)
+        {
+          <tr>
+
+            <td>
+              @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.IdSocio)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.IFS)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.AgenciaNome)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.ano)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.Mes)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.descricao)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.Montante)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+              Ação
+            </td>
+
+          </tr>
+        }
+      </tbody>
+    </table>
+
+
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>

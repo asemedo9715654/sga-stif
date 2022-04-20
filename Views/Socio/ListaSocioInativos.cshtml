@@ -10,7 +10,7 @@
      <div class="row no-print">
 
       <div class="col-12">
-        <p class="lead">Lista de Socios Inativos</p>
+        <p class="lead">Lista de Sócios Inativos</p>
 
 
        
@@ -25,10 +25,7 @@
     <table id="example2" class="table table-bordered table-striped">
       <thead>
         <tr>
-
-          <th>
-            @Html.DisplayNameFor(model => model.Foto)
-          </th>
+             
           <th>
             @Html.DisplayNameFor(model => model.NumeroDeSocio)
           </th>
@@ -58,17 +55,6 @@
         {
           <tr>
 
-            <td>
-              @if (@item.Foto != null)
-              {
-                <img class="img-circle img-size-32 mr-2" src="data:image/jpeg;base64,@Convert.ToBase64String(item.Foto)" />
-
-              }
-              else
-              {
-                <img src="dist/img/default-150x150.png" alt="RSS" class="img-circle img-size-32 mr-2">
-              }
-            </td>
             <td>
               @Html.DisplayFor(modelItem => item.NumeroDeSocio)
             </td>

@@ -9,7 +9,7 @@ namespace sga_stif.Models
         public string Descricao { get; set; } 
         public decimal Montante { get; set; }
         public DateTime DataInicio { get; set; }
-        public DateTime DataFim { get; set; }
+        public DateTime? DataFim { get; set; }
         public virtual ICollection<JoiaSocio> JoiaSocio { get; set; }
 
         public Joia( )

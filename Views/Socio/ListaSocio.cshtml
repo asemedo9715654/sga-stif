@@ -26,9 +26,7 @@
       <thead>
         <tr>
 
-          <th>
-            @Html.DisplayNameFor(model => model.Foto)
-          </th>
+        
           <th>
             @Html.DisplayNameFor(model => model.NumeroDeSocio)
           </th>
@@ -37,6 +35,12 @@
           </th>
           <th>
             @Html.DisplayNameFor(model => model.Apelido)
+          </th>
+           <th>
+            @Html.DisplayNameFor(model => model.Sexo)
+          </th>
+           <th>
+            @Html.DisplayNameFor(model => model.EstadoCivil)
           </th>
           <th>
             @Html.DisplayNameFor(model => model.Nif)
@@ -58,17 +62,7 @@
         {
           <tr>
 
-            <td>
-              @if (@item.Foto != null)
-              {
-                <img class="img-circle img-size-32 mr-2" src="data:image/jpeg;base64,@Convert.ToBase64String(item.Foto)" />
-
-              }
-              else
-              {
-                <img src="dist/img/default-150x150.png" alt="RSS" class="img-circle img-size-32 mr-2">
-              }
-            </td>
+           
               <td>
               @Html.DisplayFor(modelItem => item.NumeroDeSocio)
             </td>
@@ -78,7 +72,12 @@
             <td>
               @Html.DisplayFor(modelItem => item.Apelido)
             </td>
-
+              <td>
+              @Html.DisplayFor(modelItem => item.Sexo)
+            </td>
+              <td>
+              @Html.DisplayFor(modelItem => item.EstadoCivil)
+            </td>
             <td>
               @Html.DisplayFor(modelItem => item.Nif)
             </td>
@@ -113,7 +112,7 @@
       dom: 'Bfrtip',
       buttons: [
         //'copy', 'csv', 'excel', 'pdf', 'print'
-        'copy', 'csv', 'excel', 'print'
+        'excel', 'pdf', 'print'
       ]
     });
   });

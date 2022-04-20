@@ -23,7 +23,7 @@ namespace sga_stif.Controllers
 
     public async Task<IActionResult> ListaPerfil()
     {
-      var perfil = await _context.Perfil.ToListAsync();
+      var perfil = await _context.Perfil.Include(g=>g.Utilizador).ToListAsync();
       var listaPerfilViewModels = _mapper.Map<List<ListaPerfilViewModel>>(perfil);
 
       return View(listaPerfilViewModels);

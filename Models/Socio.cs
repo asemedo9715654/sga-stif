@@ -31,6 +31,7 @@ namespace sga_stif.Models
         public DateTime? DataInicio { get; set; }
         public DateTime? DataAtivacao { get; set; } = DateTime.Now.Date;
         public string NumeroColaborador  { get; set; }
+        public EstadoDeSocio EstadoSocio  { get; set; }
 
         //propriedades de navegacao
         public virtual Agencia Agencia { get; set; }
@@ -62,6 +63,12 @@ namespace sga_stif.Models
     {
         Feminino,
         Masculino
+    }
+
+     public enum EstadoDeSocio
+    {
+        Ativo=1,
+        Inativo=0
     }
 
 

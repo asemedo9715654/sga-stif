@@ -19,5 +19,11 @@ namespace sga_stif.Models
             this.PerfilMenuAcao = new HashSet<PerfilMenuAcao>();
         }
 
+
+         public int TotalUtilizadores()
+        {
+            return Utilizador.Count();
+        }
+
     }
 }
