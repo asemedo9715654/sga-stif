@@ -31,6 +31,7 @@ namespace sga_stif.ViewModel.Socio
     public DateTime ValidadeCinBi { get; set; }
 
     [Display(Name = "Número de Passaporte")]
+    [Remote(action: "VereficaNumeroPassaporte", controller: "Socio")]
     public string NumeroPassaporte { get; set; }
 
     [DataType(DataType.Date)]
@@ -41,20 +42,20 @@ namespace sga_stif.ViewModel.Socio
     [DataType(DataType.Date)]
     [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
     [Display(Name = "Data de Nascimento")]
-    [Required(ErrorMessage = "A Data de Nascimento e necessario")]
+    [Required(ErrorMessage = "A Data de Nascimento é necessario")]
     public DateTime DataDeNascimento { get; set; }
 
-    [Required(ErrorMessage = "O Sexo e necessario")]
+    [Required(ErrorMessage = "O Sexo é necessário")]
     public Sexo Sexo { get; set; }
 
-    [Required(ErrorMessage = "O Estado Civil e necessario")]
+    [Required(ErrorMessage = "O Estado Civíl é necessario")]
     [Display(Name = "Estado Cívil")]
     public EstadoCivil EstadoCivil { get; set; }
 
     [Display(Name = "Número de Telefone")]
     public string? NumeroDeTelefone { get; set; }
     [Display(Name = "Número de Telemovel")]
-    [Required(ErrorMessage = "O Numero de Telefone e necessario")]
+    [Required(ErrorMessage = "O Número de Telefone é necessario")]
     public string? NumeroDeTelemovel { get; set; }
 
     [DataType(DataType.Date)]

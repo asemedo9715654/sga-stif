@@ -306,7 +306,7 @@ namespace sga_stif.Controllers
     }
 
 
-
+    //validacoes remoto
     [AcceptVerbs("GET", "POST")]
     public IActionResult VereficaCniBi(string cniBi)
     {
@@ -318,6 +318,20 @@ namespace sga_stif.Controllers
 
       return Json(true);
     }
+
+
+    [AcceptVerbs("GET", "POST")]
+    public IActionResult VereficaNumeroPassaporte(string numeroPassaporte)
+    {
+      var socio = _context.Socio.FirstOrDefault(k => k.NumeroPassaporte== numeroPassaporte);
+      if (socio != null)
+      {
+        return Json($"O Número de Passaporte {numeroPassaporte} já foi inserida no sistema");
+      }
+
+      return Json(true);
+    }
+
 
 
   }
