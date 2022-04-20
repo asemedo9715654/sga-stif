@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using sga_stif.ViewModel.Beneficiario;
 using sga_stif.Models;
+using sga_stif.Models.ResultadoStoredProcedure;
 
 namespace sga_stif.ViewModel.Socio
 {
@@ -45,6 +46,9 @@ namespace sga_stif.ViewModel.Socio
 
 
     public List<ListaBeneficiarioViewModel> ListaBeneficiarioViewModel { get; set; }
+    public List<ListaQuotasVencidasResultado> ListaQuotasVencidasResultado_Pagas { get; set; } = new List<ListaQuotasVencidasResultado>();
+    public List<ListaQuotasVencidasResultado> ListaQuotasVencidasResultado_Vencidas { get; set; } = new List<ListaQuotasVencidasResultado>();
+    public List<ListaQuotasVencidasResultado> ListaBeneficiarioViewModel_PorPagar { get; set; } = new List<ListaQuotasVencidasResultado>();
 
 
   }

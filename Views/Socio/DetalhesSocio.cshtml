@@ -26,14 +26,14 @@
             <b>Sexo :</b> @Model.Sexo<br>
             <b>Estádo Civil :</b> @Model.EstadoCivil<br>
             <b>Número de Identificação Fiscal :</b> @Model.Nif<br>
-             <b>Data Ativação :</b> @Model.DataAtivacao
+            <b>Data Ativação :</b> @Model.DataAtivacao
         </div>
         <!-- /.col -->
         <div class="col-sm-4 invoice-col">
             <b>Dados Instituição Financeira</b><br>
             <br>
             <b>Instituição :</b> @Model.NomeInstituicaoFinanceira<br>
-             <b>Agência :</b> @Model.NomeAgencia<br>
+            <b>Agência :</b> @Model.NomeAgencia<br>
             <b>Cidade :</b> @Model.NomeCidade<br>
             <b>Ilha :</b> @Model.NomeIlha
         </div>
@@ -51,112 +51,388 @@
     <br>
     <br>
 
-    <div class="row no-print">
 
-        <div class="col-12">
-            <p class="lead">Lista de beneficiarios</p>
-            <a asp-action="ListaSocio" rel="noopener" class="btn btn-default btn-sm"><i class="fas fa-arrow-left"></i> Voltar
-                Para Lista</a>
-            @* <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Submit
-                Payment
-                </button> *@
-            @* <button type="button" class="btn btn-success float-right" style="margin-right: 5px;">
-                <i class="fas fa-download"></i> Novo Beneficiario
-                </button> *@
 
-            <a asp-action="NovoBeneficiario" asp-controller="Beneficiario" asp-route-idSocio="@Model.IdSocio"
-                class="btn btn-success btn-sm float-right" style="margin-right: 5px;"> <i class="fas fa-plus"></i> Adicionar
-                Beneficiario</a>
-            <a asp-action="NovoBeneficiario" asp-controller="Beneficiario" asp-route-idSocio="@Model.IdSocio"
-                class="btn btn-warning btn-sm float-right" style="margin-right: 5px;"> <i class="fas fa-user-slash"></i>
-                Inativar</a>
 
+
+
+
+    <ul class="nav nav-tabs" id="custom-content-below-tab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="custom-content-below-home-tab" data-toggle="pill"
+                href="#custom-content-below-home" role="tab" aria-controls="custom-content-below-home"
+                aria-selected="true">Beneficiario</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="custom-content-below-profile-tab" data-toggle="pill"
+                href="#custom-content-below-profile" role="tab" aria-controls="custom-content-below-profile"
+                aria-selected="false">Quotas Paga</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="custom-content-below-messages-tab" data-toggle="pill"
+                href="#custom-content-below-messages" role="tab" aria-controls="custom-content-below-messages"
+                aria-selected="false">Quotas Por Pagar</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="custom-content-below-settings-tab" data-toggle="pill"
+                href="#custom-content-below-settings" role="tab" aria-controls="custom-content-below-settings"
+                aria-selected="false">Quotas Vencidas</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="custom-content-below-tabContent">
+        <div class="tab-pane fade show active" id="custom-content-below-home" role="tabpanel"
+            aria-labelledby="custom-content-below-home-tab">
+            <div class="row no-print">
+
+                <div class="col-12">
+                    <p class="lead">Lista de beneficiarios</p>
+                    <a asp-action="ListaSocio" rel="noopener" class="btn btn-default btn-sm"><i
+                            class="fas fa-arrow-left"></i> Voltar
+                        Para Lista</a>
+                    @* <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i>
+                        Submit
+                        Payment
+                        </button> *@
+                    @* <button type="button" class="btn btn-success float-right" style="margin-right: 5px;">
+                        <i class="fas fa-download"></i> Novo Beneficiario
+                        </button> *@
+
+                    <a asp-action="NovoBeneficiario" asp-controller="Beneficiario" asp-route-idSocio="@Model.IdSocio"
+                        class="btn btn-success btn-sm float-right" style="margin-right: 5px;"> <i
+                            class="fas fa-plus"></i> Adicionar
+                        Beneficiario</a>
+                    <a asp-action="NovoBeneficiario" asp-controller="Beneficiario" asp-route-idSocio="@Model.IdSocio"
+                        class="btn btn-warning btn-sm float-right" style="margin-right: 5px;"> <i
+                            class="fas fa-user-slash"></i>
+                        Inativar</a>
+
+                </div>
+            </div>
+            <br>
+            <!-- Table row -->
+            <div class="row">
+
+                <div class="col-12 table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ListaBeneficiarioViewModel[0].Nome)
+
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ListaBeneficiarioViewModel[0].Apelido)
+
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ListaBeneficiarioViewModel[0].DataDeNascimento)
+
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ListaBeneficiarioViewModel[0].GrauDeParentesco)
+
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ListaBeneficiarioViewModel[0].CinBi)
+
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ListaBeneficiarioViewModel[0].Nif)
+
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ListaBeneficiarioViewModel[0].NumeroPassaporte)
+
+                                </th>
+
+                                <th>
+                                    Ação
+                                </th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.ListaBeneficiarioViewModel)
+                            {
+                                <tr>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Nome)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Apelido)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DataDeNascimento)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.GrauDeParentesco)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CinBi)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Nif)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NumeroPassaporte)
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-success btn-xs" asp-action="EditaBeneficiario"
+                                        asp-controller="Beneficiario" asp-route-idSocio="@item.IdSocio"
+                                        asp-route-idBeneficiario="@item.IdBeneficiario"><i class="fas fa-pen"></i>
+                                            Editar</a>
+                                        @* <a class="btn btn-default btn-xs"> <i class="fas fa-info"></i> Detalhes</a> *@
+                                        <a class="btn btn-danger btn-xs"> <i class="fas fa-user-slash"></i> Retirar</a>
+                                    </td>
+
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.col -->
+            </div>
         </div>
-    </div>
-    <br>
-    <!-- Table row -->
-    <div class="row">
-        @* <p class="lead">Lista de beneficiarios</p> *@
-        <div class="col-12 table-responsive">
-            <table class="table table-striped">
+        <div class="tab-pane fade" id="custom-content-below-profile" role="tabpanel"
+            aria-labelledby="custom-content-below-profile-tab">
+            <br>
+            <table id="example2" class="table table-bordered table-striped">
                 <thead>
                     <tr>
+                       
                         <th>
-                            @Html.DisplayNameFor(model => model.ListaBeneficiarioViewModel[0].Nome)
-                            
+                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].IFS)
                         </th>
                         <th>
-                             @Html.DisplayNameFor(model => model.ListaBeneficiarioViewModel[0].Apelido)
-                             
+                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].AgenciaNome)
                         </th>
                         <th>
-                             @Html.DisplayNameFor(model => model.ListaBeneficiarioViewModel[0].DataDeNascimento)
-                            
+                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].ano)
                         </th>
                         <th>
-                              @Html.DisplayNameFor(model => model.ListaBeneficiarioViewModel[0].GrauDeParentesco)
-                             
+                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].Mes)
                         </th>
                         <th>
-                              @Html.DisplayNameFor(model => model.ListaBeneficiarioViewModel[0].CinBi)
-                             
+                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].descricao)
                         </th>
                         <th>
-                              @Html.DisplayNameFor(model => model.ListaBeneficiarioViewModel[0].Nif)
-                             
+                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].Montante)
                         </th>
                         <th>
-                              @Html.DisplayNameFor(model => model.ListaBeneficiarioViewModel[0].NumeroPassaporte)
-
+                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].Estado)
                         </th>
-
+                        <th>
+                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].Estado)
+                        </th>
                         <th>
                             Ação
                         </th>
 
-
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model.ListaBeneficiarioViewModel)
+                    @foreach (var item in Model.ListaBeneficiarioViewModel_PorPagar)
                     {
                         <tr>
 
+                          
                             <td>
-                                @Html.DisplayFor(modelItem => item.Nome)
+                                @Html.DisplayFor(modelItem => item.IFS)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Apelido)
+                                @Html.DisplayFor(modelItem => item.AgenciaNome)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.DataDeNascimento)
+                                @Html.DisplayFor(modelItem => item.ano)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.GrauDeParentesco)
+                                @Html.DisplayFor(modelItem => item.Mes)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.CinBi)
+                                @Html.DisplayFor(modelItem => item.descricao)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Nif)
+                                @Html.DisplayFor(modelItem => item.Montante)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.NumeroPassaporte)
+                                @Html.DisplayFor(modelItem => item.Estado)
                             </td>
                             <td>
-                                <a class="btn btn-success btn-xs" asp-action="EditaBeneficiario" asp-controller="Beneficiario" asp-route-idSocio="@item.IdSocio"  asp-route-idBeneficiario="@item.IdBeneficiario"><i class="fas fa-pen"></i> Editar</a>
-                                @* <a class="btn btn-default btn-xs"> <i class="fas fa-info"></i> Detalhes</a> *@
-                                <a class="btn btn-danger btn-xs"> <i class="fas fa-user-slash"></i> Retirar</a>
+                                @Html.DisplayFor(modelItem => item.Estado)
                             </td>
-
+                            <td>
+                                Ação
+                            </td>
 
                         </tr>
                     }
                 </tbody>
             </table>
         </div>
-        <!-- /.col -->
+        <div class="tab-pane fade" id="custom-content-below-messages" role="tabpanel"
+            aria-labelledby="custom-content-below-messages-tab">
+            <br>
+            <table id="example2" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                       
+                        <th>
+                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].IFS)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].AgenciaNome)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].ano)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].Mes)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].descricao)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].Montante)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].Estado)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].Estado)
+                        </th>
+                        <th>
+                            Ação
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ListaBeneficiarioViewModel_PorPagar)
+                    {
+                        <tr>
+
+                          
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IFS)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AgenciaNome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ano)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Mes)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.descricao)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Montante)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Estado)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Estado)
+                            </td>
+                            <td>
+                                Ação
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane fade" id="custom-content-below-settings" role="tabpanel"
+            aria-labelledby="custom-content-below-settings-tab">
+            <br>
+            <table id="example2" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                       
+                        <th>
+                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].IFS)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].AgenciaNome)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].ano)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].Mes)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].descricao)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].Montante)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].Estado)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].Estado)
+                        </th>
+                        <th>
+                            Ação
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ListaBeneficiarioViewModel_PorPagar)
+                    {
+                        <tr>
+
+                          
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IFS)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AgenciaNome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ano)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Mes)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.descricao)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Montante)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Estado)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Estado)
+                            </td>
+                            <td>
+                                Ação
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
+
+
+
+
+
+
+
+
     <!-- /.row -->
 
     <!-- /.row -->
@@ -198,7 +474,7 @@
             });
             doc.save('sample-file.pdf'); */
 
-            CreatePDFfromHTML() ;
+            CreatePDFfromHTML();
 
 
         });

@@ -42,7 +42,9 @@ namespace sga_stif.Mapeamento
 
 
             //perfil
-            CreateMap<Perfil, ListaPerfilViewModel>();
+            CreateMap<Perfil, ListaPerfilViewModel>()
+             .ForMember(dest => dest.TotalUtilizadores, opt => opt.MapFrom(src => src.TotalUtilizadores()));
+
             CreateMap<Perfil, EditaPerfilViewModel>();
             CreateMap<EditaPerfilViewModel, Perfil>();
             CreateMap<NovoPerfilViewModel, Perfil>();

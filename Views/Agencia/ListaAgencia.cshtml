@@ -1,7 +1,7 @@
 @model IEnumerable<sga_stif.ViewModel.Agencia.ListaAgenciaViewModel>
 
 @{
-    ViewData["Title"] = "Lista de Perfil";
+    ViewData["Title"] = "Lista de Agências";
 }
 
 <div class="card">
@@ -56,24 +56,17 @@
                             @Html.DisplayFor(modelItem => item.NomeCidade)
                         </td>
                            <td>
-                             <span class="badge badge-pill badge-info"> @Html.DisplayFor(modelItem =>
-                            item.TotalDeSocios)</span> Sócio(s)
+                             <span class="badge badge-pill badge-info"> @Html.DisplayFor(modelItem => item.TotalDeSocios)</span> Sócio(s)
                         </td>
                         <td>
-                            <a class="btn btn-success btn-xs" asp-action="EditaPerfil"
-                            asp-route-idPerfil="@item.IdInstituicaoFinanceira"><i class="fas fa-pen"></i> Editar</a>
-                            <a class="btn btn-warning btn-xs" asp-action="Delete"
-                            asp-route-id="@item.IdInstituicaoFinanceira">Inativar</a>
-                            <a class="btn btn-default btn-xs" asp-action="ListaUtilizadorPorPerfil"
-                            asp-route-idPerfil="@item.IdInstituicaoFinanceira" asp-route-nomePerfil="@item.Nome"> <i
-                                class="fas fa-file-magnifying-glass"></i> Ver Agências</a>
+                            <a class="btn btn-success btn-xs" asp-action="EditaPerfil" asp-route-idPerfil="@item.IdInstituicaoFinanceira"><i class="fas fa-pen"></i> Editar</a>
+                            <a class="btn btn-warning btn-xs" asp-action="Delete" asp-route-id="@item.IdInstituicaoFinanceira">Inativar</a>        
 
                         </td>
                     </tr>
                 }
             </tbody>
         </table>
-
 
     </div>
 </div>
@@ -85,7 +78,7 @@
       dom: 'Bfrtip',
       buttons: [
         //'copy', 'csv', 'excel', 'pdf', 'print'
-        'copy', 'csv', 'excel', 'print'
+       'excel', 'pdf', 'print'
       ]
     });
   });
