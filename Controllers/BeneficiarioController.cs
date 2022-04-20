@@ -29,7 +29,7 @@ namespace sga_stif.Controllers
         {
             NovoBeneficiarioViewModel novoBeneficiarioViewModel = new NovoBeneficiarioViewModel();
             novoBeneficiarioViewModel.IdSocio = idSocio;
-           
+
 
             return View(novoBeneficiarioViewModel);
         }
@@ -113,6 +113,20 @@ namespace sga_stif.Controllers
             _notyf.Error("Erro na atualização de beneficiario!");
 
             return View(editaBeneficiarioViewModel);
+        }
+
+
+        //validacoes   //validacoes remoto
+        [AcceptVerbs("GET", "POST")]
+        public IActionResult VereficaCniBi(string cniBi)
+        {
+            var socio = _context.Beneficiario.FirstOrDefault(k => k.CinBi == cniBi);
+            if (socio != null)
+            {
+                return Json($"O CNI/BI {cniBi} já foi inserida no sistema");
+            }
+
+            return Json(true);
         }
 
 
