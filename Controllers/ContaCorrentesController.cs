@@ -29,7 +29,7 @@ namespace sga_stif.Controllers
        var instituicaoFinanceiras = _context.InstituicaoFinanceira.ToList();
       var instituicaoFinanceirasItem = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome };
       ViewBag.IdInstituicaoFinanceira = instituicaoFinanceirasItem;
-      var d = _context.ListaQuotasVencidasResultado.FromSqlRaw("EXECUTE  [dbo].[ContaCorrenteIF] @ano = 2022, @mes=1, @status='QV'").ToList();
+      var d = _context.ContaCorrenteIFResultado.FromSqlRaw("EXECUTE  [dbo].[ContaCorrenteIF] @ano = 2022, @mes=1, @status='QV'").ToList();
 
       return View(d);
     }
@@ -41,7 +41,7 @@ namespace sga_stif.Controllers
       var instituicaoFinanceirasItem = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome };
       ViewBag.IdInstituicaoFinanceira = instituicaoFinanceirasItem;
 
-      var d = _context.ListaQuotasVencidasResultado.FromSqlRaw("EXECUTE  [dbo].[ContaCorrenteIF] @ano = 2022, @mes=1, @status='QN'").ToList();
+      var d = _context.ContaCorrenteIFResultado.FromSqlRaw("EXECUTE  [dbo].[ContaCorrenteIF] @ano = 2022, @mes=1, @status='QN'").ToList();
 
       return View(d);
     }
@@ -53,7 +53,7 @@ namespace sga_stif.Controllers
        var instituicaoFinanceiras = _context.InstituicaoFinanceira.ToList();
       var instituicaoFinanceirasItem = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome };
       ViewBag.IdInstituicaoFinanceira = instituicaoFinanceirasItem;
-      var d = _context.ListaQuotasVencidasResultado.FromSqlRaw("EXECUTE  [dbo].[ContaCorrenteIF] @ano = 2022, @mes=4, @status='QD'").ToList();
+      var d = _context.ContaCorrenteIFResultado.FromSqlRaw("EXECUTE  [dbo].[ContaCorrenteIF] @ano = 2022, @mes=4, @status='QD'").ToList();
 
       return View(d);
     }
@@ -66,7 +66,7 @@ namespace sga_stif.Controllers
        var instituicaoFinanceiras = _context.InstituicaoFinanceira.ToList();
       var instituicaoFinanceirasItem = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome };
       ViewBag.IdInstituicaoFinanceira = instituicaoFinanceirasItem;
-      var d = _context.ListaQuotasVencidasResultado.FromSqlRaw("EXECUTE  [dbo].[ContaCorrenteIF] @ano = 2022, @mes=4, @status='QP'").ToList();
+      var d = _context.ContaCorrenteIFResultado.FromSqlRaw("EXECUTE  [dbo].[ContaCorrenteIF] @ano = 2022, @mes=4, @status='QP'").ToList();
 
       return View(d);
     }

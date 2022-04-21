@@ -1,6 +1,7 @@
 using AspNetCoreHero.ToastNotification;
 using AspNetCoreHero.ToastNotification.Extensions;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using NLog;
 
 using NLog.Web;
@@ -31,9 +32,9 @@ builder.Services.AddControllersWithViews(config =>
     config.Filters.Add(typeof(LogFiltro));
 });
 
-//builder.Services.AddDbContext<ContextoBaseDados>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-builder.Services.AddEntityFrameworkSqlite().AddDbContext<ContextoBaseDados>();
-
+builder.Services.AddDbContext<ContextoBaseDados>();
+//builder.Services.AddEntityFrameworkSqlite().AddDbContext<ContextoBaseDados>();
+//builder.Services.AddEntityFrameworkSq().AddDbContext<ContextoBaseDados>();
 
 // Auto Mapper Configurations
 var mapperConfig = new MapperConfiguration(mc =>

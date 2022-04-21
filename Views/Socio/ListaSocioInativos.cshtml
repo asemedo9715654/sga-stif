@@ -11,10 +11,6 @@
 
       <div class="col-12">
         <p class="lead">Lista de Sócios Inativos</p>
-
-
-       
-        @* <a asp-action="NovoSocio" class="btn btn-success float-right" style="margin-right: 5px;">Novo</a> *@
         <a asp-action="ListaSocio" class="btn btn-primary btn-sm float-right" style="margin-right: 5px;">Ver Sócios Ativos</a>
       </div>
     </div>
@@ -77,10 +73,9 @@
              <td>
               @Html.DisplayFor(modelItem => item.DataDeNascimento)
             </td>
-            <td>
-             
-              <a class="btn btn-default" asp-action="DetalhesSocio" asp-route-idSocio="@item.IdSocio">Detalhes</a>
-              <a class="btn btn-primary" asp-action="EliminaSocio" asp-route-idSocio="@item.IdSocio">Reativar</a>
+            <td>  
+              <a class="btn btn-default" asp-action="DetalhesSocio" asp-route-idSocio="@item.IdSocio" title="Ver Detalhes Sócio e Adição de Beneficiário!">Detalhes</a>
+              <a class="btn btn-primary" asp-action="EliminaSocio" asp-route-idSocio="@item.IdSocio" title="Reativar este sócio!">Reativar</a>
             </td>
           </tr>
         }

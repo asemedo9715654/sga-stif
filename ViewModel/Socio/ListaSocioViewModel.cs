@@ -26,9 +26,11 @@ namespace sga_stif.ViewModel.Socio
         public string NumeroDeTelefone { get; set; }
 
         [Display(Name = "Estado Cívil")]
-         public EstadoCivil EstadoCivil { get; set; }
+        public EstadoCivil EstadoCivil { get; set; }
 
-          [Display(Name = "Total Beneficiario")]
-          public int TotalBeneficiario { get; set; }
+        [Display(Name = "Total Beneficiario")]
+        public int TotalBeneficiario { get; set; }
+
+        public int IdAgencia { get; set; }
     }
 }

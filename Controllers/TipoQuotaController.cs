@@ -3,6 +3,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using sga_stif.Models;
+using sga_stif.ViewModel.Socio;
 using sga_stif.ViewModel.TipoQuota;
 
 namespace sga_stif.Controllers
@@ -29,6 +30,22 @@ namespace sga_stif.Controllers
       var utilizadores = await _context.TipoQuota.ToListAsync();
       var listaUtilizadorViewModels = _mapper.Map<List<ListaTipoQuotaViewModel>>(utilizadores);
       return View(listaUtilizadorViewModels);
+    }
+
+
+    public async Task<IActionResult> ListaSocioPorTipoQuota(int idTipoQuota,string nome)
+    {
+      ViewBag.NomeTipoQuota = nome;
+      
+      var socios = await _context.Socio.Where(r => r.Eliminado != true).Include(c => c.Agencia)
+                                  .Include(c => c.TipologiaSocio)
+                                  .Include(c => c.TipoQuota)
+                                   .Include(c => c.Beneficiario)
+                                  .ToListAsync();
+
+      var sociocc = _mapper.Map<List<ListaSocioViewModel>>(socios);
+
+      return View(sociocc);
     }
 
   }

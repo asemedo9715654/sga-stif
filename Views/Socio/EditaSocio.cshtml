@@ -1,7 +1,7 @@
 @model sga_stif.ViewModel.Socio.EditaSocioViewModel
 
 @{
-  ViewData["Title"] = "Novo Sócio";
+  ViewData["Title"] = "Edita Sócio";
 }
 
 
@@ -119,7 +119,7 @@
 
           <div class="form-group" id="div-agencia">
             @* <label asp-for="IdAgencia" class="control-label"></label>
-            <select asp-for="IdAgencia" asp-items="@ViewBag.IdAgencia" class="form-control">
+              <select asp-for="IdAgencia" asp-items="@ViewBag.IdAgencia" class="form-control">
               <option disabled selected>--- seleccione ---</option>
               </select> *@
             <span asp-validation-for="IdAgencia" class="text-danger"></span>
@@ -148,6 +148,11 @@
             <label asp-for="DataDeNascimento" class="control-label"></label>
             <input asp-for="DataDeNascimento" class="form-control" />
             <span asp-validation-for="DataDeNascimento" class="text-danger"></span>
+          </div>
+          <div class="form-group">
+            <label asp-for="DataAtivacao" class="control-label"></label>
+            <input asp-for="DataAtivacao" class="form-control" />
+            <span asp-validation-for="DataAtivacao" class="text-danger"></span>
           </div>
 
         </div>
@@ -193,57 +198,53 @@
 <script>
   $(function () {
 
-    
-    
-    EnviarDadosInstituicaoFinanceira() ;
+
+
+    EnviarDadosInstituicaoFinanceira();
 
 
 
     $('#IdInstituicaoFinanceira').on('change', function () {
       //alert(this.value);
 
-     EnviarDadosInstituicaoFinanceira() ;
+      EnviarDadosInstituicaoFinanceira();
 
 
     });
 
 
 
-
-
-
-
   });
 
   function EnviarDadosInstituicaoFinanceira() {
-     $.ajax({
-        url: $("#RecuperaLinkPegarAgencia").val(),
-        data: { idInstituicaoFinanceira: this.value },
-        type: "get",
-        dataType: "json",
-        success: function (result) {
-          console.log(result)
+    $.ajax({
+      url: $("#RecuperaLinkPegarAgencia").val(),
+      data: { idInstituicaoFinanceira: this.value },
+      type: "get",
+      dataType: "json",
+      success: function (result) {
+        console.log(result)
 
-          var $label = $("<label>").text('Agencia :');
+        var $label = $("<label>").text('Agencia :');
 
-          var select = $("<select></select>").attr("id", "IdAgencia").attr("name", "IdAgencia");
+        var select = $("<select></select>").attr("id", "IdAgencia").attr("name", "IdAgencia");
 
-          select.addClass("form-control")
+        select.addClass("form-control")
 
-          select.append($("<option></option>").attr("value", result.idAgencia).text("--seleccione--").attr('disabled', 'disabled'));
+        select.append($("<option></option>").attr("value", result.idAgencia).text("--seleccione--").attr('disabled', 'disabled'));
 
-          $.each(result, function (index, result) {
-            select.append($("<option></option>").attr("value", result.idAgencia).text(result.nome));
-          });
+        $.each(result, function (index, result) {
+          select.append($("<option></option>").attr("value", result.idAgencia).text(result.nome));
+        });
 
-          $("#div-agencia").html($label);
+        $("#div-agencia").html($label);
 
-          $("#div-agencia").append(select);
+        $("#div-agencia").append(select);
 
 
 
-        }
-      });
+      }
+    });
 
   }
 

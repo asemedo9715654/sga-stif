@@ -150,9 +150,15 @@ namespace sga_stif.Controllers
 
 
     [HttpGet]
-    public IActionResult EditaSocio(int idSocio)
+    public IActionResult EditaSocio(int idSocio,int idAgencia)
     {
-      var angencia = _context.Agencia.Include(j => j.Cidade).ToList();
+
+
+
+      var agenciaAtul = _context.Agencia.Where(y=>y.IdAgencia == idAgencia).Include(j => j.InstituicaoFinanceira).FirstOrDefault();
+
+      var angencia = _context.Agencia.Where(j=>j.IdInstituicaoFinanceira == agenciaAtul.IdInstituicaoFinanceira).Include(j => j.Cidade).ToList();
+
       var tipologiaSocios = _context.TipologiaSocio.ToList();
       var tipoQuotas = _context.TipoQuota.ToList();
 
@@ -162,7 +168,7 @@ namespace sga_stif.Controllers
       var tipologiaSociosListItem = from g in tipologiaSocios select new SelectListItem { Value = g.IdTipologiaSocio.ToString(), Text = g.Descricao };
       var tipoQuotasListItem = from g in tipoQuotas select new SelectListItem { Value = g.IdTipoQuota.ToString(), Text = g.Descricao };
 
-      var instituicaoFinanceirasItem = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome };
+      var instituicaoFinanceirasItem = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome ,Selected=g.IdInstituicaoFinanceira== agenciaAtul.IdInstituicaoFinanceira?true:false };
 
       ViewBag.IdAgencia = angenciaListItem;
       ViewBag.IdTipologiaSocio = tipologiaSociosListItem;
@@ -179,7 +185,7 @@ namespace sga_stif.Controllers
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> EditaSocio([Bind("IdSocio,Nome,NumeroDeTelemovel,NumeroDeTelefone,DataDeNascimento,Sexo,Apelido,CinBi,ValidadeCinBi,Foto,NumeroPassaporte,ValidadePassaporte,IdTipologiaSocio ,IdTipoQuota,IdAgencia,Nif ")] EditaSocioViewModel editaSocioViewModel, IFormFile Image)
+    public async Task<IActionResult> EditaSocio([Bind("IdSocio,Nome,NumeroDeTelemovel,NumeroDeTelefone,DataDeNascimento,Sexo,Apelido,CinBi,ValidadeCinBi,Foto,NumeroPassaporte,ValidadePassaporte,IdTipologiaSocio ,IdTipoQuota,IdAgencia,Nif,DataAtivacao ")] EditaSocioViewModel editaSocioViewModel, IFormFile Image)
     {
       try
       {
@@ -189,9 +195,6 @@ namespace sga_stif.Controllers
           if (Image != null)
           {
             if (Image.Length > 0)
-
-            //Convert Image to byte and save to database
-
             {
 
               byte[] p1 = null;

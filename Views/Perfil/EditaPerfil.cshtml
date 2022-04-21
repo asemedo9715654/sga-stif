@@ -1,7 +1,7 @@
 @model sga_stif.ViewModel.Perfil.EditaPerfilViewModel
 
 @{
-    ViewData["Title"] = "Novo Perfil";
+    ViewData["Title"] = "Edita Perfil";
 }
 
 <hr />
@@ -32,16 +32,13 @@
                     <div class="form-group">
                         <label asp-for="Descricao" class="control-label"></label>
                         @* <input asp-for="Descricao" class="form-control" /> *@
-                          <textarea asp-for="Descricao" class="form-control"></textarea>
+                        <textarea asp-for="Descricao" class="form-control"></textarea>
                         <span asp-validation-for="Descricao" class="text-danger"></span>
                     </div>
 
                 </div>
 
             </div>
-
-
-
 
         </div>
 

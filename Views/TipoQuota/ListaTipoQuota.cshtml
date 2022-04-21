@@ -10,9 +10,7 @@
     <div class="row no-print">
 
       <div class="col-12">
-        <p class="lead">Lista de Tipo Quota</p>
-
-        @* <a asp-action="NovoPerfil" class="btn btn-success float-right" style="margin-right: 5px;">Novo</a> *@
+        <p class="lead">Lista de Tipo Quotas</p>   
 
       </div>
     </div>
@@ -31,6 +29,9 @@
           </th>
           <th>
             @Html.DisplayNameFor(model => model.Montante)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.TotalSocio)
           </th>
           <th>
             Ação
@@ -52,7 +53,10 @@
               @Html.DisplayFor(modelItem => item.Montante)
             </td>
             <td>
-              <a class="btn btn-success btn-xs" asp-action="Edit" asp-route-id="@item.IdTipoQuota"><i class="fa-solid fa-file-magnifying-glass"></i>Ver Socios</a>
+              <span class="badge badge-pill badge-info"> @Html.DisplayFor(modelItem => item.TotalSocio)</span> Sócio(s)
+            </td>
+            <td>
+              <a class="btn btn-success btn-xs" asp-action="ListaSocioPorTipoQuota" asp-route-idTipoQuota="@item.IdTipoQuota" asp-route-nome="@item.Descricao"><i class="fa-solid fa-file-magnifying-glass"></i>Ver Sócios</a>
               <a class="btn btn-warning btn-xs" asp-action="Details" asp-route-id="@item.IdTipoQuota">Inativar</a>
             </td>
           </tr>

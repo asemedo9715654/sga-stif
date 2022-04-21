@@ -38,7 +38,8 @@ namespace sga_stif.Mapeamento
             CreateMap<EditaBeneficiarioViewModel, Beneficiario>();
             CreateMap<Beneficiario, EditaBeneficiarioViewModel>();
 
-            CreateMap<TipoQuota, ListaTipoQuotaViewModel>();
+            CreateMap<TipoQuota, ListaTipoQuotaViewModel>()
+            .ForMember(dest => dest.TotalSocio, opt => opt.MapFrom(src => src.TotalSocio()));
 
 
             //perfil
