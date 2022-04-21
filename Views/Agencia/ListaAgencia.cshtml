@@ -11,10 +11,6 @@
 
             <div class="col-12">
                 <p class="lead">Lista de Agências</p>
-
-                @* <a asp-action="NovoPerfil" class="btn btn-success btn-sm float-right"
-                    style="margin-right: 5px;">Novo</a> *@
-
             </div>
         </div>
 
@@ -33,7 +29,7 @@
                     <th>
                         @Html.DisplayNameFor(model => model.NomeCidade)
                     </th>
-                     <th>
+                    <th>
                         @Html.DisplayNameFor(model => model.TotalDeSocios)
                     </th>
                     <th>
@@ -55,12 +51,15 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.NomeCidade)
                         </td>
-                           <td>
-                             <span class="badge badge-pill badge-info"> @Html.DisplayFor(modelItem => item.TotalDeSocios)</span> Sócio(s)
+                        <td>
+                            <span class="badge badge-pill badge-info"> @Html.DisplayFor(modelItem =>
+                            item.TotalDeSocios)</span> Sócio(s)
                         </td>
                         <td>
-                            <a class="btn btn-success btn-xs" asp-action="EditaPerfil" asp-route-idPerfil="@item.IdInstituicaoFinanceira"><i class="fas fa-pen"></i> Editar</a>
-                            <a class="btn btn-warning btn-xs" asp-action="Delete" asp-route-id="@item.IdInstituicaoFinanceira">Inativar</a>        
+                            <a class="btn btn-success btn-xs" asp-action="EditaPerfil"
+                            asp-route-idPerfil="@item.IdInstituicaoFinanceira"><i class="fas fa-pen"></i> Editar</a>
+                            <a class="btn btn-warning btn-xs" asp-action="Delete"
+                            asp-route-id="@item.IdInstituicaoFinanceira">Inativar</a>
 
                         </td>
                     </tr>
@@ -73,14 +72,14 @@
 
 <script>
 
-  $(document).ready(function () {
-    $('#example2').DataTable({
-      dom: 'Bfrtip',
-      buttons: [
-        //'copy', 'csv', 'excel', 'pdf', 'print'
-       'excel', 'pdf', 'print'
-      ]
+    $(document).ready(function () {
+        $('#example2').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                //'copy', 'csv', 'excel', 'pdf', 'print'
+                'excel', 'pdf', 'print'
+            ]
+        });
     });
-  });
 
 </script>

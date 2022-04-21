@@ -31,7 +31,7 @@ namespace sga_stif.Models
         public DbSet<LogAtividade> LogAtividade { get; set; }
 
         //resultado storedd procedure
-        public DbSet<ListaQuotasVencidasResultado> ListaQuotasVencidasResultado { get; set; }
+        public DbSet<ContaCorrenteIFResultado> ContaCorrenteIFResultado { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -58,7 +58,7 @@ namespace sga_stif.Models
 
             //nao vai ser criado na base de dados
 
-            modelBuilder.Entity<ListaQuotasVencidasResultado>().HasNoKey();
+            modelBuilder.Entity<ContaCorrenteIFResultado>().HasNoKey();
 
 
             #region seed dados de inicializacao do sistema
@@ -305,11 +305,11 @@ namespace sga_stif.Models
 
 
                new Menu { IdMenu = 1, Nome = "Gestão de Sócios", Descricao = "Gestão de Sócios", IdMenuPai = null, NomeDaAction = "", NomeDoController = "", Icone = "fas fa-user" },
-               new Menu { IdMenu = 2, Nome = "Lista  Sócios", Descricao = "Lista de Sócios", IdMenuPai = 1, NomeDaAction = "ListaSocio", NomeDoController = "Socio", Icone = "fas fa-user" },
-               new Menu { IdMenu = 3, Nome = "Ranquing Sócios", Descricao = "Ranquing de Sócios", IdMenuPai = 1, NomeDaAction = "", NomeDoController = "", Icone = "fas fa-user" },
-               new Menu { IdMenu = 4, Nome = "Quotas Por Pagar", Descricao = "Quotas Por Pagar", IdMenuPai = 1, NomeDaAction = "", NomeDoController = "", Icone = "fas fa-user" },
-               new Menu { IdMenu = 5, Nome = "Quotas Paga", Descricao = "Quotas Paga", IdMenuPai = 1, NomeDaAction = "", NomeDoController = "", Icone = "fas fa-user" },
-               new Menu { IdMenu = 6, Nome = "Quotas Vencidas", Descricao = "Quotas Vencidas", IdMenuPai = 1, NomeDaAction = "", NomeDoController = "", Icone = "fas fa-user" },
+               new Menu { IdMenu = 2, Nome = "Lista  Sócios", Descricao = "Lista de Sócios", IdMenuPai = 1, NomeDaAction = "ListaSocio", NomeDoController = "Socio", Icone = "far fa-circle" },
+               new Menu { IdMenu = 3, Nome = "Ranquing Sócios", Descricao = "Ranquing de Sócios", IdMenuPai = 1, NomeDaAction = "", NomeDoController = "", Icone = "far fa-circle" },
+               new Menu { IdMenu = 4, Nome = "Quotas Por Pagar", Descricao = "Quotas Por Pagar", IdMenuPai = 1, NomeDaAction = "", NomeDoController = "", Icone = "far fa-circle" },
+               new Menu { IdMenu = 5, Nome = "Quotas Paga", Descricao = "Quotas Paga", IdMenuPai = 1, NomeDaAction = "", NomeDoController = "", Icone = "far fa-circle" },
+               new Menu { IdMenu = 6, Nome = "Quotas Vencidas", Descricao = "Quotas Vencidas", IdMenuPai = 1, NomeDaAction = "", NomeDoController = "", Icone = "far fa-circle" },
 
 
               new Menu { IdMenu = 7, Nome = "Contas Correntes", Descricao = "Contas Correntes", IdMenuPai = null, NomeDaAction = "", NomeDoController = "", Icone = "fas fa-book" },
@@ -317,14 +317,14 @@ namespace sga_stif.Models
               new Menu { IdMenu = 9, Nome = "Quotas Por Pagar", Descricao = "Quotas Por Pagar", IdMenuPai = 7, NomeDaAction = "ListaQuotasPorPagar", NomeDoController = "ContaCorrentes", Icone = "far fa-circle" },
               new Menu { IdMenu = 10, Nome = "Quotas Paga", Descricao = "Quotas Paga", IdMenuPai = 7, NomeDaAction = "ListaQuotasPagas", NomeDoController = "ContaCorrentes", Icone = "far fa-circle" },
               new Menu { IdMenu = 11, Nome = "Quotas Vencidas", Descricao = "Quotas Vencidas", IdMenuPai = 7, NomeDaAction = "ListaQuotasVencidas", NomeDoController = "ContaCorrentes", Icone = "far fa-circle" },
-              new Menu { IdMenu = 12, Nome = "Gestão de Jóias", Descricao = "Gestão de Jóias", IdMenuPai = 7, NomeDaAction = "", NomeDoController = "", Icone = "k" },
+              new Menu { IdMenu = 12, Nome = "Gestão de Jóias", Descricao = "Gestão de Jóias", IdMenuPai = 7, NomeDaAction = "", NomeDoController = "", Icone = "far fa-circle" },
 
              
              
 
-              new Menu { IdMenu = 13, Nome = "Posição de IF", Descricao = "Posição de IF", IdMenuPai = null, NomeDaAction = "", NomeDoController = "", Icone = "k" },
+              new Menu { IdMenu = 13, Nome = "Posição de IF", Descricao = "Posição de IF", IdMenuPai = null, NomeDaAction = "", NomeDoController = "", Icone = "fas fa-search" },
 
-              new Menu { IdMenu = 14, Nome = "Projeção de Quotas", Descricao = "Projeção de Quotas", IdMenuPai = null, NomeDaAction = "", NomeDoController = "", Icone = "k" },
+              new Menu { IdMenu = 14, Nome = "Projeção de Quotas", Descricao = "Projeção de Quotas", IdMenuPai = null, NomeDaAction = "", NomeDoController = "", Icone = "fas fa-table" },
 
               new Menu { IdMenu = 15, Nome = "Estatística", Descricao = "Estatística", IdMenuPai = null, NomeDaAction = "Inicio", NomeDoController = "Estatística", Icone = "fas fa-chart-pie" },
              

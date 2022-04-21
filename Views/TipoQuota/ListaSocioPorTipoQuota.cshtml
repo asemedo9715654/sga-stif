@@ -1,7 +1,7 @@
 @model IEnumerable<sga_stif.ViewModel.Socio.ListaSocioViewModel>
 
 @{
-  ViewData["Title"] = "Lista de Sócios";
+  ViewData["Title"] = "Lista de Sócios Por tipo quotas";
 }
 
 <div class="card">
@@ -10,12 +10,7 @@
      <div class="row no-print">
 
       <div class="col-12">
-        <p class="lead">Lista de Sócios</p>
-
-
-       
-        <a asp-action="NovoSocio" class="btn btn-success btn-sm  float-right" style="margin-right: 5px;"><i class="fas fa-user-plus" title="Criar novo socio!"></i> Novo</a>
-        <a asp-action="ListaSocioInativos" class="btn btn-default btn-sm  float-right" style="margin-right: 5px;" title="Ver lista de todos os socios inativo no sistema!">Ver Sócios Inativos</a>
+        <p class="lead">Lista de Sócios de Quota : <b>@ViewBag.NomeTipoQuota</b></p>
       </div>
     </div>
 
@@ -94,14 +89,13 @@
                <span class="badge badge-pill badge-info"> @Html.DisplayFor(modelItem => item.TotalBeneficiario)</span> Beneficiário(s)
             </td>
             <td>
-              <a class="btn btn-success btn-xs " asp-action="EditaSocio" asp-route-idSocio="@item.IdSocio" asp-route-idAgencia="@item.IdAgencia" ><i class="fas fa-pen"></i> Editar</a>
-              <a class="btn btn-default btn-xs " asp-action="DetalhesSocio" asp-route-idSocio="@item.IdSocio" title="Ver Detalhes Sócio e Adição de Beneficiário!"><i class="fas fa-info"></i> Detalhes</a>
-              <a class="btn btn-warning btn-xs " asp-action="EliminaSocio" asp-route-idSocio="@item.IdSocio"><i class="fas fa-user-slash" title="Inativar Sócio"></i> Inativar</a>
+              <a class="btn btn-default btn-xs " asp-controller="Socio" asp-action="DetalhesSocio" asp-route-idSocio="@item.IdSocio" title="Ver Detalhes Sócio e Adição de Beneficiário!"><i class="fas fa-info"></i> Detalhes</a>   
             </td>
           </tr>
         }
       </tbody>
     </table>
+
 
   </div>
 </div>

@@ -41,6 +41,12 @@ namespace sga_stif.ViewModel.Socio
         [Display(Name = "Número de Telemovel")]
         public string? NumeroDeTelemovel { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Data de Ativação")]
+        [Required(ErrorMessage = "A Data de Ativação é necessário")]
+        public string? DataAtivacao { get; set; }
+
 
         // [Required(ErrorMessage = "Agência de Sócio é necessário")]
         public int IdInstituicaoFinanceira { get; set; }

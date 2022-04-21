@@ -46,9 +46,9 @@ namespace sga_stif.ViewModel.Socio
 
 
     public List<ListaBeneficiarioViewModel> ListaBeneficiarioViewModel { get; set; }
-    public List<ListaQuotasVencidasResultado> ListaQuotasVencidasResultado_Pagas { get; set; } = new List<ListaQuotasVencidasResultado>();
-    public List<ListaQuotasVencidasResultado> ListaQuotasVencidasResultado_Vencidas { get; set; } = new List<ListaQuotasVencidasResultado>();
-    public List<ListaQuotasVencidasResultado> ListaBeneficiarioViewModel_PorPagar { get; set; } = new List<ListaQuotasVencidasResultado>();
+    public List<ContaCorrenteIFResultado> ListaQuotasVencidasResultado_Pagas { get; set; } = new List<ContaCorrenteIFResultado>();
+    public List<ContaCorrenteIFResultado> ListaQuotasVencidasResultado_Vencidas { get; set; } = new List<ContaCorrenteIFResultado>();
+    public List<ContaCorrenteIFResultado> ListaBeneficiarioViewModel_PorPagar { get; set; } = new List<ContaCorrenteIFResultado>();
 
 
   }
