@@ -304,19 +304,19 @@ namespace sga_stif.Models
 
 
 
-               new Menu { IdMenu = 1, Nome = "Gestão de Sócios", Descricao = "Gestão de Sócios", IdMenuPai = null, NomeDaAction = "", NomeDoController = "", Icone = "" },
-               new Menu { IdMenu = 2, Nome = "Lista  Sócios", Descricao = "Lista de Sócios", IdMenuPai = 1, NomeDaAction = "ListaSocio", NomeDoController = "Socio", Icone = "" },
-               new Menu { IdMenu = 3, Nome = "Ranquing Sócios", Descricao = "Ranquing de Sócios", IdMenuPai = 1, NomeDaAction = "", NomeDoController = "", Icone = "" },
-               new Menu { IdMenu = 4, Nome = "Quotas Por Pagar", Descricao = "Quotas Por Pagar", IdMenuPai = 1, NomeDaAction = "", NomeDoController = "", Icone = "k" },
-               new Menu { IdMenu = 5, Nome = "Quotas Paga", Descricao = "Quotas Paga", IdMenuPai = 1, NomeDaAction = "", NomeDoController = "", Icone = "k" },
-               new Menu { IdMenu = 6, Nome = "Quotas Vencidas", Descricao = "Quotas Vencidas", IdMenuPai = 1, NomeDaAction = "", NomeDoController = "", Icone = "k" },
+               new Menu { IdMenu = 1, Nome = "Gestão de Sócios", Descricao = "Gestão de Sócios", IdMenuPai = null, NomeDaAction = "", NomeDoController = "", Icone = "fas fa-user" },
+               new Menu { IdMenu = 2, Nome = "Lista  Sócios", Descricao = "Lista de Sócios", IdMenuPai = 1, NomeDaAction = "ListaSocio", NomeDoController = "Socio", Icone = "fas fa-user" },
+               new Menu { IdMenu = 3, Nome = "Ranquing Sócios", Descricao = "Ranquing de Sócios", IdMenuPai = 1, NomeDaAction = "", NomeDoController = "", Icone = "fas fa-user" },
+               new Menu { IdMenu = 4, Nome = "Quotas Por Pagar", Descricao = "Quotas Por Pagar", IdMenuPai = 1, NomeDaAction = "", NomeDoController = "", Icone = "fas fa-user" },
+               new Menu { IdMenu = 5, Nome = "Quotas Paga", Descricao = "Quotas Paga", IdMenuPai = 1, NomeDaAction = "", NomeDoController = "", Icone = "fas fa-user" },
+               new Menu { IdMenu = 6, Nome = "Quotas Vencidas", Descricao = "Quotas Vencidas", IdMenuPai = 1, NomeDaAction = "", NomeDoController = "", Icone = "fas fa-user" },
 
 
-              new Menu { IdMenu = 7, Nome = "Contas Correntes", Descricao = "Contas Correntes", IdMenuPai = null, NomeDaAction = "", NomeDoController = "", Icone = "" },
-               new Menu { IdMenu = 8, Nome = "Quotas Pendentes", Descricao = "Quotas Pendentes", IdMenuPai = 7, NomeDaAction = "ListaQuotasPendente", NomeDoController = "ContaCorrentes", Icone = "k" },
-              new Menu { IdMenu = 9, Nome = "Quotas Por Pagar", Descricao = "Quotas Por Pagar", IdMenuPai = 7, NomeDaAction = "ListaQuotasPorPagar", NomeDoController = "ContaCorrentes", Icone = "k" },
-              new Menu { IdMenu = 10, Nome = "Quotas Paga", Descricao = "Quotas Paga", IdMenuPai = 7, NomeDaAction = "ListaQuotasPagas", NomeDoController = "ContaCorrentes", Icone = "k" },
-              new Menu { IdMenu = 11, Nome = "Quotas Vencidas", Descricao = "Quotas Vencidas", IdMenuPai = 7, NomeDaAction = "ListaQuotasVencidas", NomeDoController = "ContaCorrentes", Icone = "k" },
+              new Menu { IdMenu = 7, Nome = "Contas Correntes", Descricao = "Contas Correntes", IdMenuPai = null, NomeDaAction = "", NomeDoController = "", Icone = "fas fa-book" },
+               new Menu { IdMenu = 8, Nome = "Quotas Pendentes", Descricao = "Quotas Pendentes", IdMenuPai = 7, NomeDaAction = "ListaQuotasPendente", NomeDoController = "ContaCorrentes", Icone = "far fa-circle" },
+              new Menu { IdMenu = 9, Nome = "Quotas Por Pagar", Descricao = "Quotas Por Pagar", IdMenuPai = 7, NomeDaAction = "ListaQuotasPorPagar", NomeDoController = "ContaCorrentes", Icone = "far fa-circle" },
+              new Menu { IdMenu = 10, Nome = "Quotas Paga", Descricao = "Quotas Paga", IdMenuPai = 7, NomeDaAction = "ListaQuotasPagas", NomeDoController = "ContaCorrentes", Icone = "far fa-circle" },
+              new Menu { IdMenu = 11, Nome = "Quotas Vencidas", Descricao = "Quotas Vencidas", IdMenuPai = 7, NomeDaAction = "ListaQuotasVencidas", NomeDoController = "ContaCorrentes", Icone = "far fa-circle" },
               new Menu { IdMenu = 12, Nome = "Gestão de Jóias", Descricao = "Gestão de Jóias", IdMenuPai = 7, NomeDaAction = "", NomeDoController = "", Icone = "k" },
 
              
@@ -326,19 +326,19 @@ namespace sga_stif.Models
 
               new Menu { IdMenu = 14, Nome = "Projeção de Quotas", Descricao = "Projeção de Quotas", IdMenuPai = null, NomeDaAction = "", NomeDoController = "", Icone = "k" },
 
-              new Menu { IdMenu = 15, Nome = "Estatística", Descricao = "Estatística", IdMenuPai = null, NomeDaAction = "Inicio", NomeDoController = "Estatística", Icone = "" },
+              new Menu { IdMenu = 15, Nome = "Estatística", Descricao = "Estatística", IdMenuPai = null, NomeDaAction = "Inicio", NomeDoController = "Estatística", Icone = "fas fa-chart-pie" },
              
 
              
 
-              new Menu { IdMenu = 16, Nome = "Configurações", Descricao = "Configurações", IdMenuPai = null, NomeDaAction = "", NomeDoController = "", Icone = "" },
-              new Menu { IdMenu = 17, Nome = "Utilizadores", Descricao = "Instituição Financeira", IdMenuPai = 16, NomeDaAction = "ListaUtilizador", NomeDoController = "Utilizador", Icone = "" },
-              new Menu { IdMenu = 18, Nome = "Perfil", Descricao = "Instituição Financeira", IdMenuPai = 16, NomeDaAction = "ListaPerfil", NomeDoController = "Perfil", Icone = "" },
-              new Menu { IdMenu = 19, Nome = "Menu", Descricao = "Gestão de Menu", IdMenuPai = 16, NomeDaAction = "ListaMenu", NomeDoController = "MenuAcao", Icone = "" },
-              new Menu { IdMenu = 20, Nome = "Instituição Financeira", Descricao = "Instituição Financeira", IdMenuPai = 16, NomeDaAction = "ListaInstituicaoFinanceira", NomeDoController = "InstituicaoFinanceira", Icone = "" },
-              new Menu { IdMenu = 21, Nome = "Agência", Descricao = "Agência", IdMenuPai = 16, NomeDaAction = "ListaAgencia", NomeDoController = "Agencia", Icone = "" },
-              new Menu { IdMenu = 22, Nome = "Tipo Quotas", Descricao = "Tipo Quotas", IdMenuPai = 16, NomeDaAction = "ListaTipoQuota", NomeDoController = "TipoQuota", Icone = "" },
-              new Menu { IdMenu = 23, Nome = "Tipologia Sócio", Descricao = "Tipologia Sócio", IdMenuPai = 16, NomeDaAction = "ListaTipologiaSocio", NomeDoController = "TipologiaSocio", Icone = "" },
+              new Menu { IdMenu = 16, Nome = "Configurações", Descricao = "Configurações", IdMenuPai = null, NomeDaAction = "", NomeDoController = "", Icone = "far fa-edit" },
+              new Menu { IdMenu = 17, Nome = "Utilizadores", Descricao = "Instituição Financeira", IdMenuPai = 16, NomeDaAction = "ListaUtilizador", NomeDoController = "Utilizador", Icone = "far fa-circle" },
+              new Menu { IdMenu = 18, Nome = "Perfil", Descricao = "Instituição Financeira", IdMenuPai = 16, NomeDaAction = "ListaPerfil", NomeDoController = "Perfil", Icone = "far fa-circle" },
+              new Menu { IdMenu = 19, Nome = "Menu", Descricao = "Gestão de Menu", IdMenuPai = 16, NomeDaAction = "ListaMenu", NomeDoController = "MenuAcao", Icone = "far fa-circle" },
+              new Menu { IdMenu = 20, Nome = "Instituição Financeira", Descricao = "Instituição Financeira", IdMenuPai = 16, NomeDaAction = "ListaInstituicaoFinanceira", NomeDoController = "InstituicaoFinanceira", Icone = "far fa-circle" },
+              new Menu { IdMenu = 21, Nome = "Agência", Descricao = "Agência", IdMenuPai = 16, NomeDaAction = "ListaAgencia", NomeDoController = "Agencia", Icone = "far fa-circle" },
+              new Menu { IdMenu = 22, Nome = "Tipo Quotas", Descricao = "Tipo Quotas", IdMenuPai = 16, NomeDaAction = "ListaTipoQuota", NomeDoController = "TipoQuota", Icone = "far fa-circle" },
+              new Menu { IdMenu = 23, Nome = "Tipologia Sócio", Descricao = "Tipologia Sócio", IdMenuPai = 16, NomeDaAction = "ListaTipologiaSocio", NomeDoController = "TipologiaSocio", Icone = "far fa-circle" },
 
 
           };

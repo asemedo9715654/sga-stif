@@ -27,5 +27,8 @@ namespace sga_stif.ViewModel.Socio
 
         [Display(Name = "Estado Cívil")]
          public EstadoCivil EstadoCivil { get; set; }
+
+          [Display(Name = "Total Beneficiario")]
+          public int TotalBeneficiario { get; set; }
     }
 }

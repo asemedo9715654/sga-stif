@@ -82,7 +82,9 @@ namespace sga_stif.Mapeamento
 
             //socio
             CreateMap<Socio, NovoSocioViewModel>();
-            CreateMap<Socio, ListaSocioViewModel>();
+            CreateMap<Socio, ListaSocioViewModel>()
+             .ForMember(dest => dest.TotalBeneficiario, opt => opt.MapFrom(src => src.TotalBeneficiario()));
+            ;
             CreateMap<NovoSocioViewModel, Socio>();
             CreateMap<EditaSocioViewModel, Socio>();
             CreateMap<Socio,EditaSocioViewModel >();

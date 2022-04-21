@@ -118,12 +118,12 @@ namespace sga_stif.Controllers
 
         //validacoes   //validacoes remoto
         [AcceptVerbs("GET", "POST")]
-        public IActionResult VereficaCniBi(string cniBi)
+        public IActionResult VereficaCniBi(string CinBi)
         {
-            var socio = _context.Beneficiario.FirstOrDefault(k => k.CinBi == cniBi);
+            var socio = _context.Beneficiario.FirstOrDefault(k => k.CinBi == CinBi);
             if (socio != null)
             {
-                return Json($"O CNI/BI {cniBi} já foi inserida no sistema");
+                return Json($"O CNI/BI {CinBi} já foi inserida no sistema");
             }
 
             return Json(true);
