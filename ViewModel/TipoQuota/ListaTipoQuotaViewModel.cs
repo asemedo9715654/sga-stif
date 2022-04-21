@@ -15,6 +15,7 @@ namespace sga_stif.ViewModel.TipoQuota
     public decimal Montante { get; set; }
     [Display(Name ="Tipo De Quota")]
     public TipoTipoQuota Tipo { get; set; }
+     public int TotalSocio { get; set; }
 
   }
 }

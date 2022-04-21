@@ -48,6 +48,11 @@ namespace sga_stif.Models
             this.Beneficiario = new HashSet<Beneficiario>();
         }
 
+         public int TotalBeneficiario()
+        {
+            return Beneficiario.Count();
+        }
+
 
         public void GerarNumeroSocio()
         {

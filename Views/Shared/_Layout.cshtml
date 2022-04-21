@@ -47,18 +47,20 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
   <script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
 
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
 
 
 
 
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini sidebar-collapse layout-fixed">
   <div class="wrapper">
 
     <!-- Navbar -->
+
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
       <!-- Left navbar links -->
 
@@ -124,112 +126,15 @@
       </a>
 
       <!-- Sidebar -->
-      <div lass="sidebar">
-
+      <div class="sidebar">
 
         <!-- Sidebar Menu -->
-        <nav class="mt-2">
-          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+        @await Component.InvokeAsync("NavigationMenuSide")
 
-            <li class="nav-item">
-              <a asp-action="Index" asp-controller="Utilizador" class="nav-link">
-                <i class="nav-icon fas fa-user"></i>
-                <p>
-                  Utilizador
-                  <span class="right badge badge-danger">New</span>
-                </p>
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-copy"></i>
-                <p>
-                  Administração
-                  <i class="fas fa-angle-left right"></i>
-                  <span class="badge badge-info right">6</span>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a asp-action="ListaUtilizador" asp-controller="Utilizador" class="nav-link">
-                    <i class="far fa-user nav-icon"></i>
-                    <p>Utilizadores</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a asp-action="ListaMenu" asp-controller="MenuAcao" class="nav-link">
-                    <i class="fas fa-hands-holding-circle nav-icon"></i>
-                    <p>Gestão de Ações</p>
-                  </a>
-                </li>
-
-                <li class="nav-item">
-                  <a asp-action="Index" asp-controller="Perfil" class="nav-link">
-                    <i class="fas fa-user-id nav-icon"></i>
-                    <p>Gestão de Perfil</p>
-                  </a>
-                </li>
-
-              </ul>
-            </li>
-
-
-            <li class="nav-header">Gestão de Socios</li>
-            <li class="nav-item">
-              <a asp-action="ListaSocio" asp-controller="Socio" class="nav-link">
-                <i class="nav-icon fas fa-user"></i>
-                <p>
-                  Sócios
-                  <span class="badge badge-info right">2</span>
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="pages/gallery.html" class="nav-link">
-                <i class="nav-icon fas fa-image"></i>
-                <p>
-                  Estatistica
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="pages/kanban.html" class="nav-link">
-                <i class="nav-icon fas fa-columns"></i>
-                <p>
-                  Cotas Atrasadas
-                </p>
-              </a>
-            </li>
-
-
-
-            <li class="nav-header">OUTROS</li>
-            <li class="nav-item">
-              <a href="iframe.html" class="nav-link">
-                <i class="nav-icon fas fa-ellipsis-h"></i>
-                <p>Configurações</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="https://adminlte.io/docs/3.1/" class="nav-link">
-                <i class="nav-icon fas fa-file"></i>
-                <p>Sobre</p>
-              </a>
-            </li>
-
-
-          </ul>
-        </nav>
         <!-- /.sidebar-menu -->
       </div>
       <!-- /.sidebar -->
     </aside>
-
-
-
 
 
     <!-- Content Header (Page header) -->
@@ -237,7 +142,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
+            @* <h1 class="m-0">Dashboard</h1> *@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -280,7 +185,7 @@
 
 
   <!-- jQuery -->
-  @* <script src="~/plugins/jquery/jquery.min.js"></script> *@
+  <script src="~/plugins/jquery/jquery.min.js"></script>
   <!-- jQuery UI 1.11.4 -->
   <script src="~/plugins/jquery-ui/jquery-ui.min.js"></script>
   <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -294,8 +199,8 @@
   <!-- Sparkline -->
   <script src="~/plugins/sparklines/sparkline.js"></script>
   <!-- JQVMap -->
-  @* <script src="~/plugins/jqvmap/jquery.vmap.min.js"></script>
-    <script src="~/plugins/jqvmap/maps/jquery.vmap.usa.js"></script> *@
+  <script src="~/plugins/jqvmap/jquery.vmap.min.js"></script>
+  <script src="~/plugins/jqvmap/maps/jquery.vmap.usa.js"></script> 
   <!-- jQuery Knob Chart -->
   <script src="~/plugins/jquery-knob/jquery.knob.min.js"></script>
   <!-- daterangepicker -->
@@ -310,9 +215,9 @@
   <!-- AdminLTE App -->
   <script src="~/dist/js/adminlte.js"></script>
   <!-- AdminLTE for demo purposes -->
-  @* <script src="~/dist/js/demo.js"></script> *@
+  <script src="~/dist/js/demo.js"></script>
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-  @* <script src="~/dist/js/pages/dashboard.js"></script> *@
+  <script src="~/dist/js/pages/dashboard.js"></script>
 
 
 
@@ -329,10 +234,6 @@
   <script src="~/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
   <script src="~/plugins/datatables-buttons/js/buttons.print.min.js"></script>
   <script src="~/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-
- 
-
-
 
 
   @await Component.InvokeAsync("Notyf")

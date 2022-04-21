@@ -54,6 +54,10 @@
           <th>
             @Html.DisplayNameFor(model => model.DataDeNascimento)
           </th>
+          <th>
+            @Html.DisplayNameFor(model => model.TotalBeneficiario)
+          </th>
+         
           <th>Ação</th>
         </tr>
       </thead>
@@ -90,6 +94,9 @@
              <td>
               @Html.DisplayFor(modelItem => item.DataDeNascimento)
             </td>
+             <td>
+               <span class="badge badge-pill badge-info"> @Html.DisplayFor(modelItem => item.TotalBeneficiario)</span> Beneficiario(s)(s)
+            </td>
             <td>
               <a class="btn btn-success btn-xs " asp-action="EditaSocio" asp-route-idSocio="@item.IdSocio"><i class="fas fa-pen"></i> Editar</a>
               <a class="btn btn-default btn-xs " asp-action="DetalhesSocio" asp-route-idSocio="@item.IdSocio"><i class="fas fa-info"></i> Detalhes</a>
@@ -109,6 +116,11 @@
 
   $(document).ready(function () {
     $('#example2').DataTable({
+      paging: true,
+      lengthChange: true,
+      searching: true,
+      ordering: true,
+      responsive: true,
       dom: 'Bfrtip',
       buttons: [
         //'copy', 'csv', 'excel', 'pdf', 'print'
