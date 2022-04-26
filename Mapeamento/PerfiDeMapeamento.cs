@@ -59,9 +59,13 @@ namespace sga_stif.Mapeamento
             CreateMap<NovoInstituicaoFinanceiraViewModel, InstituicaoFinanceira>();
             CreateMap<EditaInstituicaoFinanceiraViewModel, InstituicaoFinanceira>();
             CreateMap<InstituicaoFinanceira, EditaInstituicaoFinanceiraViewModel>();
+            CreateMap<InstituicaoFinanceiraColaboradores, ListaInstituicaoFinanceiraColaboradoresViewModel>();
+            CreateMap<InstituicaoFinanceira, DetalhesInstituicaoFinanceiraViewModel>() 
+            .ForMember(dest => dest.ListaInstituicaoFinanceiraColaboradoresViewModel, opt => opt.MapFrom(src => src.InstituicaoFinanceiraColaboradores));
 
             //utilizador
-            CreateMap<EditaUtilizadorViewModel, Utilizador>();
+            CreateMap<NovoInstituicaoFinanceiraColaboradoresViewModel, InstituicaoFinanceiraColaboradores>();
+
             CreateMap<NovoUtilizadorViewModel, Utilizador>();
             CreateMap<Utilizador, EditaUtilizadorViewModel>();
             CreateMap<Utilizador, DetalhesUtilizadorViewModel>()
@@ -84,6 +88,7 @@ namespace sga_stif.Mapeamento
             //socio
             CreateMap<Socio, NovoSocioViewModel>();
             CreateMap<Socio, ListaSocioViewModel>()
+             .ForMember(dest => dest.NomeCompleto, opt => opt.MapFrom(src => src.NomeCompleto()))
              .ForMember(dest => dest.TotalBeneficiario, opt => opt.MapFrom(src => src.TotalBeneficiario()));
             ;
             CreateMap<NovoSocioViewModel, Socio>();
@@ -91,10 +96,11 @@ namespace sga_stif.Mapeamento
             CreateMap<Socio,EditaSocioViewModel >();
 
             CreateMap<Socio, DestalhesSocioViewModel>()
+            .ForMember(dest => dest.Foto, opt => opt.MapFrom(src => src.PegarLinkFotoGrande()))
             .ForMember(dest => dest.ListaBeneficiarioViewModel, opt => opt.MapFrom(src => src.Beneficiario))
             .ForMember(dest => dest.NomeAgencia, opt => opt.MapFrom(src => src.Agencia.Nome))
             .ForMember(dest => dest.NomeTipoQuota, opt => opt.MapFrom(src => src.TipoQuota.Descricao))
-            .ForMember(dest => dest.NomeTipologia, opt => opt.MapFrom(src => src.TipologiaSocio.Descricao + " ( " + src.TipologiaSocio.Montante + " )"))
+            .ForMember(dest => dest.NomeTipologia, opt => opt.MapFrom(src => src.TipologiaSocio.Descricao ))
             .ForMember(dest => dest.NomeIlha, opt => opt.MapFrom(src => src.Agencia.Cidade.Ilha.Nome))
             .ForMember(dest => dest.NomeCidade, opt => opt.MapFrom(src => src.Agencia.Cidade.Nome))
             .ForMember(dest => dest.NomeInstituicaoFinanceira, opt => opt.MapFrom(src => src.Agencia.InstituicaoFinanceira.Nome))

@@ -8,8 +8,8 @@ namespace sga_stif.ViewModel.Socio
         public int IdSocio { get; set; }
         [Display(Name = "Número De Sócio")]
         public string NumeroDeSocio { get; set; }
-        public string Nome { get; set; }
-        public string Apelido { get; set; }
+        [Display(Name = "Nome")]
+        public string NomeCompleto { get; set; }
         // [Display(Name = "Número de Identificação Fiscal")]
         [Display(Name = "NIF")]
         public string Nif { get; set; }

@@ -27,7 +27,7 @@
 
                 if (subMenus.Count > 0) //Level one item has children so append them
                 {
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown d-none d-sm-inline-block">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false"> @item.Nome</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown01">
@@ -40,7 +40,7 @@
                 }
                 else
                 {
-                    <li class="nav-item active">
+                    <li class="nav-item d-none d-sm-inline-block">
                         <a class="nav-link text" asp-controller="@item.NomeDoController" asp-action="@item.NomeDaAction">@item.Nome</a>
                     </li>
 

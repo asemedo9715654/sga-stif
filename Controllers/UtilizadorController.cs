@@ -220,6 +220,14 @@ namespace sga_stif.Controllers
         }
 
 
+
+        [HttpGet]
+        public IActionResult PerfilUtilizador()
+        {
+            return View();
+        }
+
+
         [HttpPost]
         public IActionResult ResetePalavraPasseUtilizador([Bind("IdUtilizador,PalavraPasse,ConfirmacaoPalavraPasse")] ResetePalavraPasseViewModel resetePalavraPasseViewModel)
         {

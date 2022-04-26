@@ -55,13 +55,9 @@
                             @Html.DisplayFor(modelItem => item.TotalDeSocios)
                         </td>
                         <td>
-                            <a class="btn btn-success btn-xs" asp-action="EditaPerfil"
-                            asp-route-idPerfil="@item.IdInstituicaoFinanceira"><i class="fas fa-pen"></i> Editar</a>
-                            <a class="btn btn-warning btn-xs" asp-action="Delete"
-                            asp-route-id="@item.IdInstituicaoFinanceira">Inativar</a>
-                            <a class="btn btn-default btn-xs" asp-action="ListaUtilizadorPorPerfil"
-                            asp-route-idPerfil="@item.IdInstituicaoFinanceira" asp-route-nomePerfil="@item.Nome"> <i
-                                class="fas fa-file-magnifying-glass"></i> Ver Agências</a>
+                            <a class="btn btn-success btn-xs" asp-action="EditaPerfil" asp-route-idPerfil="@item.IdInstituicaoFinanceira"><i class="fas fa-pen"></i> Editar</a>
+                            <a class="btn btn-warning btn-xs" asp-action="Delete" asp-route-id="@item.IdInstituicaoFinanceira">Inativar</a>
+                            @* <a class="btn btn-default btn-xs" asp-action="ListaUtilizadorPorPerfil" asp-route-idPerfil="@item.IdInstituicaoFinanceira" asp-route-nomePerfil="@item.Nome"> <i class="fas fa-file-magnifying-glass"></i> Ver Agências</a> *@
 
                         </td>
                     </tr>

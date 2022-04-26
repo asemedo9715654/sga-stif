@@ -24,28 +24,17 @@
             @Html.DisplayNameFor(model => model.NumeroDeSocio)
           </th>
           <th>
-            @Html.DisplayNameFor(model => model.Nome)
-          </th>
-          <th>
-            @Html.DisplayNameFor(model => model.Apelido)
+            @Html.DisplayNameFor(model => model.NomeCompleto)
           </th>
            <th>
             @Html.DisplayNameFor(model => model.Sexo)
           </th>
-           <th>
-            @Html.DisplayNameFor(model => model.EstadoCivil)
-          </th>
+        
           <th>
             @Html.DisplayNameFor(model => model.Nif)
           </th>
           <th>
             @Html.DisplayNameFor(model => model.CinBi)
-          </th>
-          <th>
-            @Html.DisplayNameFor(model => model.NumeroPassaporte)
-          </th>
-          <th>
-            @Html.DisplayNameFor(model => model.DataDeNascimento)
           </th>
           <th>
             @Html.DisplayNameFor(model => model.TotalBeneficiario)
@@ -62,29 +51,20 @@
               @Html.DisplayFor(modelItem => item.NumeroDeSocio)
             </td>
             <td>
-              @Html.DisplayFor(modelItem => item.Nome)
+              @Html.DisplayFor(modelItem => item.NomeCompleto)
             </td>
-            <td>
-              @Html.DisplayFor(modelItem => item.Apelido)
-            </td>
+         
               <td>
               @Html.DisplayFor(modelItem => item.Sexo)
             </td>
-              <td>
-              @Html.DisplayFor(modelItem => item.EstadoCivil)
-            </td>
+         
             <td>
               @Html.DisplayFor(modelItem => item.Nif)
             </td>
             <td>
               @Html.DisplayFor(modelItem => item.CinBi)
             </td>
-            <td>
-              @Html.DisplayFor(modelItem => item.NumeroPassaporte)
-            </td>
-             <td>
-              @Html.DisplayFor(modelItem => item.DataDeNascimento)
-            </td>
+    
              <td>
                <span class="badge badge-pill badge-info"> @Html.DisplayFor(modelItem => item.TotalBeneficiario)</span> Beneficiário(s)
             </td>

@@ -18,6 +18,7 @@ namespace sga_stif.ViewModel.Socio
 
     [Display(Name = "Número de Identificação Fiscal")]
     [Required(ErrorMessage = "O NIF é necessario")]
+    [StringLength(9, MinimumLength = 9)]
     public string Nif { get; set; }
     [Display(Name = "CIN/BI")]
     [Remote(action: "VereficaCniBi", controller: "Socio")]
@@ -57,6 +58,10 @@ namespace sga_stif.ViewModel.Socio
     [Display(Name = "Número de Telemovel")]
     [Required(ErrorMessage = "O Número de Telefone é necessario")]
     public string? NumeroDeTelemovel { get; set; }
+    
+    [EmailAddress]
+    [Remote(action: "VereficaEmail", controller: "Socio")]
+     public string Email { get; set; }
 
     [DataType(DataType.Date)]
     [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
