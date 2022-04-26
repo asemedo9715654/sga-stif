@@ -10,7 +10,7 @@ namespace sga_stif.ViewModel.Socio
     [Key]
     public int IdSocio { get; set; }
     [Display(Name = "Fotografia")]
-    public byte[]? Foto { get; set; }
+    public string Foto { get; set; }
     public string Nome { get; set; }
     public string Apelido { get; set; }
     [Display(Name = "Número de Identificação Fiscal")]
@@ -33,6 +33,9 @@ namespace sga_stif.ViewModel.Socio
     public EstadoCivil EstadoCivil { get; set; }
 
     public string NumeroDeTelefone { get; set; }
+     [Display(Name = "E-mail")]
+    public string Email { get; set; }
+
 
     [Display(Name = "Tipo de Quota")]
     public int IdTipoQuota { get; set; }
@@ -46,9 +49,10 @@ namespace sga_stif.ViewModel.Socio
 
 
     public List<ListaBeneficiarioViewModel> ListaBeneficiarioViewModel { get; set; }
-    public List<ContaCorrenteIFResultado> ListaQuotasVencidasResultado_Pagas { get; set; } = new List<ContaCorrenteIFResultado>();
-    public List<ContaCorrenteIFResultado> ListaQuotasVencidasResultado_Vencidas { get; set; } = new List<ContaCorrenteIFResultado>();
-    public List<ContaCorrenteIFResultado> ListaBeneficiarioViewModel_PorPagar { get; set; } = new List<ContaCorrenteIFResultado>();
+    public List<ContaCorrenteSocioResultado> ListaContaCorrenteSocioResultado_Pagas { get; set; } = new List<ContaCorrenteSocioResultado>();
+    public List<ContaCorrenteSocioResultado> ListaContaCorrenteSocioResultado_Vencidas { get; set; } = new List<ContaCorrenteSocioResultado>();
+    public List<ContaCorrenteSocioResultado> ListaContaCorrenteSocioResultado_PorPagar { get; set; } = new List<ContaCorrenteSocioResultado>();
+    public List<ContaCorrenteSocioResultado> ListaContaCorrenteSocioResultado_Historial { get; set; } = new List<ContaCorrenteSocioResultado>();
 
 
   }

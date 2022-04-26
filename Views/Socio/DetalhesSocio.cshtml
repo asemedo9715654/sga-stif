@@ -18,7 +18,14 @@
     <!-- info row -->
     <div class="row invoice-info">
 
-        <div class="col-sm-4 invoice-col">
+        <div class="col-sm-3 invoice-col text-center">
+
+            <img class="profile-user-img img-fluid img-circle" src="@Model.Foto" alt="User profile picture"
+                style="height: 200px;width:200px">
+
+        </div>
+
+        <div class="col-sm-3 invoice-col">
             <b>Dados Sócio</b><br>
             <br>
             <b>Nome :</b> @Model.Nome<br>
@@ -26,10 +33,11 @@
             <b>Sexo :</b> @Model.Sexo<br>
             <b>Estádo Civil :</b> @Model.EstadoCivil<br>
             <b>Número de Identificação Fiscal :</b> @Model.Nif<br>
-            <b>Data Ativação :</b> @Model.DataAtivacao
+            <b>Data Ativação :</b> <span class="badge badge-pill badge-info">@Html.DisplayFor(modelItem =>
+                @Model.DataAtivacao) </span>
         </div>
         <!-- /.col -->
-        <div class="col-sm-4 invoice-col">
+        <div class="col-sm-3 invoice-col">
             <b>Dados Instituição Financeira</b><br>
             <br>
             <b>Instituição :</b> @Model.NomeInstituicaoFinanceira<br>
@@ -38,11 +46,12 @@
             <b>Ilha :</b> @Model.NomeIlha
         </div>
         <!-- /.col -->
-        <div class="col-sm-4 invoice-col">
+        <div class="col-sm-3 invoice-col">
             <b>Outros</b><br>
             <br>
             <b>Tipo Quota :</b> @Model.NomeTipoQuota<br>
             <b>Tipologia Sócio :</b> @Model.NomeTipologia <br>
+            <b>E-mail:</b> @Html.DisplayFor(modelItem => @Model.Email)<br>
             <b>Telefone:</b> @Model.NumeroDeTelefone
         </div>
         <!-- /.col -->
@@ -50,11 +59,6 @@
     <!-- /.row -->
     <br>
     <br>
-
-
-
-
-
 
 
     <ul class="nav nav-tabs" id="custom-content-below-tab" role="tablist">
@@ -113,7 +117,7 @@
             <div class="row">
 
                 <div class="col-12 table-responsive">
-                    <table class="table table-striped">
+                    <table class="table table-striped tabelas_detalhes_socio">
                         <thead>
                             <tr>
                                 <th>
@@ -199,110 +203,94 @@
         <div class="tab-pane fade" id="custom-content-below-profile" role="tabpanel"
             aria-labelledby="custom-content-below-profile-tab">
             <br>
-            <table id="example2" class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                       
-                        <th>
-                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].IFS)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].AgenciaNome)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].ano)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].Mes)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].descricao)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].Montante)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].Estado)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].Estado)
-                        </th>
-                        <th>
-                            Ação
-                        </th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.ListaBeneficiarioViewModel_PorPagar)
-                    {
+            <div class="col-12 table-responsive">
+                <table id="TabelaPagas" class="table table-striped">
+                    <thead>
                         <tr>
 
-                          
-                            <td>
-                                @Html.DisplayFor(modelItem => item.IFS)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.AgenciaNome)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ano)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Mes)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.descricao)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Montante)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Estado)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Estado)
-                            </td>
-                            <td>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ListaContaCorrenteSocioResultado_Pagas[0].IFS)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model =>
+                                model.ListaContaCorrenteSocioResultado_Pagas[0].AgenciaNome)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ListaContaCorrenteSocioResultado_Pagas[0].Ano)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ListaContaCorrenteSocioResultado_Pagas[0].Mes)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.ListaContaCorrenteSocioResultado_Pagas[0].Montante)
+                            </th>
+
+                            <th>
                                 Ação
-                            </td>
+                            </th>
 
                         </tr>
-                    }
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ListaContaCorrenteSocioResultado_Pagas)
+                        {
+                            <tr>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IFS)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.AgenciaNome)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Ano)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Mes)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Montante)
+                                </td>
+
+                                <td>
+                                    Ação
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+
         </div>
         <div class="tab-pane fade" id="custom-content-below-messages" role="tabpanel"
             aria-labelledby="custom-content-below-messages-tab">
             <br>
-            <table id="example2" class="table table-bordered table-striped">
+            <table id="TabelaPorPagar" class="table table-striped">
                 <thead>
                     <tr>
-                       
+
                         <th>
-                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].IFS)
+                            @Html.DisplayNameFor(model => model.ListaContaCorrenteSocioResultado_PorPagar[0].IFS)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].AgenciaNome)
+                            @Html.DisplayNameFor(model =>
+                            model.ListaContaCorrenteSocioResultado_PorPagar[0].AgenciaNome)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].ano)
+                            @Html.DisplayNameFor(model => model.ListaContaCorrenteSocioResultado_PorPagar[0].Ano)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].Mes)
+                            @Html.DisplayNameFor(model => model.ListaContaCorrenteSocioResultado_PorPagar[0].Mes)
                         </th>
+
                         <th>
-                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].descricao)
+                            @Html.DisplayNameFor(model => model.ListaContaCorrenteSocioResultado_PorPagar[0].Montante)
                         </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].Montante)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].Estado)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].Estado)
-                        </th>
+
                         <th>
                             Ação
                         </th>
@@ -310,11 +298,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model.ListaBeneficiarioViewModel_PorPagar)
+                    @foreach (var item in Model.ListaContaCorrenteSocioResultado_PorPagar)
                     {
                         <tr>
 
-                          
+
                             <td>
                                 @Html.DisplayFor(modelItem => item.IFS)
                             </td>
@@ -322,23 +310,16 @@
                                 @Html.DisplayFor(modelItem => item.AgenciaNome)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.ano)
+                                @Html.DisplayFor(modelItem => item.Ano)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Mes)
                             </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.descricao)
-                            </td>
+
                             <td>
                                 @Html.DisplayFor(modelItem => item.Montante)
                             </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Estado)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Estado)
-                            </td>
+
                             <td>
                                 Ação
                             </td>
@@ -351,34 +332,28 @@
         <div class="tab-pane fade" id="custom-content-below-settings" role="tabpanel"
             aria-labelledby="custom-content-below-settings-tab">
             <br>
-            <table id="example2" class="table table-bordered table-striped">
+            <table id="TabelaVencida" class="table table-striped">
                 <thead>
                     <tr>
-                       
+
                         <th>
-                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].IFS)
+                            @Html.DisplayNameFor(model => model.ListaContaCorrenteSocioResultado_Vencidas[0].IFS)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].AgenciaNome)
+                            @Html.DisplayNameFor(model =>
+                            model.ListaContaCorrenteSocioResultado_Vencidas[0].AgenciaNome)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].ano)
+                            @Html.DisplayNameFor(model => model.ListaContaCorrenteSocioResultado_Vencidas[0].Ano)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].Mes)
+                            @Html.DisplayNameFor(model => model.ListaContaCorrenteSocioResultado_Vencidas[0].Mes)
                         </th>
+
                         <th>
-                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].descricao)
+                            @Html.DisplayNameFor(model => model.ListaContaCorrenteSocioResultado_Vencidas[0].Montante)
                         </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].Montante)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].Estado)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.ListaQuotasVencidasResultado_Pagas[0].Estado)
-                        </th>
+
                         <th>
                             Ação
                         </th>
@@ -386,11 +361,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model.ListaBeneficiarioViewModel_PorPagar)
+                    @foreach (var item in Model.ListaContaCorrenteSocioResultado_Vencidas)
                     {
                         <tr>
 
-                          
+
                             <td>
                                 @Html.DisplayFor(modelItem => item.IFS)
                             </td>
@@ -398,23 +373,16 @@
                                 @Html.DisplayFor(modelItem => item.AgenciaNome)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.ano)
+                                @Html.DisplayFor(modelItem => item.Ano)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Mes)
                             </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.descricao)
-                            </td>
+
                             <td>
                                 @Html.DisplayFor(modelItem => item.Montante)
                             </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Estado)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Estado)
-                            </td>
+
                             <td>
                                 Ação
                             </td>
@@ -425,12 +393,6 @@
             </table>
         </div>
     </div>
-
-
-
-
-
-
 
 
     <!-- /.row -->
@@ -458,6 +420,44 @@
 @* <script src="~/js/jspdf.umd.min.js"></script> *@
 
 <script>
+
+
+
+
+    $(document).ready(function () {
+        $('.tabelas_detalhes_socio').DataTable({
+            paging: true,
+            /* lengthChange: true,
+            searching: true, */
+            ordering: true,
+            responsive: true,
+
+        });
+
+        /* $('#TabelaPagas').DataTable({
+            paging: true,
+           
+            ordering: true,
+            responsive: true,
+
+        });
+        $('#TabelaPorPagar').DataTable({
+            paging: true,
+            
+            ordering: true,
+            responsive: true,
+
+        });
+        $('#TabelaVencida').DataTable({
+            paging: true,
+           
+            ordering: true,
+            responsive: true,
+
+        }); */
+    });
+
+
     $(function () {
 
         var doc = new jsPDF();

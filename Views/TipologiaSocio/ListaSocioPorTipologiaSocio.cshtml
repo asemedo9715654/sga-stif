@@ -1,23 +1,16 @@
 @model IEnumerable<sga_stif.ViewModel.Socio.ListaSocioViewModel>
 
 @{
-  ViewData["Title"] = "Lista de Sócios";
+  ViewData["Title"] = "Lista de Sócios Por tipo quotas";
 }
 
 <div class="card">
   <div class="card-header">
 
-    <div class="row no-print">
+     <div class="row no-print">
 
       <div class="col-12">
-        <p class="lead">Lista de Sócios</p>
-
-
-
-        <a asp-action="NovoSocio" class="btn btn-success btn-sm  float-right" style="margin-right: 5px;"><i
-            class="fas fa-user-plus" title="Criar novo socio!"></i> Novo</a>
-        <a asp-action="ListaSocioInativos" class="btn btn-default btn-sm  float-right" style="margin-right: 5px;"
-          title="Ver lista de todos os socios inativo no sistema!">Ver Sócios Inativos</a>
+        <p class="lead">Lista de Sócios de Tipologia de Sócio : <b>@ViewBag.NomeTipoQuota</b></p>
       </div>
     </div>
 
@@ -28,16 +21,16 @@
       <thead>
         <tr>
           <th>
-            #
-          </th>
-          <th>
             @Html.DisplayNameFor(model => model.NumeroDeSocio)
           </th>
           <th>
             @Html.DisplayNameFor(model => model.NomeCompleto)
           </th>
-          <th>
+           <th>
             @Html.DisplayNameFor(model => model.Sexo)
+          </th>
+           <th>
+            @Html.DisplayNameFor(model => model.EstadoCivil)
           </th>
           <th>
             @Html.DisplayNameFor(model => model.Nif)
@@ -48,7 +41,7 @@
           <th>
             @Html.DisplayNameFor(model => model.TotalBeneficiario)
           </th>
-
+         
           <th>Ação</th>
         </tr>
       </thead>
@@ -56,19 +49,17 @@
         @foreach (var item in Model)
         {
           <tr>
-            <td>
-              @Html.DisplayFor(modelItem => item.IdSocio)
-            </td>
-
-            <td>
+              <td>
               @Html.DisplayFor(modelItem => item.NumeroDeSocio)
             </td>
             <td>
               @Html.DisplayFor(modelItem => item.NomeCompleto)
             </td>
-
-            <td>
+              <td>
               @Html.DisplayFor(modelItem => item.Sexo)
+            </td>
+              <td>
+              @Html.DisplayFor(modelItem => item.EstadoCivil)
             </td>
             <td>
               @Html.DisplayFor(modelItem => item.Nif)
@@ -76,22 +67,17 @@
             <td>
               @Html.DisplayFor(modelItem => item.CinBi)
             </td>
-            <td>
-              <span class="badge badge-pill badge-info"> @Html.DisplayFor(modelItem => item.TotalBeneficiario)</span>
-              Beneficiário(s)
+             <td>
+               <span class="badge badge-pill badge-info"> @Html.DisplayFor(modelItem => item.TotalBeneficiario)</span> Beneficiário(s)
             </td>
             <td>
-              <a class="btn btn-success btn-xs " asp-action="EditaSocio" asp-route-idSocio="@item.IdSocio"
-              asp-route-idAgencia="@item.IdAgencia"><i class="fas fa-pen"></i> Editar</a>
-              <a class="btn btn-default btn-xs " asp-action="DetalhesSocio" asp-route-idSocio="@item.IdSocio"
-              title="Ver Detalhes Sócio e Adição de Beneficiário!"><i class="fas fa-info"></i> Detalhes</a>
-              <a class="btn btn-warning btn-xs " asp-action="EliminaSocio" asp-route-idSocio="@item.IdSocio"><i
-                class="fas fa-user-slash" title="Inativar Sócio"></i> Inativar</a>
+              <a class="btn btn-default btn-xs " asp-controller="Socio" asp-action="DetalhesSocio" asp-route-idSocio="@item.IdSocio" title="Ver Detalhes Sócio e Adição de Beneficiário!"><i class="fas fa-info"></i> Detalhes</a>   
             </td>
           </tr>
         }
       </tbody>
     </table>
+
 
   </div>
 </div>

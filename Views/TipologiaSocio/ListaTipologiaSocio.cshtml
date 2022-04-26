@@ -27,12 +27,6 @@
             @Html.DisplayNameFor(model => model.Descricao)
           </th>
           <th>
-            @Html.DisplayNameFor(model => model.Prioridicidade)
-          </th>
-          <th>
-            @Html.DisplayNameFor(model => model.Montante)
-          </th>
-          <th>
             @Html.DisplayNameFor(model => model.Tipo)
           </th>
            <th>
@@ -51,12 +45,7 @@
             <td>
               @Html.DisplayFor(modelItem => item.Descricao)
             </td>
-            <td>
-              @Html.DisplayFor(modelItem => item.Prioridicidade)
-            </td>
-            <td>
-              @Html.DisplayFor(modelItem => item.Montante)
-            </td>
+
             <td>
               @Html.DisplayFor(modelItem => item.Tipo)
             </td>
@@ -64,8 +53,7 @@
               <span class="badge badge-pill badge-info"> @Html.DisplayFor(modelItem => item.TotalDeSocios)</span> Sócio(s)
             </td>
             <td>
-              <a class="btn btn-success btn-xs" asp-action="Edit" asp-route-id="@item.IdTipologiaSocio"><i
-                class="fa-solid fa-file-magnifying-glass"></i>Ver Socios</a>
+              <a class="btn btn-success btn-xs" asp-action="ListaSocioPorTipologiaSocio" asp-route-idTipologiaSocio="@item.IdTipologiaSocio" asp-route-nome="@item.Descricao"><i class="fa-solid fa-file-magnifying-glass"></i>Ver Socios</a>
               <a class="btn btn-warning btn-xs" asp-action="Details" asp-route-id="@item.IdTipologiaSocio">Inativar</a>
             </td>
           </tr>

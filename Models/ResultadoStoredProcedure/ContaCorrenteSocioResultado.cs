@@ -3,7 +3,7 @@ using sga_stif.Models;
 
 namespace sga_stif.Models.ResultadoStoredProcedure
 {
-    public class ContaCorrenteIFResultado
+    public class ContaCorrenteSocioResultado
     {
         [Display(Name = "Nome")]
         public string Nome { get; set; }

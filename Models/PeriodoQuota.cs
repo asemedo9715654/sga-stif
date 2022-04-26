@@ -11,6 +11,7 @@ namespace sga_stif.Models
         public DateTime DataFim { get; set; }
         public int Mes { get; set; }
         public int Ano { get; set; }
+        public int TipoQuota { get; set; }
         public int CodigoPeriodo { get; set; }
         public EstadoQuota Estado { get; set; }
         public virtual ICollection<QuotaSocio> QuotaSocio { get; set; }

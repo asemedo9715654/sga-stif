@@ -8,9 +8,11 @@ namespace sga_stif.Models
         public int IdInstituicaoFinanceira { get; set; }
         public string Nome { get; set; }
         public virtual ICollection<Agencia> Agencia { get; set; }
+        public virtual ICollection<InstituicaoFinanceiraColaboradores> InstituicaoFinanceiraColaboradores { get; set; }
         public InstituicaoFinanceira()
         {
             this.Agencia = new HashSet<Agencia>();
+            this.InstituicaoFinanceiraColaboradores = new HashSet<InstituicaoFinanceiraColaboradores>();
         }
 
         public int TotalAgencias()
@@ -24,8 +26,6 @@ namespace sga_stif.Models
             {
                 somaSocios += item.TotalSocios();
             } 
-
-
             return somaSocios;
         }
     }

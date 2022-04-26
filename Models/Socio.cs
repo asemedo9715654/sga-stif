@@ -21,6 +21,7 @@ namespace sga_stif.Models
         public EstadoCivil EstadoCivil { get; set; }
         public string? NumeroDeTelefone { get; set; }
         public string? NumeroDeTelemovel { get; set; }
+         public string Email { get; set; }
 
         [ForeignKey("Agencia")]
         public int IdAgencia { get; set; }
@@ -53,12 +54,34 @@ namespace sga_stif.Models
             return Beneficiario.Count();
         }
 
+         public string NomeCompleto()
+        {
+            return this.Nome+" "+this.Apelido;
+        }
+
 
         public void GerarNumeroSocio()
         {
             Random random = new Random();
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"; 
             this.NumeroDeSocio = new string(Enumerable.Repeat(chars, 20).Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
+
+        public string PegarLinkFotoGrande()
+        {
+            if (Foto != null)
+            {
+
+                var aux = Convert.ToBase64String(Foto);
+                string imageDataURL = string.Format("data:image/png;base64,{0}", aux);
+                return imageDataURL;
+            }
+            else
+            {
+                return "~/dist/img/user4-128x128.jpg";
+
+            }
         }
 
     }

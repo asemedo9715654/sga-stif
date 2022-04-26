@@ -23,7 +23,7 @@ namespace sga_stif.Controllers
       _mapper = mapper;
     }
 
-
+    //sem filtro
     public async Task<IActionResult> ListaQuotasVencidas()
     {
        var instituicaoFinanceiras = _context.InstituicaoFinanceira.ToList();
@@ -34,7 +34,7 @@ namespace sga_stif.Controllers
       return View(d);
     }
 
-
+    //filtro instituicao financeira
     public async Task<IActionResult> ListaQuotasPendente()
     {
       var instituicaoFinanceiras = _context.InstituicaoFinanceira.ToList();
@@ -46,7 +46,7 @@ namespace sga_stif.Controllers
       return View(d);
     }
 
-
+    //filtro ano e mes
     public async Task<IActionResult> ListaQuotasPorPagar()
     {
 
@@ -59,7 +59,7 @@ namespace sga_stif.Controllers
     }
 
 
-
+    // filtro ano e mes 
     public async Task<IActionResult> ListaQuotasPagas()
     {
 

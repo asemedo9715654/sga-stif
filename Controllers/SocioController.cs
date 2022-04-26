@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using sga_stif.Models;
+using sga_stif.Models.ResultadoStoredProcedure;
 using sga_stif.ViewModel.Socio;
 
 namespace sga_stif.Controllers
@@ -78,7 +79,7 @@ namespace sga_stif.Controllers
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> NovoSocio([Bind("Nome,NumeroDeTelemovel,NumeroDeTelefone,DataDeNascimento,Sexo,Apelido,CinBi,Foto,NumeroPassaporte,IdTipologiaSocio ,IdTipoQuota,IdAgencia,Nif,DataAtivacao ")] NovoSocioViewModel novoSocioViewModel, IFormFile Image)
+    public async Task<IActionResult> NovoSocio([Bind("Nome,NumeroDeTelemovel,NumeroDeTelefone,Email,DataDeNascimento,Sexo,Apelido,CinBi,Foto,NumeroPassaporte,IdTipologiaSocio ,IdTipoQuota,IdAgencia,Nif,DataAtivacao ")] NovoSocioViewModel novoSocioViewModel, IFormFile Image)
     {
       try
       {
@@ -185,7 +186,7 @@ namespace sga_stif.Controllers
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> EditaSocio([Bind("IdSocio,Nome,NumeroDeTelemovel,NumeroDeTelefone,DataDeNascimento,Sexo,Apelido,CinBi,ValidadeCinBi,Foto,NumeroPassaporte,ValidadePassaporte,IdTipologiaSocio ,IdTipoQuota,IdAgencia,Nif,DataAtivacao ")] EditaSocioViewModel editaSocioViewModel, IFormFile Image)
+    public async Task<IActionResult> EditaSocio([Bind("IdSocio,Nome,NumeroDeTelemovel,NumeroDeTelefone,Email,DataDeNascimento,Sexo,Apelido,CinBi,ValidadeCinBi,Foto,NumeroPassaporte,ValidadePassaporte,IdTipologiaSocio ,IdTipoQuota,IdAgencia,Nif,DataAtivacao ")] EditaSocioViewModel editaSocioViewModel, IFormFile Image)
     {
       try
       {
@@ -263,10 +264,23 @@ namespace sga_stif.Controllers
 
       var destalhesSocioViewModel = _mapper.Map<DestalhesSocioViewModel>(socios);
 
+
+      destalhesSocioViewModel.ListaContaCorrenteSocioResultado_Pagas = PegarContaCorrenteSocioResultado(DateTime.Now.Year , idSocio,"QP");
+      destalhesSocioViewModel.ListaContaCorrenteSocioResultado_PorPagar = PegarContaCorrenteSocioResultado(DateTime.Now.Year , idSocio,"QD");
+      destalhesSocioViewModel.ListaContaCorrenteSocioResultado_Vencidas = PegarContaCorrenteSocioResultado(DateTime.Now.Year , idSocio,"QV");
+      // destalhesSocioViewModel.ListaBeneficiarioViewModel_Historial = PegarContaCorrenteSocioResultado(DateTime.Now.Year , idSocio,"QH");
+
       return View(destalhesSocioViewModel);
     }
 
+    private List<ContaCorrenteSocioResultado> PegarContaCorrenteSocioResultado(int ano,int idSocio,string status){
 
+         var listaContaCorrenteSocioResultado = _context.ContaCorrenteSocioResultado.FromSqlRaw("EXECUTE  [dbo].[ContaCorrenteSocio] @ano = "+ano+", @idSocio="+idSocio+", @status='"+status+"'").ToList();
+
+        return listaContaCorrenteSocioResultado;
+
+    }
+    
     public async Task<IActionResult> EliminaSocio(int? idSocio)
     {
       if (idSocio == null)
@@ -332,6 +346,18 @@ namespace sga_stif.Controllers
       if (socio != null)
       {
         return Json($"O Número de Passaporte {NumeroPassaporte} já foi inserida no sistema!");
+      }
+
+      return Json(true);
+    }
+
+     [AcceptVerbs("GET", "POST")]
+    public IActionResult VereficaEmail(string Email)
+    {
+      var socio = _context.Socio.FirstOrDefault(k => k.Email== Email);
+      if (socio != null)
+      {
+        return Json($"O E-mail : {Email} já foi inserida no sistema!");
       }
 
       return Json(true);
