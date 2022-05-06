@@ -14,8 +14,11 @@ namespace sga_stif.Models
     public string CinBi { get; set; }
     public DateTime DataDeNascimento { get; set; }
     public string NumeroPassaporte { get; set; }
+
+    //chaves estrangeiras
     [ForeignKey("Socio")]
     public int IdSocio { get; set; }
+    //propriedaddes de navegacao
     public virtual Socio Socio { get; set; }
 
   }

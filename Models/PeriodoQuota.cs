@@ -14,10 +14,9 @@ namespace sga_stif.Models
         public int TipoQuota { get; set; }
         public int CodigoPeriodo { get; set; }
         public EstadoQuota Estado { get; set; }
+         //propriedades de navegação
         public virtual ICollection<QuotaSocio> QuotaSocio { get; set; }
-        // [ForeignKey("TipoQuota")]
-        // public int IdTipoQuota { get; set; }
-        // public virtual TipoQuota TipoQuota { get; set; }
+        
 
 
         public PeriodoQuota()

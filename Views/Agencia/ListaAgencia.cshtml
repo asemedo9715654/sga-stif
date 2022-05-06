@@ -11,6 +11,8 @@
 
             <div class="col-12">
                 <p class="lead">Lista de Agências</p>
+
+                  <a asp-action="NovaAgencia" class="btn btn-success btn-sm float-right" style="margin-right: 5px;">Nova</a>
             </div>
         </div>
 
@@ -56,7 +58,7 @@
                             item.TotalDeSocios)</span> Sócio(s)
                         </td>
                         <td>
-                            <a class="btn btn-success btn-xs" asp-action="EditaPerfil" asp-route-idPerfil="@item.IdInstituicaoFinanceira"><i class="fas fa-pen"></i> Editar</a>
+                            <a class="btn btn-success btn-xs" asp-action="EditaAgencia" asp-route-idAgencia="@item.IdAgencia"><i class="fas fa-pen"></i> Editar</a>
                             <a class="btn btn-warning btn-xs" asp-action="Delete" asp-route-id="@item.IdInstituicaoFinanceira">Inativar</a>
 
                         </td>

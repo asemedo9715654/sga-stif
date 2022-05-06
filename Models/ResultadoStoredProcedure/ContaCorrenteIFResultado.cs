@@ -5,6 +5,8 @@ namespace sga_stif.Models.ResultadoStoredProcedure
 {
     public class ContaCorrenteIFResultado
     {
+         public int EstadoQuotaNum { get; set; }
+         public int IdQuotaSocio { get; set; }
         [Display(Name = "Nome")]
         public string Nome { get; set; }
         [Display(Name = "Id Sócio")]
@@ -18,7 +20,7 @@ namespace sga_stif.Models.ResultadoStoredProcedure
         [Display(Name = "Mês")]
         public string Mes { get; set; }
          public int MesNum { get; set; }
-        [Display(Name = "Descrição")]
+        [Display(Name = "Montante")]
         public decimal Montante { get; set; }
 
         [Display(Name = "Estado da Quota")]

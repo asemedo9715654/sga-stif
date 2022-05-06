@@ -27,11 +27,13 @@
             <input asp-for="Nome" class="form-control" />
             <span asp-validation-for="Nome" class="text-danger"></span>
           </div>
+
           <div class="form-group">
             <label asp-for="Apelido" class="control-label"></label>
             <input asp-for="Apelido" class="form-control" />
             <span asp-validation-for="Apelido" class="text-danger"></span>
           </div>
+
           <div class="form-group">
             <label asp-for="EstadoCivil" class="control-label"></label>
             <select asp-for="EstadoCivil" class="form-control" asp-items="Html.GetEnumSelectList<EstadoCivil>()">
@@ -55,7 +57,7 @@
             <span asp-validation-for="ValidadeCinBi" class="text-danger"></span>
           </div>
 
-          <div class="form-group">
+          @* <div class="form-group">
             <label for="exampleInputFile">Foto</label>
             <div class="input-group">
               <div class="custom-file">
@@ -66,7 +68,7 @@
                 <span class="input-group-text">Upload</span>
               </div>
             </div>
-          </div>
+          </div> *@
 
         </div>
 
@@ -112,7 +114,7 @@
             <label asp-for="IdInstituicaoFinanceira" class="control-label"></label>
             <select asp-for="IdInstituicaoFinanceira" asp-items="@ViewBag.IdInstituicaoFinanceira" class="form-control"
               id="IdInstituicaoFinanceira">
-              <option disabled selected>--- seleccione ---</option>
+              @* <option disabled selected>--- seleccione ---</option> *@
             </select>
             <span asp-validation-for="IdInstituicaoFinanceira" class="text-danger"></span>
           </div>
@@ -130,20 +132,16 @@
 
       </div>
 
-
-
-
       <div class="row">
 
         <div class="col-md-6">
-
-
 
           <div class="form-group">
             <label asp-for="Nif" class="control-label"></label>
             <input asp-for="Nif" class="form-control" />
             <span asp-validation-for="Nif" class="text-danger"></span>
           </div>
+
           <div class="form-group">
             <label asp-for="DataDeNascimento" class="control-label"></label>
             <input asp-for="DataDeNascimento" class="form-control" />
@@ -156,6 +154,7 @@
           </div>
 
         </div>
+
         <div class="col-md-6">
           <div class="form-group">
             <label asp-for="Sexo" class="control-label"></label>
@@ -176,7 +175,7 @@
 
             <div class="form-group">
             <label asp-for="Email" class="control-label"></label>
-            <input type="tel" asp-for="Email" class="form-control" />
+            <input  asp-for="Email" class="form-control" />
             <span asp-validation-for="Email" class="text-danger"></span>
           </div>
 
@@ -184,8 +183,12 @@
 
 
       </div>
+      <div style="display: none;">
+         <input  asp-for="NumeroColaborador" class="form-control" />
+         <input  asp-for="NumeroDeSocio" class="form-control" />
 
-
+      </div>
+      
     </div>
 
     <div class="card-footer">
@@ -202,33 +205,28 @@
 
 
 <script>
+
   $(function () {
 
-
-
-    EnviarDadosInstituicaoFinanceira();
-
-
+    EnviarDadosInstituicaoFinanceira($('#IdInstituicaoFinanceira').val());
 
     $('#IdInstituicaoFinanceira').on('change', function () {
       //alert(this.value);
-
-      EnviarDadosInstituicaoFinanceira();
-
-
+      EnviarDadosInstituicaoFinanceira(this.value);
     });
-
-
 
   });
 
-  function EnviarDadosInstituicaoFinanceira() {
+  function EnviarDadosInstituicaoFinanceira(idInstituicaoFinanceira) {
     $.ajax({
       url: $("#RecuperaLinkPegarAgencia").val(),
-      data: { idInstituicaoFinanceira: this.value },
+      data: { idInstituicaoFinanceira: idInstituicaoFinanceira },
       type: "get",
       dataType: "json",
       success: function (result) {
+
+        console.log(this.value)
+        console.log($("#RecuperaLinkPegarAgencia").val())
         console.log(result)
 
         var $label = $("<label>").text('Agencia :');
@@ -248,12 +246,10 @@
         $("#div-agencia").append(select);
 
 
-
       }
     });
 
   }
-
 
 
 </script>

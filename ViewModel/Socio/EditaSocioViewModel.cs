@@ -8,6 +8,7 @@ namespace sga_stif.ViewModel.Socio
     [Key]
     public int IdSocio { get; set; }
     [Display(Name = "Fotografia")]
+    public string? Image { get; set; }
     public byte[]? Foto { get; set; }
     public string Nome { get; set; }
     public string Apelido { get; set; }
@@ -42,6 +43,9 @@ namespace sga_stif.ViewModel.Socio
     public string? NumeroDeTelemovel { get; set; }
     [EmailAddress]
     public string Email { get; set; }
+    public string NumeroColaborador { get; set; }
+    public string NumeroDeSocio { get; set; }
+    
 
     [DataType(DataType.Date)]
     [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
@@ -49,8 +53,7 @@ namespace sga_stif.ViewModel.Socio
     [Required(ErrorMessage = "A Data de Ativação é necessário")]
     public string? DataAtivacao { get; set; }
 
-
-    // [Required(ErrorMessage = "Agência de Sócio é necessário")]
+   // [Required(ErrorMessage = "Agência de Sócio é necessário")]
     public int IdInstituicaoFinanceira { get; set; }
 
     [Display(Name = "Agência")]

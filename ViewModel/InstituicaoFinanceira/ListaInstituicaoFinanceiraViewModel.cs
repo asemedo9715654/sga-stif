@@ -8,6 +8,8 @@ namespace sga_stif.ViewModel.InstituicaoFinanceira
          
         public int IdInstituicaoFinanceira { get; set; }
         public string Nome { get; set; }
+        public string Sigla { get; set; }
+
         [Display(Name="Total de Agências")]
         public int TotalDeAgencias { get; set; }
          [Display(Name="Total de Sócios")]

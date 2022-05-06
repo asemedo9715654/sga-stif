@@ -45,7 +45,7 @@ namespace sga_stif.Controllers
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult NovoInstituicaoFinanceira([Bind("Nome")] NovoInstituicaoFinanceiraViewModel novoInstituicaoFinanceiraViewModel)
+    public IActionResult NovoInstituicaoFinanceira([Bind("Nome,Sigla")] NovoInstituicaoFinanceiraViewModel novoInstituicaoFinanceiraViewModel)
     {
 
       try
@@ -99,7 +99,7 @@ namespace sga_stif.Controllers
     public IActionResult DetalhesInstituicaoFinanceira(int idInstituicaoFinanceira)
     {
 
-      var instituicaoFinanceira = _context.InstituicaoFinanceira.Include(h => h.InstituicaoFinanceiraColaboradores).FirstOrDefault(i => i.IdInstituicaoFinanceira == idInstituicaoFinanceira);
+      var instituicaoFinanceira = _context.InstituicaoFinanceira.Include(h => h.InstituicaoFinanceiraColaboradores).Include(k=>k.Agencia).FirstOrDefault(i => i.IdInstituicaoFinanceira == idInstituicaoFinanceira);
 
       if (instituicaoFinanceira == null)
       {
@@ -117,7 +117,7 @@ namespace sga_stif.Controllers
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult EditaInstituicaoFinanceira([Bind("IdInstituicaoFinanceira,Nome")] EditaInstituicaoFinanceiraViewModel editaInstituicaoFinanceiraViewModel)
+    public IActionResult EditaInstituicaoFinanceira([Bind("IdInstituicaoFinanceira,Nome,Sigla")] EditaInstituicaoFinanceiraViewModel editaInstituicaoFinanceiraViewModel)
     {
 
       try
@@ -174,13 +174,13 @@ namespace sga_stif.Controllers
           var colaboradores = _context.InstituicaoFinanceiraColaboradores.Where(j=>j.IdInstituicaoFinanceira == instituicaoFinanceira.IdInstituicaoFinanceira && j.DataFim==null );
           foreach (var item in colaboradores)
           {
-            item.DataFim = DateTime.Now;
+            item.DataFim = DateTime.Now.Date;
           }
 
            await _context.SaveChangesAsync();
 
           var instituicaoFinanceiraColaboradores = _mapper.Map<InstituicaoFinanceiraColaboradores>(novoInstituicaoFinanceiraColaboradoresViewModel);
-          instituicaoFinanceiraColaboradores.DataInicio = DateTime.Now;
+          instituicaoFinanceiraColaboradores.DataInicio = DateTime.Now.Date;
           instituicaoFinanceiraColaboradores.DataFim = null;
           instituicaoFinanceira.InstituicaoFinanceiraColaboradores.Add(instituicaoFinanceiraColaboradores);
          
@@ -200,6 +200,19 @@ namespace sga_stif.Controllers
       _notyf.Error("Erro na adição de perfil");
 
       return View(novoInstituicaoFinanceiraColaboradoresViewModel);
+    }
+
+
+        [AcceptVerbs("GET", "POST")]
+    public IActionResult VereficaNome(string Nome)
+    {
+      var utilizaddor = _context.InstituicaoFinanceira.FirstOrDefault(k => k.Nome == Nome);
+      if (utilizaddor != null)
+      {
+        return Json($"O Nome da Instituição: {Nome} já foi inserida no sistema!");
+      }
+
+      return Json(true);
     }
 
   }

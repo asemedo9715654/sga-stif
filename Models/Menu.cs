@@ -12,6 +12,7 @@ namespace sga_stif.Models
         public string NomeDaAction { get; set; }
         public string Icone { get; set; }
         public int? IdMenuPai { get; set; }
+         //propriedades de navegação
         public virtual ICollection<MenuAcao> MenuAcao { get; set; }
 
 

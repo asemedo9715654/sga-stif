@@ -10,7 +10,7 @@ using sga_stif.ViewModel.Socio;
 
 namespace sga_stif.Controllers
 {
-  public class SocioController : Controller
+  public class SocioController : BaseController
   {
 
 
@@ -79,7 +79,7 @@ namespace sga_stif.Controllers
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> NovoSocio([Bind("Nome,NumeroDeTelemovel,NumeroDeTelefone,Email,DataDeNascimento,Sexo,Apelido,CinBi,Foto,NumeroPassaporte,IdTipologiaSocio ,IdTipoQuota,IdAgencia,Nif,DataAtivacao ")] NovoSocioViewModel novoSocioViewModel, IFormFile Image)
+    public async Task<IActionResult> NovoSocio([Bind("Nome,NumeroDeTelemovel,NumeroDeTelefone,Email,DataDeNascimento,Sexo,Apelido,CinBi,Foto,NumeroPassaporte,ValidadePassaporte,IdTipologiaSocio ,IdTipoQuota,IdAgencia,Nif,DataAtivacao,ValidadeCinBi,EstadoCivil")] NovoSocioViewModel novoSocioViewModel, IFormFile Image)
     {
       try
       {
@@ -186,42 +186,28 @@ namespace sga_stif.Controllers
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> EditaSocio([Bind("IdSocio,Nome,NumeroDeTelemovel,NumeroDeTelefone,Email,DataDeNascimento,Sexo,Apelido,CinBi,ValidadeCinBi,Foto,NumeroPassaporte,ValidadePassaporte,IdTipologiaSocio ,IdTipoQuota,IdAgencia,Nif,DataAtivacao ")] EditaSocioViewModel editaSocioViewModel, IFormFile Image)
+    public async Task<IActionResult> EditaSocio([Bind("IdSocio,NumeroDeSocio,NumeroColaborador,Nome,NumeroDeTelemovel,NumeroDeTelefone,Email,DataDeNascimento,Sexo,Apelido,CinBi,ValidadeCinBi,Foto,NumeroPassaporte,ValidadePassaporte,IdTipologiaSocio ,IdTipoQuota,IdAgencia,Nif,DataAtivacao,EstadoCivil")] EditaSocioViewModel editaSocioViewModel/*, IFormFile Image*/)
     {
+
       try
       {
         if (ModelState.IsValid)
         {
 
-          if (Image != null)
-          {
-            if (Image.Length > 0)
-            {
-
-              byte[] p1 = null;
-              using (var fs1 = Image.OpenReadStream())
-              using (var ms1 = new MemoryStream())
-              {
-                fs1.CopyTo(ms1);
-                p1 = ms1.ToArray();
-              }
-              editaSocioViewModel.Foto = p1;
-
-            }
-          }
-
+        
           var socio = _mapper.Map<Socio>(editaSocioViewModel);
-
           _notyf.Success("Sócio editado com sucesso!");
-
           socio.DataAtualizacao = DateTime.Now;
-
           _context.Update(socio);
           await _context.SaveChangesAsync();
           return RedirectToAction("ListaSocio");
         }
 
-      }
+
+        IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                var ee = 2;
+
+      } 
       catch (DbUpdateException ex)
       {
         ModelState.AddModelError("", "Não foi possível salvar as alterações. Tente novamente e, se o problema persistir, consulte o administrador do sistema. Erro => " + ex.Message);
@@ -362,6 +348,83 @@ namespace sga_stif.Controllers
 
       return Json(true);
     }
+
+    public IActionResult EfectuaPagamento(int idQuotaSocio)
+    {
+      var quotaSocio = _context.QuotaSocio.FirstOrDefault(k => k.IdQuotaSocio== idQuotaSocio);
+      if (quotaSocio != null)
+      {
+
+        quotaSocio.Estado = EstadoQuotaSocio.AguardaConfirmacaoPagamento;
+
+        quotaSocio.DataQueFoiEfectuadaPagamento = DateTime.Now;
+        quotaSocio.UtilizadorQueEfectuouPagamento = PegarNomeUtilizador();
+
+
+        _context.Update(quotaSocio);
+        _context.SaveChanges();
+
+        _notyf.Success("Quota posta em estado aguarda confirmacao!");
+
+        return RedirectToAction("DetalhesSocio",new{idSocio=quotaSocio.IdSocio});
+      }
+
+      _notyf.Error("Quota não encontrada!");
+
+      return RedirectToAction("ListaSocio");
+    }
+
+    public IActionResult  ConcluirPagamento(int idQuotaSocio)
+    {
+      var quotaSocio = _context.QuotaSocio.FirstOrDefault(k => k.IdQuotaSocio== idQuotaSocio);
+      if (quotaSocio != null)
+      {
+
+        quotaSocio.Estado = EstadoQuotaSocio.Pago;
+        quotaSocio.DataQueFoiConfirmadaPagamento= DateTime.Now;
+        quotaSocio.UtilizadorQueConfirmouPagamento = PegarNomeUtilizador();
+
+        _context.Update(quotaSocio);
+        _context.SaveChanges();
+
+        _notyf.Success("Pagamento confirmado com sucesso!");
+
+        return RedirectToAction("DetalhesSocio",new{idSocio=quotaSocio.IdSocio});
+      }
+
+      _notyf.Error("Quota não encontrada!");
+
+      return RedirectToAction("ListaSocio");
+    }
+
+
+     public IActionResult  AnularPagamento(int idQuotaSocio)
+    {
+      var quotaSocio = _context.QuotaSocio.FirstOrDefault(k => k.IdQuotaSocio== idQuotaSocio);
+      if (quotaSocio != null)
+      {
+
+        quotaSocio.Estado = EstadoQuotaSocio.NoaPago;
+        quotaSocio.DataQueFoiConfirmadaPagamento= DateTime.Now;
+        quotaSocio.UtilizadorQueConfirmouPagamento = PegarNomeUtilizador();
+
+        _context.Update(quotaSocio);
+        _context.SaveChanges();
+
+        _notyf.Success("Pagamento anulado com sucesso!");
+
+        return RedirectToAction("DetalhesSocio",new{idSocio=quotaSocio.IdSocio});
+      }
+
+      _notyf.Error("Quota não encontrada!");
+
+      return RedirectToAction("ListaSocio");
+    }
+
+
+
+    
+     
 
 
 

@@ -13,6 +13,7 @@ namespace sga_stif.Models
     public int NumeroColaboradores { get; set; }
     public DateTime DataInicio { get; set; }
     public DateTime? DataFim { get; set; }
+     //propriedades de navegação
     public virtual InstituicaoFinanceira InstituicaoFinanceira { get; set; }
 
  

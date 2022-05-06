@@ -15,6 +15,7 @@ namespace sga_stif.Models
         public virtual Acao? Acao { get; set; }
         public virtual Menu? Menu { get; set; }
          public bool MenuAcaoMaster { get; set; } = false;
+          //propriedades de navegação
         public virtual ICollection<PerfilMenuAcao> PerfilMenuAcao { get; set; }
         public MenuAcao()
         {

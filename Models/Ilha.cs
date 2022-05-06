@@ -7,6 +7,7 @@ namespace sga_stif.Models
         [Key]
         public int IdIlha { get; set; }
         public string Nome { get; set; }
+         //propriedades de navegação
         public virtual ICollection<Cidade> Cidade { get; set; }
        
         public Ilha()

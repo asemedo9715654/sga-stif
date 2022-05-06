@@ -10,6 +10,8 @@ namespace sga_stif.Models
         public string Nome { get; set; }
         [ForeignKey("Ilha")]
         public int IdIlha { get; set; }
+
+         //propriedades de navegação
         public virtual Ilha Ilha { get; set; }
         public virtual ICollection<Agencia> Agencia { get; set; }
 

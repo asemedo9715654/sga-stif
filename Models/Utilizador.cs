@@ -17,8 +17,11 @@ namespace sga_stif.Models
         public byte[]? Foto { get; set; }
         public string PalavraPasse { get; set; }
 
+        //chaves estrangeiras
+
         [ForeignKey("Perfil")]
         public int? IdPerfil { get; set; }
+        //propriedades de navegação
         public virtual Perfil? Perfil { get; set; }
 
 

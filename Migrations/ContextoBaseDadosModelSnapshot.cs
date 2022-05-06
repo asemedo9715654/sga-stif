@@ -55,8 +55,8 @@ namespace sga_stif.Migrations
                         {
                             IdAcao = 1,
                             AcaoMaster = true,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2610),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2600),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9490),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9470),
                             Eliminado = false,
                             Nome = "Administração"
                         },
@@ -64,8 +64,8 @@ namespace sga_stif.Migrations
                         {
                             IdAcao = 2,
                             AcaoMaster = false,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2620),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2620),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9500),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9500),
                             Eliminado = false,
                             Nome = "Criar"
                         },
@@ -73,8 +73,8 @@ namespace sga_stif.Migrations
                         {
                             IdAcao = 3,
                             AcaoMaster = false,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2620),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2620),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9500),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9500),
                             Eliminado = false,
                             Nome = "Editar"
                         },
@@ -82,8 +82,8 @@ namespace sga_stif.Migrations
                         {
                             IdAcao = 4,
                             AcaoMaster = false,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2630),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2630),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9500),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9500),
                             Eliminado = false,
                             Nome = "Eliminar"
                         });
@@ -128,8 +128,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 1,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9870),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9860),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6620),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6620),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 2,
@@ -138,8 +138,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 2,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9870),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9870),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6620),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6620),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 2,
@@ -148,8 +148,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 3,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9880),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9870),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6630),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6630),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 2,
@@ -158,8 +158,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 4,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9880),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9880),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6630),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6630),
                             Eliminado = false,
                             IdCidade = 13,
                             IdInstituicaoFinanceira = 2,
@@ -168,8 +168,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 5,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9880),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9880),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6640),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6630),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 2,
@@ -178,8 +178,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 6,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9890),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9890),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6640),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6640),
                             Eliminado = false,
                             IdCidade = 9,
                             IdInstituicaoFinanceira = 2,
@@ -188,8 +188,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 7,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9890),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9890),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6640),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6640),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 2,
@@ -198,8 +198,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 8,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9890),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9890),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6650),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6650),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 2,
@@ -208,18 +208,18 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 9,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9900),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9900),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6650),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6650),
                             Eliminado = false,
-                            IdCidade = 1,
+                            IdCidade = 3,
                             IdInstituicaoFinanceira = 2,
                             Nome = "Ag. Monte Sossego"
                         },
                         new
                         {
                             IdAgencia = 10,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9900),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9900),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6650),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6650),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 2,
@@ -228,8 +228,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 11,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9910),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9910),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6660),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6660),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 2,
@@ -238,8 +238,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 12,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9910),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9910),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6660),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6660),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 2,
@@ -248,8 +248,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 13,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9920),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9910),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6660),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6660),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 2,
@@ -258,8 +258,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 14,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9920),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9920),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6680),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6680),
                             Eliminado = false,
                             IdCidade = 7,
                             IdInstituicaoFinanceira = 2,
@@ -268,18 +268,18 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 15,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9920),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9920),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6680),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6680),
                             Eliminado = false,
-                            IdCidade = 1,
+                            IdCidade = 12,
                             IdInstituicaoFinanceira = 2,
                             Nome = "Ag. Aeroporto do Sal"
                         },
                         new
                         {
                             IdAgencia = 16,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9930),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9930),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6690),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6680),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 2,
@@ -288,18 +288,18 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 17,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9930),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9930),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6690),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6690),
                             Eliminado = false,
-                            IdCidade = 1,
+                            IdCidade = 14,
                             IdInstituicaoFinanceira = 2,
                             Nome = "Ag. CCV – São Domingos"
                         },
                         new
                         {
                             IdAgencia = 18,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9930),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9930),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6700),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6700),
                             Eliminado = false,
                             IdCidade = 18,
                             IdInstituicaoFinanceira = 2,
@@ -308,8 +308,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 19,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9940),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9940),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6700),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6700),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 2,
@@ -318,18 +318,18 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 20,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9940),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9940),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6700),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6700),
                             Eliminado = false,
-                            IdCidade = 1,
+                            IdCidade = 8,
                             IdInstituicaoFinanceira = 2,
                             Nome = "Ag. CCV – Porto Novo"
                         },
                         new
                         {
                             IdAgencia = 21,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9940),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9940),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6710),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6710),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 2,
@@ -338,8 +338,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 22,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9950),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9950),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6710),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6710),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 2,
@@ -348,18 +348,18 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 23,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9950),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9950),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6710),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6710),
                             Eliminado = false,
-                            IdCidade = 1,
+                            IdCidade = 16,
                             IdInstituicaoFinanceira = 2,
                             Nome = "Ag. Mosteiros"
                         },
                         new
                         {
                             IdAgencia = 24,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9960),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9950),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6720),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6720),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 2,
@@ -368,8 +368,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 25,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9960),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9960),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6720),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6720),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 2,
@@ -378,8 +378,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 26,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9960),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9960),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6730),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6720),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 2,
@@ -388,8 +388,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 27,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9970),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9970),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6730),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6730),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 2,
@@ -398,8 +398,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 28,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9970),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9970),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6730),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6730),
                             Eliminado = false,
                             IdCidade = 7,
                             IdInstituicaoFinanceira = 2,
@@ -408,18 +408,18 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 29,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9970),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9970),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6740),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6730),
                             Eliminado = false,
-                            IdCidade = 1,
+                            IdCidade = 5,
                             IdInstituicaoFinanceira = 2,
                             Nome = "Ag. Maio"
                         },
                         new
                         {
                             IdAgencia = 30,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9980),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9980),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6740),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6740),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 2,
@@ -428,8 +428,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 31,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9990),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9990),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6740),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6740),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 2,
@@ -438,8 +438,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 32,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9990),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6750),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6740),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 2,
@@ -448,8 +448,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 33,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6750),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6750),
                             Eliminado = false,
                             IdCidade = 18,
                             IdInstituicaoFinanceira = 2,
@@ -458,8 +458,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 34,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6750),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6750),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 3,
@@ -468,8 +468,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 35,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(10),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(10),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6760),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6760),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 3,
@@ -478,18 +478,18 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 36,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(10),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(10),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6760),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6760),
                             Eliminado = false,
-                            IdCidade = 1,
+                            IdCidade = 4,
                             IdInstituicaoFinanceira = 3,
                             Nome = "Ag. Sal"
                         },
                         new
                         {
                             IdAgencia = 37,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(20),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(20),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6760),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6760),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 3,
@@ -498,8 +498,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 38,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(20),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(20),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6770),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6770),
                             Eliminado = false,
                             IdCidade = 18,
                             IdInstituicaoFinanceira = 3,
@@ -508,8 +508,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 39,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(20),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(20),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6770),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6770),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 3,
@@ -518,8 +518,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 40,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(30),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(30),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6770),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6770),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 3,
@@ -528,8 +528,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 41,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(30),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(30),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6780),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6780),
                             Eliminado = false,
                             IdCidade = 9,
                             IdInstituicaoFinanceira = 3,
@@ -538,8 +538,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 42,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(40),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(30),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6780),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6780),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 3,
@@ -548,8 +548,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 43,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(40),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(40),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6790),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6790),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 3,
@@ -558,8 +558,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 44,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(40),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(40),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6790),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6790),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 3,
@@ -568,28 +568,28 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 45,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(50),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(40),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6800),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6800),
                             Eliminado = false,
-                            IdCidade = 1,
+                            IdCidade = 5,
                             IdInstituicaoFinanceira = 3,
                             Nome = "Ag. Maio"
                         },
                         new
                         {
                             IdAgencia = 46,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(50),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(50),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6800),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6800),
                             Eliminado = false,
-                            IdCidade = 1,
+                            IdCidade = 6,
                             IdInstituicaoFinanceira = 3,
                             Nome = "Ag. Santa Cruz"
                         },
                         new
                         {
                             IdAgencia = 47,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(50),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(50),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6800),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6800),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 3,
@@ -598,8 +598,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 48,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(60),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(60),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6810),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6810),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 3,
@@ -608,8 +608,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 49,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(60),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(60),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6810),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6810),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 3,
@@ -618,48 +618,48 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 50,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(60),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(60),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6810),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6810),
                             Eliminado = false,
-                            IdCidade = 1,
+                            IdCidade = 3,
                             IdInstituicaoFinanceira = 3,
                             Nome = "Ag. Monte Sossego"
                         },
                         new
                         {
                             IdAgencia = 51,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(70),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(70),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6820),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6820),
                             Eliminado = false,
-                            IdCidade = 1,
+                            IdCidade = 3,
                             IdInstituicaoFinanceira = 3,
                             Nome = "Ag. Fonte Filipe"
                         },
                         new
                         {
                             IdAgencia = 52,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(70),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(70),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6820),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6820),
                             Eliminado = false,
-                            IdCidade = 1,
+                            IdCidade = 4,
                             IdInstituicaoFinanceira = 3,
                             Nome = "Ag. Santa Maria"
                         },
                         new
                         {
                             IdAgencia = 53,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(70),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(70),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6830),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6820),
                             Eliminado = false,
-                            IdCidade = 1,
+                            IdCidade = 16,
                             IdInstituicaoFinanceira = 3,
                             Nome = "Ag. Mosteiros"
                         },
                         new
                         {
                             IdAgencia = 54,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(80),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(80),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6830),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6830),
                             Eliminado = false,
                             IdCidade = 11,
                             IdInstituicaoFinanceira = 3,
@@ -668,8 +668,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 55,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(80),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(80),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6830),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6830),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 3,
@@ -678,8 +678,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 56,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(80),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(80),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6840),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6830),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 3,
@@ -688,8 +688,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 57,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(90),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(90),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6840),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6840),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 3,
@@ -698,8 +698,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 58,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(90),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(90),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6840),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6840),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 3,
@@ -708,8 +708,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 59,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(100),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(90),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6850),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6850),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 3,
@@ -718,8 +718,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 60,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(100),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(100),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6850),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6850),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 3,
@@ -728,18 +728,18 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 61,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(110),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(100),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6850),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6850),
                             Eliminado = false,
-                            IdCidade = 1,
+                            IdCidade = 4,
                             IdInstituicaoFinanceira = 3,
                             Nome = "Gabinete Empresas Sal"
                         },
                         new
                         {
                             IdAgencia = 62,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(110),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(110),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6860),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6860),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 3,
@@ -748,8 +748,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 63,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(110),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(110),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6860),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6860),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 4,
@@ -758,8 +758,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 64,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(120),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(120),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6870),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6860),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 4,
@@ -768,8 +768,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 65,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(120),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(120),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6880),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6880),
                             Eliminado = false,
                             IdCidade = 13,
                             IdInstituicaoFinanceira = 4,
@@ -778,18 +778,18 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 66,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(120),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(120),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6880),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6880),
                             Eliminado = false,
-                            IdCidade = 1,
+                            IdCidade = 4,
                             IdInstituicaoFinanceira = 4,
                             Nome = "Ag. Aeroporto do Sal"
                         },
                         new
                         {
                             IdAgencia = 67,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(130),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(130),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6890),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6890),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 4,
@@ -798,8 +798,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 68,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(130),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(130),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6890),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6890),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 4,
@@ -808,8 +808,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 69,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(130),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(130),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6890),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6890),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 4,
@@ -818,8 +818,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 70,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(140),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(140),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6900),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6900),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 4,
@@ -828,18 +828,18 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 71,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(140),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(140),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6910),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6900),
                             Eliminado = false,
-                            IdCidade = 1,
+                            IdCidade = 3,
                             IdInstituicaoFinanceira = 4,
                             Nome = "Ag. Monte Sossego"
                         },
                         new
                         {
                             IdAgencia = 72,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(150),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(140),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6910),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6910),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 4,
@@ -848,8 +848,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 73,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(150),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(150),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6910),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6910),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 4,
@@ -858,8 +858,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 74,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(150),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(150),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6920),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6910),
                             Eliminado = false,
                             IdCidade = 9,
                             IdInstituicaoFinanceira = 4,
@@ -868,8 +868,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 75,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(160),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(160),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6920),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6920),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 4,
@@ -878,8 +878,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 76,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(160),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(160),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6920),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6920),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 4,
@@ -888,8 +888,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 77,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(170),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(160),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6930),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6930),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 4,
@@ -898,8 +898,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 78,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(170),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(170),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6930),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6930),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 4,
@@ -908,8 +908,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 79,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(170),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(170),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6930),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6930),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 4,
@@ -918,18 +918,18 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 80,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(180),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(180),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6940),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6940),
                             Eliminado = false,
-                            IdCidade = 1,
+                            IdCidade = 5,
                             IdInstituicaoFinanceira = 4,
                             Nome = "Ag. Maio"
                         },
                         new
                         {
                             IdAgencia = 81,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(180),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(180),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6940),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6940),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 4,
@@ -938,8 +938,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 82,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(190),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(190),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6940),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6940),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 4,
@@ -948,8 +948,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 83,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(200),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(200),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6950),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6950),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 4,
@@ -958,8 +958,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 84,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(200),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(200),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6950),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6950),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 4,
@@ -968,8 +968,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 85,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(200),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(200),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6960),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6950),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 5,
@@ -978,8 +978,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 86,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(210),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(210),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6960),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6960),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 5,
@@ -988,8 +988,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 87,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(220),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(210),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6960),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6960),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 5,
@@ -998,8 +998,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 88,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(220),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(220),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6970),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6960),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 5,
@@ -1008,8 +1008,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 89,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(220),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(220),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6970),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6970),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 5,
@@ -1018,8 +1018,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 90,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(230),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(220),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6970),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6970),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 5,
@@ -1028,8 +1028,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 91,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(230),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(230),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6980),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6980),
                             Eliminado = false,
                             IdCidade = 7,
                             IdInstituicaoFinanceira = 5,
@@ -1038,8 +1038,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 92,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(230),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(230),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6980),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6980),
                             Eliminado = false,
                             IdCidade = 13,
                             IdInstituicaoFinanceira = 5,
@@ -1048,8 +1048,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 93,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(240),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(230),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6980),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6980),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 5,
@@ -1058,8 +1058,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 94,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(240),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(240),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6990),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6990),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 5,
@@ -1068,8 +1068,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 95,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(240),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(240),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6990),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6990),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 5,
@@ -1078,8 +1078,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 96,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(250),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(250),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7000),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7000),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 8,
@@ -1088,8 +1088,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 97,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(250),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(250),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7000),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7000),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 8,
@@ -1098,8 +1098,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 98,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(250),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(250),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7000),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7000),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 8,
@@ -1108,8 +1108,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 99,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(260),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(260),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7010),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7010),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 8,
@@ -1118,8 +1118,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 100,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(260),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(260),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7010),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7010),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 8,
@@ -1128,8 +1128,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 101,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(270),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(260),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7020),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7010),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 9,
@@ -1138,8 +1138,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 102,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(270),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(270),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7020),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7020),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 9,
@@ -1148,8 +1148,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 103,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(270),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(270),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7020),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7020),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 9,
@@ -1158,8 +1158,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 104,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(280),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(280),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7030),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7020),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 9,
@@ -1168,8 +1168,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 105,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(280),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(280),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7030),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7030),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 9,
@@ -1178,8 +1178,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 106,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(280),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(280),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7030),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7030),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 9,
@@ -1188,8 +1188,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 107,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(290),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(290),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7040),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7040),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 9,
@@ -1198,8 +1198,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 108,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(290),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(290),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7040),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7040),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 9,
@@ -1208,8 +1208,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 109,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(300),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(290),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7040),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7040),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 9,
@@ -1218,8 +1218,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 110,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(300),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(300),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7050),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7050),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 9,
@@ -1228,78 +1228,78 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 111,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(300),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(300),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7050),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7050),
                             Eliminado = false,
-                            IdCidade = 1,
+                            IdCidade = 4,
                             IdInstituicaoFinanceira = 9,
                             Nome = "Ag. Sal"
                         },
                         new
                         {
                             IdAgencia = 112,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(310),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(300),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7050),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7050),
                             Eliminado = false,
-                            IdCidade = 1,
+                            IdCidade = 4,
                             IdInstituicaoFinanceira = 9,
                             Nome = "Emigrantes Sal"
                         },
                         new
                         {
                             IdAgencia = 113,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(310),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(310),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7060),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7060),
                             Eliminado = false,
-                            IdCidade = 1,
+                            IdCidade = 4,
                             IdInstituicaoFinanceira = 9,
                             Nome = "Particulares Classic Sal"
                         },
                         new
                         {
                             IdAgencia = 114,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(310),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(310),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7060),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7060),
                             Eliminado = false,
-                            IdCidade = 1,
+                            IdCidade = 4,
                             IdInstituicaoFinanceira = 9,
                             Nome = "Afluentes Sal"
                         },
                         new
                         {
                             IdAgencia = 115,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(320),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(310),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7060),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7060),
                             Eliminado = false,
-                            IdCidade = 1,
+                            IdCidade = 4,
                             IdInstituicaoFinanceira = 9,
                             Nome = "Private Sal"
                         },
                         new
                         {
                             IdAgencia = 116,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(320),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(320),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7070),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7070),
                             Eliminado = false,
-                            IdCidade = 1,
+                            IdCidade = 4,
                             IdInstituicaoFinanceira = 9,
                             Nome = "Institucionais Sal"
                         },
                         new
                         {
                             IdAgencia = 117,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(320),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(320),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7080),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7080),
                             Eliminado = false,
-                            IdCidade = 1,
+                            IdCidade = 4,
                             IdInstituicaoFinanceira = 9,
                             Nome = "PME Nacionais Sal"
                         },
                         new
                         {
                             IdAgencia = 118,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(330),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(330),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7080),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7080),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 9,
@@ -1308,8 +1308,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 119,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(330),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(330),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7090),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7080),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 11,
@@ -1318,8 +1318,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 120,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(330),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(330),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7090),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7090),
                             Eliminado = false,
                             IdCidade = 13,
                             IdInstituicaoFinanceira = 8,
@@ -1328,8 +1328,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 121,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(340),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(340),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7090),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7090),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 8,
@@ -1338,8 +1338,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 122,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(340),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(340),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7100),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7100),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 8,
@@ -1348,8 +1348,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 123,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(340),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(340),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7100),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7100),
                             Eliminado = false,
                             IdCidade = 1,
                             IdInstituicaoFinanceira = 8,
@@ -1358,10 +1358,10 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdAgencia = 124,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(350),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(350),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7110),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7110),
                             Eliminado = false,
-                            IdCidade = 1,
+                            IdCidade = 3,
                             IdInstituicaoFinanceira = 8,
                             Nome = "Ag. Montsu "
                         });
@@ -1454,8 +1454,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdCidade = 1,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9650),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9640),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6410),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6410),
                             Eliminado = false,
                             IdIlha = 8,
                             Nome = "Praia"
@@ -1463,8 +1463,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdCidade = 2,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9650),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9650),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6420),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6420),
                             Eliminado = false,
                             IdIlha = 8,
                             Nome = "Outro"
@@ -1472,8 +1472,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdCidade = 3,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9660),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9650),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6420),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6420),
                             Eliminado = false,
                             IdIlha = 2,
                             Nome = "Mindelo"
@@ -1481,8 +1481,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdCidade = 4,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9660),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9660),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6430),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6430),
                             Eliminado = false,
                             IdIlha = 5,
                             Nome = "Santa Maria"
@@ -1490,8 +1490,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdCidade = 5,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9660),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9660),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6430),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6430),
                             Eliminado = false,
                             IdIlha = 7,
                             Nome = "Vila do Maio"
@@ -1499,8 +1499,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdCidade = 6,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9670),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9660),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6430),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6430),
                             Eliminado = false,
                             IdIlha = 8,
                             Nome = "Santa Cruz"
@@ -1508,8 +1508,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdCidade = 7,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9670),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9670),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6440),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6440),
                             Eliminado = false,
                             IdIlha = 6,
                             Nome = "Sal Rei"
@@ -1517,8 +1517,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdCidade = 8,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9670),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9670),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6440),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6440),
                             Eliminado = false,
                             IdIlha = 1,
                             Nome = "Porto Novo"
@@ -1526,8 +1526,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdCidade = 9,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9680),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9670),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6450),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6440),
                             Eliminado = false,
                             IdIlha = 8,
                             Nome = "Ribeira Grande"
@@ -1535,8 +1535,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdCidade = 10,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9680),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9680),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6460),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6460),
                             Eliminado = false,
                             IdIlha = 10,
                             Nome = "Ribeira Brava"
@@ -1544,8 +1544,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdCidade = 11,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9690),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9690),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6460),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6460),
                             Eliminado = false,
                             IdIlha = 1,
                             Nome = "Tarrafal"
@@ -1553,8 +1553,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdCidade = 12,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9690),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9690),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6470),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6460),
                             Eliminado = false,
                             IdIlha = 5,
                             Nome = "Espargos"
@@ -1562,8 +1562,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdCidade = 13,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9700),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9690),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6470),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6470),
                             Eliminado = false,
                             IdIlha = 8,
                             Nome = "Assomada"
@@ -1571,8 +1571,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdCidade = 14,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9700),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9700),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6470),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6470),
                             Eliminado = false,
                             IdIlha = 8,
                             Nome = "São Domingos"
@@ -1580,8 +1580,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdCidade = 15,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9700),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9700),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6480),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6480),
                             Eliminado = false,
                             IdIlha = 9,
                             Nome = "São Filipe"
@@ -1589,8 +1589,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdCidade = 16,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9710),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9710),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6480),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6480),
                             Eliminado = false,
                             IdIlha = 9,
                             Nome = "Mosteiros"
@@ -1598,8 +1598,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdCidade = 17,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9710),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9710),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6480),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6480),
                             Eliminado = false,
                             IdIlha = 1,
                             Nome = "Nova Sintra"
@@ -1607,8 +1607,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdCidade = 18,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9720),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9710),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6490),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6490),
                             Eliminado = false,
                             IdIlha = 8,
                             Nome = "Tarrafal (Santiano)"
@@ -1671,80 +1671,80 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdIlha = 1,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9570),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9570),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6350),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6350),
                             Eliminado = false,
                             Nome = "Santo Antão"
                         },
                         new
                         {
                             IdIlha = 2,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9570),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9570),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6350),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6350),
                             Eliminado = false,
                             Nome = "São Vicente"
                         },
                         new
                         {
                             IdIlha = 3,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9580),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9580),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6360),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6360),
                             Eliminado = false,
                             Nome = "Santa Luzia"
                         },
                         new
                         {
                             IdIlha = 4,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9580),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9580),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6360),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6360),
                             Eliminado = false,
                             Nome = "São Nicolau"
                         },
                         new
                         {
                             IdIlha = 5,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9590),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9590),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6370),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6360),
                             Eliminado = false,
                             Nome = "Sal"
                         },
                         new
                         {
                             IdIlha = 6,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9590),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9590),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6370),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6370),
                             Eliminado = false,
                             Nome = "Boavista"
                         },
                         new
                         {
                             IdIlha = 7,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9590),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9590),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6370),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6370),
                             Eliminado = false,
                             Nome = "Maio"
                         },
                         new
                         {
                             IdIlha = 8,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9600),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9600),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6380),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6370),
                             Eliminado = false,
                             Nome = "Santiago"
                         },
                         new
                         {
                             IdIlha = 9,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9600),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9600),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6380),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6380),
                             Eliminado = false,
                             Nome = "Fogo"
                         },
                         new
                         {
                             IdIlha = 10,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9610),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9600),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6380),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6380),
                             Eliminado = false,
                             Nome = "Brava"
                         });
@@ -1771,6 +1771,10 @@ namespace sga_stif.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Sigla")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("IdInstituicaoFinanceira");
 
                     b.ToTable("InstituicaoFinanceira", (string)null);
@@ -1779,58 +1783,65 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdInstituicaoFinanceira = 2,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9810),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9810),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6570),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6560),
                             Eliminado = false,
-                            Nome = "Caixa Económica de Cabo Verde"
+                            Nome = "Caixa Económica de Cabo Verde",
+                            Sigla = "CECV"
                         },
                         new
                         {
                             IdInstituicaoFinanceira = 3,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9820),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9820),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6570),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6570),
                             Eliminado = false,
-                            Nome = "Banco Comercial do Atlântico"
+                            Nome = "Banco Comercial do Atlântico",
+                            Sigla = "BCA"
                         },
                         new
                         {
                             IdInstituicaoFinanceira = 4,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9820),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9820),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6580),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6580),
                             Eliminado = false,
-                            Nome = "Banco Caboverdiano de Negócios"
+                            Nome = "Banco Caboverdiano de Negócios",
+                            Sigla = "BCN"
                         },
                         new
                         {
                             IdInstituicaoFinanceira = 5,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9830),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9830),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6580),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6580),
                             Eliminado = false,
-                            Nome = "Banco Interatlântico"
+                            Nome = "Banco Interatlântico",
+                            Sigla = "BI"
                         },
                         new
                         {
                             IdInstituicaoFinanceira = 8,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9830),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9830),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6580),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6580),
                             Eliminado = false,
-                            Nome = "Banco Angolano de Investimentos"
+                            Nome = "Banco Angolano de Investimentos",
+                            Sigla = "BAI"
                         },
                         new
                         {
                             IdInstituicaoFinanceira = 9,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9840),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9830),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6590),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6590),
                             Eliminado = false,
-                            Nome = "International Investment Bank"
+                            Nome = "International Investment Bank",
+                            Sigla = "IIB"
                         },
                         new
                         {
                             IdInstituicaoFinanceira = 11,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9840),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9840),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6590),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6590),
                             Eliminado = false,
-                            Nome = "Ecobank Cabo Verde SA"
+                            Nome = "Ecobank Cabo Verde SA",
+                            Sigla = "ECV"
                         });
                 });
 
@@ -1867,7 +1878,7 @@ namespace sga_stif.Migrations
 
                     b.HasIndex("IdInstituicaoFinanceira");
 
-                    b.ToTable("InstituicaoFinanceiraColaboradores");
+                    b.ToTable("InstituicaoFinanceiraColaboradores", (string)null);
                 });
 
             modelBuilder.Entity("sga_stif.Models.Joia", b =>
@@ -1908,9 +1919,9 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdJoia = 1,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2670),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2670),
-                            DataInicio = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2710),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9670),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9670),
+                            DataInicio = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9680),
                             Descricao = "Jóia STIF",
                             Eliminado = false,
                             Montante = 1000m
@@ -2041,8 +2052,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenu = 1,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2740),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2740),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9710),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9710),
                             Descricao = "Gestão de Sócios",
                             Eliminado = false,
                             Icone = "fas fa-user",
@@ -2053,8 +2064,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenu = 2,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2760),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2760),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9730),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9730),
                             Descricao = "Lista de Sócios",
                             Eliminado = false,
                             Icone = "far fa-circle",
@@ -2066,8 +2077,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenu = 3,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2760),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2760),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9730),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9730),
                             Descricao = "Ranquing de Sócios",
                             Eliminado = false,
                             Icone = "far fa-circle",
@@ -2079,8 +2090,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenu = 4,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2770),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2770),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9740),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9740),
                             Descricao = "Contas Correntes",
                             Eliminado = false,
                             Icone = "fas fa-book",
@@ -2091,8 +2102,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenu = 5,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2770),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2770),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9740),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9740),
                             Descricao = "Quotas Pendentes",
                             Eliminado = false,
                             Icone = "far fa-circle",
@@ -2104,8 +2115,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenu = 6,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2780),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2780),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9760),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9760),
                             Descricao = "Quotas Por Pagar",
                             Eliminado = false,
                             Icone = "far fa-circle",
@@ -2117,8 +2128,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenu = 7,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2790),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2780),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9760),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9760),
                             Descricao = "Quotas Paga",
                             Eliminado = false,
                             Icone = "far fa-circle",
@@ -2130,8 +2141,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenu = 8,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2790),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2790),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9760),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9760),
                             Descricao = "Quotas Vencidas",
                             Eliminado = false,
                             Icone = "far fa-circle",
@@ -2143,8 +2154,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenu = 9,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2790),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2790),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9770),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9770),
                             Descricao = "Posição de IF",
                             Eliminado = false,
                             Icone = "fas fa-search",
@@ -2155,8 +2166,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenu = 10,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2800),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2800),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9770),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9770),
                             Descricao = "Projeção de Quotas",
                             Eliminado = false,
                             Icone = "fas fa-table",
@@ -2167,8 +2178,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenu = 11,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2800),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2800),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9770),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9770),
                             Descricao = "Estatística",
                             Eliminado = false,
                             Icone = "fas fa-chart-pie",
@@ -2179,8 +2190,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenu = 12,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2810),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2800),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9780),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9780),
                             Descricao = "Configurações",
                             Eliminado = false,
                             Icone = "far fa-edit",
@@ -2191,8 +2202,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenu = 13,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2810),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2810),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9780),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9780),
                             Descricao = "Instituição Financeira",
                             Eliminado = false,
                             Icone = "far fa-circle",
@@ -2204,8 +2215,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenu = 14,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2810),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2810),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9780),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9780),
                             Descricao = "Instituição Financeira",
                             Eliminado = false,
                             Icone = "far fa-circle",
@@ -2217,8 +2228,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenu = 15,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2820),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2820),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9790),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9790),
                             Descricao = "Gestão de Menu",
                             Eliminado = false,
                             Icone = "far fa-circle",
@@ -2230,8 +2241,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenu = 16,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2820),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2820),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9790),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9790),
                             Descricao = "Instituição Financeira",
                             Eliminado = false,
                             Icone = "far fa-circle",
@@ -2243,8 +2254,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenu = 17,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2820),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2820),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9790),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9790),
                             Descricao = "Agência",
                             Eliminado = false,
                             Icone = "far fa-circle",
@@ -2256,8 +2267,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenu = 18,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2830),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2830),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9800),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9800),
                             Descricao = "Tipo Quotas",
                             Eliminado = false,
                             Icone = "far fa-circle",
@@ -2269,8 +2280,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenu = 19,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2830),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2830),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9800),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9800),
                             Descricao = "Tipologia Sócio",
                             Eliminado = false,
                             Icone = "far fa-circle",
@@ -2319,8 +2330,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenuAcao = 1,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2910),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2910),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9870),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9870),
                             Eliminado = false,
                             IdAcao = 1,
                             IdMenu = 1,
@@ -2329,8 +2340,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenuAcao = 2,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2930),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2920),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9890),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9880),
                             Eliminado = false,
                             IdAcao = 1,
                             IdMenu = 2,
@@ -2339,8 +2350,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenuAcao = 3,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2930),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2930),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9890),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9890),
                             Eliminado = false,
                             IdAcao = 1,
                             IdMenu = 3,
@@ -2349,8 +2360,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenuAcao = 4,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2930),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2930),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9940),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9940),
                             Eliminado = false,
                             IdAcao = 1,
                             IdMenu = 4,
@@ -2359,8 +2370,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenuAcao = 5,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2940),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2930),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9940),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9940),
                             Eliminado = false,
                             IdAcao = 1,
                             IdMenu = 5,
@@ -2369,8 +2380,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenuAcao = 6,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2940),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2940),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9950),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9940),
                             Eliminado = false,
                             IdAcao = 1,
                             IdMenu = 6,
@@ -2379,8 +2390,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenuAcao = 7,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2940),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2940),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9950),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9950),
                             Eliminado = false,
                             IdAcao = 1,
                             IdMenu = 7,
@@ -2389,8 +2400,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenuAcao = 8,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2950),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2950),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9950),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9950),
                             Eliminado = false,
                             IdAcao = 1,
                             IdMenu = 8,
@@ -2399,8 +2410,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenuAcao = 9,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2950),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2950),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9950),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9950),
                             Eliminado = false,
                             IdAcao = 1,
                             IdMenu = 9,
@@ -2409,8 +2420,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenuAcao = 10,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2950),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2950),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9960),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9960),
                             Eliminado = false,
                             IdAcao = 1,
                             IdMenu = 10,
@@ -2419,8 +2430,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenuAcao = 11,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2960),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2960),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9960),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9960),
                             Eliminado = false,
                             IdAcao = 1,
                             IdMenu = 11,
@@ -2429,8 +2440,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenuAcao = 12,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2960),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2960),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9960),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9960),
                             Eliminado = false,
                             IdAcao = 1,
                             IdMenu = 12,
@@ -2439,8 +2450,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenuAcao = 13,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2960),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2960),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9960),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9960),
                             Eliminado = false,
                             IdAcao = 1,
                             IdMenu = 13,
@@ -2449,8 +2460,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenuAcao = 14,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2970),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2970),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9970),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9970),
                             Eliminado = false,
                             IdAcao = 1,
                             IdMenu = 14,
@@ -2459,8 +2470,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenuAcao = 15,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2970),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2970),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9970),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9970),
                             Eliminado = false,
                             IdAcao = 1,
                             IdMenu = 15,
@@ -2469,8 +2480,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenuAcao = 16,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2970),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2970),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9970),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9970),
                             Eliminado = false,
                             IdAcao = 1,
                             IdMenu = 16,
@@ -2479,8 +2490,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenuAcao = 17,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2980),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2980),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9980),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9970),
                             Eliminado = false,
                             IdAcao = 1,
                             IdMenu = 17,
@@ -2489,8 +2500,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenuAcao = 18,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2990),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2990),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9980),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9980),
                             Eliminado = false,
                             IdAcao = 1,
                             IdMenu = 18,
@@ -2499,8 +2510,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdMenuAcao = 19,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3000),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(2990),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9980),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 131, DateTimeKind.Local).AddTicks(9980),
                             Eliminado = false,
                             IdAcao = 1,
                             IdMenu = 19,
@@ -2544,8 +2555,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdPerfil = 1,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9760),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9760),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6520),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6520),
                             Descricao = "Perfil de Administrador",
                             Editavel = false,
                             Eliminado = false,
@@ -2554,8 +2565,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdPerfil = 2,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9770),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9770),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6530),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6530),
                             Descricao = "Perfil de Operador",
                             Editavel = true,
                             Eliminado = false,
@@ -2564,8 +2575,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdPerfil = 3,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9790),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9790),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6540),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6530),
                             Descricao = "Perfil de Operador",
                             Editavel = true,
                             Eliminado = false,
@@ -2608,8 +2619,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdPerfilMenuAcao = 1,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3050),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3050),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 132, DateTimeKind.Local).AddTicks(70),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 132, DateTimeKind.Local).AddTicks(70),
                             Eliminado = false,
                             IdMenuAcao = 1,
                             IdPPerfil = 1
@@ -2617,8 +2628,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdPerfilMenuAcao = 2,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3060),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3060),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 132, DateTimeKind.Local).AddTicks(80),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 132, DateTimeKind.Local).AddTicks(80),
                             Eliminado = false,
                             IdMenuAcao = 2,
                             IdPPerfil = 1
@@ -2626,8 +2637,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdPerfilMenuAcao = 3,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3070),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3070),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 132, DateTimeKind.Local).AddTicks(90),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 132, DateTimeKind.Local).AddTicks(80),
                             Eliminado = false,
                             IdMenuAcao = 3,
                             IdPPerfil = 1
@@ -2635,8 +2646,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdPerfilMenuAcao = 4,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3070),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3070),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 132, DateTimeKind.Local).AddTicks(90),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 132, DateTimeKind.Local).AddTicks(90),
                             Eliminado = false,
                             IdMenuAcao = 4,
                             IdPPerfil = 1
@@ -2644,8 +2655,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdPerfilMenuAcao = 5,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3070),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3070),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 132, DateTimeKind.Local).AddTicks(90),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 132, DateTimeKind.Local).AddTicks(90),
                             Eliminado = false,
                             IdMenuAcao = 5,
                             IdPPerfil = 1
@@ -2653,8 +2664,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdPerfilMenuAcao = 6,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3080),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3080),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 132, DateTimeKind.Local).AddTicks(90),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 132, DateTimeKind.Local).AddTicks(90),
                             Eliminado = false,
                             IdMenuAcao = 6,
                             IdPPerfil = 1
@@ -2662,8 +2673,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdPerfilMenuAcao = 7,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3080),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3080),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 132, DateTimeKind.Local).AddTicks(100),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 132, DateTimeKind.Local).AddTicks(100),
                             Eliminado = false,
                             IdMenuAcao = 7,
                             IdPPerfil = 1
@@ -2671,8 +2682,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdPerfilMenuAcao = 8,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3080),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3080),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 132, DateTimeKind.Local).AddTicks(100),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 132, DateTimeKind.Local).AddTicks(100),
                             Eliminado = false,
                             IdMenuAcao = 8,
                             IdPPerfil = 1
@@ -2680,8 +2691,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdPerfilMenuAcao = 9,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3090),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3090),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 132, DateTimeKind.Local).AddTicks(100),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 132, DateTimeKind.Local).AddTicks(100),
                             Eliminado = false,
                             IdMenuAcao = 9,
                             IdPPerfil = 1
@@ -2689,8 +2700,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdPerfilMenuAcao = 10,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3090),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3090),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 132, DateTimeKind.Local).AddTicks(100),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 132, DateTimeKind.Local).AddTicks(100),
                             Eliminado = false,
                             IdMenuAcao = 10,
                             IdPPerfil = 1
@@ -2698,8 +2709,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdPerfilMenuAcao = 11,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3090),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3090),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 132, DateTimeKind.Local).AddTicks(110),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 132, DateTimeKind.Local).AddTicks(110),
                             Eliminado = false,
                             IdMenuAcao = 11,
                             IdPPerfil = 1
@@ -2707,8 +2718,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdPerfilMenuAcao = 12,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3100),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3090),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 132, DateTimeKind.Local).AddTicks(110),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 132, DateTimeKind.Local).AddTicks(110),
                             Eliminado = false,
                             IdMenuAcao = 12,
                             IdPPerfil = 1
@@ -2716,8 +2727,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdPerfilMenuAcao = 13,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3100),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3100),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 132, DateTimeKind.Local).AddTicks(110),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 132, DateTimeKind.Local).AddTicks(110),
                             Eliminado = false,
                             IdMenuAcao = 13,
                             IdPPerfil = 1
@@ -2725,8 +2736,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdPerfilMenuAcao = 14,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3100),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3100),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 132, DateTimeKind.Local).AddTicks(110),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 132, DateTimeKind.Local).AddTicks(110),
                             Eliminado = false,
                             IdMenuAcao = 14,
                             IdPPerfil = 1
@@ -2734,8 +2745,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdPerfilMenuAcao = 15,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3110),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3100),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 132, DateTimeKind.Local).AddTicks(120),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 132, DateTimeKind.Local).AddTicks(120),
                             Eliminado = false,
                             IdMenuAcao = 15,
                             IdPPerfil = 1
@@ -2743,8 +2754,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdPerfilMenuAcao = 16,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3110),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3110),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 132, DateTimeKind.Local).AddTicks(120),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 132, DateTimeKind.Local).AddTicks(120),
                             Eliminado = false,
                             IdMenuAcao = 16,
                             IdPPerfil = 1
@@ -2752,8 +2763,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdPerfilMenuAcao = 17,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3110),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3110),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 132, DateTimeKind.Local).AddTicks(120),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 132, DateTimeKind.Local).AddTicks(120),
                             Eliminado = false,
                             IdMenuAcao = 17,
                             IdPPerfil = 1
@@ -2761,8 +2772,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdPerfilMenuAcao = 18,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3110),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3110),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 132, DateTimeKind.Local).AddTicks(120),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 132, DateTimeKind.Local).AddTicks(120),
                             Eliminado = false,
                             IdMenuAcao = 18,
                             IdPPerfil = 1
@@ -2770,8 +2781,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdPerfilMenuAcao = 19,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3120),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 45, 0, 123, DateTimeKind.Local).AddTicks(3120),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 33, 132, DateTimeKind.Local).AddTicks(130),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 33, 132, DateTimeKind.Local).AddTicks(130),
                             Eliminado = false,
                             IdMenuAcao = 19,
                             IdPPerfil = 1
@@ -2835,6 +2846,12 @@ namespace sga_stif.Migrations
                     b.Property<DateTime?>("DataCriacao")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime?>("DataQueFoiConfirmadaPagamento")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DataQueFoiEfectuadaPagamento")
+                        .HasColumnType("datetime2");
+
                     b.Property<bool?>("Eliminado")
                         .HasColumnType("bit");
 
@@ -2850,13 +2867,21 @@ namespace sga_stif.Migrations
                     b.Property<decimal>("Montante")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<string>("UtilizadorQueConfirmouPagamento")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UtilizadorQueEfectuouPagamento")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("IdQuotaSocio");
 
                     b.HasIndex("IdPeriodoQuota");
 
                     b.HasIndex("IdSocio");
 
-                    b.ToTable("QuotaSocio");
+                    b.ToTable("QuotaSocio", (string)null);
                 });
 
             modelBuilder.Entity("sga_stif.Models.ResultadoStoredProcedure.ContaCorrenteIFResultado", b =>
@@ -3073,10 +3098,10 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdTipologiaSocio = 1,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9210),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9170),
-                            DataFim = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9230),
-                            DataInicio = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9230),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(5870),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(5830),
+                            DataFim = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(5880),
+                            DataInicio = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(5880),
                             Descricao = "Normal",
                             Eliminado = false,
                             Tipo = 0
@@ -3084,10 +3109,10 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdTipologiaSocio = 2,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9240),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9230),
-                            DataFim = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9240),
-                            DataInicio = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9240),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(5880),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(5880),
+                            DataFim = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(5890),
+                            DataInicio = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(5890),
                             Descricao = "Honorário",
                             Eliminado = false,
                             Tipo = 1
@@ -3132,8 +3157,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdTipoQuota = 1,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9510),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9510),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6270),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6260),
                             Descricao = "Quinzenal",
                             Eliminado = false,
                             Montante = 0m,
@@ -3143,8 +3168,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdTipoQuota = 2,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9520),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9520),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6270),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6270),
                             Descricao = "Mensal",
                             Eliminado = false,
                             Montante = 0m,
@@ -3154,8 +3179,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdTipoQuota = 3,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9520),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9520),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6280),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6280),
                             Descricao = "Trimestral",
                             Eliminado = false,
                             Montante = 0m,
@@ -3165,8 +3190,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdTipoQuota = 4,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9530),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9530),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6280),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6280),
                             Descricao = "Semestral",
                             Eliminado = false,
                             Montante = 0m,
@@ -3176,8 +3201,8 @@ namespace sga_stif.Migrations
                         new
                         {
                             IdTipoQuota = 5,
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9530),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 270, DateTimeKind.Local).AddTicks(9530),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6280),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(6280),
                             Descricao = "Anual",
                             Eliminado = false,
                             Montante = 0m,
@@ -3240,53 +3265,53 @@ namespace sga_stif.Migrations
                         {
                             IdUtilizador = 1,
                             Apelido = "Semedo",
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(420),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 271, DateTimeKind.Local).AddTicks(420),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7170),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 391, DateTimeKind.Local).AddTicks(7170),
                             Eliminado = false,
                             Email = "angelosemedo@sgastif.cv",
                             IdPerfil = 1,
                             Nome = "Angelo",
                             NomeUtilizador = "angelosemedo",
-                            PalavraPasse = "$2a$11$LblNvI0IxFNNKTRLEfKMa.AWY9KJsXdKqJBgmIj5gZ4K/7cE/Z2n2"
+                            PalavraPasse = "$2a$11$jlgm.jiyRShNc2Z/K5lSZe6oZjs9x54ANuGvCQHBqU8719DM9qXbu"
                         },
                         new
                         {
                             IdUtilizador = 2,
                             Apelido = "Veiga",
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 472, DateTimeKind.Local).AddTicks(6370),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 472, DateTimeKind.Local).AddTicks(6350),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 579, DateTimeKind.Local).AddTicks(5040),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 579, DateTimeKind.Local).AddTicks(5030),
                             Eliminado = false,
                             Email = "odailtonveiga@sgastif.cv",
                             IdPerfil = 1,
                             Nome = "Odailton",
                             NomeUtilizador = "odailtonveiga",
-                            PalavraPasse = "$2a$11$wlyFO63wsyJLHWhGsXAeGud9/RJFHFtzmM3i/3fcIkeb1GTqhdC7K"
+                            PalavraPasse = "$2a$11$OAcPkhTeJ9cYe5NQWYzZmOwcljAynTa7Ek0GEwrHA9JS/V2T8Lclq"
                         },
                         new
                         {
                             IdUtilizador = 3,
                             Apelido = "Varela",
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 700, DateTimeKind.Local).AddTicks(70),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 700, DateTimeKind.Local).AddTicks(50),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 768, DateTimeKind.Local).AddTicks(1930),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 768, DateTimeKind.Local).AddTicks(1910),
                             Eliminado = false,
                             Email = "manuelvarela@sgastif.cv",
                             IdPerfil = 1,
                             Nome = "Manuel",
                             NomeUtilizador = "manuelvarela",
-                            PalavraPasse = "$2a$11$7nEfNPpgksDvitCIoFPvrenHUQ187bUSFpdw.pD9EY36jsoILRFsK"
+                            PalavraPasse = "$2a$11$g5BOydI6laBu8dsD0DRCQe2zCTJJXqlcrCiVXLG.UzEC878TgDUgu"
                         },
                         new
                         {
                             IdUtilizador = 4,
                             Apelido = "Tavares",
-                            DataAtualizacao = new DateTime(2022, 4, 25, 14, 44, 59, 921, DateTimeKind.Local).AddTicks(5490),
-                            DataCriacao = new DateTime(2022, 4, 25, 14, 44, 59, 921, DateTimeKind.Local).AddTicks(5480),
+                            DataAtualizacao = new DateTime(2022, 5, 2, 22, 29, 32, 948, DateTimeKind.Local).AddTicks(8300),
+                            DataCriacao = new DateTime(2022, 5, 2, 22, 29, 32, 948, DateTimeKind.Local).AddTicks(8280),
                             Eliminado = false,
                             Email = "jair@sgastif.cv",
                             IdPerfil = 1,
                             Nome = "Jair",
                             NomeUtilizador = "jair",
-                            PalavraPasse = "$2a$11$eEVc3kL81CQDPRP5w3.tQeVJ7C2Z3KB82eHYUH9dFMHrc8YRTwRX2"
+                            PalavraPasse = "$2a$11$wtzMk55qpDAinVXs5RlpIukAT4Tug2uJ0fwmeIvOPQw65AKkZaWIu"
                         });
                 });
 

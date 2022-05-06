@@ -6,53 +6,58 @@
 
 <div class="card">
   <div class="card-header">
+    <form asp-action="ListaQuotasPorPagar" method="get">
 
-    <div class="row no-print">
+      <div class="row no-print">
 
-      <div class="col-12">
-        <p class="lead">Lista de Quotas Por Pagar</p>
 
-       <div class="row align-items-end">
-          <div class="col-md-3">
-            <div class="form-group align-items-end">
-              <label class="control-label">Mes</label>
-              <select class="form-control">
-                 <option disabled selected>--- todos ---</option>
-                <option value="1">Janeiro</option>
-                <option value="2">Fevereiro</option>
-                <option value="3">Março</option>
-                <option value="4">Abril</option>
-                <option value="5">Maio</option>
-                <option value="6">Junho</option>
-                <option value="7">Julho</option>
-                <option value="8">Agosto</option>
-                <option value="9">Setembro</option>
-                <option value="10">Outubro</option>
-                <option value="11">Novembro</option>
-                <option value="12">Dezemmbro</option>
-              </select>
-             
+        <div class="col-12">
+          <p class="lead">Lista de Quotas Por Pagar</p>
+
+          <div class="row align-items-end">
+
+
+
+            <div class="col-md-3">
+              <div class="form-group align-items-end">
+                <label class="control-label">Mes</label>
+                <select class="form-control" name="mes" id="mes">
+                  <option disabled selected>--- todos ---</option>
+                  <option value="1">Janeiro</option>
+                  <option value="2">Fevereiro</option>
+                  <option value="3">Março</option>
+                  <option value="4">Abril</option>
+                  <option value="5">Maio</option>
+                  <option value="6">Junho</option>
+                  <option value="7">Julho</option>
+                  <option value="8">Agosto</option>
+                  <option value="9">Setembro</option>
+                  <option value="10">Outubro</option>
+                  <option value="11">Novembro</option>
+                  <option value="12">Dezemmbro</option>
+                </select>
+
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group align-items-end">
+                <label class="control-label">Intituição Financeira</label>
+                <select asp-items="@ViewBag.IdInstituicaoFinanceira" class="form-control" id="instituicaoFinanceira"
+                  name="instituicaoFinanceira">
+                  <option disabled selected>--- todos ---</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group align-items-end">
+                <label class="control-label"></label>
+                <input type="submit" class="btn btn-primary" value="Filtrar" />
+              </div>
             </div>
           </div>
-          <div class="col-md-3">
-            <div class="form-group align-items-end">
-              <label class="control-label">Intituição Financeira</label>
-              <select  asp-items="@ViewBag.IdInstituicaoFinanceira" class="form-control" id="IdInstituicaoFinanceira">
-                <option disabled selected>--- todos ---</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="form-group align-items-end">
-              <label class="control-label"></label>
-              <input type="submit" class="btn btn-primary" value="Filtrar" />
-            </div>
-          </div>
-
         </div>
       </div>
-    </div>
-    
+    </form>
   </div>
   <div class="card-body">
     <table id="example2" class="table table-bordered table-striped">
@@ -60,9 +65,6 @@
         <tr>
           <th>
             @Html.DisplayNameFor(model => model.Nome)
-          </th>
-          <th>
-            @Html.DisplayNameFor(model => model.IdSocio)
           </th>
           <th>
             @Html.DisplayNameFor(model => model.IFS)
@@ -76,11 +78,11 @@
           <th>
             @Html.DisplayNameFor(model => model.Mes)
           </th>
-         
+
           <th>
             @Html.DisplayNameFor(model => model.Montante)
           </th>
-       
+
           <th>
             Ação
           </th>
@@ -96,9 +98,6 @@
               @Html.DisplayFor(modelItem => item.Nome)
             </td>
             <td>
-              @Html.DisplayFor(modelItem => item.IdSocio)
-            </td>
-            <td>
               @Html.DisplayFor(modelItem => item.IFS)
             </td>
             <td>
@@ -110,13 +109,26 @@
             <td>
               @Html.DisplayFor(modelItem => item.Mes)
             </td>
-          
+
             <td>
               @Html.DisplayFor(modelItem => item.Montante)
             </td>
-           
+
             <td>
-              Ação
+             
+              @if ((EstadoQuotaSocio)item.EstadoQuotaNum == EstadoQuotaSocio.AguardaConfirmacaoPagamento)
+              {
+                <a asp-action="ConcluirPagamento" asp-route-idQuotaSocio=@item.IdQuotaSocio rel="noopener"
+              class="btn btn-success btn-sm">Confirmar Pagamento</a>
+
+              }
+              else
+              {
+                <a asp-action="EfectuaPagamento" asp-route-idQuotaSocio=@item.IdQuotaSocio rel="noopener"
+              class="btn btn-success btn-sm">Efectuar Pagamento</a>
+
+              }
+
             </td>
 
           </tr>

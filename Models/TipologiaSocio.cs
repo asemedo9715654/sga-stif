@@ -12,6 +12,8 @@ namespace sga_stif.Models
         public string Descricao { get; set; }
         public DateTime DataInicio { get; set; }
         public DateTime? DataFim { get; set; }
+
+         //propriedades de navegação
         public virtual ICollection<Socio> Socio { get; set; }
 
         public TipologiaSocio()
