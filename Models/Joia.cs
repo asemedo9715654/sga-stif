@@ -10,6 +10,8 @@ namespace sga_stif.Models
         public decimal Montante { get; set; }
         public DateTime DataInicio { get; set; }
         public DateTime? DataFim { get; set; }
+
+        //proprieddades de navegacao
         public virtual ICollection<JoiaSocio> JoiaSocio { get; set; }
 
         public Joia( )

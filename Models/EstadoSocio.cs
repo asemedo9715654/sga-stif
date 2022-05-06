@@ -12,6 +12,7 @@ namespace sga_stif.Models
         public DateTime? DataFim { get; set; }
         [ForeignKey("Socio")]
         public int IdSocio { get; set; }
+         //propriedades de navegação
         public virtual Socio Socio { get; set; }
 
     }

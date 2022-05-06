@@ -18,11 +18,13 @@ namespace sga_stif.Models.ResultadoStoredProcedure
         [Display(Name = "Mês")]
         public string Mes { get; set; }
          public int MesNum { get; set; }
-        [Display(Name = "Descrição")]
+        [Display(Name = "Montante")]
         public decimal Montante { get; set; }
 
         [Display(Name = "Estado da Quota")]
         public string EstadoQuota { get; set; }
+        public int EstadoQuotaNum { get; set; }
+        public int IdQuotaSocio { get; set; }
 
 
     }

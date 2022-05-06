@@ -11,6 +11,7 @@ namespace sga_stif.Models
         public int IdMenuAcao { get; set; }
         [ForeignKey("Perfil")]
         public int IdPPerfil { get; set; }
+         //propriedades de navegação
         public virtual MenuAcao MenuAcao { get; set; }
         public virtual Perfil Perfil { get; set; }
     }

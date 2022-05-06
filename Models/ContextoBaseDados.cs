@@ -30,6 +30,7 @@ namespace sga_stif.Models
     public DbSet<TipologiaSocio> TipologiaSocio { get; set; }
     public DbSet<LogAtividade> LogAtividade { get; set; }
     public DbSet<InstituicaoFinanceiraColaboradores> InstituicaoFinanceiraColaboradores { get; set; }
+    public DbSet<QuotaSocio> QuotaSocio { get; set; }
 
     //resultado storedd procedure
     public DbSet<ContaCorrenteIFResultado> ContaCorrenteIFResultado { get; set; }
@@ -56,12 +57,18 @@ namespace sga_stif.Models
       modelBuilder.Entity<EstadoSocio>().ToTable("EstadoSocio");
       modelBuilder.Entity<PerfilMenuAcao>().ToTable("PerfilMenuAcao");
       modelBuilder.Entity<TipologiaSocio>().ToTable("TipologiaSocio");
+      modelBuilder.Entity<InstituicaoFinanceiraColaboradores>().ToTable("InstituicaoFinanceiraColaboradores");
+      modelBuilder.Entity<QuotaSocio>().ToTable("QuotaSocio");
 
 
       //nao vai ser criado na base de dados
 
       modelBuilder.Entity<ContaCorrenteIFResultado>().HasNoKey();
       modelBuilder.Entity<ContaCorrenteSocioResultado>().HasNoKey();
+
+      // modelBuilder.Entity<ContaCorrenteIFResultado>().ToView("Dummy view name");
+      // modelBuilder.Entity<ContaCorrenteSocioResultado>().ToView("Dummy view name");
+      
 
 
       #region seed dados de inicializacao do sistema
@@ -136,13 +143,13 @@ namespace sga_stif.Models
 
 
       modelBuilder.Entity<InstituicaoFinanceira>().HasData(
-            new InstituicaoFinanceira() { IdInstituicaoFinanceira = 2, Nome = "Caixa Económica de Cabo Verde", },
-            new InstituicaoFinanceira() { IdInstituicaoFinanceira = 3, Nome = "Banco Comercial do Atlântico", },
-            new InstituicaoFinanceira() { IdInstituicaoFinanceira = 4, Nome = "Banco Caboverdiano de Negócios", },
-            new InstituicaoFinanceira() { IdInstituicaoFinanceira = 5, Nome = "Banco Interatlântico", },
-            new InstituicaoFinanceira() { IdInstituicaoFinanceira = 8, Nome = "Banco Angolano de Investimentos", },
-            new InstituicaoFinanceira() { IdInstituicaoFinanceira = 9, Nome = "International Investment Bank", },
-            new InstituicaoFinanceira() { IdInstituicaoFinanceira = 11, Nome = "Ecobank Cabo Verde SA", }
+            new InstituicaoFinanceira() { IdInstituicaoFinanceira = 2, Nome = "Caixa Económica de Cabo Verde", Sigla="CECV" },
+            new InstituicaoFinanceira() { IdInstituicaoFinanceira = 3, Nome = "Banco Comercial do Atlântico", Sigla="BCA"},
+            new InstituicaoFinanceira() { IdInstituicaoFinanceira = 4, Nome = "Banco Caboverdiano de Negócios", Sigla="BCN" },
+            new InstituicaoFinanceira() { IdInstituicaoFinanceira = 5, Nome = "Banco Interatlântico", Sigla="BI" },
+            new InstituicaoFinanceira() { IdInstituicaoFinanceira = 8, Nome = "Banco Angolano de Investimentos", Sigla="BAI" },
+            new InstituicaoFinanceira() { IdInstituicaoFinanceira = 9, Nome = "International Investment Bank", Sigla="IIB" },
+            new InstituicaoFinanceira() { IdInstituicaoFinanceira = 11, Nome = "Ecobank Cabo Verde SA", Sigla="ECV" }
 
        );
 
@@ -156,34 +163,34 @@ namespace sga_stif.Models
            new Agencia { IdAgencia = 6, IdCidade = 9, IdInstituicaoFinanceira = 2, Nome = "Ag. Rª Grande" },
            new Agencia { IdAgencia = 7, IdCidade = 1, IdInstituicaoFinanceira = 2, Nome = "Ag. St. Maria" },
            new Agencia { IdAgencia = 8, IdCidade = 1, IdInstituicaoFinanceira = 2, Nome = "Ag. Plateau" },
-           new Agencia { IdAgencia = 9, IdCidade = 1, IdInstituicaoFinanceira = 2, Nome = "Ag. Monte Sossego" },
+           new Agencia { IdAgencia = 9, IdCidade = 3, IdInstituicaoFinanceira = 2, Nome = "Ag. Monte Sossego" },
            new Agencia { IdAgencia = 10, IdCidade = 1, IdInstituicaoFinanceira = 2, Nome = "Ag. Palmarejo" },
            new Agencia { IdAgencia = 11, IdCidade = 1, IdInstituicaoFinanceira = 2, Nome = "Ag. São Filipe" },
            new Agencia { IdAgencia = 12, IdCidade = 1, IdInstituicaoFinanceira = 2, Nome = "Ag. Calheta S. Miguel" },
            new Agencia { IdAgencia = 13, IdCidade = 1, IdInstituicaoFinanceira = 2, Nome = "Ag. Aeroporto da Praia" },
            new Agencia { IdAgencia = 14, IdCidade = 7, IdInstituicaoFinanceira = 2, Nome = "Ag. Boavista" },
-           new Agencia { IdAgencia = 15, IdCidade = 1, IdInstituicaoFinanceira = 2, Nome = "Ag. Aeroporto do Sal" },
+           new Agencia { IdAgencia = 15, IdCidade = 12, IdInstituicaoFinanceira = 2, Nome = "Ag. Aeroporto do Sal" },
            new Agencia { IdAgencia = 16, IdCidade = 1, IdInstituicaoFinanceira = 2, Nome = "Ag. Sucupira" },
-           new Agencia { IdAgencia = 17, IdCidade = 1, IdInstituicaoFinanceira = 2, Nome = "Ag. CCV – São Domingos" },
+           new Agencia { IdAgencia = 17, IdCidade = 14, IdInstituicaoFinanceira = 2, Nome = "Ag. CCV – São Domingos" },
            new Agencia { IdAgencia = 18, IdCidade = 18, IdInstituicaoFinanceira = 2, Nome = "Ag. Tarrafal" },
            new Agencia { IdAgencia = 19, IdCidade = 1, IdInstituicaoFinanceira = 2, Nome = "Ag. Santa Cruz" },
-           new Agencia { IdAgencia = 20, IdCidade = 1, IdInstituicaoFinanceira = 2, Nome = "Ag. CCV – Porto Novo" },
+           new Agencia { IdAgencia = 20, IdCidade = 8, IdInstituicaoFinanceira = 2, Nome = "Ag. CCV – Porto Novo" },
            new Agencia { IdAgencia = 21, IdCidade = 1, IdInstituicaoFinanceira = 2, Nome = "Ag. CCV - Plateau" },
            new Agencia { IdAgencia = 22, IdCidade = 1, IdInstituicaoFinanceira = 2, Nome = "Ag. A. São Filipe" },
-           new Agencia { IdAgencia = 23, IdCidade = 1, IdInstituicaoFinanceira = 2, Nome = "Ag. Mosteiros" },
+           new Agencia { IdAgencia = 23, IdCidade = 16, IdInstituicaoFinanceira = 2, Nome = "Ag. Mosteiros" },
            new Agencia { IdAgencia = 24, IdCidade = 1, IdInstituicaoFinanceira = 2, Nome = "Ag. Caixa Empresas" },
            new Agencia { IdAgencia = 25, IdCidade = 1, IdInstituicaoFinanceira = 2, Nome = "Ag. Coculi" },
            new Agencia { IdAgencia = 26, IdCidade = 1, IdInstituicaoFinanceira = 2, Nome = "Ag. Paul" },
            new Agencia { IdAgencia = 27, IdCidade = 1, IdInstituicaoFinanceira = 2, Nome = "Ag. Fonte Cónego" },
            new Agencia { IdAgencia = 28, IdCidade = 7, IdInstituicaoFinanceira = 2, Nome = "Ag. Aeroporto Boavista" },
-           new Agencia { IdAgencia = 29, IdCidade = 1, IdInstituicaoFinanceira = 2, Nome = "Ag. Maio" },
+           new Agencia { IdAgencia = 29, IdCidade = 5, IdInstituicaoFinanceira = 2, Nome = "Ag. Maio" },
            new Agencia { IdAgencia = 30, IdCidade = 1, IdInstituicaoFinanceira = 2, Nome = "Ag. Porto Novo" },
            new Agencia { IdAgencia = 31, IdCidade = 1, IdInstituicaoFinanceira = 2, Nome = "Ag. Ribeira Brava" },
            new Agencia { IdAgencia = 32, IdCidade = 1, IdInstituicaoFinanceira = 2, Nome = "Ag. Ribeira Brava" },
            new Agencia { IdAgencia = 33, IdCidade = 18, IdInstituicaoFinanceira = 2, Nome = "Ag. Tarrafal" },
            new Agencia { IdAgencia = 34, IdCidade = 1, IdInstituicaoFinanceira = 3, Nome = "Ag. Praia" },
            new Agencia { IdAgencia = 35, IdCidade = 1, IdInstituicaoFinanceira = 3, Nome = "Ag. S. Vicente " },
-           new Agencia { IdAgencia = 36, IdCidade = 1, IdInstituicaoFinanceira = 3, Nome = "Ag. Sal" },
+           new Agencia { IdAgencia = 36, IdCidade = 4, IdInstituicaoFinanceira = 3, Nome = "Ag. Sal" },
            new Agencia { IdAgencia = 37, IdCidade = 1, IdInstituicaoFinanceira = 3, Nome = "Ag. S. Filipe" },
            new Agencia { IdAgencia = 38, IdCidade = 18, IdInstituicaoFinanceira = 3, Nome = "Ag. Tarrafal" },
            new Agencia { IdAgencia = 39, IdCidade = 1, IdInstituicaoFinanceira = 3, Nome = "Ag. S. Catarina" },
@@ -192,15 +199,15 @@ namespace sga_stif.Models
            new Agencia { IdAgencia = 42, IdCidade = 1, IdInstituicaoFinanceira = 3, Nome = "Ag. Brava" },
            new Agencia { IdAgencia = 43, IdCidade = 1, IdInstituicaoFinanceira = 3, Nome = "Ag. Boavista" },
            new Agencia { IdAgencia = 44, IdCidade = 1, IdInstituicaoFinanceira = 3, Nome = "Ag. S. Nicolau" },
-           new Agencia { IdAgencia = 45, IdCidade = 1, IdInstituicaoFinanceira = 3, Nome = "Ag. Maio" },
-           new Agencia { IdAgencia = 46, IdCidade = 1, IdInstituicaoFinanceira = 3, Nome = "Ag. Santa Cruz" },
+           new Agencia { IdAgencia = 45, IdCidade = 5, IdInstituicaoFinanceira = 3, Nome = "Ag. Maio" },
+           new Agencia { IdAgencia = 46, IdCidade = 6, IdInstituicaoFinanceira = 3, Nome = "Ag. Santa Cruz" },
            new Agencia { IdAgencia = 47, IdCidade = 1, IdInstituicaoFinanceira = 3, Nome = "Ag. Praça Nova" },
            new Agencia { IdAgencia = 48, IdCidade = 1, IdInstituicaoFinanceira = 3, Nome = "Ag. ASA" },
            new Agencia { IdAgencia = 49, IdCidade = 1, IdInstituicaoFinanceira = 3, Nome = "Ag. Avenida" },
-           new Agencia { IdAgencia = 50, IdCidade = 1, IdInstituicaoFinanceira = 3, Nome = "Ag. Monte Sossego" },
-           new Agencia { IdAgencia = 51, IdCidade = 1, IdInstituicaoFinanceira = 3, Nome = "Ag. Fonte Filipe" },
-           new Agencia { IdAgencia = 52, IdCidade = 1, IdInstituicaoFinanceira = 3, Nome = "Ag. Santa Maria" },
-           new Agencia { IdAgencia = 53, IdCidade = 1, IdInstituicaoFinanceira = 3, Nome = "Ag. Mosteiros" },
+           new Agencia { IdAgencia = 50, IdCidade = 3, IdInstituicaoFinanceira = 3, Nome = "Ag. Monte Sossego" },
+           new Agencia { IdAgencia = 51, IdCidade = 3, IdInstituicaoFinanceira = 3, Nome = "Ag. Fonte Filipe" },
+           new Agencia { IdAgencia = 52, IdCidade = 4, IdInstituicaoFinanceira = 3, Nome = "Ag. Santa Maria" },
+           new Agencia { IdAgencia = 53, IdCidade = 16, IdInstituicaoFinanceira = 3, Nome = "Ag. Mosteiros" },
            new Agencia { IdAgencia = 54, IdCidade = 11, IdInstituicaoFinanceira = 3, Nome = "Ag. Tarrafal S. Nicolau" },
            new Agencia { IdAgencia = 55, IdCidade = 1, IdInstituicaoFinanceira = 3, Nome = "Ag. ASA II" },
            new Agencia { IdAgencia = 56, IdCidade = 1, IdInstituicaoFinanceira = 3, Nome = "Gabinete Empresas Sul" },
@@ -208,17 +215,17 @@ namespace sga_stif.Models
            new Agencia { IdAgencia = 58, IdCidade = 1, IdInstituicaoFinanceira = 3, Nome = "Ag. S. Domingos" },
            new Agencia { IdAgencia = 59, IdCidade = 1, IdInstituicaoFinanceira = 3, Nome = "Ag. Palmarejo" },
            new Agencia { IdAgencia = 60, IdCidade = 1, IdInstituicaoFinanceira = 3, Nome = "Gabinete Empresas Sul II" },
-           new Agencia { IdAgencia = 61, IdCidade = 1, IdInstituicaoFinanceira = 3, Nome = "Gabinete Empresas Sal" },
+           new Agencia { IdAgencia = 61, IdCidade = 4, IdInstituicaoFinanceira = 3, Nome = "Gabinete Empresas Sal" },
            new Agencia { IdAgencia = 62, IdCidade = 1, IdInstituicaoFinanceira = 3, Nome = "Prol. Ach. São Filipe" },
            new Agencia { IdAgencia = 63, IdCidade = 1, IdInstituicaoFinanceira = 4, Nome = "Ag. Praia" },
            new Agencia { IdAgencia = 64, IdCidade = 1, IdInstituicaoFinanceira = 4, Nome = "Ag. Mindelo" },
            new Agencia { IdAgencia = 65, IdCidade = 13, IdInstituicaoFinanceira = 4, Nome = "Ag. Assomada" },
-           new Agencia { IdAgencia = 66, IdCidade = 1, IdInstituicaoFinanceira = 4, Nome = "Ag. Aeroporto do Sal" },
+           new Agencia { IdAgencia = 66, IdCidade = 4, IdInstituicaoFinanceira = 4, Nome = "Ag. Aeroporto do Sal" },
            new Agencia { IdAgencia = 67, IdCidade = 1, IdInstituicaoFinanceira = 4, Nome = "Ag. Boavista" },
            new Agencia { IdAgencia = 68, IdCidade = 1, IdInstituicaoFinanceira = 4, Nome = "Ag. Porto Novo" },
            new Agencia { IdAgencia = 69, IdCidade = 1, IdInstituicaoFinanceira = 4, Nome = "Ag. Terra Branca" },
            new Agencia { IdAgencia = 70, IdCidade = 1, IdInstituicaoFinanceira = 4, Nome = "Ag. Palmarejo" },
-           new Agencia { IdAgencia = 71, IdCidade = 1, IdInstituicaoFinanceira = 4, Nome = "Ag. Monte Sossego" },
+           new Agencia { IdAgencia = 71, IdCidade = 3, IdInstituicaoFinanceira = 4, Nome = "Ag. Monte Sossego" },
            new Agencia { IdAgencia = 72, IdCidade = 1, IdInstituicaoFinanceira = 4, Nome = "Ag. Santa Maria" },
            new Agencia { IdAgencia = 73, IdCidade = 1, IdInstituicaoFinanceira = 4, Nome = "Ag. São Filipe" },
            new Agencia { IdAgencia = 74, IdCidade = 9, IdInstituicaoFinanceira = 4, Nome = "Ag. Rª Grande" },
@@ -227,7 +234,7 @@ namespace sga_stif.Models
            new Agencia { IdAgencia = 77, IdCidade = 1, IdInstituicaoFinanceira = 4, Nome = "Ag. Órgãos" },
            new Agencia { IdAgencia = 78, IdCidade = 1, IdInstituicaoFinanceira = 4, Nome = "Ag. Santa Cruz" },
            new Agencia { IdAgencia = 79, IdCidade = 1, IdInstituicaoFinanceira = 4, Nome = "Ag. Ponta do Sol" },
-           new Agencia { IdAgencia = 80, IdCidade = 1, IdInstituicaoFinanceira = 4, Nome = "Ag. Maio" },
+           new Agencia { IdAgencia = 80, IdCidade = 5, IdInstituicaoFinanceira = 4, Nome = "Ag. Maio" },
            new Agencia { IdAgencia = 81, IdCidade = 1, IdInstituicaoFinanceira = 4, Nome = "Centro de empresas" },
            new Agencia { IdAgencia = 82, IdCidade = 1, IdInstituicaoFinanceira = 4, Nome = "Centro de empresas II" },
            new Agencia { IdAgencia = 83, IdCidade = 1, IdInstituicaoFinanceira = 4, Nome = "Ag. Sede" },
@@ -258,20 +265,20 @@ namespace sga_stif.Models
            new Agencia { IdAgencia = 108, IdCidade = 1, IdInstituicaoFinanceira = 9, Nome = "PME Nacionais" },
            new Agencia { IdAgencia = 109, IdCidade = 1, IdInstituicaoFinanceira = 9, Nome = "Grandes Empresas Nacionais" },
            new Agencia { IdAgencia = 110, IdCidade = 1, IdInstituicaoFinanceira = 9, Nome = "Corporate Internacional" },
-           new Agencia { IdAgencia = 111, IdCidade = 1, IdInstituicaoFinanceira = 9, Nome = "Ag. Sal" },
-           new Agencia { IdAgencia = 112, IdCidade = 1, IdInstituicaoFinanceira = 9, Nome = "Emigrantes Sal" },
-           new Agencia { IdAgencia = 113, IdCidade = 1, IdInstituicaoFinanceira = 9, Nome = "Particulares Classic Sal" },
-           new Agencia { IdAgencia = 114, IdCidade = 1, IdInstituicaoFinanceira = 9, Nome = "Afluentes Sal" },
-           new Agencia { IdAgencia = 115, IdCidade = 1, IdInstituicaoFinanceira = 9, Nome = "Private Sal" },
-           new Agencia { IdAgencia = 116, IdCidade = 1, IdInstituicaoFinanceira = 9, Nome = "Institucionais Sal" },
-           new Agencia { IdAgencia = 117, IdCidade = 1, IdInstituicaoFinanceira = 9, Nome = "PME Nacionais Sal" },
+           new Agencia { IdAgencia = 111, IdCidade = 4, IdInstituicaoFinanceira = 9, Nome = "Ag. Sal" },
+           new Agencia { IdAgencia = 112, IdCidade = 4, IdInstituicaoFinanceira = 9, Nome = "Emigrantes Sal" },
+           new Agencia { IdAgencia = 113, IdCidade = 4, IdInstituicaoFinanceira = 9, Nome = "Particulares Classic Sal" },
+           new Agencia { IdAgencia = 114, IdCidade = 4, IdInstituicaoFinanceira = 9, Nome = "Afluentes Sal" },
+           new Agencia { IdAgencia = 115, IdCidade = 4, IdInstituicaoFinanceira = 9, Nome = "Private Sal" },
+           new Agencia { IdAgencia = 116, IdCidade = 4, IdInstituicaoFinanceira = 9, Nome = "Institucionais Sal" },
+           new Agencia { IdAgencia = 117, IdCidade = 4, IdInstituicaoFinanceira = 9, Nome = "PME Nacionais Sal" },
            new Agencia { IdAgencia = 118, IdCidade = 1, IdInstituicaoFinanceira = 9, Nome = "Grandes Empresas Nacionais Sal" },
            new Agencia { IdAgencia = 119, IdCidade = 1, IdInstituicaoFinanceira = 11, Nome = "Ag. Sede - Praia" },
            new Agencia { IdAgencia = 120, IdCidade = 13, IdInstituicaoFinanceira = 8, Nome = "Ag. Assomada" },
            new Agencia { IdAgencia = 121, IdCidade = 1, IdInstituicaoFinanceira = 8, Nome = "Ag. Sta Maria " },
            new Agencia { IdAgencia = 122, IdCidade = 1, IdInstituicaoFinanceira = 8, Nome = "Agencia Sal-Rei " },
            new Agencia { IdAgencia = 123, IdCidade = 1, IdInstituicaoFinanceira = 8, Nome = "Agencia S.Filipe " },
-           new Agencia { IdAgencia = 124, IdCidade = 1, IdInstituicaoFinanceira = 8, Nome = "Ag. Montsu " }
+           new Agencia { IdAgencia = 124, IdCidade = 3, IdInstituicaoFinanceira = 8, Nome = "Ag. Montsu " }
 
 
       );
@@ -315,7 +322,7 @@ namespace sga_stif.Models
               new Menu { IdMenu = 4, Nome = "Contas Correntes", Descricao = "Contas Correntes", IdMenuPai = null, NomeDaAction = "", NomeDoController = "", Icone = "fas fa-book" },
                new Menu { IdMenu = 5, Nome = "Quotas Pendentes", Descricao = "Quotas Pendentes", IdMenuPai = 4, NomeDaAction = "ListaQuotasPendente", NomeDoController = "ContaCorrentes", Icone = "far fa-circle" },
               new Menu { IdMenu = 6, Nome = "Quotas Por Pagar", Descricao = "Quotas Por Pagar", IdMenuPai = 4, NomeDaAction = "ListaQuotasPorPagar", NomeDoController = "ContaCorrentes", Icone = "far fa-circle" },
-              new Menu { IdMenu = 7, Nome = "Quotas Paga", Descricao = "Quotas Paga", IdMenuPai = 4, NomeDaAction = "ListaQuotasPagas", NomeDoController = "ContaCorrentes", Icone = "far fa-circle" },
+              new Menu { IdMenu = 7, Nome = "Quotas Pagas", Descricao = "Quotas Paga", IdMenuPai = 4, NomeDaAction = "ListaQuotasPagas", NomeDoController = "ContaCorrentes", Icone = "far fa-circle" },
               new Menu { IdMenu = 8, Nome = "Quotas Vencidas", Descricao = "Quotas Vencidas", IdMenuPai = 4, NomeDaAction = "ListaQuotasVencidas", NomeDoController = "ContaCorrentes", Icone = "far fa-circle" },
 
 

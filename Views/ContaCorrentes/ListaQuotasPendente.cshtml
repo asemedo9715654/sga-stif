@@ -13,27 +13,7 @@
         <p class="lead">Lista de Quotas Pendentes</p>
 
         <div class="row align-items-end">
-          <div class="col-md-3">
-            <div class="form-group align-items-end">
-              <label class="control-label">Mes</label>
-              <select class="form-control">
-                 <option disabled selected>--- todos ---</option>
-                <option value="1">Janeiro</option>
-                <option value="2">Fevereiro</option>
-                <option value="3">Março</option>
-                <option value="4">Abril</option>
-                <option value="5">Maio</option>
-                <option value="6">Junho</option>
-                <option value="7">Julho</option>
-                <option value="8">Agosto</option>
-                <option value="9">Setembro</option>
-                <option value="10">Outubro</option>
-                <option value="11">Novembro</option>
-                <option value="12">Dezemmbro</option>
-              </select>
-             
-            </div>
-          </div>
+        
           <div class="col-md-3">
             <div class="form-group align-items-end">
               <label class="control-label">Intituição Financeira</label>
@@ -62,9 +42,9 @@
           <th>
             @Html.DisplayNameFor(model => model.Nome)
           </th>
-          <th>
+          @* <th>
             @Html.DisplayNameFor(model => model.IdSocio)
-          </th>
+          </th> *@
           <th>
             @Html.DisplayNameFor(model => model.IFS)
           </th>
@@ -96,9 +76,9 @@
             <td>
               @Html.DisplayFor(modelItem => item.Nome)
             </td>
-            <td>
+            @* <td>
               @Html.DisplayFor(modelItem => item.IdSocio)
-            </td>
+            </td> *@
             <td>
               @Html.DisplayFor(modelItem => item.IFS)
             </td>
@@ -117,7 +97,18 @@
             </td>
            
             <td>
-              Ação
+               @if ((EstadoQuotaSocio)item.EstadoQuotaNum == EstadoQuotaSocio.AguardaConfirmacaoPagamento)
+              {
+                <a asp-action="ConcluirPagamento" asp-route-idQuotaSocio=@item.IdQuotaSocio rel="noopener"
+              class="btn btn-success btn-sm">Confirmar Pagamento</a>
+
+              }
+              else
+              {
+                <a asp-action="EfectuaPagamento" asp-route-idQuotaSocio=@item.IdQuotaSocio rel="noopener"
+              class="btn btn-success btn-sm">Efectuar Pagamento</a>
+
+              }
             </td>
 
           </tr>

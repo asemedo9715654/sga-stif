@@ -6,6 +6,7 @@ namespace sga_stif.ViewModel.Beneficiario
     public class ListaBeneficiarioViewModel
     {
         [Key]
+        public int IdQuotaSocio { get; set; }
         public int IdBeneficiario { get; set; }
         public int IdSocio { get; set; }
         public string Nome { get; set; }

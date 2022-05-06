@@ -13,13 +13,23 @@ namespace sga_stif.Models
         public int IdSocio { get; set; }
         [ForeignKey("PeriodoQuota")]
         public int IdPeriodoQuota { get; set; }
+
+        //propriedaddae para efectuar pagamento
+         public string UtilizadorQueEfectuouPagamento { get; set; }
+         public DateTime? DataQueFoiEfectuadaPagamento { get; set; }
+         public string UtilizadorQueConfirmouPagamento { get; set; }
+         public DateTime? DataQueFoiConfirmadaPagamento { get; set; }
+
+         //propriedades de navegação
         public virtual Socio Socio { get; set; }
         public virtual PeriodoQuota PeriodoQuota { get; set; }
     }
 
     public enum EstadoQuotaSocio
     {
+        Vencida = 2,
         Pago = 1,
-        NoaPago = 0
+        NoaPago = 0,
+        AguardaConfirmacaoPagamento = -1,
     }
 }

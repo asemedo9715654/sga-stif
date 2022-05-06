@@ -253,5 +253,18 @@ namespace sga_stif.Controllers
       return View(listaUtilizadorViewModels);
     }
 
+    //validadcoes
+     [AcceptVerbs("GET", "POST")]
+    public IActionResult VereficaNome(string Nome)
+    {
+      var utilizaddor = _context.Perfil.FirstOrDefault(k => k.Nome == Nome);
+      if (utilizaddor != null)
+      {
+        return Json($"O Nome : {Nome} já foi inserida no sistema!");
+      }
+
+      return Json(true);
+    }
+
   }
 }

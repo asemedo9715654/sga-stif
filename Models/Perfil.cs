@@ -9,6 +9,7 @@ namespace sga_stif.Models
         public string Nome { get; set; }
         public string Descricao { get; set; }
          public bool Editavel { get; set; } = true;
+          //propriedades de navegação
         public virtual  ICollection<Utilizador> Utilizador { get; set; }
         public virtual  ICollection<PerfilMenuAcao> PerfilMenuAcao { get; set; }
 

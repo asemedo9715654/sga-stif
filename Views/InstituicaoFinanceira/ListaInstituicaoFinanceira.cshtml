@@ -27,6 +27,9 @@
                     <th>
                         @Html.DisplayNameFor(model => model.Nome)
                     </th>
+                       <th>
+                        @Html.DisplayNameFor(model => model.Sigla)
+                    </th>
                     <th>
                         @Html.DisplayNameFor(model => model.TotalDeAgencias)
                     </th>
@@ -51,6 +54,9 @@
                     <tr>
                         <td>
                             @Html.DisplayFor(modelItem => item.Nome)
+                        </td>
+                           <td>
+                            @Html.DisplayFor(modelItem => item.Sigla)
                         </td>
                         <td>
                             <span class="badge badge-pill badge-info"> @Html.DisplayFor(modelItem =>item.TotalDeAgencias)</span> Agência(s)

@@ -255,7 +255,7 @@
                                 </td>
 
                                 <td>
-                                    Ação
+                                       <a asp-action="AnularPagamento" asp-route-idQuotaSocio=@item.IdQuotaSocio rel="noopener" class="btn btn-warning btn-sm">Anular Pagamento</a>
                                 </td>
 
                             </tr>
@@ -319,9 +319,20 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.Montante)
                             </td>
-
                             <td>
-                                Ação
+
+
+
+                                 @if((EstadoQuotaSocio)item.EstadoQuotaNum==EstadoQuotaSocio.AguardaConfirmacaoPagamento ){
+                                      <a asp-action="ConcluirPagamento" asp-route-idQuotaSocio=@item.IdQuotaSocio rel="noopener" class="btn btn-success btn-sm">Confirmar Pagamento</a>
+
+                                }else{
+                                     <a asp-action="EfectuaPagamento" asp-route-idQuotaSocio=@item.IdQuotaSocio rel="noopener" class="btn btn-success btn-sm">Efectuar Pagamento</a>
+
+                                }
+
+
+                               
                             </td>
 
                         </tr>
@@ -384,7 +395,13 @@
                             </td>
 
                             <td>
-                                Ação
+                                 @if((EstadoQuotaSocio)item.EstadoQuotaNum==EstadoQuotaSocio.AguardaConfirmacaoPagamento ){
+                                      <a asp-action="ConcluirPagamento" asp-route-idQuotaSocio=@item.IdQuotaSocio rel="noopener" class="btn btn-success btn-sm">Confirmar Pagamento</a>
+
+                                }else{
+                                     <a asp-action="EfectuaPagamento" asp-route-idQuotaSocio=@item.IdQuotaSocio rel="noopener" class="btn btn-success btn-sm">Efectuar Pagamento</a>
+
+                                }
                             </td>
 
                         </tr>
@@ -436,21 +453,21 @@
 
         /* $('#TabelaPagas').DataTable({
             paging: true,
-           
+
             ordering: true,
             responsive: true,
 
         });
         $('#TabelaPorPagar').DataTable({
             paging: true,
-            
+
             ordering: true,
             responsive: true,
 
         });
         $('#TabelaVencida').DataTable({
             paging: true,
-           
+
             ordering: true,
             responsive: true,
 

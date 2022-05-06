@@ -13,6 +13,7 @@ namespace sga_stif.Models
         [ForeignKey("Joia")]
         public int IdJoia { get; set; }
         public EstadoJoiaSocio Estado { get; set; }
+         //propriedades de navegação
         public virtual Socio Socio { get; set; }
         public virtual Joia Joia { get; set; }
     }
