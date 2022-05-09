@@ -83,9 +83,6 @@ namespace sga_stif.Controllers
        var d = new List<ContaCorrenteIFResultado>();
 
 
-      //var d = _context.ContaCorrenteIFResultado.FromSqlRaw("EXECUTE  [dbo].[ContaCorrenteIF] @ano = 2022, @mes=4, @status='QD'").ToList();
-
-
        if (IdInstituicaoFinanceira != null)
       {
         d = _context.ContaCorrenteIFResultado.FromSqlRaw($"EXECUTE  [dbo].[ContaCorrenteIF] @ano = {ano}, @mes={mes},@idif = {IdInstituicaoFinanceira}, @status='QD'").ToList();

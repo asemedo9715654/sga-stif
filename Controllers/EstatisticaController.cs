@@ -45,13 +45,13 @@ namespace sga_stif.Controllers
       highChartSeries.colorByPoint = true;
       highChartSeries.data = new List<data>();
 
-      var r = _context.InstituicaoFinanceira.Include(g => g.Agencia).ToList();
+      var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(e=>e.Eliminado==false).Include(g => g.Agencia).ToList();
 
-      var todos = _context.Socio.ToList();
+      var todos = _context.Socio.Where(e=>e.Eliminado==false).ToList();
 
-      foreach (var item in r)
+      foreach (var instituicaoFinanceira in instituicaoFinanceiras)
       {
-        var agencia = from j in item.Agencia select j.IdAgencia;
+        var agencia = from j in instituicaoFinanceira.Agencia select j.IdAgencia;
 
         agencia.Contains(3);
 
@@ -59,9 +59,9 @@ namespace sga_stif.Controllers
 
         highChartSeries.data.Add(new data()
         {
-          selected = item.Sigla == "BCA" ? true : false,
-          sliced = item.Sigla == "BCA" ? true : false,
-          name = item.Sigla,
+          selected = instituicaoFinanceira.Sigla == "BCA" ? true : false,
+          sliced = instituicaoFinanceira.Sigla == "BCA" ? true : false,
+          name = instituicaoFinanceira.Sigla,
           y = total
         });
 
@@ -82,7 +82,7 @@ namespace sga_stif.Controllers
       highChartSeries.colorByPoint = true;
       highChartSeries.data = new List<data>();
 
-      var r = _context.TipologiaSocio.ToList();
+      var r = _context.TipologiaSocio.Where(e=>e.Eliminado==false).ToList();
 
       var todos = _context.Socio.ToList();
 
@@ -116,7 +116,7 @@ namespace sga_stif.Controllers
       highChartSeries.colorByPoint = true;
       highChartSeries.data = new List<data>();
 
-      var r = _context.TipoQuota.ToList();
+      var r = _context.TipoQuota.Where(e=>e.Eliminado==false).ToList();
 
       var todos = _context.Socio.ToList();
 
@@ -151,7 +151,7 @@ namespace sga_stif.Controllers
       highChartSeries.colorByPoint = true;
       highChartSeries.data = new List<data>();
 
-      var todos = _context.Socio.ToList();
+      var todos = _context.Socio.Where(e=>e.Eliminado==false).ToList();
 
       var lista = new List<Sexo>(){
           Sexo.Feminino,
@@ -187,9 +187,9 @@ namespace sga_stif.Controllers
       highChartSeries.colorByPoint = true;
       highChartSeries.data = new List<data>();
 
-      var todos = _context.Socio.ToList();
+      var todos = _context.Socio.Where(e=>e.Eliminado==false).ToList();
 
-      var lista = new List<EstadoCivil>(){
+      var listaEstadoCivil = new List<EstadoCivil>(){
          EstadoCivil.Casado,
          EstadoCivil.Solteiro,
          EstadoCivil.SeparacaoJudicial,
@@ -197,16 +197,16 @@ namespace sga_stif.Controllers
          EstadoCivil.Divorciado
       };
 
-      foreach (var item in lista)
+      foreach (var estadoCivil in listaEstadoCivil)
       {
 
-        var total = todos.Where(a => a.EstadoCivil == item).Count();
+        var total = todos.Where(a => a.EstadoCivil == estadoCivil).Count();
 
         highChartSeries.data.Add(new data()
         {
-          selected = item == EstadoCivil.Casado ? true : false,
-          sliced = item == EstadoCivil.Casado ? true : false,
-          name = item.ToString(),
+          selected = estadoCivil == EstadoCivil.Casado ? true : false,
+          sliced = estadoCivil == EstadoCivil.Casado ? true : false,
+          name = estadoCivil.ToString(),
           y = total
         });
 
@@ -227,23 +227,22 @@ namespace sga_stif.Controllers
       highChartSeries.colorByPoint = true;
       highChartSeries.data = new List<data>();
 
-      var r = _context.Ilha.Include(g => g.Cidade).ThenInclude(g => g.Agencia).ToList();
+      var ilhas = _context.Ilha.Where(e=>e.Eliminado==false).Include(g => g.Cidade).ThenInclude(g => g.Agencia).ToList();
 
       var todos = _context.Socio.ToList();
 
-      foreach (var item in r)
+      foreach (var item in ilhas)
       {
         
         List<int> agencia = new List<int>();
 
-        foreach (var h in item.Cidade)
+        foreach (var ilha in item.Cidade)
         {
 
-          var bb = from j in h.Agencia select j.IdAgencia;
-          agencia.AddRange(bb);
+          var idAgencias = from j in ilha.Agencia select j.IdAgencia;
+          agencia.AddRange(idAgencias);
 
         }
-
 
         var total = todos.Where(a => agencia.Contains(a.IdAgencia)).Count();
 
