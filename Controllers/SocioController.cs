@@ -56,9 +56,9 @@ namespace sga_stif.Controllers
     [HttpGet]
     public IActionResult NovoSocio()
     {
-      var angencia = _context.Agencia.Include(j => j.Cidade).ToList();
-      var tipologiaSocios = _context.TipologiaSocio.ToList();
-      var tipoQuotas = _context.TipoQuota.ToList();
+      var angencia = _context.Agencia.Where(r=>r.Eliminado==false).Include(j => j.Cidade).ToList();
+      var tipologiaSocios = _context.TipologiaSocio.Where(r=>r.Eliminado==false).ToList();
+      var tipoQuotas = _context.TipoQuota.Where(r=>r.Eliminado==false).ToList();
 
       var instituicaoFinanceiras = _context.InstituicaoFinanceira.ToList();
 
@@ -128,10 +128,10 @@ namespace sga_stif.Controllers
       _notyf.Error("Erro na inserção de sócio!");
 
 
-      var angencia = _context.Agencia.Include(j => j.Cidade).ToList();
-      var tipologiaSocios = _context.TipologiaSocio.ToList();
-      var tipoQuotas = _context.TipoQuota.ToList();
-      var instituicaoFinanceiras = _context.InstituicaoFinanceira.ToList();
+      var angencia = _context.Agencia.Where(r=>r.Eliminado==false).Include(j => j.Cidade).ToList();
+      var tipologiaSocios = _context.TipologiaSocio.Where(r=>r.Eliminado==false).ToList();
+      var tipoQuotas = _context.TipoQuota.Where(r=>r.Eliminado==false).ToList();
+      var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(r=>r.Eliminado==false).ToList();
 
       var angenciaListItem = from g in angencia select new SelectListItem { Value = g.IdAgencia.ToString(), Text = g.Nome };
       var tipologiaSociosListItem = from g in tipologiaSocios select new SelectListItem { Value = g.IdTipologiaSocio.ToString(), Text = g.Descricao };
@@ -160,8 +160,8 @@ namespace sga_stif.Controllers
 
       var angencia = _context.Agencia.Where(j=>j.IdInstituicaoFinanceira == agenciaAtul.IdInstituicaoFinanceira).Include(j => j.Cidade).ToList();
 
-      var tipologiaSocios = _context.TipologiaSocio.ToList();
-      var tipoQuotas = _context.TipoQuota.ToList();
+      var tipologiaSocios = _context.TipologiaSocio.Where(r=>r.Eliminado==false).ToList();
+      var tipoQuotas = _context.TipoQuota.Where(r=>r.Eliminado==false).ToList();
 
       var instituicaoFinanceiras = _context.InstituicaoFinanceira.ToList();
 

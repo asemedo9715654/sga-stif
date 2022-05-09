@@ -6,34 +6,34 @@
 
 <div class="card">
   <div class="card-header">
+    <form id="formularioDeFiltro" asp-action="ListaQuotasPendente" method="get">
+      <div class="row no-print">
 
-    <div class="row no-print">
+        <div class="col-12">
+          <p class="lead">Lista de Quotas Pendentes</p>
 
-      <div class="col-12">
-        <p class="lead">Lista de Quotas Pendentes</p>
+          <div class="row align-items-end">
 
-        <div class="row align-items-end">
-        
-          <div class="col-md-3">
-            <div class="form-group align-items-end">
-              <label class="control-label">Intituição Financeira</label>
-              <select  asp-items="@ViewBag.IdInstituicaoFinanceira" class="form-control" id="IdInstituicaoFinanceira">
-                <option disabled selected>--- todos ---</option>
-              </select>
+            <div class="col-md-3">
+              <div class="form-group align-items-end">
+                <label class="control-label">Intituição Financeira</label>
+                <select asp-items="@ViewBag.IdInstituicaoFinanceira" class="form-control" id="IdInstituicaoFinanceira">
+                  <option disabled selected>--- todos ---</option>
+                </select>
+              </div>
             </div>
-          </div>
-          <div class="col-md-3">
-            <div class="form-group align-items-end">
-              <label class="control-label"></label>
-              <input type="submit" class="btn btn-primary" value="Filtrar" />
+            <div class="col-md-3">
+              <div class="form-group align-items-end">
+                <label class="control-label"></label>
+                <input type="submit" class="btn btn-primary" value="Filtrar" />
+              </div>
             </div>
+
           </div>
 
         </div>
-
       </div>
-    </div>
-
+    </form>
   </div>
   <div class="card-body">
     <table id="example2" class="table table-bordered table-striped">
@@ -44,7 +44,7 @@
           </th>
           @* <th>
             @Html.DisplayNameFor(model => model.IdSocio)
-          </th> *@
+            </th> *@
           <th>
             @Html.DisplayNameFor(model => model.IFS)
           </th>
@@ -57,11 +57,11 @@
           <th>
             @Html.DisplayNameFor(model => model.Mes)
           </th>
-        
+
           <th>
             @Html.DisplayNameFor(model => model.Montante)
           </th>
-         
+
           <th>
             Ação
           </th>
@@ -78,7 +78,7 @@
             </td>
             @* <td>
               @Html.DisplayFor(modelItem => item.IdSocio)
-            </td> *@
+              </td> *@
             <td>
               @Html.DisplayFor(modelItem => item.IFS)
             </td>
@@ -91,22 +91,22 @@
             <td>
               @Html.DisplayFor(modelItem => item.Mes)
             </td>
-           
+
             <td>
               @Html.DisplayFor(modelItem => item.Montante)
             </td>
-           
+
             <td>
-               @if ((EstadoQuotaSocio)item.EstadoQuotaNum == EstadoQuotaSocio.AguardaConfirmacaoPagamento)
+              @if ((EstadoQuotaSocio)item.EstadoQuotaNum == EstadoQuotaSocio.AguardaConfirmacaoPagamento)
               {
-                <a asp-action="ConcluirPagamento" asp-route-idQuotaSocio=@item.IdQuotaSocio rel="noopener"
-              class="btn btn-success btn-sm">Confirmar Pagamento</a>
+                <a asp-action="ConcluirPagamento" asp-controller="Pagamento" asp-route-idQuotaSocio=@item.IdQuotaSocio
+              rel="noopener" class="btn btn-warning btn-sm">Confirmar Pagamento</a>
 
               }
               else
               {
-                <a asp-action="EfectuaPagamento" asp-route-idQuotaSocio=@item.IdQuotaSocio rel="noopener"
-              class="btn btn-success btn-sm">Efectuar Pagamento</a>
+                <a asp-action="NovoPagamento" asp-controller="Pagamento" asp-route-idQuotaSocio=@item.IdQuotaSocio
+              rel="noopener" class="btn btn-success btn-sm">Efectuar Pagamento</a>
 
               }
             </td>
