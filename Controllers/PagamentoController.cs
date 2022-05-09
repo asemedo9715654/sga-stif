@@ -38,7 +38,6 @@ namespace sga_stif.Controllers
           Apelido = quotaSocio.Socio.Apelido,
           IdQuotaSocio = quotaSocio.IdQuotaSocio,
           Nome = quotaSocio.Socio.Nome,
-
           InstitucaoFinanceira = quotaSocio.Socio.Agencia.InstituicaoFinanceira.Nome,
           Agencia = quotaSocio.Socio.Agencia.Nome,
           Cidade = quotaSocio.Socio.Agencia.Cidade.Nome,
@@ -78,11 +77,10 @@ namespace sga_stif.Controllers
             _context.Update(quotaSocio);
             _context.SaveChanges();
 
-            _notyf.Success("Quota posta em estado aguarda confirmacao!");
+            _notyf.Success("Quota posta em estado aguarda confirmacção!");
 
             return RedirectToAction("ListaQuotasPendente","ContaCorrentes");
 
-            //return Redirect(dadosPagamentoViewModel.RotaParaRedicionar);
           }
 
         }
@@ -117,7 +115,7 @@ namespace sga_stif.Controllers
         _notyf.Success("Pagamento confirmado com sucesso!");
 
         return RedirectToAction("ListaQuotasPagas","ContaCorrentes");
-        //return RedirectToAction("DetalhesSocio", new { idSocio = quotaSocio.IdSocio });
+
       }
 
       _notyf.Error("Quota não encontrada!");
@@ -177,7 +175,7 @@ namespace sga_stif.Controllers
 
       }
 
-      _notyf.Success($"Operacao efectuada com sucesso : Total de pagamentos anulados : {anulado} !");
+      _notyf.Success($"Operação efectuada com sucesso : {anulado} pagamento(s) anulados : !");
 
       return RedirectToAction("ListaQuotasPendente","ContaCorrentes");
     }
