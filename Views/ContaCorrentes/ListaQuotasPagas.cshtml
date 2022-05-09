@@ -4,115 +4,127 @@
   ViewData["Title"] = "Lista de Quotas Vencidas";
 }
 
-<div class="card">
-  <div class="card-header">
-    <form asp-action="ListaQuotasPagas" method="get">
-      <div class="row no-print">
 
-        <div class="col-12">
-          <p class="lead">Lista de Quotas Pagas</p>
+  <div class="card">
+    <div class="card-header">
+      <form id="formularioDeFiltro" asp-action="ListaQuotasPagas" method="get">
+        <div class="row no-print">
 
-          <div class="row align-items-end">
-            <div class="col-md-3">
+          <div class="col-12">
+            <p class="lead">Lista de Quotas Pagas</p>
+
+            <div class="row align-items-end">
+              <div class="col-md-3">
 
 
 
-              <div class="form-group align-items-end">
-                <label class="control-label">Data</label>
-                <input type="month" id="start" name="DataPesquisa" min="2022-01" value="2022-05" class="form-control">
+                <div class="form-group align-items-end">
+                  <label class="control-label">Data</label>
+                  <input type="month" id="start" name="DataPesquisa" min="2022-01" value="2022-05" class="form-control">
 
+                </div>
               </div>
-            </div>
-            <div class="col-md-3">
-              <div class="form-group align-items-end">
-                <label class="control-label">Intituição Financeira</label>
-                <select asp-items="@ViewBag.IdInstituicaoFinanceira" class="form-control" id="IdInstituicaoFinanceira">
-                  <option disabled selected>--- todos ---</option>
-                </select>
+              <div class="col-md-3">
+                <div class="form-group align-items-end">
+                  <label class="control-label">Intituição Financeira</label>
+                  <select asp-items="@ViewBag.IdInstituicaoFinanceira" class="form-control"
+                    id="IdInstituicaoFinanceira">
+                    <option disabled selected>--- todos ---</option>
+                  </select>
+                </div>
               </div>
-            </div>
-            <div class="col-md-3">
-              <div class="form-group align-items-end">
-                <label class="control-label"></label>
-                <input type="submit" class="btn btn-primary" value="Filtrar" />
+              <div class="col-md-3">
+                <div class="form-group align-items-end">
+                  <label class="control-label"></label>
+                  <input type="submit" form="formularioDeFiltro" class="btn btn-primary" value="Filtrar" />
+                </div>
               </div>
-            </div>
 
+            </div>
           </div>
         </div>
-      </div>
-    </form>
+      </form>
 
-  </div>
-  <div class="card-body">
-    <table id="example2" class="table table-bordered table-striped">
-      <thead>
-        <tr>
-          <th>
-            @Html.DisplayNameFor(model => model.Nome)
-          </th>
-          <th>
-            @Html.DisplayNameFor(model => model.IFS)
-          </th>
-          <th>
-            @Html.DisplayNameFor(model => model.AgenciaNome)
-          </th>
-          <th>
-            @Html.DisplayNameFor(model => model.Ano)
-          </th>
-          <th>
-            @Html.DisplayNameFor(model => model.Mes)
-          </th>
-          <th>
-            @Html.DisplayNameFor(model => model.Montante)
-          </th>
-          <th>
-            Ação
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach (var item in Model)
-        {
+      <input type="submit" form="formularioDePagamentos" value="Efectuar Anulamento" class="btn btn-danger btn-sm float-right" style="margin-right: 5px;">
+
+    </div>
+    <div class="card-body">
+      <form method="post" asp-controller="Pagamento" asp-action="AnularMultiplosPagamento" id="formularioDePagamentos">
+      <table id="example2" class="table table-bordered table-striped">
+        <thead>
           <tr>
-
-            <td>
-              @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            @* <td>
-              @Html.DisplayFor(modelItem => item.IdSocio)
-              </td> *@
-            <td>
-              @Html.DisplayFor(modelItem => item.IFS)
-            </td>
-            <td>
-              @Html.DisplayFor(modelItem => item.AgenciaNome)
-            </td>
-            <td>
-              @Html.DisplayFor(modelItem => item.Ano)
-            </td>
-            <td>
-              @Html.DisplayFor(modelItem => item.Mes)
-            </td>
-            <td>
-              @Html.DisplayFor(modelItem => item.Montante)
-            </td>
-            <td>
-              <a asp-action="AnulaPagamento" asp-route-idQuotaSocio=@item.IdQuotaSocio rel="noopener"
-              class="btn btn-danger btn-sm">Anular Pagamento</a>
-            </td>
-
+            <th><input type="checkbox" id="all"> Todos</th>
+            <th>
+              @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+              @Html.DisplayNameFor(model => model.IFS)
+            </th>
+            <th>
+              @Html.DisplayNameFor(model => model.AgenciaNome)
+            </th>
+            <th>
+              @Html.DisplayNameFor(model => model.Ano)
+            </th>
+            <th>
+              @Html.DisplayNameFor(model => model.Mes)
+            </th>
+            <th>
+              @Html.DisplayNameFor(model => model.Montante)
+            </th>
+            <th>
+              Ação
+            </th>
           </tr>
-        }
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          @foreach (var item in Model)
+          {
+            <tr>
+              <td>
+                <input type="checkbox" class="group" id="@item.IdQuotaSocio" name="IdQuotasSociosParaPagar" value="@item.IdQuotaSocio">
+              </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+              </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.IFS)
+              </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.AgenciaNome)
+              </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.Ano)
+              </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.Mes)
+              </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.Montante)
+              </td>
+              <td>
+                <a asp-action="AnularPagamento" asp-controller="Pagamento" asp-route-idQuotaSocio=@item.IdQuotaSocio rel="noopener" class="btn btn-danger btn-sm">Anular
+                  Pagamento</a>
+              </td>
 
-
+            </tr>
+          }
+        </tbody>
+      </table>
+      </form>
+    </div>
   </div>
-</div>
+
 
 <script>
   $(function () {
+
+    $('#all').on('click', function () {
+      $(':checkbox').attr("checked", $(this).is(':checked'));
+    });
+
+
+
     $('#example2').DataTable({
       "paging": true,
       "lengthChange": false,

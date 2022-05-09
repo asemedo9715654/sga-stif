@@ -255,7 +255,7 @@
                                 </td>
 
                                 <td>
-                                       <a asp-action="AnularPagamento" asp-route-idQuotaSocio=@item.IdQuotaSocio rel="noopener" class="btn btn-warning btn-sm">Anular Pagamento</a>
+                                       <a asp-action="AnularPagamento" asp-controller="Pagamento" asp-route-idQuotaSocio=@item.IdQuotaSocio rel="noopener" class="btn btn-danger btn-sm">Anular Pagamento</a>
                                 </td>
 
                             </tr>
@@ -323,13 +323,17 @@
 
 
 
-                                 @if((EstadoQuotaSocio)item.EstadoQuotaNum==EstadoQuotaSocio.AguardaConfirmacaoPagamento ){
-                                      <a asp-action="ConcluirPagamento" asp-route-idQuotaSocio=@item.IdQuotaSocio rel="noopener" class="btn btn-success btn-sm">Confirmar Pagamento</a>
+                                 @if ((EstadoQuotaSocio)item.EstadoQuotaNum == EstadoQuotaSocio.AguardaConfirmacaoPagamento){
+                <a asp-action="ConcluirPagamento" asp-controller="Pagamento"   asp-route-idQuotaSocio=@item.IdQuotaSocio rel="noopener"
+              class="btn btn-success btn-sm">Confirmar Pagamento</a>
 
-                                }else{
-                                     <a asp-action="EfectuaPagamento" asp-route-idQuotaSocio=@item.IdQuotaSocio rel="noopener" class="btn btn-success btn-sm">Efectuar Pagamento</a>
+              }
+              else
+              {
+                <a asp-action="NovoPagamento"  asp-controller="Pagamento"  asp-route-idQuotaSocio=@item.IdQuotaSocio rel="noopener"
+              class="btn btn-success btn-sm">Efectuar Pagamento</a>
 
-                                }
+              }
 
 
                                
@@ -395,13 +399,18 @@
                             </td>
 
                             <td>
-                                 @if((EstadoQuotaSocio)item.EstadoQuotaNum==EstadoQuotaSocio.AguardaConfirmacaoPagamento ){
-                                      <a asp-action="ConcluirPagamento" asp-route-idQuotaSocio=@item.IdQuotaSocio rel="noopener" class="btn btn-success btn-sm">Confirmar Pagamento</a>
+                                 @if ((EstadoQuotaSocio)item.EstadoQuotaNum == EstadoQuotaSocio.AguardaConfirmacaoPagamento)
+              {
+                <a asp-action="ConcluirPagamento" asp-controller="Pagamento"   asp-route-idQuotaSocio=@item.IdQuotaSocio rel="noopener"
+              class="btn btn-success btn-sm">Confirmar Pagamento</a>
 
-                                }else{
-                                     <a asp-action="EfectuaPagamento" asp-route-idQuotaSocio=@item.IdQuotaSocio rel="noopener" class="btn btn-success btn-sm">Efectuar Pagamento</a>
+              }
+              else
+              {
+                <a asp-action="NovoPagamento"  asp-controller="Pagamento"  asp-route-idQuotaSocio=@item.IdQuotaSocio rel="noopener"
+              class="btn btn-success btn-sm">Efectuar Pagamento</a>
 
-                                }
+              }
                             </td>
 
                         </tr>

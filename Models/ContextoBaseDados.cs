@@ -79,7 +79,8 @@ namespace sga_stif.Models
 
       modelBuilder.Entity<TipologiaSocio>().HasData(
         new TipologiaSocio { Descricao = "Normal", DataFim = DateTime.Now, DataInicio = DateTime.Now, Tipo = TipoTipologiaSocio.Normal, IdTipologiaSocio = 1 },
-        new TipologiaSocio { Descricao = "Honorário", DataFim = DateTime.Now, DataInicio = DateTime.Now, Tipo = TipoTipologiaSocio.Honorario, IdTipologiaSocio = 2 }
+        new TipologiaSocio { Descricao = "Honorário", DataFim = DateTime.Now, DataInicio = DateTime.Now, Tipo = TipoTipologiaSocio.Honorario, IdTipologiaSocio = 2 , Eliminado=true
+       }
 
 
        );
@@ -87,11 +88,11 @@ namespace sga_stif.Models
 
 
       modelBuilder.Entity<TipoQuota>().HasData(
-      new TipoQuota { Priodicidade = 0, Descricao = "Quinzenal", Montante = 0, IdTipoQuota = 1, Tipo = TipoTipoQuota.Fixo },
+      new TipoQuota { Priodicidade = 0, Descricao = "Quinzenal", Montante = 0, IdTipoQuota = 1, Tipo = TipoTipoQuota.Fixo ,  Eliminado=true},
       new TipoQuota { Priodicidade = 1, Descricao = "Mensal", Montante = 0, IdTipoQuota = 2, Tipo = TipoTipoQuota.Variavel },
-      new TipoQuota { Priodicidade = 3, Descricao = "Trimestral", Montante = 0, IdTipoQuota = 3, Tipo = TipoTipoQuota.Fixo },
-      new TipoQuota { Priodicidade = 6, Descricao = "Semestral", Montante = 0, IdTipoQuota = 4, Tipo = TipoTipoQuota.Fixo },
-      new TipoQuota { Priodicidade = 12, Descricao = "Anual", Montante = 0, IdTipoQuota = 5, Tipo = TipoTipoQuota.Fixo }
+      new TipoQuota { Priodicidade = 3, Descricao = "Trimestral", Montante = 0, IdTipoQuota = 3, Tipo = TipoTipoQuota.Fixo ,  Eliminado=true },
+      new TipoQuota { Priodicidade = 6, Descricao = "Semestral", Montante = 0, IdTipoQuota = 4, Tipo = TipoTipoQuota.Fixo ,  Eliminado=true},
+      new TipoQuota { Priodicidade = 12, Descricao = "Anual", Montante = 0, IdTipoQuota = 5, Tipo = TipoTipoQuota.Fixo , Eliminado=true }
 
      );
 

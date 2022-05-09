@@ -61,13 +61,40 @@ namespace sga_stif.Controllers
 
     //filtro ano e mes
     [HttpGet]
-    public async Task<IActionResult> ListaQuotasPorPagar(int? mes, int instituicaoFinanceira)
+    public async Task<IActionResult> ListaQuotasPorPagar(DateTime? DataPesquisa, int? IdInstituicaoFinanceira)
     {
+
+
+      var ano = DateTime.Now.Year;
+      var mes = DateTime.Now.Month;
+
+      if (DataPesquisa != null)
+      {
+        ano = DataPesquisa.Value.Year;
+        mes = DataPesquisa.Value.Month;
+
+      }
 
       var instituicaoFinanceiras = _context.InstituicaoFinanceira.ToList();
       var instituicaoFinanceirasItem = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome };
       ViewBag.IdInstituicaoFinanceira = instituicaoFinanceirasItem;
-      var d = _context.ContaCorrenteIFResultado.FromSqlRaw("EXECUTE  [dbo].[ContaCorrenteIF] @ano = 2022, @mes=4, @status='QD'").ToList();
+
+
+       var d = new List<ContaCorrenteIFResultado>();
+
+
+      //var d = _context.ContaCorrenteIFResultado.FromSqlRaw("EXECUTE  [dbo].[ContaCorrenteIF] @ano = 2022, @mes=4, @status='QD'").ToList();
+
+
+       if (IdInstituicaoFinanceira != null)
+      {
+        d = _context.ContaCorrenteIFResultado.FromSqlRaw($"EXECUTE  [dbo].[ContaCorrenteIF] @ano = {ano}, @mes={mes},@idif = {IdInstituicaoFinanceira}, @status='QD'").ToList();
+      }
+      else
+      {
+        d = _context.ContaCorrenteIFResultado.FromSqlRaw($"EXECUTE  [dbo].[ContaCorrenteIF] @ano = {ano}, @mes={mes}, @status='QD'").ToList();
+
+      }
 
       return View(d);
     }
@@ -93,10 +120,13 @@ namespace sga_stif.Controllers
 
       var d = new List<ContaCorrenteIFResultado>();
 
-      if(IdInstituicaoFinanceira!=null){
-   d = _context.ContaCorrenteIFResultado.FromSqlRaw($"EXECUTE  [dbo].[ContaCorrenteIF] @ano = {ano}, @mes={mes},@idif = {IdInstituicaoFinanceira}, @status='QP'").ToList();
-      }else{
-           d = _context.ContaCorrenteIFResultado.FromSqlRaw($"EXECUTE  [dbo].[ContaCorrenteIF] @ano = {ano}, @mes={mes}, @status='QP'").ToList();
+      if (IdInstituicaoFinanceira != null)
+      {
+        d = _context.ContaCorrenteIFResultado.FromSqlRaw($"EXECUTE  [dbo].[ContaCorrenteIF] @ano = {ano}, @mes={mes},@idif = {IdInstituicaoFinanceira}, @status='QP'").ToList();
+      }
+      else
+      {
+        d = _context.ContaCorrenteIFResultado.FromSqlRaw($"EXECUTE  [dbo].[ContaCorrenteIF] @ano = {ano}, @mes={mes}, @status='QP'").ToList();
 
       }
 
