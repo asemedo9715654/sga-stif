@@ -45,9 +45,9 @@ namespace sga_stif.Controllers
       highChartSeries.colorByPoint = true;
       highChartSeries.data = new List<data>();
 
-      var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(e=>e.Eliminado==false).Include(g => g.Agencia).ToList();
+      var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(e => e.Eliminado == false).Include(g => g.Agencia).ToList();
 
-      var todos = _context.Socio.Where(e=>e.Eliminado==false).ToList();
+      var todos = _context.Socio.Where(e => e.Eliminado == false).ToList();
 
       foreach (var instituicaoFinanceira in instituicaoFinanceiras)
       {
@@ -82,7 +82,7 @@ namespace sga_stif.Controllers
       highChartSeries.colorByPoint = true;
       highChartSeries.data = new List<data>();
 
-      var r = _context.TipologiaSocio.Where(e=>e.Eliminado==false).ToList();
+      var r = _context.TipologiaSocio.Where(e => e.Eliminado == false).ToList();
 
       var todos = _context.Socio.ToList();
 
@@ -116,7 +116,7 @@ namespace sga_stif.Controllers
       highChartSeries.colorByPoint = true;
       highChartSeries.data = new List<data>();
 
-      var r = _context.TipoQuota.Where(e=>e.Eliminado==false).ToList();
+      var r = _context.TipoQuota.Where(e => e.Eliminado == false).ToList();
 
       var todos = _context.Socio.ToList();
 
@@ -151,7 +151,7 @@ namespace sga_stif.Controllers
       highChartSeries.colorByPoint = true;
       highChartSeries.data = new List<data>();
 
-      var todos = _context.Socio.Where(e=>e.Eliminado==false).ToList();
+      var todos = _context.Socio.Where(e => e.Eliminado == false).ToList();
 
       var lista = new List<Sexo>(){
           Sexo.Feminino,
@@ -187,7 +187,7 @@ namespace sga_stif.Controllers
       highChartSeries.colorByPoint = true;
       highChartSeries.data = new List<data>();
 
-      var todos = _context.Socio.Where(e=>e.Eliminado==false).ToList();
+      var todos = _context.Socio.Where(e => e.Eliminado == false).ToList();
 
       var listaEstadoCivil = new List<EstadoCivil>(){
          EstadoCivil.Casado,
@@ -227,13 +227,13 @@ namespace sga_stif.Controllers
       highChartSeries.colorByPoint = true;
       highChartSeries.data = new List<data>();
 
-      var ilhas = _context.Ilha.Where(e=>e.Eliminado==false).Include(g => g.Cidade).ThenInclude(g => g.Agencia).ToList();
+      var ilhas = _context.Ilha.Where(e => e.Eliminado == false).Include(g => g.Cidade).ThenInclude(g => g.Agencia).ToList();
 
       var todos = _context.Socio.ToList();
 
       foreach (var item in ilhas)
       {
-        
+
         List<int> agencia = new List<int>();
 
         foreach (var ilha in item.Cidade)
@@ -259,6 +259,142 @@ namespace sga_stif.Controllers
       List<HighChartSeries> highChartSeriesLista = new List<HighChartSeries>();
       highChartSeriesLista.Add(highChartSeries);
       return Json(highChartSeriesLista);
+
+    }
+
+    public ActionResult OcorenciaPorSexoTacadoComInstituicaoFinanceira()
+    {
+
+      GraficoColunaEmpilhadaAgrupada graficoColunaEmpilhadaAgrupada = new GraficoColunaEmpilhadaAgrupada();
+
+      graficoColunaEmpilhadaAgrupada.dados = new List<Dados>();
+
+
+      var socios = _context.Socio.Where(e => e.Eliminado == false).ToList();
+      var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(e => e.Eliminado == false).Include(g => g.Agencia).ToList();
+      var aux = from v in instituicaoFinanceiras select v.Sigla;
+      graficoColunaEmpilhadaAgrupada.categorias = aux.ToList();
+
+
+
+      var sexos = new List<Sexo>(){
+          Sexo.Feminino,
+          Sexo.Masculino
+      };
+
+
+      foreach (var sexo in sexos)
+      {
+        Dados d = new Dados();
+        d.name = sexo.ToString();
+        d.data = new List<int>();
+
+
+        foreach (var instituicaoFinanceira in instituicaoFinanceiras)
+        {
+          var agencia = from j in instituicaoFinanceira.Agencia select j.IdAgencia;
+
+          var total = socios.Where(a => agencia.Contains(a.IdAgencia) && a.Sexo == sexo).Count();
+
+          d.data.Add(total);
+
+        }
+
+        graficoColunaEmpilhadaAgrupada.dados.Add(d);
+
+      }
+
+      return Json(graficoColunaEmpilhadaAgrupada);
+
+
+    }
+
+    /// iddadde
+    public ActionResult OcorenciaPorSexoTacadoComIIdade()
+    {
+
+      GraficoColunaEmpilhadaAgrupada graficoColunaEmpilhadaAgrupada = new GraficoColunaEmpilhadaAgrupada();
+
+      graficoColunaEmpilhadaAgrupada.dados = new List<Dados>();
+      graficoColunaEmpilhadaAgrupada.categorias = new List<string>();
+
+
+      var socios = _context.Socio.Where(e => e.Eliminado == false).ToList();
+      var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(e => e.Eliminado == false).Include(g => g.Agencia).ToList();
+      var aux = from v in instituicaoFinanceiras select v.Sigla;
+
+
+
+
+      var sexos = new List<Sexo>(){
+          Sexo.Feminino,
+          Sexo.Masculino
+      };
+
+      var listaDeIdades = new List<int>(){
+        25,29,34,39,44,49,54,59,60,150
+      };
+
+      int anterio = 0;
+
+      foreach (var item in listaDeIdades)
+      {
+        if (item == 25)
+        {
+          graficoColunaEmpilhadaAgrupada.categorias.Add($"< {item}");
+
+        }
+
+        else if (item == 60)
+        {
+          graficoColunaEmpilhadaAgrupada.categorias.Add($"{item} < ");
+
+        }
+        else
+        {
+          graficoColunaEmpilhadaAgrupada.categorias.Add($"[{anterio} : {item}]");
+
+        }
+
+        anterio = item;
+      }
+
+      anterio = 0;
+
+      foreach (var sexo in sexos)
+      {
+        Dados d = new Dados();
+        d.name = sexo.ToString();
+        d.data = new List<int>();
+
+        foreach (var idade in listaDeIdades)
+        {
+          var total = 0;
+
+          if(idade ==60){
+             total = socios.Where(a => a.PegarIdade() > idade && a.Sexo == sexo).Count();
+
+          }else{
+             total = socios.Where(a => a.PegarIdade() >= anterio && a.PegarIdade() < idade && a.Sexo == sexo).Count();
+          }
+
+          anterio = idade;
+
+          if (sexo == Sexo.Feminino)
+          {
+            total *= -1;
+
+          }
+          d.data.Add(total);
+
+        }
+
+        graficoColunaEmpilhadaAgrupada.dados.Add(d);
+
+      }
+
+      return Json(graficoColunaEmpilhadaAgrupada);
+
 
     }
 

@@ -26,6 +26,11 @@ namespace sga_stif.ViewModel.Pagamento
     [Display(Name = "Cidade")]
     public string Cidade { get; set; }
 
+    //DADOS PERIDO
+    public string Mes { get; set; }
+    public int Ano { get; set; }
+    public string Url { get; set; }
+
     [Display(Name = "Montante")]
     [Required(ErrorMessage = "O Montante é necessãrio")]
     [Range(1, Double.MaxValue, ErrorMessage = "O cammpo {0} tem de ser maior que {1}.")]

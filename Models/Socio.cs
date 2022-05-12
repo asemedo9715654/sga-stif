@@ -79,6 +79,12 @@ namespace sga_stif.Models
       this.NumeroDeSocio = new string(Enumerable.Repeat(chars, 20).Select(s => s[random.Next(s.Length)]).ToArray());
     }
 
+    public int PegarIdade()
+    {
+      var hoje = DateTime.Now;
+      return hoje.Year - this.DataDeNascimento.Year;
+    }
+
 
     public string PegarLinkFotoGrande()
     {

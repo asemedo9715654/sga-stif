@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using sga_stif.Models;
 using sga_stif.ViewModel.Agencia;
 using sga_stif.ViewModel.InstituicaoFinanceira;
+using sga_stif.ViewModel.Socio;
 using sga_stif.ViewModel.TipoQuota;
 
 namespace sga_stif.Controllers
@@ -145,6 +146,22 @@ namespace sga_stif.Controllers
       _notyf.Error("Erro na adição de agencia");
 
       return View(novoPerfilViewModel);
+    }
+
+    ///
+      public async Task<IActionResult> ListaSocioPorAgencia(int idAgencia,string nomeAgencia)
+    {
+      ViewBag.NomeAgencia = nomeAgencia;
+      
+      var socios = await _context.Socio.Where(r => r.Eliminado != true && r.IdAgencia == idAgencia).Include(c => c.Agencia)
+                                  .Include(c => c.TipologiaSocio)
+                                  .Include(c => c.TipoQuota)
+                                  .Include(c => c.Beneficiario)
+                                  .ToListAsync();
+
+      var listaSocioViewModel = _mapper.Map<List<ListaSocioViewModel>>(socios);
+
+      return View(listaSocioViewModel);
     }
 
 

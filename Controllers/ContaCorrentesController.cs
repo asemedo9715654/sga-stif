@@ -24,14 +24,42 @@ namespace sga_stif.Controllers
     }
 
     //sem filtro
-    public async Task<IActionResult> ListaQuotasVencidas()
+    public async Task<IActionResult> ListaQuotasVencidas(int? IdInstituicaoFinanceira)
     {
       var instituicaoFinanceiras = _context.InstituicaoFinanceira.ToList();
       var instituicaoFinanceirasItem = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome };
-      ViewBag.IdInstituicaoFinanceira = instituicaoFinanceirasItem;
-      var d = _context.ContaCorrenteIFResultado.FromSqlRaw("EXECUTE  [dbo].[ContaCorrenteIF] @ano = 2022, @mes=1, @status='QV'").ToList();
 
-      return View(d);
+
+     
+
+
+
+      //ViewBag.IdInstituicaoFinanceira = instituicaoFinanceirasItem;
+
+      var lista = new List<ContaCorrenteIFResultado>();
+
+
+      if (IdInstituicaoFinanceira != null)
+      {
+        var valorConvertido = IdInstituicaoFinanceira.ToString();
+
+        var selected = instituicaoFinanceirasItem.Where(x => x.Value == valorConvertido).First();
+        selected.Selected = true;
+
+
+
+        lista = _context.ContaCorrenteIFResultado.FromSqlRaw($"EXECUTE  [dbo].[ContaCorrenteIF] @ano = 2022, @mes=1,@idif = {IdInstituicaoFinanceira},@user ='{PegarNomeUtilizador()}', @status='QV'").ToList();
+      }
+      else
+      {
+        instituicaoFinanceirasItem.Append(new SelectListItem{Text="--- todos ---", Selected=true,Disabled=true });
+        lista = _context.ContaCorrenteIFResultado.FromSqlRaw($"EXECUTE  [dbo].[ContaCorrenteIF] @ano = 2022, @mes=1,@user ='{PegarNomeUtilizador()}', @status='QV'").ToList();
+      }
+
+
+      ViewBag.IdInstituicaoFinanceira = instituicaoFinanceirasItem;
+
+      return View(lista);
     }
 
     //filtro instituicao financeira
@@ -47,12 +75,12 @@ namespace sga_stif.Controllers
       if (instituicaoFinanceira != null)
       {
 
-        lista = _context.ContaCorrenteIFResultado.FromSqlRaw($"EXECUTE  [dbo].[ContaCorrenteIF] @idif = {instituicaoFinanceira}, @status='QN'").ToList();
+        lista = _context.ContaCorrenteIFResultado.FromSqlRaw($"EXECUTE  [dbo].[ContaCorrenteIF] @idif = {instituicaoFinanceira},@user ='{PegarNomeUtilizador()}', @status='QN'").ToList();
 
       }
       else
       {
-        lista = _context.ContaCorrenteIFResultado.FromSqlRaw("EXECUTE  [dbo].[ContaCorrenteIF] @status='QN'").ToList();
+        lista = _context.ContaCorrenteIFResultado.FromSqlRaw($"EXECUTE  [dbo].[ContaCorrenteIF] @user ='{PegarNomeUtilizador()}', @status='QN'").ToList();
 
       }
 
@@ -73,23 +101,35 @@ namespace sga_stif.Controllers
         ano = DataPesquisa.Value.Year;
         mes = DataPesquisa.Value.Month;
 
+
+
       }
+      else
+      {
+        DataPesquisa = new DateTime(ano, mes, 1);
+      }
+
+
+
+      ViewBag.DataPreenchido = ano + "-" + DataPesquisa.Value.Month.ToString("#00");
+
+      //ViewBag.DataPreenchido = ano+"-"+mes;
 
       var instituicaoFinanceiras = _context.InstituicaoFinanceira.ToList();
       var instituicaoFinanceirasItem = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome };
       ViewBag.IdInstituicaoFinanceira = instituicaoFinanceirasItem;
 
 
-       var d = new List<ContaCorrenteIFResultado>();
+      var d = new List<ContaCorrenteIFResultado>();
 
 
-       if (IdInstituicaoFinanceira != null)
+      if (IdInstituicaoFinanceira != null)
       {
-        d = _context.ContaCorrenteIFResultado.FromSqlRaw($"EXECUTE  [dbo].[ContaCorrenteIF] @ano = {ano}, @mes={mes},@idif = {IdInstituicaoFinanceira}, @status='QD'").ToList();
+        d = _context.ContaCorrenteIFResultado.FromSqlRaw($"EXECUTE  [dbo].[ContaCorrenteIF] @ano = {ano}, @mes={mes},@idif = {IdInstituicaoFinanceira},@user ='{PegarNomeUtilizador()}', @status='QD'").ToList();
       }
       else
       {
-        d = _context.ContaCorrenteIFResultado.FromSqlRaw($"EXECUTE  [dbo].[ContaCorrenteIF] @ano = {ano}, @mes={mes}, @status='QD'").ToList();
+        d = _context.ContaCorrenteIFResultado.FromSqlRaw($"EXECUTE  [dbo].[ContaCorrenteIF] @ano = {ano}, @mes={mes},@user ='{PegarNomeUtilizador()}', @status='QD'").ToList();
 
       }
 
@@ -110,6 +150,12 @@ namespace sga_stif.Controllers
         mes = DataPesquisa.Value.Month;
 
       }
+      else
+      {
+        DataPesquisa = new DateTime(ano, mes, 1);
+      }
+
+      ViewBag.DataPreenchido = ano + "-" + DataPesquisa.Value.Month.ToString("#00");
 
       var instituicaoFinanceiras = _context.InstituicaoFinanceira.ToList();
       var instituicaoFinanceirasItem = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome };
@@ -119,137 +165,16 @@ namespace sga_stif.Controllers
 
       if (IdInstituicaoFinanceira != null)
       {
-        d = _context.ContaCorrenteIFResultado.FromSqlRaw($"EXECUTE  [dbo].[ContaCorrenteIF] @ano = {ano}, @mes={mes},@idif = {IdInstituicaoFinanceira}, @status='QP'").ToList();
+        d = _context.ContaCorrenteIFResultado.FromSqlRaw($"EXECUTE  [dbo].[ContaCorrenteIF] @ano = {ano}, @mes={mes},@idif = {IdInstituicaoFinanceira},@user ='{PegarNomeUtilizador()}', @status='QP'").ToList();
       }
       else
       {
-        d = _context.ContaCorrenteIFResultado.FromSqlRaw($"EXECUTE  [dbo].[ContaCorrenteIF] @ano = {ano}, @mes={mes}, @status='QP'").ToList();
+        d = _context.ContaCorrenteIFResultado.FromSqlRaw($"EXECUTE  [dbo].[ContaCorrenteIF] @ano = {ano}, @mes={mes},@user ='{PegarNomeUtilizador()}', @status='QP'").ToList();
 
       }
 
       return View(d);
     }
-
-
-    public IActionResult EfectuaPagamento(int idQuotaSocio)
-    {
-      var quotaSocio = _context.QuotaSocio.FirstOrDefault(k => k.IdQuotaSocio == idQuotaSocio);
-      if (quotaSocio != null)
-      {
-
-        quotaSocio.Estado = EstadoQuotaSocio.AguardaConfirmacaoPagamento;
-
-        quotaSocio.DataQueFoiEfectuadaPagamento = DateTime.Now;
-        quotaSocio.UtilizadorQueEfectuouPagamento = PegarNomeUtilizador();
-
-
-        _context.Update(quotaSocio);
-        _context.SaveChanges();
-
-        _notyf.Success("Quota posta em estado aguarda confirmacao!");
-
-        return RedirectToAction("ListaQuotasPendente");
-      }
-
-      _notyf.Error("Quota não encontrada!");
-
-      return RedirectToAction("ListaQuotasPendente");
-    }
-
-    public IActionResult ConcluirPagamento(int idQuotaSocio)
-    {
-      var quotaSocio = _context.QuotaSocio.FirstOrDefault(k => k.IdQuotaSocio == idQuotaSocio);
-      if (quotaSocio != null)
-      {
-
-        quotaSocio.Estado = EstadoQuotaSocio.Pago;
-        quotaSocio.DataQueFoiConfirmadaPagamento = DateTime.Now;
-        quotaSocio.UtilizadorQueConfirmouPagamento = PegarNomeUtilizador();
-
-        _context.Update(quotaSocio);
-        _context.SaveChanges();
-
-        _notyf.Success("Pagamento confirmado com sucesso!");
-
-        return RedirectToAction("ListaQuotasPendente");
-      }
-
-      _notyf.Error("Quota não encontrada!");
-
-      return RedirectToAction("ListaQuotasPendente");
-    }
-
-
-    public IActionResult AnulaPagamento(int idQuotaSocio)
-    {
-      var quotaSocio = _context.QuotaSocio.FirstOrDefault(k => k.IdQuotaSocio == idQuotaSocio);
-      if (quotaSocio != null)
-      {
-
-        quotaSocio.Estado = EstadoQuotaSocio.NoaPago;
-        quotaSocio.DataQueFoiConfirmadaPagamento = DateTime.Now;
-        quotaSocio.UtilizadorQueConfirmouPagamento = PegarNomeUtilizador();
-
-        _context.Update(quotaSocio);
-        _context.SaveChanges();
-
-        _notyf.Success("Pagamento anulado com sucesso!");
-
-        return RedirectToAction("ListaQuotasPendente");
-      }
-
-      _notyf.Error("Erro : Quota sócio não encontrada!");
-
-      return RedirectToAction("ListaQuotasPagas");
-    }
-
-    // mmultiplos select
-    [HttpPost]
-    public IActionResult PagamentosMultiplos(int[] IdQuotasSociosParaPagar)
-    {
-
-      int totalPostaEmAguardaConfirmacao = 0, confirmado = 0;
-
-      foreach (var item in IdQuotasSociosParaPagar)
-      {
-        var quotaSocio = _context.QuotaSocio.FirstOrDefault(k => k.IdQuotaSocio == item);
-        if (quotaSocio != null)
-        {
-
-          if (quotaSocio.Estado == EstadoQuotaSocio.NoaPago)
-          {
-            quotaSocio.Estado = EstadoQuotaSocio.AguardaConfirmacaoPagamento;
-            totalPostaEmAguardaConfirmacao++;
-          }
-          else if (quotaSocio.Estado == EstadoQuotaSocio.AguardaConfirmacaoPagamento)
-          {
-            quotaSocio.Estado = EstadoQuotaSocio.Pago;
-            confirmado++;
-          }
-
-          quotaSocio.Estado = EstadoQuotaSocio.Pago;
-
-          quotaSocio.DataQueFoiConfirmadaPagamento = DateTime.Now;
-          quotaSocio.UtilizadorQueConfirmouPagamento = PegarNomeUtilizador();
-
-          _context.Update(quotaSocio);
-          _context.SaveChanges();
-
-
-        }
-
-      }
-
-      _notyf.Success($"Operacao efectuada co sucesso :Aguarda Confirmacao - {totalPostaEmAguardaConfirmacao} --- Confirmado -{confirmado} !");
-
-      return RedirectToAction("ListaQuotasPendente");
-    }
-
-
-
-
-
-
 
 
   }

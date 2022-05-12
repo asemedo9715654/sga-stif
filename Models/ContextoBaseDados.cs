@@ -32,7 +32,7 @@ namespace sga_stif.Models
     public DbSet<InstituicaoFinanceiraColaboradores> InstituicaoFinanceiraColaboradores { get; set; }
     public DbSet<QuotaSocio> QuotaSocio { get; set; }
 
-    //resultado storedd procedure
+    //resultado stored procedure
     public DbSet<ContaCorrenteIFResultado> ContaCorrenteIFResultado { get; set; }
     public DbSet<ContaCorrenteSocioResultado> ContaCorrenteSocioResultado { get; set; }
 
@@ -287,10 +287,12 @@ namespace sga_stif.Models
 
 
       modelBuilder.Entity<Utilizador>().HasData(
-       new Utilizador { Nome = "Angelo", Apelido = "Semedo", Foto = null, Email = "angelosemedo@sgastif.cv", NomeUtilizador = "angelosemedo", PalavraPasse = BCrypt.Net.BCrypt.HashPassword("1234"), IdPerfil = 1, IdUtilizador = 1 },
-       new Utilizador { Nome = "Odailton", Apelido = "Veiga", Foto = null, Email = "odailtonveiga@sgastif.cv", NomeUtilizador = "odailtonveiga", PalavraPasse = BCrypt.Net.BCrypt.HashPassword("1234"), IdPerfil = 1, IdUtilizador = 2 },
-       new Utilizador { Nome = "Manuel", Apelido = "Varela", Foto = null, Email = "manuelvarela@sgastif.cv", NomeUtilizador = "manuelvarela", PalavraPasse = BCrypt.Net.BCrypt.HashPassword("1234"), IdPerfil = 1, IdUtilizador = 3 },
-       new Utilizador { Nome = "Jair", Apelido = "Tavares", Foto = null, Email = "jair@sgastif.cv", NomeUtilizador = "jair", PalavraPasse = BCrypt.Net.BCrypt.HashPassword("1234"), IdPerfil = 1, IdUtilizador = 4 }
+       new Utilizador { Nome = "Angelo", Apelido = "Semedo", Foto = null, Email = "asemedo@sgastif.cv", NomeUtilizador = "asemedo", PalavraPasse = BCrypt.Net.BCrypt.HashPassword("1234"), IdPerfil = 1, IdUtilizador = 1 },
+       new Utilizador { Nome = "Odailton", Apelido = "Veiga", Foto = null, Email = "oveiga@sgastif.cv", NomeUtilizador = "oveiga", PalavraPasse = BCrypt.Net.BCrypt.HashPassword("1234"), IdPerfil = 1, IdUtilizador = 2 },
+       new Utilizador { Nome = "Manuel", Apelido = "Varela", Foto = null, Email = "mvarela@sgastif.cv", NomeUtilizador = "mvarela", PalavraPasse = BCrypt.Net.BCrypt.HashPassword("1234"), IdPerfil = 1, IdUtilizador = 3 },
+       new Utilizador { Nome = "Jair", Apelido = "Tavares", Foto = null, Email = "jgoncalves@sgastif.cv", NomeUtilizador = "jgoncalves", PalavraPasse = BCrypt.Net.BCrypt.HashPassword("1234"), IdPerfil = 1, IdUtilizador = 4 },
+       new Utilizador { Nome = "Jose", Apelido = "Teixeira", Foto = null, Email = "jteixeira@sgastif.cv", NomeUtilizador = "jteixeira", PalavraPasse = BCrypt.Net.BCrypt.HashPassword("1234"), IdPerfil = 1, IdUtilizador = 5 },
+       new Utilizador { Nome = "Jose", Apelido = "Trigueiros", Foto = null, Email = "jtrigueiros@sgastif.cv", NomeUtilizador = "jtrigueiros", PalavraPasse = BCrypt.Net.BCrypt.HashPassword("1234"), IdPerfil = 1, IdUtilizador = 6 }
 
      );
 

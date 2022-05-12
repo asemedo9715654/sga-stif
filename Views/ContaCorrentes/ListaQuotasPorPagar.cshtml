@@ -10,7 +10,7 @@
       <div class="row no-print">
 
         <div class="col-12">
-          <p class="lead">Lista de Quotas Pagas</p>
+          <p class="lead">Lista de Quotas Por Pagar</p>
 
           <div class="row align-items-end">
             <div class="col-md-3">
@@ -19,14 +19,14 @@
 
               <div class="form-group align-items-end">
                 <label class="control-label">Data</label>
-                <input type="month" id="start" name="DataPesquisa" min="2022-01" value="2022-05" class="form-control">
+                <input type="month" id="start" name="DataPesquisa" min="2022-01" value=@ViewBag.DataPreenchido class="form-control">
 
               </div>
             </div>
             <div class="col-md-3">
               <div class="form-group align-items-end">
                 <label class="control-label">Intituição Financeira</label>
-                <select asp-items="@ViewBag.IdInstituicaoFinanceira" class="form-control" id="IdInstituicaoFinanceira">
+                <select asp-items="@ViewBag.IdInstituicaoFinanceira" name="IdInstituicaoFinanceira" class="form-control" id="IdInstituicaoFinanceira">
                   <option disabled selected>--- todos ---</option>
                 </select>
               </div>
@@ -102,13 +102,13 @@
 
               @if ((EstadoQuotaSocio)item.EstadoQuotaNum == EstadoQuotaSocio.AguardaConfirmacaoPagamento)
               {
-                <a asp-action="ConcluirPagamento" asp-controller="Pagamento" asp-route-idQuotaSocio=@item.IdQuotaSocio
+                <a asp-action="ConcluirPagamento" asp-controller="Pagamento" asp-route-url=@Url.Action("ListaQuotasPorPagar","ContaCorrentes") asp-route-idQuotaSocio=@item.IdQuotaSocio
               rel="noopener" class="btn btn-warning btn-sm">Confirmar Pagamento</a>
 
               }
               else
               {
-                <a asp-action="NovoPagamento" asp-controller="Pagamento" asp-route-idQuotaSocio=@item.IdQuotaSocio
+                <a asp-action="NovoPagamento" asp-controller="Pagamento" asp-route-url=@Url.Action("ListaQuotasPorPagar","ContaCorrentes") asp-route-idQuotaSocio=@item.IdQuotaSocio
               rel="noopener" class="btn btn-success btn-sm">Efectuar Pagamento</a>
 
               }

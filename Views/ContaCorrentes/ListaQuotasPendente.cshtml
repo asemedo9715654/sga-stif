@@ -42,9 +42,6 @@
           <th>
             @Html.DisplayNameFor(model => model.Nome)
           </th>
-          @* <th>
-            @Html.DisplayNameFor(model => model.IdSocio)
-            </th> *@
           <th>
             @Html.DisplayNameFor(model => model.IFS)
           </th>
@@ -76,9 +73,6 @@
             <td>
               @Html.DisplayFor(modelItem => item.Nome)
             </td>
-            @* <td>
-              @Html.DisplayFor(modelItem => item.IdSocio)
-              </td> *@
             <td>
               @Html.DisplayFor(modelItem => item.IFS)
             </td>
@@ -99,13 +93,13 @@
             <td>
               @if ((EstadoQuotaSocio)item.EstadoQuotaNum == EstadoQuotaSocio.AguardaConfirmacaoPagamento)
               {
-                <a asp-action="ConcluirPagamento" asp-controller="Pagamento" asp-route-idQuotaSocio=@item.IdQuotaSocio
+                <a asp-action="ConcluirPagamento" asp-controller="Pagamento" asp-route-url=@Url.Action("ListaQuotasPendente","ContaCorrentes") asp-route-idQuotaSocio=@item.IdQuotaSocio
               rel="noopener" class="btn btn-warning btn-sm">Confirmar Pagamento</a>
 
               }
               else
               {
-                <a asp-action="NovoPagamento" asp-controller="Pagamento" asp-route-idQuotaSocio=@item.IdQuotaSocio
+                <a asp-action="NovoPagamento" asp-controller="Pagamento" asp-route-url=@Url.Action("ListaQuotasPendente","ContaCorrentes") asp-route-idQuotaSocio=@item.IdQuotaSocio
               rel="noopener" class="btn btn-success btn-sm">Efectuar Pagamento</a>
 
               }
