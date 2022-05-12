@@ -7,7 +7,9 @@ namespace sga_stif.ViewModel.Beneficiario
     {
         [Key]
         public int IdBeneficiario { get; set; }
+         [Display(Name = "Nome")]
         public string Nome { get; set; }
+         [Display(Name = "Apelido")]
         public string Apelido { get; set; }
         [Display(Name = "Gráu de Parentesco")]
         public GrauDeParentesco GrauDeParentesco { get; set; }

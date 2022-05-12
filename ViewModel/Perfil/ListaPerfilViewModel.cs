@@ -10,11 +10,12 @@ namespace sga_stif.ViewModel.Perfil
         public string Nome { get; set; }
         [Display(Name = "Descrição")]
         public string Descricao { get; set; }
-         public int TotalUtilizadores { get; set; }
+        [Display(Name = "Total de Utilizadores")]
+        public int TotalUtilizadores { get; set; }
 
-        public bool Editavel { get; set; } 
+        public bool Editavel { get; set; }
 
-        
+
 
     }
 }

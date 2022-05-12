@@ -6,12 +6,12 @@ namespace sga_stif.ViewModel.Perfil
 {
   public class NovoPerfilViewModel
   {
-    [Required(ErrorMessage = "O Nome é necessãrio")]
+    [Required(ErrorMessage = "O Nome é necessário")]
      [Remote(action: "VereficaNome", controller: "Perfil")]
     public string Nome { get; set; }
 
     [Display(Name = "Descrição")]
-    [Required(ErrorMessage = "A Descriçāo é necessãrio")]
+    [Required(ErrorMessage = "A Descriçāo é necessário")]
    
     public string Descricao { get; set; }
 

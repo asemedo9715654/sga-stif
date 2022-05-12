@@ -5,13 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
 <br>
 <br>
 <br>
 <br>
 <div class="invoice p-3 mb-3 html-content" id="conteudoDetalhes">
-    <!-- title row -->
+
     <div class="row">
         <div class="col-12">
             <h4>
@@ -19,9 +18,9 @@
                 @* <small class="float-right">@DateTime.Now</small> *@
             </h4>
         </div>
-        <!-- /.col -->
+
     </div>
-    <!-- info row -->
+
     <div class="row invoice-info">
 
         <div class="col-sm-4 invoice-col">
@@ -29,111 +28,90 @@
             <br>
             <b>Nome :</b> @Model.Nome<br>
             <b>Sigla :</b> @Model.Sigla<br>
-             <b>Total de Agências :</b> @Model.TotalAgencias<br>
+            <b>Total de Agências :</b> @Model.TotalAgencias<br>
             <b>Data de Criação :</b> @Model.DataCriacao<br>
             <b>Data de Atualização :</b> @Model.DataAtualizacao<br>
 
 
         </div>
-        <!-- /.col -->
-        @* <div class="col-sm-4 invoice-col">
-            <b>Criação/Outros</b><br>
-            <br>
-            <b>Perfil :</b> @Model.NomePerfil<br>
-            <b>Data Criação :</b> @Model.DataCriacao<br>
-            <b>Data Atualização :</b> @Model.DataAtualizacao<br>
 
-        </div> *@
-        <!-- /.col -->
+
         <div class="col-sm-4 invoice-col">
 
         </div>
-        <!-- /.col -->
+
     </div>
     <br>
     <br>
     <br>
     <br>
-    @* <div class="row no-print">
+
+
+    <div class="row no-print">
 
         <div class="col-12">
-    
-            <a class="btn btn-warning btn-sm" asp-action="EliminaUtilizador"
-                asp-route-idUtilizador="@Model.IdUtilizador"><i class="fas fa-user-slash"></i> Inativar</a>
+            <p class="lead">Lista de Numero de Colaboradores por data</p>
+            <a asp-action="ListaInstituicaoFinanceira" rel="noopener" class="btn btn-default btn-sm"><i
+                    class="fas fa-arrow-left"></i> Voltar Para Lista</a>
 
-            <a class="btn btn-success btn-sm float-right" asp-action="ResetePalavraPasseUtilizador"
-                asp-route-idUtilizador="@Model.IdUtilizador"><i class="fas fa-user-secret"> Resetar Palavra Passe</i>
-            </a>
+
+            <a asp-action="NovoInstituicaoFinanceiraColaboradores" asp-controller="InstituicaoFinanceira"
+                asp-route-idInstituicaoFinanceira="@Model.IdInstituicaoFinanceira"
+                class="btn btn-success btn-sm float-right" style="margin-right: 5px;"> <i class="fas fa-plus"></i>
+                Adicionar
+                Número Colaboradores</a>
+            <a asp-action="NovoBeneficiario" asp-controller="Beneficiario"
+                asp-route-idSocio="@Model.IdInstituicaoFinanceira" class="btn btn-warning btn-sm float-right"
+                style="margin-right: 5px;"> <i class="fas fa-user-slash"></i>
+                Inativar</a>
 
         </div>
-    </div>  *@
+    </div>
+    <br>
+    <!-- Table row -->
+    <div class="row">
 
-     <div class="row no-print">
+        <div class="col-12 table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model =>
+                            model.ListaInstituicaoFinanceiraColaboradoresViewModel[0].NumeroColaboradores)
 
-                <div class="col-12">
-                    <p class="lead">Lista de Numero de Colaboradores por data</p>
-                    <a asp-action="ListaInstituicaoFinanceira" rel="noopener" class="btn btn-default btn-sm"><i class="fas fa-arrow-left"></i> Voltar Para Lista</a>
-                    @* <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i>
-                        Submit
-                        Payment
-                        </button> *@
-                    @* <button type="button" class="btn btn-success float-right" style="margin-right: 5px;">
-                        <i class="fas fa-download"></i> Novo Beneficiario
-                        </button> *@
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model =>
+                            model.ListaInstituicaoFinanceiraColaboradoresViewModel[0].DataInicio)
 
-                    <a asp-action="NovoInstituicaoFinanceiraColaboradores" asp-controller="InstituicaoFinanceira" asp-route-idInstituicaoFinanceira="@Model.IdInstituicaoFinanceira"
-                        class="btn btn-success btn-sm float-right" style="margin-right: 5px;"> <i
-                            class="fas fa-plus"></i> Adicionar
-                        Número Colaboradores</a>
-                    <a asp-action="NovoBeneficiario" asp-controller="Beneficiario" asp-route-idSocio="@Model.IdInstituicaoFinanceira"
-                        class="btn btn-warning btn-sm float-right" style="margin-right: 5px;"> <i
-                            class="fas fa-user-slash"></i>
-                        Inativar</a>
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model =>
+                            model.ListaInstituicaoFinanceiraColaboradoresViewModel[0].DataFim)
+                        </th>
 
-                </div>
-            </div>
-            <br>
-            <!-- Table row -->
-            <div class="row">
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ListaInstituicaoFinanceiraColaboradoresViewModel)
+                    {
+                        <tr>
 
-                <div class="col-12 table-responsive">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.ListaInstituicaoFinanceiraColaboradoresViewModel[0].NumeroColaboradores)
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NumeroColaboradores) Colaboradore(s)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DataInicio)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DataFim)
+                            </td>
 
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.ListaInstituicaoFinanceiraColaboradoresViewModel[0].DataInicio)
-
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.ListaInstituicaoFinanceiraColaboradoresViewModel[0].DataFim)
-                                </th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model.ListaInstituicaoFinanceiraColaboradoresViewModel)
-                            {
-                                <tr>
-
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.NumeroColaboradores) Colaboradore(s)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.DataInicio)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.DataFim)
-                                    </td>
-                                   
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
-                <!-- /.col -->
-            </div>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <!-- /.col -->
+    </div>
 </div>
