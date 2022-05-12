@@ -52,7 +52,7 @@
                             @Html.DisplayFor(modelItem => item.NomeCidade)
                         </td>
                           <td>
-                            @Html.DisplayFor(modelItem => item.TotalDeSocios)
+                               <span class="badge badge-pill badge-info">  @Html.DisplayFor(modelItem => item.TotalDeSocios) </span>
                         </td>
                         <td>
                             <a class="btn btn-success btn-xs" asp-action="EditaPerfil" asp-route-idPerfil="@item.IdInstituicaoFinanceira"><i class="fas fa-pen"></i> Editar</a>

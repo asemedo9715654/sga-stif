@@ -15,6 +15,7 @@
 
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="IdQuotaSocio" />
+            <input type="hidden" asp-for="Url" />
            
 
             <div class="row">
@@ -86,6 +87,28 @@
             </div>
 
             <hr>
+
+             <div class="row">
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Ano" class="control-label"></label>
+                        <input asp-for="Ano" class="form-control" readonly="readonly"/>
+                        <span asp-validation-for="Ano" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Mes" class="control-label"></label>
+                        <input asp-for="Mes" class="form-control" readonly="readonly"/>
+                        <span asp-validation-for="Mes" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+            </div>
 
             <div class="row">
                 <div class="col-md-6">

@@ -21,17 +21,20 @@ namespace sga_stif.Controllers
     }
 
     [HttpGet]
-    public IActionResult NovoPagamento(int idQuotaSocio)
+    public IActionResult NovoPagamento(int idQuotaSocio,string url)
     {
       var quotaSocio = _context.QuotaSocio.Where(h => h.IdQuotaSocio == idQuotaSocio)
 
-      .Include(j => j.Socio).ThenInclude(a=>a.Agencia).ThenInclude(i=>i.Cidade)
-      .Include(j => j.Socio).ThenInclude(a=>a.Agencia).ThenInclude(i=>i.InstituicaoFinanceira)
-      .Include(j => j.Socio).ThenInclude(a=>a.Agencia).ThenInclude(i=>i.Cidade).ThenInclude(J=>J.Ilha)
+      .Include(j => j.PeriodoQuota)
+      .Include(j => j.Socio).ThenInclude(a => a.Agencia).ThenInclude(i => i.Cidade)
+      .Include(j => j.Socio).ThenInclude(a => a.Agencia).ThenInclude(i => i.InstituicaoFinanceira)
+      .Include(j => j.Socio).ThenInclude(a => a.Agencia).ThenInclude(i => i.Cidade).ThenInclude(J => J.Ilha)
       .FirstOrDefault();
 
       if (quotaSocio != null)
       {
+
+        string nomeDoMes = new DateTime(quotaSocio.PeriodoQuota.Ano, quotaSocio.PeriodoQuota.Mes, 1).ToString("MMM");
 
         DadosPagamentoViewModel dadosPagamentoViewModel = new DadosPagamentoViewModel()
         {
@@ -42,19 +45,22 @@ namespace sga_stif.Controllers
           Agencia = quotaSocio.Socio.Agencia.Nome,
           Cidade = quotaSocio.Socio.Agencia.Cidade.Nome,
           Ilha = quotaSocio.Socio.Agencia.Cidade.Ilha.Nome,
+          Ano = quotaSocio.PeriodoQuota.Ano,
+          Mes = nomeDoMes,
+          Url = url //url para redicionar apos o pagamento
         };
 
         return View(dadosPagamentoViewModel);
 
       }
 
-      return RedirectToAction("ListaQuotasPendente","ContaCorrentes");
+      return Redirect(url);
     }
 
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> NovoPagamento([Bind("IdQuotaSocio,Nome,Apelido,InstitucaoFinanceira,Agencia,Ilha,Cidade,Montante")] DadosPagamentoViewModel dadosPagamentoViewModel)
+    public async Task<IActionResult> NovoPagamento([Bind("IdQuotaSocio,Nome,Apelido,InstitucaoFinanceira,Agencia,Ilha,Cidade,Montante,Mes,Ano,Url")] DadosPagamentoViewModel dadosPagamentoViewModel)
     {
 
       try
@@ -79,7 +85,7 @@ namespace sga_stif.Controllers
 
             _notyf.Success("Quota posta em estado aguarda confirmacção!");
 
-            return RedirectToAction("ListaQuotasPendente","ContaCorrentes");
+            return Redirect(dadosPagamentoViewModel.Url);
 
           }
 
@@ -93,12 +99,10 @@ namespace sga_stif.Controllers
 
       _notyf.Error("Pagamento sem sucesso");
 
-      return View(dadosPagamentoViewModel);
+       return Redirect(dadosPagamentoViewModel.Url);
     }
 
-
-
-    public IActionResult ConcluirPagamento(int idQuotaSocio)
+    public IActionResult ConcluirPagamento(int idQuotaSocio,string url)
     {
       var quotaSocio = _context.QuotaSocio.FirstOrDefault(k => k.IdQuotaSocio == idQuotaSocio);
       if (quotaSocio != null)
@@ -114,17 +118,17 @@ namespace sga_stif.Controllers
 
         _notyf.Success("Pagamento confirmado com sucesso!");
 
-        return RedirectToAction("ListaQuotasPagas","ContaCorrentes");
+        return Redirect(url);
+        //return RedirectToAction("ListaQuotasPagas", "ContaCorrentes");
 
       }
 
       _notyf.Error("Quota não encontrada!");
-
-        return RedirectToAction("ListaQuotasPagas","ContaCorrentes");
+      return Redirect(url);
+      //return RedirectToAction("ListaQuotasPagas", "ContaCorrentes");
     }
 
-
-    public IActionResult AnularPagamento(int idQuotaSocio)
+    public IActionResult AnularPagamento(int idQuotaSocio,string url)
     {
       var quotaSocio = _context.QuotaSocio.FirstOrDefault(k => k.IdQuotaSocio == idQuotaSocio);
       if (quotaSocio != null)
@@ -134,18 +138,19 @@ namespace sga_stif.Controllers
         quotaSocio.DataQueFoiConfirmadaPagamento = DateTime.Now;
         quotaSocio.UtilizadorQueConfirmouPagamento = PegarNomeUtilizador();
         quotaSocio.DataAtualizacao = DateTime.Now;
+        quotaSocio.Montante = 0;
 
         _context.Update(quotaSocio);
         _context.SaveChanges();
 
         _notyf.Success("Pagamento anulado com sucesso!");
 
-         return RedirectToAction("ListaQuotasVencidas","ContaCorrentes");
+        return Redirect(url);
       }
 
       _notyf.Error("Quota não encontrada!");
 
-      return RedirectToAction("ListaQuotasVencidas","ContaCorrentes");
+      return Redirect(url);
     }
 
 
@@ -177,7 +182,7 @@ namespace sga_stif.Controllers
 
       _notyf.Success($"Operação efectuada com sucesso : {anulado} pagamento(s) anulados : !");
 
-      return RedirectToAction("ListaQuotasPendente","ContaCorrentes");
+      return RedirectToAction("ListaQuotasPendente", "ContaCorrentes");
     }
 
 

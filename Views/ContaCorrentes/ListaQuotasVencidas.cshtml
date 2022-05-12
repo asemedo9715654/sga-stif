@@ -9,56 +9,34 @@
 <div class="card">
   <div class="card-header">
 
-    <div class="row no-print">
+    <form id="formularioDeFiltro" asp-action="ListaQuotasVencidas" method="get">
+      <div class="row no-print">
 
-      <div class="col-12">
-        <p class="lead">Lista de Quotas Vencidas</p>
+        <div class="col-12">
+          <p class="lead">Lista de Quotas Vencidas</p>
 
-        @* <div class="row align-items-end">
-          <div class="col-md-3">
-            <div class="form-group align-items-end">
-              <label class="control-label">Mes</label>
-              <select class="form-control">
-                <option disabled selected>--- todos ---</option>
-                <option value="1">Janeiro</option>
-                <option value="2">Fevereiro</option>
-                <option value="3">Março</option>
-                <option value="4">Abril</option>
-                <option value="5">Maio</option>
-                <option value="6">Junho</option>
-                <option value="7">Julho</option>
-                <option value="8">Agosto</option>
-                <option value="9">Setembro</option>
-                <option value="10">Outubro</option>
-                <option value="11">Novembro</option>
-                <option value="12">Dezemmbro</option>
-              </select>
+          <div class="row align-items-end"> 
 
+            <div class="col-md-3">
+              <div class="form-group align-items-end">
+                <label class="control-label">Intituição Financeira</label>
+                <select asp-items="@ViewBag.IdInstituicaoFinanceira" name="IdInstituicaoFinanceira" class="form-control" id="IdInstituicaoFinanceira">
+                  <option disabled selected>--- todos ---</option>
+                </select>
+              </div>
             </div>
-          </div>
-          <div class="col-md-3">
-            <div class="form-group align-items-end">
-              <label class="control-label">Intituição Financeira</label>
-              <select asp-items="@ViewBag.IdInstituicaoFinanceira" class="form-control" id="IdInstituicaoFinanceira">
-                <option disabled selected>--- todos ---</option>
-              </select>
+            <div class="col-md-3">
+              <div class="form-group align-items-end">
+                <label class="control-label"></label>
+                <input type="submit" class="btn btn-primary" value="Filtrar" />
+              </div>
             </div>
-          </div>
-          <div class="col-md-3">
-            <div class="form-group align-items-end">
-              <label class="control-label"></label>
-              <input type="submit" class="btn btn-primary" value="Filtrar" />
-            </div>
+
           </div>
 
-        </div> *@
-
-
-
-
-
+        </div>
       </div>
-    </div>
+    </form>
 
   </div>
   <div class="card-body">
@@ -120,7 +98,7 @@
 
               @if ((EstadoQuotaSocio)item.EstadoQuotaNum == EstadoQuotaSocio.AguardaConfirmacaoPagamento)
               {
-                <a asp-action="ConcluirPagamento" asp-controller="Pagamento"
+                <a asp-action="ConcluirPagamento" asp-controller="Pagamento" asp-route-url=@Url.Action("ListaQuotasVencidas","ContaCorrentes")
               
               asp-route-idQuotaSocio=@item.IdQuotaSocio rel="noopener" class="btn btn-warning btn-sm">Confirmar
                   Pagamento</a>
@@ -128,7 +106,7 @@
               }
               else
               {
-                <a asp-action="NovoPagamento" asp-controller="Pagamento"
+                <a asp-action="NovoPagamento" asp-controller="Pagamento" asp-route-url=@Url.Action("ListaQuotasVencidas","ContaCorrentes")
               
               asp-route-idQuotaSocio=@item.IdQuotaSocio rel="noopener" class="btn btn-success btn-sm">Efectuar
                   Pagamento</a>

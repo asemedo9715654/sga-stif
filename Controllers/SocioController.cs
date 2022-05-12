@@ -255,7 +255,7 @@ namespace sga_stif.Controllers
         private List<ContaCorrenteSocioResultado> PegarContaCorrenteSocioResultado(int ano, int idSocio, string status)
         {
 
-            var listaContaCorrenteSocioResultado = _context.ContaCorrenteSocioResultado.FromSqlRaw("EXECUTE  [dbo].[ContaCorrenteSocio] @ano = " + ano + ", @idSocio=" + idSocio + ", @status='" + status + "'").ToList();
+            var listaContaCorrenteSocioResultado = _context.ContaCorrenteSocioResultado.FromSqlRaw("EXECUTE  [dbo].[ContaCorrenteSocio] @ano = " + ano + ", @idSocio=" + idSocio + ",@user ="+PegarNomeUtilizador()+", @status='" + status + "'").ToList();
 
             return listaContaCorrenteSocioResultado;
 

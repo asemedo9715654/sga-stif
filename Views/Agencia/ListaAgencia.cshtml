@@ -12,7 +12,8 @@
             <div class="col-12">
                 <p class="lead">Lista de Agências</p>
 
-                  <a asp-action="NovaAgencia" class="btn btn-success btn-sm float-right" style="margin-right: 5px;">Nova</a>
+                <a asp-action="NovaAgencia" class="btn btn-success btn-sm float-right"
+                    style="margin-right: 5px;">Nova</a>
             </div>
         </div>
 
@@ -54,12 +55,18 @@
                             @Html.DisplayFor(modelItem => item.NomeCidade)
                         </td>
                         <td>
-                            <span class="badge badge-pill badge-info"> @Html.DisplayFor(modelItem =>
-                            item.TotalDeSocios)</span> Sócio(s)
+                            <a title="Ver Sócios" asp-action="ListaSocioPorAgencia" asp-route-idAgencia=@item.IdAgencia
+                            asp-route-nomeAgencia=@item.Nome>
+                                <span class="badge badge-pill badge-info"> @Html.DisplayFor(modelItem =>
+                                item.TotalDeSocios)</span> Sócio(s)
+                            </a>
+
                         </td>
                         <td>
-                            <a class="btn btn-success btn-xs" asp-action="EditaAgencia" asp-route-idAgencia="@item.IdAgencia"><i class="fas fa-pen"></i> Editar</a>
-                            <a class="btn btn-warning btn-xs" asp-action="Delete" asp-route-id="@item.IdInstituicaoFinanceira">Inativar</a>
+                            <a class="btn btn-success btn-xs" asp-action="EditaAgencia"
+                            asp-route-idAgencia="@item.IdAgencia"><i class="fas fa-pen"></i> Editar</a>
+                            <a class="btn btn-warning btn-xs" asp-action="Delete"
+                            asp-route-id="@item.IdInstituicaoFinanceira">Inativar</a>
 
                         </td>
                     </tr>

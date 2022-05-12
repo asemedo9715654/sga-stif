@@ -29,6 +29,11 @@ namespace sga_stif.ViewModel.Socio
     [Display(Name = "Data de Ativação")]
     public DateTime? DataAtivacao { get; set; }
 
+    [DataType(DataType.Date)]
+    [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+    [Display(Name = "Data de Nascimento")]
+     public DateTime DataDeNascimento { get; set; }
+
     public Sexo Sexo { get; set; }
     public EstadoCivil EstadoCivil { get; set; }
 
