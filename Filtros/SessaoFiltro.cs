@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace sga_stif.Filtros
 {
-    public class SessaoFiltro :  IActionFilter
+    public class SessaoFiltro : IActionFilter
     {
         public void OnActionExecuted(ActionExecutedContext context)
         {
@@ -12,16 +12,17 @@ namespace sga_stif.Filtros
 
         public void OnActionExecuting(ActionExecutingContext context)
         {
-             string controller = (string)context.RouteData.Values["Controller"];
-             string action = (string)context.RouteData.Values["Action"];
+            string controller = (string)context.RouteData.Values["Controller"];
+            string action = (string)context.RouteData.Values["Action"];
 
-             if(controller=="Login" && context.HttpContext.Session.GetString("NomeUtilizador")== null){
+            if (controller == "Login" && context.HttpContext.Session.GetString("NomeUtilizador") == null)
+            {
 
                 return;
-             }
+            }
 
 
-             if (context.HttpContext.Session.GetString("NomeUtilizador") == null)
+            if (context.HttpContext.Session.GetString("NomeUtilizador") == null)
             {
                 // if (context.HttpContext.Request.IsAjaxRequest())
                 // {
@@ -49,9 +50,9 @@ namespace sga_stif.Filtros
 
             }
 
-           
 
-              //throw new NotImplementedException();
+
+            //throw new NotImplementedException();
         }
     }
 }

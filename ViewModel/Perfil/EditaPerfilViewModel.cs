@@ -9,7 +9,7 @@ namespace sga_stif.ViewModel.Perfil
     [Required(ErrorMessage = "O Nome é necessãrio")]
     public string Nome { get; set; }
     [Display(Name = "Descrição")]
-    [Required(ErrorMessage = "O Descrição é necessãrio")]
+    [Required(ErrorMessage = "A Descrição é necessário")]
     public string Descricao { get; set; }
 
 
