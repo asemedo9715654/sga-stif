@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 @using Microsoft.AspNetCore.Http
+@using sga_stif.ViewModel.Breadcrumb
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
 <head>
@@ -59,11 +60,11 @@
 <body class="hold-transition sidebar-mini sidebar-collapse layout-fixed">
   <div class="wrapper">
 
-     <!-- Preloader -->
-  <div class="preloader flex-column justify-content-center align-items-center">
-    @* <img class="animation__shake" src="~/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60"> *@
-    <img class="animation__shake" src="~/dist/img/logo_stif2.png" alt="AdminLTELogo" height="60" width="60">
-  </div>
+    <!-- Preloader -->
+    <div class="preloader flex-column justify-content-center align-items-center">
+      @* <img class="animation__shake" src="~/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60"> *@
+      <img class="animation__shake" src="~/dist/img/logo_stif2.png" alt="AdminLTELogo" height="60" width="60">
+    </div>
 
     <!-- Navbar -->
 
@@ -126,8 +127,10 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
       <a asp-action="ListaSocio" asp-controller="Socio" class="brand-link">
-        @* <img src="~/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> *@
-        <img src="~/dist/img/logo_stif2.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        @* <img src="~/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+          style="opacity: .8"> *@
+        <img src="~/dist/img/logo_stif2.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+          style="opacity: .8">
         <span class="brand-text font-weight-light">SGA - STIF</span>
       </a>
 
@@ -144,21 +147,64 @@
 
 
     <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
+    @if (ViewBag.Breadcrumbs != null)
+    {
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              @* <h1 class="m-0">Dashboard</h1> *@
+            </div><!-- /.col -->
           <div class="col-sm-6">
-            @* <h1 class="m-0">Dashboard</h1> *@
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard v1</li>
-            </ol>
-          </div><!-- /.col -->
+              <ol class="breadcrumb float-sm-right">
+                @* <li class="breadcrumb-item"><a href="#">Home</a></li>
+                  <li class="breadcrumb-item active">Dashboard v1</li> *@
+
+                @foreach (var breadcrumb in ViewBag.Breadcrumbs as List<BreadcrumbViewModel>)
+                {
+                  if (breadcrumb.Active)
+                  {
+                    <li class="breadcrumb-item active"><a asp-action="@breadcrumb.Action"
+                  asp-controller="@breadcrumb.Controller">@breadcrumb.Text</a></li>
+                  }
+                  else
+                  {
+                    <li class="breadcrumb-item" aria-current="page">@breadcrumb.Text</li>
+                  }
+                }
+              </ol>
+            </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
+    }
+
+    @* @if (ViewBag.Breadcrumbs != null)
+    {
+      <nav aria-label="breadcrumb">
+        <ol
+        class="breadcrumb bg-white justify-content-center justify-content-md-start justify-content-lg-start justify-content-xl-start">
+          @foreach (var breadcrumb in ViewBag.Breadcrumbs as List<BreadcrumbViewModel>)
+          {
+            if (breadcrumb.Active)
+            {
+              <li class="breadcrumb-item active"><a asp-action="@breadcrumb.Action" asp-controller="@breadcrumb.Controller">@breadcrumb.Text</a></li>
+            }
+            else
+            {
+              <li class="breadcrumb-item" aria-current="page">@breadcrumb.Text</li>
+            }
+          }
+        </ol>
+      </nav>
+    } *@
+
+
+
+
+
+
+
     <!-- /.content-header -->
 
     <div class="content-wrapper">
@@ -206,7 +252,7 @@
   <script src="~/plugins/sparklines/sparkline.js"></script>
   <!-- JQVMap -->
   <script src="~/plugins/jqvmap/jquery.vmap.min.js"></script>
-  <script src="~/plugins/jqvmap/maps/jquery.vmap.usa.js"></script> 
+  <script src="~/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
   <!-- jQuery Knob Chart -->
   <script src="~/plugins/jquery-knob/jquery.knob.min.js"></script>
   <!-- daterangepicker -->

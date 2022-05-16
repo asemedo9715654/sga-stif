@@ -54,67 +54,57 @@
             <a asp-action="ListaInstituicaoFinanceira" rel="noopener" class="btn btn-default btn-sm"><i
                     class="fas fa-arrow-left"></i> Voltar Para Lista</a>
 
-
             <a asp-action="NovoInstituicaoFinanceiraColaboradores" asp-controller="InstituicaoFinanceira"
                 asp-route-idInstituicaoFinanceira="@Model.IdInstituicaoFinanceira"
                 class="btn btn-success btn-sm float-right" style="margin-right: 5px;"> <i class="fas fa-plus"></i>
                 Adicionar
                 Número Colaboradores</a>
-            <a asp-action="NovoBeneficiario" asp-controller="Beneficiario"
-                asp-route-idSocio="@Model.IdInstituicaoFinanceira" class="btn btn-warning btn-sm float-right"
-                style="margin-right: 5px;"> <i class="fas fa-user-slash"></i>
+            <a asp-action="InativarInstituicaoFinanceira" asp-controller="InstituicaoFinanceira"
+                asp-route-idInstituicaoFinanceira="@Model.IdInstituicaoFinanceira"
+                class="btn btn-warning btn-sm float-right" style="margin-right: 5px;"> <i class="fas fa-user-slash"></i>
                 Inativar</a>
 
-                    <a asp-action="NovoInstituicaoFinanceiraColaboradores" asp-controller="InstituicaoFinanceira" asp-route-idInstituicaoFinanceira="@Model.IdInstituicaoFinanceira"
-                        class="btn btn-success btn-sm float-right" style="margin-right: 5px;"> <i
-                            class="fas fa-plus"></i> Adicionar
-                        Número Colaboradores</a>
-                    <a asp-action="InativarInstituicaoFinanceira" asp-controller="InstituicaoFinanceira" asp-route-idInstituicaoFinanceira="@Model.IdInstituicaoFinanceira"
-                        class="btn btn-warning btn-sm float-right" style="margin-right: 5px;"> <i
-                            class="fas fa-user-slash"></i>
-                        Inativar</a>
-
-        <div class="col-12 table-responsive">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model =>
-                            model.ListaInstituicaoFinanceiraColaboradoresViewModel[0].NumeroColaboradores)
-
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model =>
-                            model.ListaInstituicaoFinanceiraColaboradoresViewModel[0].DataInicio)
-
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model =>
-                            model.ListaInstituicaoFinanceiraColaboradoresViewModel[0].DataFim)
-                        </th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.ListaInstituicaoFinanceiraColaboradoresViewModel)
-                    {
+            <div class="col-12 table-responsive">
+                <table class="table table-striped">
+                    <thead>
                         <tr>
+                            <th>
+                                @Html.DisplayNameFor(model =>
+                                model.ListaInstituicaoFinanceiraColaboradoresViewModel[0].NumeroColaboradores)
 
-                            <td>
-                                @Html.DisplayFor(modelItem => item.NumeroColaboradores) Colaboradore(s)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.DataInicio)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.DataFim)
-                            </td>
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model =>
+                                model.ListaInstituicaoFinanceiraColaboradoresViewModel[0].DataInicio)
+
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model =>
+                                model.ListaInstituicaoFinanceiraColaboradoresViewModel[0].DataFim)
+                            </th>
 
                         </tr>
-                    }
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ListaInstituicaoFinanceiraColaboradoresViewModel)
+                        {
+                            <tr>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NumeroColaboradores) Colaboradore(s)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DataInicio)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DataFim)
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.col -->
         </div>
-        <!-- /.col -->
     </div>
-</div>
