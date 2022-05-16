@@ -79,8 +79,10 @@ namespace sga_stif.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> NovoSocio([Bind("Nome,NumeroDeTelemovel,NumeroDeTelefone,Email,DataDeNascimento,Sexo,Apelido,CinBi,Foto,NumeroPassaporte,ValidadePassaporte,IdTipologiaSocio ,IdTipoQuota,IdAgencia,Nif,DataAtivacao,ValidadeCinBi,EstadoCivil")] NovoSocioViewModel novoSocioViewModel, IFormFile Image)
+        public async Task<IActionResult> NovoSocio([Bind("Nome,NumeroDeTelemovel,NumeroDeTelefone,Email,DataDeNascimento,Sexo,Apelido,CinBi,NumeroPassaporte,ValidadePassaporte,IdTipologiaSocio ,IdTipoQuota,IdAgencia,Nif,DataAtivacao,ValidadeCinBi,EstadoCivil")] NovoSocioViewModel novoSocioViewModel, IFormFile Image)
         {
+             byte[] p1 = null;
+
             try
             {
                 if (ModelState.IsValid)
@@ -91,19 +93,20 @@ namespace sga_stif.Controllers
                         if (Image.Length > 0)
                         {
 
-                            byte[] p1 = null;
+                            //byte[] p1 = null;
                             using (var fs1 = Image.OpenReadStream())
                             using (var ms1 = new MemoryStream())
                             {
                                 fs1.CopyTo(ms1);
                                 p1 = ms1.ToArray();
                             }
-                            novoSocioViewModel.Foto = p1;
+                            //novoSocioViewModel.Foto = p1;
 
                         }
                     }
 
                     var socio = _mapper.Map<Socio>(novoSocioViewModel);
+                    socio.Foto =p1;
                     socio.NumeroColaborador = "0";
 
                     _notyf.Success("Sócio adicionado com sucesso!");
@@ -281,8 +284,6 @@ namespace sga_stif.Controllers
         {
             var socio = await _context.Socio.FindAsync(idSocio);
             socio.Eliminado = true;
-            //_context.Socio.Remove(employee);
-            //_context.Socio.Remove(employee);
             await _context.SaveChangesAsync();
             _notyf.Success("Sócio eliminado com sucesso!");
 

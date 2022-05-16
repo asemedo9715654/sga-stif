@@ -23,7 +23,7 @@ namespace sga_stif.Controllers
 
     public async Task<IActionResult> ListaPerfil()
     {
-      var perfil = await _context.Perfil.Include(g=>g.Utilizador).ToListAsync();
+      var perfil = await _context.Perfil.Where(h=>h.Eliminado==false).Include(g=>g.Utilizador).ToListAsync();
       var listaPerfilViewModels = _mapper.Map<List<ListaPerfilViewModel>>(perfil);
 
       return View(listaPerfilViewModels);
@@ -264,6 +264,39 @@ namespace sga_stif.Controllers
       }
 
       return Json(true);
+    }
+
+
+    ///
+
+
+        public async Task<IActionResult> InativarPerfil(int? idPerfil)
+    {
+      if (idPerfil == null)
+      {
+        return NotFound();
+      }
+      var utilizador = await _context.Perfil.FirstOrDefaultAsync(m => m.IdPerfil == idPerfil);
+
+      var inativarPerfilViewModel= _mapper.Map<InativarPerfilViewModel>(utilizador);
+      return View(inativarPerfilViewModel);
+    }
+
+
+
+    // POST: Employees/Delete/1
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> InativarPerfil(int idPerfil)
+    {
+      var perfil = await _context.Perfil.FindAsync(idPerfil);
+      perfil.Eliminado = true;
+
+      await _context.SaveChangesAsync();
+      _notyf.Success("Perfil inativado com sucesso!");
+
+
+      return RedirectToAction("ListaPerfil");
     }
 
   }

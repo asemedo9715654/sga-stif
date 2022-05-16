@@ -27,6 +27,9 @@ namespace sga_stif.Mapeamento
             CreateMap<NovaAgenciaViewModel, Agencia>();
             CreateMap<EditaAgenciaViewModel, Agencia>();
             CreateMap<Agencia, EditaAgenciaViewModel>();
+            CreateMap<Agencia, InativarAgenciaViewModel>()   
+              .ForMember(dest => dest.NomeCidade, opt => opt.MapFrom(src => src.Cidade.Nome))
+              .ForMember(dest => dest.NomeInstituicaoFinanceira, opt => opt.MapFrom(src => src.InstituicaoFinanceira. Nome));
 
             CreateMap<Beneficiario, ListaBeneficiarioViewModel>();
 
@@ -45,6 +48,7 @@ namespace sga_stif.Mapeamento
 
 
             //perfil
+             CreateMap<Perfil, InativarPerfilViewModel>();
             CreateMap<Perfil, ListaPerfilViewModel>()
              .ForMember(dest => dest.TotalUtilizadores, opt => opt.MapFrom(src => src.TotalUtilizadores()));
 
@@ -59,6 +63,7 @@ namespace sga_stif.Mapeamento
              .ForMember(dest => dest.TotalDeSocios, opt => opt.MapFrom(src => src.TotalSocios()));
 
             CreateMap<NovoInstituicaoFinanceiraViewModel, InstituicaoFinanceira>();
+            CreateMap<InstituicaoFinanceira, InativarInstituicaoFinanceiraViewModel>();
             CreateMap<EditaInstituicaoFinanceiraViewModel, InstituicaoFinanceira>();
             CreateMap<InstituicaoFinanceira, EditaInstituicaoFinanceiraViewModel>();
             CreateMap<InstituicaoFinanceiraColaboradores, ListaInstituicaoFinanceiraColaboradoresViewModel>();
@@ -72,6 +77,9 @@ namespace sga_stif.Mapeamento
             CreateMap<NovoUtilizadorViewModel, Utilizador>();
             CreateMap<Utilizador, EditaUtilizadorViewModel>();
             CreateMap<Utilizador, DetalhesUtilizadorViewModel>()
+              .ForMember(dest => dest.NomePerfil, opt => opt.MapFrom(src => src.Perfil.Nome))
+            ;
+            CreateMap<Utilizador, InativarUtilizadorViewModel>()
               .ForMember(dest => dest.NomePerfil, opt => opt.MapFrom(src => src.Perfil.Nome))
             ;
 

@@ -8,8 +8,8 @@ namespace sga_stif.ViewModel.Socio
   {
     [Key]
     public int IdSocio { get; set; }
-    [Display(Name = "Fotografia")]
-    public byte[]? Foto { get; set; }
+    // [Display(Name = "Fotografia")]
+    // public byte[]? Foto { get; set; }
     [Required(ErrorMessage = "O Nome é necessario")]
     public string Nome { get; set; }
 
@@ -50,7 +50,7 @@ namespace sga_stif.ViewModel.Socio
     public Sexo Sexo { get; set; }
 
     [Required(ErrorMessage = "O Estado Civíl é necessario")]
-    [Display(Name = "Estado Cívil")]
+    [Display(Name = "Estádo Cívil")]
     public EstadoCivil EstadoCivil { get; set; }
 
     [Display(Name = "Número de Telefone")]
@@ -58,10 +58,11 @@ namespace sga_stif.ViewModel.Socio
     [Display(Name = "Número de Telemovel")]
     [Required(ErrorMessage = "O Número de Telefone é necessario")]
     public string? NumeroDeTelemovel { get; set; }
-    
+
     [EmailAddress]
     [Remote(action: "VereficaEmail", controller: "Socio")]
-     public string Email { get; set; }
+    [Required(ErrorMessage = "O E-Mail é necessario")]
+    public string Email { get; set; }
 
     [DataType(DataType.Date)]
     [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]

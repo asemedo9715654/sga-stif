@@ -30,7 +30,7 @@ namespace sga_stif.Controllers
 
     public async Task<IActionResult> ListaAgencia()
     {
-      var agencia = await _context.Agencia.Where(e=>e.Eliminado==false).Include(g => g.Cidade).Include(h => h.InstituicaoFinanceira).Include(h => h.Socio).ToListAsync();
+      var agencia = await _context.Agencia.Where(e => e.Eliminado == false).Include(g => g.Cidade).Include(h => h.InstituicaoFinanceira).Include(h => h.Socio).ToListAsync();
       var listaAgenciaViewModel = _mapper.Map<List<ListaAgenciaViewModel>>(agencia);
       return View(listaAgenciaViewModel);
     }
@@ -110,14 +110,14 @@ namespace sga_stif.Controllers
         ViewBag.IdCidade = cidadesSelectLista;
         ViewBag.IdInstituicaoFinanceira = instituicaoFinanceirasSelectLista;
 
-          var agenciaViewModel = _mapper.Map<EditaAgenciaViewModel>(agencia);
+        var agenciaViewModel = _mapper.Map<EditaAgenciaViewModel>(agencia);
 
         return View(agenciaViewModel);
       }
 
       _notyf.Error("Agencia Inexistente!");
 
-       return RedirectToAction("ListaAgencia");
+      return RedirectToAction("ListaAgencia");
     }
 
 
@@ -149,10 +149,10 @@ namespace sga_stif.Controllers
     }
 
     ///
-      public async Task<IActionResult> ListaSocioPorAgencia(int idAgencia,string nomeAgencia)
+    public async Task<IActionResult> ListaSocioPorAgencia(int idAgencia, string nomeAgencia)
     {
       ViewBag.NomeAgencia = nomeAgencia;
-      
+
       var socios = await _context.Socio.Where(r => r.Eliminado != true && r.IdAgencia == idAgencia).Include(c => c.Agencia)
                                   .Include(c => c.TipologiaSocio)
                                   .Include(c => c.TipoQuota)
@@ -162,6 +162,41 @@ namespace sga_stif.Controllers
       var listaSocioViewModel = _mapper.Map<List<ListaSocioViewModel>>(socios);
 
       return View(listaSocioViewModel);
+    }
+
+
+
+    public async Task<IActionResult> InativarAgencia(int? idAgencia)
+    {
+      if (idAgencia == null)
+      {
+        return NotFound();
+      }
+      var agencia = await _context.Agencia.Where(m => m.IdAgencia == idAgencia)
+      .Include(n=>n.Cidade)
+      .Include(n=>n.InstituicaoFinanceira)
+      .FirstOrDefaultAsync(m => m.IdAgencia == idAgencia);
+
+      var inativarPerfilViewModel = _mapper.Map<InativarAgenciaViewModel>(agencia);
+      return View(inativarPerfilViewModel);
+    }
+
+
+
+    // POST: Employees/Delete/1
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> InativarAgencia(int idAgencia)
+    {
+      var agencia = await _context.Agencia.FindAsync(idAgencia);
+      agencia.Eliminado = true;
+      agencia.DataAtualizacao = DateTime.Now;
+
+      await _context.SaveChangesAsync();
+      _notyf.Success("Agência inativado com sucesso!");
+
+
+      return RedirectToAction("ListaAgencia");
     }
 
 
