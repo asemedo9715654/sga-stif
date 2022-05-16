@@ -1,4 +1,4 @@
-@model sga_stif.ViewModel.Utilizador.InativarUtilizadorViewModel
+@model sga_stif.ViewModel.InstituicaoFinanceira.InativarInstituicaoFinanceiraViewModel
 
 @{
     ViewData["Title"] = "Inativar Utilizador";
@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col-12">
             <h4>
-                <i class="fas fa-user"></i> Detalhes do Utilizador - <small>@Model.Nome @Model.Apelido</small>
+                <i class="fas fa-user"></i> Inativar Instituição Financeira - <small>@Model.Nome</small>
                 @* <small class="float-right">@DateTime.Now</small> *@
             </h4>
         </div>
@@ -25,28 +25,23 @@
     <div class="row invoice-info">
 
         <div class="col-sm-4 invoice-col">
-            <b>Dados Utilizador</b><br>
+            <b>Dados Instituição Financeira</b><br>
             <br>
             <b>Nome :</b> @Model.Nome<br>
-            <b>Apelido :</b> @Model.Apelido<br>
-            <b>Email :</b> @Model.Email<br>
+            <b>Sigla :</b> @Model.Sigla<br>
+           
 
 
         </div>
-        <!-- /.col -->
-        <div class="col-sm-4 invoice-col">
-            <b>Criação/Outros</b><br>
+       
+       <div class="col-sm-4 invoice-col">
+            <b>Criado</b><br>
             <br>
-            <b>Perfil :</b> @Model.NomePerfil<br>
-            <b>Data Criação :</b> @Model.DataCriacao<br>
-            <b>Data Atualização :</b> @Model.DataAtualizacao<br>
+            <b>Criado :</b> @Model.DataCriacao<br>
+            <b>Atualizado :</b> @Model.DataAtualizacao<br>
+
 
         </div>
-        <!-- /.col -->
-        <div class="col-sm-4 invoice-col">
-
-        </div>
-        <!-- /.col -->
     </div>
     <br>
     <br>
@@ -66,10 +61,10 @@
             </a> *@
 
 
-              <form asp-action="EliminaUtilizador">
-                <input type="hidden" asp-for="IdUtilizador" />
+              <form asp-action="InativarInstituicaoFinanceira">
+                <input type="hidden" asp-for="IdInstituicaoFinanceira" />
                 <input class="btn btn-primary float-right" type="submit" value="Sim" />
-                <a class="btn btn-danger float-right" asp-action="ListaUtilizador">Não</a>
+                <a class="btn btn-danger float-right" asp-action="ListaInstituicaoFinanceira">Não</a>
             </form>
 
         </div>

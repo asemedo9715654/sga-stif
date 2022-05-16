@@ -215,5 +215,36 @@ namespace sga_stif.Controllers
       return Json(true);
     }
 
+
+        public async Task<IActionResult> InativarInstituicaoFinanceira(int? idInstituicaoFinanceira)
+    {
+      if (idInstituicaoFinanceira == null)
+      {
+        return NotFound();
+      }
+      var instituicaoFinanceira = await _context.InstituicaoFinanceira.FirstOrDefaultAsync(m => m.IdInstituicaoFinanceira == idInstituicaoFinanceira);
+
+      var inativarPerfilViewModel= _mapper.Map<InativarInstituicaoFinanceiraViewModel>(instituicaoFinanceira);
+      return View(inativarPerfilViewModel);
+    }
+
+
+
+    // POST: Employees/Delete/1
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> InativarInstituicaoFinanceira(int idInstituicaoFinanceira)
+    {
+      var instituicaoFinanceira = await _context.InstituicaoFinanceira.FindAsync(idInstituicaoFinanceira);
+      instituicaoFinanceira.Eliminado = true;
+      instituicaoFinanceira.DataAtualizacao = DateTime.Now;
+
+      await _context.SaveChangesAsync();
+      _notyf.Success("Intituição Financeira inativado com sucesso!");
+
+
+      return RedirectToAction("ListaPerfil");
+    }
+
   }
 }

@@ -28,7 +28,7 @@ namespace sga_stif.Controllers
 
     public async Task<IActionResult> ListaTipologiaSocio()
     {
-      var tipologiaSocio = await _context.TipologiaSocio.Include(g=>g.Socio).ToListAsync();
+      var tipologiaSocio = await _context.TipologiaSocio.Where(j=>j.Eliminado==false).Include(g=>g.Socio).ToListAsync();
       var listaTipologiaSocioViewModel = _mapper.Map<List<ListaTipologiaSocioViewModel>>(tipologiaSocio);
       return View(listaTipologiaSocioViewModel);
     }

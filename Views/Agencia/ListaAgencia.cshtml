@@ -65,8 +65,8 @@
                         <td>
                             <a class="btn btn-success btn-xs" asp-action="EditaAgencia"
                             asp-route-idAgencia="@item.IdAgencia"><i class="fas fa-pen"></i> Editar</a>
-                            <a class="btn btn-warning btn-xs" asp-action="Delete"
-                            asp-route-id="@item.IdInstituicaoFinanceira">Inativar</a>
+                            <a class="btn btn-warning btn-xs" asp-action="InativarAgencia"
+                            asp-route-idAgencia="@item.IdAgencia">Inativar</a>
 
                         </td>
                     </tr>
@@ -81,6 +81,12 @@
 
     $(document).ready(function () {
         $('#example2').DataTable({
+            paging: true,
+            lengthChange: false,
+            searching: true,
+            ordering: true,
+            info: true,
+            responsive: true,
             dom: 'Bfrtip',
             buttons: [
                 //'copy', 'csv', 'excel', 'pdf', 'print'

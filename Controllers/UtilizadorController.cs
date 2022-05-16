@@ -124,7 +124,8 @@ namespace sga_stif.Controllers
       }
       var utilizador = await _context.Utilizador.FirstOrDefaultAsync(m => m.IdUtilizador == idUtilizador);
 
-      return View(utilizador);
+      var inativarUtilizadorViewModel= _mapper.Map<InativarUtilizadorViewModel>(utilizador);
+      return View(inativarUtilizadorViewModel);
     }
 
 
