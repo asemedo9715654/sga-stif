@@ -1,0 +1,141 @@
+@model IEnumerable<sga_stif.Models.ResultadoStoredProcedure.PosicaoIFsResultado>
+
+@{
+  ViewData["Title"] = "Lista de Quotas Pagas";
+}
+
+
+  <div class="card">
+    <div class="card-header">
+      <form id="formularioDeFiltro" asp-action="ListaQuotasPagas" method="get">
+        <div class="row no-print">
+
+          <div class="col-12">
+            <p class="lead">Posicao If</p>
+
+            @* <div class="row align-items-end">
+              <div class="col-md-3">
+
+
+
+                <div class="form-group align-items-end">
+                  <label class="control-label">Data</label>
+                  <input type="month" id="start" name="DataPesquisa" min="2022-01" value=@ViewBag.DataPreenchido class="form-control">
+
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group align-items-end">
+                  <label class="control-label">Intituição Financeira</label>
+                  <select asp-items="@ViewBag.IdInstituicaoFinanceira" class="form-control"
+                    id="IdInstituicaoFinanceira">
+                    <option disabled selected>--- todos ---</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group align-items-end">
+                  <label class="control-label"></label>
+                  <input type="submit" form="formularioDeFiltro" class="btn btn-primary" value="Filtrar" />
+                </div>
+              </div>
+
+            </div> *@
+          </div>
+        </div>
+      </form>
+
+      @* <input type="submit" form="formularioDePagamentos" value="Efectuar Anulamento" class="btn btn-danger btn-sm float-right" style="margin-right: 5px;"> *@
+
+    </div>
+
+    <div class="card-body">
+      <form method="post" asp-controller="Pagamento" asp-action="AnularMultiplosPagamento" id="formularioDePagamentos">
+      <table id="example2" class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>
+              @Html.DisplayNameFor(model => model.IFNome)
+            </th>
+            <th>
+              @Html.DisplayNameFor(model => model.TotalSocioAnterior)
+            </th>
+            <th>
+              @Html.DisplayNameFor(model => model.TotalSocioAtual)
+            </th>
+            <th>
+              @Html.DisplayNameFor(model => model.TotalColaboradoresAnterior)
+            </th>
+            <th>
+              @Html.DisplayNameFor(model => model.TotalColaboradoresAtual)
+            </th>
+            <th>
+              @Html.DisplayNameFor(model => model.TotalQuoataMesAnterior)
+            </th>
+             <th>
+              @Html.DisplayNameFor(model => model.TotalQuoataMesAtual)
+            </th>
+            <th>
+              Ação
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach (var item in Model)
+          {
+            <tr>
+              
+              <td>
+                @Html.DisplayFor(modelItem => item.IFNome)
+              </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.TotalSocioAnterior)
+              </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.TotalSocioAtual)
+              </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.TotalColaboradoresAnterior)
+              </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.TotalColaboradoresAtual)
+              </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.TotalQuoataMesAnterior)
+              </td>
+              <td>
+                 @Html.DisplayFor(modelItem => item.TotalQuoataMesAtual)
+              </td>
+              <td>
+
+              </td>
+
+            </tr>
+          }
+        </tbody>
+      </table>
+      </form>
+    </div>
+  </div>
+
+
+<script>
+  $(function () {
+
+    $('#all').on('click', function () {
+      $(':checkbox').attr("checked", $(this).is(':checked'));
+    });
+
+
+
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>

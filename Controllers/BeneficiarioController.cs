@@ -8,7 +8,7 @@ using sga_stif.ViewModel.Beneficiario;
 
 namespace sga_stif.Controllers
 {
-    public class BeneficiarioController : Controller
+    public class BeneficiarioController : BaseController
     {
 
         private readonly ContextoBaseDados _context;

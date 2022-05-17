@@ -8,7 +8,7 @@ using sga_stif.ViewModel.TipoQuota;
 
 namespace sga_stif.Controllers
 {
-  public class TipoQuotaController : Controller
+  public class TipoQuotaController : BaseController
   {
 
     private readonly ContextoBaseDados _context;

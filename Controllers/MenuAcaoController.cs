@@ -6,7 +6,7 @@ using sga_stif.ViewModel.MenuAcao;
 
 namespace sga_stif.Controllers
 {
-    public class MenuAcaoController : Controller
+    public class MenuAcaoController : BaseController
     {
 
         private readonly ContextoBaseDados _context;

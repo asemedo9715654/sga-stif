@@ -35,6 +35,7 @@ namespace sga_stif.Models
     //resultado stored procedure
     public DbSet<ContaCorrenteIFResultado> ContaCorrenteIFResultado { get; set; }
     public DbSet<ContaCorrenteSocioResultado> ContaCorrenteSocioResultado { get; set; }
+    public DbSet<PosicaoIFsResultado> PosicaoIFsResultado { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -65,6 +66,7 @@ namespace sga_stif.Models
 
       modelBuilder.Entity<ContaCorrenteIFResultado>().HasNoKey();
       modelBuilder.Entity<ContaCorrenteSocioResultado>().HasNoKey();
+      modelBuilder.Entity<PosicaoIFsResultado>().HasNoKey();
 
       // modelBuilder.Entity<ContaCorrenteIFResultado>().ToView("Dummy view name");
       // modelBuilder.Entity<ContaCorrenteSocioResultado>().ToView("Dummy view name");
@@ -330,7 +332,7 @@ namespace sga_stif.Models
 
 
 
-              new Menu { IdMenu = 9, Nome = "Posição de IF", Descricao = "Posição de IF", IdMenuPai = null, NomeDaAction = "", NomeDoController = "", Icone = "fas fa-search" },
+              new Menu { IdMenu = 9, Nome = "Posição de IF", Descricao = "Posição de IF", IdMenuPai = null, NomeDaAction = "PosicaoDasInstituicoesFinanceiras", NomeDoController = "PosicaoIFs", Icone = "fas fa-search" },
 
               new Menu { IdMenu = 10, Nome = "Projeção de Quotas", Descricao = "Projeção de Quotas", IdMenuPai = null, NomeDaAction = "", NomeDoController = "", Icone = "fas fa-table" },
 

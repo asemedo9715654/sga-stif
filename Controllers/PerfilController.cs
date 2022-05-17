@@ -9,7 +9,7 @@ using sga_stif.ViewModel.Utilizador;
 
 namespace sga_stif.Controllers
 {
-  public class PerfilController : Controller
+  public class PerfilController : BaseController
   {
     private readonly ContextoBaseDados _context;
     private readonly INotyfService _notyf;

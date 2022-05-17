@@ -10,7 +10,7 @@ using sga_stif.ViewModel.Utilizador;
 
 namespace sga_stif.Controllers
 {
-  public class UtilizadorController : Controller
+  public class UtilizadorController : BaseController
   {
 
     private readonly ContextoBaseDados _context;

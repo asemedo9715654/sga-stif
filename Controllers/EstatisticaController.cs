@@ -6,7 +6,7 @@ using sga_stif.ViewModel.Estatistica;
 
 namespace sga_stif.Controllers
 {
-  public class EstatisticaController : Controller
+  public class EstatisticaController : BaseController
   {
 
     private readonly ContextoBaseDados _context;

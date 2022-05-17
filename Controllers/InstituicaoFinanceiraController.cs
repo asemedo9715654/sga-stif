@@ -10,7 +10,7 @@ using sga_stif.ViewModel.TipoQuota;
 
 namespace sga_stif.Controllers
 {
-  public class InstituicaoFinanceiraController : Controller
+  public class InstituicaoFinanceiraController : BaseController
   {
 
     private readonly ContextoBaseDados _context;
