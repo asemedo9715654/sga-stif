@@ -36,6 +36,14 @@ namespace sga_stif.Controllers
     }
 
 
+     public async Task<IActionResult> ListaAgenciaInativos()
+    {
+      var agencia = await _context.Agencia.Where(e => e.Eliminado == true).Include(g => g.Cidade).Include(h => h.InstituicaoFinanceira).Include(h => h.Socio).ToListAsync();
+      var listaAgenciaViewModel = _mapper.Map<List<ListaAgenciaViewModel>>(agencia);
+      return View(listaAgenciaViewModel);
+    }
+
+
     public async Task<IActionResult> ListaAgenciaPorInstitucaoFinanceira(int idInstituicaoFinanceira, string nomeInstituicao)
     {
 
@@ -51,7 +59,7 @@ namespace sga_stif.Controllers
     public IActionResult NovaAgencia()
     {
 
-      var instituicaoFinanceiras = _context.InstituicaoFinanceira.ToList();
+      var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(h=>h.Eliminado==false).ToList();
       var instituicaoFinanceirasSelectLista = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome };
 
       var cidades = _context.Cidade.ToList();
@@ -101,7 +109,7 @@ namespace sga_stif.Controllers
       if (agencia != null)
       {
 
-        var instituicaoFinanceiras = _context.InstituicaoFinanceira.ToList();
+        var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(h=>h.Eliminado==false).ToList();
         var instituicaoFinanceirasSelectLista = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome };
 
         var cidades = _context.Cidade.ToList();
@@ -123,14 +131,14 @@ namespace sga_stif.Controllers
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> EditaAgencia([Bind("Nome,IdCidade,IdInstituicaoFinanceira")] NovaAgenciaViewModel novoPerfilViewModel)
+    public async Task<IActionResult> EditaAgencia([Bind("IdAgencia, Nome,IdCidade,IdInstituicaoFinanceira")] NovaAgenciaViewModel novoPerfilViewModel)
     {
       try
       {
         if (ModelState.IsValid)
         {
           var agencia = _mapper.Map<Agencia>(novoPerfilViewModel);
-          _context.Agencia.Add(agencia);
+          _context.Update(agencia);
           await _context.SaveChangesAsync();
           _notyf.Success("Agencia adicionado com sucesso!");
           return RedirectToAction("ListaAgencia");
@@ -194,6 +202,21 @@ namespace sga_stif.Controllers
 
       await _context.SaveChangesAsync();
       _notyf.Success("Agência inativado com sucesso!");
+
+
+      return RedirectToAction("ListaAgencia");
+    }
+
+
+   
+    public async Task<IActionResult> ReativarAgencia(int idAgencia)
+    {
+      var agencia = await _context.Agencia.FindAsync(idAgencia);
+      agencia.Eliminado = false;
+      agencia.DataAtualizacao = DateTime.Now;
+
+      await _context.SaveChangesAsync();
+      _notyf.Success("Agência reativado com sucesso!");
 
 
       return RedirectToAction("ListaAgencia");

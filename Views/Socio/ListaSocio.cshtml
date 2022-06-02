@@ -33,7 +33,7 @@
           <th>
             @Html.DisplayNameFor(model => model.NumeroDeSocio)
           </th>
-          <th>
+          <th title="Nome Completo do Sócio">
             @Html.DisplayNameFor(model => model.NomeCompleto)
           </th>
           <th>
@@ -61,7 +61,10 @@
             </td>
 
             <td>
-              @Html.DisplayFor(modelItem => item.NumeroDeSocio)
+               <a asp-action="DetalhesSocio" asp-route-idSocio="@item.IdSocio" title="Ver Detalhes Sócio e Adição de Beneficiário!"> 
+                  @Html.DisplayFor(modelItem => item.NumeroDeSocio)
+               </a>
+             
             </td>
             <td>
               @Html.DisplayFor(modelItem => item.NomeCompleto)
@@ -85,7 +88,7 @@
               asp-route-idAgencia="@item.IdAgencia"><i class="fas fa-pen"></i> Editar</a>
               <a class="btn btn-default btn-xs " asp-action="DetalhesSocio" asp-route-idSocio="@item.IdSocio"
               title="Ver Detalhes Sócio e Adição de Beneficiário!"><i class="fas fa-info"></i> Detalhes</a>
-              <a class="btn btn-warning btn-xs " asp-action="EliminaSocio" asp-route-idSocio="@item.IdSocio"><i
+              <a class="btn btn-warning btn-xs " asp-action="InativarSocio" asp-route-idSocio="@item.IdSocio"><i
                 class="fas fa-user-slash" title="Inativar Sócio"></i> Inativar</a>
             </td>
           </tr>
@@ -109,8 +112,30 @@
       responsive: true,
       dom: 'Bfrtip',
       buttons: [
+        {
+           extend: 'pdf',
+           footer: true,
+           exportOptions: {
+                columns: [0,1,2,3,4,5,6]
+            }
+       },
+       {
+           extend: 'excel',
+           footer: false,
+            exportOptions: {
+                columns: [0,1,2,3,4,5,6]
+            }
+          
+       },
+       {
+           extend: 'print',
+           footer: false,
+            exportOptions: {
+                columns: [0,1,2,3,4,5,6]
+            }
+       } 
         //'copy', 'csv', 'excel', 'pdf', 'print'
-        'excel', 'pdf', 'print'
+        //'excel', 'pdf', 'print'
       ]
     });
   });

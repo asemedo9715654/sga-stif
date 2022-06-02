@@ -19,9 +19,8 @@
     <div class="row invoice-info">
 
         <div class="col-sm-3 invoice-col text-center">
-
-            <img class="profile-user-img img-fluid img-circle" src="@Model.Foto" alt="User profile picture"
-                style="height: 200px;width:200px">
+         
+                   <img class="profile-user-img img-fluid img-circle" src="@Model.Foto" alt="User profile picture" style="height: 200px;width:200px">
 
         </div>
 
@@ -41,19 +40,20 @@
         <div class="col-sm-3 invoice-col">
             <b>Dados Instituição Financeira</b><br>
             <br>
-            <b>Instituição :</b> @Model.NomeInstituicaoFinanceira<br>
-            <b>Agência :</b> @Model.NomeAgencia<br>
-            <b>Cidade :</b> @Model.NomeCidade<br>
-            <b>Ilha :</b> @Model.NomeIlha
+            <b>Instituição : </b><a asp-controller="InstituicaoFinanceira" asp-action="DetalhesInstituicaoFinanceira" asp-route-idInstituicaoFinanceira="@Model.IdInstituicaoFinanceira" asp-route-nomeInstituicaoFinanceira="@Model.NomeInstituicaoFinanceira"> @Model.NomeInstituicaoFinanceira </a>  <br>
+            <b>Agência : </b> @Model.NomeAgencia<br>
+            <b>Cidade : </b> @Model.NomeCidade<br>
+            <b>Ilha : </b> @Model.NomeIlha
         </div>
         <!-- /.col -->
         <div class="col-sm-3 invoice-col">
             <b>Outros</b><br>
             <br>
-            <b>Tipo Quota :</b> @Model.NomeTipoQuota<br>
-            <b>Tipologia Sócio :</b> @Model.NomeTipologia <br>
-            <b>E-mail:</b> @Html.DisplayFor(modelItem => @Model.Email)<br>
-            <b>Telefone:</b> @Model.NumeroDeTelefone
+            <b>Tipo Quota : </b> @Model.NomeTipoQuota<br>
+            <b>Tipologia Sócio : </b> @Model.NomeTipologia <br>
+            <b>E-mail : </b><a href = "mailto:@Model.Email?subject = Contactar Socio&body = Nova Mensagem"> @Model.Email</a><br>
+            <b>Telefone : </b> @Model.NumeroDeTelefone <br>
+            <b>Móvel : </b><a href="tel:+238 @Model.NumeroDeTelemovel">@Model.NumeroDeTelemovel</a>  
         </div>
         <!-- /.col -->
     </div>
@@ -90,7 +90,7 @@
             <div class="row no-print">
 
                 <div class="col-12">
-                    <p class="lead">Lista de beneficiarios</p>
+                    <p class="lead">Lista de Beneficiário</p>
                     <a asp-action="ListaSocio" rel="noopener" class="btn btn-default btn-sm"><i
                             class="fas fa-arrow-left"></i> Voltar
                         Para Lista</a>
@@ -105,8 +105,8 @@
                     <a asp-action="NovoBeneficiario" asp-controller="Beneficiario" asp-route-idSocio="@Model.IdSocio"
                         class="btn btn-success btn-sm float-right" style="margin-right: 5px;"> <i
                             class="fas fa-plus"></i> Adicionar
-                        Beneficiario</a>
-                    <a asp-action="NovoBeneficiario" asp-controller="Beneficiario" asp-route-idSocio="@Model.IdSocio"
+                        Beneficiário</a>
+                    <a asp-action="InativarSocio" asp-controller="Socio" asp-route-idSocio="@Model.IdSocio"
                         class="btn btn-warning btn-sm float-right" style="margin-right: 5px;"> <i
                             class="fas fa-user-slash"></i>
                         Inativar</a>
@@ -122,13 +122,10 @@
                         <thead>
                             <tr>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.ListaBeneficiarioViewModel[0].Nome)
+                                    @Html.DisplayNameFor(model => model.ListaBeneficiarioViewModel[0].NomeCompleto)
 
                                 </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.ListaBeneficiarioViewModel[0].Apelido)
-
-                                </th>
+                               
                                 <th>
                                     @Html.DisplayNameFor(model => model.ListaBeneficiarioViewModel[0].DataDeNascimento)
 
@@ -163,10 +160,7 @@
                                 <tr>
 
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Nome)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Apelido)
+                                        @Html.DisplayFor(modelItem => item.NomeCompleto)
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.DataDeNascimento)

@@ -18,11 +18,11 @@ namespace sga_stif.ViewModel.Beneficiario
         [Display(Name = "Data de Nascimento")]
         public DateTime DataDeNascimento { get; set; }
         [Display(Name = "Número de Identificação Fiscal")]
-        public string Nif { get; set; }
+        public string? Nif { get; set; }
         [Display(Name = "Cni-BI")]
-        public string CinBi { get; set; }
+        public string? CinBi { get; set; }
         [Display(Name = "Número de Passaporte")]
-        public string NumeroPassaporte { get; set; }
+        public string? NumeroPassaporte { get; set; }
         public int IdSocio { get; set; }
     }
 }

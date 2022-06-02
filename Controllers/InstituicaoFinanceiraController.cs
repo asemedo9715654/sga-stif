@@ -28,10 +28,18 @@ namespace sga_stif.Controllers
 
     public async Task<IActionResult> ListaInstituicaoFinanceira()
     {
-      var instituicaoFinanceira = await _context.InstituicaoFinanceira.Include(i => i.Agencia).ThenInclude(k => k.Socio).ToListAsync();
+      var instituicaoFinanceira = await _context.InstituicaoFinanceira.Where(e=>e.Eliminado==false).Include(i => i.Agencia).ThenInclude(k => k.Socio).ToListAsync();
       var listaInstituicaoFinanceiraViewModel = _mapper.Map<List<ListaInstituicaoFinanceiraViewModel>>(instituicaoFinanceira);
       return View(listaInstituicaoFinanceiraViewModel);
     }
+
+      public async Task<IActionResult> ListaInstituicaoFinanceiraInativos()
+    {
+      var instituicaoFinanceira = await _context.InstituicaoFinanceira.Where(e=>e.Eliminado==true).Include(i => i.Agencia).ThenInclude(k => k.Socio).ToListAsync();
+      var listaInstituicaoFinanceiraViewModel = _mapper.Map<List<ListaInstituicaoFinanceiraViewModel>>(instituicaoFinanceira);
+      return View(listaInstituicaoFinanceiraViewModel);
+    }
+
 
 
 
@@ -243,7 +251,21 @@ namespace sga_stif.Controllers
       _notyf.Success("Intituição Financeira inativado com sucesso!");
 
 
-      return RedirectToAction("ListaPerfil");
+      return RedirectToAction("ListaInstituicaoFinanceira");
+    }
+
+
+      public async Task<IActionResult> ReativarInstituicaoFinanceira(int idInstituicaoFinanceira)
+    {
+      var utilizador = await _context.InstituicaoFinanceira.FindAsync(idInstituicaoFinanceira);
+      utilizador.Eliminado = false;
+      utilizador.DataAtualizacao = DateTime.Now;
+
+      await _context.SaveChangesAsync();
+      _notyf.Success("Instituição Financeira reativado com sucesso!");
+
+
+      return RedirectToAction("ListaInstituicaoFinanceira");
     }
 
   }

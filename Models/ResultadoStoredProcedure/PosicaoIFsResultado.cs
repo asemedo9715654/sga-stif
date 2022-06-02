@@ -5,15 +5,22 @@ namespace sga_stif.Models.ResultadoStoredProcedure
 {
   public class PosicaoIFsResultado
   {
+    [Display(Name ="Instituição Financeira")]
     public string IFNome { get; set; }
-    public string IdInstituicaoFinanceira { get; set; }
+    public int IdInstituicaoFinanceira { get; set; }
+    [Display(Name = "Total de Sócio Anterior")]
     public int TotalSocioAnterior { get; set; }
+    [Display(Name = "Total de Sócio Atual")]
     public int TotalSocioAtual { get; set; }
+    [Display(Name = "Total de Colaboradores Anterior")]
     public int TotalColaboradoresAnterior { get; set; }
+    [Display(Name = "Total de Colaboradores Atual")]
     public int TotalColaboradoresAtual { get; set; }
-    public int TotalQuoataMesAnterior { get; set; }
-    public int TotalQuoataMesAtual { get; set; }
-    public string Estado { get; set; }
+    [Display(Name = "Total Quotas Mês Anterior")]
+    public double TotalQuoataMesAnterior { get; set; }
+    [Display(Name = "Total Quotas Mês Atual")]
+    public double TotalQuoataMesAtual { get; set; }
+    public int Estado { get; set; }
 
 
   }

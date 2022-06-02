@@ -122,7 +122,7 @@
     <!-- PIE CHART -->
     <div class="card card-default">
       <div class="card-header">
-        <h3 class="card-title">Ocorência por Sexo as Instituições Financeira</h3>
+        <h3 class="card-title">Sócios por Sexo/Instituições Financeira</h3>
 
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -592,7 +592,7 @@ Url.Action("OcorenciaPorSexoTacadoComInstituicaoFinanceira", "Estatistica"))
         },
 
         title: {
-          text: 'Ocorência por Sexo nas Instituições Financeira'
+          text: 'Sócios por Sexo/Instituições Financeira'
         },
 
         xAxis: {
@@ -652,7 +652,7 @@ Url.Action("OcorenciaPorSexoTacadoComInstituicaoFinanceira", "Estatistica"))
             step: 1
           },
           accessibility: {
-            description: 'Age (male)'
+            description: 'Idade (masculino)'
           }
         }, { // mirror axis on right side
           opposite: true,
@@ -663,7 +663,7 @@ Url.Action("OcorenciaPorSexoTacadoComInstituicaoFinanceira", "Estatistica"))
             step: 1
           },
           accessibility: {
-            description: 'Age (female)'
+            description: 'Idade (feminino)'
           }
         }],
         yAxis: {
@@ -672,7 +672,7 @@ Url.Action("OcorenciaPorSexoTacadoComInstituicaoFinanceira", "Estatistica"))
           },
           labels: {
             formatter: function () {
-              return Math.abs(this.value) + '%';
+              return Math.abs(this.value) + '';
             }
           },
           accessibility: {
@@ -689,8 +689,8 @@ Url.Action("OcorenciaPorSexoTacadoComInstituicaoFinanceira", "Estatistica"))
 
         tooltip: {
           formatter: function () {
-            return '<b>' + this.series.name + ', age ' + this.point.category + '</b><br/>' +
-              'Sócios: ' + Highcharts.numberFormat(Math.abs(this.point.y), 1) + '%';
+            return '<b>' + this.series.name + ', idade ' + this.point.category + '</b><br/>' +
+              'Número de Sócios: ' + Highcharts.numberFormat(Math.abs(this.point.y), 1) ;
           }
         },
 

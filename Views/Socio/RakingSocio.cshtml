@@ -1,0 +1,103 @@
+@model IEnumerable<sga_stif.Models.ResultadoStoredProcedure.RakingSocioResultado>
+
+@{
+  ViewData["Title"] = "Lista de Quotas Pagas";
+}
+
+
+  <div class="card">
+    <div class="card-header">
+    
+        <div class="row no-print">
+
+          <div class="col-12">
+            <p class="lead">Ranking Sócio</p>
+          </div>
+        </div>
+
+    </div>
+
+    <div class="card-body">
+      <form method="post" asp-controller="Pagamento" asp-action="AnularMultiplosPagamento" id="formularioDePagamentos">
+      <table id="example2" class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>
+              @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+              @Html.DisplayNameFor(model => model.NumeroDeSocio)
+            </th>
+            <th>
+              @Html.DisplayNameFor(model => model.IFS)
+            </th>
+            <th>
+              @Html.DisplayNameFor(model => model.AgenciaNome)
+            </th>
+            <th>
+              @Html.DisplayNameFor(model => model.MesesPago)
+            </th>
+            <th>
+              @Html.DisplayNameFor(model => model.TotalMontantePago)
+            </th>
+            <th>
+              Ação
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach (var item in Model)
+          {
+            <tr>
+              
+              <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+              </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.NumeroDeSocio)
+              </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.IFS)
+              </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.AgenciaNome)
+              </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.MesesPago)
+              </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.TotalMontantePago)
+              </td>        
+              <td>
+
+              </td>
+
+            </tr>
+          }
+        </tbody>
+      </table>
+      </form>
+    </div>
+  </div>
+
+
+<script>
+  $(function () {
+
+    $('#all').on('click', function () {
+      $(':checkbox').attr("checked", $(this).is(':checked'));
+    });
+
+
+
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>

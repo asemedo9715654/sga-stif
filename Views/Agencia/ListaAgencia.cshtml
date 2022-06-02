@@ -14,6 +14,8 @@
 
                 <a asp-action="NovaAgencia" class="btn btn-success btn-sm float-right"
                     style="margin-right: 5px;">Nova</a>
+
+                <a asp-action="ListaAgenciaInativos" class="btn btn-default btn-sm  float-right" style="margin-right: 5px;">Lista de Agências Inativos</a>
             </div>
         </div>
 
@@ -49,7 +51,8 @@
                             @Html.DisplayFor(modelItem => item.Nome)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.NomeInstituicaoFinanceira)
+                              <a  asp-action="DetalhesInstituicaoFinanceira" asp-controller="InstituicaoFinanceira" asp-route-idInstituicaoFinanceira="@item.IdInstituicaoFinanceira" asp-route-nomeInstituicaoFinanceira="@Html.DisplayFor(modelItem => item.NomeInstituicaoFinanceira)"> @Html.DisplayFor(modelItem => item.NomeInstituicaoFinanceira)</a>
+                          
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.NomeCidade)

@@ -62,11 +62,9 @@
             <td>
               @Html.DisplayFor(modelItem => item.Apelido)
             </td>
-
             <td>
               @Html.DisplayFor(modelItem => item.Email)
             </td>
-           
             <td>
               @Html.DisplayFor(modelItem => item.NomePerfil)
             </td>
@@ -78,7 +76,7 @@
             </td>
             <td>
              
-              <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.IdUtilizador">Reativar</a>
+              <a class="btn btn-success btn-xs" asp-action="ReativarUtilizador" asp-route-idUtilizador="@item.IdUtilizador">Reativar</a>
             </td>
           </tr>
         }

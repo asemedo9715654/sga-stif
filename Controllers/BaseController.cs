@@ -11,7 +11,7 @@ using sga_stif.ViewModel.TipoQuota;
 
 namespace sga_stif.Controllers
 {
-    [BreadcrumbActionFilter]
+    // [BreadcrumbActionFilter]
     public class BaseController : Controller
     {
 

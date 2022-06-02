@@ -49,7 +49,7 @@ namespace sga_stif.Controllers
     [HttpGet]
     public IActionResult NovoUtilizador()
     {
-      var perfils = _context.Perfil.ToList();
+      var perfils = _context.Perfil.Where(a=>a.Eliminado==false).ToList();
       var perfilr = from g in perfils select new SelectListItem { Value = g.IdPerfil.ToString(), Text = g.Nome };
       ViewBag.IdPerfil = perfilr;
 
@@ -58,8 +58,9 @@ namespace sga_stif.Controllers
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> NovoUtilizador([Bind("Nome,Apelido,Foto,PalavraPasse,PalavraPasseSalt,Email,IdPerfil,NomeUtilizador")] NovoUtilizadorViewModel novoUtilizadorViewModel, IFormFile Image)
+    public async Task<IActionResult> NovoUtilizador([Bind("Nome,Apelido,PalavraPasse,PalavraPasseSalt,Email,IdPerfil,NomeUtilizador")] NovoUtilizadorViewModel novoUtilizadorViewModel, IFormFile? Image=null)
     {
+       byte[] p1 = null;
 
       try
       {
@@ -74,14 +75,14 @@ namespace sga_stif.Controllers
 
             {
 
-              byte[] p1 = null;
+              //byte[] p1 = null;
               using (var fs1 = Image.OpenReadStream())
               using (var ms1 = new MemoryStream())
               {
                 fs1.CopyTo(ms1);
                 p1 = ms1.ToArray();
               }
-              novoUtilizadorViewModel.Foto = p1;
+              //novoUtilizadorViewModel.Foto = p1;
 
             }
           }
@@ -90,6 +91,7 @@ namespace sga_stif.Controllers
           novoUtilizadorViewModel.PalavraPasse = BCrypt.Net.BCrypt.HashPassword(novoUtilizadorViewModel.PalavraPasse);
 
           var utilizador = _mapper.Map<Utilizador>(novoUtilizadorViewModel);
+          utilizador.Foto = p1;
 
           _context.Utilizador.Add(utilizador);
           await _context.SaveChangesAsync();
@@ -108,7 +110,7 @@ namespace sga_stif.Controllers
 
       _notyf.Error("Erro na inserção de utilizador!");
 
-      var perfils = _context.Perfil.ToList();
+      var perfils = _context.Perfil.Where(j=>j.Eliminado==false).ToList();
       var perfilr = from g in perfils select new SelectListItem { Value = g.IdPerfil.ToString(), Text = g.Nome };
       ViewBag.IdPerfil = perfilr;
 
@@ -163,7 +165,7 @@ namespace sga_stif.Controllers
     [HttpGet]
     public IActionResult EditaUtilizador(int idUtilizador)
     {
-      var perfils = _context.Perfil.ToList();
+      var perfils = _context.Perfil.Where(k=>k.Eliminado==false).ToList();
       var perfilr = from g in perfils select new SelectListItem { Value = g.IdPerfil.ToString(), Text = g.Nome };
       ViewBag.IdPerfil = perfilr;
 
@@ -176,7 +178,7 @@ namespace sga_stif.Controllers
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> EditaUtilizador([Bind("IdUtilizador,Nome,Apelido,Email,IdPerfil,NomeUtilizador")] EditaUtilizadorViewModel editaUtilizadorViewModel)
+    public async Task<IActionResult> EditaUtilizador([Bind("IdUtilizador,Nome,Apelido,Email,IdPerfil,NomeUtilizador,PalavraPasse")] EditaUtilizadorViewModel editaUtilizadorViewModel)
     {
 
       try
@@ -186,8 +188,7 @@ namespace sga_stif.Controllers
 
           var utilizador = _mapper.Map<Utilizador>(editaUtilizadorViewModel);
 
-
-          _context.Utilizador.Add(utilizador);
+          _context.Update(utilizador);
           await _context.SaveChangesAsync();
           _notyf.Success("Utilizador editado com sucesso!");
           return RedirectToAction("ListaUtilizador");
@@ -201,7 +202,7 @@ namespace sga_stif.Controllers
 
       _notyf.Error("Erro na insercao de utilizador!");
 
-      var perfils = _context.Perfil.ToList();
+      var perfils = _context.Perfil.Where(e=>e.Eliminado==false).ToList();
       var perfilr = from g in perfils select new SelectListItem { Value = g.IdPerfil.ToString(), Text = g.Nome };
       ViewBag.IdPerfil = perfilr;
 
@@ -250,8 +251,7 @@ namespace sga_stif.Controllers
       utilizador.DataAtualizacao = DateTime.Now;
 
       _context.Update(utilizador);
-
-
+      
       _notyf.Success("Palavra passe resetada com sucesso!");
 
       return RedirectToAction("ListaUtilizador"); ;
@@ -280,6 +280,20 @@ namespace sga_stif.Controllers
       }
 
       return Json(true);
+    }
+
+
+      public async Task<IActionResult> ReativarUtilizador(int idUtilizador)
+    {
+      var utilizador = await _context.Utilizador.FindAsync(idUtilizador);
+      utilizador.Eliminado = false;
+      utilizador.DataAtualizacao = DateTime.Now;
+
+      await _context.SaveChangesAsync();
+      _notyf.Success("Utilizador reativado com sucesso!");
+
+
+      return RedirectToAction("ListaUtilizador");
     }
 
 

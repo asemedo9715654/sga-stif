@@ -63,7 +63,7 @@ namespace sga_stif.Controllers
                     "see your system administrator.");
             }
 
-            _notyf.Error("Erro na adicao dde beneficiario!");
+            _notyf.Error("Erro na adição de Beneficiário!");
 
             return View(novoBeneficiarioViewModel);
         }
@@ -110,7 +110,7 @@ namespace sga_stif.Controllers
                 ModelState.AddModelError("", "Unable to save changes. " + "Try again, and if the problem persists " + "see your system administrator.");
             }
 
-            _notyf.Error("Erro na atualização de beneficiario!");
+            _notyf.Error("Erro na atualização de Beneficiário!");
 
             return View(editaBeneficiarioViewModel);
         }

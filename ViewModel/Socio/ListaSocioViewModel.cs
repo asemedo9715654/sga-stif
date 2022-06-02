@@ -21,14 +21,14 @@ namespace sga_stif.ViewModel.Socio
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Data de Nascimento")]
         public DateTime DataDeNascimento { get; set; }
-        public Sexo Sexo { get; set; }
+        public string Sexo { get; set; }
         [Display(Name = "Número de Telefone")]
         public string NumeroDeTelefone { get; set; }
 
         [Display(Name = "Estado Cívil")]
         public EstadoCivil EstadoCivil { get; set; }
 
-        [Display(Name = "Total Beneficiario")]
+        [Display(Name = "Total Beneficiário")]
         public int TotalBeneficiario { get; set; }
 
         public int IdAgencia { get; set; }

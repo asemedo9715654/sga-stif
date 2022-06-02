@@ -1,0 +1,80 @@
+@model sga_stif.ViewModel.Socio.DestalhesSocioViewModel
+
+@{
+    ViewData["Title"] = "Inativar Sócio";
+}
+
+<div class="invoice p-3 mb-3 html-content" id="conteudoDetalhes">
+    <!-- title row -->
+    <div class="row">
+        <div class="col-12">
+            <h4>
+                <i class="fas fa-user"></i> Inativar Sócio - <small>@Model.Nome @Model.Apelido</small>
+                <small class="float-right">@DateTime.Now</small>
+            </h4>
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- info row -->
+    <div class="row invoice-info">
+
+        <div class="col-sm-3 invoice-col text-center">
+
+            <img class="profile-user-img img-fluid img-circle" src="@Model.Foto" alt="User profile picture"
+                style="height: 200px;width:200px">
+
+        </div>
+
+        <div class="col-sm-3 invoice-col">
+            <b>Dados Sócio</b><br>
+            <br>
+            <b>Nome :</b> @Model.Nome<br>
+            <b>Apelido :</b> @Model.Apelido<br>
+            <b>Sexo :</b> @Model.Sexo<br>
+            <b>Estádo Civil :</b> @Model.EstadoCivil<br>
+            <b>Data de Nascimento :</b> @Html.DisplayFor(modelItem =>@Model.DataDeNascimento)<br>
+            <b>Número de Identificação Fiscal :</b> @Model.Nif<br>
+            <b>Data Ativação :</b> <span class="badge badge-pill badge-info">@Html.DisplayFor(modelItem =>
+                @Model.DataAtivacao) </span>
+        </div>
+        <!-- /.col -->
+        <div class="col-sm-3 invoice-col">
+            <b>Dados Instituição Financeira</b><br>
+            <br>
+            <b>Instituição : </b> @Model.NomeInstituicaoFinanceira <br>
+            <b>Agência : </b> @Model.NomeAgencia<br>
+            <b>Cidade : </b> @Model.NomeCidade<br>
+            <b>Ilha : </b> @Model.NomeIlha
+        </div>
+        <!-- /.col -->
+        <div class="col-sm-3 invoice-col">
+            <b>Outros</b><br>
+            <br>
+            <b>Tipo Quota : </b> @Model.NomeTipoQuota<br>
+            <b>Tipologia Sócio : </b> @Model.NomeTipologia <br>
+            <b>E-mail : </b><a href="mailto:@Model.Email?subject = Contactar Socio&body = Nova Mensagem">
+                @Model.Email</a><br>
+            <b>Telefone : </b> @Model.NumeroDeTelefone <br>
+            <b>Móvel : </b><a href="tel:+238 @Model.NumeroDeTelemovel">@Model.NumeroDeTelemovel</a>
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+    <br>
+    <br>
+
+    <div class="row no-print">
+
+        <div class="col-12">
+
+            <form asp-action="InativarSocio">
+                <input type="hidden" asp-for="IdSocio" />
+                <input class="btn btn-primary float-right" type="submit" value="Sim" style="margin-right: 3px;"/>
+                <a class="btn btn-danger float-right" asp-action="ListaSocio">Não</a>
+            </form>
+
+        </div>
+    </div>
+
+
+</div>

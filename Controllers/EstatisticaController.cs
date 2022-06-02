@@ -1,6 +1,7 @@
 using AspNetCoreHero.ToastNotification.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using sga_stif.Extensao;
 using sga_stif.Models;
 using sga_stif.ViewModel.Estatistica;
 
@@ -167,7 +168,7 @@ namespace sga_stif.Controllers
         {
           selected = item == Sexo.Masculino ? true : false,
           sliced = item == Sexo.Masculino ? true : false,
-          name = item.ToString(),
+          name = item.GetDescription(),
           y = total
         });
 
@@ -206,7 +207,7 @@ namespace sga_stif.Controllers
         {
           selected = estadoCivil == EstadoCivil.Casado ? true : false,
           sliced = estadoCivil == EstadoCivil.Casado ? true : false,
-          name = estadoCivil.ToString(),
+          name = estadoCivil.GetDescription(),
           y = total
         });
 
@@ -286,7 +287,7 @@ namespace sga_stif.Controllers
       foreach (var sexo in sexos)
       {
         Dados d = new Dados();
-        d.name = sexo.ToString();
+        d.name = sexo.GetDescription();
         d.data = new List<int>();
 
 
@@ -364,7 +365,7 @@ namespace sga_stif.Controllers
       foreach (var sexo in sexos)
       {
         Dados d = new Dados();
-        d.name = sexo.ToString();
+        d.name = sexo.GetDescription();
         d.data = new List<int>();
 
         foreach (var idade in listaDeIdades)

@@ -33,6 +33,14 @@ namespace sga_stif.Controllers
     }
 
 
+      public async Task<IActionResult> ListaTipoQuotaInativos()
+    {
+      var utilizadores = await _context.TipoQuota.Where(h=>h.Eliminado==true).Include(j=>j.Socio).ToListAsync();
+      var listaUtilizadorViewModels = _mapper.Map<List<ListaTipoQuotaViewModel>>(utilizadores);
+      return View(listaUtilizadorViewModels);
+    }
+
+
     public async Task<IActionResult> ListaSocioPorTipoQuota(int idTipoQuota,string nome)
     {
       ViewBag.NomeTipoQuota = nome;

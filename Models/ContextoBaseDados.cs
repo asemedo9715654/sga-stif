@@ -36,6 +36,8 @@ namespace sga_stif.Models
     public DbSet<ContaCorrenteIFResultado> ContaCorrenteIFResultado { get; set; }
     public DbSet<ContaCorrenteSocioResultado> ContaCorrenteSocioResultado { get; set; }
     public DbSet<PosicaoIFsResultado> PosicaoIFsResultado { get; set; }
+    public DbSet<RakingSocioResultado> RakingSocioResultado { get; set; }
+    public DbSet<ReconciliacaoEntreMesesResultado> ReconciliacaoEntreMesesResultado { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -67,6 +69,8 @@ namespace sga_stif.Models
       modelBuilder.Entity<ContaCorrenteIFResultado>().HasNoKey();
       modelBuilder.Entity<ContaCorrenteSocioResultado>().HasNoKey();
       modelBuilder.Entity<PosicaoIFsResultado>().HasNoKey();
+      modelBuilder.Entity<RakingSocioResultado>().HasNoKey();
+      modelBuilder.Entity<ReconciliacaoEntreMesesResultado>().HasNoKey();
 
       // modelBuilder.Entity<ContaCorrenteIFResultado>().ToView("Dummy view name");
       // modelBuilder.Entity<ContaCorrenteSocioResultado>().ToView("Dummy view name");
@@ -320,7 +324,7 @@ namespace sga_stif.Models
 
                new Menu { IdMenu = 1, Nome = "Gestão de Sócios", Descricao = "Gestão de Sócios", IdMenuPai = null, NomeDaAction = "", NomeDoController = "", Icone = "fas fa-user" },
                new Menu { IdMenu = 2, Nome = "Lista  Sócios", Descricao = "Lista de Sócios", IdMenuPai = 1, NomeDaAction = "ListaSocio", NomeDoController = "Socio", Icone = "far fa-circle" },
-               new Menu { IdMenu = 3, Nome = "Ranking Sócios", Descricao = "Ranquing de Sócios", IdMenuPai = 1, NomeDaAction = "", NomeDoController = "", Icone = "far fa-circle" },
+               new Menu { IdMenu = 3, Nome = "Ranking Sócios", Descricao = "Ranquing de Sócios", IdMenuPai = 1, NomeDaAction = "RakingSocio", NomeDoController = "Socio", Icone = "far fa-circle" },
 
 
 

@@ -1,5 +1,7 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using sga_stif.Extensao;
 
 namespace sga_stif.Models
 {
@@ -11,11 +13,11 @@ namespace sga_stif.Models
     public byte[]? Foto { get; set; }
     public string Nome { get; set; }
     public string Apelido { get; set; }
-    public string Nif { get; set; }
+    public string? Nif { get; set; }
     public string CinBi { get; set; }
     public DateTime ValidadeCinBi { get; set; }
-    public string NumeroPassaporte { get; set; }
-    public DateTime ValidadePassaporte { get; set; }
+    public string? NumeroPassaporte { get; set; }
+    public DateTime? ValidadePassaporte { get; set; }
     public DateTime DataDeNascimento { get; set; }
     public Sexo Sexo { get; set; }
     public EstadoCivil EstadoCivil { get; set; }
@@ -55,7 +57,7 @@ namespace sga_stif.Models
 
 
 
-     public void PrepararSocioSocio(Socio socio)
+    public void PrepararSocioSocio(Socio socio)
     {
       this.NumeroColaborador = socio.NumeroColaborador;
       this.NumeroDeSocio = socio.NumeroDeSocio;
@@ -69,6 +71,12 @@ namespace sga_stif.Models
     public string NomeCompleto()
     {
       return this.Nome + " " + this.Apelido;
+    }
+
+
+    public string PegarDDescricaoEstadoCivil()
+    {
+      return EstadoCivil.GetDescription();
     }
 
 
@@ -97,7 +105,7 @@ namespace sga_stif.Models
       }
       else
       {
-        return "~/dist/img/user4-128x128.jpg";
+        return "../../dist/img/default-150x150.png";
 
       }
     }
@@ -107,7 +115,9 @@ namespace sga_stif.Models
 
   public enum Sexo
   {
+    [Description("FEMININO")]
     Feminino,
+    [Description("MASCULINO")]
     Masculino
   }
 
@@ -120,10 +130,15 @@ namespace sga_stif.Models
 
   public enum EstadoCivil
   {
+    [Description("SOLTEIRO(A)")]
     Solteiro,
+    [Description("VIUVO(A)")]
     Viuvo,
+    [Description("CASADO(A)")]
     Casado,
+    [Description("DIVORCIADO")]
     Divorciado,
+    [Description("SEPARAÇÃO JUDICIAL")]
     SeparacaoJudicial,
 
   }

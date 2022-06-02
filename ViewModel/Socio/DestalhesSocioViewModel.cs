@@ -34,10 +34,12 @@ namespace sga_stif.ViewModel.Socio
     [Display(Name = "Data de Nascimento")]
      public DateTime DataDeNascimento { get; set; }
 
-    public Sexo Sexo { get; set; }
-    public EstadoCivil EstadoCivil { get; set; }
+    public string Sexo { get; set; }
+    public string EstadoCivil { get; set; }
 
     public string NumeroDeTelefone { get; set; }
+    public string? NumeroDeTelemovel { get; set; }
+
      [Display(Name = "E-mail")]
     public string Email { get; set; }
 
@@ -45,6 +47,7 @@ namespace sga_stif.ViewModel.Socio
     [Display(Name = "Tipo de Quota")]
     public int IdTipoQuota { get; set; }
     public string NomeInstituicaoFinanceira { get; set; }
+    public int IdInstituicaoFinanceira { get; set; }
     public string NomeAgencia { get; set; }
     public string NomeIlha { get; set; }
     public string NomeCidade { get; set; }
