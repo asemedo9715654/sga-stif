@@ -38,6 +38,8 @@ namespace sga_stif.Models
     public DbSet<PosicaoIFsResultado> PosicaoIFsResultado { get; set; }
     public DbSet<RakingSocioResultado> RakingSocioResultado { get; set; }
     public DbSet<ReconciliacaoEntreMesesResultado> ReconciliacaoEntreMesesResultado { get; set; }
+    public DbSet<ContaHistorialSocioResultado> ContaHistorialSocioResultado { get; set; }
+    public DbSet<ProjecaoQuotasResultado> ProjecaoQuotasResultado { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -71,6 +73,8 @@ namespace sga_stif.Models
       modelBuilder.Entity<PosicaoIFsResultado>().HasNoKey();
       modelBuilder.Entity<RakingSocioResultado>().HasNoKey();
       modelBuilder.Entity<ReconciliacaoEntreMesesResultado>().HasNoKey();
+      modelBuilder.Entity<ContaHistorialSocioResultado>().HasNoKey();
+      modelBuilder.Entity<ProjecaoQuotasResultado>().HasNoKey();
 
       // modelBuilder.Entity<ContaCorrenteIFResultado>().ToView("Dummy view name");
       // modelBuilder.Entity<ContaCorrenteSocioResultado>().ToView("Dummy view name");

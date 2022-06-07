@@ -140,7 +140,7 @@ namespace sga_stif.Controllers
           var agencia = _mapper.Map<Agencia>(novoPerfilViewModel);
           _context.Update(agencia);
           await _context.SaveChangesAsync();
-          _notyf.Success("Agencia adicionado com sucesso!");
+          _notyf.Success("Agencia editado com sucesso!");
           return RedirectToAction("ListaAgencia");
         }
 

@@ -35,10 +35,15 @@
               @Html.DisplayNameFor(model => model.NumeroDeSocio)
             </th>
             <th>
-              @Html.DisplayNameFor(model => model.MontanteAnt)
+              Montante (@ViewBag.MesAnterior)
+              @* @Html.DisplayNameFor(model => model.MontanteAnt) *@
             </th>
             <th>
-              @Html.DisplayNameFor(model => model.MontanteAtual)
+              Montante (@ViewBag.MesAtual)
+              @* @Html.DisplayNameFor(model => model.MontanteAtual) *@
+            </th>
+             <th>
+              @Html.DisplayNameFor(model => model.OBS)
             </th>
             @* <th>
               Ação
@@ -61,6 +66,9 @@
               </td>
               <td>
                 @Html.DisplayFor(modelItem => item.MontanteAtual)
+              </td>
+               <td>
+                @Html.DisplayFor(modelItem => item.OBS)
               </td>
               @* <td>
 

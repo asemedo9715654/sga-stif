@@ -62,11 +62,11 @@
                             @Html.DisplayFor(modelItem => item.Sigla)
                         </td>
                         <td>
-                            <span class="badge badge-pill badge-info"> @Html.DisplayFor(modelItem =>item.TotalDeAgencias)</span> Agência(s)
-
+                        
+                            <a asp-action="ListaAgenciaPorInstitucaoFinanceira" asp-controller="Agencia" asp-route-idInstituicaoFinanceira="@item.IdInstituicaoFinanceira" asp-route-nomeInstituicao="@item.Nome">  <span class="badge badge-pill badge-info"> @Html.DisplayFor(modelItem =>item.TotalDeAgencias)</span> Agência(s) </a>
                         </td>
                         <td>
-                            <span class="badge badge-pill badge-info"> @Html.DisplayFor(modelItem => item.TotalDeSocios)</span> Sócio(s)
+                             <a asp-action="ListaSocioPorInstituicaoFinanceira" asp-controller="InstituicaoFinanceira" asp-route-idInstituicaoFinanceira="@item.IdInstituicaoFinanceira" asp-route-nomeDeInstituicaoFinanceira="@item.Nome">   <span class="badge badge-pill badge-info"> @Html.DisplayFor(modelItem => item.TotalDeSocios)</span> Sócio(s) </a>
 
                         </td>
                         <td>
@@ -78,7 +78,7 @@
                         <td>
                             <a class="btn btn-success btn-xs" asp-action="EditaInstituicaoFinanceira" asp-route-idInstituicaoFinanceira="@item.IdInstituicaoFinanceira"><i class="fas fa-pen"></i> Editar</a>
                             <a class="btn btn-warning btn-xs" asp-action="InativarInstituicaoFinanceira" asp-route-idInstituicaoFinanceira="@item.IdInstituicaoFinanceira">Inativar</a>
-                            <a class="btn btn-default btn-xs" asp-action="ListaAgenciaPorInstitucaoFinanceira" asp-controller="Agencia" asp-route-idInstituicaoFinanceira="@item.IdInstituicaoFinanceira" asp-route-nomeInstituicao="@item.Nome"> <i class="fas fa-file-magnifying-glass"></i> Ver Agências</a>
+                            @* <a class="btn btn-default btn-xs" asp-action="ListaAgenciaPorInstitucaoFinanceira" asp-controller="Agencia" asp-route-idInstituicaoFinanceira="@item.IdInstituicaoFinanceira" asp-route-nomeInstituicao="@item.Nome"> <i class="fas fa-file-magnifying-glass"></i> Ver Agências</a> *@
                             <a class="btn btn-default btn-xs" asp-action="DetalhesInstituicaoFinanceira" asp-route-idInstituicaoFinanceira="@item.IdInstituicaoFinanceira" asp-route-nomeInstituicaoFinanceira="@item.Nome"> <i class="fas fa-info"></i> Detalhes</a>
 
                         </td>

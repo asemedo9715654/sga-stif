@@ -9,6 +9,8 @@ namespace sga_stif.ViewModel.Socio
   {
     [Key]
     public int IdSocio { get; set; }
+     public string NumeroDeSocio { get; set; }
+     public string NumeroColaborador { get; set; }
     [Display(Name = "Fotografia")]
     public string Foto { get; set; }
     public string Nome { get; set; }
@@ -60,7 +62,8 @@ namespace sga_stif.ViewModel.Socio
     public List<ContaCorrenteSocioResultado> ListaContaCorrenteSocioResultado_Pagas { get; set; } = new List<ContaCorrenteSocioResultado>();
     public List<ContaCorrenteSocioResultado> ListaContaCorrenteSocioResultado_Vencidas { get; set; } = new List<ContaCorrenteSocioResultado>();
     public List<ContaCorrenteSocioResultado> ListaContaCorrenteSocioResultado_PorPagar { get; set; } = new List<ContaCorrenteSocioResultado>();
-    public List<ContaCorrenteSocioResultado> ListaContaCorrenteSocioResultado_Historial { get; set; } = new List<ContaCorrenteSocioResultado>();
+    
+    public List<ContaHistorialSocioResultado> ListaContaHistorialSocioResultadoHistorial { get; set; } = new List<ContaHistorialSocioResultado>();
 
 
   }

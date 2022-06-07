@@ -12,7 +12,7 @@ namespace sga_stif.ViewModel.Beneficiario
         [Display(Name = "Nome")]
         public string NomeCompleto { get; set; }
         [Display(Name = "Graú de Parentesco")]
-        public GrauDeParentesco GrauDeParentesco { get; set; }
+        public string GrauDeParentesco { get; set; }
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Data de Nascimento")]

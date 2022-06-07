@@ -49,6 +49,8 @@
         <div class="col-sm-3 invoice-col">
             <b>Outros</b><br>
             <br>
+             <b>Número de Sócio : </b> @Model.NumeroDeSocio<br>
+             <b>Número de Colaborador : </b> @Model.NumeroColaborador<br>
             <b>Tipo Quota : </b> @Model.NomeTipoQuota<br>
             <b>Tipologia Sócio : </b> @Model.NomeTipologia <br>
             <b>E-mail : </b><a href = "mailto:@Model.Email?subject = Contactar Socio&body = Nova Mensagem"> @Model.Email</a><br>
@@ -74,14 +76,17 @@
                 aria-selected="false">Quotas Paga</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="custom-content-below-messages-tab" data-toggle="pill"
-                href="#custom-content-below-messages" role="tab" aria-controls="custom-content-below-messages"
-                aria-selected="false">Quotas Por Pagar</a>
+            <a class="nav-link" id="custom-content-below-messages-tab" data-toggle="pill" href="#custom-content-below-messages" role="tab" aria-controls="custom-content-below-messages" aria-selected="false">Quotas Por Pagar</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" id="custom-content-below-settings-tab" data-toggle="pill"
                 href="#custom-content-below-settings" role="tab" aria-controls="custom-content-below-settings"
                 aria-selected="false">Quotas Vencidas</a>
+        </li>
+          <li class="nav-item">
+            <a class="nav-link" id="custom-content-below-historial-tab" data-toggle="pill"
+                href="#custom-content-below-historial" role="tab" aria-controls="custom-content-below-settings"
+                aria-selected="false">Historial</a>
         </li>
     </ul>
     <div class="tab-content" id="custom-content-below-tabContent">
@@ -406,6 +411,64 @@
               class="btn btn-success btn-sm">Efectuar Pagamento</a>
 
               }
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+           <div class="tab-pane fade" id="custom-content-below-historial" role="tabpanel"
+            aria-labelledby="custom-content-below-historial-tab">
+            <br>
+            <table id="TabelaVencida" class="table table-striped">
+                <thead>
+                    <tr>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.ListaContaHistorialSocioResultadoHistorial[0].IFS)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ListaContaHistorialSocioResultadoHistorial[0].AgenciaNome)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ListaContaHistorialSocioResultadoHistorial[0].Ano)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ListaContaHistorialSocioResultadoHistorial[0].Mes)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ListaContaHistorialSocioResultadoHistorial[0].Montante)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ListaContaHistorialSocioResultadoHistorial[0].EstadoQuota)
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ListaContaHistorialSocioResultadoHistorial)
+                    {
+                        <tr>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IFS)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AgenciaNome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Ano)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Mes)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Montante)
+                            </td>
+                            <td>
+                                 @Html.DisplayFor(modelItem => item.EstadoQuota)
                             </td>
 
                         </tr>

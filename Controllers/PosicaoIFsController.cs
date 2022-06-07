@@ -1,3 +1,4 @@
+using System.Globalization;
 using AspNetCoreHero.ToastNotification.Abstractions;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -15,6 +16,8 @@ namespace sga_stif.Controllers
     private readonly INotyfService _notyf;
     private readonly IMapper _mapper;
 
+      private readonly CultureInfo portuguese = new CultureInfo("pt-PT");
+
 
     public PosicaoIFsController(ContextoBaseDados context, INotyfService notyf, IMapper mapper)
     {
@@ -27,6 +30,7 @@ namespace sga_stif.Controllers
     public async Task<IActionResult> PosicaoDasInstituicoesFinanceiras(DateTime? DataPesquisa)
     {
 
+
       var ano = DateTime.Now.Year;
       var mes = DateTime.Now.Month;
 
@@ -34,9 +38,6 @@ namespace sga_stif.Controllers
       {
         ano = DataPesquisa.Value.Year;
         mes = DataPesquisa.Value.Month;
-
-
-
       }
       else
       {
@@ -52,15 +53,26 @@ namespace sga_stif.Controllers
       var lista = _context.PosicaoIFsResultado.FromSqlRaw($"EXECUTE  [dbo].[PosicaoIFs] @ano = {ano}, @mes={mes}").ToList();
 
 
-     ViewBag.Ano = ano;
-     ViewBag.Mes = mes;
+      ViewBag.Ano = ano;
+      ViewBag.Mes = mes;
+
+
+
+       ViewBag.MesAtual = DataPesquisa.Value.ToString("MMMM", portuguese);
+       ViewBag.MesAnterior = DataPesquisa.Value.AddDays(-1).ToString("MMMM", portuguese);
 
       return View(lista);
     }
 
 
-     public async Task<IActionResult> PosicaoDasInstituicoesFinanceirasDetalhes(int ano,int mes,int idInstituicaoFinanceira)
+    public async Task<IActionResult> PosicaoDasInstituicoesFinanceirasDetalhes(int ano, int mes, int idInstituicaoFinanceira)
     {
+      
+
+       var DataPesquisa = new DateTime(ano, mes, 1);
+
+      ViewBag.MesAtual = DataPesquisa.ToString("MMMM", portuguese);
+       ViewBag.MesAnterior = DataPesquisa.AddDays(-1).ToString("MMMM", portuguese);
 
       var lista = _context.ReconciliacaoEntreMesesResultado.FromSqlRaw($"EXECUTE  [dbo].[ReconciliacaoEntreMeses] @ano = {ano}, @mes = {mes}, @idif = {idInstituicaoFinanceira}").ToList();
 

@@ -288,7 +288,8 @@ Url.Action("OcorenciaPorSexoTacadoComInstituicaoFinanceira", "Estatistica"))
                 fontSize: '14px'
               },
               enabled: true,
-              format: '{point.name}: {point.percentage:.1f} %'
+              //format: '{point.name}: {point.percentage:.1f} %'
+              format: '{point.name}: {point.y}'
             },
 
 
@@ -455,7 +456,7 @@ Url.Action("OcorenciaPorSexoTacadoComInstituicaoFinanceira", "Estatistica"))
                 fontSize: '14px'
               },
               enabled: true,
-              format: '{point.name}: {point.percentage:.1f} %'
+              format: '{point.name}: {point.y}'
             },
 
 
@@ -511,7 +512,7 @@ Url.Action("OcorenciaPorSexoTacadoComInstituicaoFinanceira", "Estatistica"))
                 fontSize: '14px'
               },
               enabled: true,
-              format: '{point.name}: {point.percentage:.1f} %'
+              format: '{point.name}: {point.y}'
             },
 
 
@@ -567,7 +568,7 @@ Url.Action("OcorenciaPorSexoTacadoComInstituicaoFinanceira", "Estatistica"))
                 fontSize: '14px'
               },
               enabled: true,
-              format: '{point.name}: {point.percentage:.1f} %'
+              format: '{point.name}: {point.y} '
             },
 
 
@@ -690,7 +691,7 @@ Url.Action("OcorenciaPorSexoTacadoComInstituicaoFinanceira", "Estatistica"))
         tooltip: {
           formatter: function () {
             return '<b>' + this.series.name + ', idade ' + this.point.category + '</b><br/>' +
-              'Número de Sócios: ' + Highcharts.numberFormat(Math.abs(this.point.y), 1) ;
+              'Número de Sócios: ' + Highcharts.numberFormat(Math.abs(this.point.y), 0) ;
           }
         },
 

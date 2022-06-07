@@ -112,6 +112,7 @@ namespace sga_stif.Controllers
           _notyf.Success("Sócio adicionado com sucesso!");
 
           //socio.GerarNumeroSocio();
+          socio.TransformacaoSocio();
 
           _context.Socio.Add(socio);
           await _context.SaveChangesAsync();
@@ -248,7 +249,7 @@ namespace sga_stif.Controllers
       destalhesSocioViewModel.ListaContaCorrenteSocioResultado_Pagas = PegarContaCorrenteSocioResultado(DateTime.Now.Year, idSocio, "QP");
       destalhesSocioViewModel.ListaContaCorrenteSocioResultado_PorPagar = PegarContaCorrenteSocioResultado(DateTime.Now.Year, idSocio, "QD");
       destalhesSocioViewModel.ListaContaCorrenteSocioResultado_Vencidas = PegarContaCorrenteSocioResultado(DateTime.Now.Year, idSocio, "QV");
-      // destalhesSocioViewModel.ListaBeneficiarioViewModel_Historial = PegarContaCorrenteSocioResultado(DateTime.Now.Year , idSocio,"QH");
+      destalhesSocioViewModel.ListaContaHistorialSocioResultadoHistorial = PegarContaHistorialSocioResultado(DateTime.Now.Year , idSocio);
 
       return View(destalhesSocioViewModel);
     }
@@ -259,6 +260,16 @@ namespace sga_stif.Controllers
       var listaContaCorrenteSocioResultado = _context.ContaCorrenteSocioResultado.FromSqlRaw("EXECUTE  [dbo].[ContaCorrenteSocio] @ano = " + ano + ", @idSocio=" + idSocio + ",@user =" + PegarNomeUtilizador() + ", @status='" + status + "'").ToList();
 
       return listaContaCorrenteSocioResultado;
+
+    }
+
+
+    private List<ContaHistorialSocioResultado> PegarContaHistorialSocioResultado(int ano, int idSocio)
+    {
+
+      var listaContaHistorialSocioResultado = _context.ContaHistorialSocioResultado.FromSqlRaw($"[dbo].[ContaHistorialSocio] @ano = {ano}, @idSocio = {idSocio}, @status = N'QH'").ToList();
+
+      return listaContaHistorialSocioResultado;
 
     }
 

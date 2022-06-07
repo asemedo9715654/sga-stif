@@ -11,9 +11,9 @@ namespace sga_stif.Models.ResultadoStoredProcedure
     public string NumeroDeSocio { get; set; }
     public int IdInstituicaoFinanceira { get; set; }
     public int IdSocio { get; set; }
-    public decimal MontanteAnt { get; set; }
-    public decimal MontanteAtual { get; set; } 
-    public string OBS { get; set; }
+    public Double? MontanteAnt { get; set; }
+    public Double? MontanteAtual { get; set; } 
+    public string? OBS { get; set; }
     
 
   }

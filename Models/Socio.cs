@@ -93,6 +93,13 @@ namespace sga_stif.Models
       return hoje.Year - this.DataDeNascimento.Year;
     }
 
+    public void TransformacaoSocio()
+    {
+      this.Nome = this.Nome.ToUpper();
+      this.Apelido = this.Apelido.ToUpper();
+
+    }
+
 
     public string PegarLinkFotoGrande()
     {

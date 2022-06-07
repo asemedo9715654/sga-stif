@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -26,9 +27,13 @@ namespace sga_stif.Models
 
   public enum GrauDeParentesco
   {
+     [Description("ESPOSO")]
     Esposo,
+     [Description("ESPOSA")]
     Esposa,
+     [Description("FILHO")]
     Filho,
+     [Description("PAIS")]
     Pais
   }
 }

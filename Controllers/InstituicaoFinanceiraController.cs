@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
 using sga_stif.Models;
 using sga_stif.ViewModel.InstituicaoFinanceira;
+using sga_stif.ViewModel.Socio;
 using sga_stif.ViewModel.TipoQuota;
 
 namespace sga_stif.Controllers
@@ -266,6 +267,27 @@ namespace sga_stif.Controllers
 
 
       return RedirectToAction("ListaInstituicaoFinanceira");
+    }
+
+
+
+
+    public async Task<IActionResult> ListaSocioPorInstituicaoFinanceira(int idInstituicaoFinanceira, string nomeDeInstituicaoFinanceira)
+    {
+
+      var listaAgencias =from OKK in _context.Agencia.Where(j=>j.IdInstituicaoFinanceira == idInstituicaoFinanceira).ToList() select OKK.IdAgencia;
+
+      ViewBag.NomeDeInstituicaoFinanceira = nomeDeInstituicaoFinanceira;
+
+      var socios = await _context.Socio.Where(r => r.Eliminado != true &&listaAgencias.Contains(r.IdAgencia) ).Include(c => c.Agencia)
+                                  .Include(c => c.TipologiaSocio)
+                                  .Include(c => c.TipoQuota)
+                                  .Include(c => c.Beneficiario)
+                                  .ToListAsync();
+
+      var listaSocioViewModel = _mapper.Map<List<ListaSocioViewModel>>(socios);
+
+      return View(listaSocioViewModel);
     }
 
   }

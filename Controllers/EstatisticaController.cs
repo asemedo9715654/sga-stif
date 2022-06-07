@@ -230,7 +230,7 @@ namespace sga_stif.Controllers
 
       var ilhas = _context.Ilha.Where(e => e.Eliminado == false).Include(g => g.Cidade).ThenInclude(g => g.Agencia).ToList();
 
-      var todos = _context.Socio.ToList();
+      var todos = _context.Socio.Where(e=>e.Eliminado==false).ToList();
 
       foreach (var item in ilhas)
       {
@@ -333,7 +333,7 @@ namespace sga_stif.Controllers
       };
 
       var listaDeIdades = new List<int>(){
-        25,29,34,39,44,49,54,59,60,150
+        25,29,34,39,44,49,54,59,60
       };
 
       int anterio = 0;
@@ -357,7 +357,7 @@ namespace sga_stif.Controllers
 
         }
 
-        anterio = item;
+        anterio = item+1;
       }
 
       anterio = 0;
@@ -376,10 +376,10 @@ namespace sga_stif.Controllers
              total = socios.Where(a => a.PegarIdade() > idade && a.Sexo == sexo).Count();
 
           }else{
-             total = socios.Where(a => a.PegarIdade() >= anterio && a.PegarIdade() < idade && a.Sexo == sexo).Count();
+             total = socios.Where(a => a.PegarIdade() >= anterio && a.PegarIdade() <= idade && a.Sexo == sexo).Count();
           }
 
-          anterio = idade;
+          anterio = idade+1;
 
           if (sexo == Sexo.Feminino)
           {

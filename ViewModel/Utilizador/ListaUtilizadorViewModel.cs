@@ -7,7 +7,8 @@ namespace sga_stif.ViewModel.Utilizador
   {
     [Key]
     public int IdUtilizador { get; set; }
-    public string Nome { get; set; }
+     [Display(Name = "Nome")]
+    public string NomeCompleto { get; set; }
     [Display(Name = "Nome do Utilizador")]
     public string NomeUtilizador { get; set; }
     public string Apelido { get; set; }

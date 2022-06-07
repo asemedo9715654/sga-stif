@@ -21,6 +21,7 @@ namespace sga_stif.Models.ResultadoStoredProcedure
     [Display(Name = "Total Quotas Mês Atual")]
     public double TotalQuoataMesAtual { get; set; }
     public int Estado { get; set; }
+    public int Variacao { get; set; }
 
 
   }
