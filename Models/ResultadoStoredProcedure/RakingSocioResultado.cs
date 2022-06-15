@@ -18,7 +18,7 @@ namespace sga_stif.Models.ResultadoStoredProcedure
      [Display(Name ="Meses Pago")]
     public string MesesPago { get; set; }
      [Display(Name ="Total Pago")]
-    public string TotalMontantePago { get; set; }
+    public decimal TotalMontantePago { get; set; }
     
 
   }

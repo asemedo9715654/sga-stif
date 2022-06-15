@@ -119,7 +119,7 @@
 
               </td>
               <td>
-                @if (item.Estado == 1)
+                @if ((item.Variacao == 1 || item.Variacao== -1) && item.Estado==1)
                 {
                   <a class="btn btn-primary btn-xs" asp-action="PosicaoDasInstituicoesFinanceirasDetalhes"
                 asp-route-ano="@ViewBag.Ano" asp-route-mes="@ViewBag.Mes"

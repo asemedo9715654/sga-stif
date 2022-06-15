@@ -13,7 +13,7 @@ namespace sga_stif.Models.ResultadoStoredProcedure
         public string Mes { get; set; }
         public decimal Montante { get; set; }
         public string EstadoQuota { get; set; }
-        public double? mesesPago { get; set; }
+        public string? mesesPago { get; set; }
         public double? totalMontantePago { get; set; }
     }
 }

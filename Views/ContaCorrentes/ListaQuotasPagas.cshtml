@@ -103,7 +103,7 @@
                 @Html.DisplayFor(modelItem => item.Montante)
               </td>
               <td>
-                <a asp-action="AnularPagamento" asp-controller="Pagamento" asp-route-idQuotaSocio=@item.IdQuotaSocio rel="noopener" class="btn btn-danger btn-sm">Anular
+                <a asp-action="AnularPagamento" asp-controller="Pagamento" asp-route-url=@Url.Action("ListaQuotasPorPagar","ContaCorrentes") asp-route-idQuotaSocio=@item.IdQuotaSocio rel="noopener" class="btn btn-danger btn-sm">Anular
                   Pagamento</a>
               </td>
 

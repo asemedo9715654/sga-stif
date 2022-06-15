@@ -191,6 +191,7 @@ namespace sga_stif.Controllers
         {
 
           var socio = _mapper.Map<Socio>(editaSocioViewModel);
+          socio.Foto=null;
           _notyf.Success("Sócio editado com sucesso!");
           socio.DataAtualizacao = DateTime.Now;
           _context.Update(socio);
@@ -209,7 +210,7 @@ namespace sga_stif.Controllers
         throw;
       }
 
-      _notyf.Error("Erro na edição de sócio!");
+      _notyf.Error("Erro na edição de Sócio!");
 
 
       var angencia = _context.Agencia.Include(j => j.Cidade).ToList();
@@ -286,7 +287,7 @@ namespace sga_stif.Controllers
                                   .Include(c => c.TipologiaSocio)
                                   .Include(c => c.Beneficiario)
                                   .Include(c => c.TipoQuota)
-                                   .Include(c => c.Agencia).ThenInclude(c => c.InstituicaoFinanceira)
+                                  .Include(c => c.Agencia).ThenInclude(c => c.InstituicaoFinanceira)
                                   .Include(c => c.Agencia).ThenInclude(c => c.Cidade).ThenInclude(c => c.Ilha).FirstOrDefaultAsync();
 
 
@@ -393,13 +394,6 @@ namespace sga_stif.Controllers
 
       return View(lista);
     }
-
-
-
-
-
-
-
 
 
   }
