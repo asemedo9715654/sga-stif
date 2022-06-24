@@ -31,9 +31,13 @@ namespace sga_stif.Models
     Esposo,
      [Description("ESPOSA")]
     Esposa,
-     [Description("FILHO")]
+    [Description("FILHO")]
     Filho,
-     [Description("PAIS")]
-    Pais
+    [Description("FILHA")]
+    Filha,
+    [Description("PAI")]
+    Pai,
+    [Description("MÃE")]
+    Mae
   }
 }

@@ -32,7 +32,8 @@ namespace sga_stif.Controllers
       var socios = await _context.Socio.Where(r => r.Eliminado != true).Include(c => c.Agencia)
                                   .Include(c => c.TipologiaSocio)
                                   .Include(c => c.TipoQuota)
-                                   .Include(c => c.Beneficiario)
+                                  .Include(c => c.Beneficiario)
+                                  .Include(c => c.Agencia).ThenInclude(c => c.InstituicaoFinanceira)
                                   .ToListAsync();
 
       var sociocc = _mapper.Map<List<ListaSocioViewModel>>(socios);
@@ -45,7 +46,8 @@ namespace sga_stif.Controllers
       var socios = await _context.Socio.Where(r => r.Eliminado == true).Include(c => c.Agencia)
                                   .Include(c => c.TipologiaSocio)
                                   .Include(c => c.TipoQuota)
-                                   .Include(c => c.Beneficiario)
+                                  .Include(c => c.Beneficiario)
+                                  .Include(c => c.Agencia).ThenInclude(c => c.InstituicaoFinanceira)
                                   .ToListAsync();
 
       var sociocc = _mapper.Map<List<ListaSocioViewModel>>(socios);
@@ -79,7 +81,7 @@ namespace sga_stif.Controllers
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> NovoSocio([Bind("Nome,NumeroDeTelemovel,NumeroDeTelefone,Email,DataDeNascimento,Sexo,Apelido,CinBi,NumeroPassaporte,ValidadePassaporte,IdTipologiaSocio ,IdTipoQuota,IdAgencia,Nif,DataAtivacao,ValidadeCinBi,EstadoCivil,NumeroDeSocio,NumeroColaborador")] NovoSocioViewModel novoSocioViewModel, IFormFile? Image = null)
+    public async Task<IActionResult> NovoSocio([Bind("Nome,NumeroDeTelemovel,NumeroDeTelefone,Email,DataDeNascimento,Sexo,Apelido,CinBi,NumeroPassaporte,ValidadePassaporte,IdTipologiaSocio ,IdTipoQuota,IdAgencia,Nif,DataAtivacao,ValidadeCinBi,EstadoCivil,NumeroDeSocio,NumeroColaborador,HabilitacaoLiteraria")] NovoSocioViewModel novoSocioViewModel, IFormFile? Image = null)
     {
       byte[] p1 = null;
 
@@ -182,7 +184,7 @@ namespace sga_stif.Controllers
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> EditaSocio([Bind("IdSocio,Nome,NumeroDeTelemovel,NumeroDeTelefone,Email,DataDeNascimento,Sexo,Apelido,CinBi,NumeroPassaporte,ValidadePassaporte,IdTipologiaSocio ,IdTipoQuota,IdAgencia,Nif,DataAtivacao,ValidadeCinBi,EstadoCivil,NumeroDeSocio,NumeroColaborador")] EditaSocioViewModel editaSocioViewModel/*, IFormFile Image*/)
+    public async Task<IActionResult> EditaSocio([Bind("IdSocio,Nome,NumeroDeTelemovel,NumeroDeTelefone,Email,DataDeNascimento,Sexo,Apelido,CinBi,NumeroPassaporte,ValidadePassaporte,IdTipologiaSocio ,IdTipoQuota,IdAgencia,Nif,DataAtivacao,ValidadeCinBi,EstadoCivil,NumeroDeSocio,NumeroColaborador,HabilitacaoLiteraria")] EditaSocioViewModel editaSocioViewModel/*, IFormFile Image*/)
     {
 
       try

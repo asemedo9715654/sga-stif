@@ -1,6 +1,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.RegularExpressions;
 using sga_stif.Extensao;
 
 namespace sga_stif.Models
@@ -29,6 +30,7 @@ namespace sga_stif.Models
     public DateTime? DataAtivacao { get; set; } = DateTime.Now.Date;
     public string NumeroColaborador { get; set; }
     public EstadoDeSocio EstadoSocio { get; set; }
+    public HabilitacaoLiteraria HabilitacaoLiteraria { get; set; }
 
     //chaves estrangeiras
 
@@ -70,8 +72,26 @@ namespace sga_stif.Models
 
     public string NomeCompleto()
     {
-      return this.Nome + " " + this.Apelido;
+      var nomeCompleto = "";
+
+      var nomeCopletoSemTratamento = this.Nome+" "+this.Apelido;
+
+      nomeCopletoSemTratamento = Regex.Replace(nomeCopletoSemTratamento, @"\s+", " ");
+
+      nomeCopletoSemTratamento =  nomeCopletoSemTratamento.Trim();
+
+      string[] palavras = nomeCopletoSemTratamento.Split(' ');
+
+      foreach (var palavra in palavras)
+      {
+         nomeCompleto =nomeCompleto +" "+ char.ToUpper(palavra[0]) + palavra.Substring(1).ToLower();
+      }
+ 
+      return nomeCompleto;
+      
     }
+
+
 
 
     public string PegarDDescricaoEstadoCivil()
@@ -122,9 +142,9 @@ namespace sga_stif.Models
 
   public enum Sexo
   {
-    [Description("FEMININO")]
+    [Description("Feminino")]
     Feminino,
-    [Description("MASCULINO")]
+    [Description("Masculino")]
     Masculino
   }
 
@@ -137,16 +157,40 @@ namespace sga_stif.Models
 
   public enum EstadoCivil
   {
-    [Description("SOLTEIRO(A)")]
+    [Description("Solteiro(a)")]
     Solteiro,
-    [Description("VIUVO(A)")]
+    [Description("Viuvo(a)")]
     Viuvo,
-    [Description("CASADO(A)")]
+    [Description("Casado(a)")]
     Casado,
-    [Description("DIVORCIADO")]
+    [Description("Divorciado(a)")]
     Divorciado,
-    [Description("SEPARAÇÃO JUDICIAL")]
+    [Description("Separação Judicial")]
     SeparacaoJudicial,
+
+  }
+
+
+
+
+  public enum HabilitacaoLiteraria
+  {
+    [Description("Sem Habilitaçao Literária")]
+    SemAbilitacaoLiteraria,
+    [Description("Ensino Básico")]
+    EnsinoBasico,
+    [Description("Ensino Secundário")]
+    EnsinoSecundario,
+    [Description("Bacharelato")]
+    Bacharelato,
+    [Description("Licenciado")]
+    Licenciado,
+    [Description("Pos-Graduado")]
+    PosGraduacao,
+    [Description("Mestraddo")]
+    Mestrado,
+    [Description("Doutorado")]
+    Doutorado
 
   }
 }

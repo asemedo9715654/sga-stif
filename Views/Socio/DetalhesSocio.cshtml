@@ -32,9 +32,10 @@
             <b>Sexo :</b> @Model.Sexo<br>
             <b>Estádo Civil :</b> @Model.EstadoCivil<br>
             <b>Data de Nascimento :</b> @Html.DisplayFor(modelItem =>@Model.DataDeNascimento)<br>
+            <b>Habilitação Literária :</b> @Html.DisplayFor(modelItem =>@Model.HabilitacaoLiteraria)<br>
             <b>Número de Identificação Fiscal :</b> @Model.Nif<br>
-            <b>Data Ativação :</b> <span class="badge badge-pill badge-info">@Html.DisplayFor(modelItem =>
-                @Model.DataAtivacao) </span>
+            <b>Data Criação :</b> @Html.DisplayFor(modelItem => @Model.DataCriacao)<br>
+            <b>Data Ativação :</b> <span class="badge badge-pill badge-info">@Html.DisplayFor(modelItem => @Model.DataAtivacao) </span>
         </div>
         <!-- /.col -->
         <div class="col-sm-3 invoice-col">

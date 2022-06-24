@@ -32,5 +32,11 @@ namespace sga_stif.ViewModel.Socio
         public int TotalBeneficiario { get; set; }
 
         public int IdAgencia { get; set; }
+
+        [Display(Name = "Instituição Financeira")]
+        public string SiglaInstitucaoFinanceira { get; set; }
+
+        [Display(Name = "Agência")]
+        public string NomeAgencia { get; set; }
     }
 }

@@ -2,10 +2,11 @@ using System.ComponentModel.DataAnnotations;
 using sga_stif.ViewModel.Beneficiario;
 using sga_stif.Models;
 using sga_stif.Models.ResultadoStoredProcedure;
+using sga_stif.ViewModel.Base;
 
 namespace sga_stif.ViewModel.Socio
 {
-  public class DestalhesSocioViewModel
+  public class DestalhesSocioViewModel : BaseViewModel
   {
     [Key]
     public int IdSocio { get; set; }
@@ -38,6 +39,7 @@ namespace sga_stif.ViewModel.Socio
 
     public string Sexo { get; set; }
     public string EstadoCivil { get; set; }
+    public string HabilitacaoLiteraria { get; set; }
 
     public string NumeroDeTelefone { get; set; }
     public string? NumeroDeTelemovel { get; set; }

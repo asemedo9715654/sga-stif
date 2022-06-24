@@ -65,5 +65,7 @@ namespace sga_stif.ViewModel.Socio
     // [Required(ErrorMessage = "Tipo quota de Sócio é necessário")]
     public int IdTipoQuota { get; set; }
 
+    public HabilitacaoLiteraria HabilitacaoLiteraria { get; set; }
+
   }
 }

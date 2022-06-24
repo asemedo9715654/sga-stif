@@ -88,6 +88,7 @@ namespace sga_stif.ViewModel.Socio
       public string NumeroDeSocio { get; set; }
      [Display(Name = "Número De Colaborador")]
      public string NumeroColaborador { get; set; }
+    public HabilitacaoLiteraria HabilitacaoLiteraria { get; set; }
 
   }
 }
