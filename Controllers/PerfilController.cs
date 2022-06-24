@@ -9,7 +9,7 @@ using sga_stif.ViewModel.Utilizador;
 
 namespace sga_stif.Controllers
 {
-  public class PerfilController : Controller
+  public class PerfilController : BaseController
   {
     private readonly ContextoBaseDados _context;
     private readonly INotyfService _notyf;
@@ -24,6 +24,16 @@ namespace sga_stif.Controllers
     public async Task<IActionResult> ListaPerfil()
     {
       var perfil = await _context.Perfil.Where(h=>h.Eliminado==false).Include(g=>g.Utilizador).ToListAsync();
+      var listaPerfilViewModels = _mapper.Map<List<ListaPerfilViewModel>>(perfil);
+
+      return View(listaPerfilViewModels);
+    }
+
+
+
+    public async Task<IActionResult> ListaPerfilInativo()
+    {
+      var perfil = await _context.Perfil.Where(h=>h.Eliminado==true).Include(g=>g.Utilizador).ToListAsync();
       var listaPerfilViewModels = _mapper.Map<List<ListaPerfilViewModel>>(perfil);
 
       return View(listaPerfilViewModels);
@@ -294,6 +304,20 @@ namespace sga_stif.Controllers
 
       await _context.SaveChangesAsync();
       _notyf.Success("Perfil inativado com sucesso!");
+
+
+      return RedirectToAction("ListaPerfil");
+    }
+
+
+       public async Task<IActionResult> ReativarPerfil(int idPerfil)
+    {
+      var perfil = await _context.Perfil.FindAsync(idPerfil);
+      perfil.Eliminado = false;
+      perfil.DataAtualizacao = DateTime.Now;
+
+      await _context.SaveChangesAsync();
+      _notyf.Success("Perfil reativado com sucesso!");
 
 
       return RedirectToAction("ListaPerfil");

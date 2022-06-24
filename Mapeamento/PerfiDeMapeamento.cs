@@ -1,4 +1,5 @@
 using AutoMapper;
+using sga_stif.Extensao;
 using sga_stif.Models;
 using sga_stif.ViewModel;
 using sga_stif.ViewModel.Agencia;
@@ -31,7 +32,9 @@ namespace sga_stif.Mapeamento
               .ForMember(dest => dest.NomeCidade, opt => opt.MapFrom(src => src.Cidade.Nome))
               .ForMember(dest => dest.NomeInstituicaoFinanceira, opt => opt.MapFrom(src => src.InstituicaoFinanceira. Nome));
 
-            CreateMap<Beneficiario, ListaBeneficiarioViewModel>();
+            CreateMap<Beneficiario, ListaBeneficiarioViewModel>()
+              .ForMember(dest => dest.NomeCompleto, opt => opt.MapFrom(src => src.Nome +" "+src.Apelido))
+              .ForMember(dest => dest.GrauDeParentesco, opt => opt.MapFrom(src => src.GrauDeParentesco.GetDescription()));
 
 
             CreateMap<TipologiaSocio, ListaTipologiaSocioViewModel>()
@@ -76,6 +79,7 @@ namespace sga_stif.Mapeamento
 
             CreateMap<NovoUtilizadorViewModel, Utilizador>();
             CreateMap<Utilizador, EditaUtilizadorViewModel>();
+               CreateMap<EditaUtilizadorViewModel,Utilizador >();
             CreateMap<Utilizador, DetalhesUtilizadorViewModel>()
               .ForMember(dest => dest.NomePerfil, opt => opt.MapFrom(src => src.Perfil.Nome))
             ;
@@ -85,6 +89,7 @@ namespace sga_stif.Mapeamento
 
             CreateMap<Utilizador, NovoUtilizadorViewModel>();
             CreateMap<Utilizador, ListaUtilizadorViewModel>()
+             .ForMember(dest => dest.NomeCompleto, opt => opt.MapFrom(src => src.PegarNomeCompleto()))
              .ForMember(dest => dest.Foto, opt => opt.MapFrom(src => src.PegarLinkFoto()))
              .ForMember(dest => dest.NomePerfil, opt => opt.MapFrom(src => src.Perfil.Nome))
             ;
@@ -99,6 +104,9 @@ namespace sga_stif.Mapeamento
             //socio
             CreateMap<Socio, NovoSocioViewModel>();
             CreateMap<Socio, ListaSocioViewModel>()
+             .ForMember(dest => dest.SiglaInstitucaoFinanceira, opt => opt.MapFrom(src => src.Agencia.InstituicaoFinanceira.Sigla))
+             .ForMember(dest => dest.NomeAgencia, opt => opt.MapFrom(src => src.Agencia.Nome))
+             .ForMember(dest => dest.Sexo, opt => opt.MapFrom(src => src.Sexo.GetDescription()))
              .ForMember(dest => dest.NomeCompleto, opt => opt.MapFrom(src => src.NomeCompleto()))
              .ForMember(dest => dest.TotalBeneficiario, opt => opt.MapFrom(src => src.TotalBeneficiario()));
             ;
@@ -107,6 +115,9 @@ namespace sga_stif.Mapeamento
             CreateMap<Socio,EditaSocioViewModel >();
 
             CreateMap<Socio, DestalhesSocioViewModel>()
+            .ForMember(dest => dest.HabilitacaoLiteraria, opt => opt.MapFrom(src => src.HabilitacaoLiteraria.GetDescription()))
+            .ForMember(dest => dest.Sexo, opt => opt.MapFrom(src => src.Sexo.GetDescription()))
+            .ForMember(dest => dest.EstadoCivil, opt => opt.MapFrom(src => src.EstadoCivil.GetDescription()))
             .ForMember(dest => dest.Foto, opt => opt.MapFrom(src => src.PegarLinkFotoGrande()))
             .ForMember(dest => dest.ListaBeneficiarioViewModel, opt => opt.MapFrom(src => src.Beneficiario))
             .ForMember(dest => dest.NomeAgencia, opt => opt.MapFrom(src => src.Agencia.Nome))
@@ -115,6 +126,7 @@ namespace sga_stif.Mapeamento
             .ForMember(dest => dest.NomeIlha, opt => opt.MapFrom(src => src.Agencia.Cidade.Ilha.Nome))
             .ForMember(dest => dest.NomeCidade, opt => opt.MapFrom(src => src.Agencia.Cidade.Nome))
             .ForMember(dest => dest.NomeInstituicaoFinanceira, opt => opt.MapFrom(src => src.Agencia.InstituicaoFinanceira.Nome))
+            .ForMember(dest => dest.IdInstituicaoFinanceira, opt => opt.MapFrom(src => src.Agencia.InstituicaoFinanceira.IdInstituicaoFinanceira))
             ;
 
         }

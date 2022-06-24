@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 using sga_stif.Models;
+using sga_stif.ViewModel.Vlidacao;
 
 namespace sga_stif.ViewModel.Socio
 {
@@ -17,9 +18,9 @@ namespace sga_stif.ViewModel.Socio
     public string Apelido { get; set; }
 
     [Display(Name = "Número de Identificação Fiscal")]
-    [Required(ErrorMessage = "O NIF é necessário")]
+    // [Required(ErrorMessage = "O NIF é necessário")]
     [StringLength(9, MinimumLength = 9)]
-    public string Nif { get; set; }
+    public string? Nif { get; set; }
     [Display(Name = "CIN/BI")]
     [Remote(action: "VereficaCniBi", controller: "Socio")]
     [Required(ErrorMessage = "O CNI/BI é necessário")]
@@ -33,17 +34,18 @@ namespace sga_stif.ViewModel.Socio
 
     [Display(Name = "Número de Passaporte")]
     [Remote(action: "VereficaNumeroPassaporte", controller: "Socio")]
-    public string NumeroPassaporte { get; set; }
+    public string? NumeroPassaporte { get; set; }
 
     [DataType(DataType.Date)]
     [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
     [Display(Name = "Válidade de passaporte")]
-    public DateTime ValidadePassaporte { get; set; }
+    public DateTime? ValidadePassaporte { get; set; }
 
     [DataType(DataType.Date)]
     [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
     [Display(Name = "Data de Nascimento")]
     [Required(ErrorMessage = "A Data de Nascimento é necessário")]
+    // [ValidacaoRangeData(ErrorMessage="Idade fora de parametro")]
     public DateTime DataDeNascimento { get; set; }
 
     [Required(ErrorMessage = "O Sexo é necessário")]
@@ -81,6 +83,12 @@ namespace sga_stif.ViewModel.Socio
     [Display(Name = "Tipo de Quota")]
     [Required(ErrorMessage = "Tipo quota de Sócio é necessário")]
     public int IdTipoQuota { get; set; }
+
+    [Display(Name = "Número De Sócio")]
+      public string NumeroDeSocio { get; set; }
+     [Display(Name = "Número De Colaborador")]
+     public string NumeroColaborador { get; set; }
+    public HabilitacaoLiteraria HabilitacaoLiteraria { get; set; }
 
   }
 }

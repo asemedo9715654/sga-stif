@@ -15,9 +15,9 @@ namespace sga_stif.Models
         public int IdPeriodoQuota { get; set; }
 
         //propriedaddae para efectuar pagamento
-         public string UtilizadorQueEfectuouPagamento { get; set; }
+         public string? UtilizadorQueEfectuouPagamento { get; set; }
          public DateTime? DataQueFoiEfectuadaPagamento { get; set; }
-         public string UtilizadorQueConfirmouPagamento { get; set; }
+         public string? UtilizadorQueConfirmouPagamento { get; set; }
          public DateTime? DataQueFoiConfirmadaPagamento { get; set; }
 
          //propriedades de navegação

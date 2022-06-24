@@ -26,7 +26,7 @@ namespace sga_stif.Controllers
     //sem filtro
     public async Task<IActionResult> ListaQuotasVencidas(int? IdInstituicaoFinanceira)
     {
-      var instituicaoFinanceiras = _context.InstituicaoFinanceira.ToList();
+      var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(a=>a.Eliminado==false).ToList();
       var instituicaoFinanceirasItem = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome };
 
 
@@ -66,7 +66,7 @@ namespace sga_stif.Controllers
     [HttpGet]
     public async Task<IActionResult> ListaQuotasPendente(int? instituicaoFinanceira)
     {
-      var instituicaoFinanceiras = _context.InstituicaoFinanceira.ToList();
+      var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(h=>h.Eliminado==false).ToList();
       var instituicaoFinanceirasItem = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome };
       ViewBag.IdInstituicaoFinanceira = instituicaoFinanceirasItem;
 
@@ -115,7 +115,7 @@ namespace sga_stif.Controllers
 
       //ViewBag.DataPreenchido = ano+"-"+mes;
 
-      var instituicaoFinanceiras = _context.InstituicaoFinanceira.ToList();
+      var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(h=>h.Eliminado==false).ToList();
       var instituicaoFinanceirasItem = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome };
       ViewBag.IdInstituicaoFinanceira = instituicaoFinanceirasItem;
 
@@ -157,7 +157,7 @@ namespace sga_stif.Controllers
 
       ViewBag.DataPreenchido = ano + "-" + DataPesquisa.Value.Month.ToString("#00");
 
-      var instituicaoFinanceiras = _context.InstituicaoFinanceira.ToList();
+      var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(h=>h.Eliminado==false).ToList();
       var instituicaoFinanceirasItem = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome };
       ViewBag.IdInstituicaoFinanceira = instituicaoFinanceirasItem;
 

@@ -2,13 +2,16 @@ using System.ComponentModel.DataAnnotations;
 using sga_stif.ViewModel.Beneficiario;
 using sga_stif.Models;
 using sga_stif.Models.ResultadoStoredProcedure;
+using sga_stif.ViewModel.Base;
 
 namespace sga_stif.ViewModel.Socio
 {
-  public class DestalhesSocioViewModel
+  public class DestalhesSocioViewModel : BaseViewModel
   {
     [Key]
     public int IdSocio { get; set; }
+     public string NumeroDeSocio { get; set; }
+     public string NumeroColaborador { get; set; }
     [Display(Name = "Fotografia")]
     public string Foto { get; set; }
     public string Nome { get; set; }
@@ -34,10 +37,13 @@ namespace sga_stif.ViewModel.Socio
     [Display(Name = "Data de Nascimento")]
      public DateTime DataDeNascimento { get; set; }
 
-    public Sexo Sexo { get; set; }
-    public EstadoCivil EstadoCivil { get; set; }
+    public string Sexo { get; set; }
+    public string EstadoCivil { get; set; }
+    public string HabilitacaoLiteraria { get; set; }
 
     public string NumeroDeTelefone { get; set; }
+    public string? NumeroDeTelemovel { get; set; }
+
      [Display(Name = "E-mail")]
     public string Email { get; set; }
 
@@ -45,6 +51,7 @@ namespace sga_stif.ViewModel.Socio
     [Display(Name = "Tipo de Quota")]
     public int IdTipoQuota { get; set; }
     public string NomeInstituicaoFinanceira { get; set; }
+    public int IdInstituicaoFinanceira { get; set; }
     public string NomeAgencia { get; set; }
     public string NomeIlha { get; set; }
     public string NomeCidade { get; set; }
@@ -57,7 +64,8 @@ namespace sga_stif.ViewModel.Socio
     public List<ContaCorrenteSocioResultado> ListaContaCorrenteSocioResultado_Pagas { get; set; } = new List<ContaCorrenteSocioResultado>();
     public List<ContaCorrenteSocioResultado> ListaContaCorrenteSocioResultado_Vencidas { get; set; } = new List<ContaCorrenteSocioResultado>();
     public List<ContaCorrenteSocioResultado> ListaContaCorrenteSocioResultado_PorPagar { get; set; } = new List<ContaCorrenteSocioResultado>();
-    public List<ContaCorrenteSocioResultado> ListaContaCorrenteSocioResultado_Historial { get; set; } = new List<ContaCorrenteSocioResultado>();
+    
+    public List<ContaHistorialSocioResultado> ListaContaHistorialSocioResultadoHistorial { get; set; } = new List<ContaHistorialSocioResultado>();
 
 
   }

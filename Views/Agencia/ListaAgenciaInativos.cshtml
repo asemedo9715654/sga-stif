@@ -1,0 +1,93 @@
+@model IEnumerable<sga_stif.ViewModel.Agencia.ListaAgenciaViewModel>
+
+@{
+    ViewData["Title"] = "Lista de Agências Inativas";
+}
+
+<div class="card">
+    <div class="card-header">
+
+        <div class="row no-print">
+
+            <div class="col-12">
+                <p class="lead">Lista de Agências Inativas</p>
+                 <a asp-action="ListaAgencia" class="btn btn-primary btn-sm  float-right" style="margin-right: 5px;">Lista de Agências Ativos</a>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="card-body">
+        <table id="example2" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NomeInstituicaoFinanceira)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NomeCidade)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TotalDeSocios)
+                    </th>
+                    <th>
+                        Ação
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NomeInstituicaoFinanceira)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NomeCidade)
+                        </td>
+                        <td>
+                            <a title="Ver Sócios" asp-action="ListaSocioPorAgencia" asp-route-idAgencia=@item.IdAgencia
+                            asp-route-nomeAgencia=@item.Nome>
+                                <span class="badge badge-pill badge-info"> @Html.DisplayFor(modelItem =>
+                                item.TotalDeSocios)</span> Sócio(s)
+                            </a>
+
+                        </td>
+                        <td>
+                            <a class="btn btn-success btn-xs" asp-action="ReativarAgencia" asp-route-idAgencia="@item.IdAgencia">Reativar</a>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $('#example2').DataTable({
+            paging: true,
+            lengthChange: false,
+            searching: true,
+            ordering: true,
+            info: true,
+            responsive: true,
+            dom: 'Bfrtip',
+            buttons: [
+                //'copy', 'csv', 'excel', 'pdf', 'print'
+                'excel', 'pdf', 'print'
+            ]
+        });
+    });
+
+</script>

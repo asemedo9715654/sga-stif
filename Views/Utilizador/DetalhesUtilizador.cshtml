@@ -56,13 +56,14 @@
 
         <div class="col-12">
             @* <p class="lead">Lista de beneficiarios</p> *@
+            <a asp-action="ListaUtilizador" rel="noopener" class="btn btn-default btn-sm"><i class="fas fa-arrow-left"></i> Voltar Para Lista</a>
 
 
             <a class="btn btn-warning btn-sm" asp-action="EliminaUtilizador"
                 asp-route-idUtilizador="@Model.IdUtilizador"><i class="fas fa-user-slash"></i> Inativar</a>
 
             <a class="btn btn-success btn-sm float-right" asp-action="ResetePalavraPasseUtilizador"
-                asp-route-idUtilizador="@Model.IdUtilizador"><i class="fas fa-user-secret"> Resetar Palavra Passe</i>
+                asp-route-idUtilizador="@Model.IdUtilizador"><i class="fas fa-user-secret"> Reset Palavra Passe</i>
             </a>
 
         </div>

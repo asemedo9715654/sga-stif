@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -10,10 +11,10 @@ namespace sga_stif.Models
     public string Nome { get; set; }
     public string Apelido { get; set; }
     public GrauDeParentesco GrauDeParentesco { get; set; }
-    public string Nif { get; set; }
-    public string CinBi { get; set; }
+    public string? Nif { get; set; }
+    public string? CinBi { get; set; }
     public DateTime DataDeNascimento { get; set; }
-    public string NumeroPassaporte { get; set; }
+    public string? NumeroPassaporte { get; set; }
 
     //chaves estrangeiras
     [ForeignKey("Socio")]
@@ -26,8 +27,17 @@ namespace sga_stif.Models
 
   public enum GrauDeParentesco
   {
+     [Description("ESPOSO")]
     Esposo,
+     [Description("ESPOSA")]
     Esposa,
-    Filho
+    [Description("FILHO")]
+    Filho,
+    [Description("FILHA")]
+    Filha,
+    [Description("PAI")]
+    Pai,
+    [Description("MÃE")]
+    Mae
   }
 }

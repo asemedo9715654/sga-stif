@@ -30,8 +30,9 @@ namespace sga_stif.ViewModel.Utilizador
         [Display(Name = "E-mail", Description = "E-mail do utilizador")]
         public string Email { get; set; }
 
-        [Display(Name = "Fotografia", Description = "Fotografia  do utilizador")]
-        public byte[]? Foto { get; set; }
+        // [Display(Name = "Fotografia", Description = "Fotografia  do utilizador")]
+        // public byte[]? Foto { get; set; }
+
         [Required(ErrorMessage = "A Palavra-Passe é necessário", AllowEmptyStrings = false)]
         [StringLength(10, MinimumLength = 4)]
         [Display(Name = "Palavra-Passe", Description = "Palavra Passe do utilizador")]

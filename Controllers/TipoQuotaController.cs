@@ -8,7 +8,7 @@ using sga_stif.ViewModel.TipoQuota;
 
 namespace sga_stif.Controllers
 {
-  public class TipoQuotaController : Controller
+  public class TipoQuotaController : BaseController
   {
 
     private readonly ContextoBaseDados _context;
@@ -28,6 +28,14 @@ namespace sga_stif.Controllers
     public async Task<IActionResult> ListaTipoQuota()
     {
       var utilizadores = await _context.TipoQuota.Where(h=>h.Eliminado==false).Include(j=>j.Socio).ToListAsync();
+      var listaUtilizadorViewModels = _mapper.Map<List<ListaTipoQuotaViewModel>>(utilizadores);
+      return View(listaUtilizadorViewModels);
+    }
+
+
+      public async Task<IActionResult> ListaTipoQuotaInativos()
+    {
+      var utilizadores = await _context.TipoQuota.Where(h=>h.Eliminado==true).Include(j=>j.Socio).ToListAsync();
       var listaUtilizadorViewModels = _mapper.Map<List<ListaTipoQuotaViewModel>>(utilizadores);
       return View(listaUtilizadorViewModels);
     }

@@ -1,12 +1,13 @@
 using AspNetCoreHero.ToastNotification.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using sga_stif.Extensao;
 using sga_stif.Models;
 using sga_stif.ViewModel.Estatistica;
 
 namespace sga_stif.Controllers
 {
-  public class EstatisticaController : Controller
+  public class EstatisticaController : BaseController
   {
 
     private readonly ContextoBaseDados _context;
@@ -167,7 +168,7 @@ namespace sga_stif.Controllers
         {
           selected = item == Sexo.Masculino ? true : false,
           sliced = item == Sexo.Masculino ? true : false,
-          name = item.ToString(),
+          name = item.GetDescription(),
           y = total
         });
 
@@ -206,7 +207,7 @@ namespace sga_stif.Controllers
         {
           selected = estadoCivil == EstadoCivil.Casado ? true : false,
           sliced = estadoCivil == EstadoCivil.Casado ? true : false,
-          name = estadoCivil.ToString(),
+          name = estadoCivil.GetDescription(),
           y = total
         });
 
@@ -229,7 +230,7 @@ namespace sga_stif.Controllers
 
       var ilhas = _context.Ilha.Where(e => e.Eliminado == false).Include(g => g.Cidade).ThenInclude(g => g.Agencia).ToList();
 
-      var todos = _context.Socio.ToList();
+      var todos = _context.Socio.Where(e=>e.Eliminado==false).ToList();
 
       foreach (var item in ilhas)
       {
@@ -286,7 +287,7 @@ namespace sga_stif.Controllers
       foreach (var sexo in sexos)
       {
         Dados d = new Dados();
-        d.name = sexo.ToString();
+        d.name = sexo.GetDescription();
         d.data = new List<int>();
 
 
@@ -332,7 +333,7 @@ namespace sga_stif.Controllers
       };
 
       var listaDeIdades = new List<int>(){
-        25,29,34,39,44,49,54,59,60,150
+        25,29,34,39,44,49,54,59,60
       };
 
       int anterio = 0;
@@ -356,7 +357,7 @@ namespace sga_stif.Controllers
 
         }
 
-        anterio = item;
+        anterio = item+1;
       }
 
       anterio = 0;
@@ -364,7 +365,7 @@ namespace sga_stif.Controllers
       foreach (var sexo in sexos)
       {
         Dados d = new Dados();
-        d.name = sexo.ToString();
+        d.name = sexo.GetDescription();
         d.data = new List<int>();
 
         foreach (var idade in listaDeIdades)
@@ -375,10 +376,10 @@ namespace sga_stif.Controllers
              total = socios.Where(a => a.PegarIdade() > idade && a.Sexo == sexo).Count();
 
           }else{
-             total = socios.Where(a => a.PegarIdade() >= anterio && a.PegarIdade() < idade && a.Sexo == sexo).Count();
+             total = socios.Where(a => a.PegarIdade() >= anterio && a.PegarIdade() <= idade && a.Sexo == sexo).Count();
           }
 
-          anterio = idade;
+          anterio = idade+1;
 
           if (sexo == Sexo.Feminino)
           {

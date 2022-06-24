@@ -1,0 +1,97 @@
+@model IEnumerable<sga_stif.ViewModel.Perfil.ListaPerfilViewModel>
+
+@{
+  ViewData["Title"] = "Lista de Perfil";
+}
+
+<div class="card">
+  <div class="card-header">
+
+    <div class="row no-print">
+
+      <div class="col-12">
+        <p class="lead">Lista de Perfil Inativos</p>
+
+         <a asp-action="ListaPerfil" class="btn btn-primary btn-sm float-right" style="margin-right: 5px;">Lista Perfil Ativos</a>
+
+      </div>
+    </div>
+
+
+  </div>
+  <div class="card-body">
+    <table id="example2" class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>
+            @Html.DisplayNameFor(model => model.Nome)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.TotalUtilizadores)
+          </th>
+
+          <th>
+            @Html.DisplayNameFor(model => model.DataCriacao)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.DataAtualizacao)
+          </th>
+          <th>
+            Ação
+          </th>
+
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (var item in Model)
+        {
+          <tr>
+            <td>
+              @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+              <a asp-action="ListaUtilizadorPorPerfil" asp-route-idPerfil="@item.IdPerfil"
+              asp-route-nomePerfil="@item.Nome">
+                <span class="badge badge-pill badge-info"> @Html.DisplayFor(modelItem =>
+                item.TotalUtilizadores)</span> Utilizador(es)
+              </a>
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.DataCriacao)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.DataAtualizacao)
+            </td>
+            <td>
+
+                <a class="btn btn-success btn-xs" asp-action="ReativarPerfil" asp-route-idPerfil="@item.IdPerfil">Reativar</a>
+            </td>
+
+          </tr>
+        }
+      </tbody>
+    </table>
+
+
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>

@@ -10,10 +10,11 @@
     <div class="card-header">
         <h3 class="card-title">Edita Agência</h3>
     </div>
-    <form asp-action="NovaAgencia">
+    <form asp-action="EditaAgencia">
         <div class="card-body">
 
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdAgencia" />
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">

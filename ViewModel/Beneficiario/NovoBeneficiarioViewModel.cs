@@ -25,16 +25,16 @@ namespace sga_stif.ViewModel.Beneficiario
     public DateTime DataDeNascimento { get; set; }
 
     [Display(Name = "Número de Identificação Fiscal")]
-    [Required(ErrorMessage = "O NIF é necessário")]
+    // [Required(ErrorMessage = "O NIF é necessário")]
      [Remote(action: "VereficaNif", controller: "Beneficiario")]
-    public string Nif { get; set; }
+    public string? Nif { get; set; }
     [Display(Name = "CNI/BI")]
-    [Required(ErrorMessage = "O CNI/BI é necessário")]
+    // [Required(ErrorMessage = "O CNI/BI é necessário")]
     [Remote(action: "VereficaCniBi", controller: "Beneficiario")]
-    public string CinBi { get; set; }
+    public string? CinBi { get; set; }
     [Display(Name = "Número de Passaporte")]
      [Remote(action: "VereficaNumeroPassaporte", controller: "Beneficiario")]
-    public string NumeroPassaporte { get; set; }
+    public string? NumeroPassaporte { get; set; }
     public int IdSocio { get; set; }
   }
 }

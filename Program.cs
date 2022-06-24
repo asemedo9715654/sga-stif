@@ -55,6 +55,21 @@ builder.Services.AddNotyf(config => { config.DurationInSeconds = 10; config.IsDi
 
 var app = builder.Build();
 
+app.Use(async (ctx, next) =>
+{
+    await next();
+
+    if (ctx.Response.StatusCode == 404 && !ctx.Response.HasStarted)
+    {
+            //Re-execute the request so the user gets the error page
+        string originalPath = ctx.Request.Path.Value;
+        ctx.Items["originalPath"] = originalPath;
+        //ctx.Request.Path = "/Home/404";
+         ctx.Request.Path = "/error/404";
+        await next();
+    }
+});
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -66,19 +81,7 @@ if (!app.Environment.IsDevelopment())
 app.UseNotyf();
 
 
-app.Use(async (ctx, next) =>
-{
-    await next();
 
-    if (ctx.Response.StatusCode == 404 && !ctx.Response.HasStarted)
-    {
-            //Re-execute the request so the user gets the error page
-        string originalPath = ctx.Request.Path.Value;
-        ctx.Items["originalPath"] = originalPath;
-        ctx.Request.Path = "/Home/404";
-        await next();
-    }
-});
 
 
 app.UseSession();

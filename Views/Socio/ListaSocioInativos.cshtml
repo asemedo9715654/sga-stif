@@ -27,8 +27,7 @@
           </th>
           <th>
             @Html.DisplayNameFor(model => model.NomeCompleto)
-          </th>
-         
+          </th>   
           <th>
             @Html.DisplayNameFor(model => model.Nif)
           </th>
@@ -70,8 +69,8 @@
               @Html.DisplayFor(modelItem => item.DataDeNascimento)
             </td>
             <td>  
-              <a class="btn btn-default" asp-action="DetalhesSocio" asp-route-idSocio="@item.IdSocio" title="Ver Detalhes Sócio e Adição de Beneficiário!">Detalhes</a>
-              <a class="btn btn-primary" asp-action="EliminaSocio" asp-route-idSocio="@item.IdSocio" title="Reativar este sócio!">Reativar</a>
+              <a class="btn btn-default  btn-xs" asp-action="DetalhesSocio" asp-route-idSocio="@item.IdSocio" title="Ver Detalhes Sócio e Adição de Beneficiário!">Detalhes</a>
+              <a class="btn btn-primary btn-xs" asp-action="ReativarSocio" asp-route-idSocio="@item.IdSocio" title="Reativar este sócio!">Reativar</a>
             </td>
           </tr>
         }

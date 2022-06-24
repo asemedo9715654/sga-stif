@@ -1,5 +1,8 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.RegularExpressions;
+using sga_stif.Extensao;
 
 namespace sga_stif.Models
 {
@@ -11,11 +14,11 @@ namespace sga_stif.Models
     public byte[]? Foto { get; set; }
     public string Nome { get; set; }
     public string Apelido { get; set; }
-    public string Nif { get; set; }
+    public string? Nif { get; set; }
     public string CinBi { get; set; }
     public DateTime ValidadeCinBi { get; set; }
-    public string NumeroPassaporte { get; set; }
-    public DateTime ValidadePassaporte { get; set; }
+    public string? NumeroPassaporte { get; set; }
+    public DateTime? ValidadePassaporte { get; set; }
     public DateTime DataDeNascimento { get; set; }
     public Sexo Sexo { get; set; }
     public EstadoCivil EstadoCivil { get; set; }
@@ -27,6 +30,7 @@ namespace sga_stif.Models
     public DateTime? DataAtivacao { get; set; } = DateTime.Now.Date;
     public string NumeroColaborador { get; set; }
     public EstadoDeSocio EstadoSocio { get; set; }
+    public HabilitacaoLiteraria HabilitacaoLiteraria { get; set; }
 
     //chaves estrangeiras
 
@@ -55,7 +59,7 @@ namespace sga_stif.Models
 
 
 
-     public void PrepararSocioSocio(Socio socio)
+    public void PrepararSocioSocio(Socio socio)
     {
       this.NumeroColaborador = socio.NumeroColaborador;
       this.NumeroDeSocio = socio.NumeroDeSocio;
@@ -68,7 +72,31 @@ namespace sga_stif.Models
 
     public string NomeCompleto()
     {
-      return this.Nome + " " + this.Apelido;
+      var nomeCompleto = "";
+
+      var nomeCopletoSemTratamento = this.Nome+" "+this.Apelido;
+
+      nomeCopletoSemTratamento = Regex.Replace(nomeCopletoSemTratamento, @"\s+", " ");
+
+      nomeCopletoSemTratamento =  nomeCopletoSemTratamento.Trim();
+
+      string[] palavras = nomeCopletoSemTratamento.Split(' ');
+
+      foreach (var palavra in palavras)
+      {
+         nomeCompleto =nomeCompleto +" "+ char.ToUpper(palavra[0]) + palavra.Substring(1).ToLower();
+      }
+ 
+      return nomeCompleto;
+      
+    }
+
+
+
+
+    public string PegarDDescricaoEstadoCivil()
+    {
+      return EstadoCivil.GetDescription();
     }
 
 
@@ -85,6 +113,13 @@ namespace sga_stif.Models
       return hoje.Year - this.DataDeNascimento.Year;
     }
 
+    public void TransformacaoSocio()
+    {
+      this.Nome = this.Nome.ToUpper();
+      this.Apelido = this.Apelido.ToUpper();
+
+    }
+
 
     public string PegarLinkFotoGrande()
     {
@@ -97,7 +132,7 @@ namespace sga_stif.Models
       }
       else
       {
-        return "~/dist/img/user4-128x128.jpg";
+        return "../../dist/img/default-150x150.png";
 
       }
     }
@@ -107,7 +142,9 @@ namespace sga_stif.Models
 
   public enum Sexo
   {
+    [Description("Feminino")]
     Feminino,
+    [Description("Masculino")]
     Masculino
   }
 
@@ -120,11 +157,40 @@ namespace sga_stif.Models
 
   public enum EstadoCivil
   {
+    [Description("Solteiro(a)")]
     Solteiro,
+    [Description("Viuvo(a)")]
     Viuvo,
+    [Description("Casado(a)")]
     Casado,
+    [Description("Divorciado(a)")]
     Divorciado,
+    [Description("Separação Judicial")]
     SeparacaoJudicial,
+
+  }
+
+
+
+
+  public enum HabilitacaoLiteraria
+  {
+    [Description("Sem Habilitaçao Literária")]
+    SemAbilitacaoLiteraria,
+    [Description("Ensino Básico")]
+    EnsinoBasico,
+    [Description("Ensino Secundário")]
+    EnsinoSecundario,
+    [Description("Bacharelato")]
+    Bacharelato,
+    [Description("Licenciado")]
+    Licenciado,
+    [Description("Pos-Graduado")]
+    PosGraduacao,
+    [Description("Mestraddo")]
+    Mestrado,
+    [Description("Doutorado")]
+    Doutorado
 
   }
 }

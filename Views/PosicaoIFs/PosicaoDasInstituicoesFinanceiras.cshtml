@@ -1,0 +1,159 @@
+@model IEnumerable<sga_stif.Models.ResultadoStoredProcedure.PosicaoIFsResultado>
+
+@{
+  ViewData["Title"] = "Lista de Quotas Pagas";
+}
+
+
+<div class="card">
+  <div class="card-header">
+    <form id="formularioDeFiltro" asp-action="PosicaoDasInstituicoesFinanceiras" method="get">
+      <div class="row no-print">
+
+        <div class="col-12">
+          <p class="lead">Posição das Instituições Financeiras</p>
+
+          <div class="row align-items-end">
+            <div class="col-md-3">
+
+              <div class="form-group align-items-end">
+                <label class="control-label">Data</label>
+                <input type="month" id="start" name="DataPesquisa" min="2022-01" value=@ViewBag.DataPreenchido
+                  class="form-control">
+
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <div class="form-group align-items-end">
+                <label class="control-label"></label>
+                <input type="submit" form="formularioDeFiltro" class="btn btn-primary" value="Consultar" />
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </form>
+
+    @* <input type="submit" form="formularioDePagamentos" value="Efectuar Anulamento" class="btn btn-danger btn-sm
+      float-right" style="margin-right: 5px;"> *@
+
+  </div>
+
+  <div class="card-body">
+    <form method="post" asp-controller="Pagamento" asp-action="AnularMultiplosPagamento" id="formularioDePagamentos">
+      <table id="example2" class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>
+              @Html.DisplayNameFor(model => model.IFNome)
+            </th>
+            <th>
+              Total Sócio (@ViewBag.MesAnterior)
+              @* @Html.DisplayNameFor(model => model.TotalSocioAnterior) *@
+            </th>
+            <th>
+              Total Sócio (@ViewBag.MesAtual)
+              @* @Html.DisplayNameFor(model => model.TotalSocioAtual) *@
+            </th>
+            <th>
+              Total Colaboradores (@ViewBag.MesAnterior)
+
+              @* @Html.DisplayNameFor(model => model.TotalColaboradoresAnterior) *@
+            </th>
+            <th>
+              Total Colaboradores (@ViewBag.MesAtual)
+              @* @Html.DisplayNameFor(model => model.TotalColaboradoresAtual) *@
+            </th>
+            <th>
+              Total Quotas (@ViewBag.MesAnterior)
+              @* @Html.DisplayNameFor(model => model.TotalQuoataMesAnterior) *@
+            </th>
+            <th>
+              Total Quotas (@ViewBag.MesAtual)
+              @* @Html.DisplayNameFor(model => model.TotalQuoataMesAtual) *@
+            </th>
+            <th>Variação</th>
+            <th>
+              Ação
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach (var item in Model)
+          {
+            <tr>
+
+              <td>
+                @Html.DisplayFor(modelItem => item.IFNome)
+              </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.TotalSocioAnterior)
+              </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.TotalSocioAtual)
+              </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.TotalColaboradoresAnterior)
+              </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.TotalColaboradoresAtual)
+              </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.TotalQuoataMesAnterior)
+              </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.TotalQuoataMesAtual)
+              </td>
+              <td>
+
+                @if(item.Variacao==1){
+                  <i class="fas fa-arrow-up" style="color:green ;"></i>
+                }else if(item.Variacao == -1){
+                  <i class="fas fa-arrow-down" style="color:red ;"></i>
+                }else{
+                 <i class="fas fa-arrow-right"></i>
+                }
+
+
+              </td>
+              <td>
+                @if ((item.Variacao == 1 || item.Variacao== -1) && item.Estado==1)
+                {
+                  <a class="btn btn-primary btn-xs" asp-action="PosicaoDasInstituicoesFinanceirasDetalhes"
+                asp-route-ano="@ViewBag.Ano" asp-route-mes="@ViewBag.Mes"
+                asp-route-idInstituicaoFinanceira="@item.IdInstituicaoFinanceira">Detalhes</a>
+                }
+
+              </td>
+
+            </tr>
+          }
+        </tbody>
+      </table>
+    </form>
+  </div>
+</div>
+
+
+<script>
+  $(function () {
+
+    $('#all').on('click', function () {
+      $(':checkbox').attr("checked", $(this).is(':checked'));
+    });
+
+
+
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>

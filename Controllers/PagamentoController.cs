@@ -21,7 +21,7 @@ namespace sga_stif.Controllers
     }
 
     [HttpGet]
-    public IActionResult NovoPagamento(int idQuotaSocio,string url)
+    public IActionResult NovoPagamento(int idQuotaSocio, string url)
     {
       var quotaSocio = _context.QuotaSocio.Where(h => h.IdQuotaSocio == idQuotaSocio)
 
@@ -99,12 +99,56 @@ namespace sga_stif.Controllers
 
       _notyf.Error("Pagamento sem sucesso");
 
-       return Redirect(dadosPagamentoViewModel.Url);
+      return Redirect(dadosPagamentoViewModel.Url);
     }
 
-    public IActionResult ConcluirPagamento(int idQuotaSocio,string url)
+    public IActionResult ConcluirPagamento(int idQuotaSocio, string url)
     {
-      var quotaSocio = _context.QuotaSocio.FirstOrDefault(k => k.IdQuotaSocio == idQuotaSocio);
+      //var quotaSocio = _context.QuotaSocio.FirstOrDefault(k => k.IdQuotaSocio == idQuotaSocio);
+
+      var quotaSocio = _context.QuotaSocio.Where(h => h.IdQuotaSocio == idQuotaSocio)
+
+      .Include(j => j.PeriodoQuota)
+      .Include(j => j.Socio).ThenInclude(a => a.Agencia).ThenInclude(i => i.Cidade)
+      .Include(j => j.Socio).ThenInclude(a => a.Agencia).ThenInclude(i => i.InstituicaoFinanceira)
+      .Include(j => j.Socio).ThenInclude(a => a.Agencia).ThenInclude(i => i.Cidade).ThenInclude(J => J.Ilha)
+      .FirstOrDefault();
+
+      if (quotaSocio != null)
+      {
+
+        string nomeDoMes = new DateTime(quotaSocio.PeriodoQuota.Ano, quotaSocio.PeriodoQuota.Mes, 1).ToString("MMM");
+
+        DadosPagamentoViewModel dadosPagamentoViewModel = new DadosPagamentoViewModel()
+        {
+          Apelido = quotaSocio.Socio.Apelido,
+          IdQuotaSocio = quotaSocio.IdQuotaSocio,
+          Nome = quotaSocio.Socio.Nome,
+          InstitucaoFinanceira = quotaSocio.Socio.Agencia.InstituicaoFinanceira.Nome,
+          Agencia = quotaSocio.Socio.Agencia.Nome,
+          Cidade = quotaSocio.Socio.Agencia.Cidade.Nome,
+          Ilha = quotaSocio.Socio.Agencia.Cidade.Ilha.Nome,
+          Ano = quotaSocio.PeriodoQuota.Ano,
+          Mes = nomeDoMes,
+          Montante = quotaSocio.Montante,
+          Url = url //url para redicionar apos o pagamento
+        };
+
+        return View(dadosPagamentoViewModel);
+        //return RedirectToAction("ListaQuotasPagas", "ContaCorrentes");
+
+      }
+
+      _notyf.Error("Quota não encontrada!");
+      return Redirect(url);
+      //return RedirectToAction("ListaQuotasPagas", "ContaCorrentes");
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult ConcluirPagamento([Bind("IdQuotaSocio,Nome,Apelido,InstitucaoFinanceira,Agencia,Ilha,Cidade,Montante,Mes,Ano,Url")] DadosPagamentoViewModel dadosPagamentoViewModel)
+    {
+      var quotaSocio = _context.QuotaSocio.FirstOrDefault(k => k.IdQuotaSocio == dadosPagamentoViewModel.IdQuotaSocio);
       if (quotaSocio != null)
       {
 
@@ -118,17 +162,17 @@ namespace sga_stif.Controllers
 
         _notyf.Success("Pagamento confirmado com sucesso!");
 
-        return Redirect(url);
+        return Redirect(dadosPagamentoViewModel.Url);
         //return RedirectToAction("ListaQuotasPagas", "ContaCorrentes");
 
       }
 
       _notyf.Error("Quota não encontrada!");
-      return Redirect(url);
+      return Redirect(dadosPagamentoViewModel.Url);
       //return RedirectToAction("ListaQuotasPagas", "ContaCorrentes");
     }
 
-    public IActionResult AnularPagamento(int idQuotaSocio,string url)
+    public IActionResult AnularPagamento(int idQuotaSocio, string url)
     {
       var quotaSocio = _context.QuotaSocio.FirstOrDefault(k => k.IdQuotaSocio == idQuotaSocio);
       if (quotaSocio != null)
