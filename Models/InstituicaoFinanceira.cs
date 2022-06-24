@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Text.RegularExpressions;
 
 namespace sga_stif.Models
 {
@@ -8,7 +9,7 @@ namespace sga_stif.Models
         public int IdInstituicaoFinanceira { get; set; }
         public string Nome { get; set; }
         public string Sigla { get; set; }
-         //propriedades de navegação
+        //propriedades de navegação
         public virtual ICollection<Agencia> Agencia { get; set; }
         public virtual ICollection<InstituicaoFinanceiraColaboradores> InstituicaoFinanceiraColaboradores { get; set; }
         public InstituicaoFinanceira()
@@ -27,8 +28,47 @@ namespace sga_stif.Models
             foreach (var item in Agencia)
             {
                 somaSocios += item.TotalSocios();
-            } 
+            }
             return somaSocios;
         }
+
+
+
+        public string SiglaFormatado()
+        {
+
+            var siglaTransformado = "";
+            var siglaBruto = Regex.Replace(this.Sigla, @"\s+", " "); //remover mais de um espaço
+
+            siglaBruto = siglaBruto.Trim();
+
+            string[] palavras = siglaBruto.Split(' ');
+
+            foreach (var palavra in palavras) {
+                 siglaTransformado =siglaTransformado +" "+ char.ToUpper(palavra[0]) + palavra.Substring(1).ToLower();
+             }
+
+            return siglaTransformado;
+        }
+
+
+         public string NomeFormatado()
+        {
+
+            var siglaTransformado = "";
+            var siglaBruto = Regex.Replace(this.Sigla, @"\s+", " "); //remover mais de um espaço
+
+            siglaBruto = siglaBruto.Trim();
+
+            string[] palavras = siglaBruto.Split(' ');
+
+            foreach (var palavra in palavras) {
+                 siglaTransformado =siglaTransformado +" "+ char.ToUpper(palavra[0]) + palavra.Substring(1).ToLower();
+             }
+
+            return siglaTransformado;
+        }
+
+          
     }
 }
