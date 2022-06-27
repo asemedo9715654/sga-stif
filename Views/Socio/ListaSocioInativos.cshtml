@@ -7,11 +7,12 @@
 <div class="card">
   <div class="card-header">
 
-     <div class="row no-print">
+    <div class="row no-print">
 
       <div class="col-12">
         <p class="lead">Lista de Sócios Inativos</p>
-        <a asp-action="ListaSocio" class="btn btn-primary btn-sm float-right" style="margin-right: 5px;">Ver Sócios Ativos</a>
+        <a asp-action="ListaSocio" class="btn btn-primary btn-sm float-right" style="margin-right: 5px;">Ver Sócios
+          Ativos</a>
       </div>
     </div>
 
@@ -21,25 +22,25 @@
     <table id="example2" class="table table-bordered table-striped">
       <thead>
         <tr>
-             
+          <th>
+            #
+          </th>
           <th>
             @Html.DisplayNameFor(model => model.NumeroDeSocio)
           </th>
           <th>
             @Html.DisplayNameFor(model => model.NomeCompleto)
-          </th>   
-          <th>
-            @Html.DisplayNameFor(model => model.Nif)
           </th>
           <th>
             @Html.DisplayNameFor(model => model.CinBi)
           </th>
           <th>
-            @Html.DisplayNameFor(model => model.NumeroPassaporte)
+            @Html.DisplayNameFor(model => model.SiglaInstitucaoFinanceira)
           </th>
           <th>
-            @Html.DisplayNameFor(model => model.DataDeNascimento)
+            @Html.DisplayNameFor(model => model.NomeAgencia)
           </th>
+
           <th>Ação</th>
         </tr>
       </thead>
@@ -47,30 +48,30 @@
         @foreach (var item in Model)
         {
           <tr>
-
+            <td>
+              @Html.DisplayFor(modelItem => item.IdSocio)
+            </td>
             <td>
               @Html.DisplayFor(modelItem => item.NumeroDeSocio)
             </td>
-             <td>
-              @Html.DisplayFor(modelItem => item.NomeCompleto)
-            </td>
-            
-
             <td>
-              @Html.DisplayFor(modelItem => item.Nif)
+              @Html.DisplayFor(modelItem => item.NomeCompleto)
             </td>
             <td>
               @Html.DisplayFor(modelItem => item.CinBi)
             </td>
             <td>
-              @Html.DisplayFor(modelItem => item.NumeroPassaporte)
+              @Html.DisplayFor(modelItem => item.SiglaInstitucaoFinanceira)
             </td>
-             <td>
-              @Html.DisplayFor(modelItem => item.DataDeNascimento)
+            <td>
+              @Html.DisplayFor(modelItem => item.NomeAgencia)
             </td>
-            <td>  
-              <a class="btn btn-default  btn-xs" asp-action="DetalhesSocio" asp-route-idSocio="@item.IdSocio" title="Ver Detalhes Sócio e Adição de Beneficiário!">Detalhes</a>
-              <a class="btn btn-primary btn-xs" asp-action="ReativarSocio" asp-route-idSocio="@item.IdSocio" title="Reativar este sócio!">Reativar</a>
+          
+            <td>
+              <a class="btn btn-default  btn-xs" asp-action="DetalhesSocio" asp-route-idSocio="@item.IdSocio"
+              title="Ver Detalhes Sócio e Adição de Beneficiário!">Detalhes</a>
+              <a class="btn btn-primary btn-xs" asp-action="ReativarSocio" asp-route-idSocio="@item.IdSocio"
+              title="Reativar este sócio!">Reativar</a>
             </td>
           </tr>
         }

@@ -92,6 +92,50 @@ namespace sga_stif.Models
     }
 
 
+    public string NomeFormatado()
+    {
+      var nomeCompleto = "";
+
+      var nomeCopletoSemTratamento = this.Nome;
+
+      nomeCopletoSemTratamento = Regex.Replace(nomeCopletoSemTratamento, @"\s+", " ");
+
+      nomeCopletoSemTratamento =  nomeCopletoSemTratamento.Trim();
+
+      string[] palavras = nomeCopletoSemTratamento.Split(' ');
+
+      foreach (var palavra in palavras)
+      {
+         nomeCompleto =nomeCompleto +" "+ char.ToUpper(palavra[0]) + palavra.Substring(1).ToLower();
+      }
+ 
+      return nomeCompleto;
+      
+    }
+
+
+     public string ApelidoFormatado()
+    {
+      var nomeCompleto = "";
+
+      var nomeCopletoSemTratamento = this.Apelido;
+
+      nomeCopletoSemTratamento = Regex.Replace(nomeCopletoSemTratamento, @"\s+", " ");
+
+      nomeCopletoSemTratamento =  nomeCopletoSemTratamento.Trim();
+
+      string[] palavras = nomeCopletoSemTratamento.Split(' ');
+
+      foreach (var palavra in palavras)
+      {
+         nomeCompleto =nomeCompleto +" "+ char.ToUpper(palavra[0]) + palavra.Substring(1).ToLower();
+      }
+ 
+      return nomeCompleto;
+      
+    }
+
+
 
 
     public string PegarDDescricaoEstadoCivil()

@@ -1,6 +1,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.RegularExpressions;
 
 namespace sga_stif.Models
 {
@@ -22,22 +23,50 @@ namespace sga_stif.Models
     //propriedaddes de navegacao
     public virtual Socio Socio { get; set; }
 
+
+
+
+
+
+    public string NomeCompleto()
+    {
+      var nomeCompleto = "";
+
+      var nomeCopletoSemTratamento = this.Nome+" "+this.Apelido;
+
+      nomeCopletoSemTratamento = Regex.Replace(nomeCopletoSemTratamento, @"\s+", " ");
+
+      nomeCopletoSemTratamento =  nomeCopletoSemTratamento.Trim();
+
+      string[] palavras = nomeCopletoSemTratamento.Split(' ');
+
+      foreach (var palavra in palavras)
+      {
+         nomeCompleto =nomeCompleto +" "+ char.ToUpper(palavra[0]) + palavra.Substring(1).ToLower();
+      }
+ 
+      return nomeCompleto;
+      
+    }
+
+    
+
   }
 
 
   public enum GrauDeParentesco
   {
-     [Description("ESPOSO")]
+     [Description("Esposo")]
     Esposo,
-     [Description("ESPOSA")]
+     [Description("Esposa")]
     Esposa,
-    [Description("FILHO")]
+    [Description("Filho")]
     Filho,
-    [Description("FILHA")]
+    [Description("Filha")]
     Filha,
-    [Description("PAI")]
+    [Description("Pai")]
     Pai,
-    [Description("MÃE")]
+    [Description("Mãe")]
     Mae
   }
 }

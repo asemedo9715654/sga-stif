@@ -1,0 +1,32 @@
+@{
+    ViewData["Title"] = "Carregar Ficheiro";
+}
+
+<hr />
+
+
+
+<form action="" method="post" enctype="multipart/form-data">
+
+    <div class="card-body">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="row">
+
+            <div class="form-group">
+                <label   class="control-label">O Ficheiro</label>
+                <input  type="file" class="form-control" />
+              
+            </div>
+             <div class="form-group">
+                
+                <input  type="submit" value="Carregar" class="btn btn-success" />
+              
+            </div>
+
+
+        </div>
+    </div>
+
+</form>
