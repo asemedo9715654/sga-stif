@@ -1,32 +1,101 @@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
 @{
-    ViewData["Title"] = "Carregar Ficheiro";
+    ViewData["Title"] = "Caregamento de Pagamento";
 }
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#btnupload').on('click', function () {
+            var fileExtension = ['xls', 'xlsx'];
+            var filename = $('#fileupload').val();
+            var institiucaoFinanceira = $('#IdInstituicaoFinanceira').val();
+            if (filename.length == 0) {
+                alert("Selecione um ficheiro.");
+                return false;
+            }
+            else {
+                var extension = filename.replace(/^.*\./, '');
+                if ($.inArray(extension, fileExtension) == -1) {
+                    alert("Please select only excel files.");
+                    return false;
+                }
+            }
+            var fdata = new FormData();
+            var fileUpload = $("#fileupload").get(0);
+            var files = fileUpload.files;
+            fdata.append(files[0].name, files[0]);
+            fdata.append("InstitiucaoFinanceira", institiucaoFinanceira);
+            $.ajax({
+                type: "POST",
+                url: "/Ficheiro/ImportarFicheiro",
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("XSRF-TOKEN",
+                        $('input:hidden[name="__RequestVerificationToken"]').val());
+                },
+                data: fdata,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    if (response.length == 0)
+                        alert('Some error occured while uploading');
+                    else {
+                        $('#divPrint').html(response);
+                    }
+                },
+                error: function (e) {
+                    $('#divPrint').html(e.responseText);
+                }
+            });
+        })
+        $('#btnExport').on('click', function () {
+            var fileExtension = ['xls', 'xlsx'];
+            var filename = $('#fileupload').val();
+            if (filename.length == 0) {
+                alert("Please select a file then Import");
+                return false;
+            }
+        });
+    });
 
-<hr />
+</script>
 
 
+<div class="card">
+    <div class="card-header">
+        <form asp-controller="Home" asp-action="Export">
 
-<form action="" method="post" enctype="multipart/form-data">
+            <div class="row no-print">
 
-    <div class="card-body">
+                <div class="col-12">
 
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <p class="lead">Carregamento ded Pagamentos</p>
 
-        <div class="row">
+                    <div class="row align-items-end">
 
-            <div class="form-group">
-                <label   class="control-label">O Ficheiro</label>
-                <input  type="file" class="form-control" />
-              
+                        <div class="col-md-3">
+                            <label class="control-label">Intituição Financeira</label>
+                            <select asp-items="@ViewBag.IdInstituicaoFinanceira" class="form-control" id="IdInstituicaoFinanceira" name="IdInstituicaoFinanceira">
+                                <option disabled selected>--- Selecione ---</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <input type="file" id="fileupload" name="files" class="form-control" />
+                        </div>
+                        <div class="col-md-3">
+                            <input type="button" name="Upload" value="Carregar Pagamentos" id="btnupload" class="btn btn-primary" />
+                        </div>
+
+                    </div>
+
+                    <div id="divPrint"></div>
+
+
+                </div>
+
             </div>
-             <div class="form-group">
-                
-                <input  type="submit" value="Carregar" class="btn btn-success" />
-              
-            </div>
 
-
-        </div>
+        </form>
     </div>
-
-</form>
+</div>
