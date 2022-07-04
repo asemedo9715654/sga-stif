@@ -39,18 +39,23 @@ namespace sga_stif.Controllers
       var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(a => a.Eliminado == false).ToList();
       var instituicaoFinanceirasItem = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome };
 
+      ViewBag.IdInstituicaoFinanceira = instituicaoFinanceirasItem;
+
       return View();
     }
 
     [HttpPost]
     public ActionResult ImportarFicheiro()
     {
-        string idIf = "";
+       
 
       int contador = 0;
       IFormFile file = Request.Form.Files[0];
 
-      IFormFile filed = Request.Form.TryGetValue("InstitiucaoFinanceira",out idIf);
+
+      string idIf = Request.Query["InstitiucaoFinanceira"];
+
+      //IFormFile filed = Request.Form.TryGetValue("InstitiucaoFinanceira",out idIf);
 
       string folderName = "UploadExcel";
       string webRootPath = _appEnvironment.WebRootPath;
@@ -114,9 +119,6 @@ namespace sga_stif.Controllers
                 int.TryParse(row.GetCell(2).ToString(), out mes);
                 int.TryParse(row.GetCell(3).ToString(), out ano);
                 decimal.TryParse(row.GetCell(4).ToString(), out montante);
-
-
-
 
                 if (numeroSocio != "" && mes != 0 && ano != 0)
                 {
