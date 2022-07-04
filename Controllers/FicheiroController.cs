@@ -1,56 +1,178 @@
 using AspNetCoreHero.ToastNotification.Abstractions;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using sga_stif.Models;
-using sga_stif.ViewModel.Agencia;
-using sga_stif.ViewModel.InstituicaoFinanceira;
-using sga_stif.ViewModel.Socio;
-using sga_stif.ViewModel.TipoQuota;
-
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Data;
-using System.Data.OleDb;
-using System.IO;
+using System.Text;
+using NPOI.XSSF.UserModel;
+using NPOI.SS.UserModel;
+using NPOI.HSSF.UserModel;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace sga_stif.Controllers
 {
-    public class FicheiroController : BaseController
+  public class FicheiroController : BaseController
+  {
+
+    private readonly ContextoBaseDados _context;
+
+    private readonly INotyfService _notyf;
+    private readonly IMapper _mapper;
+
+    private readonly IWebHostEnvironment _appEnvironment;
+
+
+    public FicheiroController(ContextoBaseDados context, INotyfService notyf, IMapper mapper, IWebHostEnvironment env)
+    {
+      _context = context;
+      _notyf = notyf;
+      _mapper = mapper;
+
+      _appEnvironment = env;
+    }
+
+
+    // GET: ClonePanel
+    public ActionResult CarregamentoDeFicheiro()
     {
 
-        private readonly ContextoBaseDados _context;
+      var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(a => a.Eliminado == false).ToList();
+      var instituicaoFinanceirasItem = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome };
 
-        private readonly INotyfService _notyf;
-        private readonly IMapper _mapper;
+      return View();
+    }
 
+    [HttpPost]
+    public ActionResult ImportarFicheiro()
+    {
+        string idIf = "";
 
-        public FicheiroController(ContextoBaseDados context, INotyfService notyf, IMapper mapper)
+      int contador = 0;
+      IFormFile file = Request.Form.Files[0];
+
+      IFormFile filed = Request.Form.TryGetValue("InstitiucaoFinanceira",out idIf);
+
+      string folderName = "UploadExcel";
+      string webRootPath = _appEnvironment.WebRootPath;
+      string newPath = Path.Combine(webRootPath, folderName);
+      StringBuilder sb = new StringBuilder();
+      if (!Directory.Exists(newPath))
+      {
+        Directory.CreateDirectory(newPath);
+      }
+      if (file.Length > 0)
+      {
+        string sFileExtension = Path.GetExtension(file.FileName).ToLower();
+        ISheet sheet;
+        string fullPath = Path.Combine(newPath, file.FileName);
+        using (var stream = new FileStream(fullPath, FileMode.Create))
         {
-            _context = context;
-            _notyf = notyf;
-            _mapper = mapper;
+          file.CopyTo(stream);
+          stream.Position = 0;
+          if (sFileExtension == ".xls")
+          {
+            HSSFWorkbook hssfwb = new HSSFWorkbook(stream); //This will read the Excel 97-2000 formats  
+            sheet = hssfwb.GetSheetAt(0); //get first sheet from workbook  
+          }
+          else
+          {
+            XSSFWorkbook hssfwb = new XSSFWorkbook(stream); //This will read 2007 Excel format  
+            sheet = hssfwb.GetSheetAt(0); //get first sheet from workbook   
+          }
+          //   IRow headerRow = sheet.GetRow(0); //Get Header Row
+          //   int cellCount = headerRow.LastCellNum;
+          //   sb.Append("<table class='table table-bordered'><tr>");
+          //   for (int j = 0; j < cellCount; j++)
+          //   {
+          //     NPOI.SS.UserModel.ICell cell = headerRow.GetCell(j);
+          //     if (cell == null || string.IsNullOrWhiteSpace(cell.ToString())) continue;
+          //     sb.Append("<th>" + cell.ToString() + "</th>");
+          //   }
+          //   sb.Append("</tr>");
+          //   sb.AppendLine("<tr>");
+          for (int i = (sheet.FirstRowNum + 1); i <= sheet.LastRowNum; i++) //Read Excel File
+          {
+            IRow row = sheet.GetRow(i);
+            if (row == null) continue;
+
+
+            string numeroSocio = "";
+            int mes = 0;
+            int ano = 0;
+            decimal montante = 0;
+
+            //se a celula nao estiver em branco
+            if (row.Cells.All(d => d.CellType != CellType.Blank))
+            {
+
+
+              //row.GetCell(1)
+
+              if (row.GetCell(0) != null && row.GetCell(1) != null && row.GetCell(2) != null && row.GetCell(3) != null && row.GetCell(4) != null)
+              {
+                numeroSocio = row.GetCell(0).ToString();
+                int.TryParse(row.GetCell(2).ToString(), out mes);
+                int.TryParse(row.GetCell(3).ToString(), out ano);
+                decimal.TryParse(row.GetCell(4).ToString(), out montante);
+
+
+
+
+                if (numeroSocio != "" && mes != 0 && ano != 0)
+                {
+
+                  var quotaSocio = _context.QuotaSocio
+                  .Where(h => h.Socio.NumeroDeSocio == numeroSocio && h.PeriodoQuota.Mes == mes && h.PeriodoQuota.Ano == ano)
+                  .Include(d => d.Socio)
+                  .Include(d => d.PeriodoQuota)
+                  .FirstOrDefault();
+
+                  if (quotaSocio != null)
+                  {
+                    contador++;
+                    quotaSocio.Estado = EstadoQuotaSocio.Pago;
+                    quotaSocio.Montante = montante;
+
+                    quotaSocio.DataQueFoiEfectuadaPagamento = DateTime.Now;
+                    quotaSocio.UtilizadorQueEfectuouPagamento = PegarNomeUtilizador();
+                    quotaSocio.DataAtualizacao = DateTime.Now;
+
+                    _context.Update(quotaSocio);
+                    _context.SaveChanges();
+
+
+                  }
+
+                }
+
+
+              }
+
+
+            }
+
+
+
+            // if (row.Cells.All(d => d.CellType == CellType.Blank)) continue;
+            // for (int j = row.FirstCellNum; j < cellCount; j++)
+            // {
+            //   if (row.GetCell(j) != null)
+            //     sb.Append("<td>" + row.GetCell(j).ToString() + "</td>");
+            // }
+            // sb.AppendLine("</tr>");
+          }
+          //sb.Append("</table>");
         }
+      }
 
 
-        // GET: ClonePanel
-        public ActionResult CarregamentoDeFicheiro()
-        {
-            return View();
-        }
+      sb.Append($"<div class=\"card-body\"> <div class=\"alert alert-success alert-dismissible\"> <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button> <h5><i class=\"icon fas fa-check\"></i> Alert!</h5> Foram efectuado {contador} pagamentos com sucesso !!! </div> </div>");
 
-        [HttpPost]
-        public ActionResult CarregamentoDeFicheiro(IFormFile? ficheiro = null)
-        {
-           
-            return View();
-        }
-
-
+      return this.Content(sb.ToString());
 
     }
+
+
+
+  }
 }
