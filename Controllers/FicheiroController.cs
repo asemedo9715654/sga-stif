@@ -49,11 +49,16 @@ namespace sga_stif.Controllers
     {
        
 
-      int contador = 0;
+      int contador = 0,idIfff = 0;
       IFormFile file = Request.Form.Files[0];
 
 
       string idIf = Request.Query["InstitiucaoFinanceira"];
+      if(!string.IsNullOrEmpty(idIf)){
+
+        idIfff = int.Parse(idIf);
+
+      }
 
       //IFormFile filed = Request.Form.TryGetValue("InstitiucaoFinanceira",out idIf);
 
@@ -101,7 +106,7 @@ namespace sga_stif.Controllers
             if (row == null) continue;
 
 
-            string numeroSocio = "";
+            string numeroColaborador = "";
             int mes = 0;
             int ano = 0;
             decimal montante = 0;
@@ -115,17 +120,17 @@ namespace sga_stif.Controllers
 
               if (row.GetCell(0) != null && row.GetCell(1) != null && row.GetCell(2) != null && row.GetCell(3) != null && row.GetCell(4) != null)
               {
-                numeroSocio = row.GetCell(0).ToString();
+                numeroColaborador = row.GetCell(0).ToString();
                 int.TryParse(row.GetCell(2).ToString(), out mes);
                 int.TryParse(row.GetCell(3).ToString(), out ano);
                 decimal.TryParse(row.GetCell(4).ToString(), out montante);
 
-                if (numeroSocio != "" && mes != 0 && ano != 0)
+                if (numeroColaborador != "" && mes != 0 && ano != 0)
                 {
 
                   var quotaSocio = _context.QuotaSocio
-                  .Where(h => h.Socio.NumeroDeSocio == numeroSocio && h.PeriodoQuota.Mes == mes && h.PeriodoQuota.Ano == ano)
-                  .Include(d => d.Socio)
+                  .Where(h => h.Socio.NumeroColaborador == numeroColaborador && h.PeriodoQuota.Mes == mes && h.PeriodoQuota.Ano == ano && h.Socio.Agencia.IdInstituicaoFinanceira == idIfff)
+                  .Include(d => d.Socio).ThenInclude(d=>d.Agencia).ThenInclude(d=>d.InstituicaoFinanceira )
                   .Include(d => d.PeriodoQuota)
                   .FirstOrDefault();
 
