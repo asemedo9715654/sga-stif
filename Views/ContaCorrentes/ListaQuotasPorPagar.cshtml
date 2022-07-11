@@ -130,13 +130,19 @@
 <script>
   $(function () {
     $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
+     language: {
+        //url: 'dataTables.german.json',
+        url: 'https://cdn.datatables.net/plug-ins/1.12.1/i18n/pt-PT.json'
+        //url:"@Url.Content("~/pt-PT.json")"
+      },
+      dom: 'lBfrtip',
+      paging: true,
+      lengthChange: true,
+      searching: false,
+      ordering: true,
+      info: true,
+      autoWidth: false,
+      responsive: true,
     });
   });
 </script>

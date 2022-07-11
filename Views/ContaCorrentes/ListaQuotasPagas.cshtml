@@ -5,51 +5,52 @@
 }
 
 
-  <div class="card">
-    <div class="card-header">
-      <form id="formularioDeFiltro" asp-action="ListaQuotasPagas" method="get">
-        <div class="row no-print">
+<div class="card">
+  <div class="card-header">
+    <form id="formularioDeFiltro" asp-action="ListaQuotasPagas" method="get">
+      <div class="row no-print">
 
-          <div class="col-12">
-            <p class="lead">Lista de Quotas Pagas</p>
+        <div class="col-12">
+          <p class="lead">Lista de Quotas Pagas</p>
 
-            <div class="row align-items-end">
-              <div class="col-md-3">
+          <div class="row align-items-end">
+            <div class="col-md-3">
 
 
 
-                <div class="form-group align-items-end">
-                  <label class="control-label">Data</label>
-                  <input type="month" id="start" name="DataPesquisa" min="2022-01" value=@ViewBag.DataPreenchido class="form-control">
+              <div class="form-group align-items-end">
+                <label class="control-label">Data</label>
+                <input type="month" id="start" name="DataPesquisa" min="2022-01" value=@ViewBag.DataPreenchido
+                  class="form-control">
 
-                </div>
               </div>
-              <div class="col-md-3">
-                <div class="form-group align-items-end">
-                  <label class="control-label">Intituição Financeira</label>
-                  <select asp-items="@ViewBag.IdInstituicaoFinanceira" class="form-control"
-                    id="IdInstituicaoFinanceira">
-                    <option disabled selected>--- todos ---</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="form-group align-items-end">
-                  <label class="control-label"></label>
-                  <input type="submit" form="formularioDeFiltro" class="btn btn-primary" value="Filtrar" />
-                </div>
-              </div>
-
             </div>
+            <div class="col-md-3">
+              <div class="form-group align-items-end">
+                <label class="control-label">Intituição Financeira</label>
+                <select asp-items="@ViewBag.IdInstituicaoFinanceira" class="form-control" id="IdInstituicaoFinanceira">
+                  <option disabled selected>--- todos ---</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group align-items-end">
+                <label class="control-label"></label>
+                <input type="submit" form="formularioDeFiltro" class="btn btn-primary" value="Filtrar" />
+              </div>
+            </div>
+
           </div>
         </div>
-      </form>
+      </div>
+    </form>
 
-      <input type="submit" form="formularioDePagamentos" value="Efectuar Anulamento" class="btn btn-danger btn-sm float-right" style="margin-right: 5px;">
+    <input type="submit" form="formularioDePagamentos" value="Efectuar Anulamento"
+      class="btn btn-danger btn-sm float-right" style="margin-right: 5px;">
 
-    </div>
-    <div class="card-body">
-      <form method="post" asp-controller="Pagamento" asp-action="AnularMultiplosPagamento" id="formularioDePagamentos">
+  </div>
+  <div class="card-body">
+    <form method="post" asp-controller="Pagamento" asp-action="AnularMultiplosPagamento" id="formularioDePagamentos">
       <table id="example2" class="table table-bordered table-striped">
         <thead>
           <tr>
@@ -82,7 +83,8 @@
           {
             <tr>
               <td>
-                <input type="checkbox" class="group" id="@item.IdQuotaSocio" name="IdQuotasSociosParaPagar" value="@item.IdQuotaSocio">
+                <input type="checkbox" class="group" id="@item.IdQuotaSocio" name="IdQuotasSociosParaPagar"
+                value="@item.IdQuotaSocio">
               </td>
               <td>
                 @Html.DisplayFor(modelItem => item.Nome)
@@ -103,7 +105,9 @@
                 @Html.DisplayFor(modelItem => item.Montante)
               </td>
               <td>
-                <a asp-action="AnularPagamento" asp-controller="Pagamento" asp-route-url=@Url.Action("ListaQuotasPorPagar","ContaCorrentes") asp-route-idQuotaSocio=@item.IdQuotaSocio rel="noopener" class="btn btn-danger btn-sm">Anular
+                <a asp-action="AnularPagamento" asp-controller="Pagamento"
+                asp-route-url=@Url.Action("ListaQuotasPorPagar","ContaCorrentes")
+                asp-route-idQuotaSocio=@item.IdQuotaSocio rel="noopener" class="btn btn-danger btn-sm">Anular
                   Pagamento</a>
               </td>
 
@@ -111,9 +115,9 @@
           }
         </tbody>
       </table>
-      </form>
-    </div>
+    </form>
   </div>
+</div>
 
 
 <script>
@@ -126,13 +130,19 @@
 
 
     $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
+      language: {
+        //url: 'dataTables.german.json',
+        url: 'https://cdn.datatables.net/plug-ins/1.12.1/i18n/pt-PT.json'
+        //url:"@Url.Content("~/pt-PT.json")"
+      },
+      dom: 'lBfrtip',
+      paging: true,
+      lengthChange: true,
+      searching: false,
+      ordering: true,
+      info: true,
+      autoWidth: false,
+      responsive: true,
     });
   });
 </script>

@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using sga_stif.Models;
 using sga_stif.Models.ResultadoStoredProcedure;
 using sga_stif.ViewModel.Socio;
+using sga_stif.Extensao;
 
 namespace sga_stif.Controllers
 {
@@ -29,16 +30,43 @@ namespace sga_stif.Controllers
 
     public async Task<IActionResult> ListaSocio()
     {
-      var socios = await _context.Socio.Where(r => r.Eliminado != true).Include(c => c.Agencia)
+      // var socios = await _context.Socio.Where(r => r.Eliminado != true).Include(c => c.Agencia)
+      //                             .Include(c => c.TipologiaSocio)
+      //                             .Include(c => c.TipoQuota)
+      //                             .Include(c => c.Beneficiario)
+      //                             .Include(c => c.Agencia).ThenInclude(c => c.InstituicaoFinanceira)
+      //                             .ToListAsync();
+
+
+
+      var sociosdd = await _context.Socio.Where(r => r.Eliminado != true).Include(c => c.Agencia)
                                   .Include(c => c.TipologiaSocio)
                                   .Include(c => c.TipoQuota)
                                   .Include(c => c.Beneficiario)
-                                  .Include(c => c.Agencia).ThenInclude(c => c.InstituicaoFinanceira)
+                                  .Include(c => c.Agencia).ThenInclude(c => c.InstituicaoFinanceira).Select(
+
+                                    k => new ListaSocioViewModel{
+                                      IdSocio = k.IdSocio,
+                                      NumeroDeSocio = k.NumeroDeSocio,
+                                      NomeCompleto = k.NomeCompleto(),
+                                      CinBi = k.CinBi,
+                                      Sexo = k.Sexo.GetDescription(),
+                                      TotalBeneficiario = k.TotalBeneficiario(),
+                                      IdAgencia = k.IdAgencia,
+                                      SiglaInstitucaoFinanceira = k.Agencia.InstituicaoFinanceira.SiglaFormatado(),
+                                      NomeAgencia = k.Agencia.Nome
+
+
+
+                                    }
+                                  )
                                   .ToListAsync();
 
-      var sociocc = _mapper.Map<List<ListaSocioViewModel>>(socios);
+     // var sociocc = _mapper.Map<List<ListaSocioViewModel>>(socios);
 
-      return View(sociocc);
+    
+      //return View(sociocc);
+      return View(sociosdd);
     }
 
     public async Task<IActionResult> ListaSocioInativos()
