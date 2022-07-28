@@ -5,122 +5,117 @@
 }
 
 
-  <div class="card">
-    <div class="card-header">
-      <form id="formularioDeFiltro" asp-action="ListaProjecaoFluxo" method="get">
-        <div class="row no-print">
+<div class="card">
+  <div class="card-header">
+    <form id="formularioDeFiltro" asp-action="ListaProjecaoFluxo" method="get">
+      <div class="row no-print">
 
-          <div class="col-12">
-            <p class="lead">Projeção</p>
+        <div class="col-12">
+          <p class="lead">Projeção</p>
 
-            <div class="row align-items-end">
-              <div class="col-md-3">
+          <div class="row align-items-end">
+            <div class="col-md-3">
 
 
 
-                <div class="form-group align-items-end">
-                  <label class="control-label">Percentagem</label>
-                  <input type="text" class="form-control" name="percentagem" value="@ViewBag.Percentagem">
+              <div class="form-group align-items-end">
+                <label class="control-label">Percentagem</label>
+                <input type="text" class="form-control" name="percentagem" value="@ViewBag.Percentagem">
 
-                </div>
               </div>
-              <div class="col-md-3">
-                <div class="form-group align-items-end">
-                  <label class="control-label">Intituição Financeira</label>
-                  <select asp-items="@ViewBag.IdInstituicaoFinanceira" class="form-control"
-                    id="idInstituicaoFinanceira" name="idInstituicaoFinanceira">
-                    <option disabled selected>--- seleccione uma instituição ---</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="form-group align-items-end">
-                  <label class="control-label"></label>
-                  <input type="submit" form="formularioDeFiltro" class="btn btn-primary" value="Projectar" />
-                </div>
-              </div>
-
             </div>
+            <div class="col-md-3">
+              <div class="form-group align-items-end">
+                <label class="control-label">Intituição Financeira</label>
+                <select asp-items="@ViewBag.IdInstituicaoFinanceira" class="form-control" id="idInstituicaoFinanceira"
+                  name="idInstituicaoFinanceira">
+                  <option disabled selected>--- seleccione uma instituição ---</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group align-items-end">
+                <label class="control-label"></label>
+                <input type="submit" form="formularioDeFiltro" class="btn btn-primary" value="Projectar" />
+              </div>
+            </div>
+
           </div>
         </div>
-      </form>
+      </div>
+    </form>
 
-    </div>
-    <div class="card-body">
-
-
-
-
-          <div class="col-12">
-            @* <p class="lead">Projeção</p> *@
-
-            <div class="row align-items-end">
-              <div class="col-md-3">
-                <div class="form-group align-items-end">
-                  <label class="control-label">Montante Atual Global</label>
-                  <input type="text" class="form-control" name="MontanteAtualGlobal" value="@ViewBag.MontanteAtualGlobal">
-
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="form-group align-items-end">
-                  <label class="control-label">Montante Com Projecao Global</label>
-                  <input type="text" class="form-control" name="MontanteComProjecaoGlobal" value="@ViewBag.MontanteComProjecaoGlobal">
-                </div>
-              </div>
-             
-            </div>
-          </div>
-      
-
-
-
-
-      <table id="example2" class="table table-bordered table-striped">
-        <thead>
-          <tr>
-            
-            <th>
-              @Html.DisplayNameFor(model => model.Nome)
-            </th>
-            <th>
-              @Html.DisplayNameFor(model => model.AgenciaNome)
-            </th>
-            <th>
-              @Html.DisplayNameFor(model => model.MontanteAtual)
-            </th>
-            <th>
-              @Html.DisplayNameFor(model => model.MontanteComProjecao)
-            </th>
-           
-          </tr>
-        </thead>
-        <tbody>
-          @foreach (var item in Model)
-          {
-            <tr>
-              
-              <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-              </td>
-              <td>
-                @Html.DisplayFor(modelItem => item.AgenciaNome)
-              </td>
-              <td>
-                @Html.DisplayFor(modelItem => item.MontanteAtual)
-              </td>
-              <td>
-                @Html.DisplayFor(modelItem => item.MontanteComProjecao)
-              </td>
-             
-
-            </tr>
-          }
-        </tbody>
-      </table>
-   
-    </div>
   </div>
+  <div class="card-body">
+
+
+    <div class="col-12">
+      @* <p class="lead">Projeção</p> *@
+
+      <div class="row align-items-end">
+        <div class="col-md-3">
+          <div class="form-group align-items-end">
+            <label class="control-label">Montante Atual Global</label>
+            <input type="text" class="form-control" name="MontanteAtualGlobal" value="@ViewBag.MontanteAtualGlobal">
+
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group align-items-end">
+            <label class="control-label">Montante Com Projecao Global</label>
+            <input type="text" class="form-control" name="MontanteComProjecaoGlobal"
+              value="@ViewBag.MontanteComProjecaoGlobal">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <table id="example2" class="table table-bordered table-striped">
+      <thead>
+        <tr>
+
+          <th>
+            @Html.DisplayNameFor(model => model.Nome)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.AgenciaNome)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.MontanteAtual)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.MontanteComProjecao)
+          </th>
+
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (var item in Model)
+        {
+          <tr>
+
+            <td>
+              @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.AgenciaNome)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.MontanteAtual)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.MontanteComProjecao)
+            </td>
+
+          </tr>
+        }
+      </tbody>
+    </table>
+
+  </div>
+</div>
 
 
 <script>

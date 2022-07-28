@@ -1,7 +1,7 @@
 @model IEnumerable<sga_stif.Models.ResultadoStoredProcedure.PosicaoIFsResultado>
 
 @{
-  ViewData["Title"] = "Lista de Quotas Pagas";
+  ViewData["Title"] = "Posições das Instituições";
 }
 
 
@@ -51,28 +51,21 @@
             </th>
             <th>
               Total Sócio (@ViewBag.MesAnterior)
-              @* @Html.DisplayNameFor(model => model.TotalSocioAnterior) *@
             </th>
             <th>
               Total Sócio (@ViewBag.MesAtual)
-              @* @Html.DisplayNameFor(model => model.TotalSocioAtual) *@
             </th>
             <th>
               Total Colaboradores (@ViewBag.MesAnterior)
-
-              @* @Html.DisplayNameFor(model => model.TotalColaboradoresAnterior) *@
             </th>
             <th>
               Total Colaboradores (@ViewBag.MesAtual)
-              @* @Html.DisplayNameFor(model => model.TotalColaboradoresAtual) *@
             </th>
             <th>
               Total Quotas (@ViewBag.MesAnterior)
-              @* @Html.DisplayNameFor(model => model.TotalQuoataMesAnterior) *@
             </th>
             <th>
               Total Quotas (@ViewBag.MesAtual)
-              @* @Html.DisplayNameFor(model => model.TotalQuoataMesAtual) *@
             </th>
             <th>Variação</th>
             <th>
@@ -123,7 +116,7 @@
                 {
                   <a class="btn btn-primary btn-xs" asp-action="PosicaoDasInstituicoesFinanceirasDetalhes"
                 asp-route-ano="@ViewBag.Ano" asp-route-mes="@ViewBag.Mes"
-                asp-route-idInstituicaoFinanceira="@item.IdInstituicaoFinanceira">Detalhes</a>
+                asp-route-idInstituicaoFinanceira="@item.IdInstituicaoFinanceira" title="Detalhe da evolução">Detalhes</a>
                 }
 
               </td>
@@ -144,16 +137,5 @@
       $(':checkbox').attr("checked", $(this).is(':checked'));
     });
 
-
-
-    $('#example').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
   });
 </script>

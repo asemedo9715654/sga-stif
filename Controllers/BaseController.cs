@@ -15,9 +15,6 @@ namespace sga_stif.Controllers
     public class BaseController : Controller
     {
 
-
-
-
         public string PegarNomeUtilizador()
         {
             return HttpContext.Session.GetString("NomeUtilizador"); ;

@@ -46,7 +46,7 @@ namespace sga_stif.Controllers
 
             }
 
-            _notyf.Success("seja benvindo ao sga-stif");
+            _notyf.Success("seja bem-vindo ao SGA-STIF");
 
             //caregar variaveis de sessão
             HttpContext.Session.SetString("NomeUtilizador", loginViewModel.NomeUtilizador);
@@ -66,9 +66,6 @@ namespace sga_stif.Controllers
             return View(loginViewModel);
 
           }
-
-
-
 
         }
         else
