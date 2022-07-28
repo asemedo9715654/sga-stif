@@ -57,7 +57,7 @@ namespace sga_stif.Controllers
             HttpContext.Session.SetString("Foto", utilizador.PegarLinkFoto());
 
 
-            return RedirectToAction("ListaSocio", "Socio");
+            return RedirectToAction("Inicio", "Dashboard");
 
           }
           else

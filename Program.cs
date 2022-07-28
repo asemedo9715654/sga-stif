@@ -5,12 +5,15 @@ using Microsoft.EntityFrameworkCore;
 using NLog;
 
 using NLog.Web;
+using Serilog;
 using sga_stif.Filtros;
 using sga_stif.Mapeamento;
 using sga_stif.Models;
 
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseSerilog();
 
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();

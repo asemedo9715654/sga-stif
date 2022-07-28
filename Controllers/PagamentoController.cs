@@ -38,6 +38,7 @@ namespace sga_stif.Controllers
 
         DadosPagamentoViewModel dadosPagamentoViewModel = new DadosPagamentoViewModel()
         {
+          
           Apelido = quotaSocio.Socio.Apelido,
           IdQuotaSocio = quotaSocio.IdQuotaSocio,
           Nome = quotaSocio.Socio.Nome,
@@ -73,6 +74,7 @@ namespace sga_stif.Controllers
           if (quotaSocio != null)
           {
 
+            quotaSocio.OrigemPagamento = "Manual";
             quotaSocio.Estado = EstadoQuotaSocio.AguardaConfirmacaoPagamento;
             quotaSocio.Montante = dadosPagamentoViewModel.Montante;
 

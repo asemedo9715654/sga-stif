@@ -48,7 +48,7 @@ namespace sga_stif.Controllers
 
       var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(e => e.Eliminado == false).Include(g => g.Agencia).Select(j=>new{Sigla =j.Sigla,Agencia= j.Agencia}).ToList();
 
-      var todos = _context.Socio.Where(e => e.Eliminado == false).Select(k=>k.IdAgencia).ToList();
+      var listaDdeSocios = _context.Socio.Where(e => e.Eliminado == false).Select(k=>k.IdAgencia).ToList();
 
       foreach (var instituicaoFinanceira in instituicaoFinanceiras)
       {
@@ -56,7 +56,7 @@ namespace sga_stif.Controllers
 
         agencia.Contains(3);
 
-        var total = todos.Where(a => agencia.Contains(a)).Count();
+        var total = listaDdeSocios.Where(a => agencia.Contains(a)).Count();
 
         highChartSeries.data.Add(new data()
         {
@@ -85,11 +85,10 @@ namespace sga_stif.Controllers
 
       var tipologiaSocios = _context.TipologiaSocio.Where(e => e.Eliminado == false).ToList();
 
-      var todos = _context.Socio.Select(j=>j.IdTipologiaSocio).ToList();
+      var todos = _context.Socio.Where(r=>r.Eliminado==false).Select(j=>j.IdTipologiaSocio).ToList();
 
       foreach (var tipologiaSocio in tipologiaSocios)
       {
-
 
         var total = todos.Where(a => a == tipologiaSocio.IdTipologiaSocio).Count();
 
@@ -151,7 +150,7 @@ namespace sga_stif.Controllers
       highChartSeries.colorByPoint = true;
       highChartSeries.data = new List<data>();
 
-      var todos = _context.Socio.Where(e => e.Eliminado == false).Select(j=>j.Sexo).ToList();
+      var listaDeSocio = _context.Socio.Where(e => e.Eliminado == false).Select(j=>j.Sexo).ToList();
 
       var lista = new List<Sexo>(){
           Sexo.Feminino,
@@ -161,7 +160,7 @@ namespace sga_stif.Controllers
       foreach (var item in lista)
       {
 
-        var total = todos.Where(a => a == item).Count();
+        var total = listaDeSocio.Where(a => a == item).Count();
 
         highChartSeries.data.Add(new data()
         {
@@ -187,7 +186,7 @@ namespace sga_stif.Controllers
       highChartSeries.colorByPoint = true;
       highChartSeries.data = new List<data>();
 
-      var todos = _context.Socio.Where(e => e.Eliminado == false).Select(k=>k.EstadoCivil).ToList();
+      var listaDeSocio = _context.Socio.Where(e => e.Eliminado == false).Select(k=>k.EstadoCivil).ToList();
 
       var listaEstadoCivil = new List<EstadoCivil>(){
          EstadoCivil.Casado,
@@ -200,7 +199,7 @@ namespace sga_stif.Controllers
       foreach (var estadoCivil in listaEstadoCivil)
       {
 
-        var total = todos.Where(a => a == estadoCivil).Count();
+        var total = listaDeSocio.Where(a => a == estadoCivil).Count();
 
         highChartSeries.data.Add(new data()
         {
@@ -229,7 +228,7 @@ namespace sga_stif.Controllers
 
       var ilhas = _context.Ilha.Where(e => e.Eliminado == false).Include(g => g.Cidade).ThenInclude(g => g.Agencia).ToList();
 
-      var todos = _context.Socio.Where(e=>e.Eliminado==false).Select(k=>k.IdAgencia).ToList();
+      var listaDeSocio = _context.Socio.Where(e=>e.Eliminado==false).Select(k=>k.IdAgencia).ToList();
 
       foreach (var item in ilhas)
       {
@@ -244,7 +243,7 @@ namespace sga_stif.Controllers
 
         }
 
-        var total = todos.Where(a => agencia.Contains(a)).Count();
+        var total = listaDeSocio.Where(a => agencia.Contains(a)).Count();
 
         highChartSeries.data.Add(new data()
         {
@@ -268,7 +267,6 @@ namespace sga_stif.Controllers
       GraficoColunaEmpilhadaAgrupada graficoColunaEmpilhadaAgrupada = new GraficoColunaEmpilhadaAgrupada();
 
       graficoColunaEmpilhadaAgrupada.dados = new List<Dados>();
-
 
       var socios = _context.Socio.Where(e => e.Eliminado == false).Select(a=>new {a.IdAgencia,a.Sexo}).ToList();
       var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(e => e.Eliminado == false).Include(g => g.Agencia).ToList();
@@ -319,12 +317,9 @@ namespace sga_stif.Controllers
       graficoColunaEmpilhadaAgrupada.categorias = new List<string>();
 
 
-      var socios = _context.Socio.Where(e => e.Eliminado == false).ToList();
+      var listaDeSocios = _context.Socio.Where(e => e.Eliminado == false).ToList();
       var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(e => e.Eliminado == false).Include(g => g.Agencia).ToList();
       var aux = from v in instituicaoFinanceiras select v.Sigla;
-
-
-
 
       var sexos = new List<Sexo>(){
           Sexo.Feminino,
@@ -363,19 +358,19 @@ namespace sga_stif.Controllers
 
       foreach (var sexo in sexos)
       {
-        Dados d = new Dados();
-        d.name = sexo.GetDescription();
-        d.data = new List<int>();
+        Dados dados = new Dados();
+        dados.name = sexo.GetDescription();
+        dados.data = new List<int>();
 
         foreach (var idade in listaDeIdades)
         {
           var total = 0;
 
           if(idade ==60){
-             total = socios.Where(a => a.PegarIdade() > idade && a.Sexo == sexo).Count();
+             total = listaDeSocios.Where(a => a.PegarIdade() > idade && a.Sexo == sexo).Count();
 
           }else{
-             total = socios.Where(a => a.PegarIdade() >= anterio && a.PegarIdade() <= idade && a.Sexo == sexo).Count();
+             total = listaDeSocios.Where(a => a.PegarIdade() >= anterio && a.PegarIdade() <= idade && a.Sexo == sexo).Count();
           }
 
           anterio = idade+1;
@@ -385,11 +380,11 @@ namespace sga_stif.Controllers
             total *= -1;
 
           }
-          d.data.Add(total);
+          dados.data.Add(total);
 
         }
 
-        graficoColunaEmpilhadaAgrupada.dados.Add(d);
+        graficoColunaEmpilhadaAgrupada.dados.Add(dados);
 
       }
 

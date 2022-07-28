@@ -20,6 +20,8 @@ namespace sga_stif.Models
          public string? UtilizadorQueConfirmouPagamento { get; set; }
          public DateTime? DataQueFoiConfirmadaPagamento { get; set; }
 
+         public string OrigemPagamento { get; set; } = "Manual"; //Ficheiro
+
          //propriedades de navegação
         public virtual Socio Socio { get; set; }
         public virtual PeriodoQuota PeriodoQuota { get; set; }

@@ -29,11 +29,6 @@ namespace sga_stif.Controllers
       var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(a=>a.Eliminado==false).ToList();
       var instituicaoFinanceirasItem = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome };
 
-
-     
-
-
-
       //ViewBag.IdInstituicaoFinanceira = instituicaoFinanceirasItem;
 
       var lista = new List<ContaCorrenteIFResultado>();
@@ -45,8 +40,6 @@ namespace sga_stif.Controllers
 
         var selected = instituicaoFinanceirasItem.Where(x => x.Value == valorConvertido).First();
         selected.Selected = true;
-
-
 
         lista = _context.ContaCorrenteIFResultado.FromSqlRaw($"EXECUTE  [dbo].[ContaCorrenteIF] @ano = 2022, @mes=1,@idif = {IdInstituicaoFinanceira},@user ='{PegarNomeUtilizador()}', @status='QV'").ToList();
       }
@@ -101,15 +94,11 @@ namespace sga_stif.Controllers
         ano = DataPesquisa.Value.Year;
         mes = DataPesquisa.Value.Month;
 
-
-
       }
       else
       {
         DataPesquisa = new DateTime(ano, mes, 1);
       }
-
-
 
       ViewBag.DataPreenchido = ano + "-" + DataPesquisa.Value.Month.ToString("#00");
 

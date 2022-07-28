@@ -13,7 +13,7 @@ namespace sga_stif.ViewModel.Socio
     public string Nome { get; set; }
     public string Apelido { get; set; }
     [Display(Name = "Número de Identificação Fiscal")]
-    public string Nif { get; set; }
+    public string? Nif { get; set; }
     [Display(Name = "CIN/BI")]
     public string CinBi { get; set; }
 
@@ -23,7 +23,7 @@ namespace sga_stif.ViewModel.Socio
     public DateTime? ValidadeCinBi { get; set; }
 
     [Display(Name = "Número de Passaporte")]
-    public string NumeroPassaporte { get; set; }
+    public string? NumeroPassaporte { get; set; }
     [DataType(DataType.Date)]
     [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
     [Display(Name = "Válidade de passaporte")]
@@ -43,7 +43,11 @@ namespace sga_stif.ViewModel.Socio
     public string? NumeroDeTelemovel { get; set; }
     [EmailAddress]
     public string Email { get; set; }
+
+     [Display(Name = "Número de Colaborador")]
     public string NumeroColaborador { get; set; }
+
+     [Display(Name = "Número de Socio")]
     public string NumeroDeSocio { get; set; }
     
 
@@ -51,7 +55,7 @@ namespace sga_stif.ViewModel.Socio
     [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
     [Display(Name = "Data de Ativação")]
     [Required(ErrorMessage = "A Data de Ativação é necessário")]
-    public string? DataAtivacao { get; set; }
+    public DateTime? DataAtivacao { get; set; }
 
    // [Required(ErrorMessage = "Agência de Sócio é necessário")]
     public int IdInstituicaoFinanceira { get; set; }
@@ -65,6 +69,7 @@ namespace sga_stif.ViewModel.Socio
     // [Required(ErrorMessage = "Tipo quota de Sócio é necessário")]
     public int IdTipoQuota { get; set; }
 
+    [Display(Name = "Habilitação Literária")]
     public HabilitacaoLiteraria HabilitacaoLiteraria { get; set; }
 
   }

@@ -115,18 +115,44 @@
                 url: 'https://cdn.datatables.net/plug-ins/1.12.1/i18n/pt-PT.json'
                 //url:"@Url.Content("~/pt-PT.json")"
             },
-            "paging": true,
-            "lengthChange": false,
-            "searching": true,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-              dom: 'lBfrtip',
-               "lengthMenu": [
-        [10, 25, 50, -1],
-        [10, 25, 50, "All"]
-      ]
+            pageLenght: 50,
+            paging: true,
+            lengthChange: true,
+            //searching: true,
+            ordering: true,
+            responsive: true,
+            //dom: 'Bfrtip',
+            dom: 'lBfrtip',
+            buttons: [
+                {
+                    extend: 'pdf',
+                    footer: true,
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5]
+                    }
+                },
+                {
+                    extend: 'excel',
+                    footer: false,
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5]
+                    }
+
+                },
+                {
+                    extend: 'print',
+                    footer: false,
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5]
+                    }
+                }
+                //'copy', 'csv', 'excel', 'pdf', 'print'
+                //'excel', 'pdf', 'print'
+            ],
+            "lengthMenu": [
+                [10, 25, 50, -1],
+                [10, 25, 50, "All"]
+            ]
         });
     });
 </script>
