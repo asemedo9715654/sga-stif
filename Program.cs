@@ -83,6 +83,14 @@ if (!app.Environment.IsDevelopment())
 
 app.UseNotyf();
 
+//localizacao para PT
+// var supportedCultures = new[] { "pt-PT", "pt" };
+// var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture(supportedCultures[0])
+//     .AddSupportedCultures(supportedCultures)
+//     .AddSupportedUICultures(supportedCultures);
+
+// app.UseRequestLocalization(localizationOptions);
+
 
 
 

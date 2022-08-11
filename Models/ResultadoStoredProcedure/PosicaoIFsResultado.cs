@@ -16,9 +16,12 @@ namespace sga_stif.Models.ResultadoStoredProcedure
     public int TotalColaboradoresAnterior { get; set; }
     [Display(Name = "Total de Colaboradores Atual")]
     public int TotalColaboradoresAtual { get; set; }
+    [DisplayFormat(DataFormatString ="{0:N}")]
     [Display(Name = "Total Quotas Mês Anterior")]
     public double TotalQuoataMesAnterior { get; set; }
+
     [Display(Name = "Total Quotas Mês Atual")]
+     [DisplayFormat(DataFormatString ="{0:N}")]
     public double TotalQuoataMesAtual { get; set; }
     public int Estado { get; set; }
     public int Variacao { get; set; }

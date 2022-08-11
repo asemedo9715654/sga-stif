@@ -85,6 +85,7 @@ namespace sga_stif.ViewModel.Socio
     public int IdTipoQuota { get; set; }
 
     [Display(Name = "Número De Sócio")]
+     [Remote(action: "VereficaNumeroDeSocio", controller: "Socio")]
       public string NumeroDeSocio { get; set; }
      [Display(Name = "Número De Colaborador")]
      public string NumeroColaborador { get; set; }

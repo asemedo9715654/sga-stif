@@ -398,7 +398,7 @@ namespace sga_stif.Controllers
             else
             {
                 //existe socio com o mesmo numero de colaborador na mesma instituicao´
-                var exiteSocioComMesmoNumerColaborador = _context.Socio.FirstOrDefault(j => j.NumeroColaborador == novoSocioViewModel.NumeroColaborador && j.Agencia.InstituicaoFinanceira.IdInstituicaoFinanceira == instituicaoFinanceira.IdInstituicaoFinanceira);
+                var exiteSocioComMesmoNumerColaborador = _context.Socio.Include(a=>a.Agencia).ThenInclude(i=>i.InstituicaoFinanceira).FirstOrDefault(j => j.NumeroColaborador == novoSocioViewModel.NumeroColaborador && j.Agencia.InstituicaoFinanceira.IdInstituicaoFinanceira == instituicaoFinanceira.IdInstituicaoFinanceira);
                 if (exiteSocioComMesmoNumerColaborador != null)
                 {
                     return Tuple.Create(false, $"Existe colaborador com o mesmo nº de colaborador para instituição: {instituicaoFinanceira.Nome}");
@@ -432,6 +432,19 @@ namespace sga_stif.Controllers
             if (socio != null)
             {
                 return Json($"O Número de Passaporte {NumeroPassaporte} já foi inserida no sistema!");
+            }
+
+            return Json(true);
+        }
+
+
+         [AcceptVerbs("GET", "POST")]
+        public IActionResult VereficaNumeroDeSocio(string NumeroDeSocio)
+        {
+            var socio = _context.Socio.FirstOrDefault(k => k.NumeroDeSocio == NumeroDeSocio);
+            if (socio != null)
+            {
+                return Json($"O Número de sócio {NumeroDeSocio} já foi inserida no sistema!");
             }
 
             return Json(true);
