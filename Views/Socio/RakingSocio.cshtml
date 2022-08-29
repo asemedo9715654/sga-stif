@@ -5,23 +5,26 @@
 }
 
 
-  <div class="card">
-    <div class="card-header">
-    
-        <div class="row no-print">
+<div class="card">
+  <div class="card-header">
 
-          <div class="col-12">
-            <p class="lead">Ranking Sócio</p>
-          </div>
-        </div>
+    <div class="row no-print">
 
+      <div class="col-12">
+        <p class="lead">Ranking Sócio</p>
+      </div>
     </div>
 
-    <div class="card-body">
-      <form method="post" asp-controller="Pagamento" asp-action="AnularMultiplosPagamento" id="formularioDePagamentos">
+  </div>
+
+  <div class="card-body">
+    <form method="post" asp-controller="Pagamento" asp-action="AnularMultiplosPagamento" id="formularioDePagamentos">
       <table id="example2" class="table table-bordered table-striped">
         <thead>
           <tr>
+            <th>
+              @Html.DisplayNameFor(model => model.Posicao)
+            </th>
             <th>
               @Html.DisplayNameFor(model => model.Nome)
             </th>
@@ -40,16 +43,75 @@
             <th>
               @Html.DisplayNameFor(model => model.TotalMontantePago)
             </th>
-            <th>
+            @* <th>
               Ação
-            </th>
+              </th> *@
           </tr>
         </thead>
         <tbody>
           @foreach (var item in Model)
           {
-            <tr>
-              
+
+            if (item.TopR == 1)
+            {
+              <tr style="background-color:#B1E693">
+
+                <td>
+                  @Html.DisplayFor(modelItem => item.Posicao)
+                </td>
+                <td>
+                  @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                  @Html.DisplayFor(modelItem => item.NumeroDeSocio)
+                </td>
+                <td>
+                  @Html.DisplayFor(modelItem => item.IFS)
+                </td>
+                <td>
+                  @Html.DisplayFor(modelItem => item.AgenciaNome)
+                </td>
+                <td>
+                  @Html.DisplayFor(modelItem => item.MesesPago)
+                </td>
+                <td>
+                  @Html.DisplayFor(modelItem => item.TotalMontantePago)
+                </td>
+              </tr>
+            }
+            else
+            {
+              <tr style="background-color:#F1F1F1">
+
+                <td>
+                  @Html.DisplayFor(modelItem => item.Posicao)
+                </td>
+                <td>
+                  @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                  @Html.DisplayFor(modelItem => item.NumeroDeSocio)
+                </td>
+                <td>
+                  @Html.DisplayFor(modelItem => item.IFS)
+                </td>
+                <td>
+                  @Html.DisplayFor(modelItem => item.AgenciaNome)
+                </td>
+                <td>
+                  @Html.DisplayFor(modelItem => item.MesesPago)
+                </td>
+                <td>
+                  @Html.DisplayFor(modelItem => item.TotalMontantePago)
+                </td>
+              </tr>
+
+            }
+
+            @* <tr>
+              <td>
+                @Html.DisplayFor(modelItem => item.Posicao)
+              </td>
               <td>
                 @Html.DisplayFor(modelItem => item.Nome)
               </td>
@@ -67,18 +129,16 @@
               </td>
               <td>
                 @Html.DisplayFor(modelItem => item.TotalMontantePago)
-              </td>        
-              <td>
-
               </td>
 
-            </tr>
+
+            </tr> *@
           }
         </tbody>
       </table>
-      </form>
-    </div>
+    </form>
   </div>
+</div>
 
 
 <script>
@@ -94,10 +154,21 @@
       "paging": true,
       "lengthChange": false,
       "searching": false,
-      "ordering": true,
+      //"ordering": true, 
       "info": true,
       "autoWidth": false,
       "responsive": true,
+      aLengthMenu: [
+        [ 50, 100, 200, -1],
+        [ 50, 100, 200, "All"]
+    ],
+    iDisplayLength: -1,
+      order: [[6, 'desc']],
+      columnDefs: [
+      { orderable: false, targets: [0, 1, 2, 3,4] }
+       //,{ type: "numeric-comma", targets: [6] }
+      
+      ]
     });
   });
 </script>
