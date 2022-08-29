@@ -203,11 +203,15 @@ namespace sga_stif.Controllers
 
             var instituicaoFinanceiras = _context.InstituicaoFinanceira.ToList();
 
-            var angenciaListItem = from g in angencia select new SelectListItem { Value = g.IdAgencia.ToString(), Text = g.Cidade.Nome + " - " + g.Nome };
+            var angenciaListItem = from g in angencia select new SelectListItem { Value = g.IdAgencia.ToString(), Text = g.Cidade.Nome + " - " + g.Nome,Selected =agenciaAtul.IdAgencia ==g.IdAgencia?true:false     };
             var tipologiaSociosListItem = from g in tipologiaSocios select new SelectListItem { Value = g.IdTipologiaSocio.ToString(), Text = g.Descricao };
             var tipoQuotasListItem = from g in tipoQuotas select new SelectListItem { Value = g.IdTipoQuota.ToString(), Text = g.Descricao };
 
-            var instituicaoFinanceirasItem = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome, Selected = g.IdInstituicaoFinanceira == agenciaAtul.IdInstituicaoFinanceira ? true : false };
+            var instituicaoFinanceirasItem = from g in instituicaoFinanceiras select new SelectListItem { 
+                Value = g.IdInstituicaoFinanceira.ToString(), 
+                Text = g.Nome, 
+                Selected = g.IdInstituicaoFinanceira == agenciaAtul.IdInstituicaoFinanceira ? true : false 
+            };
 
             ViewBag.IdAgencia = angenciaListItem;
             ViewBag.IdTipologiaSocio = tipologiaSociosListItem;

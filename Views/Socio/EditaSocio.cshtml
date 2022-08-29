@@ -111,19 +111,20 @@
           </div>
 
 
-          @* <div class="form-group">
+          @*  xxx IdInstituicaoFinanceira *@
+          <div class="form-group">
             <label asp-for="IdInstituicaoFinanceira" class="control-label"></label>
             <select asp-for="IdInstituicaoFinanceira" asp-items="@ViewBag.IdInstituicaoFinanceira" class="form-control"
               id="IdInstituicaoFinanceira">
-              <option disabled selected>--- seleccione ---</option>
+              @* <option disabled selected>--- seleccione ---</option> *@
             </select>
             <span asp-validation-for="IdInstituicaoFinanceira" class="text-danger"></span>
-          </div> *@
+          </div> 
 
           <div class="form-group" id="div-agencia">
             <label asp-for="IdAgencia" class="control-label"></label> 
              <select asp-for="IdAgencia" asp-items="@ViewBag.IdAgencia" class="form-control">
-              <option disabled selected>--- seleccione ---</option>
+              @* <option disabled selected>--- seleccione ---</option> *@
               </select>
             <span asp-validation-for="IdAgencia" class="text-danger"></span>
           </div>
@@ -208,9 +209,6 @@
           </div>
 
         </div>
-
-        
-    
 
 
       </div>
