@@ -28,4 +28,15 @@
     <PackageReference Include="Serilog.AspNetCore" Version="5.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Home\ContaCorrentes\ListaQuotasPagas.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Home\ContaCorrentes\ListaQuotasPendente.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Home\ContaCorrentes\ListaQuotasPorPagar.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Home\ContaCorrentes\ListaQuotasVencidas.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="ViewComponents\BotaoComponent.cs" />
+  </ItemGroup>
+
 </Project>

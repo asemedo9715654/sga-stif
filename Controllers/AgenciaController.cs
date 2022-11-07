@@ -131,13 +131,13 @@ namespace sga_stif.Controllers
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> EditaAgencia([Bind("IdAgencia, Nome,IdCidade,IdInstituicaoFinanceira")] NovaAgenciaViewModel novoPerfilViewModel)
+    public async Task<IActionResult> EditaAgencia([Bind("IdAgencia, Nome,IdCidade,IdInstituicaoFinanceira")] EditaAgenciaViewModel editaAgenciaViewModel)
     {
       try
       {
         if (ModelState.IsValid)
         {
-          var agencia = _mapper.Map<Agencia>(novoPerfilViewModel);
+          var agencia = _mapper.Map<Agencia>(editaAgenciaViewModel);
           _context.Update(agencia);
           await _context.SaveChangesAsync();
           _notyf.Success("Agência editado com sucesso!");
@@ -153,7 +153,7 @@ namespace sga_stif.Controllers
 
       _notyf.Error("Erro na adição de agencia");
 
-      return View(novoPerfilViewModel);
+      return View(editaAgenciaViewModel);
     }
 
     ///

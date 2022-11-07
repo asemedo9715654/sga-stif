@@ -75,9 +75,9 @@
               @Html.DisplayFor(modelItem => item.NomePerfil)
             </td>
             <td>
-              <a class="btn btn-success btn-xs" asp-action="Edit" asp-route-id="@item.IdUtilizador"><i class="fas fa-pen"></i>Editar</a>
-              <a class="btn btn-default btn-xs" asp-action="Details" asp-route-id="@item.IdUtilizador"> <i class="fas fa-info"></i> Detalhes</a>
-              <a class="btn btn-warning btn-xs" asp-action="EliminaUtilizador" asp-route-idUtilizador="@item.IdUtilizador"><i class="fas fa-user-slash"></i> Inativar</a>
+              <a class="btn btn-success btn-xs" asp-controller="Utilizador" asp-action="EditaUtilizador" asp-route-idUtilizador="@item.IdUtilizador"><i class="fas fa-pen"></i>Editar</a>
+              <a class="btn btn-default btn-xs" asp-controller="Utilizador" asp-action="DetalhesUtilizador" asp-route-idUtilizador="@item.IdUtilizador"> <i class="fas fa-info"></i> Detalhes</a>
+              <a class="btn btn-warning btn-xs"  asp-controller="Utilizador" asp-action="EliminaUtilizador" asp-route-idUtilizador="@item.IdUtilizador"><i class="fas fa-user-slash"></i> Inativar</a>
             </td>
           </tr>
         }

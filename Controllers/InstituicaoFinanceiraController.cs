@@ -245,8 +245,11 @@ namespace sga_stif.Controllers
     public async Task<IActionResult> InativarInstituicaoFinanceira(int idInstituicaoFinanceira)
     {
       var instituicaoFinanceira = await _context.InstituicaoFinanceira.FindAsync(idInstituicaoFinanceira);
-      instituicaoFinanceira.Eliminado = true;
-      instituicaoFinanceira.DataAtualizacao = DateTime.Now;
+      if (instituicaoFinanceira != null)
+      {
+        instituicaoFinanceira.Eliminado = true;
+        instituicaoFinanceira.DataAtualizacao = DateTime.Now;
+      }
 
       await _context.SaveChangesAsync();
       _notyf.Success("Intituição Financeira inativado com sucesso!");

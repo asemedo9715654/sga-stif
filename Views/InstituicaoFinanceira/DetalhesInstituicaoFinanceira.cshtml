@@ -50,16 +50,16 @@
         <div class="col-12">
             <p class="lead">Lista de Numero de Colaboradores por data</p>
             <a asp-action="ListaInstituicaoFinanceira" rel="noopener" class="btn btn-default btn-sm"><i
-                    class="fas fa-arrow-left"></i> Voltar Para Lista</a>
+                                                                                                         class="fas fa-arrow-left"></i> Voltar Para Lista</a>
 
             <a asp-action="NovoInstituicaoFinanceiraColaboradores" asp-controller="InstituicaoFinanceira"
-                asp-route-idInstituicaoFinanceira="@Model.IdInstituicaoFinanceira"
-                class="btn btn-success btn-sm float-right" style="margin-right: 5px;"> <i class="fas fa-plus"></i>
+               asp-route-idInstituicaoFinanceira="@Model.IdInstituicaoFinanceira"
+               class="btn btn-success btn-sm float-right" style="margin-right: 5px;"> <i class="fas fa-plus"></i>
                 Adicionar
                 Número Colaboradores</a>
             <a asp-action="InativarInstituicaoFinanceira" asp-controller="InstituicaoFinanceira"
-                asp-route-idInstituicaoFinanceira="@Model.IdInstituicaoFinanceira"
-                class="btn btn-warning btn-sm float-right" style="margin-right: 5px;"> <i class="fas fa-user-slash"></i>
+               asp-route-idInstituicaoFinanceira="@Model.IdInstituicaoFinanceira"
+               class="btn btn-warning btn-sm float-right" style="margin-right: 5px;"> <i class="fas fa-user-slash"></i>
                 Inativar</a>
 
             <br>
@@ -68,44 +68,45 @@
             <div class="col-12 table-responsive">
                 <table class="table table-striped">
                     <thead>
-                        <tr>
-                            <th>
-                                @Html.DisplayNameFor(model =>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model =>
                                 model.ListaInstituicaoFinanceiraColaboradoresViewModel[0].NumeroColaboradores)
 
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model =>
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model =>
                                 model.ListaInstituicaoFinanceiraColaboradoresViewModel[0].DataInicio)
 
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model =>
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model =>
                                 model.ListaInstituicaoFinanceiraColaboradoresViewModel[0].DataFim)
-                            </th>
+                        </th>
 
-                        </tr>
+                    </tr>
                     </thead>
                     <tbody>
-                        @foreach (var item in Model.ListaInstituicaoFinanceiraColaboradoresViewModel)
-                        {
-                            <tr>
+                    @foreach (var item in Model.ListaInstituicaoFinanceiraColaboradoresViewModel)
+                    {
+                        <tr>
 
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.NumeroColaboradores) Colaboradore(s)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.DataInicio)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.DataFim)
-                                </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NumeroColaboradores) Colaboradore(s)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DataInicio)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DataFim)
+                            </td>
 
-                            </tr>
-                        }
+                        </tr>
+                    }
                     </tbody>
                 </table>
             </div>
             <!-- /.col -->
         </div>
     </div>
+</div>
