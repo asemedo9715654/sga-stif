@@ -9,6 +9,9 @@ using sga_stif.ViewModel.InstituicaoFinanceira;
 using sga_stif.ViewModel.Socio;
 using sga_stif.ViewModel.TipoQuota;
 
+using MailKit.Net.Smtp;
+using MimeKit;
+
 namespace sga_stif.Controllers
 {
   public class InstituicaoFinanceiraController : BaseController
@@ -41,9 +44,7 @@ namespace sga_stif.Controllers
       return View(listaInstituicaoFinanceiraViewModel);
     }
 
-
-
-
+      
     [HttpGet]
     public IActionResult NovoInstituicaoFinanceira()
     {
@@ -236,9 +237,7 @@ namespace sga_stif.Controllers
       var inativarPerfilViewModel= _mapper.Map<InativarInstituicaoFinanceiraViewModel>(instituicaoFinanceira);
       return View(inativarPerfilViewModel);
     }
-
-
-
+        
     // POST: Employees/Delete/1
     [HttpPost]
     [ValidateAntiForgeryToken]
@@ -258,8 +257,7 @@ namespace sga_stif.Controllers
       return RedirectToAction("ListaInstituicaoFinanceira");
     }
 
-
-      public async Task<IActionResult> ReativarInstituicaoFinanceira(int idInstituicaoFinanceira)
+    public async Task<IActionResult> ReativarInstituicaoFinanceira(int idInstituicaoFinanceira)
     {
       var utilizador = await _context.InstituicaoFinanceira.FindAsync(idInstituicaoFinanceira);
       utilizador.Eliminado = false;
@@ -272,9 +270,7 @@ namespace sga_stif.Controllers
       return RedirectToAction("ListaInstituicaoFinanceira");
     }
 
-
-
-
+    
     public async Task<IActionResult> ListaSocioPorInstituicaoFinanceira(int idInstituicaoFinanceira, string nomeDeInstituicaoFinanceira)
     {
 
@@ -293,5 +289,115 @@ namespace sga_stif.Controllers
       return View(listaSocioViewModel);
     }
 
+    #region envio de email
+
+    public IActionResult EnvioDeEmailPorInstituicao(int idInstituicaoFinanceira)
+    {
+
+      ViewBag.NomeInstituicaoFinanceira = _context.InstituicaoFinanceira.FirstOrDefault(d=>d.IdInstituicaoFinanceira==idInstituicaoFinanceira).Nome;
+      var emailViewModel = new EmailViewModel()
+      {
+        IdInstituicaoFinanceira = idInstituicaoFinanceira
+      };
+      return View(emailViewModel);
+    }
+    
+    [HttpPost]
+    public IActionResult EnvioDeEmailPorInstituicao(EmailViewModel emailViewModel)
+    {
+      try
+      {
+        if (ModelState.IsValid )
+        {
+          IEnumerable<InternetAddress> ff = new List<InternetAddress>(); 
+          var ddd =  _context.Socio.Where(e=>e.Eliminado==false&&e.Agencia.IdInstituicaoFinanceira==emailViewModel.IdInstituicaoFinanceira).ToList();
+
+          foreach (var dd in ddd)
+          {
+            if(IsValidEmail(dd.Email))
+            {
+              ff.Append(new MailboxAddress(dd.Nome, dd.Email));
+            }
+            
+          }
+          ff.Append(new MailboxAddress("jj", "vamp9278493cv@gmail.com"));
+          var emailMessagedd = CreateEmailMessage(emailViewModel,ff);
+          Send(emailMessagedd);
+          _notyf.Success("Email enviado com sucesso!");
+          return RedirectToAction("ListaInstituicaoFinanceira");
+        }
+        _notyf.Error("Model invalido");
+      }
+      catch (Exception e)
+      {
+        _notyf.Error("Erro : "+e.Message);
+      }
+      
+      ViewBag.NomeInstituicaoFinanceira = _context.InstituicaoFinanceira.FirstOrDefault(d=>d.IdInstituicaoFinanceira==emailViewModel.IdInstituicaoFinanceira).Nome;
+
+      return View(emailViewModel);
+    }
+    
+    bool IsValidEmail(string email)
+    {
+      var trimmedEmail = email.Trim();
+
+      if (trimmedEmail.EndsWith(".")) {
+        return false; // suggested by @TK-421
+      }
+      try {
+        var addr = new System.Net.Mail.MailAddress(email);
+        return addr.Address == trimmedEmail;
+      }
+      catch {
+        return false;
+      }
+    }
+    
+    private MimeMessage CreateEmailMessage(EmailViewModel message, IEnumerable<InternetAddress> para)
+    {
+      var emailMessage = new MimeMessage();
+      emailMessage.From.Add(new MailboxAddress("Angelo Semedo","vamp9278493cv@gmail.com"));
+      emailMessage.To.AddRange(para);
+      //emailMessage.To.Add(para);
+      emailMessage.Subject = message.Assunto;
+      emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Text) { Text = message.CorpoDoEmail };
+      return emailMessage;
+    }
+    private void Send(MimeMessage mailMessage)
+    {
+      
+      var emailConfig = new EmailConfiguration()
+      {
+        From = "vamp9278493cv@gmail.com",
+        Password = "#merda-Mundo2020",
+        Port = 25,
+        SmtpServer = "smtp.gmail.com",
+        UserName = "vamp9278493cv@gmail.com"
+      };
+      
+      using (var client = new SmtpClient())
+      {
+        try
+        {
+          client.Connect(emailConfig.SmtpServer, emailConfig.Port, false);
+          client.AuthenticationMechanisms.Remove("XOAUTH2");
+          client.Authenticate(emailConfig.UserName, emailConfig.Password);
+          client.Send(mailMessage);
+        }catch (Exception e)
+        {
+          //log an error message or throw an exception or both.
+          throw new Exception(e.Message);
+        }
+        finally
+        {
+          client.Disconnect(true);
+          client.Dispose();
+        }
+      }
+    }
+    
+
+    #endregion
   }
 }

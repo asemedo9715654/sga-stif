@@ -8,7 +8,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4a08a61b-b9ff-497e-ba0c-1c1015890426" name="Changes" comment="" />
+    <list default="true" id="4a08a61b-b9ff-497e-ba0c-1c1015890426" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ViewModel/InstituicaoFinanceira/EmailViewModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/InstituicaoFinanceira/EnvioDeEmailPorInstituicao.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.sga-stif.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.sga-stif.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/InstituicaoFinanceiraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/InstituicaoFinanceiraController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Properties/launchSettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/InstituicaoFinanceira/ListaInstituicaoFinanceira.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/InstituicaoFinanceira/ListaInstituicaoFinanceira.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sga-stif.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/sga-stif.csproj" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,20 +34,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.sga-stif: IIS Express">
+}</component>
+  <component name="RunManager" selected="Publish to folder.Publish sga-stif to folder">
+    <configuration name="Publish sga-stif to folder" type="DotNetFolderPublish" factoryName="Publish to folder">
+      <riderPublish runtime="Portable" target_folder="$PROJECT_DIR$/bin/net6.0/publish" target_framework="net6.0" uuid_high="-8248343473102538969" uuid_low="4916030125105077921" />
+      <method v="2" />
+    </configuration>
     <configuration name="sga-stif: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/sga-stif.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net6.0" />
@@ -81,6 +93,7 @@
       <updated>1666915906548</updated>
       <workItem from="1666915917316" duration="3320000" />
       <workItem from="1666920913387" duration="7858000" />
+      <workItem from="1668953244590" duration="11403000" />
     </task>
     <servers />
   </component>
