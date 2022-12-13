@@ -300,7 +300,7 @@ namespace sga_stif.Controllers
     public async Task<IActionResult> InativarPerfil(int idPerfil)
     {
       var perfil = await _context.Perfil.FindAsync(idPerfil);
-      perfil.Eliminado = true;
+      if (perfil != null) perfil.Eliminado = true;
 
       await _context.SaveChangesAsync();
       _notyf.Success("Perfil inativado com sucesso!");
@@ -313,8 +313,11 @@ namespace sga_stif.Controllers
        public async Task<IActionResult> ReativarPerfil(int idPerfil)
     {
       var perfil = await _context.Perfil.FindAsync(idPerfil);
-      perfil.Eliminado = false;
-      perfil.DataAtualizacao = DateTime.Now;
+      if (perfil != null)
+      {
+        perfil.Eliminado = false;
+        perfil.DataAtualizacao = DateTime.Now;
+      }
 
       await _context.SaveChangesAsync();
       _notyf.Success("Perfil reativado com sucesso!");

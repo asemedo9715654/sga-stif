@@ -14,6 +14,10 @@ namespace sga_stif.Filtros
         {
             string controller = (string)context.RouteData.Values["Controller"];
             string action = (string)context.RouteData.Values["Action"];
+            
+            if(action=="GetEmployeeList")
+                return;
+            
 
             if (controller == "Login" && context.HttpContext.Session.GetString("NomeUtilizador") == null)
             {

@@ -1,0 +1,45 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container">
+    <div class="table-responsive">
+        <table id="myTable" class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Apelido</th>
+                <th>Nif</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+
+<script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function () {
+               $('#myTable').DataTable(
+                   {
+                       ajax: {
+                           url: "Socio/GetEmployeeList",
+                           type: "POST",
+                       },
+                       processing: true,
+                       serverSide: true,
+                       filter: true,
+                       columns: [
+                           // { data: "employeeId", name: "EmployeeId" },
+                           { data: "Nome", name: "Nome" },
+                           { data: "ApelidoApelido", name: "Apelido" },
+                           { data: "Nif", name: "Nif" }
+                          
+                       ]
+                   }
+               );
+           });
+</script>
+
+<link href="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet" />
+

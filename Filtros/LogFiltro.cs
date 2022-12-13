@@ -36,20 +36,13 @@ namespace sga_stif.Filtros
             else
             {
                 var arguments = context.ActionArguments;
-                
                 var value = arguments.FirstOrDefault().Value;
-
                 var convertedValue = JsonConvert.SerializeObject(value);
                 data = convertedValue;
             }
 
             //var user=context.HttpContext.User.Identity.Name;
-
-
-
             var user="ok";
-
-
             if(context.HttpContext.Session.GetString("NomeUtilizador")==null){
                 user="anonimo";
 
@@ -63,7 +56,13 @@ namespace sga_stif.Filtros
             SalvarNaBaseDeDados(data,url,user,ipAddress);
           
         }
-
+        /// <summary>
+        /// Salvar Log Na Base DeDados
+        /// </summary>
+        /// <param name="dados"></param>
+        /// <param name="url"></param>
+        /// <param name="nomeUtilizador"></param>
+        /// <param name="enderecoIp"></param>
         public void SalvarNaBaseDeDados(string dados, string url, string nomeUtilizador, string enderecoIp){
             var logAtividade = new LogAtividade{
                 Dados = dados,

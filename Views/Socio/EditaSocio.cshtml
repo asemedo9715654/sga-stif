@@ -112,12 +112,14 @@
 
 
           @*  xxx IdInstituicaoFinanceira *@
+          @* @Html.DropDownListFor() *@
           <div class="form-group">
             <label asp-for="IdInstituicaoFinanceira" class="control-label"></label>
             <select asp-for="IdInstituicaoFinanceira" asp-items="@ViewBag.IdInstituicaoFinanceira" class="form-control"
               id="IdInstituicaoFinanceira">
               @* <option disabled selected>--- seleccione ---</option> *@
             </select>
+             @* @Html.DropDownListFor(model => model.IdInstituicaoFinanceira, null, "----", new { @id = "IdInstituicaoFinanceira", @class = "form-control", onchange = "PegarTaxa()" }) *@
             <span asp-validation-for="IdInstituicaoFinanceira" class="text-danger"></span>
           </div> 
 
@@ -229,51 +231,46 @@
 
 
 <script>
-/*
   $(function () {
 
-    EnviarDadosInstituicaoFinanceira($('#IdInstituicaoFinanceira').val());
+
 
     $('#IdInstituicaoFinanceira').on('change', function () {
       //alert(this.value);
-      EnviarDadosInstituicaoFinanceira(this.value);
+
+      $.ajax({
+        url: $("#RecuperaLinkPegarAgencia").val(),
+        data: { idInstituicaoFinanceira: this.value },
+        type: "get",
+        dataType: "json",
+        success: function (result) {
+          console.log(result)
+
+          var $label = $("<label>").text('Agencia :');
+
+          var select = $("<select></select>").attr("id", "IdAgencia").attr("name", "IdAgencia");
+
+          select.addClass("form-control")
+
+          select.append($("<option></option>").attr("value", result.idAgencia).text("--seleccione--").attr('disabled', 'disabled'));
+
+          $.each(result, function (index, result) {
+            select.append($("<option></option>").attr("value", result.idAgencia).text(result.nome));
+          });
+
+          $("#div-agencia").html($label);
+
+          $("#div-agencia").append(select);
+
+
+
+        }
+      });
+
+
     });
+
+
 
   });
-
-  function EnviarDadosInstituicaoFinanceira(idInstituicaoFinanceira) {
-    $.ajax({
-      url: $("#RecuperaLinkPegarAgencia").val(),
-      data: { idInstituicaoFinanceira: idInstituicaoFinanceira },
-      type: "get",
-      dataType: "json",
-      success: function (result) {
-
-        console.log(this.value)
-        console.log($("#RecuperaLinkPegarAgencia").val())
-        console.log(result)
-
-        var $label = $("<label>").text('Agencia :');
-
-        var select = $("<select></select>").attr("id", "IdAgencia").attr("name", "IdAgencia");
-
-        select.addClass("form-control")
-
-        select.append($("<option></option>").attr("value", result.idAgencia).text("--seleccione--").attr('disabled', 'disabled'));
-
-        $.each(result, function (index, result) {
-          select.append($("<option></option>").attr("value", result.idAgencia).text(result.nome));
-        });
-
-        $("#div-agencia").html($label);
-
-        $("#div-agencia").append(select);
-
-
-      }
-    });
-
-  }*/
-
-
 </script>
