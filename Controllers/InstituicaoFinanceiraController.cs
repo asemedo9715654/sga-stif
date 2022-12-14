@@ -370,7 +370,7 @@ namespace sga_stif.Controllers
       var emailConfig = new EmailConfiguration()
       {
         From = "vamp9278493cv@gmail.com",
-        Password = "#merda-Mundo2020",
+        Password = "vvvv",
         Port = 25,
         SmtpServer = "smtp.gmail.com",
         UserName = "vamp9278493cv@gmail.com"
