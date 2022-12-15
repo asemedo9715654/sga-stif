@@ -9,13 +9,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a08a61b-b9ff-497e-ba0c-1c1015890426" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ViewModel/InstituicaoFinanceira/EmailViewModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Views/InstituicaoFinanceira/EnvioDeEmailPorInstituicao.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.sga-stif.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.sga-stif.dir/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/InstituicaoFinanceiraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/InstituicaoFinanceiraController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/Properties/launchSettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/InstituicaoFinanceira/ListaInstituicaoFinanceira.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/InstituicaoFinanceira/ListaInstituicaoFinanceira.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sga-stif.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/sga-stif.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +87,7 @@
       <updated>1666915906548</updated>
       <workItem from="1666915917316" duration="3320000" />
       <workItem from="1666920913387" duration="7858000" />
-      <workItem from="1668953244590" duration="11403000" />
+      <workItem from="1668953244590" duration="11455000" />
     </task>
     <servers />
   </component>
