@@ -96,7 +96,6 @@ namespace sga_stif.Controllers
 
                     var beneficiario = _mapper.Map<Beneficiario>(editaBeneficiarioViewModel);
                     beneficiario.DataAtualizacao = DateTime.Now;
-
                     _context.Beneficiario.Update(beneficiario);
                     _context.SaveChanges();
                     _notyf.Success("Beneficiário atualizado com sucesso!");
@@ -134,9 +133,7 @@ namespace sga_stif.Controllers
         {
             var socio = _context.Beneficiario.FirstOrDefault(k => k.Nif == Nif);
             if (socio != null)
-            {
                 return Json($"O NIF {Nif} já foi inserida no sistema");
-            }
 
             return Json(true);
         }
@@ -147,9 +144,7 @@ namespace sga_stif.Controllers
         {
             var socio = _context.Beneficiario.FirstOrDefault(k => k.NumeroPassaporte == NumeroPassaporte);
             if (socio != null)
-            {
                 return Json($"O Numero de passaporte : {NumeroPassaporte} já foi inserida no sistema");
-            }
 
             return Json(true);
         }
