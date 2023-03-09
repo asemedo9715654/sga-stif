@@ -14,18 +14,12 @@ using sga_stif.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Host.UseSerilog();
-
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
-
-
-
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromMinutes(10);
 });
-
-
 
 // Add services to the container.
 builder.Services.AddControllersWithViews(config =>
@@ -54,8 +48,6 @@ builder.Services.AddNotyf(config => { config.DurationInSeconds = 10; config.IsDi
 //builder.Services.AddBreadcrumbs(GetType().Assembly);
 // builder.Services.AddBreadcrumbs(args);
 
-
-
 var app = builder.Build();
 
 app.Use(async (ctx, next) =>
@@ -64,8 +56,8 @@ app.Use(async (ctx, next) =>
 
     if (ctx.Response.StatusCode == 404 && !ctx.Response.HasStarted)
     {
-            //Re-execute the request so the user gets the error page
-        string originalPath = ctx.Request.Path.Value;
+        //Re-execute the request so the user gets the error page
+        var originalPath = ctx.Request.Path.Value;
         ctx.Items["originalPath"] = originalPath;
         //ctx.Request.Path = "/Home/404";
          ctx.Request.Path = "/error/404";
@@ -91,24 +83,13 @@ app.UseNotyf();
 
 // app.UseRequestLocalization(localizationOptions);
 
-
-
-
-
 app.UseSession();
-
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseAuthorization();
-
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Login}/{action=Index}/{id?}");
 
 app.Run();
-
-
-

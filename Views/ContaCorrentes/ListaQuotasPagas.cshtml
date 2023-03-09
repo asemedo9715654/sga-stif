@@ -15,14 +15,10 @@
 
           <div class="row align-items-end">
             <div class="col-md-3">
-
-
-
               <div class="form-group align-items-end">
                 <label class="control-label">Data</label>
                 <input type="month" id="start" name="DataPesquisa" min="2022-01" value=@ViewBag.DataPreenchido
                   class="form-control">
-
               </div>
             </div>
             <div class="col-md-3">
@@ -39,7 +35,6 @@
                 <input type="submit" form="formularioDeFiltro" class="btn btn-primary" value="Filtrar" />
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -126,8 +121,6 @@
     $('#all').on('click', function () {
       $(':checkbox').attr("checked", $(this).is(':checked'));
     });
-
-
 
     $('#example2').DataTable({
       language: {
