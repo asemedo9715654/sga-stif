@@ -23,6 +23,13 @@ namespace sga_stif.ViewModel.Utilizador
     [Display(Name = "Nome do Perfil")]
     public string NomePerfil { get; set; }
 
+    public ListaUtilizadorViewModel()
+    {
+      
+    }
+
+    
+
    
 
   }

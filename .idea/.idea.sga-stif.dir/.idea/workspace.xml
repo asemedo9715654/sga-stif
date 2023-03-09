@@ -9,7 +9,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a08a61b-b9ff-497e-ba0c-1c1015890426" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Controllers/InstituicaoFinanceiraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/InstituicaoFinanceiraController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.sga-stif.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.sga-stif.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/ContaCorrentesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/ContaCorrentesController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ViewModel/Utilizador/ListaUtilizadorViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ViewModel/Utilizador/ListaUtilizadorViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/ContaCorrentes/ListaQuotasPagas.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Views/ContaCorrentes/ListaQuotasPagas.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/appsettings.Development.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/appsettings.Production.json" beforeDir="false" afterPath="$PROJECT_DIR$/appsettings.Production.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/appsettings.Test.json" beforeDir="false" afterPath="$PROJECT_DIR$/appsettings.Test.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/appsettings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +49,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Publish to folder.Publish sga-stif to folder">
+  <component name="RunManager" selected=".NET Launch Settings Profile.sga-stif: IIS Express">
     <configuration name="Publish sga-stif to folder" type="DotNetFolderPublish" factoryName="Publish to folder">
       <riderPublish runtime="Portable" target_folder="$PROJECT_DIR$/bin/net6.0/publish" target_framework="net6.0" uuid_high="-8248343473102538969" uuid_low="4916030125105077921" />
       <method v="2" />
@@ -87,7 +95,8 @@
       <updated>1666915906548</updated>
       <workItem from="1666915917316" duration="3320000" />
       <workItem from="1666920913387" duration="7858000" />
-      <workItem from="1668953244590" duration="11455000" />
+      <workItem from="1668953244590" duration="11777000" />
+      <workItem from="1678316687369" duration="4070000" />
     </task>
     <servers />
   </component>
