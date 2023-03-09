@@ -1,3 +1,4 @@
+using sga_stif.ViewModel.Pagamento;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -13,18 +14,45 @@ namespace sga_stif.Models
         public int IdSocio { get; set; }
         [ForeignKey("PeriodoQuota")]
         public int IdPeriodoQuota { get; set; }
+        public string? UtilizadorQueEfectuouPagamento { get; set; }
+        public DateTime? DataQueFoiEfectuadaPagamento { get; set; }
+        public string? UtilizadorQueConfirmouPagamento { get; set; }
+        public DateTime? DataQueFoiConfirmadaPagamento { get; set; }
 
-        //propriedaddae para efectuar pagamento
-         public string? UtilizadorQueEfectuouPagamento { get; set; }
-         public DateTime? DataQueFoiEfectuadaPagamento { get; set; }
-         public string? UtilizadorQueConfirmouPagamento { get; set; }
-         public DateTime? DataQueFoiConfirmadaPagamento { get; set; }
+        public string OrigemPagamento { get; set; } = "Manual"; //Ficheiro
 
-         public string OrigemPagamento { get; set; } = "Manual"; //Ficheiro
-
-         //propriedades de navegação
+        //propriedades de navegação
         public virtual Socio Socio { get; set; }
         public virtual PeriodoQuota PeriodoQuota { get; set; }
+
+
+        public void DadosPrimeiroPagamento(string nomeUtilizador,decimal montante)
+        {
+            OrigemPagamento = "Manual";
+            Estado = EstadoQuotaSocio.AguardaConfirmacaoPagamento;
+            Montante = montante;
+            DataQueFoiEfectuadaPagamento = DateTime.Now;
+            UtilizadorQueEfectuouPagamento = nomeUtilizador;
+            DataAtualizacao = DateTime.Now;
+        }
+
+        public void FinalizarPagamento(string nomeUtilizador)
+        {
+            Estado = EstadoQuotaSocio.Pago;
+            DataQueFoiConfirmadaPagamento = DateTime.Now;
+            UtilizadorQueConfirmouPagamento = nomeUtilizador;
+            DataAtualizacao = DateTime.Now;
+        }
+
+        public void AnularPagamento(string nomeUtilizador)
+        {
+            Estado = EstadoQuotaSocio.NoaPago;
+            DataQueFoiConfirmadaPagamento = DateTime.Now;
+            UtilizadorQueConfirmouPagamento = nomeUtilizador;
+            DataAtualizacao = DateTime.Now;
+            Montante = 0;
+        }
+
     }
 
     public enum EstadoQuotaSocio

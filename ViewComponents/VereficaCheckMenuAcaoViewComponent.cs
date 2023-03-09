@@ -20,13 +20,9 @@ namespace sga_stif.ViewComponents
         public async Task<IViewComponentResult> InvokeAsync(int idAcao, int idMenu)
         {
             var menuAcao = await _context.MenuAcao.FirstOrDefaultAsync(a => a.IdMenu == idMenu && a.IdAcao == idAcao);
-
             sga_stif.ViewModel.MenuAcao.DadosComponente dadosComponente = new sga_stif.ViewModel.MenuAcao.DadosComponente(){IdMenuAcao=idMenu, IdMenu = idMenu,IdAcao=idAcao,Preenchido = menuAcao != null ? true : false};
             return View(dadosComponente);
         }
-
-
-
 
     }
 }

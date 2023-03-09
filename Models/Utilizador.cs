@@ -35,7 +35,7 @@ namespace sga_stif.Models
             {
 
                 var aux = Convert.ToBase64String(Foto);
-                string imageDataURL = string.Format("data:image/png;base64,{0}", aux);
+                var imageDataURL = string.Format("data:image/png;base64,{0}", aux);
                 return imageDataURL;
             }
             else

@@ -6,7 +6,7 @@ namespace sga_stif.Models
     {
         [Key]
         public int IdJoia { get; set; }
-        public string Descricao { get; set; } 
+        public string Descricao { get; set; }
         public decimal Montante { get; set; }
         public DateTime DataInicio { get; set; }
         public DateTime? DataFim { get; set; }
@@ -14,7 +14,7 @@ namespace sga_stif.Models
         //proprieddades de navegacao
         public virtual ICollection<JoiaSocio> JoiaSocio { get; set; }
 
-        public Joia( )
+        public Joia()
         {
             this.JoiaSocio = new HashSet<JoiaSocio>();
         }

@@ -1,5 +1,5 @@
-using System.ComponentModel.DataAnnotations;
 using sga_stif.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace sga_stif.ViewModel.Perfil
 {
@@ -7,12 +7,24 @@ namespace sga_stif.ViewModel.Perfil
     {
         [Key]
         public int IdMenuAcao { get; set; }
-     
+
         [Display(Name = "Descrição")]
         public string Descricao { get; set; }
 
-         public List<ListaMenuAcaoViewModelV1Helper> ListaMenuAcaoViewModelV1Helper { get; set; }
-    
+        public List<ListaMenuAcaoViewModelV1Helper> ListaMenuAcaoViewModelV1Helper { get; set; }
+
+        public ListaMenuAcaoViewModelV1()
+        {
+            
+        }
+
+
+        public ListaMenuAcaoViewModelV1(string descricao,int idMenuAcao)
+        {
+            Descricao = descricao;
+            IdMenuAcao = idMenuAcao;
+        }
+
 
     }
 
@@ -20,10 +32,23 @@ namespace sga_stif.ViewModel.Perfil
     {
         [Key]
         public int IdMenuAcao { get; set; }
-     
+
         [Display(Name = "Descrição")]
         public string Descricao { get; set; }
-    
+
+
+        public ListaMenuAcaoViewModelV1Helper()
+        {
+
+        }
+
+
+        public ListaMenuAcaoViewModelV1Helper(string descricao, int idMenuAcao)
+        {
+            Descricao = descricao;
+            IdMenuAcao = idMenuAcao;
+        }
+
 
     }
 

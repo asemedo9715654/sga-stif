@@ -1,5 +1,5 @@
-using System.ComponentModel.DataAnnotations;
 using sga_stif.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace sga_stif.Models.ResultadoStoredProcedure
 {
@@ -17,7 +17,7 @@ namespace sga_stif.Models.ResultadoStoredProcedure
         public int Ano { get; set; }
         [Display(Name = "Mês")]
         public string Mes { get; set; }
-         public int MesNum { get; set; }
+        public int MesNum { get; set; }
         [Display(Name = "Montante")]
         public decimal Montante { get; set; }
 

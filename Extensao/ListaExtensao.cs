@@ -18,12 +18,9 @@ namespace sga_stif.Extensao
     public static async Task<IList<IList>> MultiResultSetsFromSql(this ContextoBaseDados dbContext, ICollection<Type> resultSetMappingTypes, string sql, params object[] parameters)
     {
       var resultSets = new List<IList>();
-
       var connection = dbContext.Database.GetDbConnection();
-      var parameterGenerator = dbContext.GetService<IParameterNameGeneratorFactory>()
-                                          .Create();
-      var commandBuilder = dbContext.GetService<IRelationalCommandBuilderFactory>()
-                                      .Create();
+      var parameterGenerator = dbContext.GetService<IParameterNameGeneratorFactory>().Create();
+      var commandBuilder = dbContext.GetService<IRelationalCommandBuilderFactory>().Create();
 
       foreach (var parameter in parameters)
       {
@@ -83,8 +80,7 @@ namespace sga_stif.Extensao
           Properties = et.GetProperties()
                             .Select(x =>
                             {
-                              var column = columns.FirstOrDefault(y => string.Equals(y.Name,
-                                                                                      x.GetColumnName() ?? x.Name, StringComparison.OrdinalIgnoreCase)) ?? throw new InvalidOperationException(string.Format("Unable to find a column mapping property '{0}'.", x.Name));
+                              var column = columns.FirstOrDefault(y => string.Equals(y.Name, x.GetColumnName() ?? x.Name, StringComparison.OrdinalIgnoreCase)) ?? throw new InvalidOperationException(string.Format("Unable to find a column mapping property '{0}'.", x.Name));
 
                               if (x == discriminatorProperty)
                                 discriminatorIdx = column.Index;

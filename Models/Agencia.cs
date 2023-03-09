@@ -43,7 +43,7 @@ namespace sga_stif.Models
 
             nomeCopletoSemTratamento = nomeCopletoSemTratamento.Trim();
 
-            string[] palavras = nomeCopletoSemTratamento.Split(' ');
+            var palavras = nomeCopletoSemTratamento.Split(' ');
 
             foreach (var palavra in palavras)
             {

@@ -24,11 +24,9 @@ namespace sga_stif.Models
         }
         public int TotalSocios()
         {
-            int somaSocios = 0;
+            var somaSocios = 0;
             foreach (var item in Agencia)
-            {
                 somaSocios += item.TotalSocios();
-            }
             return somaSocios;
         }
 
@@ -39,36 +37,30 @@ namespace sga_stif.Models
 
             var siglaTransformado = "";
             var siglaBruto = Regex.Replace(this.Sigla, @"\s+", " "); //remover mais de um espaço
-
             siglaBruto = siglaBruto.Trim();
+            var palavras = siglaBruto.Split(' ');
 
-            string[] palavras = siglaBruto.Split(' ');
-
-            foreach (var palavra in palavras) {
-                 siglaTransformado =siglaTransformado +" "+ char.ToUpper(palavra[0]) + palavra.Substring(1).ToLower();
-             }
+            foreach (var palavra in palavras)
+                siglaTransformado = siglaTransformado + " " + char.ToUpper(palavra[0]) + palavra.Substring(1).ToLower();
 
             return siglaTransformado;
         }
 
 
-         public string NomeFormatado()
+        public string NomeFormatado()
         {
 
             var siglaTransformado = "";
             var siglaBruto = Regex.Replace(this.Sigla, @"\s+", " "); //remover mais de um espaço
-
             siglaBruto = siglaBruto.Trim();
+            var palavras = siglaBruto.Split(' ');
 
-            string[] palavras = siglaBruto.Split(' ');
-
-            foreach (var palavra in palavras) {
-                 siglaTransformado =siglaTransformado +" "+ char.ToUpper(palavra[0]) + palavra.Substring(1).ToLower();
-             }
+            foreach (var palavra in palavras)
+                siglaTransformado = siglaTransformado + " " + char.ToUpper(palavra[0]) + palavra.Substring(1).ToLower();
 
             return siglaTransformado;
         }
 
-          
+
     }
 }

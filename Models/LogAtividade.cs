@@ -10,6 +10,19 @@ namespace sga_stif.Models
         public string Url { get; set; }
         public string NomeUtilizador { get; set; }
         public string EnderecoIp { get; set; }
-       
+
+         
+        public LogAtividade()
+        {
+        }
+
+        public LogAtividade(string dados, string url, string nomeUtilizador, string enderecoIp)
+        {
+            Dados = dados;
+            Url = url;
+            NomeUtilizador = nomeUtilizador;
+            EnderecoIp = enderecoIp;
+        }
+
     }
 }

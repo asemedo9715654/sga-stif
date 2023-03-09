@@ -1,16 +1,16 @@
-﻿using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using sga_stif.Models;
+using System.Diagnostics;
 
 namespace sga_stif.Controllers;
 
- [Route("error")]
+[Route("error")]
 
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
 
-   
+
 
     public HomeController(ILogger<HomeController> logger)
     {
@@ -37,7 +37,7 @@ public class HomeController : Controller
     [Route("404")]
     public IActionResult PageNotFound()
     {
-        string originalPath = "unknown";
+        var originalPath = "unknown";
         if (HttpContext.Items.ContainsKey("originalPath"))
         {
             originalPath = HttpContext.Items["originalPath"] as string;

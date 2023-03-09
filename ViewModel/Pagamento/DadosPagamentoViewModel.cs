@@ -25,8 +25,7 @@ namespace sga_stif.ViewModel.Pagamento
 
         [Display(Name = "Cidade")]
         public string Cidade { get; set; }
-
-        //DADOS PERIDO
+        
         [Display(Name = "Mês")]
         public string Mes { get; set; }
         public int Ano { get; set; }
@@ -35,9 +34,29 @@ namespace sga_stif.ViewModel.Pagamento
         [Display(Name = "Montante")]
         [Required(ErrorMessage = "O Montante é necessãrio")]
         [Range(1, Double.MaxValue, ErrorMessage = "O cammpo {0} tem de ser maior que {1}.")]
-
         public decimal Montante { get; set; }
 
+
+        public DadosPagamentoViewModel()
+        {
+            
+        }
+
+
+        public DadosPagamentoViewModel(QuotaSocio quotaSocio,string nomeDoMes,string url)
+        {
+            Apelido = quotaSocio.Socio.Apelido;
+            IdQuotaSocio = quotaSocio.IdQuotaSocio;
+            Nome = quotaSocio.Socio.Nome;
+            InstitucaoFinanceira = quotaSocio.Socio.Agencia.InstituicaoFinanceira.Nome;
+            Agencia = quotaSocio.Socio.Agencia.Nome;
+            Cidade = quotaSocio.Socio.Agencia.Cidade.Nome;
+            Ilha = quotaSocio.Socio.Agencia.Cidade.Ilha.Nome;
+            Ano = quotaSocio.PeriodoQuota.Ano;
+            Mes = nomeDoMes;
+            Url = url;
+        }
+         
 
     }
 }

@@ -14,10 +14,8 @@ namespace sga_stif.Controllers
     {
 
         private readonly ContextoBaseDados _context;
-
         private readonly INotyfService _notyf;
         private readonly IMapper _mapper;
-
         private readonly ILogger<UtilizadorController> _logger;
 
         public ComunController(ContextoBaseDados context, INotyfService notyf, IMapper mapper, ILogger<UtilizadorController> logger)

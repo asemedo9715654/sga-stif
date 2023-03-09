@@ -14,5 +14,15 @@ namespace sga_stif.Models
          //propriedades de navegação
         public virtual MenuAcao MenuAcao { get; set; }
         public virtual Perfil Perfil { get; set; }
+
+        public PerfilMenuAcao()
+        {
+            
+        }
+        public PerfilMenuAcao(int idMenuAcao, int idPerfil)
+        {
+            IdMenuAcao = idMenuAcao;
+            IdPPerfil = idPerfil;
+        }
     }
 }

@@ -8,16 +8,16 @@ namespace sga_stif.Models
         [Key]
         public int IdIlha { get; set; }
         public string Nome { get; set; }
-         //propriedades de navegação
+        //propriedades de navegação
         public virtual ICollection<Cidade> Cidade { get; set; }
-       
+
         public Ilha()
         {
             this.Cidade = new HashSet<Cidade>();
         }
 
 
-         public string NomeFormatado()
+        public string NomeFormatado()
         {
             var nomeCompleto = "";
 
@@ -27,7 +27,7 @@ namespace sga_stif.Models
 
             nomeCopletoSemTratamento = nomeCopletoSemTratamento.Trim();
 
-            string[] palavras = nomeCopletoSemTratamento.Split(' ');
+            var palavras = nomeCopletoSemTratamento.Split(' ');
 
             foreach (var palavra in palavras)
             {

@@ -26,13 +26,9 @@ namespace sga_stif.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-
-            int idPerfil = int.Parse(HttpContext.Session.GetString("IdPerfil").ToString());
-
+            var idPerfil = int.Parse(HttpContext.Session.GetString("IdPerfil").ToString());
             var menu = new List<Menu>();
-
             var items = await _context.Menu.Include(j => j.MenuAcao).ThenInclude(k => k.PerfilMenuAcao).ToListAsync();
-
 
             foreach (var item in items)
             {

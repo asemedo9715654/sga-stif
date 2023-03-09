@@ -63,14 +63,9 @@ namespace sga_stif.Filtros
         /// <param name="url"></param>
         /// <param name="nomeUtilizador"></param>
         /// <param name="enderecoIp"></param>
-        public void SalvarNaBaseDeDados(string dados, string url, string nomeUtilizador, string enderecoIp){
-            var logAtividade = new LogAtividade{
-                Dados = dados,
-                Url = url,
-                NomeUtilizador = nomeUtilizador,
-                EnderecoIp = enderecoIp
-            };
-
+        public void SalvarNaBaseDeDados(string dados, string url, string nomeUtilizador, string enderecoIp)
+        {
+            var logAtividade = new LogAtividade(dados, url, nomeUtilizador, enderecoIp);
             context.LogAtividade.Add(logAtividade);
             context.SaveChanges();
         }
