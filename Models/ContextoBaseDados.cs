@@ -409,7 +409,10 @@ namespace sga_stif.Models
                 .Build();
 
             var connectionString = configuration.GetConnectionString("sgastif-remote");
-            optionsBuilder.UseSqlServer(connectionString);
+            optionsBuilder.UseSqlServer(connectionString, builder =>
+            {
+                builder.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null);
+            });
             //optionsBuilder.UseSqlite("Filename=sga-stif.db");
         }
 
