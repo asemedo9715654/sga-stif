@@ -143,9 +143,17 @@ namespace sga_stif.Controllers
             var listContaCorrenteIFResultado = new List<ContaCorrenteIFResultado>();
 
             if (IdInstituicaoFinanceira != null)
-                listContaCorrenteIFResultado = _context.ContaCorrenteIFResultado.FromSqlRaw($"EXECUTE  [dbo].[ContaCorrenteIF] @ano = {ano}, @mes={mes},@idif = {IdInstituicaoFinanceira},@user ='{PegarNomeUtilizador()}', @status='QP'").ToList();
+            {
+                var query = $"EXECUTE  [dbo].[ContaCorrenteIF] @ano = {ano}, @mes={mes},@idif = {IdInstituicaoFinanceira},@user ='{PegarNomeUtilizador()}', @status='QP'";
+                listContaCorrenteIFResultado = _context.ContaCorrenteIFResultado.FromSqlRaw(query).ToList();
+
+            }
             else
-                listContaCorrenteIFResultado = _context.ContaCorrenteIFResultado.FromSqlRaw($"EXECUTE  [dbo].[ContaCorrenteIF] @ano = {ano}, @mes={mes},@user ='{PegarNomeUtilizador()}', @status='QP'").ToList();
+            {
+                var query = $"EXECUTE  [dbo].[ContaCorrenteIF] @ano = {ano}, @mes={mes},@user ='{PegarNomeUtilizador()}', @status='QP'";
+                listContaCorrenteIFResultado = _context.ContaCorrenteIFResultado.FromSqlRaw(query).ToList();
+
+            }
 
             return View(listContaCorrenteIFResultado);
         }
