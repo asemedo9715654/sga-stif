@@ -31,9 +31,7 @@
                 <input type="submit" class="btn btn-primary" value="Filtrar" />
               </div>
             </div>
-
           </div>
-
         </div>
       </div>
     </form>
@@ -41,12 +39,10 @@
   </div>
   <div class="card-body">
 
-
     <table id="example2" class="table table-bordered table-striped">
       <thead>
         <tr>
-
-          <th>
+            <th>
             @Html.DisplayNameFor(model => model.Nome)
           </th>
           <th>
@@ -67,7 +63,6 @@
           <th>
             Ação
           </th>
-
         </tr>
       </thead>
       <tbody>
@@ -93,10 +88,8 @@
             <td>
               @Html.DisplayFor(modelItem => item.Montante)
             </td>
-
-            <td>
-
-              @if ((EstadoQuotaSocio)item.EstadoQuotaNum == EstadoQuotaSocio.AguardaConfirmacaoPagamento)
+              <td>
+                @if ((EstadoQuotaSocio)item.EstadoQuotaNum == EstadoQuotaSocio.AguardaConfirmacaoPagamento)
               {
                 <a asp-action="ConcluirPagamento" asp-controller="Pagamento" asp-route-url=@Url.Action("ListaQuotasVencidas","ContaCorrentes")
               

@@ -16,6 +16,12 @@ namespace sga_stif.Models
         //propriedades de navegação
         public virtual InstituicaoFinanceira InstituicaoFinanceira { get; set; }
 
+        public void Inicializar()
+        {
+            DataInicio = DateTime.Now.Date;
+            DataFim = null;
+        }
+
 
     }
 }

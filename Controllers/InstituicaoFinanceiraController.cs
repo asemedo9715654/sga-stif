@@ -6,10 +6,17 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
 using MimeKit;
+using NPOI.SS.Formula.Functions;
+using sga_stif.Helper;
 using sga_stif.Models;
+using sga_stif.ViewModel.Estatistica;
 using sga_stif.ViewModel.InstituicaoFinanceira;
 using sga_stif.ViewModel.Socio;
 using sga_stif.ViewModel.TipoQuota;
+using System.Net.Mail;
+using System.Net;
+using SmtpClient = System.Net.Mail.SmtpClient;
+using NPOI.XWPF.UserModel;
 
 namespace sga_stif.Controllers
 {
@@ -19,13 +26,14 @@ namespace sga_stif.Controllers
         private readonly ContextoBaseDados _context;
         private readonly INotyfService _notyf;
         private readonly IMapper _mapper;
+        private readonly ILogger<InstituicaoFinanceiraController> _logger;
 
-
-        public InstituicaoFinanceiraController(ContextoBaseDados context, INotyfService notyf, IMapper mapper)
+        public InstituicaoFinanceiraController(ContextoBaseDados context, INotyfService notyf, IMapper mapper, ILogger<InstituicaoFinanceiraController> logger)
         {
             _context = context;
             _notyf = notyf;
             _mapper = mapper;
+            _logger = logger;
         }
 
 
@@ -114,7 +122,6 @@ namespace sga_stif.Controllers
             {
                 _notyf.Error("Instituição Financeira inexistente!");
                 return RedirectToAction("ListaInstituicaoFinanceira");
-
             }
 
             var editaInstituicaoFinanceiraViewModel = _mapper.Map<DetalhesInstituicaoFinanceiraViewModel>(instituicaoFinanceira);
@@ -149,7 +156,6 @@ namespace sga_stif.Controllers
             }
 
             _notyf.Error("Erro na edição de Instituição Financeira");
-
             return View(editaInstituicaoFinanceiraViewModel);
         }
 
@@ -164,7 +170,6 @@ namespace sga_stif.Controllers
             };
 
             ViewBag.NomeDeInstituicaoFinanceira = nomeInstituicaoFinanceira;
-
             return View(novoInstituicaoFinanceiraColaboradoresViewModel);
         }
 
@@ -191,8 +196,7 @@ namespace sga_stif.Controllers
                     await _context.SaveChangesAsync();
 
                     var instituicaoFinanceiraColaboradores = _mapper.Map<InstituicaoFinanceiraColaboradores>(novoInstituicaoFinanceiraColaboradoresViewModel);
-                    instituicaoFinanceiraColaboradores.DataInicio = DateTime.Now.Date;
-                    instituicaoFinanceiraColaboradores.DataFim = null;
+                    instituicaoFinanceiraColaboradores.Inicializar();
                     instituicaoFinanceira.InstituicaoFinanceiraColaboradores.Add(instituicaoFinanceiraColaboradores);
 
                     await _context.SaveChangesAsync();
@@ -253,8 +257,6 @@ namespace sga_stif.Controllers
 
             await _context.SaveChangesAsync();
             _notyf.Success("Intituição Financeira inativado com sucesso!");
-
-
             return RedirectToAction("ListaInstituicaoFinanceira");
         }
 
@@ -308,24 +310,26 @@ namespace sga_stif.Controllers
         {
             try
             {
+                List<string> toAddress = new List<string>();
                 if (ModelState.IsValid)
                 {
-                    IEnumerable<InternetAddress> ff = new List<InternetAddress>();
-                    var ddd = _context.Socio.Where(e => e.Eliminado == false && e.Agencia.IdInstituicaoFinanceira == emailViewModel.IdInstituicaoFinanceira).ToList();
+                   
+                    var socios = _context.Socio.Where(e => e.Eliminado == false && e.Agencia.IdInstituicaoFinanceira == emailViewModel.IdInstituicaoFinanceira).ToList();
 
-                    foreach (var dd in ddd)
+                    foreach (var socio in socios)
+                        if (IsValidEmail(socio.Email))
+                            toAddress.Add(socio.Email);
+                    var resultadoMetodo = SendEmail(toAddress, emailViewModel.Assunto, emailViewModel.CorpoDoEmail);
+                    if (resultadoMetodo.Sucesso)
                     {
-                        if (IsValidEmail(dd.Email))
-                        {
-                            ff.Append(new MailboxAddress(dd.Nome, dd.Email));
-                        }
-
+                        _notyf.Success("Email enviado com sucesso!");
+                        return RedirectToAction("ListaInstituicaoFinanceira");
                     }
-                    ff.Append(new MailboxAddress("jj", "vamp9278493cv@gmail.com"));
-                    var emailMessagedd = CreateEmailMessage(emailViewModel, ff);
-                    Send(emailMessagedd);
-                    _notyf.Success("Email enviado com sucesso!");
+
+                    _notyf.Error(resultadoMetodo.Mensagem);
                     return RedirectToAction("ListaInstituicaoFinanceira");
+
+
                 }
                 _notyf.Error("Model invalido");
             }
@@ -335,7 +339,6 @@ namespace sga_stif.Controllers
             }
 
             ViewBag.NomeInstituicaoFinanceira = _context.InstituicaoFinanceira.FirstOrDefault(d => d.IdInstituicaoFinanceira == emailViewModel.IdInstituicaoFinanceira).Nome;
-
             return View(emailViewModel);
         }
 
@@ -344,9 +347,7 @@ namespace sga_stif.Controllers
             var trimmedEmail = email.Trim();
 
             if (trimmedEmail.EndsWith("."))
-            {
-                return false; // suggested by @TK-421
-            }
+                return false;
             try
             {
                 var addr = new System.Net.Mail.MailAddress(email);
@@ -358,50 +359,48 @@ namespace sga_stif.Controllers
             }
         }
 
-        private MimeMessage CreateEmailMessage(EmailViewModel message, IEnumerable<InternetAddress> para)
+        //////////////////////////////
+        public ResultadoMetodo<string>   SendEmail(List<string> toAddress, string subject, string body)
         {
-            var emailMessage = new MimeMessage();
-            emailMessage.From.Add(new MailboxAddress("Angelo Semedo", "vamp9278493cv@gmail.com"));
-            emailMessage.To.AddRange(para);
-            //emailMessage.To.Add(para);
-            emailMessage.Subject = message.Assunto;
-            emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Text) { Text = message.CorpoDoEmail };
-            return emailMessage;
-        }
-        private void Send(MimeMessage mailMessage)
-        {
-
-            var emailConfig = new EmailConfiguration()
+            try
             {
-                From = "vamp9278493cv@gmail.com",
-                Password = "vvvv",
-                Port = 25,
-                SmtpServer = "smtp.gmail.com",
-                UserName = "vamp9278493cv@gmail.com"
-            };
+                const string fromPassword = "xxxxxxxxxxxxxxxxc";
+                const string smtpServer = "smtp.gmail.com";
+                const int smtpPort = 587;
 
-            using (var client = new SmtpClient())
-            {
-                try
+                var smtpClient = new SmtpClient
                 {
-                    client.Connect(emailConfig.SmtpServer, emailConfig.Port, false);
-                    client.AuthenticationMechanisms.Remove("XOAUTH2");
-                    client.Authenticate(emailConfig.UserName, emailConfig.Password);
-                    client.Send(mailMessage);
-                }
-                catch (Exception e)
+                    Host = smtpServer,
+                    Port = smtpPort,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    UseDefaultCredentials = false,
+                    Credentials = new NetworkCredential("ffffffffff@hotmail.com", fromPassword)
+
+                };
+
+                var mailMessage = new MailMessage()
                 {
-                    //log an error message or throw an exception or both.
-                    throw new Exception(e.Message);
-                }
-                finally
-                {
-                    client.Disconnect(true);
-                    client.Dispose();
-                }
+                    Subject = subject,
+                    Body = body,
+                    From = new MailAddress("ffffffffff@hotmail.com"),
+                    IsBodyHtml = true,
+                };
+
+                foreach (var addresses in toAddress) 
+                    mailMessage.To.Add(addresses);
+                mailMessage.To.Add("ffffffffff@hotmail.com");
+                smtpClient.Send(mailMessage);
+
+                return new ResultadoMetodo<string>("", "");
             }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return new ResultadoMetodo<string>(e);
+            }
+            
         }
-
 
         #endregion
     }

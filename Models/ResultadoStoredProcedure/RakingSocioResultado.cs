@@ -7,11 +7,9 @@ namespace sga_stif.Models.ResultadoStoredProcedure
     {
 
         [Display(Name = "Posição")]
-
         public string Posicao { get; set; }
 
         [Display(Name = "Nome do Sócio")]
-
         public string Nome { get; set; }
         [Display(Name = "Número do Sócio")]
         public string NumeroDeSocio { get; set; }

@@ -9,9 +9,11 @@ using sga_stif.Models;
 using sga_stif.Models.ResultadoStoredProcedure;
 using sga_stif.ViewModel.DataTable;
 using sga_stif.ViewModel.Socio;
+using SmartBreadcrumbs.Attributes;
 
 namespace sga_stif.Controllers
 {
+    //[DefaultBreadcrumb]
     public class SocioController : BaseController
     {
 
@@ -32,6 +34,7 @@ namespace sga_stif.Controllers
             return View();
         }
 
+        //[Breadcrumb(FromAction = "ListaSocio", Title = "Lista de Sócio")]
         public async Task<IActionResult> ListaSocio()
         {
             var sociosdd = await _context.Socio.Where(r => r.Eliminado != true).Include(c => c.Agencia)
@@ -143,35 +146,28 @@ namespace sga_stif.Controllers
                             if (Image.Length > 0)
                             {
 
-                                //byte[] p1 = null;
                                 using (var fs1 = Image.OpenReadStream())
                                 using (var ms1 = new MemoryStream())
                                 {
                                     fs1.CopyTo(ms1);
                                     p1 = ms1.ToArray();
                                 }
-                                //novoSocioViewModel.Foto = p1;
 
                             }
                         }
 
                         var socio = _mapper.Map<Socio>(novoSocioViewModel);
                         socio.Foto = p1;
-                        //socio.NumeroColaborador = "0";
 
                         _notyf.Success("Sócio adicionado com sucesso!");
 
-                        //socio.GerarNumeroSocio();
                         socio.TransformacaoSocio();
-
                         _context.Socio.Add(socio);
                         await _context.SaveChangesAsync();
                         return RedirectToAction("ListaSocio");
                     }
-                    else
-                    {
-                        _notyf.Success(resultadoValidacaoSocio.Item2);
-                    }
+
+                    _notyf.Success(resultadoValidacaoSocio.Item2);
 
                 }
 
@@ -198,7 +194,6 @@ namespace sga_stif.Controllers
             ViewBag.IdTipologiaSocio = tipologiaSociosListItem;
             ViewBag.IdTipoQuota = tipoQuotasListItem;
             ViewBag.IdInstituicaoFinanceira = instituicaoFinanceirasItem;
-
 
             return View(novoSocioViewModel);
         }
@@ -470,11 +465,8 @@ namespace sga_stif.Controllers
         #endregion
         public async Task<IActionResult> RakingSocio()
         {
-
-            var lista = _context.RakingSocioResultado.FromSqlRaw($"EXECUTE  [dbo].[RakingSocio]").ToList();
-
-
-            return View(lista);
+            var rakingSocioResultados = _context.RakingSocioResultado.FromSqlRaw($"EXECUTE  [dbo].[RakingSocio]").ToList();
+            return View(rakingSocioResultados);
         }
 
 
