@@ -1,3 +1,4 @@
+using System.Reflection;
 using AspNetCoreHero.ToastNotification;
 using AspNetCoreHero.ToastNotification.Extensions;
 using AutoMapper;
@@ -9,7 +10,7 @@ using Serilog;
 using sga_stif.Filtros;
 using sga_stif.Mapeamento;
 using sga_stif.Models;
-
+using SmartBreadcrumbs.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +29,18 @@ builder.Services.AddControllersWithViews(config =>
     // config.Filters.Add(new LogFiltro());
     config.Filters.Add(typeof(LogFiltro));
 });
+
+
+
+builder.Services.AddBreadcrumbs(Assembly.GetExecutingAssembly(), options =>
+{
+    options.TagName = "nav";
+    options.TagClasses = "";
+    options.OlClasses = "breadcrumb";
+    options.LiClasses = "breadcrumb-item";
+    options.ActiveLiClasses = "breadcrumb-item active";
+});
+
 
 builder.Services.AddDbContext<ContextoBaseDados>();
 //builder.Services.AddEntityFrameworkSqlite().AddDbContext<ContextoBaseDados>();

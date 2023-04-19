@@ -27,8 +27,10 @@ namespace sga_stif.Controllers
         [HttpGet]
         public IActionResult NovoBeneficiario(int idSocio)
         {
-            NovoBeneficiarioViewModel novoBeneficiarioViewModel = new NovoBeneficiarioViewModel();
-            novoBeneficiarioViewModel.IdSocio = idSocio;
+            var novoBeneficiarioViewModel = new NovoBeneficiarioViewModel
+            {
+                IdSocio = idSocio
+            };
 
 
             return View(novoBeneficiarioViewModel);
@@ -39,15 +41,11 @@ namespace sga_stif.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult NovoBeneficiario([Bind("Nome,Apelido,DataDeNascimento,GrauDeParentesco,Nif,IdSocio, CinBi,NumeroPassaporte")] NovoBeneficiarioViewModel novoBeneficiarioViewModel)
         {
-
             try
             {
-
                 if (ModelState.IsValid)
                 {
-
                     var beneficiario = _mapper.Map<Beneficiario>(novoBeneficiarioViewModel);
-
                     _context.Beneficiario.Add(beneficiario);
                     _context.SaveChanges();
                     _notyf.Success("Beneficiario adicionado com sucesso!");
@@ -58,13 +56,10 @@ namespace sga_stif.Controllers
             catch (DbUpdateException /* ex */)
             {
                 //Log the error (uncomment ex variable name and write a log.
-                ModelState.AddModelError("", "Unable to save changes. " +
-                    "Try again, and if the problem persists " +
-                    "see your system administrator.");
+                ModelState.AddModelError("", "Unable to save changes. " + "Try again, and if the problem persists " + "see your system administrator.");
             }
 
             _notyf.Error("Erro na adição de Beneficiário!");
-
             return View(novoBeneficiarioViewModel);
         }
 
@@ -74,9 +69,7 @@ namespace sga_stif.Controllers
         public IActionResult EditaBeneficiario(int idSocio, int idBeneficiario)
         {
             var beneficiario = _context.Beneficiario.FirstOrDefault(j => j.IdSocio == idSocio && j.IdBeneficiario == idBeneficiario);
-
             var editaBeneficiarioViewModel = _mapper.Map<EditaBeneficiarioViewModel>(beneficiario);
-
             return View(editaBeneficiarioViewModel);
 
         }
@@ -96,17 +89,14 @@ namespace sga_stif.Controllers
 
                     var beneficiario = _mapper.Map<Beneficiario>(editaBeneficiarioViewModel);
                     beneficiario.DataAtualizacao = DateTime.Now;
-
                     _context.Beneficiario.Update(beneficiario);
                     _context.SaveChanges();
                     _notyf.Success("Beneficiário atualizado com sucesso!");
                     return RedirectToAction("DetalhesSocio", "Socio", new { idSocio = beneficiario.IdSocio });
                 }
-
             }
             catch (DbUpdateException /* ex */)
             {
-                //Log the error (uncomment ex variable name and write a log.
                 ModelState.AddModelError("", "Unable to save changes. " + "Try again, and if the problem persists " + "see your system administrator.");
             }
 
@@ -129,27 +119,23 @@ namespace sga_stif.Controllers
             return Json(true);
         }
 
-         [AcceptVerbs("GET", "POST")]
+        [AcceptVerbs("GET", "POST")]
         public IActionResult VereficaNif(string Nif)
         {
             var socio = _context.Beneficiario.FirstOrDefault(k => k.Nif == Nif);
             if (socio != null)
-            {
                 return Json($"O NIF {Nif} já foi inserida no sistema");
-            }
 
             return Json(true);
         }
 
 
-         [AcceptVerbs("GET", "POST")]
+        [AcceptVerbs("GET", "POST")]
         public IActionResult VereficaNumeroPassaporte(string NumeroPassaporte)
         {
             var socio = _context.Beneficiario.FirstOrDefault(k => k.NumeroPassaporte == NumeroPassaporte);
             if (socio != null)
-            {
                 return Json($"O Numero de passaporte : {NumeroPassaporte} já foi inserida no sistema");
-            }
 
             return Json(true);
         }

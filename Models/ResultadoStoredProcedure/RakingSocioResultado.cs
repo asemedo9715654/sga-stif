@@ -1,34 +1,32 @@
-using System.ComponentModel.DataAnnotations;
 using sga_stif.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace sga_stif.Models.ResultadoStoredProcedure
 {
-  public class RakingSocioResultado
-  {
+    public class RakingSocioResultado
+    {
 
-    [Display(Name ="Posição")]
+        [Display(Name = "Posição")]
+        public string Posicao { get; set; }
 
-    public string Posicao { get; set; }
+        [Display(Name = "Nome do Sócio")]
+        public string Nome { get; set; }
+        [Display(Name = "Número do Sócio")]
+        public string NumeroDeSocio { get; set; }
+        // public int IdSocio { get; set; }
+        [Display(Name = "Instituição Financeira")]
+        public string IFS { get; set; }
+        [Display(Name = "Agência")]
+        public string AgenciaNome { get; set; }
+        [Display(Name = "Meses Pago")]
+        public string MesesPago { get; set; }
+        [Display(Name = "Total Pago")]
+        [DisplayFormat(DataFormatString = "{0:N}")]
+        public double TotalMontantePago { get; set; }
+        public int TopR { get; set; }
 
-    [Display(Name ="Nome do Sócio")]
 
-    public string Nome { get; set; }
-     [Display(Name ="Número do Sócio")]
-    public string NumeroDeSocio { get; set; }
-    // public int IdSocio { get; set; }
-     [Display(Name ="Instituição Financeira")]
-    public string IFS { get; set; }
-     [Display(Name ="Agência")]
-    public string AgenciaNome { get; set; }
-     [Display(Name ="Meses Pago")]
-    public string MesesPago { get; set; }
-    [Display(Name ="Total Pago")]
-    [DisplayFormat(DataFormatString ="{0:N}")]
-    public double TotalMontantePago { get; set; }
-    public int TopR { get; set; }
-    
-
-  }
+    }
 
 
 }

@@ -3,7 +3,7 @@ using sga_stif.Models;
 
 namespace sga_stif.Helper
 {
-  
+
 
 
     // [HtmlTargetElement(Attributes = "IdMenu, IdAcao")]
@@ -22,18 +22,14 @@ namespace sga_stif.Helper
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
-             output.TagName = "Input";
+            output.TagName = "Input";
+            var menuAcao = _context.MenuAcao.FirstOrDefault(g => g.IdAcao == IdAcao && g.IdMenu == IdMenu);
 
-            var menuAcao = _context.MenuAcao.FirstOrDefault(g=>g.IdAcao == IdAcao && g.IdMenu == IdMenu);
-            
-            //output.Content.SetHtmlContent("<input  id=\"sfddsf\" type=\"checkbox\" onchange=\"EnviaDados("+IdAcao+","+IdMenu+")\" />");
+            if (menuAcao != null)
+                output.Content.SetHtmlContent("<input checked id=\"sfddsf\" type=\"checkbox\" onchange=\"EnviaDados(" + IdAcao + "," + IdMenu + ")\" />");
+            else
+                output.Content.SetHtmlContent("<input  id=\"sfddsf\" type=\"checkbox\" onchange=\"EnviaDados(" + IdAcao + "," + IdMenu + ")\" />");
 
-            if(menuAcao!=null){
-                output.Content.SetHtmlContent("<input checked id=\"sfddsf\" type=\"checkbox\" onchange=\"EnviaDados("+IdAcao+","+IdMenu+")\" />");
-            }else{
-                output.Content.SetHtmlContent("<input  id=\"sfddsf\" type=\"checkbox\" onchange=\"EnviaDados("+IdAcao+","+IdMenu+")\" />");
-            }
-            
         }
     }
 

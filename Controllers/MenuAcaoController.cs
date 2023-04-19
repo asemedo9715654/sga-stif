@@ -12,7 +12,7 @@ namespace sga_stif.Controllers
         private readonly ContextoBaseDados _context;
         private readonly IMapper _mapper;
 
-        public MenuAcaoController(ContextoBaseDados context,IMapper mapper)
+        public MenuAcaoController(ContextoBaseDados context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
@@ -31,7 +31,7 @@ namespace sga_stif.Controllers
         {
             ViewBag.idMenu = idMenu;
             ViewBag.NomeMenu = nomeMenu;
-            var acao = await _context.Acao.Where(j=>j.AcaoMaster==false).ToListAsync();
+            var acao = await _context.Acao.Where(j => j.AcaoMaster == false).ToListAsync();
             return View(acao);
         }
 

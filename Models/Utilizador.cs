@@ -25,24 +25,20 @@ namespace sga_stif.Models
         public virtual Perfil? Perfil { get; set; }
 
 
-        public string PegarNomeCompleto()
-        {
-            return Nome + " " + Apelido;
-        }
+        public string PegarNomeCompleto() => Nome + " " + Apelido;
+
         public string PegarLinkFoto()
         {
             if (Foto != null)
             {
 
                 var aux = Convert.ToBase64String(Foto);
-                string imageDataURL = string.Format("data:image/png;base64,{0}", aux);
+                var imageDataURL = string.Format("data:image/png;base64,{0}", aux);
                 return imageDataURL;
             }
-            else
-            {
-                return "../../dist/img/default-150x150.png";
 
-            }
+            return "../../dist/img/default-150x150.png";
+
         }
     }
 }

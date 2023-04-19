@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using sga_stif.Extensao;
 using sga_stif.Models;
 
 namespace sga_stif.ViewModel.Socio
@@ -38,5 +39,24 @@ namespace sga_stif.ViewModel.Socio
 
         [Display(Name = "Agência")]
         public string NomeAgencia { get; set; }
+
+        public ListaSocioViewModel()
+        {
+            
+        }
+
+        public ListaSocioViewModel(Models.Socio k)
+        {
+            IdSocio = k.IdSocio;
+            NumeroDeSocio = k.NumeroDeSocio;
+            NomeCompleto = k.NomeCompleto();
+            CinBi = k.CinBi;
+            Sexo = k.Sexo.GetDescription();
+            TotalBeneficiario = k.TotalBeneficiario();
+            IdAgencia = k.IdAgencia;
+            SiglaInstitucaoFinanceira = k.Agencia.InstituicaoFinanceira.SiglaFormatado();
+            NomeAgencia = k.Agencia.Nome;
+
+        }
     }
 }
