@@ -68,7 +68,6 @@ namespace sga_stif.Extensao
                                         .ToList();
 
 
-
                 var relationalValueBufferFactoryFactory = dbContext.GetService<IRelationalValueBufferFactoryFactory>();
                 int discriminatorIdx = -1;
                 var discriminatorProperty = entityType.GetDiscriminatorProperty();
@@ -101,9 +100,7 @@ namespace sga_stif.Extensao
                 while (await reader.ReadAsync())
                 {
                     var instanceInfo = discriminatorIdx < 0 ? instanceTypeMapping[entityType] : instanceTypeMapping[reader[discriminatorIdx]];
-
                     var valueBuffer = instanceInfo.ValueBufferFactory.Create(reader);
-
                     var materializationAction = materializerSource.GetMaterializer(instanceInfo.EntityType);
                     resultSetValues.Add(materializationAction(new MaterializationContext(valueBuffer, dbContext)));
                 }

@@ -21,10 +21,7 @@ namespace sga_stif.Models
             this.Socio = new HashSet<Socio>();
         }
 
-        public int TotalDeSocios()
-        {
-            return Socio.Count();
-        }
+        public int TotalDeSocios() => Socio.Count();
     }
 
 

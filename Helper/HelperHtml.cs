@@ -26,11 +26,9 @@ namespace sga_stif.Helper
             var menuAcao = _context.MenuAcao.FirstOrDefault(g => g.IdAcao == IdAcao && g.IdMenu == IdMenu);
 
             if (menuAcao != null)
-                output.Content.SetHtmlContent("<input checked id=\"sfddsf\" type=\"checkbox\" onchange=\"EnviaDados(" +
-                                              IdAcao + "," + IdMenu + ")\" />");
+                output.Content.SetHtmlContent("<input checked id=\"sfddsf\" type=\"checkbox\" onchange=\"EnviaDados(" + IdAcao + "," + IdMenu + ")\" />");
             else
-                output.Content.SetHtmlContent("<input  id=\"sfddsf\" type=\"checkbox\" onchange=\"EnviaDados(" +
-                                              IdAcao + "," + IdMenu + ")\" />");
+                output.Content.SetHtmlContent("<input  id=\"sfddsf\" type=\"checkbox\" onchange=\"EnviaDados(" + IdAcao + "," + IdMenu + ")\" />");
 
         }
     }

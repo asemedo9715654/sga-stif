@@ -94,6 +94,12 @@ namespace sga_stif.Mapeamento
              .ForMember(dest => dest.NomePerfil, opt => opt.MapFrom(src => src.Perfil.Nome))
             ;
 
+            CreateMap<Utilizador, DadosUtilizadorViewModel>()
+                .ForMember(dest => dest.NomeCompleto, opt => opt.MapFrom(src => src.PegarNomeCompleto()))
+                .ForMember(dest => dest.Foto, opt => opt.MapFrom(src => src.PegarLinkFoto()))
+                .ForMember(dest => dest.NomePerfil, opt => opt.MapFrom(src => src.Perfil.Nome))
+                ;
+
             CreateMap<Menu, ListaMenuViewModel>()
               .ForMember(dest => dest.TipoMenu, opt => opt.MapFrom(src => src.Categoria()));
 

@@ -20,12 +20,7 @@ namespace sga_stif.Models
         }
 
 
-        public int TotalSocio()
-        {
-            return Socio.Count();
-        }
-
-
+        public int TotalSocio() => Socio.Count();
     }
 
 

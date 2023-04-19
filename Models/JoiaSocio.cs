@@ -18,8 +18,6 @@ namespace sga_stif.Models
         public virtual Joia Joia { get; set; }
     }
 
-
-
     public enum EstadoJoiaSocio
     {
         NaoPago = 0,

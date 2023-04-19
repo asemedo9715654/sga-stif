@@ -21,37 +21,21 @@ namespace sga_stif.Models
         public virtual InstituicaoFinanceira InstituicaoFinanceira { get; set; }
         public virtual ICollection<Socio> Socio { get; set; }
 
-        public Agencia()
-        {
-            this.Socio = new HashSet<Socio>();
-        }
+        public Agencia() => this.Socio = new HashSet<Socio>();
 
-
-        public int TotalSocios()
-        {
-            return Socio.Count();
-        }
-
+        public int TotalSocios() => Socio.Count();
 
         public string NomeFormatado()
         {
             var nomeCompleto = "";
-
             var nomeCopletoSemTratamento = this.Nome;
-
             nomeCopletoSemTratamento = Regex.Replace(nomeCopletoSemTratamento, @"\s+", " ");
-
             nomeCopletoSemTratamento = nomeCopletoSemTratamento.Trim();
-
             var palavras = nomeCopletoSemTratamento.Split(' ');
 
             foreach (var palavra in palavras)
-            {
                 nomeCompleto = nomeCompleto + " " + char.ToUpper(palavra[0]) + palavra.Substring(1).ToLower();
-            }
-
             return nomeCompleto;
-
         }
     }
 }

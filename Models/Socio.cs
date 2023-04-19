@@ -73,19 +73,13 @@ namespace sga_stif.Models
         public string NomeCompleto()
         {
             var nomeCompleto = "";
-
             var nomeCopletoSemTratamento = this.Nome + " " + this.Apelido;
-
             nomeCopletoSemTratamento = Regex.Replace(nomeCopletoSemTratamento, @"\s+", " ");
-
             nomeCopletoSemTratamento = nomeCopletoSemTratamento.Trim();
-
             var palavras = nomeCopletoSemTratamento.Split(' ');
 
             foreach (var palavra in palavras)
-            {
                 nomeCompleto = nomeCompleto + " " + char.ToUpper(palavra[0]) + palavra.Substring(1).ToLower();
-            }
 
             return nomeCompleto;
 
@@ -95,19 +89,13 @@ namespace sga_stif.Models
         public string NomeFormatado()
         {
             var nomeCompleto = "";
-
             var nomeCopletoSemTratamento = this.Nome;
-
             nomeCopletoSemTratamento = Regex.Replace(nomeCopletoSemTratamento, @"\s+", " ");
-
             nomeCopletoSemTratamento = nomeCopletoSemTratamento.Trim();
-
             var palavras = nomeCopletoSemTratamento.Split(' ');
 
             foreach (var palavra in palavras)
-            {
                 nomeCompleto = nomeCompleto + " " + char.ToUpper(palavra[0]) + palavra.Substring(1).ToLower();
-            }
 
             return nomeCompleto;
 
@@ -117,26 +105,17 @@ namespace sga_stif.Models
         public string ApelidoFormatado()
         {
             var nomeCompleto = "";
-
             var nomeCopletoSemTratamento = this.Apelido;
-
             nomeCopletoSemTratamento = Regex.Replace(nomeCopletoSemTratamento, @"\s+", " ");
-
             nomeCopletoSemTratamento = nomeCopletoSemTratamento.Trim();
-
             var palavras = nomeCopletoSemTratamento.Split(' ');
 
             foreach (var palavra in palavras)
-            {
                 nomeCompleto = nomeCompleto + " " + char.ToUpper(palavra[0]) + palavra.Substring(1).ToLower();
-            }
 
             return nomeCompleto;
 
         }
-
-
-
 
         public string PegarDDescricaoEstadoCivil()
         {
@@ -174,15 +153,10 @@ namespace sga_stif.Models
                 var imageDataURL = string.Format("data:image/png;base64,{0}", aux);
                 return imageDataURL;
             }
-            else
-            {
-                return "../../dist/img/default-150x150.png";
-
-            }
+            return "../../dist/img/default-150x150.png";
         }
 
     }
-
 
     public enum Sexo
     {
@@ -198,7 +172,6 @@ namespace sga_stif.Models
         Inativo = 0
     }
 
-
     public enum EstadoCivil
     {
         [Description("Solteiro(a)")]
@@ -213,9 +186,6 @@ namespace sga_stif.Models
         SeparacaoJudicial,
 
     }
-
-
-
 
     public enum HabilitacaoLiteraria
     {

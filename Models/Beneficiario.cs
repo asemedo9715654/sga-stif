@@ -26,13 +26,9 @@ namespace sga_stif.Models
         public string NomeCompleto()
         {
             var nomeCompleto = "";
-
             var nomeCopletoSemTratamento = this.Nome + " " + this.Apelido;
-
             nomeCopletoSemTratamento = Regex.Replace(nomeCopletoSemTratamento, @"\s+", " ");
-
             nomeCopletoSemTratamento = nomeCopletoSemTratamento.Trim();
-
             var palavras = nomeCopletoSemTratamento.Split(' ');
 
             foreach (var palavra in palavras)

@@ -5,8 +5,10 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using NLog.Web;
+using NPOI.SS.Formula.Functions;
 using sga_stif.Models;
 using sga_stif.ViewModel.Utilizador;
+using BC = BCrypt.Net.BCrypt;
 
 namespace sga_stif.Controllers
 {
@@ -213,7 +215,64 @@ namespace sga_stif.Controllers
         [HttpGet]
         public IActionResult PerfilUtilizador()
         {
+            var tt =HttpContext.Session.GetString("IdUtilizador");
+            var idConvertido = int.Parse(tt);
+            var utilizador = _context.Utilizador.Include(c => c.Perfil).FirstOrDefault(d => d.IdUtilizador == idConvertido);
+
+            var dadosUtilizadorViewModel = _mapper.Map<DadosUtilizadorViewModel>(utilizador);
+
+            return View(dadosUtilizadorViewModel);
+        }
+        
+        [HttpGet]
+        public IActionResult MudaPalavraPasse()
+        {
             return View();
+        }
+
+
+        [HttpPost]
+        public IActionResult MudaPalavraPasse(MudaPalavraPasseViewModel mudaPalavraPasseViewModel)
+        {
+            var tt = HttpContext.Session.GetString("IdUtilizador");
+            var idConvertido = int.Parse(tt);
+
+            var utilizador = _context.Utilizador.Include(c => c.Perfil).FirstOrDefault(d => d.IdUtilizador == idConvertido);
+
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    if (mudaPalavraPasseViewModel.ConfirmacaoNovaPalavraPasse != mudaPalavraPasseViewModel.NovaPalavraPasse)
+                    {
+                        _notyf.Error("Palavra passe nao conresponde.");
+                        return View(mudaPalavraPasseViewModel);
+                    }
+
+                    if (utilizador == null || !BC.Verify(mudaPalavraPasseViewModel.PalavraPasseAntiga, utilizador.PalavraPasse))
+                    {
+                        _notyf.Error("Erro nao vereficação da palavra passe antiga!");
+                        return View(mudaPalavraPasseViewModel);
+                    }
+
+
+
+                    utilizador.PalavraPasse = BC.HashPassword(mudaPalavraPasseViewModel.NovaPalavraPasse);
+                    _context.Update(utilizador);
+                    _notyf.Success("Palavra passe mudada com suceso!");
+
+                    return RedirectToAction("PerfilUtilizador");
+                }
+            }
+            catch (DbUpdateException ex)
+            {
+                ModelState.AddModelError("", "Não foi possível salvar as alterações. Tente novamente e, se o problema persistir, consulte o administrador do sistema. Erro => " + ex.Message);
+
+            }
+
+            _notyf.Error("Erro na validação dos dados!!!");
+
+            return View(mudaPalavraPasseViewModel);
         }
 
 

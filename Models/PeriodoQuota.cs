@@ -17,8 +17,6 @@ namespace sga_stif.Models
          //propriedades de navegação
         public virtual ICollection<QuotaSocio> QuotaSocio { get; set; }
         
-
-
         public PeriodoQuota()
         {
             this.QuotaSocio = new HashSet<QuotaSocio>();
