@@ -275,9 +275,7 @@ namespace sga_stif.Controllers
     {
       var utilizaddor = _context.Utilizador.FirstOrDefault(k => k.NomeUtilizador == NomeUtilizador);
       if (utilizaddor != null)
-      {
         return Json($"O NomeUtilizador : {NomeUtilizador} já foi inserida no sistema!");
-      }
 
       return Json(true);
     }
@@ -288,11 +286,9 @@ namespace sga_stif.Controllers
       var utilizador = await _context.Utilizador.FindAsync(idUtilizador);
       utilizador.Eliminado = false;
       utilizador.DataAtualizacao = DateTime.Now;
-
       await _context.SaveChangesAsync();
       _notyf.Success("Utilizador reativado com sucesso!");
-
-
+      
       return RedirectToAction("ListaUtilizador");
     }
 
