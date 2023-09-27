@@ -364,9 +364,9 @@ namespace sga_stif.Controllers
         {
             try
             {
-                const string fromPassword = "xxxxxxxxxxxxxxxxc";
-                const string smtpServer = "smtp.gmail.com";
-                const int smtpPort = 587;
+                const string fromPassword = "Cont@2023";
+                const string smtpServer = "mail.stif.cv";
+                const int smtpPort = 465;
 
                 var smtpClient = new SmtpClient
                 {
@@ -375,7 +375,7 @@ namespace sga_stif.Controllers
                     EnableSsl = true,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
                     UseDefaultCredentials = false,
-                    Credentials = new NetworkCredential("ffffffffff@hotmail.com", fromPassword)
+                    Credentials = new NetworkCredential("contact@stif.cv", fromPassword)
 
                 };
 
@@ -383,7 +383,7 @@ namespace sga_stif.Controllers
                 {
                     Subject = subject,
                     Body = body,
-                    From = new MailAddress("ffffffffff@hotmail.com"),
+                    From = new MailAddress("contact@hotmail.com"),
                     IsBodyHtml = true,
                 };
 

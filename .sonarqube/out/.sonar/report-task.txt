@@ -1,0 +1,6 @@
+projectKey=sga-stif
+serverUrl=http://localhost:9000
+serverVersion=10.0.0.68432
+dashboardUrl=http://localhost:9000/dashboard?id=sga-stif
+ceTaskId=AYjBD7vhC56F5rBW2qmL
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYjBD7vhC56F5rBW2qmL
