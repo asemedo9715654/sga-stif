@@ -1,8 +1,11 @@
 using AspNetCoreHero.ToastNotification.Abstractions;
+
 using AutoMapper;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+
 using sga_stif.Models;
 using sga_stif.Models.ResultadoStoredProcedure;
 
@@ -27,7 +30,7 @@ namespace sga_stif.Controllers
         {
 
             var projecaoQuotasResultados = new List<ProjecaoQuotasResultado>();
-            var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(a => a.Eliminado == false).ToList();
+            var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(a => a.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(a.IdInstituicaoFinanceira)).ToList();
             var instituicaoFinanceirasItem = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome };
             ViewBag.IdInstituicaoFinanceira = instituicaoFinanceirasItem;
 

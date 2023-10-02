@@ -24,7 +24,7 @@ namespace sga_stif.Controllers
     public class InstituicaoFinanceiraController : BaseController
     {
 
-        private readonly ContextoBaseDados _context;
+        public readonly ContextoBaseDados _context;
         private readonly INotyfService _notyf;
         private readonly IMapper _mapper;
         private readonly ILogger<InstituicaoFinanceiraController> _logger;
@@ -40,7 +40,9 @@ namespace sga_stif.Controllers
 
         public async Task<IActionResult> ListaInstituicaoFinanceira()
         {
-            var instituicaoFinanceira = await _context.InstituicaoFinanceira.Where(e => e.Eliminado == false).Include(i => i.Agencia).ThenInclude(k => k.Socio).ToListAsync();
+
+
+            var instituicaoFinanceira = await _context.InstituicaoFinanceira.Where(e => e.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(e.IdInstituicaoFinanceira)).Include(i => i.Agencia).ThenInclude(k => k.Socio).ToListAsync();
             var listaInstituicaoFinanceiraViewModel = _mapper.Map<List<ListaInstituicaoFinanceiraViewModel>>(instituicaoFinanceira);
             return View(listaInstituicaoFinanceiraViewModel);
         }

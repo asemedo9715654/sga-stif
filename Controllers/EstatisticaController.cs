@@ -1,6 +1,8 @@
 using AspNetCoreHero.ToastNotification.Abstractions;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+
 using sga_stif.Extensao;
 using sga_stif.Models;
 using sga_stif.ViewModel.Estatistica;
@@ -24,15 +26,15 @@ namespace sga_stif.Controllers
             var socios = _context.Socio.ToList();
 
             ViewBag.TotalSocios = socios.Count();
-            ViewBag.SocioInativos = socios.Where(g => g.Eliminado == true).Count();
-            ViewBag.SocioAtivos = socios.Where(g => g.Eliminado == false).Count();
+            ViewBag.SocioInativos = socios.Where(g => g.Eliminado == true && ListaAgenciasPermitidas(_context).Contains(g.IdAgencia)).Count();
+            ViewBag.SocioAtivos = socios.Where(g => g.Eliminado == false && ListaAgenciasPermitidas(_context).Contains(g.IdAgencia)).Count();
 
 
-            var instituicaoFinanceiras = _context.InstituicaoFinanceira.ToList();
+            var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(e => ListaInstituicoesFinanceirasPermitidas(_context).Contains(e.IdInstituicaoFinanceira)).ToList();
             ViewBag.TotalInstituicaoFinanceiras = instituicaoFinanceiras.Count();
 
 
-            var agencia = _context.Agencia.ToList();
+            var agencia = _context.Agencia.Where(r => ListaAgenciasPermitidas(_context).Contains(r.IdAgencia)).ToList();
             ViewBag.TotalAgencia = agencia.Count();
 
             return View();
@@ -46,7 +48,7 @@ namespace sga_stif.Controllers
             highChartSeries.colorByPoint = true;
             highChartSeries.data = new List<data>();
 
-            var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(e => e.Eliminado == false).Include(g => g.Agencia).Select(j => new { Sigla = j.Sigla, Agencia = j.Agencia }).ToList();
+            var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(e => e.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(e.IdInstituicaoFinanceira)).Include(g => g.Agencia).Select(j => new { Sigla = j.Sigla, Agencia = j.Agencia }).ToList();
 
             var listaDdeSocios = _context.Socio.Where(e => e.Eliminado == false).Select(k => k.IdAgencia).ToList();
 
@@ -85,7 +87,7 @@ namespace sga_stif.Controllers
 
             var tipologiaSocios = _context.TipologiaSocio.Where(e => e.Eliminado == false).ToList();
 
-            var todos = _context.Socio.Where(r => r.Eliminado == false).Select(j => j.IdTipologiaSocio).ToList();
+            var todos = _context.Socio.Where(r => r.Eliminado == false && ListaAgenciasPermitidas(_context).Contains(r.IdAgencia)).Select(j => j.IdTipologiaSocio).ToList();
 
             foreach (var tipologiaSocio in tipologiaSocios)
             {
@@ -118,7 +120,7 @@ namespace sga_stif.Controllers
 
             var tipoQuotas = _context.TipoQuota.Where(e => e.Eliminado == false).ToList();
 
-            var todos = _context.Socio.Select(k => k.IdTipoQuota).ToList();
+            var todos = _context.Socio.Where(e => ListaAgenciasPermitidas(_context).Contains(e.IdAgencia)).Select(k => k.IdTipoQuota).ToList();
 
             foreach (var ittipoQuota in tipoQuotas)
             {
@@ -150,7 +152,7 @@ namespace sga_stif.Controllers
             highChartSeries.colorByPoint = true;
             highChartSeries.data = new List<data>();
 
-            var listaDeSocio = _context.Socio.Where(e => e.Eliminado == false).Select(j => j.Sexo).ToList();
+            var listaDeSocio = _context.Socio.Where(e => e.Eliminado == false && ListaAgenciasPermitidas(_context).Contains(e.IdAgencia)).Select(j => j.Sexo).ToList();
 
             var lista = new List<Sexo>(){
           Sexo.Feminino,
@@ -186,7 +188,7 @@ namespace sga_stif.Controllers
             highChartSeries.colorByPoint = true;
             highChartSeries.data = new List<data>();
 
-            var listaDeSocio = _context.Socio.Where(e => e.Eliminado == false).Select(k => k.EstadoCivil).ToList();
+            var listaDeSocio = _context.Socio.Where(e => e.Eliminado == false && ListaAgenciasPermitidas(_context).Contains(e.IdAgencia)).Select(k => k.EstadoCivil).ToList();
 
             var listaEstadoCivil = new List<EstadoCivil>(){
          EstadoCivil.Casado,
@@ -228,7 +230,7 @@ namespace sga_stif.Controllers
 
             var ilhas = _context.Ilha.Where(e => e.Eliminado == false).Include(g => g.Cidade).ThenInclude(g => g.Agencia).ToList();
 
-            var listaDeSocio = _context.Socio.Where(e => e.Eliminado == false).Select(k => k.IdAgencia).ToList();
+            var listaDeSocio = _context.Socio.Where(e => e.Eliminado == false && ListaAgenciasPermitidas(_context).Contains(e.IdAgencia)).Select(k => k.IdAgencia).ToList();
 
             foreach (var item in ilhas)
             {
@@ -269,8 +271,8 @@ namespace sga_stif.Controllers
                 dados = new List<Dados>()
             };
 
-            var socios = _context.Socio.Where(e => e.Eliminado == false).Select(a => new { a.IdAgencia, a.Sexo }).ToList();
-            var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(e => e.Eliminado == false).Include(g => g.Agencia).ToList();
+            var socios = _context.Socio.Where(e => e.Eliminado == false && ListaAgenciasPermitidas(_context).Contains(e.IdAgencia)).Select(a => new { a.IdAgencia, a.Sexo }).ToList();
+            var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(e => e.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(e.IdInstituicaoFinanceira)).Include(g => g.Agencia).ToList();
             var aux = from v in instituicaoFinanceiras select v.Sigla;
             graficoColunaEmpilhadaAgrupada.categorias = aux.ToList();
 
@@ -321,8 +323,8 @@ namespace sga_stif.Controllers
             };
 
 
-            var listaDeSocios = _context.Socio.Where(e => e.Eliminado == false).ToList();
-            var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(e => e.Eliminado == false).Include(g => g.Agencia).ToList();
+            var listaDeSocios = _context.Socio.Where(e => e.Eliminado == false && ListaAgenciasPermitidas(_context).Contains(e.IdAgencia)).ToList();
+            var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(e => e.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(e.IdInstituicaoFinanceira)).Include(g => g.Agencia).ToList();
             var aux = from v in instituicaoFinanceiras select v.Sigla;
 
             var sexos = new List<Sexo>(){

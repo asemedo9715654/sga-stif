@@ -1,8 +1,10 @@
 using AspNetCoreHero.ToastNotification.Abstractions;
+
 using AutoMapper;
+
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
+
 using sga_stif.Models;
 using sga_stif.ViewModel.Perfil;
 using sga_stif.ViewModel.Utilizador;
@@ -145,6 +147,73 @@ namespace sga_stif.Controllers
 
             var listaMenuAcaoViewModel = _mapper.Map<List<ListaMenuAcaoViewModel>>(menuAcao);
             return View(listaMenuAcaoViewModel);
+        }
+
+        public async Task<IActionResult> GerirPerfilInstituicaoFinanceira(int idPerfil)
+        {
+
+            var perfil = _context.Perfil.FirstOrDefault(p => p.IdPerfil == idPerfil);
+            if (perfil != null)
+            {
+                ViewBag.NomePerfil = perfil.Descricao;
+                ViewBag.IdPerfil = perfil.IdPerfil;
+            }
+            else
+                ViewBag.NomePerfil = "Sem Perfil";
+
+
+            var instituicaoFinanceiras = _context.InstituicaoFinanceira.ToList();
+            foreach (var instituicaoFinanceira in instituicaoFinanceiras)
+            {
+                var existe = _context.PerfilInstituicaoFinanceira.Any(j =>
+                    j.IdPerfil == idPerfil &&
+                    j.IdInstituicaoFinanceira == instituicaoFinanceira.IdInstituicaoFinanceira);
+                if (!existe)
+                {
+                    var t = new PerfilInstituicaoFinanceira()
+                    {
+                        IdInstituicaoFinanceira = instituicaoFinanceira.IdInstituicaoFinanceira,
+                        IdPerfil = idPerfil,
+                        Permitido = true
+                    };
+                    _context.PerfilInstituicaoFinanceira.Add(t);
+                    _context.SaveChanges();
+                }
+
+            }
+
+
+            var perfilInstituicaoFinanceiras = await _context.PerfilInstituicaoFinanceira.Where(t => t.Eliminado == false && t.IdPerfil == idPerfil)
+                .Include(c => c.Perfil)
+                .Include(c => c.InstituicaoFinanceira)
+                .ToListAsync();
+
+            var listaPerfilInstituicaoFinanceiras = _mapper.Map<List<ListaPerfilInstituicaoFinanceiraViewModel>>(perfilInstituicaoFinanceiras);
+            return View(listaPerfilInstituicaoFinanceiras);
+        }
+
+        [HttpPost]
+        public JsonResult GuardaPerfilInstituicaoFinanceira(int idPerfil, int idInstituicaoFinanceira)
+        {
+
+            var perfilInstituicaoFinanceira = _context.PerfilInstituicaoFinanceira.FirstOrDefault(a => a.IdPerfil == idPerfil && a.IdInstituicaoFinanceira == idInstituicaoFinanceira);
+            if (perfilInstituicaoFinanceira != null)
+            {
+                if (perfilInstituicaoFinanceira.Permitido == false)
+                {
+                    perfilInstituicaoFinanceira.Permitido = true;
+                }
+                else
+                {
+                    perfilInstituicaoFinanceira.Permitido = false;
+                }
+
+                _context.PerfilInstituicaoFinanceira.Update(perfilInstituicaoFinanceira);
+                _context.SaveChanges();
+
+            }
+
+            return Json(new object());
         }
 
 

@@ -12,10 +12,12 @@ namespace sga_stif.Models
         //propriedades de navegação
         public virtual ICollection<Agencia> Agencia { get; set; }
         public virtual ICollection<InstituicaoFinanceiraColaboradores> InstituicaoFinanceiraColaboradores { get; set; }
+        public virtual ICollection<PerfilInstituicaoFinanceira> PerfilInstituicaoFinanceira { get; set; }
         public InstituicaoFinanceira()
         {
             this.Agencia = new HashSet<Agencia>();
             this.InstituicaoFinanceiraColaboradores = new HashSet<InstituicaoFinanceiraColaboradores>();
+            this.PerfilInstituicaoFinanceira = new HashSet<PerfilInstituicaoFinanceira>();
         }
 
         public int TotalAgencias()

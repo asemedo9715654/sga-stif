@@ -1,15 +1,14 @@
 using AspNetCoreHero.ToastNotification.Abstractions;
+
 using AutoMapper;
+
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using sga_stif.Extensao;
+
 using sga_stif.Models;
 using sga_stif.Models.ResultadoStoredProcedure;
-using sga_stif.ViewModel.DataTable;
 using sga_stif.ViewModel.Socio;
-using SmartBreadcrumbs.Attributes;
 
 namespace sga_stif.Controllers
 {
@@ -37,7 +36,8 @@ namespace sga_stif.Controllers
         //[Breadcrumb(FromAction = "ListaSocio", Title = "Lista de Sócio")]
         public async Task<IActionResult> ListaSocio()
         {
-            var sociosdd = await _context.Socio.Where(r => r.Eliminado != true).Include(c => c.Agencia)
+            var sociosdd = await _context.Socio.Where(r => r.Eliminado != true && ListaAgenciasPermitidas(_context).Contains(r.IdAgencia))
+                                      .Include(c => c.Agencia)
                                       .Include(c => c.TipologiaSocio)
                                       .Include(c => c.TipoQuota)
                                       .Include(c => c.Beneficiario)
@@ -94,7 +94,7 @@ namespace sga_stif.Controllers
         #endregion
         public async Task<IActionResult> ListaSocioInativos()
         {
-            var socios = await _context.Socio.Where(r => r.Eliminado == true).Include(c => c.Agencia)
+            var socios = await _context.Socio.Where(r => r.Eliminado == true && ListaAgenciasPermitidas(_context).Contains(r.IdAgencia)).Include(c => c.Agencia)
                                         .Include(c => c.TipologiaSocio)
                                         .Include(c => c.TipoQuota)
                                         .Include(c => c.Beneficiario)
@@ -109,10 +109,10 @@ namespace sga_stif.Controllers
         [HttpGet]
         public IActionResult NovoSocio()
         {
-            var angencia = _context.Agencia.Where(r => r.Eliminado == false).Include(j => j.Cidade).ToList();
+            var angencia = _context.Agencia.Where(r => r.Eliminado == false && ListaAgenciasPermitidas(_context).Contains(r.IdAgencia)).Include(j => j.Cidade).ToList();
             var tipologiaSocios = _context.TipologiaSocio.Where(r => r.Eliminado == false).ToList();
             var tipoQuotas = _context.TipoQuota.Where(r => r.Eliminado == false).ToList();
-            var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(h => h.Eliminado == false).ToList();
+            var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(h => h.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(h.IdInstituicaoFinanceira)).ToList();
             var angenciaListItem = from g in angencia select new SelectListItem { Value = g.IdAgencia.ToString(), Text = g.Cidade.Nome + " - " + g.Nome };
             var tipologiaSociosListItem = from g in tipologiaSocios select new SelectListItem { Value = g.IdTipologiaSocio.ToString(), Text = g.Descricao };
             var tipoQuotasListItem = from g in tipoQuotas select new SelectListItem { Value = g.IdTipoQuota.ToString(), Text = g.Descricao };

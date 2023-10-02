@@ -1,8 +1,11 @@
 using AspNetCoreHero.ToastNotification.Abstractions;
+
 using AutoMapper;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+
 using sga_stif.Models;
 using sga_stif.Models.ResultadoStoredProcedure;
 
@@ -25,17 +28,17 @@ namespace sga_stif.Controllers
         //sem filtro
         public async Task<IActionResult> ListaQuotasVencidas(int? IdInstituicaoFinanceira)
         {
-         
+
 
             var idInstituicaoFinanceira = IdInstituicaoFinanceira ?? 0;
-            var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(a => a.Eliminado == false).ToList();
+            var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(a => a.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(a.IdInstituicaoFinanceira)).ToList();
             var instituicaoFinanceirasItem = from g in instituicaoFinanceiras
-                select new SelectListItem
-                {
-                    Value = g.IdInstituicaoFinanceira.ToString(),
-                    Text = g.Nome,
-                    Selected = g.IdInstituicaoFinanceira == idInstituicaoFinanceira
-                };
+                                             select new SelectListItem
+                                             {
+                                                 Value = g.IdInstituicaoFinanceira.ToString(),
+                                                 Text = g.Nome,
+                                                 Selected = g.IdInstituicaoFinanceira == idInstituicaoFinanceira
+                                             };
 
             var contaCorrenteIfResultados = new List<ContaCorrenteIFResultado>();
 
@@ -62,20 +65,20 @@ namespace sga_stif.Controllers
         public async Task<IActionResult> ListaQuotasPendente(int? IdInstituicaoFinanceira)
         {
             var idInstituicaoFinanceira = IdInstituicaoFinanceira ?? 0;
-            
-            var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(h => h.Eliminado == false).ToList();
+
+            var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(h => h.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(h.IdInstituicaoFinanceira)).ToList();
             var instituicaoFinanceirasItem = from g in instituicaoFinanceiras
-                select new SelectListItem
-                {
-                    Value = g.IdInstituicaoFinanceira.ToString(),
-                    Text = g.Nome,
-                    Selected = g.IdInstituicaoFinanceira == idInstituicaoFinanceira
-                };
+                                             select new SelectListItem
+                                             {
+                                                 Value = g.IdInstituicaoFinanceira.ToString(),
+                                                 Text = g.Nome,
+                                                 Selected = g.IdInstituicaoFinanceira == idInstituicaoFinanceira
+                                             };
             ViewBag.IdInstituicaoFinanceira = instituicaoFinanceirasItem;
 
             var contaCorrenteIfResultados = new List<ContaCorrenteIFResultado>();
 
-            
+
 
             if (IdInstituicaoFinanceira != null)
             {
@@ -111,14 +114,14 @@ namespace sga_stif.Controllers
 
             var idInstituicaoFinanceira = IdInstituicaoFinanceira ?? 0;
 
-            var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(h => h.Eliminado == false).ToList();
+            var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(h => h.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(h.IdInstituicaoFinanceira)).ToList();
             var instituicaoFinanceirasItem = from g in instituicaoFinanceiras
-                select new SelectListItem
-                {
-                    Value = g.IdInstituicaoFinanceira.ToString(),
-                    Text = g.Nome,
-                    Selected = g.IdInstituicaoFinanceira == idInstituicaoFinanceira
-                };
+                                             select new SelectListItem
+                                             {
+                                                 Value = g.IdInstituicaoFinanceira.ToString(),
+                                                 Text = g.Nome,
+                                                 Selected = g.IdInstituicaoFinanceira == idInstituicaoFinanceira
+                                             };
             ViewBag.IdInstituicaoFinanceira = instituicaoFinanceirasItem;
 
 
@@ -137,7 +140,7 @@ namespace sga_stif.Controllers
 
             return View(contaCorrenteIfResultados);
         }
-        
+
         // filtro ano e mes 
         [HttpGet]
         public async Task<IActionResult> ListaQuotasPagas(DateTime? DataPesquisa, int? IdInstituicaoFinanceira)
@@ -159,8 +162,8 @@ namespace sga_stif.Controllers
 
             ViewBag.DataPreenchido = ano + "-" + DataPesquisa.Value.Month.ToString("#00");
 
-            var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(h => h.Eliminado == false).ToList();
-            var instituicaoFinanceirasItem = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome,Selected = idInstituicaoFinanceira==g.IdInstituicaoFinanceira };
+            var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(h => h.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(h.IdInstituicaoFinanceira)).ToList();
+            var instituicaoFinanceirasItem = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome, Selected = idInstituicaoFinanceira == g.IdInstituicaoFinanceira };
             ViewBag.IdInstituicaoFinanceira = instituicaoFinanceirasItem;
 
             var listContaCorrenteIFResultado = new List<ContaCorrenteIFResultado>();

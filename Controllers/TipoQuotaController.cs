@@ -1,7 +1,10 @@
 using AspNetCoreHero.ToastNotification.Abstractions;
+
 using AutoMapper;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+
 using sga_stif.Models;
 using sga_stif.ViewModel.Socio;
 using sga_stif.ViewModel.TipoQuota;
@@ -27,7 +30,7 @@ namespace sga_stif.Controllers
 
         public async Task<IActionResult> ListaTipoQuota()
         {
-            var utilizadores = await _context.TipoQuota.Where(h => h.Eliminado == false).Include(j => j.Socio).ToListAsync();
+            var utilizadores = await _context.TipoQuota.Where(h => h.Eliminado == false).Include(j => j.Socio.Where(a => ListaAgenciasPermitidas(_context).Contains(a.IdAgencia))).ToListAsync();
             var listaUtilizadorViewModels = _mapper.Map<List<ListaTipoQuotaViewModel>>(utilizadores);
             return View(listaUtilizadorViewModels);
         }
