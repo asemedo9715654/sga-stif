@@ -28,9 +28,9 @@ namespace sga_stif.Controllers
             _mapper = mapper;
         }
 
-        public async Task<IActionResult> ListaSocioServerSide()
+        public Task<IActionResult> ListaSocioServerSide()
         {
-            return View();
+            return Task.FromResult<IActionResult>(View());
         }
 
         //[Breadcrumb(FromAction = "ListaSocio", Title = "Lista de Sócio")]
@@ -404,9 +404,8 @@ namespace sga_stif.Controllers
 
             var exiteSocioComMesmoNumerColaborador = _context.Socio.Include(a => a.Agencia).ThenInclude(i => i.InstituicaoFinanceira).FirstOrDefault(j => j.NumeroColaborador == novoSocioViewModel.NumeroColaborador && j.Agencia.InstituicaoFinanceira.IdInstituicaoFinanceira == instituicaoFinanceira.IdInstituicaoFinanceira);
             if (exiteSocioComMesmoNumerColaborador != null)
-            {
-                return Tuple.Create(false, $"Existe colaborador com o mesmo nº de colaborador para instituição: {instituicaoFinanceira.Nome}");
-            }
+                return Tuple.Create(false,
+                    $"Existe colaborador com o mesmo nº de colaborador para instituição: {instituicaoFinanceira.Nome}");
             return Tuple.Create(true, "Valido");
         }
 
@@ -417,10 +416,7 @@ namespace sga_stif.Controllers
         {
             var socio = _context.Socio.FirstOrDefault(k => k.CinBi == CinBi);
             if (socio != null)
-            {
                 return Json($"O CNI/BI {CinBi} já foi inserida no sistema!");
-            }
-
             return Json(true);
         }
 
@@ -430,10 +426,7 @@ namespace sga_stif.Controllers
         {
             var socio = _context.Socio.FirstOrDefault(k => k.NumeroPassaporte == NumeroPassaporte);
             if (socio != null)
-            {
                 return Json($"O Número de Passaporte {NumeroPassaporte} já foi inserida no sistema!");
-            }
-
             return Json(true);
         }
 
@@ -443,10 +436,7 @@ namespace sga_stif.Controllers
         {
             var socio = _context.Socio.FirstOrDefault(k => k.NumeroDeSocio == NumeroDeSocio);
             if (socio != null)
-            {
                 return Json($"O Número de sócio {NumeroDeSocio} já foi inserida no sistema!");
-            }
-
             return Json(true);
         }
 
@@ -455,10 +445,7 @@ namespace sga_stif.Controllers
         {
             var socio = _context.Socio.FirstOrDefault(k => k.Email == Email);
             if (socio != null)
-            {
                 return Json($"O E-mail : {Email} já foi inserida no sistema!");
-            }
-
             return Json(true);
         }
 

@@ -352,6 +352,61 @@ namespace sga_stif.Controllers
             return View(emailViewModel);
         }
 
+
+        public IActionResult EnvioDeEmailTodasInstituicao()
+        {
+            ViewBag.NomeInstituicaoFinanceira = "Todos";
+            return View();
+        }
+
+
+        [HttpPost]
+        public IActionResult EnvioDeEmailTodasInstituicao(EmailTodosViewModel emailViewModel)
+        {
+            try
+            {
+                List<string> toAddress = new List<string>();
+                if (ModelState.IsValid)
+                {
+                    var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(g => ListaInstituicoesFinanceirasPermitidas(_context).Contains(g.IdInstituicaoFinanceira) && g.Eliminado == false).ToList();
+
+                    var idInstituicoes = from d in instituicaoFinanceiras select d.IdInstituicaoFinanceira;
+
+                    var socios = _context.Socio.Where(e => e.Eliminado == false && idInstituicoes.Contains(e.Agencia.IdInstituicaoFinanceira)).ToList();
+
+                    var lista = new List<Socio>();
+
+                    foreach (var socio in socios)
+                        if (IsValidEmail(socio.Email))
+                        {
+                            lista.Add(socio);
+                        }
+
+
+
+                    var resultadoMetodo = SendEmailMailKit(lista, emailViewModel.Assunto, emailViewModel.CorpoDoEmail);
+                    if (resultadoMetodo.Sucesso)
+                    {
+                        _notyf.Success("Email enviado com sucesso!");
+                        return RedirectToAction("ListaInstituicaoFinanceira");
+                    }
+
+                    _notyf.Error(resultadoMetodo.Mensagem);
+                    return RedirectToAction("ListaInstituicaoFinanceira");
+
+
+                }
+                _notyf.Error("Model invalido");
+            }
+            catch (Exception e)
+            {
+                _notyf.Error("Erro : " + e.Message);
+            }
+
+            ViewBag.NomeInstituicaoFinanceira = "Todos";
+            return View(emailViewModel);
+        }
+
         bool IsValidEmail(string email)
         {
             var trimmedEmail = email.Trim();
