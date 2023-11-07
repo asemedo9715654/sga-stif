@@ -165,9 +165,7 @@ namespace sga_stif.Controllers
             var instituicaoFinanceiras = _context.InstituicaoFinanceira.ToList();
             foreach (var instituicaoFinanceira in instituicaoFinanceiras)
             {
-                var existe = _context.PerfilInstituicaoFinanceira.Any(j =>
-                    j.IdPerfil == idPerfil &&
-                    j.IdInstituicaoFinanceira == instituicaoFinanceira.IdInstituicaoFinanceira);
+                var existe = _context.PerfilInstituicaoFinanceira.Any(j => j.IdPerfil == idPerfil && j.IdInstituicaoFinanceira == instituicaoFinanceira.IdInstituicaoFinanceira);
                 if (!existe)
                 {
                     var t = new PerfilInstituicaoFinanceira()
@@ -181,7 +179,6 @@ namespace sga_stif.Controllers
                 }
 
             }
-
 
             var perfilInstituicaoFinanceiras = await _context.PerfilInstituicaoFinanceira.Where(t => t.Eliminado == false && t.IdPerfil == idPerfil)
                 .Include(c => c.Perfil)

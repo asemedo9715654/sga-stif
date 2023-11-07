@@ -327,16 +327,29 @@ namespace sga_stif.Controllers
                             lista.Add(socio);
                         }
 
+                    IEnumerable<Socio[]> divisaoDeQuatroArrayDeSemElementos = socios.Chunk(25);
+
+                    var sucesso = true;
+                    var mensagemSucesso = "";
+
+                    foreach (var socioDividido in divisaoDeQuatroArrayDeSemElementos)
+                    {
+                        var resultadoMetodo = SendEmailMailKit(socioDividido.ToList(), emailViewModel.Assunto, emailViewModel.CorpoDoEmail);
+                        if (!resultadoMetodo.Sucesso)
+                        {
+                            mensagemSucesso += resultadoMetodo.Mensagem;
+                            sucesso = false;
+                        }
+                    }
 
 
-                    var resultadoMetodo = SendEmailMailKit(lista, emailViewModel.Assunto, emailViewModel.CorpoDoEmail);
-                    if (resultadoMetodo.Sucesso)
+                    if (sucesso)
                     {
                         _notyf.Success("Email enviado com sucesso!");
                         return RedirectToAction("ListaInstituicaoFinanceira");
                     }
 
-                    _notyf.Error(resultadoMetodo.Mensagem);
+                    _notyf.Error(mensagemSucesso);
                     return RedirectToAction("ListaInstituicaoFinanceira");
 
 
@@ -382,16 +395,28 @@ namespace sga_stif.Controllers
                             lista.Add(socio);
                         }
 
+                    var sucesso = true;
+                    var mensagemSucesso = "";
+                    IEnumerable<Socio[]> divisaoDeQuatroArrayDeSemElementos = socios.Chunk(25);
+
+                    foreach (var socioDividido in divisaoDeQuatroArrayDeSemElementos)
+                    {
+                        var resultadoMetodo = SendEmailMailKit(socioDividido.ToList(), emailViewModel.Assunto, emailViewModel.CorpoDoEmail);
+                        if (!resultadoMetodo.Sucesso)
+                        {
+                            mensagemSucesso += resultadoMetodo.Mensagem;
+                            sucesso = false;
+                        }
+                    }
 
 
-                    var resultadoMetodo = SendEmailMailKit(lista, emailViewModel.Assunto, emailViewModel.CorpoDoEmail);
-                    if (resultadoMetodo.Sucesso)
+                    if (sucesso)
                     {
                         _notyf.Success("Email enviado com sucesso!");
                         return RedirectToAction("ListaInstituicaoFinanceira");
                     }
 
-                    _notyf.Error(resultadoMetodo.Mensagem);
+                    _notyf.Error(mensagemSucesso);
                     return RedirectToAction("ListaInstituicaoFinanceira");
 
 
@@ -479,10 +504,22 @@ namespace sga_stif.Controllers
                 message.To.Add(new MailboxAddress("Ângelo Semedo", "vamp9278493cv@gmail.com"));
                 message.To.Add(new MailboxAddress("Odailton Veiga", "pachecoveiga@gmail.com"));
 
-                foreach (var socio in socios)
+
+                //divisao de listas
+                IEnumerable<Socio[]> divisaoDeQuatroArrayDeSemElementos = socios.Chunk(25);
+
+                foreach (var socioDividido in divisaoDeQuatroArrayDeSemElementos)
                 {
-                    message.To.Add(new MailboxAddress(socio.Nome + " " + socio.Apelido, socio.Email));
+                    foreach (var socio in socioDividido)
+                    {
+                        message.To.Add(new MailboxAddress(socio.Nome + " " + socio.Apelido, socio.Email));
+                    }
                 }
+
+                //foreach (var socio in socios)
+                //{
+                //    message.To.Add(new MailboxAddress(socio.Nome + " " + socio.Apelido, socio.Email));
+                //}
 
                 message.Subject = subject;
 
