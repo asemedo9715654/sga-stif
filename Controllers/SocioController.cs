@@ -1,15 +1,14 @@
 using AspNetCoreHero.ToastNotification.Abstractions;
+
 using AutoMapper;
+
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using sga_stif.Extensao;
+
 using sga_stif.Models;
 using sga_stif.Models.ResultadoStoredProcedure;
-using sga_stif.ViewModel.DataTable;
 using sga_stif.ViewModel.Socio;
-using SmartBreadcrumbs.Attributes;
 
 namespace sga_stif.Controllers
 {
@@ -29,15 +28,16 @@ namespace sga_stif.Controllers
             _mapper = mapper;
         }
 
-        public async Task<IActionResult> ListaSocioServerSide()
+        public Task<IActionResult> ListaSocioServerSide()
         {
-            return View();
+            return Task.FromResult<IActionResult>(View());
         }
 
         //[Breadcrumb(FromAction = "ListaSocio", Title = "Lista de Sócio")]
         public async Task<IActionResult> ListaSocio()
         {
-            var sociosdd = await _context.Socio.Where(r => r.Eliminado != true).Include(c => c.Agencia)
+            var sociosdd = await _context.Socio.Where(r => r.Eliminado != true && ListaAgenciasPermitidas(_context).Contains(r.IdAgencia))
+                                      .Include(c => c.Agencia)
                                       .Include(c => c.TipologiaSocio)
                                       .Include(c => c.TipoQuota)
                                       .Include(c => c.Beneficiario)
@@ -94,7 +94,7 @@ namespace sga_stif.Controllers
         #endregion
         public async Task<IActionResult> ListaSocioInativos()
         {
-            var socios = await _context.Socio.Where(r => r.Eliminado == true).Include(c => c.Agencia)
+            var socios = await _context.Socio.Where(r => r.Eliminado == true && ListaAgenciasPermitidas(_context).Contains(r.IdAgencia)).Include(c => c.Agencia)
                                         .Include(c => c.TipologiaSocio)
                                         .Include(c => c.TipoQuota)
                                         .Include(c => c.Beneficiario)
@@ -109,10 +109,10 @@ namespace sga_stif.Controllers
         [HttpGet]
         public IActionResult NovoSocio()
         {
-            var angencia = _context.Agencia.Where(r => r.Eliminado == false).Include(j => j.Cidade).ToList();
+            var angencia = _context.Agencia.Where(r => r.Eliminado == false && ListaAgenciasPermitidas(_context).Contains(r.IdAgencia)).Include(j => j.Cidade).ToList();
             var tipologiaSocios = _context.TipologiaSocio.Where(r => r.Eliminado == false).ToList();
             var tipoQuotas = _context.TipoQuota.Where(r => r.Eliminado == false).ToList();
-            var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(h => h.Eliminado == false).ToList();
+            var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(h => h.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(h.IdInstituicaoFinanceira)).ToList();
             var angenciaListItem = from g in angencia select new SelectListItem { Value = g.IdAgencia.ToString(), Text = g.Cidade.Nome + " - " + g.Nome };
             var tipologiaSociosListItem = from g in tipologiaSocios select new SelectListItem { Value = g.IdTipologiaSocio.ToString(), Text = g.Descricao };
             var tipoQuotasListItem = from g in tipoQuotas select new SelectListItem { Value = g.IdTipoQuota.ToString(), Text = g.Descricao };
@@ -404,9 +404,8 @@ namespace sga_stif.Controllers
 
             var exiteSocioComMesmoNumerColaborador = _context.Socio.Include(a => a.Agencia).ThenInclude(i => i.InstituicaoFinanceira).FirstOrDefault(j => j.NumeroColaborador == novoSocioViewModel.NumeroColaborador && j.Agencia.InstituicaoFinanceira.IdInstituicaoFinanceira == instituicaoFinanceira.IdInstituicaoFinanceira);
             if (exiteSocioComMesmoNumerColaborador != null)
-            {
-                return Tuple.Create(false, $"Existe colaborador com o mesmo nº de colaborador para instituição: {instituicaoFinanceira.Nome}");
-            }
+                return Tuple.Create(false,
+                    $"Existe colaborador com o mesmo nº de colaborador para instituição: {instituicaoFinanceira.Nome}");
             return Tuple.Create(true, "Valido");
         }
 
@@ -417,10 +416,7 @@ namespace sga_stif.Controllers
         {
             var socio = _context.Socio.FirstOrDefault(k => k.CinBi == CinBi);
             if (socio != null)
-            {
                 return Json($"O CNI/BI {CinBi} já foi inserida no sistema!");
-            }
-
             return Json(true);
         }
 
@@ -430,10 +426,7 @@ namespace sga_stif.Controllers
         {
             var socio = _context.Socio.FirstOrDefault(k => k.NumeroPassaporte == NumeroPassaporte);
             if (socio != null)
-            {
                 return Json($"O Número de Passaporte {NumeroPassaporte} já foi inserida no sistema!");
-            }
-
             return Json(true);
         }
 
@@ -443,10 +436,7 @@ namespace sga_stif.Controllers
         {
             var socio = _context.Socio.FirstOrDefault(k => k.NumeroDeSocio == NumeroDeSocio);
             if (socio != null)
-            {
                 return Json($"O Número de sócio {NumeroDeSocio} já foi inserida no sistema!");
-            }
-
             return Json(true);
         }
 
@@ -455,10 +445,7 @@ namespace sga_stif.Controllers
         {
             var socio = _context.Socio.FirstOrDefault(k => k.Email == Email);
             if (socio != null)
-            {
                 return Json($"O E-mail : {Email} já foi inserida no sistema!");
-            }
-
             return Json(true);
         }
 

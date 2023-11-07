@@ -12,12 +12,11 @@
             <div class="col-12">
                 <p class="lead">Lista de Instituições Financeiras</p>
 
-                <a asp-action="NovoInstituicaoFinanceira" class="btn btn-success btn-sm float-right"
-                    style="margin-right: 5px;">Novo</a>
+                <a asp-action="EnvioDeEmailTodasInstituicao" class="btn btn-info btn-sm float-right" style="margin-right: 5px;">Contactar</a>
 
-                <a asp-action="ListaInstituicaoFinanceiraInativos" class="btn btn-default btn-sm  float-right"
-                    style="margin-right: 5px;">Lista de
-                    Instituição Financeiras Inativos</a>
+                <a asp-action="NovoInstituicaoFinanceira" class="btn btn-success btn-sm float-right" style="margin-right: 5px;">Novo</a>
+
+                <a asp-action="ListaInstituicaoFinanceiraInativos" class="btn btn-default btn-sm  float-right" style="margin-right: 5px;">Lista de Instituição Financeiras Inativos</a>
 
             </div>
         </div>
@@ -84,22 +83,13 @@
                             @Html.DisplayFor(modelItem => item.DataAtualizacao)
                         </td>
                         <td>
-                            <a class="btn btn-info btn-xs" asp-action="EnvioDeEmailPorInstituicao"
-                               asp-route-idInstituicaoFinanceira="@item.IdInstituicaoFinanceira"><i class="fas fa-envelope"></i>
-                                Contactar</a>
+                            <a class="btn btn-info btn-xs" asp-action="EnvioDeEmailPorInstituicao" asp-route-idInstituicaoFinanceira="@item.IdInstituicaoFinanceira"><i class="fas fa-envelope"></i>Contactar</a>
                             
-                            <a class="btn btn-success btn-xs" asp-action="EditaInstituicaoFinanceira"
-                               asp-route-idInstituicaoFinanceira="@item.IdInstituicaoFinanceira"><i class="fas fa-pen"></i>
+                            <a class="btn btn-success btn-xs" asp-action="EditaInstituicaoFinanceira" asp-route-idInstituicaoFinanceira="@item.IdInstituicaoFinanceira"><i class="fas fa-pen"></i>
                                 Editar</a>
-                            <a class="btn btn-warning btn-xs" asp-action="InativarInstituicaoFinanceira"
-                               asp-route-idInstituicaoFinanceira="@item.IdInstituicaoFinanceira">Inativar</a>
-                            @* <a class="btn btn-default btn-xs" asp-action="ListaAgenciaPorInstitucaoFinanceira"
-                                asp-controller="Agencia" asp-route-idInstituicaoFinanceira="@item.IdInstituicaoFinanceira"
-                                asp-route-nomeInstituicao="@item.Nome"> <i class="fas fa-file-magnifying-glass"></i> Ver
-                                Agências</a> *@
-                            <a class="btn btn-default btn-xs" asp-action="DetalhesInstituicaoFinanceira"
-                               asp-route-idInstituicaoFinanceira="@item.IdInstituicaoFinanceira"
-                               asp-route-nomeInstituicaoFinanceira="@item.Nome"> <i class="fas fa-info"></i> Detalhes</a>
+                            <a class="btn btn-warning btn-xs" asp-action="InativarInstituicaoFinanceira" asp-route-idInstituicaoFinanceira="@item.IdInstituicaoFinanceira">Inativar</a>
+                          
+                            <a class="btn btn-default btn-xs" asp-action="DetalhesInstituicaoFinanceira" asp-route-idInstituicaoFinanceira="@item.IdInstituicaoFinanceira" asp-route-nomeInstituicaoFinanceira="@item.Nome"> <i class="fas fa-info"></i> Detalhes</a>
 
                         </td>
                     </tr>

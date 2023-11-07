@@ -1,29 +1,30 @@
 using AspNetCoreHero.ToastNotification.Abstractions;
+
 using AutoMapper;
-using MailKit.Net.Smtp;
+
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
+
 using MimeKit;
-using NPOI.SS.Formula.Functions;
+
 using sga_stif.Helper;
 using sga_stif.Models;
-using sga_stif.ViewModel.Estatistica;
 using sga_stif.ViewModel.InstituicaoFinanceira;
 using sga_stif.ViewModel.Socio;
-using sga_stif.ViewModel.TipoQuota;
-using System.Net.Mail;
-using System.Net;
-using SmtpClient = System.Net.Mail.SmtpClient;
-using NPOI.XWPF.UserModel;
+
+//using System.Net;
+//using System.Net.Mail;
+
+using SmtpClient = MailKit.Net.Smtp.SmtpClient;
+
+//using SmtpClient = System.Net.Mail.SmtpClient;
 
 namespace sga_stif.Controllers
 {
     public class InstituicaoFinanceiraController : BaseController
     {
 
-        private readonly ContextoBaseDados _context;
+        public readonly ContextoBaseDados _context;
         private readonly INotyfService _notyf;
         private readonly IMapper _mapper;
         private readonly ILogger<InstituicaoFinanceiraController> _logger;
@@ -39,7 +40,9 @@ namespace sga_stif.Controllers
 
         public async Task<IActionResult> ListaInstituicaoFinanceira()
         {
-            var instituicaoFinanceira = await _context.InstituicaoFinanceira.Where(e => e.Eliminado == false).Include(i => i.Agencia).ThenInclude(k => k.Socio).ToListAsync();
+
+
+            var instituicaoFinanceira = await _context.InstituicaoFinanceira.Where(e => e.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(e.IdInstituicaoFinanceira)).Include(i => i.Agencia).ThenInclude(k => k.Socio).ToListAsync();
             var listaInstituicaoFinanceiraViewModel = _mapper.Map<List<ListaInstituicaoFinanceiraViewModel>>(instituicaoFinanceira);
             return View(listaInstituicaoFinanceiraViewModel);
         }
@@ -313,20 +316,40 @@ namespace sga_stif.Controllers
                 List<string> toAddress = new List<string>();
                 if (ModelState.IsValid)
                 {
-                   
+
                     var socios = _context.Socio.Where(e => e.Eliminado == false && e.Agencia.IdInstituicaoFinanceira == emailViewModel.IdInstituicaoFinanceira).ToList();
+
+                    var lista = new List<Socio>();
 
                     foreach (var socio in socios)
                         if (IsValidEmail(socio.Email))
-                            toAddress.Add(socio.Email);
-                    var resultadoMetodo = SendEmail(toAddress, emailViewModel.Assunto, emailViewModel.CorpoDoEmail);
-                    if (resultadoMetodo.Sucesso)
+                        {
+                            lista.Add(socio);
+                        }
+
+                    IEnumerable<Socio[]> divisaoDeQuatroArrayDeSemElementos = socios.Chunk(25);
+
+                    var sucesso = true;
+                    var mensagemSucesso = "";
+
+                    foreach (var socioDividido in divisaoDeQuatroArrayDeSemElementos)
+                    {
+                        var resultadoMetodo = SendEmailMailKit(socioDividido.ToList(), emailViewModel.Assunto, emailViewModel.CorpoDoEmail);
+                        if (!resultadoMetodo.Sucesso)
+                        {
+                            mensagemSucesso += resultadoMetodo.Mensagem;
+                            sucesso = false;
+                        }
+                    }
+
+
+                    if (sucesso)
                     {
                         _notyf.Success("Email enviado com sucesso!");
                         return RedirectToAction("ListaInstituicaoFinanceira");
                     }
 
-                    _notyf.Error(resultadoMetodo.Mensagem);
+                    _notyf.Error(mensagemSucesso);
                     return RedirectToAction("ListaInstituicaoFinanceira");
 
 
@@ -339,6 +362,73 @@ namespace sga_stif.Controllers
             }
 
             ViewBag.NomeInstituicaoFinanceira = _context.InstituicaoFinanceira.FirstOrDefault(d => d.IdInstituicaoFinanceira == emailViewModel.IdInstituicaoFinanceira).Nome;
+            return View(emailViewModel);
+        }
+
+
+        public IActionResult EnvioDeEmailTodasInstituicao()
+        {
+            ViewBag.NomeInstituicaoFinanceira = "Todos";
+            return View();
+        }
+
+
+        [HttpPost]
+        public IActionResult EnvioDeEmailTodasInstituicao(EmailTodosViewModel emailViewModel)
+        {
+            try
+            {
+                List<string> toAddress = new List<string>();
+                if (ModelState.IsValid)
+                {
+                    var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(g => ListaInstituicoesFinanceirasPermitidas(_context).Contains(g.IdInstituicaoFinanceira) && g.Eliminado == false).ToList();
+
+                    var idInstituicoes = from d in instituicaoFinanceiras select d.IdInstituicaoFinanceira;
+
+                    var socios = _context.Socio.Where(e => e.Eliminado == false && idInstituicoes.Contains(e.Agencia.IdInstituicaoFinanceira)).ToList();
+
+                    var lista = new List<Socio>();
+
+                    foreach (var socio in socios)
+                        if (IsValidEmail(socio.Email))
+                        {
+                            lista.Add(socio);
+                        }
+
+                    var sucesso = true;
+                    var mensagemSucesso = "";
+                    IEnumerable<Socio[]> divisaoDeQuatroArrayDeSemElementos = socios.Chunk(25);
+
+                    foreach (var socioDividido in divisaoDeQuatroArrayDeSemElementos)
+                    {
+                        var resultadoMetodo = SendEmailMailKit(socioDividido.ToList(), emailViewModel.Assunto, emailViewModel.CorpoDoEmail);
+                        if (!resultadoMetodo.Sucesso)
+                        {
+                            mensagemSucesso += resultadoMetodo.Mensagem;
+                            sucesso = false;
+                        }
+                    }
+
+
+                    if (sucesso)
+                    {
+                        _notyf.Success("Email enviado com sucesso!");
+                        return RedirectToAction("ListaInstituicaoFinanceira");
+                    }
+
+                    _notyf.Error(mensagemSucesso);
+                    return RedirectToAction("ListaInstituicaoFinanceira");
+
+
+                }
+                _notyf.Error("Model invalido");
+            }
+            catch (Exception e)
+            {
+                _notyf.Error("Erro : " + e.Message);
+            }
+
+            ViewBag.NomeInstituicaoFinanceira = "Todos";
             return View(emailViewModel);
         }
 
@@ -360,37 +450,33 @@ namespace sga_stif.Controllers
         }
 
         //////////////////////////////
-        public ResultadoMetodo<string>   SendEmail(List<string> toAddress, string subject, string body)
+        public ResultadoMetodo<string> SendEmail(List<string> toAddress, string subject, string body)
         {
             try
             {
-                const string fromPassword = "Cont@2023";
-                const string smtpServer = "mail.stif.cv";
-                const int smtpPort = 465;
+                //var smtpClient = new SmtpClient("mail.stif.cv", 465)
+                //{
+                //    EnableSsl = true,
+                //    DeliveryMethod = SmtpDeliveryMethod.Network,
+                //    UseDefaultCredentials = false,
+                //    Credentials = new NetworkCredential("contact@stif.cv", "Cont@2023"),
+                //    Timeout = 300
 
-                var smtpClient = new SmtpClient
-                {
-                    Host = smtpServer,
-                    Port = smtpPort,
-                    EnableSsl = true,
-                    DeliveryMethod = SmtpDeliveryMethod.Network,
-                    UseDefaultCredentials = false,
-                    Credentials = new NetworkCredential("contact@stif.cv", fromPassword)
+                //};
 
-                };
+                //var mailMessage = new MailMessage()
+                //{
+                //    Subject = subject,
+                //    Body = body,
+                //    From = new MailAddress("contact@stif.cv"),
+                //    IsBodyHtml = true,
+                //};
 
-                var mailMessage = new MailMessage()
-                {
-                    Subject = subject,
-                    Body = body,
-                    From = new MailAddress("contact@hotmail.com"),
-                    IsBodyHtml = true,
-                };
+                //foreach (var addresses in socios)
+                //    mailMessage.To.Add(addresses);
 
-                foreach (var addresses in toAddress) 
-                    mailMessage.To.Add(addresses);
-                mailMessage.To.Add("ffffffffff@hotmail.com");
-                smtpClient.Send(mailMessage);
+                //mailMessage.To.Add("vamp9278493cv@gmail.com");
+                //smtpClient.Send(mailMessage);
 
                 return new ResultadoMetodo<string>("", "");
             }
@@ -399,7 +485,68 @@ namespace sga_stif.Controllers
                 _logger.LogError(e.Message);
                 return new ResultadoMetodo<string>(e);
             }
-            
+
+        }
+
+        public ResultadoMetodo<string> SendEmailMailKit(List<Socio> socios, string subject, string body)
+        {
+            try
+            {
+                // Configurações do servidor SMTP
+                string smtpServer = "mail.stif.cv";
+                int smtpPort = 587;
+                string smtpUsername = "contact@stif.cv";
+                string smtpPassword = "Cont@2023";
+
+                // Criando a mensagem de email
+                var message = new MimeMessage();
+                message.From.Add(new MailboxAddress("Remetente", "contact@stif.cv"));
+                message.To.Add(new MailboxAddress("Ângelo Semedo", "vamp9278493cv@gmail.com"));
+                message.To.Add(new MailboxAddress("Odailton Veiga", "pachecoveiga@gmail.com"));
+
+
+                //divisao de listas
+                IEnumerable<Socio[]> divisaoDeQuatroArrayDeSemElementos = socios.Chunk(25);
+
+                foreach (var socioDividido in divisaoDeQuatroArrayDeSemElementos)
+                {
+                    foreach (var socio in socioDividido)
+                    {
+                        message.To.Add(new MailboxAddress(socio.Nome + " " + socio.Apelido, socio.Email));
+                    }
+                }
+
+                //foreach (var socio in socios)
+                //{
+                //    message.To.Add(new MailboxAddress(socio.Nome + " " + socio.Apelido, socio.Email));
+                //}
+
+                message.Subject = subject;
+
+                // Corpo do email
+                var builder = new BodyBuilder();
+                builder.HtmlBody = body;
+
+                message.Body = builder.ToMessageBody();
+                //message.HtmlBody = builder.ToMessageBody();
+
+                // Enviando o email
+                using (var client = new SmtpClient())
+                {
+                    client.Connect(smtpServer, smtpPort, false);
+                    client.Authenticate(smtpUsername, smtpPassword);
+                    client.Send(message);
+                    client.Disconnect(true);
+                }
+
+                return new ResultadoMetodo<string>("", "");
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return new ResultadoMetodo<string>(e);
+            }
+
         }
 
         #endregion

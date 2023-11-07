@@ -1,13 +1,14 @@
 using AspNetCoreHero.ToastNotification.Abstractions;
+
 using AutoMapper;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+
 using sga_stif.Models;
 using sga_stif.ViewModel.Agencia;
-using sga_stif.ViewModel.InstituicaoFinanceira;
 using sga_stif.ViewModel.Socio;
-using sga_stif.ViewModel.TipoQuota;
 
 namespace sga_stif.Controllers
 {
@@ -30,7 +31,7 @@ namespace sga_stif.Controllers
 
         public async Task<IActionResult> ListaAgencia()
         {
-            var agencia = await _context.Agencia.Where(e => e.Eliminado == false).Include(g => g.Cidade).Include(h => h.InstituicaoFinanceira).Include(h => h.Socio).ToListAsync();
+            var agencia = await _context.Agencia.Where(e => e.Eliminado == false && ListaAgenciasPermitidas(_context).Contains(e.IdAgencia)).Include(g => g.Cidade).Include(h => h.InstituicaoFinanceira).Include(h => h.Socio).ToListAsync();
             var listaAgenciaViewModel = _mapper.Map<List<ListaAgenciaViewModel>>(agencia);
             return View(listaAgenciaViewModel);
         }
@@ -38,7 +39,7 @@ namespace sga_stif.Controllers
 
         public async Task<IActionResult> ListaAgenciaInativos()
         {
-            var agencia = await _context.Agencia.Where(e => e.Eliminado == true).Include(g => g.Cidade).Include(h => h.InstituicaoFinanceira).Include(h => h.Socio).ToListAsync();
+            var agencia = await _context.Agencia.Where(e => e.Eliminado == true && ListaAgenciasPermitidas(_context).Contains(e.IdAgencia)).Include(g => g.Cidade).Include(h => h.InstituicaoFinanceira).Include(h => h.Socio).ToListAsync();
             var listaAgenciaViewModel = _mapper.Map<List<ListaAgenciaViewModel>>(agencia);
             return View(listaAgenciaViewModel);
         }
@@ -48,7 +49,7 @@ namespace sga_stif.Controllers
         {
 
             ViewBag.NomeInstituicaoFinanceira = nomeInstituicao;
-            var agencia = await _context.Agencia.Where(r => r.IdInstituicaoFinanceira == idInstituicaoFinanceira).Include(g => g.Cidade).Include(h => h.InstituicaoFinanceira).Include(h => h.Socio).ToListAsync();
+            var agencia = await _context.Agencia.Where(r => r.IdInstituicaoFinanceira == idInstituicaoFinanceira && ListaAgenciasPermitidas(_context).Contains(r.IdAgencia)).Include(g => g.Cidade).Include(h => h.InstituicaoFinanceira).Include(h => h.Socio).ToListAsync();
             var listaAgenciaViewModel = _mapper.Map<List<ListaAgenciaViewModel>>(agencia);
             return View(listaAgenciaViewModel);
         }
@@ -59,7 +60,7 @@ namespace sga_stif.Controllers
         public IActionResult NovaAgencia()
         {
 
-            var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(h => h.Eliminado == false).ToList();
+            var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(h => h.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(h.IdInstituicaoFinanceira)).ToList();
             var instituicaoFinanceirasSelectLista = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome };
 
             var cidades = _context.Cidade.ToList();
@@ -109,7 +110,7 @@ namespace sga_stif.Controllers
             if (agencia != null)
             {
 
-                var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(h => h.Eliminado == false).ToList();
+                var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(h => h.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(h.IdInstituicaoFinanceira)).ToList();
                 var instituicaoFinanceirasSelectLista = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome };
 
                 var cidades = _context.Cidade.ToList();
@@ -161,7 +162,8 @@ namespace sga_stif.Controllers
         {
             ViewBag.NomeAgencia = nomeAgencia;
 
-            var socios = await _context.Socio.Where(r => r.Eliminado != true && r.IdAgencia == idAgencia).Include(c => c.Agencia)
+            var socios = await _context.Socio.Where(r => r.Eliminado != true && r.IdAgencia == idAgencia && ListaAgenciasPermitidas(_context).Contains(r.IdAgencia))
+                                         .Include(c => c.Agencia)
                                         .Include(c => c.TipologiaSocio)
                                         .Include(c => c.TipoQuota)
                                         .Include(c => c.Beneficiario)

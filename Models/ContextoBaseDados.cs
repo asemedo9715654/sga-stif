@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+
 using sga_stif.Models.ResultadoStoredProcedure;
-using System.Collections.Generic;
 
 namespace sga_stif.Models
 {
@@ -31,6 +31,7 @@ namespace sga_stif.Models
         public DbSet<LogAtividade> LogAtividade { get; set; }
         public DbSet<InstituicaoFinanceiraColaboradores> InstituicaoFinanceiraColaboradores { get; set; }
         public DbSet<QuotaSocio> QuotaSocio { get; set; }
+        public DbSet<PerfilInstituicaoFinanceira> PerfilInstituicaoFinanceira { get; set; }
 
         //resultado stored procedure
         public DbSet<ContaCorrenteIFResultado> ContaCorrenteIFResultado { get; set; }

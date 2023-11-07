@@ -1,7 +1,7 @@
 using AutoMapper;
+
 using sga_stif.Extensao;
 using sga_stif.Models;
-using sga_stif.ViewModel;
 using sga_stif.ViewModel.Agencia;
 using sga_stif.ViewModel.Beneficiario;
 using sga_stif.ViewModel.InstituicaoFinanceira;
@@ -106,6 +106,10 @@ namespace sga_stif.Mapeamento
 
             CreateMap<MenuAcao, ListaMenuAcaoViewModel>()
             .ForMember(dest => dest.Descricao, opt => opt.MapFrom(src => src.Menu.Nome + " --- " + src.Acao.Nome));
+
+
+            CreateMap<PerfilInstituicaoFinanceira, ListaPerfilInstituicaoFinanceiraViewModel>()
+            .ForMember(dest => dest.Descricao, opt => opt.MapFrom(src => src.InstituicaoFinanceira.Nome));
 
             //socio
             CreateMap<Socio, NovoSocioViewModel>();

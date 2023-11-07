@@ -1,4 +1,5 @@
 using sga_stif.Extensao;
+
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -52,9 +53,9 @@ namespace sga_stif.Models
 
         public Socio()
         {
-            this.JoiaSocio = new HashSet<JoiaSocio>();
-            this.QuotaSocio = new HashSet<QuotaSocio>();
-            this.Beneficiario = new HashSet<Beneficiario>();
+            JoiaSocio = new HashSet<JoiaSocio>();
+            QuotaSocio = new HashSet<QuotaSocio>();
+            Beneficiario = new HashSet<Beneficiario>();
         }
 
 
@@ -150,8 +151,8 @@ namespace sga_stif.Models
             {
 
                 var aux = Convert.ToBase64String(Foto);
-                var imageDataURL = string.Format("data:image/png;base64,{0}", aux);
-                return imageDataURL;
+                var imageDataUrl = string.Format("data:image/png;base64,{0}", aux);
+                return imageDataUrl;
             }
             return "../../dist/img/default-150x150.png";
         }
