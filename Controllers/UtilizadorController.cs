@@ -62,13 +62,11 @@ namespace sga_stif.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> NovoUtilizador([Bind("Nome,Apelido,PalavraPasse,PalavraPasseSalt,Email,IdPerfil,NomeUtilizador")] NovoUtilizadorViewModel novoUtilizadorViewModel, IFormFile? Image = null)
         {
-            byte[] p1 = null;
-
+            byte[] fotoEmByte = null;
             try
             {
                 if (ModelState.IsValid)
                 {
-
                     if (Image != null)
                     {
                         if (Image.Length > 0)
@@ -77,10 +75,8 @@ namespace sga_stif.Controllers
                             using (var ms1 = new MemoryStream())
                             {
                                 fs1.CopyTo(ms1);
-                                p1 = ms1.ToArray();
+                                fotoEmByte = ms1.ToArray();
                             }
-
-
                         }
                     }
 
@@ -88,16 +84,14 @@ namespace sga_stif.Controllers
                     novoUtilizadorViewModel.PalavraPasse = BCrypt.Net.BCrypt.HashPassword(novoUtilizadorViewModel.PalavraPasse);
 
                     var utilizador = _mapper.Map<Utilizador>(novoUtilizadorViewModel);
-                    utilizador.Foto = p1;
+                    utilizador.Foto = fotoEmByte;
 
                     _context.Utilizador.Add(utilizador);
                     await _context.SaveChangesAsync();
                     return RedirectToAction("ListaUtilizador");
                 }
 
-
                 var allErrors = ModelState.Values.SelectMany(v => v.Errors);
-                var ee = 2;
             }
             catch (DbUpdateException ex)
             {
@@ -106,11 +100,9 @@ namespace sga_stif.Controllers
             }
 
             _notyf.Error("Erro na inserção de utilizador!");
-
             var perfils = _context.Perfil.Where(j => j.Eliminado == false).ToList();
             var perfilr = from g in perfils select new SelectListItem { Value = g.IdPerfil.ToString(), Text = g.Nome };
             ViewBag.IdPerfil = perfilr;
-
             return View(novoUtilizadorViewModel);
         }
 

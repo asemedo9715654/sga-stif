@@ -1,224 +1,221 @@
 @model IEnumerable<sga_stif.ViewModel.Socio.ListaSocioViewModel>
 
 @{
-  ViewData["Title"] = "Lista de Sócios";
+	ViewData["Title"] = "Lista de Sócios";
 }
-
-
 
 
 <script type="text/javascript" src="https://cdn.datatables.net/fixedheader/3.2.3/js/dataTables.fixedHeader.min.js"></script>
 
 <div class="card">
-  <div class="card-header">
+	<div class="card-header">
 
-    <div class="row no-print">
+		<div class="row no-print">
 
-      <div class="col-12">
-        <p class="lead">Lista de Sócios</p>
-
-
-
-        <a asp-action="NovoSocio" class="btn btn-success btn-sm  float-right" style="margin-right: 5px;"><i
-            class="fas fa-user-plus" title="Criar novo socio!"></i> Novo</a>
-        <a asp-action="ListaSocioInativos" class="btn btn-default btn-sm  float-right" style="margin-right: 5px;"
-          title="Ver lista de todos os socios inativo no sistema!">Ver Sócios Inativos</a>
-      </div>
-    </div>
+			<div class="col-12">
+				<p class="lead">Lista de Sócios</p>
 
 
-  </div>
-  <div class="card-body">
-    <table id="example2" class="table table-bordered table-striped">
-      <thead>
-        <tr>
-          <th>
-            #
-          </th>
-          <th>
-            @Html.DisplayNameFor(model => model.NumeroDeSocio)
-          </th>
-          <th title="Nome Completo do Sócio">
-            @Html.DisplayNameFor(model => model.NomeCompleto)
-          </th>
-          <th>
-            @Html.DisplayNameFor(model => model.Sexo)
-          </th>
-          <th>
-            @Html.DisplayNameFor(model => model.CinBi)
-          </th>
-          <th>
-            @Html.DisplayNameFor(model => model.SiglaInstitucaoFinanceira)
-          </th>
-          <th>
-            @Html.DisplayNameFor(model => model.NomeAgencia)
-          </th>
-          <th>
-            @Html.DisplayNameFor(model => model.TotalBeneficiario)
-          </th>
 
-          <th>Ação</th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach (var item in Model)
-        {
-          <tr>
-            <td>
-              @Html.DisplayFor(modelItem => item.IdSocio)
-            </td>
+				<a asp-action="NovoSocio" class="btn btn-success btn-sm  float-right" style="margin-right: 5px;">
+					<i class="fas fa-user-plus" title="Criar novo socio!"></i> Novo
+				</a>
+				<a asp-action="ListaSocioInativos" class="btn btn-default btn-sm  float-right" style="margin-right: 5px;"
+				   title="Ver lista de todos os socios inativo no sistema!">Ver Sócios Inativos</a>
+			</div>
+		</div>
 
-            <td>
-              <a asp-action="DetalhesSocio" asp-route-idSocio="@item.IdSocio"
-              title="Ver Detalhes Sócio e Adição de Beneficiário!">
-                @Html.DisplayFor(modelItem => item.NumeroDeSocio)
-              </a>
 
-            </td>
-            <td>
-              <a asp-action="DetalhesSocio" asp-route-idSocio="@item.IdSocio"
-              title="Ver Detalhes Sócio e Adição de Beneficiário!">
-                @Html.DisplayFor(modelItem => item.NomeCompleto)
-              </a>
-            </td>
-            <td>
-              @Html.DisplayFor(modelItem => item.Sexo)
-            </td>
-            <td>
-              @Html.DisplayFor(modelItem => item.CinBi)
-            </td>
-            <td>
-              @Html.DisplayFor(modelItem => item.SiglaInstitucaoFinanceira)
-            </td>
-            <td>
-              @Html.DisplayFor(modelItem => item.NomeAgencia)
-            </td>
-            <td>
-              <span class="badge badge-pill badge-info"> @Html.DisplayFor(modelItem => item.TotalBeneficiario)</span>
-              Benef.
-            </td>
-            <td>
-              <a class="btn btn-success btn-xs " asp-action="EditaSocio" asp-route-idSocio="@item.IdSocio"
-              asp-route-idAgencia="@item.IdAgencia"><i class="fas fa-pen"></i> Editar</a>
-              <a class="btn btn-default btn-xs " asp-action="DetalhesSocio" asp-route-idSocio="@item.IdSocio"
-              title="Ver Detalhes Sócio e Adição de Beneficiário!"><i class="fas fa-info"></i> Detalhes</a>
-              <a class="btn btn-warning btn-xs " asp-action="InativarSocio" asp-route-idSocio="@item.IdSocio"><i
-                class="fas fa-user-slash" title="Inativar Sócio"></i> Inativar</a>
-            </td>
-          </tr>
-        }
-      </tbody>
-    </table>
+	</div>
+	<div class="card-body">
+		<table id="example2" class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>
+						#
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.NumeroDeSocio)
+					</th>
+					<th title="Nome Completo do Sócio">
+						@Html.DisplayNameFor(model => model.NomeCompleto)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.Sexo)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.CinBi)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.SiglaInstitucaoFinanceira)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.NomeAgencia)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.TotalBeneficiario)
+					</th>
 
-  </div>
+					<th>Ação</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model)
+				{
+					<tr>
+						<td>
+							@Html.DisplayFor(modelItem => item.IdSocio)
+						</td>
+
+						<td>
+							<a asp-action="DetalhesSocio" asp-route-idSocio="@item.IdSocio"
+						   title="Ver Detalhes Sócio e Adição de Beneficiário!">
+								@Html.DisplayFor(modelItem => item.NumeroDeSocio)
+							</a>
+
+						</td>
+						<td>
+							<a asp-action="DetalhesSocio" asp-route-idSocio="@item.IdSocio"
+						   title="Ver Detalhes Sócio e Adição de Beneficiário!">
+								@Html.DisplayFor(modelItem => item.NomeCompleto)
+							</a>
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.Sexo)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.CinBi)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.SiglaInstitucaoFinanceira)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.NomeAgencia)
+						</td>
+						<td>
+							<span class="badge badge-pill badge-info"> @Html.DisplayFor(modelItem => item.TotalBeneficiario)</span>
+							Benef.
+						</td>
+						<td>
+							<a class="btn btn-success btn-xs " asp-action="EditaSocio" asp-route-idSocio="@item.IdSocio"
+						   asp-route-idAgencia="@item.IdAgencia"><i class="fas fa-pen"></i> Editar</a>
+							<a class="btn btn-default btn-xs " asp-action="DetalhesSocio" asp-route-idSocio="@item.IdSocio"
+						   title="Ver Detalhes Sócio e Adição de Beneficiário!"><i class="fas fa-info"></i> Detalhes</a>
+							<a class="btn btn-warning btn-xs " asp-action="InativarSocio" asp-route-idSocio="@item.IdSocio">
+								<i class="fas fa-user-slash" title="Inativar Sócio"></i> Inativar
+							</a>
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+
+	</div>
 </div>
 
 
 <script>
 
-  $(document).ready(function () {
+	$(document).ready(function () {
 
-    // Setup - add a text input to each footer cell
-    $('#example2 thead tr')
-        .clone(true)
-        .addClass('filters')
-        .appendTo('#example thead');
+		console.log("lista Socio ...");
+
+		// Setup - add a text input to each footer cell
+		$('#example2 thead tr')
+			.clone(true)
+			.addClass('filters')
+			.appendTo('#example thead');
 
 
-    $('#example2').DataTable({
-      fixedHeader: true,
-      initComplete: function () {
-            var api = this.api();
- 
-            // For each column
-            api.columns()
-                .eq(0)
-                .each(function (colIdx) {
-                    // Set the header cell to contain the input element
-                    var cell = $('.filters th').eq(
-                        $(api.column(colIdx).header()).index()
-                    );
-                    var title = $(cell).text();
-                    $(cell).html('<input type="text" placeholder="' + title + '" />');
- 
-                    // On every keypress in this input
-                    $(
-                        'input',
-                        $('.filters th').eq($(api.column(colIdx).header()).index())
-                    )
-                        .off('keyup change')
-                        .on('change', function (e) {
-                            // Get the search value
-                            $(this).attr('title', $(this).val());
-                            var regexr = '({search})'; //$(this).parents('th').find('select').val();
- 
-                            var cursorPosition = this.selectionStart;
-                            // Search the column for that value
-                            api
-                                .column(colIdx)
-                                .search(
-                                    this.value != ''
-                                        ? regexr.replace('{search}', '(((' + this.value + ')))')
-                                        : '',
-                                    this.value != '',
-                                    this.value == ''
-                                )
-                                .draw();
-                        })
-                        .on('keyup', function (e) {
-                            e.stopPropagation();
- 
-                            $(this).trigger('change');
-                            $(this)
-                                .focus()[0]
-                                .setSelectionRange(cursorPosition, cursorPosition);
-                        });
-                });
-        },
-      language: {
-        //url: 'dataTables.german.json',
-        url: 'https://cdn.datatables.net/plug-ins/1.12.1/i18n/pt-PT.json'
-        //url:"@Url.Content("~/pt-PT.json")"
-      },
-      pageLenght: 50,
-      paging: true,
-      lengthChange: true,
-      //searching: true,
-      ordering: true,
-      responsive: true,
-      //dom: 'Bfrtip',
-      dom: 'lBfrtip',
-      buttons: [
-        {
-          extend: 'pdf',
-          footer: true,
-          exportOptions: {
-            columns: [0, 1, 2, 3, 4, 5, 6]
-          }
-        },
-        {
-          extend: 'excel',
-          footer: false,
-          exportOptions: {
-            columns: [0, 1, 2, 3, 4, 5, 6]
-          }
+		var dataTable = $('#example2').DataTable({
+			fixedHeader: true,
+			language: {
+				//url: 'dataTables.german.json',
+				url: 'https://cdn.datatables.net/plug-ins/1.12.1/i18n/pt-PT.json'
+				//url:"@Url.Content("~/pt-PT.json")"
+			},
+			pageLength: 50,
+			paging: true,
+			lengthChange: true,
+			//searching: true,
+			ordering: true,
+			responsive: true,
+			//dom: 'Bfrtip',
+			dom: 'lBfrtip',
+			buttons: [
+				{
+					extend: 'pdf',
+					footer: true,
+					exportOptions: {
+						columns: [0, 1, 2, 3, 4, 5, 6]
+					}
+				},
+				{
+					extend: 'excel',
+					footer: false,
+					exportOptions: {
+						columns: [0, 1, 2, 3, 4, 5, 6]
+					}
 
-        },
-        {
-          extend: 'print',
-          footer: false,
-          exportOptions: {
-            columns: [0, 1, 2, 3, 4, 5, 6]
-          }
-        }
-        //'copy', 'csv', 'excel', 'pdf', 'print'
-        //'excel', 'pdf', 'print'
-      ],
-      "lengthMenu": [
-        [10, 25, 50, -1],
-        [10, 25, 50, "All"]
-      ]
-    });
-  });
+				},
+				{
+					extend: 'print',
+					footer: false,
+					exportOptions: {
+						columns: [0, 1, 2, 3, 4, 5, 6]
+					}
+				}
+				//'copy', 'csv', 'excel', 'pdf', 'print'
+				//'excel', 'pdf', 'print'
+			],
+			"lengthMenu": [
+				[10, 25, 50, -1],
+				[10, 25, 50, "All"]
+			]
+		});
+		//_______________________________________________________________
+		//var searchInput = document.getElementById('example2_filter').querySelector('input').value;
+		//var searchInput = document.getElementById('example2_filter').querySelector('input[type="search"]');
+
+		var searchInput = $('#example2_filter input[type="search"]');
+
+		console.log("ok");
+		console.log(searchInput);
+		//// Check if there's a stored search term in sessionStorage
+		// Check if there's a stored search term in sessionStorage
+		var storedSearchTerm = sessionStorage.getItem('dataTableSearchTerm');
+		if (storedSearchTerm) {
+			console.log(storedSearchTerm);
+			// Apply the stored search term to the DataTable
+			searchInput.val(storedSearchTerm);
+			dataTable.search(storedSearchTerm).draw();
+		}
+
+		//searchInput.addEventListener('keyup', function () {
+		//	console.log("gravado");
+		//	var currentSearchTerm = this.value;
+		//	console.log("Current Search Term:", currentSearchTerm);
+		//});
+
+	
+		$('#example2').on('search.dt', function () {
+			var currentSearchTerm = $('#example2_filter input[type="search"]').val();
+			console.log(currentSearchTerm);
+			sessionStorage.setItem('dataTableSearchTerm', currentSearchTerm);
+			console.log("........");
+		});
+
+		
+
+
+
+		//// Add a listener for the search event
+		//searchInput.on('keyup', function () {
+		//	// Store the current search term in sessionStorage
+		//	console.log("ok");
+		//	var currentSearchTerm = $(this).val();
+		//	sessionStorage.setItem('dataTableSearchTerm', currentSearchTerm);
+		//});
+	});
 
 </script>
