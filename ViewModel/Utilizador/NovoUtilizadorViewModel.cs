@@ -5,6 +5,10 @@ namespace sga_stif.ViewModel.Utilizador
 {
     public class NovoUtilizadorViewModel
     {
+        public NovoUtilizadorViewModel()
+        {
+
+        }
         public NovoUtilizadorViewModel(int idUtilizador, string nome, string nomeUtilizador, string apelido, string email, string palavraPasse, int idPerfil)
         {
             IdUtilizador = idUtilizador;

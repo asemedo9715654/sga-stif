@@ -500,7 +500,7 @@ namespace sga_stif.Controllers
 
                 // Criando a mensagem de email
                 var message = new MimeMessage();
-                message.From.Add(new MailboxAddress("Remetente", "contact@stif.cv"));
+                message.From.Add(new MailboxAddress("STIF", "contact@stif.cv"));
                 message.To.Add(new MailboxAddress("Ângelo Semedo", "vamp9278493cv@gmail.com"));
                 message.To.Add(new MailboxAddress("Odailton Veiga", "pachecoveiga@gmail.com"));
 
