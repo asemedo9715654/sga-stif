@@ -81,8 +81,6 @@ namespace sga_stif.Controllers
 
         public IActionResult ConcluirPagamento(int idQuotaSocio, string url)
         {
-            //var quotaSocio = _context.QuotaSocio.FirstOrDefault(k => k.IdQuotaSocio == idQuotaSocio);
-
             var quotaSocio = _context.QuotaSocio.Where(h => h.IdQuotaSocio == idQuotaSocio)
 
             .Include(j => j.PeriodoQuota)
@@ -117,7 +115,6 @@ namespace sga_stif.Controllers
 
             _notyf.Error("Quota não encontrada!");
             return Redirect(dadosPagamentoViewModel.Url);
-            //return RedirectToAction("ListaQuotasPagas", "ContaCorrentes");
         }
 
         public IActionResult AnularPagamento(int idQuotaSocio, string url)

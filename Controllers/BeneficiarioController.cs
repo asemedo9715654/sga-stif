@@ -12,9 +12,7 @@ namespace sga_stif.Controllers
     {
 
         private readonly ContextoBaseDados _context;
-
         private readonly INotyfService _notyf;
-
         private readonly IMapper _mapper;
 
         public BeneficiarioController(ContextoBaseDados context, INotyfService notyf, IMapper mapper)

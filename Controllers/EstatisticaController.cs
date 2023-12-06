@@ -14,7 +14,6 @@ namespace sga_stif.Controllers
 
         private readonly ContextoBaseDados _context;
         private readonly INotyfService _notyf;
-
         public EstatisticaController(ContextoBaseDados context, INotyfService notyf)
         {
             _context = context;

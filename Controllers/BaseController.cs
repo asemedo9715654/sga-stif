@@ -8,8 +8,6 @@ namespace sga_stif.Controllers
     public class BaseController : Controller
     {
         private readonly ContextoBaseDados _contextrrr;
-
-
         public string PegarNomeUtilizador()
         {
             return HttpContext.Session.GetString("NomeUtilizador"); ;
@@ -45,8 +43,6 @@ namespace sga_stif.Controllers
         {
 
             var listaInstituicoesFinanceirasPermitidas = ListaInstituicoesFinanceirasPermitidas(_contextrrr);
-
-
             var idPerfil = PegarIdPerfil();
             var ints = _contextrrr.Agencia
                 .Where(p => listaInstituicoesFinanceirasPermitidas.Contains(p.IdInstituicaoFinanceira))

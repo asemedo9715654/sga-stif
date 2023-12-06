@@ -12,12 +12,8 @@ using sga_stif.Models;
 using sga_stif.ViewModel.InstituicaoFinanceira;
 using sga_stif.ViewModel.Socio;
 
-//using System.Net;
-//using System.Net.Mail;
 
 using SmtpClient = MailKit.Net.Smtp.SmtpClient;
-
-//using SmtpClient = System.Net.Mail.SmtpClient;
 
 namespace sga_stif.Controllers
 {

@@ -16,13 +16,9 @@ namespace sga_stif.Controllers
     {
 
         private readonly ContextoBaseDados _context;
-
         private readonly INotyfService _notyf;
         private readonly IMapper _mapper;
-
         private readonly IWebHostEnvironment _appEnvironment;
-
-
 
         public FicheiroController(ContextoBaseDados context, INotyfService notyf, IMapper mapper, IWebHostEnvironment env)
         {
@@ -54,20 +50,15 @@ namespace sga_stif.Controllers
             try
             {
 
-
                 int contador = 0, IdInstituicaoFinanceira = 0;
                 var file = Request.Form.Files[0];
+                string instituicaoFinanceiraTratado = null;
+                var instituicaoFinanceiraPegado = Request.Form["InstitiucaoFinanceira"];
+                instituicaoFinanceiraTratado = instituicaoFinanceiraPegado.ToString();
 
-                string ttt = null;
-
-                var tt = Request.Form["InstitiucaoFinanceira"];
-                ttt = tt.ToString();
-
-                if (!string.IsNullOrEmpty(ttt))
+                if (!string.IsNullOrEmpty(instituicaoFinanceiraTratado))
                 {
-
-                    IdInstituicaoFinanceira = int.Parse(ttt);
-
+                    IdInstituicaoFinanceira = int.Parse(instituicaoFinanceiraTratado);
                 }
                 else
                 {
@@ -117,10 +108,6 @@ namespace sga_stif.Controllers
 
                             var collllll = linha.Cells.All(d => d.CellType != CellType.Blank);
 
-                            //se a celula nao estiver em branco
-                            // if (linha.Cells.All(d => d.CellType != CellType.Blank))
-                            // {
-
                             if (linha.GetCell(0) != null && linha.GetCell(1) != null && linha.GetCell(2) != null && linha.GetCell(3) != null && linha.GetCell(4) != null)
                             {
                                 numeroColaborador = linha.GetCell(0).ToString();
@@ -157,9 +144,6 @@ namespace sga_stif.Controllers
                                 }
 
                             }
-
-                            // }
-
                         }
                     }
                 }
