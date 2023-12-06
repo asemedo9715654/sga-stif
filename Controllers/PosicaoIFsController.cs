@@ -1,11 +1,15 @@
 using AspNetCoreHero.ToastNotification.Abstractions;
+
 using AutoMapper;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+
 using Serilog;
+
 using sga_stif.Models;
-using sga_stif.Models.ResultadoStoredProcedure;
+
 using System.Globalization;
 
 namespace sga_stif.Controllers
@@ -47,11 +51,11 @@ namespace sga_stif.Controllers
             var instituicaoFinanceirasItem = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome };
             ViewBag.IdInstituicaoFinanceira = instituicaoFinanceirasItem;
 
-            var query = $"EXECUTE  [dbo].[PosicaoIFs] @ano = {ano}, @mes={mes}";
+            var query = $"EXECUTE  [dbo].[PosicaoIFs] @ano = {ano}, @mes={mes},@user='{PegarNomeUtilizador()}'";
 
             Log.Information(query);
 
-            var posicaoIFsResultados = _context.PosicaoIFsResultado.FromSqlRaw($"EXECUTE  [dbo].[PosicaoIFs] @ano = {ano}, @mes={mes}").ToList();
+            var posicaoIFsResultados = _context.PosicaoIFsResultado.FromSqlRaw($"EXECUTE  [dbo].[PosicaoIFs] @ano = {ano}, @mes={mes},@user='{PegarNomeUtilizador()}'").ToList();
 
             ViewBag.Ano = ano;
             ViewBag.Mes = mes;

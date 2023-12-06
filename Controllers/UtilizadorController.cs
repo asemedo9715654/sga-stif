@@ -1,13 +1,14 @@
 using AspNetCoreHero.ToastNotification.Abstractions;
+
 using AutoMapper;
+
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using NLog.Web;
-using NPOI.SS.Formula.Functions;
+
 using sga_stif.Models;
 using sga_stif.ViewModel.Utilizador;
+
 using BC = BCrypt.Net.BCrypt;
 
 namespace sga_stif.Controllers
@@ -207,7 +208,7 @@ namespace sga_stif.Controllers
         [HttpGet]
         public IActionResult PerfilUtilizador()
         {
-            var tt =HttpContext.Session.GetString("IdUtilizador");
+            var tt = HttpContext.Session.GetString("IdUtilizador");
             var idConvertido = int.Parse(tt);
             var utilizador = _context.Utilizador.Include(c => c.Perfil).FirstOrDefault(d => d.IdUtilizador == idConvertido);
 
@@ -215,7 +216,7 @@ namespace sga_stif.Controllers
 
             return View(dadosUtilizadorViewModel);
         }
-        
+
         [HttpGet]
         public IActionResult MudaPalavraPasse()
         {
@@ -250,7 +251,10 @@ namespace sga_stif.Controllers
 
 
                     utilizador.PalavraPasse = BC.HashPassword(mudaPalavraPasseViewModel.NovaPalavraPasse);
+                    utilizador.DataAtualizacao = DateTime.Now;
+
                     _context.Update(utilizador);
+                    _context.SaveChanges();
                     _notyf.Success("Palavra passe mudada com suceso!");
 
                     return RedirectToAction("PerfilUtilizador");
@@ -289,6 +293,7 @@ namespace sga_stif.Controllers
             utilizador.DataAtualizacao = DateTime.Now;
 
             _context.Update(utilizador);
+            _context.SaveChanges();
 
             _notyf.Success("Palavra passe resetada com sucesso!");
 
