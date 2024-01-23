@@ -1,0 +1,99 @@
+@model IEnumerable<sga_stif.ViewModel.Perfil.ListaMenuAcaoViewModel>
+
+@{
+  ViewData["Title"] = "Gerir Menu Ação";
+}
+
+<div class="card">
+  <div class="card-header">
+
+    <div class="row no-print">
+
+      <div class="col-12">
+        <p class="lead">Associar ao perfil : <b>  @ViewBag.NomePerfil </b></p>
+
+
+
+      </div>
+    </div>
+
+
+  </div>
+  <div class="card-body">
+    <table id="example2" class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>
+            Associar
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.DataCriacao)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.DataAtualizacao)
+          </th>
+
+
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (var item in Model)
+        {
+          
+          <tr>
+            <td>
+            
+              @await Component.InvokeAsync("VereficaCheck", new {   idPerfil=@ViewBag.IdPerfil,   idMenuAcao= @item.IdMenuAcao}) 
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.DataCriacao)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.DataAtualizacao)
+            </td>
+
+          </tr>
+        }
+      </tbody>
+    </table>
+
+
+  </div>
+</div>
+
+@Html.Hidden("RecuperaLinkGuarda", Url.Action("Guarda", "Perfil"))
+
+<script>
+  $(function () {
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+
+
+  function EnviaDados(idPerfilAux, idMenuAcaoAux) {
+    $.ajax({
+      url: $("#RecuperaLinkGuarda").val(),
+      data: { idPerfil: idPerfilAux, idMenuAcao: idMenuAcaoAux },
+      type: "post",
+      dataType: "json",
+      success: function (result) {
+        console.log(result)
+      }
+    });
+  }
+
+
+</script>

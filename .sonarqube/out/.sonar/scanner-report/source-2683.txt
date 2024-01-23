@@ -1,0 +1,86 @@
+@model IEnumerable<sga_stif.ViewModel.TipoQuota.ListaTipoQuotaViewModel>
+
+@{
+  ViewData["Title"] = "Lisa de Quotas";
+}
+
+<div class="card">
+  <div class="card-header">
+
+    <div class="row no-print">
+
+      <div class="col-12">
+        <p class="lead">Lista de Tipo Quotas</p>   
+         <a asp-action="ListaTipoQuota" class="btn btn-default btn-sm  float-right"
+          style="margin-right: 5px;">Lista de
+          Lista de Tipo Quotas Ativos</a>
+
+      </div>
+    </div>
+
+
+  </div>
+  <div class="card-body">
+    <table id="example2" class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.Priodicidade)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.Montante)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.TotalSocio)
+          </th>
+          <th>
+            Ação
+          </th>
+
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (var item in Model)
+        {
+          <tr>
+            <td>
+              @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.Priodicidade)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.Montante)
+            </td>
+            <td>
+              <span class="badge badge-pill badge-info"> @Html.DisplayFor(modelItem => item.TotalSocio)</span> Sócio(s)
+            </td>
+            <td>
+              <a class="btn btn-success btn-xs" asp-action="ListaSocioPorTipoQuota" asp-route-idTipoQuota="@item.IdTipoQuota" asp-route-nome="@item.Descricao"><i class="fa-solid fa-file-magnifying-glass"></i>Ver Sócios</a>
+              @* <a class="btn btn-warning btn-xs" asp-action="Details" asp-route-id="@item.IdTipoQuota">Inativar</a> *@
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+
+
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>

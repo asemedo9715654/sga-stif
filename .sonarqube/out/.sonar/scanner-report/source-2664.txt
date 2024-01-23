@@ -1,0 +1,60 @@
+@model List<sga_stif.Models.Menu>
+@{
+    ViewData["Title"] = "NavigationMenu";
+}
+
+<nav class="mt-2">
+    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        @foreach (var item in Model)
+        {
+            if (item.IdMenuPai == null) //Level one items will have null parent id
+            {
+
+                var subMenus = Model.Where(x => x.IdMenuPai == item.IdMenu).ToList();
+
+                if (subMenus.Count > 0)
+                {
+
+                }
+
+                if (subMenus.Count > 0) //Level one item has children so append them
+                {
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon @item.Icone"></i>
+                            <p>
+                                @item.Nome
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            @foreach (var itm in subMenus)
+                            {
+                                <li class="nav-item">
+                                    <a asp-controller="@itm.NomeDoController" asp-action="@itm.NomeDaAction" class="nav-link">
+                                        <i class="@itm.Icone nav-icon"></i>
+                                        <p>@itm.Nome</p>
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <a asp-controller="@item.NomeDoController" asp-action="@item.NomeDaAction" class="nav-link">
+                            <i class="nav-icon @item.Icone"></i>
+                            <p>
+                                @item.Nome
+                            </p>
+                        </a>
+                    </li>
+
+
+                }
+            }
+        }
+
+    </ul>
+</nav>

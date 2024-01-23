@@ -1,0 +1,37 @@
+@model sga_stif.ViewModel.Utilizador.DadosUtilizadorViewModel
+
+<div class="row">
+    <div class="col-md-12">
+
+        <!-- Profile Image -->
+        <div class="card card-primary card-outline">
+            <div class="card-body box-profile">
+                <div class="text-center">
+                    <img class="profile-user-img img-fluid img-circle" src="~/dist/img/default-150x150.png" alt="User profile picture">
+                </div>
+
+                <h3 class="profile-username text-center">@Model.NomeCompleto  </h3>
+
+                <p class="text-muted text-center">@Model.NomePerfil</p>
+
+                <ul class="list-group list-group-unbordered mb-3">
+
+                    <li class="list-group-item">
+                        <b>Email :</b> <a class="float-right">@Model.Email</a>
+                    </li>
+                    <li class="list-group-item">
+                        <b>Data Criação </b> <a class="float-right"> @Model.DataCriacao</a>
+                    </li>
+                    <li class="list-group-item">
+                        <b>Data Actualização </b> <a class="float-right"> @Model.DataAtualizacao</a>
+                    </li>
+                </ul>
+                <a asp-action="MudaPalavraPasse" class="btn btn-primary btn-block"><b>Mudar Palavra-Passe</b></a>
+                @*<a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>*@
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+    </div>
+</div>

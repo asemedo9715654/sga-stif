@@ -1,0 +1,37 @@
+{
+  "ConnectionStrings": {
+    "sgastif-remote2": "Data Source=194.163.161.199; Initial Catalog=SGASTIF; User Id=TESTE; Password=197982*Praia",
+    "sgastif-remote3": "Data Source=PTBCV-7758; Initial Catalog=SGASTIF;Trusted_Connection=True;MultipleActiveResultSets=true",
+    "sgastif-remote": "Data Source=ANGELOS-PT11\\SQLEXPRESS; Initial Catalog=SGASTIF;Trusted_Connection=True;MultipleActiveResultSets=true"
+
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Trace",
+      "Microsoft.AspNetCore": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "Serilog": {
+    "Using": [ "Serilog.Sinks.Console", "Serilog.Sinks.File" ],
+    "MinimumLevel": {
+      "Default": "Information",
+      "Override": {
+        "Microsoft": "Information",
+        "Microsoft.AspNetCore": "Warning",
+        "Microsoft.EntityFrameworkCore": "Information"
+      }
+    },
+    "WriteTo": [
+      { "Name": "Console" },
+      {
+        "Name": "File",
+        "Args": {
+          "path": "Logs/semedo.log"
+        }
+      }
+    ],
+    "Enrich": [ "FromLogContext", "WithMachineName", "WithThreadId" ]
+  },
+  "AllowedHosts": "*" 
+}

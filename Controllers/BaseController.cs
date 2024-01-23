@@ -7,7 +7,6 @@ namespace sga_stif.Controllers
     // [BreadcrumbActionFilter]
     public class BaseController : Controller
     {
-        private readonly ContextoBaseDados _contextrrr;
         public string PegarNomeUtilizador()
         {
             return HttpContext.Session.GetString("NomeUtilizador"); ;

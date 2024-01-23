@@ -1,0 +1,1 @@
+c 2csXhr+ViewModel/Estatistica/HighChartViewModel.cs

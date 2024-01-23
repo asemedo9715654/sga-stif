@@ -1,0 +1,77 @@
+@{
+  ViewData["Title"] = "Início do SGA-STIF";
+}
+
+<br>
+<br>
+<br>
+<!-- Small boxes (Stat box) -->
+<div class="row">
+  <div class="col-lg-3 col-6">
+    <!-- small box -->
+    <div class="small-box bg-info">
+      <div class="inner">
+        <h3>@ViewBag.SocioAtivos</h3>
+
+        <p>Total de Sócios</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-person"></i>
+      </div>
+      <a asp-action="ListaSocio" asp-controller="Socio" class="small-box-footer">Ver mais <i
+          class="fas fa-arrow-circle-right"></i></a>
+    </div>
+  </div>
+  <!-- ./col -->
+  <div class="col-lg-3 col-6">
+    <!-- small box -->
+    <div class="small-box bg-danger">
+      <div class="inner">
+        <h3>@ViewBag.SocioInativos</h3>
+
+        <p>Sócios Inativos</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-person"></i>
+      </div>
+      <a asp-action="ListaSocioInativos" asp-controller="Socio" class="small-box-footer">Ver mais <i
+          class="fas fa-arrow-circle-right"></i></a>
+    </div>
+  </div>
+  <!-- ./col -->
+  <div class="col-lg-3 col-6">
+    <!-- small box -->
+    <div class="small-box bg-info">
+      <div class="inner">
+        <h3>@ViewBag.TotalInstituicaoFinanceiras</h3>
+
+        <p>Total Instituições</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-at"></i>
+      </div>
+      <a asp-action="ListaInstituicaoFinanceira" asp-controller="InstituicaoFinanceira" class="small-box-footer">Ver
+        mais <i class="fas fa-arrow-circle-right"></i></a>
+    </div>
+  </div>
+  <!-- ./col -->
+  <div class="col-lg-3 col-6">
+    <!-- small box -->
+    <div class="small-box bg-info">
+      <div class="inner">
+        <h3>@ViewBag.TotalAgencia</h3>
+
+        <p>Total Agências</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-contacts"></i>
+      </div>
+      <a asp-action="ListaAgencia" asp-controller="Agencia" class="small-box-footer">Ver mais <i
+          class="fas fa-arrow-circle-right"></i></a>
+    </div>
+  </div>
+  <!-- ./col -->
+
+</div>
+
+

@@ -227,9 +227,8 @@ namespace sga_stif.Controllers
         [HttpPost]
         public IActionResult MudaPalavraPasse(MudaPalavraPasseViewModel mudaPalavraPasseViewModel)
         {
-            var tt = HttpContext.Session.GetString("IdUtilizador");
-            var idConvertido = int.Parse(tt);
-
+            var idUtilizador = HttpContext.Session.GetString("IdUtilizador");
+            var idConvertido = int.Parse(idUtilizador);
             var utilizador = _context.Utilizador.Include(c => c.Perfil).FirstOrDefault(d => d.IdUtilizador == idConvertido);
 
             try
@@ -247,8 +246,6 @@ namespace sga_stif.Controllers
                         _notyf.Error("Erro nao vereficação da palavra passe antiga!");
                         return View(mudaPalavraPasseViewModel);
                     }
-
-
 
                     utilizador.PalavraPasse = BC.HashPassword(mudaPalavraPasseViewModel.NovaPalavraPasse);
                     utilizador.DataAtualizacao = DateTime.Now;
@@ -285,7 +282,7 @@ namespace sga_stif.Controllers
 
             if (resetePalavraPasseViewModel.ConfirmacaoPalavraPasse != resetePalavraPasseViewModel.PalavraPasse)
             {
-                _notyf.Error("Palavra passe não coicidem!");
+                _notyf.Error("Palavra passe não correspodem!");
                 return View(resetePalavraPasseViewModel);
             }
 

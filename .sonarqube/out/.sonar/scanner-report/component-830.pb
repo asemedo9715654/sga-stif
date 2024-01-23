@@ -1,0 +1,1 @@
+¾ 2jsX©hr.wwwroot/plugins/codemirror/mode/shell/shell.js

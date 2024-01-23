@@ -1,0 +1,65 @@
+@model sga_stif.ViewModel.Agencia.EditaAgenciaViewModel
+
+@{
+    ViewData["Title"] = "Editar Agência";
+}
+
+<hr />
+
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title">Edita Agência</h3>
+    </div>
+    <form asp-action="EditaAgencia">
+        <div class="card-body">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdAgencia" />
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Nome" class="control-label"></label>
+                        <input asp-for="Nome" class="form-control" />
+                        <span asp-validation-for="Nome" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="IdInstituicaoFinanceira" class="control-label"></label>
+                        <select asp-for="IdInstituicaoFinanceira" asp-items="@ViewBag.IdInstituicaoFinanceira"
+                            class="form-control">
+                            <option disabled selected>--- seleccione ---</option>
+                        </select>
+                        <span asp-validation-for="IdInstituicaoFinanceira" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="IdCidade" class="control-label"></label>
+                        <select asp-for="IdCidade" asp-items="@ViewBag.IdCidade" class="form-control">
+                            <option disabled selected>--- seleccione ---</option>
+                        </select>
+                        <span asp-validation-for="IdCidade" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <div class="card-footer">
+            <a asp-action="ListaAgencia" class="btn btn-secondary">Cancelar</a>
+            <button type="submit" class="btn btn-success">Guardar</button>
+        </div>
+    </form>
+
+</div>

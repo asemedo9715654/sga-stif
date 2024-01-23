@@ -45,7 +45,7 @@ namespace sga_stif.Controllers
             if (IdInstituicaoFinanceira != null)
             {
                 var valorConvertido = IdInstituicaoFinanceira.ToString();
-                var selected = instituicaoFinanceirasItem.Where(x => x.Value == valorConvertido).First();
+                var selected = instituicaoFinanceirasItem.First(x => x.Value == valorConvertido);
                 selected.Selected = true;
 
                 contaCorrenteIfResultados = _context.ContaCorrenteIFResultado.FromSqlRaw($"EXECUTE  [dbo].[ContaCorrenteIF] @ano = 2022, @mes=1,@idif = {IdInstituicaoFinanceira},@user ='{PegarNomeUtilizador()}', @status='QV'").ToList();
@@ -103,7 +103,6 @@ namespace sga_stif.Controllers
             {
                 ano = DataPesquisa.Value.Year;
                 mes = DataPesquisa.Value.Month;
-
             }
             else
             {
@@ -113,7 +112,6 @@ namespace sga_stif.Controllers
             ViewBag.DataPreenchido = ano + "-" + DataPesquisa.Value.Month.ToString("#00");
 
             var idInstituicaoFinanceira = IdInstituicaoFinanceira ?? 0;
-
             var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(h => h.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(h.IdInstituicaoFinanceira)).ToList();
             var instituicaoFinanceirasItem = from g in instituicaoFinanceiras
                                              select new SelectListItem
@@ -124,9 +122,7 @@ namespace sga_stif.Controllers
                                              };
             ViewBag.IdInstituicaoFinanceira = instituicaoFinanceirasItem;
 
-
             var contaCorrenteIfResultados = new List<ContaCorrenteIFResultado>();
-
 
             if (IdInstituicaoFinanceira != null)
             {
@@ -135,7 +131,6 @@ namespace sga_stif.Controllers
             else
             {
                 contaCorrenteIfResultados = _context.ContaCorrenteIFResultado.FromSqlRaw($"EXECUTE  [dbo].[ContaCorrenteIF] @ano = {ano}, @mes={mes},@user ='{PegarNomeUtilizador()}', @status='QD'").ToList();
-
             }
 
             return View(contaCorrenteIfResultados);
@@ -147,7 +142,6 @@ namespace sga_stif.Controllers
         {
             var ano = DateTime.Now.Year;
             var mes = DateTime.Now.Month;
-
             var idInstituicaoFinanceira = IdInstituicaoFinanceira ?? 0;
 
             _logger.LogInformation($@"IdInstituicaoFinanceira : {IdInstituicaoFinanceira}");
@@ -165,7 +159,6 @@ namespace sga_stif.Controllers
             var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(h => h.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(h.IdInstituicaoFinanceira)).ToList();
             var instituicaoFinanceirasItem = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome, Selected = idInstituicaoFinanceira == g.IdInstituicaoFinanceira };
             ViewBag.IdInstituicaoFinanceira = instituicaoFinanceirasItem;
-
             var listContaCorrenteIFResultado = new List<ContaCorrenteIFResultado>();
 
             if (IdInstituicaoFinanceira != null)

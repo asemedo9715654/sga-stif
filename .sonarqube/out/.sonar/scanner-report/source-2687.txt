@@ -1,0 +1,119 @@
+@model IEnumerable<sga_stif.ViewModel.Utilizador.ListaUtilizadorViewModel>
+
+@{
+  ViewData["Title"] = "Lista de Utilizadores";
+}
+
+<div class="card">
+  <div class="card-header">
+
+    <div class="row no-print">
+
+      <div class="col-12">
+        <p class="lead">Lista de Utilizadores</p>
+
+
+        <a asp-action="NovoUtilizador" class="btn btn-success btn-sm float-right" style="margin-right: 5px;">
+           <i class="fas fa-user"></i> Novo
+          </a>
+        <a asp-action="ListaUtilizadorInativos" class="btn btn-default btn-sm  float-right"
+          style="margin-right: 5px;">Lista de
+          Utilizadores Inativos</a>
+
+      </div>
+    </div>
+
+  </div>
+  <div class="card-body">
+    <table id="example2" class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>
+            @Html.DisplayNameFor(model => model.Foto)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.NomeCompleto)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.NomeUtilizador)
+          </th>
+          <th>
+            @Html.DisplayNameFor(model => model.Email)
+          </th>        
+          <th>
+            @Html.DisplayNameFor(model => model.NomePerfil)
+          </th>
+           <th>
+            @Html.DisplayNameFor(model => model.DataCriacao)
+          </th>
+          @* <th>
+            @Html.DisplayNameFor(model => model.DataAtualizacao)
+          </th> *@
+          <th>Ação</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (var item in Model)
+        {
+          <tr>
+
+            <td>
+              <img class="img-circle img-size-32 mr-2" src="@item.Foto" />
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.NomeCompleto)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.NomeUtilizador)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.Email)
+            </td>
+           
+            <td>
+              @Html.DisplayFor(modelItem => item.NomePerfil)
+            </td>
+             <td>
+              @Html.DisplayFor(modelItem => item.DataCriacao)
+            </td>
+            @* <td>
+              @Html.DisplayFor(modelItem => item.DataAtualizacao)
+            </td> *@
+            <td>
+            
+              <a class="btn btn-success btn-xs" asp-action="EditaUtilizador" asp-route-idUtilizador="@item.IdUtilizador"><i class="fas fa-pen"></i> Editar</a>
+              <a class="btn btn-default btn-xs" asp-action="DetalhesUtilizador" asp-route-idUtilizador="@item.IdUtilizador"> <i class="fas fa-info"></i> Detalhes</a>
+              <a class="btn btn-warning btn-xs" asp-action="EliminaUtilizador" asp-route-idUtilizador="@item.IdUtilizador"><i class="fas fa-user-slash"></i> Inativar</a>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+
+
+  </div>
+</div>
+
+<script>
+
+  $(document).ready(function () {
+    $('#example2').DataTable({
+       language: {
+        //url: 'dataTables.german.json',
+        url: 'https://cdn.datatables.net/plug-ins/1.12.1/i18n/pt-PT.json'
+        //url:"@Url.Content("~/pt-PT.json")"
+      },
+        paging: true,
+      lengthChange: true,
+      searching: true,
+      ordering: true,
+      responsive: true,
+      dom: 'Bfrtip',
+      buttons: [
+        //'copy', 'csv', 'excel', 'pdf', 'print'
+        'copy', 'csv', 'excel', 'print'
+      ]
+    });
+  });
+
+</script>

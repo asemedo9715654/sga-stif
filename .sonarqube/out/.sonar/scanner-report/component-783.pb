@@ -1,0 +1,1 @@
+è 2jsX,hrDwwwroot/plugins/codemirror/mode/haskell-literate/haskell-literate.js

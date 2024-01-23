@@ -9,7 +9,6 @@ using SmartBreadcrumbs.Attributes;
 namespace sga_stif.Controllers
 {
     [DefaultBreadcrumb]
-
     public class DashboardController : BaseController
     {
 

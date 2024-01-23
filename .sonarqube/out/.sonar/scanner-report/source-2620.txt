@@ -1,0 +1,137 @@
+@model IEnumerable<sga_stif.ViewModel.Agencia.ListaAgenciaViewModel>
+
+@{
+    ViewData["Title"] = "Lista de Agências";
+}
+
+<div class="card">
+    <div class="card-header">
+
+        <div class="row no-print">
+
+            <div class="col-12">
+                <p class="lead">Lista de Agências</p>
+
+                <a asp-action="NovaAgencia" class="btn btn-success btn-sm float-right"
+                    style="margin-right: 5px;">Nova</a>
+
+                <a asp-action="ListaAgenciaInativos" class="btn btn-default btn-sm  float-right"
+                    style="margin-right: 5px;">Lista de Agências Inativos</a>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="card-body">
+        <table id="example2" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NomeInstituicaoFinanceira)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NomeCidade)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TotalDeSocios)
+                    </th>
+                    <th>
+                        Ação
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </td>
+                        <td>
+                            <a asp-action="DetalhesInstituicaoFinanceira" asp-controller="InstituicaoFinanceira"
+                            asp-route-idInstituicaoFinanceira="@item.IdInstituicaoFinanceira"
+                            asp-route-nomeInstituicaoFinanceira="@Html.DisplayFor(modelItem => item.NomeInstituicaoFinanceira)">
+                                @Html.DisplayFor(modelItem => item.NomeInstituicaoFinanceira)</a>
+
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NomeCidade)
+                        </td>
+                        <td>
+                            <a title="Ver Sócios" asp-action="ListaSocioPorAgencia" asp-route-idAgencia=@item.IdAgencia
+                            asp-route-nomeAgencia=@item.Nome>
+                                <span class="badge badge-pill badge-info"> @Html.DisplayFor(modelItem =>
+                                item.TotalDeSocios)</span> Sócio(s)
+                            </a>
+
+                        </td>
+                        <td>
+                            <a class="btn btn-success btn-xs" asp-action="EditaAgencia"
+                            asp-route-idAgencia="@item.IdAgencia"><i class="fas fa-pen"></i> Editar</a>
+                            <a class="btn btn-warning btn-xs" asp-action="InativarAgencia"
+                            asp-route-idAgencia="@item.IdAgencia">Inativar</a>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $('#example2').DataTable({
+            language: {
+                //url: 'dataTables.german.json',
+                url: 'https://cdn.datatables.net/plug-ins/1.12.1/i18n/pt-PT.json'
+                //url:"@Url.Content("~/pt-PT.json")"
+            },
+               pageLenght: 50,
+            paging: true,
+            lengthChange: true,
+            //searching: true,
+            ordering: true,
+            responsive: true,
+            //dom: 'Bfrtip',
+            dom: 'lBfrtip',
+            buttons: [
+                {
+                    extend: 'pdf',
+                    footer: true,
+                    exportOptions: {
+                        columns: [0, 1, 2, 3]
+                    }
+                },
+                {
+                    extend: 'excel',
+                    footer: false,
+                    exportOptions: {
+                        columns: [0, 1, 2, 3]
+                    }
+
+                },
+                {
+                    extend: 'print',
+                    footer: false,
+                    exportOptions: {
+                        columns: [0, 1, 2, 3]
+                    }
+                }
+                //'copy', 'csv', 'excel', 'pdf', 'print'
+                //'excel', 'pdf', 'print'
+            ],
+            "lengthMenu": [
+                [10, 25, 50, -1],
+                [10, 25, 50, "All"]
+            ]
+        });
+    });
+
+</script>

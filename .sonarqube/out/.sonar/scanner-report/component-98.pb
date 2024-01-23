@@ -1,0 +1,1 @@
+b 2csXhr7ViewModel/Estatistica/GraficoColunaEmpilhadaAgrupada.cs

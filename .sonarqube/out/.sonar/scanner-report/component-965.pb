@@ -1,0 +1,1 @@
+Å 2cssX>hrGwwwroot/plugins/datatables-fixedcolumns/css/fixedColumns.bootstrap4.css

@@ -1,0 +1,104 @@
+@model IEnumerable<sga_stif.Models.ResultadoStoredProcedure.ReconciliacaoEntreMesesResultado>
+
+@{
+
+  ViewData["Title"] = "Detalhes Posições das Instituições";
+}
+
+
+<div class="card">
+
+<div class="card-header">
+
+  <div class="row no-print">
+
+    <div class="col-12">
+      <p class="lead">Detalhes Posição</p>
+
+
+
+      @* <a asp-action="NovoSocio" class="btn btn-success btn-sm float-right" style="margin-right: 5px;"><i
+          class="fas fa-user-plus" title="Criar novo socio!"></i> Novo</a>
+          <a asp-action="ListaSocioInativos" class="btn btn-default btn-sm float-right" style="margin-right: 5px;"
+          title="Ver lista de todos os socios inativo no sistema!">Ver Sócios Inativos</a> *@
+    </div>
+  </div>
+
+   
+</div>
+ <div class="card-body">
+      <form method="post" asp-controller="Pagamento" asp-action="AnularMultiplosPagamento" id="formularioDePagamentos">
+        <table id="example2" class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>
+                @Html.DisplayNameFor(model => model.Nome)
+              </th>
+              <th>
+                @Html.DisplayNameFor(model => model.NumeroDeSocio)
+              </th>
+              <th>
+                Montante (@ViewBag.MesAnterior)
+                @* @Html.DisplayNameFor(model => model.MontanteAnt) *@
+              </th>
+              <th>
+                Montante (@ViewBag.MesAtual)
+                @* @Html.DisplayNameFor(model => model.MontanteAtual) *@
+              </th>
+              <th>
+                @Html.DisplayNameFor(model => model.OBS)
+              </th>
+             
+            </tr>
+          </thead>
+          <tbody>
+            @foreach (var item in Model)
+            {
+              <tr>
+
+                <td>
+                  @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                  @Html.DisplayFor(modelItem => item.NumeroDeSocio)
+                </td>
+                <td>
+                  @Html.DisplayFor(modelItem => item.MontanteAnt)
+                </td>
+                <td>
+                  @Html.DisplayFor(modelItem => item.MontanteAtual)
+                </td>
+                <td>
+                  @Html.DisplayFor(modelItem => item.OBS)
+                </td>
+
+              </tr>
+            }
+          </tbody>
+        </table>
+      </form>
+    </div>
+
+
+<script>
+    $(function () {
+
+      $('#all').on('click', function () {
+        $(':checkbox').attr("checked", $(this).is(':checked'));
+      });
+
+
+
+      $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+      });
+    });
+  </script>
+
+</div>

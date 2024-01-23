@@ -1,0 +1,1 @@
+¬ 2jsXÅhr,wwwroot/plugins/codemirror/mode/perl/perl.js

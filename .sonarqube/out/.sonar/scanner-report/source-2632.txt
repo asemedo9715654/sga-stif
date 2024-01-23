@@ -1,0 +1,706 @@
+@{
+  ViewData["Title"] = "Estatística";
+}
+
+
+<!-- Small boxes (Stat box) -->
+<div class="row">
+  <div class="col-lg-3 col-6">
+    <!-- small box -->
+    <div class="small-box bg-info">
+      <div class="inner">
+        <h3>@ViewBag.SocioAtivos</h3>
+
+        <p>Total de Sócios</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-person"></i>
+      </div>
+      <a asp-action="ListaSocio" asp-controller="Socio" class="small-box-footer">Ver mais <i
+          class="fas fa-arrow-circle-right"></i></a>
+    </div>
+  </div>
+  <!-- ./col -->
+  <div class="col-lg-3 col-6">
+    <!-- small box -->
+    <div class="small-box bg-danger">
+      <div class="inner">
+        <h3>@ViewBag.SocioInativos</h3>
+
+        <p>Sócios Inativos</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-person"></i>
+      </div>
+      <a asp-action="ListaSocioInativos" asp-controller="Socio" class="small-box-footer">Ver mais <i
+          class="fas fa-arrow-circle-right"></i></a>
+    </div>
+  </div>
+  <!-- ./col -->
+  <div class="col-lg-3 col-6">
+    <!-- small box -->
+    <div class="small-box bg-info">
+      <div class="inner">
+        <h3>@ViewBag.TotalInstituicaoFinanceiras</h3>
+
+        <p>Total Instituição Financeira</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-at"></i>
+      </div>
+      <a asp-action="ListaInstituicaoFinanceira" asp-controller="InstituicaoFinanceira" class="small-box-footer">Ver
+        mais <i class="fas fa-arrow-circle-right"></i></a>
+    </div>
+  </div>
+  <!-- ./col -->
+  <div class="col-lg-3 col-6">
+    <!-- small box -->
+    <div class="small-box bg-info">
+      <div class="inner">
+        <h3>@ViewBag.TotalAgencia</h3>
+
+        <p>Total Agências</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-contacts"></i>
+      </div>
+      <a asp-action="ListaAgencia" asp-controller="Agencia" class="small-box-footer">Ver mais <i
+          class="fas fa-arrow-circle-right"></i></a>
+    </div>
+  </div>
+  <!-- ./col -->
+
+</div>
+
+
+<div class="row">
+  <div class="col-md-6">
+    <!-- AREA CHART -->
+    <div class="card card-default">
+      <div class="card-header">
+        <h3 class="card-title">Sócios por Instituição Financeira</h3>
+
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-tool" data-card-widget="remove">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div id="container3"></div>
+
+      </div>
+      <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+
+    <!-- DONUT CHART -->
+    <div class="card card-default">
+      <div class="card-header">
+        <h3 class="card-title">Sócio por Tipologia</h3>
+
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-tool" data-card-widget="remove">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div id="container4"></div>
+
+      </div>
+      <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+
+    <!-- PIE CHART -->
+    <div class="card card-default">
+      <div class="card-header">
+        <h3 class="card-title">Sócios por Sexo/Instituições Financeira</h3>
+
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-tool" data-card-widget="remove">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div id="container5"></div>
+
+      </div>
+      <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+
+  </div>
+  <!-- /.col (LEFT) -->
+  <div class="col-md-6">
+    <!-- LINE CHART -->
+    <div class="card card-default">
+      <div class="card-header">
+        <h3 class="card-title">Sócios por ilhas</h3>
+
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-tool" data-card-widget="remove">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="chart">
+          <div id="container6"></div>
+
+        </div>
+      </div>
+      <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+
+    <!-- BAR CHART -->
+    <div class="card card-default">
+      <div class="card-header">
+        <h3 class="card-title">Sócios por sexo</h3>
+
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-tool" data-card-widget="remove">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="chart">
+          <div id="container7"></div>
+
+        </div>
+      </div>
+      <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+
+    <!-- STACKED BAR CHART -->
+    <div class="card card-default">
+      <div class="card-header">
+        <h3 class="card-title">Sócios por estado civil</h3>
+
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-tool" data-card-widget="remove">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="chart">
+          <div id="container8"></div>
+
+        </div>
+      </div>
+      <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+
+  </div>
+  <!-- /.col (RIGHT) -->
+</div>
+
+
+@Html.Hidden("OcorenciaPorInstituicaoFinanceira", Url.Action("OcorenciaPorInstituicaoFinanceira", "Estatistica"))
+@Html.Hidden("OcorenciaPorTipologiaDeSocio", Url.Action("OcorenciaPorTipologiaDeSocio", "Estatistica"))
+@Html.Hidden("OcorenciaPorTipoQuota", Url.Action("OcorenciaPorTipoQuota", "Estatistica"))
+@Html.Hidden("OcorenciaPorIlha", Url.Action("OcorenciaPorIlha", "Estatistica"))
+@Html.Hidden("OcorenciaPorSexo", Url.Action("OcorenciaPorSexo", "Estatistica"))
+@Html.Hidden("OcorenciaPorEstadoCivil", Url.Action("OcorenciaPorEstadoCivil", "Estatistica"))
+
+@Html.Hidden("OcorenciaPorSexoTacadoComInstituicaoFinanceira",
+Url.Action("OcorenciaPorSexoTacadoComInstituicaoFinanceira", "Estatistica"))
+@Html.Hidden("OcorenciaPorSexoTacadoComIIdade", Url.Action("OcorenciaPorSexoTacadoComIIdade", "Estatistica"))
+
+
+
+<script src="~/js/HightChart/highcharts.js"></script>
+<script src="~/js/HightChart/highcharts-3d.js"></script>
+<script src="~/js/HightChart/exporting.js"></script>
+<script src="~/js/HightChart/export-data.js"></script>
+<script src="~/js/HightChart/accessibility.js"></script>
+
+<script>
+  $(function () {
+
+
+    $.getJSON($("#OcorenciaPorInstituicaoFinanceira").val(), null, function (response) {
+
+
+      Highcharts.chart('container3', {
+        chart: {
+          plotBackgroundColor: null,
+          plotBorderWidth: null,
+          type: 'pie',
+          options3d: {
+            enabled: true,
+            alpha: 45,
+            beta: 0
+          }
+        },
+        dataLabels: {
+          style: {
+            fontWeight: 'normal'
+          }
+        },
+        title: {
+          text: 'Sócio por Instituição Financeira'
+        },
+        tooltip: {
+          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+          point: {
+            valueSuffix: '%'
+          }
+        },
+        plotOptions: {
+          pie: {
+            showInLegend: true,
+            allowPointSelect: true,
+            cursor: 'pointer',
+            //colors: pieColors,
+            depth: 35,
+            dataLabels: {
+              connectorColor: 'grey',
+              style: {
+                fontWeight: 'normal',
+                fontSize: '14px'
+              },
+              enabled: true,
+              //format: '{point.name}: {point.percentage:.1f} %'
+              format: '{point.name}: {point.y}'
+            },
+
+
+          }
+        },
+        series: response
+
+      });
+
+    });
+
+    $.getJSON($("#OcorenciaPorTipologiaDeSocio").val(), null, function (response) {
+
+      /*
+      Highcharts.chart('container4', {
+        chart: {
+          plotBackgroundColor: null,
+          plotBorderWidth: null,
+          type: 'pie',
+          options3d: {
+            enabled: true,
+            alpha: 45,
+            beta: 0
+          }
+        },
+        dataLabels: {
+          style: {
+            fontWeight: 'normal'
+          }
+        },
+        title: {
+          text: 'Sócios por Tipologia'
+        },
+        tooltip: {
+          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+          point: {
+            valueSuffix: '%'
+          }
+        },
+        plotOptions: {
+          pie: {
+            showInLegend: true,
+            allowPointSelect: true,
+            cursor: 'pointer',
+            //colors: pieColors,
+            depth: 35,
+            dataLabels: {
+              connectorColor: 'grey',
+              style: {
+                fontWeight: 'normal',
+                fontSize: '14px'
+              },
+              enabled: true,
+              format: '{point.name}: {point.percentage:.1f} %'
+            },
+
+
+          }
+        },
+        series: response
+
+      });*/
+
+    });
+
+    $.getJSON($("#OcorenciaPorTipoQuota").val(), null, function (response) {
+
+
+      /* Highcharts.chart('container5', {
+        chart: {
+          plotBackgroundColor: null,
+          plotBorderWidth: null,
+          type: 'pie',
+          options3d: {
+            enabled: true,
+            alpha: 45,
+            beta: 0
+          }
+        },
+        dataLabels: {
+          style: {
+            fontWeight: 'normal'
+          }
+        },
+        title: {
+          text: 'Sócios por tipo quota'
+        },
+        tooltip: {
+          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+          point: {
+            valueSuffix: '%'
+          }
+        },
+        plotOptions: {
+          pie: {
+            showInLegend: true,
+            allowPointSelect: true,
+            cursor: 'pointer',
+            depth: 35,
+            dataLabels: {
+              connectorColor: 'grey',
+              style: {
+                fontWeight: 'normal',
+                fontSize: '14px'
+              },
+              enabled: true,
+              format: '{point.name}: {point.percentage:.1f} %'
+            },
+
+
+          }
+        },
+        series: response
+
+      }); */
+
+    });
+
+    $.getJSON($("#OcorenciaPorIlha").val(), null, function (response) {
+
+
+      Highcharts.chart('container6', {
+        chart: {
+          plotBackgroundColor: null,
+          plotBorderWidth: null,
+          type: 'pie',
+          options3d: {
+            enabled: true,
+            alpha: 45,
+            beta: 0
+          }
+        },
+        dataLabels: {
+          style: {
+            fontWeight: 'normal'
+          }
+        },
+        title: {
+          text: 'Sócios por ilha'
+        },
+        tooltip: {
+          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+          point: {
+            valueSuffix: '%'
+          }
+        },
+        plotOptions: {
+          pie: {
+            showInLegend: true,
+            allowPointSelect: true,
+            cursor: 'pointer',
+            //colors: pieColors,
+            depth: 35,
+            dataLabels: {
+              connectorColor: 'grey',
+              style: {
+                fontWeight: 'normal',
+                fontSize: '14px'
+              },
+              enabled: true,
+              format: '{point.name}: {point.y}'
+            },
+
+
+          }
+        },
+        series: response
+
+      });
+
+    });
+
+    $.getJSON($("#OcorenciaPorSexo").val(), null, function (response) {
+
+
+      Highcharts.chart('container7', {
+        chart: {
+          plotBackgroundColor: null,
+          plotBorderWidth: null,
+          type: 'pie',
+          options3d: {
+            enabled: true,
+            alpha: 45,
+            beta: 0
+          }
+        },
+        dataLabels: {
+          style: {
+            fontWeight: 'normal'
+          }
+        },
+        title: {
+          text: 'Sócios por sexo'
+        },
+        tooltip: {
+          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+          point: {
+            valueSuffix: '%'
+          }
+        },
+        plotOptions: {
+          pie: {
+            showInLegend: true,
+            allowPointSelect: true,
+            cursor: 'pointer',
+            //colors: pieColors,
+            depth: 35,
+            dataLabels: {
+              connectorColor: 'grey',
+              style: {
+                fontWeight: 'normal',
+                fontSize: '14px'
+              },
+              enabled: true,
+              format: '{point.name}: {point.y}'
+            },
+
+
+          }
+        },
+        series: response
+
+      });
+
+    });
+
+    $.getJSON($("#OcorenciaPorEstadoCivil").val(), null, function (response) {
+
+
+      Highcharts.chart('container8', {
+        chart: {
+          plotBackgroundColor: null,
+          plotBorderWidth: null,
+          type: 'pie',
+          options3d: {
+            enabled: true,
+            alpha: 45,
+            beta: 0
+          }
+        },
+        dataLabels: {
+          style: {
+            fontWeight: 'normal'
+          }
+        },
+        title: {
+          text: 'Sócios por estado cívil'
+        },
+        tooltip: {
+          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        accessibility: {
+          point: {
+            valueSuffix: '%'
+          }
+        },
+        plotOptions: {
+          pie: {
+            showInLegend: true,
+            allowPointSelect: true,
+            cursor: 'pointer',
+            //colors: pieColors,
+            depth: 35,
+            dataLabels: {
+              connectorColor: 'grey',
+              style: {
+                fontWeight: 'normal',
+                fontSize: '14px'
+              },
+              enabled: true,
+              format: '{point.name}: {point.y} '
+            },
+
+
+          }
+        },
+        series: response
+
+      });
+
+    });
+
+    //novo
+
+
+    $.getJSON($("#OcorenciaPorSexoTacadoComInstituicaoFinanceira").val(), null, function (response) {
+
+
+      Highcharts.chart('container5', {
+
+        chart: {
+          type: 'column'
+        },
+
+        title: {
+          text: 'Sócios por Sexo/Instituições Financeira'
+        },
+
+        xAxis: {
+          categories: response.categorias
+        },
+
+        yAxis: {
+          allowDecimals: false,
+          min: 0,
+          title: {
+            text: 'Número de Sócio'
+          }
+        },
+
+        tooltip: {
+          formatter: function () {
+            return '<b>' + this.x + '</b><br/>' +
+              this.series.name + ': ' + this.y + '<br/>' +
+              'Total: ' + this.point.stackTotal;
+          }
+        },
+
+        plotOptions: {
+          column: {
+            stacking: 'normal'
+          }
+        },
+
+        series: response.dados
+      });
+
+    });
+
+    //por sexo e idade
+
+    $.getJSON($("#OcorenciaPorSexoTacadoComIIdade").val(), null, function (response) {
+
+      Highcharts.chart('container4', {
+        chart: {
+          type: 'bar'
+        },
+        title: {
+          text: 'Sócio por Idade-Sexo'
+        },
+        subtitle: {
+          text: 'Fonte: <a href="http://populationpyramid.net/germany/2018/">Stiff</a>'
+        },
+        accessibility: {
+          point: {
+            valueDescriptionFormat: '{index}. Idade {xDescription}, {value}%.'
+          }
+        },
+        xAxis: [{
+          categories: response.categorias,
+          reversed: false,
+          labels: {
+            step: 1
+          },
+          accessibility: {
+            description: 'Idade (masculino)'
+          }
+        }, { // mirror axis on right side
+          opposite: true,
+          reversed: false,
+          categories: response.categorias,
+          linkedTo: 0,
+          labels: {
+            step: 1
+          },
+          accessibility: {
+            description: 'Idade (feminino)'
+          }
+        }],
+        yAxis: {
+          title: {
+            text: null
+          },
+          labels: {
+            formatter: function () {
+              return Math.abs(this.value) + '';
+            }
+          },
+          accessibility: {
+            description: 'Percentage population',
+            rangeDescription: 'Range: 0 to 5%'
+          }
+        },
+
+        plotOptions: {
+          series: {
+            stacking: 'normal'
+          }
+        },
+
+        tooltip: {
+          formatter: function () {
+            return '<b>' + this.series.name + ', idade ' + this.point.category + '</b><br/>' +
+              'Número de Sócios: ' + Highcharts.numberFormat(Math.abs(this.point.y), 0) ;
+          }
+        },
+
+        series: response.dados
+      });
+
+
+    });
+
+
+  })
+</script>

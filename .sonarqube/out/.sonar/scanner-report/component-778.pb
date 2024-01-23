@@ -1,0 +1,1 @@
+Š 2jsX³hr2wwwroot/plugins/codemirror/mode/gherkin/gherkin.js

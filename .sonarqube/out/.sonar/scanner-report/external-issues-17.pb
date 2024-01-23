@@ -1,0 +1,3 @@
+ñ
+roslynCS1998ÐThis async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread. 2##) J@ñ
+roslynCS1998ÐThis async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread. 2EE) R@
