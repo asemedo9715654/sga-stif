@@ -51,10 +51,9 @@ namespace sga_stif.Controllers
                 }
 
             }
-            catch (DbUpdateException /* ex */)
+            catch (DbUpdateException e)
             {
-                //Log the error (uncomment ex variable name and write a log.
-                ModelState.AddModelError("", "Unable to save changes. " + "Try again, and if the problem persists " + "see your system administrator.");
+                ModelState.AddModelError("", "Unable to save changes. " + "Try again, and if the problem persists " + "see your system administrator."+e.Message);
             }
 
             _notyf.Error("Erro na adição de Beneficiário!");
@@ -93,9 +92,9 @@ namespace sga_stif.Controllers
                     return RedirectToAction("DetalhesSocio", "Socio", new { idSocio = beneficiario.IdSocio });
                 }
             }
-            catch (DbUpdateException /* ex */)
+            catch (DbUpdateException e)
             {
-                ModelState.AddModelError("", "Unable to save changes. " + "Try again, and if the problem persists " + "see your system administrator.");
+                ModelState.AddModelError("", "Unable to save changes. " + "Try again, and if the problem persists " + "see your system administrator."+e.Message);
             }
 
             _notyf.Error("Erro na atualização de Beneficiário!");

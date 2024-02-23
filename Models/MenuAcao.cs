@@ -22,6 +22,11 @@ namespace sga_stif.Models
             this.PerfilMenuAcao = new HashSet<PerfilMenuAcao>();
         }
 
-
+        public MenuAcao(Acao a,Menu item)
+        {
+            IdAcao = a.IdAcao;
+            IdMenu = item.IdMenu;
+            MenuAcaoMaster = true;
+        }
     }
 }

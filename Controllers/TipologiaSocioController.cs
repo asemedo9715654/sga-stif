@@ -1,10 +1,7 @@
 using AspNetCoreHero.ToastNotification.Abstractions;
-
 using AutoMapper;
-
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-
 using sga_stif.Models;
 using sga_stif.ViewModel.Socio;
 using sga_stif.ViewModel.TipologiaSocio;
@@ -13,11 +10,9 @@ namespace sga_stif.Controllers
 {
     public class TipologiaSocioController : BaseController
     {
-
         private readonly ContextoBaseDados _context;
         private readonly INotyfService _notyf;
         private readonly IMapper _mapper;
-
 
         public TipologiaSocioController(ContextoBaseDados context, INotyfService notyf, IMapper mapper)
         {
@@ -26,14 +21,12 @@ namespace sga_stif.Controllers
             _mapper = mapper;
         }
 
-
         public async Task<IActionResult> ListaTipologiaSocio()
         {
             var tipologiaSocio = await _context.TipologiaSocio.Where(j => j.Eliminado == false).Include(g => g.Socio.Where(a => ListaAgenciasPermitidas(_context).Contains(a.IdAgencia))).ToListAsync();
             var listaTipologiaSocioViewModel = _mapper.Map<List<ListaTipologiaSocioViewModel>>(tipologiaSocio);
             return View(listaTipologiaSocioViewModel);
         }
-
 
         public async Task<IActionResult> ListaSocioPorTipologiaSocio(int idTipologiaSocio, string nome)
         {

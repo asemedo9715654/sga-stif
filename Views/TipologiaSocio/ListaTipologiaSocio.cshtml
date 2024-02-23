@@ -6,18 +6,11 @@
 
 <div class="card">
   <div class="card-header">
-
     <div class="row no-print">
-
       <div class="col-12">
         <p class="lead">Lista de Tipologia Sócio</p>
-
-        @* <a asp-action="NovoPerfil" class="btn btn-success float-right" style="margin-right: 5px;">Novo</a> *@
-
       </div>
     </div>
-
-
   </div>
   <div class="card-body">
     <table id="example2" class="table table-bordered table-striped">
@@ -54,7 +47,6 @@
             </td>
             <td>
               <a class="btn btn-success btn-xs" asp-action="ListaSocioPorTipologiaSocio" asp-route-idTipologiaSocio="@item.IdTipologiaSocio" asp-route-nome="@item.Descricao"><i class="fa-solid fa-file-magnifying-glass"></i>Ver Socios</a>
-              @* <a class="btn btn-warning btn-xs" asp-action="Details" asp-route-id="@item.IdTipologiaSocio">Inativar</a> *@
             </td>
           </tr>
         }
@@ -69,7 +61,6 @@
   $(function () {
     $('#example2').DataTable({
        language: {
-        //url: 'dataTables.german.json',
         url: 'https://cdn.datatables.net/plug-ins/1.12.1/i18n/pt-PT.json'
         //url:"@Url.Content("~/pt-PT.json")"
       },

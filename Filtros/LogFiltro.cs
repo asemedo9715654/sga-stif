@@ -22,11 +22,9 @@ namespace sga_stif.Filtros
         public void OnActionExecuting(ActionExecutingContext context)
         {
             string data = "";
-
             var routeData = context.RouteData;
             var controller = routeData.Values["controller"];
             var action = routeData.Values["action"];
-
             var url = $"{controller}/{action}";
 
             if (!string.IsNullOrEmpty(context.HttpContext.Request.QueryString.Value))
@@ -41,7 +39,6 @@ namespace sga_stif.Filtros
                 data = convertedValue;
             }
 
-            //var user=context.HttpContext.User.Identity.Name;
             var user="ok";
             if(context.HttpContext.Session.GetString("NomeUtilizador")==null){
                 user="anonimo";
@@ -50,19 +47,12 @@ namespace sga_stif.Filtros
                 user=context.HttpContext.Session.GetString("NomeUtilizador");
             }
 
-            //var ipAddress = context.HttpContext.Connection.RemoteIpAddress.ToString();
             var ipAddress  = context.HttpContext.Connection.RemoteIpAddress.ToString();
 
             SalvarNaBaseDeDados(data,url,user,ipAddress);
           
         }
-        /// <summary>
-        /// Salvar Log Na Base DeDados
-        /// </summary>
-        /// <param name="dados"></param>
-        /// <param name="url"></param>
-        /// <param name="nomeUtilizador"></param>
-        /// <param name="enderecoIp"></param>
+       
         public void SalvarNaBaseDeDados(string dados, string url, string nomeUtilizador, string enderecoIp)
         {
             var logAtividade = new LogAtividade(dados, url, nomeUtilizador, enderecoIp);

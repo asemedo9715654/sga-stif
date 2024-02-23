@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace sga_stif.Models
@@ -6,8 +7,6 @@ namespace sga_stif.Models
     {
         [Key]
         public int IdTipologiaSocio { get; set; }
-        // public decimal Montante { get; set; }
-        // public int Prioridicidade { get; set; }
         public TipoTipologiaSocio Tipo { get; set; }
         public string Descricao { get; set; }
         public DateTime DataInicio { get; set; }
@@ -27,7 +26,9 @@ namespace sga_stif.Models
 
     public enum TipoTipologiaSocio
     {
+        [Description("Normal")]
         Normal,
+        [Description("Honorário")]
         Honorario
     }
 }

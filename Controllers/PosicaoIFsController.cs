@@ -43,7 +43,7 @@ namespace sga_stif.Controllers
                 mes = DataPesquisa.Value.Month;
             }
             else
-                DataPesquisa = new DateTime(ano, mes, 1);
+                DataPesquisa = new DateTime(ano,mes,1);
 
             ViewBag.DataPreenchido = ano + "-" + DataPesquisa.Value.Month.ToString("#00");
 

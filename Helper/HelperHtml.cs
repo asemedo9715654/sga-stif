@@ -3,10 +3,6 @@ using sga_stif.Models;
 
 namespace sga_stif.Helper
 {
-
-
-
-    // [HtmlTargetElement(Attributes = "IdMenu, IdAcao")]
     [HtmlTargetElement("Input", Attributes = "IdMenu, IdAcao")]
     public class DetermiCheckBoxMenuAcaoTH : TagHelper
     {

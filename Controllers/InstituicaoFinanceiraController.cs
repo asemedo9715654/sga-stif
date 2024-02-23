@@ -33,7 +33,6 @@ namespace sga_stif.Controllers
             _logger = logger;
         }
 
-
         public async Task<IActionResult> ListaInstituicaoFinanceira()
         {
 
@@ -66,7 +65,6 @@ namespace sga_stif.Controllers
 
             try
             {
-
                 if (ModelState.IsValid)
                 {
                     var instituicaoFinanceira = _mapper.Map<InstituicaoFinanceira>(novoInstituicaoFinanceiraViewModel);
@@ -79,7 +77,6 @@ namespace sga_stif.Controllers
             }
             catch (DbUpdateException ex)
             {
-
                 ModelState.AddModelError("", "Não foi possível salvar as alterações. Tente novamente e, se o problema persistir, consulte o administrador do sistema. Erro => " + ex.Message);
             }
 
@@ -87,8 +84,6 @@ namespace sga_stif.Controllers
 
             return View(novoInstituicaoFinanceiraViewModel);
         }
-
-
 
 
         [HttpGet]
@@ -109,8 +104,6 @@ namespace sga_stif.Controllers
             return View(editaInstituicaoFinanceiraViewModel);
         }
 
-
-
         [HttpGet]
         public IActionResult DetalhesInstituicaoFinanceira(int idInstituicaoFinanceira)
         {
@@ -127,8 +120,6 @@ namespace sga_stif.Controllers
 
             return View(editaInstituicaoFinanceiraViewModel);
         }
-
-
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -157,7 +148,6 @@ namespace sga_stif.Controllers
             _notyf.Error("Erro na edição de Instituição Financeira");
             return View(editaInstituicaoFinanceiraViewModel);
         }
-
 
         //novo numero de colaboradores
         [HttpGet]
@@ -228,7 +218,6 @@ namespace sga_stif.Controllers
 
             return Json(true);
         }
-
 
         public async Task<IActionResult> InativarInstituicaoFinanceira(int? idInstituicaoFinanceira)
         {
@@ -378,11 +367,8 @@ namespace sga_stif.Controllers
                 if (ModelState.IsValid)
                 {
                     var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(g => ListaInstituicoesFinanceirasPermitidas(_context).Contains(g.IdInstituicaoFinanceira) && g.Eliminado == false).ToList();
-
                     var idInstituicoes = from d in instituicaoFinanceiras select d.IdInstituicaoFinanceira;
-
                     var socios = _context.Socio.Where(e => e.Eliminado == false && idInstituicoes.Contains(e.Agencia.IdInstituicaoFinanceira)).ToList();
-
                     var lista = new List<Socio>();
 
                     foreach (var socio in socios)
@@ -414,8 +400,6 @@ namespace sga_stif.Controllers
 
                     _notyf.Error(mensagemSucesso);
                     return RedirectToAction("ListaInstituicaoFinanceira");
-
-
                 }
                 _notyf.Error("Model invalido");
             }
@@ -512,13 +496,7 @@ namespace sga_stif.Controllers
                     }
                 }
 
-                //foreach (var socio in socios)
-                //{
-                //    message.To.Add(new MailboxAddress(socio.Nome + " " + socio.Apelido, socio.Email));
-                //}
-
                 message.Subject = subject;
-
                 // Corpo do email
                 var builder = new BodyBuilder();
                 builder.HtmlBody = body;

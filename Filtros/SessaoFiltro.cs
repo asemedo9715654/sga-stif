@@ -28,15 +28,8 @@ namespace sga_stif.Filtros
 
             if (context.HttpContext.Session.GetString("NomeUtilizador") == null)
             {
-                // if (context.HttpContext.Request.IsAjaxRequest())
-                // {
-                //     filterContext.HttpContext.Response.Clear();
-                //     filterContext.Result = new JsonResult() { Data = new { success = true } };
-                // }
-
                 context.Result = new RedirectToRouteResult(new RouteValueDictionary { { "Controller", "Login" }, { "Action", "Logout" } });
                 return;
-
             }
 
 
@@ -53,10 +46,6 @@ namespace sga_stif.Filtros
                 }
 
             }
-
-
-
-            //throw new NotImplementedException();
         }
     }
 }

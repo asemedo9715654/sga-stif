@@ -15,8 +15,6 @@ namespace sga_stif.Controllers
     //[DefaultBreadcrumb]
     public class SocioController : BaseController
     {
-
-
         private readonly ContextoBaseDados _context;
         private readonly INotyfService _notyf;
         private readonly IMapper _mapper;
@@ -36,20 +34,19 @@ namespace sga_stif.Controllers
         //[Breadcrumb(FromAction = "ListaSocio", Title = "Lista de Sócio")]
         public async Task<IActionResult> ListaSocio()
         {
-            var sociosdd = await _context.Socio.Where(r => r.Eliminado != true && ListaAgenciasPermitidas(_context).Contains(r.IdAgencia))
+            var socios = await _context.Socio.Where(s => s.Eliminado != true && ListaAgenciasPermitidas(_context).Contains(s.IdAgencia))
                                       .Include(c => c.Agencia)
                                       .Include(c => c.TipologiaSocio)
                                       .Include(c => c.TipoQuota)
                                       .Include(c => c.Beneficiario)
-                                      .Include(c => c.Agencia).ThenInclude(c => c.InstituicaoFinanceira).Select(
-                                          k => new ListaSocioViewModel(k))
+                                      .Include(c => c.Agencia).ThenInclude(c => c.InstituicaoFinanceira).Select( k => new ListaSocioViewModel(k))
                                       .ToListAsync();
 
             // var sociocc = _mapper.Map<List<ListaSocioViewModel>>(socios);
 
 
             //return View(sociocc);
-            return View(sociosdd);
+            return View(socios);
         }
 
 
@@ -102,7 +99,6 @@ namespace sga_stif.Controllers
                                         .ToListAsync();
 
             var sociocc = _mapper.Map<List<ListaSocioViewModel>>(socios);
-
             return View(sociocc);
         }
 
@@ -279,7 +275,6 @@ namespace sga_stif.Controllers
             return View(editaSocioViewModel);
         }
 
-
         [HttpGet]
         public async Task<IActionResult> DetalhesSocio(int idSocio)
         {
@@ -312,7 +307,6 @@ namespace sga_stif.Controllers
             return listaContaCorrenteSocioResultado;
 
         }
-
 
         private List<ContaHistorialSocioResultado> PegarContaHistorialSocioResultado(int ano, int idSocio)
         {
@@ -359,8 +353,6 @@ namespace sga_stif.Controllers
             return RedirectToAction("ListaSocio");
         }
 
-
-
         public async Task<IActionResult> ReativarSocio(int idSocio)
         {
             var perfil = await _context.Socio.FindAsync(idSocio);
@@ -374,7 +366,6 @@ namespace sga_stif.Controllers
             return RedirectToAction("ListaSocio");
         }
 
-
         [HttpGet]
         public JsonResult PegarAgencia(int idInstituicaoFinanceira)
         {
@@ -387,11 +378,7 @@ namespace sga_stif.Controllers
 
         }
 
-
         #region validações
-
-
-
         public Tuple<bool, string> ValidaSocio(NovoSocioViewModel novoSocioViewModel)
         {
             var instituicaoFinanceira = _context.Agencia.Include(J => J.InstituicaoFinanceira).FirstOrDefault(k => k.IdAgencia == novoSocioViewModel.IdAgencia);
@@ -399,7 +386,6 @@ namespace sga_stif.Controllers
             if (instituicaoFinanceira == null)
             {
                 return Tuple.Create(false, "Agência Inexistente");
-
             }
 
             var exiteSocioComMesmoNumerColaborador = _context.Socio.Include(a => a.Agencia).ThenInclude(i => i.InstituicaoFinanceira).FirstOrDefault(j => j.NumeroColaborador == novoSocioViewModel.NumeroColaborador && j.Agencia.InstituicaoFinanceira.IdInstituicaoFinanceira == instituicaoFinanceira.IdInstituicaoFinanceira);
@@ -408,8 +394,6 @@ namespace sga_stif.Controllers
                     $"Existe colaborador com o mesmo nº de colaborador para instituição: {instituicaoFinanceira.Nome}");
             return Tuple.Create(true, "Valido");
         }
-
-
 
         [AcceptVerbs("GET", "POST")]
         public IActionResult VereficaCniBi(string CinBi)
@@ -455,7 +439,5 @@ namespace sga_stif.Controllers
             var rakingSocioResultados = _context.RakingSocioResultado.FromSqlRaw($"EXECUTE  [dbo].[RakingSocio]").ToList();
             return View(rakingSocioResultados);
         }
-
-
     }
 }

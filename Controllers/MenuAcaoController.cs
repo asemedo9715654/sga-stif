@@ -42,10 +42,8 @@ namespace sga_stif.Controllers
             var perfilAacao = _context.MenuAcao.FirstOrDefault(a => a.IdAcao == idAcao && a.IdMenu == idMenu);
             if (perfilAacao != null)
             {
-
                 _context.MenuAcao.Remove(perfilAacao);
                 _context.SaveChanges();
-
             }
             else
             {
@@ -53,9 +51,7 @@ namespace sga_stif.Controllers
                 {
                     IdMenu = idMenu,
                     IdAcao = idAcao,
-
                 };
-
 
                 _context.MenuAcao.Add(perfilAcaoExterno);
                 _context.SaveChanges();

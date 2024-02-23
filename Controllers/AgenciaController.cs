@@ -16,7 +16,6 @@ namespace sga_stif.Controllers
     {
 
         private readonly ContextoBaseDados _context;
-
         private readonly INotyfService _notyf;
         private readonly IMapper _mapper;
 
@@ -90,7 +89,6 @@ namespace sga_stif.Controllers
             }
             catch (DbUpdateException ex)
             {
-
                 ModelState.AddModelError("", "Não foi possível salvar as alterações. Tente novamente e, se o problema persistir, consulte o administrador do sistema. Erro => " + ex.Message);
             }
 
@@ -102,9 +100,6 @@ namespace sga_stif.Controllers
         [HttpGet]
         public IActionResult EditaAgencia(int idAgencia)
         {
-
-
-
             var agencia = _context.Agencia.FirstOrDefault(h => h.IdAgencia == idAgencia);
             if (agencia != null)
             {
@@ -155,7 +150,6 @@ namespace sga_stif.Controllers
             return View(editaAgenciaViewModel);
         }
 
-        ///
         public async Task<IActionResult> ListaSocioPorAgencia(int idAgencia, string nomeAgencia)
         {
             ViewBag.NomeAgencia = nomeAgencia;
@@ -205,8 +199,6 @@ namespace sga_stif.Controllers
 
             return RedirectToAction("ListaAgencia");
         }
-
-
 
         public async Task<IActionResult> ReativarAgencia(int idAgencia)
         {

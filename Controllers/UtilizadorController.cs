@@ -15,9 +15,7 @@ namespace sga_stif.Controllers
 {
     public class UtilizadorController : BaseController
     {
-
         private readonly ContextoBaseDados _context;
-
         private readonly INotyfService _notyf;
         private readonly IMapper _mapper;
 
@@ -120,9 +118,6 @@ namespace sga_stif.Controllers
             return View(inativarUtilizadorViewModel);
         }
 
-
-
-        // POST: Employees/Delete/1
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EliminaUtilizador(int idUtilizador)
@@ -134,7 +129,6 @@ namespace sga_stif.Controllers
             _notyf.Success("Utilizador eliminado com sucesso!");
             return RedirectToAction("ListaUtilizador");
         }
-
 
         public async Task<IActionResult> DetalhesUtilizador(int? idUtilizador)
         {
@@ -317,7 +311,6 @@ namespace sga_stif.Controllers
 
             return Json(true);
         }
-
 
         public async Task<IActionResult> ReativarUtilizador(int idUtilizador)
         {

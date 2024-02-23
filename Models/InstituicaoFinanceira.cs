@@ -24,6 +24,7 @@ namespace sga_stif.Models
         {
             return Agencia.Count();
         }
+
         public int TotalSocios()
         {
             var somaSocios = 0;
@@ -31,8 +32,6 @@ namespace sga_stif.Models
                 somaSocios += item.TotalSocios();
             return somaSocios;
         }
-
-
 
         public string SiglaFormatado()
         {
@@ -51,7 +50,6 @@ namespace sga_stif.Models
 
         public string NomeFormatado()
         {
-
             var siglaTransformado = "";
             var siglaBruto = Regex.Replace(this.Sigla, @"\s+", " "); //remover mais de um espaço
             siglaBruto = siglaBruto.Trim();
@@ -62,7 +60,5 @@ namespace sga_stif.Models
 
             return siglaTransformado;
         }
-
-
     }
 }

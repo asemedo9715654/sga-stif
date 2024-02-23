@@ -1,11 +1,8 @@
 using AspNetCoreHero.ToastNotification.Abstractions;
-
 using AutoMapper;
-
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-
 using sga_stif.Models;
 using sga_stif.Models.ResultadoStoredProcedure;
 
@@ -13,7 +10,6 @@ namespace sga_stif.Controllers
 {
     public class ProjecaoFluxoController : BaseController
     {
-
         private readonly ContextoBaseDados _context;
         private readonly INotyfService _notyf;
         private readonly IMapper _mapper;
@@ -28,7 +24,6 @@ namespace sga_stif.Controllers
         //sem filtro
         public async Task<IActionResult> ListaProjecaoFluxo(int? idInstituicaoFinanceira, decimal? percentagem)
         {
-
             var projecaoQuotasResultados = new List<ProjecaoQuotasResultado>();
             var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(a => a.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(a.IdInstituicaoFinanceira)).ToList();
             var instituicaoFinanceirasItem = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome };

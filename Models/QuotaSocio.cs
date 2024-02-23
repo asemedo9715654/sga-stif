@@ -1,4 +1,5 @@
 using sga_stif.ViewModel.Pagamento;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -57,9 +58,13 @@ namespace sga_stif.Models
 
     public enum EstadoQuotaSocio
     {
+        [Description("Vencida")]
         Vencida = 2,
+        [Description("Pago")]
         Pago = 1,
+        [Description("Não Pago")]
         NoaPago = 0,
+        [Description("Aguarda Confirmaçãao de Pagamento")]
         AguardaConfirmacaoPagamento = -1,
     }
 }
