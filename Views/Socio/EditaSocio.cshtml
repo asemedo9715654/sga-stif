@@ -3,10 +3,7 @@
 @{
   ViewData["Title"] = "Edita Sócio";
 }
-
-
 <hr />
-
 <div class="card card-primary">
   <div class="card-header">
     <h3 class="card-title">Edita Sócio <small>(atualize os dados)</small></h3>
@@ -14,10 +11,8 @@
 
   <form asp-action="EditaSocio" enctype="multipart/form-data">
     <div class="card-body">
-
       <div asp-validation-summary="ModelOnly" class="text-danger"></div>
       <input type="hidden" asp-for="IdSocio" />
-
  <div class="row">
 
         <div class="col-md-6">
@@ -46,21 +41,17 @@
             <span asp-validation-for="HabilitacaoLiteraria" class="text-danger"></span>
           </div>
         </div>
-
-
         <div class="col-md-6">
           <div class="form-group">
             <label asp-for="CinBi" class="control-label"></label>
             <input asp-for="CinBi" class="form-control" />
             <span asp-validation-for="CinBi" class="text-danger"></span>
           </div>
-
           <div class="form-group">
             <label asp-for="ValidadeCinBi" class="control-label"></label>
             <input asp-for="ValidadeCinBi" class="form-control" />
             <span asp-validation-for="ValidadeCinBi" class="text-danger"></span>
           </div>
-
           <div class="form-group">
             <label for="exampleInputFile">Foto</label>
             <div class="input-group">
@@ -73,26 +64,21 @@
               </div>
             </div>
           </div>
-
         </div>
-
       </div>
       <div class="row">
 
         <div class="col-md-6">
-
           <div class="form-group">
             <label asp-for="NumeroPassaporte" class="control-label"></label>
             <input asp-for="NumeroPassaporte" class="form-control" />
             <span asp-validation-for="NumeroPassaporte" class="text-danger"></span>
           </div>
-
           <div class="form-group">
             <label asp-for="ValidadePassaporte" class="control-label"></label>
             <input asp-for="ValidadePassaporte" class="form-control" />
             <span asp-validation-for="ValidadePassaporte" class="text-danger"></span>
           </div>
-
           <div class="form-group">
             <label asp-for="IdTipoQuota" class="control-label"></label>
             <select asp-for="IdTipoQuota" asp-items="@ViewBag.IdTipoQuota" class="form-control">
@@ -109,39 +95,22 @@
             </select>
             <span asp-validation-for="IdTipologiaSocio" class="text-danger"></span>
           </div>
-
-
-          @*  xxx IdInstituicaoFinanceira *@
-          @* @Html.DropDownListFor() *@
           <div class="form-group">
             <label asp-for="IdInstituicaoFinanceira" class="control-label"></label>
-            <select asp-for="IdInstituicaoFinanceira" asp-items="@ViewBag.IdInstituicaoFinanceira" class="form-control"
-              id="IdInstituicaoFinanceira">
-              @* <option disabled selected>--- seleccione ---</option> *@
+            <select asp-for="IdInstituicaoFinanceira" asp-items="@ViewBag.IdInstituicaoFinanceira" class="form-control" id="IdInstituicaoFinanceira">
             </select>
-             @* @Html.DropDownListFor(model => model.IdInstituicaoFinanceira, null, "----", new { @id = "IdInstituicaoFinanceira", @class = "form-control", onchange = "PegarTaxa()" }) *@
             <span asp-validation-for="IdInstituicaoFinanceira" class="text-danger"></span>
           </div> 
-
           <div class="form-group" id="div-agencia">
             <label asp-for="IdAgencia" class="control-label"></label> 
              <select asp-for="IdAgencia" asp-items="@ViewBag.IdAgencia" class="form-control">
-              @* <option disabled selected>--- seleccione ---</option> *@
               </select>
             <span asp-validation-for="IdAgencia" class="text-danger"></span>
           </div>
-
-
         </div>
-
       </div>
-
       <div class="row">
-
         <div class="col-md-6">
-
-
-
           <div class="form-group">
             <label asp-for="Nif" class="control-label"></label>
             <input asp-for="Nif" class="form-control" type="number" />
@@ -157,7 +126,6 @@
             <input asp-for="DataAtivacao" class="form-control" />
             <span asp-validation-for="DataAtivacao" class="text-danger"></span>
           </div>
-
         </div>
         <div class="col-md-6">
           <div class="form-group">
@@ -172,72 +140,49 @@
             <input type="tel" asp-for="NumeroDeTelefone" class="form-control" />
             <span asp-validation-for="NumeroDeTelefone" class="text-danger"></span>
           </div>
-
           <div class="form-group">
             <label asp-for="NumeroDeTelemovel" class="control-label"></label>
             <input type="tel" asp-for="NumeroDeTelemovel" class="form-control" />
             <span asp-validation-for="NumeroDeTelemovel" class="text-danger"></span>
           </div>
-
           <div class="form-group">
             <label asp-for="Email" class="control-label"></label>
             <input type="email" asp-for="Email" class="form-control" />
             <span asp-validation-for="Email" class="text-danger"></span>
           </div>
-
         </div>
-
-
       </div>
       <hr>
       <div class="row">
-
         <div class="col-md-6">
-
           <div class="form-group">
             <label asp-for="NumeroDeSocio" class="control-label"></label>
             <input asp-for="NumeroDeSocio" class="form-control" />
             <span asp-validation-for="NumeroDeSocio" class="text-danger"></span>
           </div>
-
         </div>
-
          <div class="col-md-6">
-
           <div class="form-group">
             <label asp-for="NumeroColaborador" class="control-label"></label>
             <input asp-for="NumeroColaborador" class="form-control" />
             <span asp-validation-for="NumeroColaborador" class="text-danger"></span>
           </div>
-
         </div>
-
-
-      </div>
-      
+      </div>  
     </div>
-
     <div class="card-footer">
       <a asp-action="ListaSocio" class="btn btn-secondary">Cancelar</a>
       <button type="submit" class="btn btn-success">Guardar</button>
     </div>
-
   </form>
-
 </div>
-
 
 @Html.Hidden("RecuperaLinkPegarAgencia", Url.Action("PegarAgencia", "Socio"))
 
-
 <script>
   $(function () {
-
-
-
     $('#IdInstituicaoFinanceira').on('change', function () {
-      //alert(this.value);
-
+    
       $.ajax({
         url: $("#RecuperaLinkPegarAgencia").val(),
         data: { idInstituicaoFinanceira: this.value },
@@ -245,13 +190,10 @@
         dataType: "json",
         success: function (result) {
           console.log(result)
-
           var $label = $("<label>").text('Agencia :');
-
           var select = $("<select></select>").attr("id", "IdAgencia").attr("name", "IdAgencia");
 
           select.addClass("form-control")
-
           select.append($("<option></option>").attr("value", result.idAgencia).text("--seleccione--").attr('disabled', 'disabled'));
 
           $.each(result, function (index, result) {
@@ -259,18 +201,10 @@
           });
 
           $("#div-agencia").html($label);
-
           $("#div-agencia").append(select);
-
-
 
         }
       });
-
-
     });
-
-
-
   });
 </script>
