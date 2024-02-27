@@ -14,14 +14,12 @@ namespace sga_stif.Models
         public virtual ICollection<PerfilMenuAcao> PerfilMenuAcao { get; set; }
         public virtual ICollection<PerfilInstituicaoFinanceira> PerfilInstituicaoFinanceira { get; set; }
 
-
         public Perfil()
         {
             this.Utilizador = new HashSet<Utilizador>();
             this.PerfilMenuAcao = new HashSet<PerfilMenuAcao>();
             this.PerfilInstituicaoFinanceira = new HashSet<PerfilInstituicaoFinanceira>();
         }
-
 
         public int TotalUtilizadores()
         {

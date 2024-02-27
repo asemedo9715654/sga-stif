@@ -12,7 +12,6 @@ namespace sga_stif.Controllers
 {
     public class ComunController : Controller
     {
-
         private readonly ContextoBaseDados _context;
         private readonly INotyfService _notyf;
         private readonly IMapper _mapper;
@@ -34,30 +33,15 @@ namespace sga_stif.Controllers
 
             foreach (var item in menus)
             {
-                var a = new Acao()
-                {
-                    Nome = item.Nome,
-                    AcaoMaster = true
-                };
-
-                _context.Acao.Add(a);
+                var acao = new Acao(item);
+                _context.Acao.Add(acao);
                 _context.SaveChanges();
 
-
-                var menuAcao = new MenuAcao()
-                {
-                    IdAcao = a.IdAcao,
-                    IdMenu = item.IdMenu,
-                    MenuAcaoMaster = true,
-
-                };
-
+                var menuAcao = new MenuAcao(acao, item);
                 _context.MenuAcao.Add(menuAcao);
                 _context.SaveChanges();
 
             }
-
-
 
             return Json(2);
 

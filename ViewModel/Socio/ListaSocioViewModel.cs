@@ -45,17 +45,17 @@ namespace sga_stif.ViewModel.Socio
             
         }
 
-        public ListaSocioViewModel(Models.Socio k)
+        public ListaSocioViewModel(Models.Socio socio)
         {
-            IdSocio = k.IdSocio;
-            NumeroDeSocio = k.NumeroDeSocio;
-            NomeCompleto = k.NomeCompleto();
-            CinBi = k.CinBi;
-            Sexo = k.Sexo.GetDescription();
-            TotalBeneficiario = k.TotalBeneficiario();
-            IdAgencia = k.IdAgencia;
-            SiglaInstitucaoFinanceira = k.Agencia.InstituicaoFinanceira.SiglaFormatado();
-            NomeAgencia = k.Agencia.Nome;
+            IdSocio = socio.IdSocio;
+            NumeroDeSocio = socio.NumeroDeSocio;
+            NomeCompleto = socio.NomeCompleto();
+            CinBi = socio.CinBi;
+            Sexo = socio.Sexo.GetDescription();
+            TotalBeneficiario = socio.TotalBeneficiario();
+            IdAgencia = socio.IdAgencia;
+            SiglaInstitucaoFinanceira = socio.Agencia.InstituicaoFinanceira.SiglaFormatado();
+            NomeAgencia = socio.Agencia.Nome;
 
         }
     }

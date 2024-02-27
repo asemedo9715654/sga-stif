@@ -11,18 +11,14 @@ namespace sga_stif.Models
         public decimal Montante { get; set; }
         public TipoTipoQuota Tipo { get; set; }
         public virtual ICollection<Socio> Socio { get; set; }
-        // public virtual ICollection<PeriodoQuota> PeriodoQuota { get; set; }
-
+        
         public TipoQuota()
         {
             Socio = new HashSet<Socio>();
-            // PeriodoQuota = new HashSet<PeriodoQuota>();
         }
-
 
         public int TotalSocio() => Socio.Count();
     }
-
 
     public enum TipoTipoQuota
     {

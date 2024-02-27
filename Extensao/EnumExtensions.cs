@@ -14,12 +14,7 @@ using System.Reflection;
 namespace sga_stif.Extensao
 {
     public static class EnumExtensao
-    {
-        /// <summary>
-        /// Get the Description from the DescriptionAttribute.
-        /// </summary>
-        /// <param name="enumValue"></param>
-        /// <returns></returns>
+    {  
         public static string PegarDescricao(this Enum enumValue)
         {
             return enumValue.GetType()
@@ -29,25 +24,22 @@ namespace sga_stif.Extensao
                        .Description ?? string.Empty;
         }
 
-
-
-        public static string GetDescription<T>(this T enumValue)
-                where T : struct, IConvertible
+        public static string GetDescription<T>(this T enumValue) where T : struct, IConvertible
         {
             if (!typeof(T).IsEnum)
                 return null;
 
-            var description = enumValue.ToString();
-            var fieldInfo = enumValue.GetType().GetField(enumValue.ToString());
+            var descricao = enumValue.ToString();
+            var informacaoDoCampo = enumValue.GetType().GetField(enumValue.ToString());
 
-            if (fieldInfo != null)
+            if (informacaoDoCampo != null)
             {
-                var attrs = fieldInfo.GetCustomAttributes(typeof(DescriptionAttribute), true);
-                if (attrs != null && attrs.Length > 0) 
-                    description = ((DescriptionAttribute)attrs[0]).Description;
+                var atributos = informacaoDoCampo.GetCustomAttributes(typeof(DescriptionAttribute), true);
+                if (atributos != null && atributos.Length > 0) 
+                    descricao = ((DescriptionAttribute)atributos[0]).Description;
             }
 
-            return description;
+            return descricao;
         }
 
     }

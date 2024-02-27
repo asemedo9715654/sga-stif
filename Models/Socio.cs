@@ -58,8 +58,6 @@ namespace sga_stif.Models
             Beneficiario = new HashSet<Beneficiario>();
         }
 
-
-
         public void PrepararSocioSocio(Socio socio)
         {
             this.NumeroColaborador = socio.NumeroColaborador;
@@ -86,7 +84,6 @@ namespace sga_stif.Models
 
         }
 
-
         public string NomeFormatado()
         {
             var nomeCompleto = "";
@@ -101,7 +98,6 @@ namespace sga_stif.Models
             return nomeCompleto;
 
         }
-
 
         public string ApelidoFormatado()
         {
@@ -141,7 +137,6 @@ namespace sga_stif.Models
         {
             this.Nome = this.Nome.ToUpper();
             this.Apelido = this.Apelido.ToUpper();
-
         }
 
 
@@ -149,7 +144,6 @@ namespace sga_stif.Models
         {
             if (Foto != null)
             {
-
                 var aux = Convert.ToBase64String(Foto);
                 var imageDataUrl = string.Format("data:image/png;base64,{0}", aux);
                 return imageDataUrl;
@@ -169,7 +163,9 @@ namespace sga_stif.Models
 
     public enum EstadoDeSocio
     {
+        [Description("Ativo")]
         Ativo = 1,
+        [Description("Inativo")]
         Inativo = 0
     }
 

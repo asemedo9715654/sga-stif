@@ -14,7 +14,6 @@ namespace sga_stif.Controllers
 {
     public class FicheiroController : BaseController
     {
-
         private readonly ContextoBaseDados _context;
         private readonly INotyfService _notyf;
         private readonly IMapper _mapper;
@@ -32,12 +31,10 @@ namespace sga_stif.Controllers
         // GET: ClonePanel
         public ActionResult CarregamentoDeFicheiro()
         {
-
             var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(a => a.Eliminado == false).ToList();
             var instituicaoFinanceirasItem = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome };
 
             ViewBag.IdInstituicaoFinanceira = instituicaoFinanceirasItem;
-
             return View();
         }
 
@@ -45,7 +42,7 @@ namespace sga_stif.Controllers
         public ActionResult ImportarFicheiro()
         {
 
-            var sb = new StringBuilder();
+            var stringBuilder = new StringBuilder();
 
             try
             {
@@ -62,9 +59,8 @@ namespace sga_stif.Controllers
                 }
                 else
                 {
-                    sb.Append($"<div class=\"card-body\"> <div class=\"alert alert-danger alert-dismissible\"> <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button> <h5><i class=\"icon fas fa-check\"></i> Erro!</h5> Instituicao financeira invalida !!! </div> </div>");
-
-                    return this.Content(sb.ToString());
+                    stringBuilder.Append($"<div class=\"card-body\"> <div class=\"alert alert-danger alert-dismissible\"> <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button> <h5><i class=\"icon fas fa-check\"></i> Erro!</h5> Instituicao financeira invalida !!! </div> </div>");
+                    return this.Content(stringBuilder.ToString());
                 }
 
                 var folderName = "UploadExcel";
@@ -148,9 +144,9 @@ namespace sga_stif.Controllers
                     }
                 }
 
-                sb.Append($"<div class=\"card-body\"> <div class=\"alert alert-success alert-dismissible\"> <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button> <h5><i class=\"icon fas fa-check\"></i> Sucesso!</h5> Foram efectuado {contador} pagamentos com sucesso !!! </div> </div>");
+                stringBuilder.Append($"<div class=\"card-body\"> <div class=\"alert alert-success alert-dismissible\"> <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button> <h5><i class=\"icon fas fa-check\"></i> Sucesso!</h5> Foram efectuado {contador} pagamentos com sucesso !!! </div> </div>");
 
-                return this.Content(sb.ToString());
+                return this.Content(stringBuilder.ToString());
 
             }
             catch (System.Exception e)
@@ -158,9 +154,9 @@ namespace sga_stif.Controllers
 
                 Log.Error(e.Message);
 
-                sb.Append($"<div class=\"card-body\"> <div class=\"alert alert-danger alert-dismissible\"> <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button> <h5><i class=\"icon fas fa-check\"></i> Erro!</h5> Erro :  {e.Message}!!! </div> </div>");
+                stringBuilder.Append($"<div class=\"card-body\"> <div class=\"alert alert-danger alert-dismissible\"> <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button> <h5><i class=\"icon fas fa-check\"></i> Erro!</h5> Erro :  {e.Message}!!! </div> </div>");
 
-                return this.Content(sb.ToString());
+                return this.Content(stringBuilder.ToString());
             }
 
         }

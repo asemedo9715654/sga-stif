@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -23,10 +24,11 @@ namespace sga_stif.Models
         }
     }
 
-
     public enum EstadoQuota
     {
+        [Description("Ativo")]
         Ativo = 1,
+        [Description("Inativo")]
         Inativo = 0
     }
 }

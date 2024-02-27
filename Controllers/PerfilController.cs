@@ -225,6 +225,7 @@ namespace sga_stif.Controllers
             }
             else
                 ViewBag.NomePerfil = "Sem Perfil";
+              
 
             var menuAcaoMasters = await _context.MenuAcao.Where(t => t.Eliminado == false && t.MenuAcaoMaster == true)
             .Include(c => c.Menu)

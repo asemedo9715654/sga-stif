@@ -8,8 +8,6 @@ namespace sga_stif.Controllers
 {
     public class LoginController : Controller
     {
-
-
         private readonly ContextoBaseDados _context;
         private readonly INotyfService _notyf;
         private readonly ILogger<ContaCorrentesController> _logger;
@@ -47,16 +45,12 @@ namespace sga_stif.Controllers
                         CaregarVariaveisDeSessao(loginViewModel, utilizador);
                         return RedirectToAction("Inicio", "Dashboard");
                     }
-
                     _notyf.Error("Perfil Inexistente");
                     return View(loginViewModel);
-
                 }
-
                 _notyf.Error("Dados Incorrecto");
                 return View(loginViewModel);
             }
-
             _notyf.Error("Dados Incorrecto");
             return View(loginViewModel);
         }

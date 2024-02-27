@@ -15,7 +15,6 @@ namespace sga_stif.Models
         //propriedades de navegação
         public virtual ICollection<MenuAcao> MenuAcao { get; set; }
 
-
         public Menu()
         {
             this.MenuAcao = new HashSet<MenuAcao>();
