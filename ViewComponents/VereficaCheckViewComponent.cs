@@ -1,5 +1,3 @@
-
-
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Identity;
@@ -7,10 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using sga_stif.Models;
 using sga_stif.ViewModel.Perfil;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace sga_stif.ViewComponents
 {
@@ -30,9 +24,5 @@ namespace sga_stif.ViewComponents
             var dadosComponente = new DadosComponente() { IdMenuAcao = idMenuAcao, IdPerfil = idPerfil, Preenchido = perfilMenuAcao != null ? true : false };
             return View(dadosComponente);
         }
-
-
-
-
     }
 }

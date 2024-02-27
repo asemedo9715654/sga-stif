@@ -230,7 +230,7 @@ namespace sga_stif.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditaSocio([Bind("IdSocio,Nome,NumeroDeTelemovel,NumeroDeTelefone,Email,DataDeNascimento,Sexo,Apelido,CinBi,NumeroPassaporte,ValidadePassaporte,IdTipologiaSocio ,IdTipoQuota,IdAgencia,Nif,DataAtivacao,ValidadeCinBi,EstadoCivil,NumeroDeSocio,NumeroColaborador,HabilitacaoLiteraria,IdInstituicaoFinanceira")] EditaSocioViewModel editaSocioViewModel/*, IFormFile Image*/)
+        public async Task<IActionResult> EditaSocio([Bind("IdSocio,Nome,NumeroDeTelemovel,NumeroDeTelefone,Email,DataDeNascimento,Sexo,Apelido,CinBi,NumeroPassaporte,ValidadePassaporte,IdTipologiaSocio ,IdTipoQuota,IdAgencia,Nif,DataAtivacao,ValidadeCinBi,EstadoCivil,NumeroDeSocio,NumeroColaborador,HabilitacaoLiteraria,IdInstituicaoFinanceira")] EditaSocioViewModel editaSocioViewModel, IFormFile Image)
         {
 
             try
@@ -241,6 +241,23 @@ namespace sga_stif.Controllers
                     socio.Foto = null;
                     _notyf.Success("Sócio editado com sucesso!");
                     socio.DataAtualizacao = DateTime.Now;
+
+                    byte[] p1 = null;
+                    if (Image != null)
+                    {
+                        if (Image.Length > 0)
+                        {
+
+                            using (var fs1 = Image.OpenReadStream())
+                            using (var ms1 = new MemoryStream())
+                            {
+                                fs1.CopyTo(ms1);
+                                p1 = ms1.ToArray();
+                            }
+                        }
+                        socio.Foto = p1;
+                    }
+
                     _context.Update(socio);
                     await _context.SaveChangesAsync();
                     return RedirectToAction("ListaSocio");

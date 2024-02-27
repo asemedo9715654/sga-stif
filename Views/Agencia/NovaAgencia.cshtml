@@ -12,7 +12,6 @@
     </div>
     <form asp-action="NovaAgencia">
         <div class="card-body">
-
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="row">
                 <div class="col-md-6">
@@ -21,7 +20,6 @@
                         <input asp-for="Nome" class="form-control" />
                         <span asp-validation-for="Nome" class="text-danger"></span>
                     </div>
-
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
@@ -32,11 +30,7 @@
                         </select>
                         <span asp-validation-for="IdInstituicaoFinanceira" class="text-danger"></span>
                     </div>
-
                 </div>
-
-
-
             </div>
             <div class="row">
                 <div class="col-md-6">
@@ -47,18 +41,12 @@
                         </select>
                         <span asp-validation-for="IdCidade" class="text-danger"></span>
                     </div>
-
                 </div>
-
-
             </div>
-
         </div>
-
         <div class="card-footer">
             <a asp-action="ListaAgencia" class="btn btn-secondary">Cancelar</a>
             <button type="submit" class="btn btn-success">Guardar</button>
         </div>
     </form>
-
 </div>

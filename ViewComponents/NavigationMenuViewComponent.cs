@@ -1,15 +1,9 @@
-
-
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using sga_stif.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace sga_stif.ViewComponents
 {
@@ -43,15 +37,9 @@ namespace sga_stif.ViewComponents
                         menu.Add(item);
 
                     }
-
                 }
             }
-
             return View(menu);
         }
-
-
-
-
     }
 }

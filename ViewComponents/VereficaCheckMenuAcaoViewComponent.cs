@@ -9,7 +9,6 @@ namespace sga_stif.ViewComponents
 {
     public class VereficaCheckMenuAcaoViewComponent : ViewComponent
     {
-
         private readonly ContextoBaseDados _context;
 
         public VereficaCheckMenuAcaoViewComponent(ContextoBaseDados context)
