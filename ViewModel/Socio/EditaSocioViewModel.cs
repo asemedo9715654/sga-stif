@@ -9,7 +9,7 @@ namespace sga_stif.ViewModel.Socio
     public int IdSocio { get; set; }
     [Display(Name = "Fotografia")]
     public string? Image { get; set; }
-    public byte[]? Foto { get; set; }
+    public string? Foto { get; set; }
     public string Nome { get; set; }
     public string Apelido { get; set; }
     [Display(Name = "Número de Identificação Fiscal")]

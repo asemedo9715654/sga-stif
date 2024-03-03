@@ -78,9 +78,9 @@
 <div class="row">
     <div class="col-lg-3 col-6">
         <!-- small box -->
-        <div class="small-box bg-warning">
+        <div class="small-box bg-success">
             <div class="inner">
-                <h3>@ViewBag.SocioAtivos</h3>
+                <h3>@ViewBag.TotalSociosRegistradoHoje</h3>
 
                 <p>Sócios Registrado Hoje</p>
             </div>
@@ -97,12 +97,12 @@
         <!-- small box -->
         <div class="small-box bg-success">
             <div class="inner">
-                <h3>@ViewBag.SocioInativos</h3>
+                <h3>@ViewBag.TotalPagamentoHoje</h3>
 
-                <p>Pagamento</p>
+                <p>Pagamento Hoje</p>
             </div>
             <div class="icon">
-                <i class="ion ion-person"></i>
+                <i class="ion ion-social-usd"></i>
             </div>
            @*  <a asp-action="ListaSocioInativos" asp-controller="Socio" class="small-box-footer">
                 Ver mais <i class="fas fa-arrow-circle-right"></i>
@@ -112,15 +112,15 @@
     <!-- ./col -->
     <div class="col-lg-3 col-6">
         <!-- small box -->
-        <div class="small-box bg-info">
+        <div class="small-box bg-default">
             <div class="inner">
-                <h3>@ViewBag.TotalInstituicaoFinanceiras</h3>
+                <h3>@ViewBag.TotalTipologiaSocio</h3>
 
-                <p>Outros</p>
+                <p>Tipologia Sócio</p>
             </div>
-            <div class="icon">
+         @*    <div class="icon">
                 <i class="ion ion-at"></i>
-            </div>
+            </div> *@
           @*   <a asp-action="ListaInstituicaoFinanceira" asp-controller="InstituicaoFinanceira" class="small-box-footer">
                 Ver
                 mais <i class="fas fa-arrow-circle-right"></i>
@@ -132,9 +132,9 @@
         <!-- small box -->
         <div class="small-box bg-info">
             <div class="inner">
-                <h3>@ViewBag.TotalAgencia</h3>
+                <h3>@ViewBag.TotalTipoQuota</h3>
 
-                <p>Outro 2</p>
+                <p>Tipo Quota</p>
             </div>
             <div class="icon">
                 <i class="ion ion-contacts"></i>

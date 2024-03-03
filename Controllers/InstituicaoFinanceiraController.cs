@@ -125,10 +125,8 @@ namespace sga_stif.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult EditaInstituicaoFinanceira([Bind("IdInstituicaoFinanceira,Nome,Sigla")] EditaInstituicaoFinanceiraViewModel editaInstituicaoFinanceiraViewModel)
         {
-
             try
             {
-
                 if (ModelState.IsValid)
                 {
                     var instituicaoFinanceira = _mapper.Map<InstituicaoFinanceira>(editaInstituicaoFinanceiraViewModel);
@@ -137,7 +135,6 @@ namespace sga_stif.Controllers
                     _notyf.Success("Instituição Financeira editado com sucesso!");
                     return RedirectToAction("ListaInstituicaoFinanceira");
                 }
-
             }
             catch (DbUpdateException ex)
             {
@@ -174,8 +171,6 @@ namespace sga_stif.Controllers
             {
                 if (ModelState.IsValid && instituicaoFinanceira != null)
                 {
-
-
                     var colaboradores = _context.InstituicaoFinanceiraColaboradores.Where(j => j.IdInstituicaoFinanceira == instituicaoFinanceira.IdInstituicaoFinanceira && j.DataFim == null);
                     foreach (var item in colaboradores)
                     {
@@ -302,7 +297,9 @@ namespace sga_stif.Controllers
                 if (ModelState.IsValid)
                 {
 
-                    var socios = _context.Socio.Where(e => e.Eliminado == false && e.Agencia.IdInstituicaoFinanceira == emailViewModel.IdInstituicaoFinanceira).ToList();
+                    var socios = _context.Socio.AsNoTracking().Where(e => e.Eliminado == false && e.Agencia.IdInstituicaoFinanceira == emailViewModel.IdInstituicaoFinanceira).ToList();
+
+                    socios = emailViewModel.FiltrarSocio(socios, emailViewModel.Sexo);
 
                     var lista = new List<Socio>();
 
@@ -368,8 +365,12 @@ namespace sga_stif.Controllers
                 {
                     var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(g => ListaInstituicoesFinanceirasPermitidas(_context).Contains(g.IdInstituicaoFinanceira) && g.Eliminado == false).ToList();
                     var idInstituicoes = from d in instituicaoFinanceiras select d.IdInstituicaoFinanceira;
+
                     var socios = _context.Socio.Where(e => e.Eliminado == false && idInstituicoes.Contains(e.Agencia.IdInstituicaoFinanceira)).ToList();
-                    var lista = new List<Socio>();
+
+                    socios = emailViewModel.FiltrarSocio(socios, emailViewModel.Sexo);
+
+                     var lista = new List<Socio>();
 
                     foreach (var socio in socios)
                         if (IsValidEmail(socio.Email))
@@ -390,7 +391,6 @@ namespace sga_stif.Controllers
                             sucesso = false;
                         }
                     }
-
 
                     if (sucesso)
                     {
@@ -484,7 +484,6 @@ namespace sga_stif.Controllers
                 message.Bcc.Add(new MailboxAddress("Ângelo Semedo", "vamp9278493cv@gmail.com"));
                 message.Bcc.Add(new MailboxAddress("Odailton Veiga", "pachecoveiga@gmail.com"));
 
-
                 //divisao de listas
                 IEnumerable<Socio[]> divisaoDeQuatroArrayDeSemElementos = socios.Chunk(25);
 
@@ -504,7 +503,6 @@ namespace sga_stif.Controllers
                 message.Body = builder.ToMessageBody();
                 //message.HtmlBody = builder.ToMessageBody();
 
-                // Enviando o email
                 using (var client = new SmtpClient())
                 {
                     client.Connect(smtpServer, smtpPort, false);

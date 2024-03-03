@@ -20,7 +20,9 @@
 
         <div class="col-sm-3 invoice-col text-center">
          
-                   <img class="profile-user-img img-fluid img-circle" src="@Model.Foto" alt="User profile picture" style="height: 200px;width:200px">
+                   @* <img class="profile-user-img img-fluid img-circle" src="@Model.Foto" alt="User profile picture" style="height: 200px;width:200px"> *@
+            @* <img class="profile-user-img img-fluid img-circle" src="@Url.Content("~/" + Model.Foto)" alt="User profile picture ok" style="height: 200px;width:200px"> *@
+            <img class="profile-user-img img-fluid img-circle" src="@Url.Content(Model.Foto)" alt="User profile picture ok" style="height: 200px;width:200px">
 
         </div>
 

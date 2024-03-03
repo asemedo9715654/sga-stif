@@ -1,210 +1,218 @@
 @model sga_stif.ViewModel.Socio.EditaSocioViewModel
 
 @{
-  ViewData["Title"] = "Edita Sócio";
+	ViewData["Title"] = "Edita Sócio";
 }
 <hr />
 <div class="card card-primary">
-  <div class="card-header">
-    <h3 class="card-title">Edita Sócio <small>(atualize os dados)</small></h3>
-  </div>
+	<div class="card-header">
+		<h3 class="card-title">Edita Sócio <small>(atualize os dados)</small></h3>
+	</div>
 
-  <form asp-action="EditaSocio" enctype="multipart/form-data">
-    <div class="card-body">
-      <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-      <input type="hidden" asp-for="IdSocio" />
- <div class="row">
+	<form asp-action="EditaSocio" enctype="multipart/form-data">
+		<div class="card-body">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<input type="hidden" asp-for="IdSocio" />
+			<div class="row">
 
-        <div class="col-md-6">
-          <div class="form-group">
-            <label asp-for="Nome" class="control-label"></label>
-            <input asp-for="Nome" class="form-control" />
-            <span asp-validation-for="Nome" class="text-danger"></span>
-          </div>
-          <div class="form-group">
-            <label asp-for="Apelido" class="control-label"></label>
-            <input asp-for="Apelido" class="form-control" />
-            <span asp-validation-for="Apelido" class="text-danger"></span>
-          </div>
-          <div class="form-group">
-            <label asp-for="EstadoCivil" class="control-label"></label>
-            <select asp-for="EstadoCivil" class="form-control" asp-items="Html.GetEnumSelectList<EstadoCivil>()">
-              <option disabled selected>--- seleccione ---</option>
-            </select>
-            <span asp-validation-for="EstadoCivil" class="text-danger"></span>
-          </div>
-           <div class="form-group">
-            <label asp-for="HabilitacaoLiteraria" class="control-label"></label>
-            <select asp-for="HabilitacaoLiteraria" class="form-control" asp-items="Html.GetEnumSelectList<HabilitacaoLiteraria>()">
-              <option disabled selected>--- seleccione ---</option>
-            </select>
-            <span asp-validation-for="HabilitacaoLiteraria" class="text-danger"></span>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label asp-for="CinBi" class="control-label"></label>
-            <input asp-for="CinBi" class="form-control" />
-            <span asp-validation-for="CinBi" class="text-danger"></span>
-          </div>
-          <div class="form-group">
-            <label asp-for="ValidadeCinBi" class="control-label"></label>
-            <input asp-for="ValidadeCinBi" class="form-control" />
-            <span asp-validation-for="ValidadeCinBi" class="text-danger"></span>
-          </div>
-          <div class="form-group">
-            <label for="exampleInputFile">Foto</label>
-            <div class="input-group">
-              <div class="custom-file">
-                <input type="file" class="custom-file-input" name="Image" id="Imageinput">
-                <label class="custom-file-label" for="Imageinput">Escolhe a Foto</label>
-              </div>
-              <div class="input-group-append">
-                <span class="input-group-text">Upload</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label asp-for="Nome" class="control-label"></label>
+						<input asp-for="Nome" class="form-control" />
+						<span asp-validation-for="Nome" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="Apelido" class="control-label"></label>
+						<input asp-for="Apelido" class="form-control" />
+						<span asp-validation-for="Apelido" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="EstadoCivil" class="control-label"></label>
+						<select asp-for="EstadoCivil" class="form-control" asp-items="Html.GetEnumSelectList<EstadoCivil>()">
+							<option disabled selected>--- seleccione ---</option>
+						</select>
+						<span asp-validation-for="EstadoCivil" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="HabilitacaoLiteraria" class="control-label"></label>
+						<select asp-for="HabilitacaoLiteraria" class="form-control" asp-items="Html.GetEnumSelectList<HabilitacaoLiteraria>()">
+							<option disabled selected>--- seleccione ---</option>
+						</select>
+						<span asp-validation-for="HabilitacaoLiteraria" class="text-danger"></span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label asp-for="CinBi" class="control-label"></label>
+						<input asp-for="CinBi" class="form-control" />
+						<span asp-validation-for="CinBi" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="ValidadeCinBi" class="control-label"></label>
+						<input asp-for="ValidadeCinBi" class="form-control" />
+						<span asp-validation-for="ValidadeCinBi" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label for="exampleInputFile">Foto</label>
+						<div class="input-group">
+							<div class="custom-file">
+								<input type="file" class="custom-file-input" name="Image" id="Imageinput">
+								<label class="custom-file-label" for="Imageinput">Escolhe a Foto</label>
+							</div>
+							<div class="input-group-append">
+								<span class="input-group-text">Upload</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
 
-        <div class="col-md-6">
-          <div class="form-group">
-            <label asp-for="NumeroPassaporte" class="control-label"></label>
-            <input asp-for="NumeroPassaporte" class="form-control" />
-            <span asp-validation-for="NumeroPassaporte" class="text-danger"></span>
-          </div>
-          <div class="form-group">
-            <label asp-for="ValidadePassaporte" class="control-label"></label>
-            <input asp-for="ValidadePassaporte" class="form-control" />
-            <span asp-validation-for="ValidadePassaporte" class="text-danger"></span>
-          </div>
-          <div class="form-group">
-            <label asp-for="IdTipoQuota" class="control-label"></label>
-            <select asp-for="IdTipoQuota" asp-items="@ViewBag.IdTipoQuota" class="form-control">
-              <option disabled selected>--- seleccione ---</option>
-            </select>
-            <span asp-validation-for="IdTipoQuota" class="text-danger"></span>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label asp-for="IdTipologiaSocio" class="control-label"></label>
-            <select asp-for="IdTipologiaSocio" asp-items="@ViewBag.IdTipologiaSocio" class="form-control">
-              <option disabled selected>--- seleccione ---</option>
-            </select>
-            <span asp-validation-for="IdTipologiaSocio" class="text-danger"></span>
-          </div>
-          <div class="form-group">
-            <label asp-for="IdInstituicaoFinanceira" class="control-label"></label>
-            <select asp-for="IdInstituicaoFinanceira" asp-items="@ViewBag.IdInstituicaoFinanceira" class="form-control" id="IdInstituicaoFinanceira">
-            </select>
-            <span asp-validation-for="IdInstituicaoFinanceira" class="text-danger"></span>
-          </div> 
-          <div class="form-group" id="div-agencia">
-            <label asp-for="IdAgencia" class="control-label"></label> 
-             <select asp-for="IdAgencia" asp-items="@ViewBag.IdAgencia" class="form-control">
-              </select>
-            <span asp-validation-for="IdAgencia" class="text-danger"></span>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label asp-for="Nif" class="control-label"></label>
-            <input asp-for="Nif" class="form-control" type="number" />
-            <span asp-validation-for="Nif" class="text-danger"></span>
-          </div>
-          <div class="form-group">
-            <label asp-for="DataDeNascimento" class="control-label"></label>
-            <input asp-for="DataDeNascimento" class="form-control" />
-            <span asp-validation-for="DataDeNascimento" class="text-danger"></span>
-          </div>
-          <div class="form-group">
-            <label asp-for="DataAtivacao" class="control-label"></label>
-            <input asp-for="DataAtivacao" class="form-control" />
-            <span asp-validation-for="DataAtivacao" class="text-danger"></span>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label asp-for="Sexo" class="control-label"></label>
-            <select asp-for="Sexo" class="form-control" asp-items="Html.GetEnumSelectList<Sexo>()">
-              <option disabled selected>--- seleccione ---</option>
-            </select>
-            <span asp-validation-for="Sexo" class="text-danger"></span>
-          </div>
-          <div class="form-group">
-            <label asp-for="NumeroDeTelefone" class="control-label"></label>
-            <input type="tel" asp-for="NumeroDeTelefone" class="form-control" />
-            <span asp-validation-for="NumeroDeTelefone" class="text-danger"></span>
-          </div>
-          <div class="form-group">
-            <label asp-for="NumeroDeTelemovel" class="control-label"></label>
-            <input type="tel" asp-for="NumeroDeTelemovel" class="form-control" />
-            <span asp-validation-for="NumeroDeTelemovel" class="text-danger"></span>
-          </div>
-          <div class="form-group">
-            <label asp-for="Email" class="control-label"></label>
-            <input type="email" asp-for="Email" class="form-control" />
-            <span asp-validation-for="Email" class="text-danger"></span>
-          </div>
-        </div>
-      </div>
-      <hr>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label asp-for="NumeroDeSocio" class="control-label"></label>
-            <input asp-for="NumeroDeSocio" class="form-control" />
-            <span asp-validation-for="NumeroDeSocio" class="text-danger"></span>
-          </div>
-        </div>
-         <div class="col-md-6">
-          <div class="form-group">
-            <label asp-for="NumeroColaborador" class="control-label"></label>
-            <input asp-for="NumeroColaborador" class="form-control" />
-            <span asp-validation-for="NumeroColaborador" class="text-danger"></span>
-          </div>
-        </div>
-      </div>  
-    </div>
-    <div class="card-footer">
-      <a asp-action="ListaSocio" class="btn btn-secondary">Cancelar</a>
-      <button type="submit" class="btn btn-success">Guardar</button>
-    </div>
-  </form>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label asp-for="NumeroPassaporte" class="control-label"></label>
+						<input asp-for="NumeroPassaporte" class="form-control" />
+						<span asp-validation-for="NumeroPassaporte" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="ValidadePassaporte" class="control-label"></label>
+						<input asp-for="ValidadePassaporte" class="form-control" />
+						<span asp-validation-for="ValidadePassaporte" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="IdTipoQuota" class="control-label"></label>
+						<select asp-for="IdTipoQuota" asp-items="@ViewBag.IdTipoQuota" class="form-control">
+							<option disabled selected>--- seleccione ---</option>
+						</select>
+						<span asp-validation-for="IdTipoQuota" class="text-danger"></span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label asp-for="IdTipologiaSocio" class="control-label"></label>
+						<select asp-for="IdTipologiaSocio" asp-items="@ViewBag.IdTipologiaSocio" class="form-control">
+							<option disabled selected>--- seleccione ---</option>
+						</select>
+						<span asp-validation-for="IdTipologiaSocio" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="IdInstituicaoFinanceira" class="control-label"></label>
+						<select asp-for="IdInstituicaoFinanceira" asp-items="@ViewBag.IdInstituicaoFinanceira" class="form-control" id="IdInstituicaoFinanceira">
+						</select>
+						<span asp-validation-for="IdInstituicaoFinanceira" class="text-danger"></span>
+					</div>
+					<div class="form-group" id="div-agencia">
+						<label asp-for="IdAgencia" class="control-label"></label>
+						<select asp-for="IdAgencia" asp-items="@ViewBag.IdAgencia" class="form-control">
+						</select>
+						<span asp-validation-for="IdAgencia" class="text-danger"></span>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label asp-for="Nif" class="control-label"></label>
+						<input asp-for="Nif" class="form-control" type="number" />
+						<span asp-validation-for="Nif" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="DataDeNascimento" class="control-label"></label>
+						<input asp-for="DataDeNascimento" class="form-control" />
+						<span asp-validation-for="DataDeNascimento" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="DataAtivacao" class="control-label"></label>
+						<input asp-for="DataAtivacao" class="form-control" />
+						<span asp-validation-for="DataAtivacao" class="text-danger"></span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label asp-for="Sexo" class="control-label"></label>
+						<select asp-for="Sexo" class="form-control" asp-items="Html.GetEnumSelectList<Sexo>()">
+							<option disabled selected>--- seleccione ---</option>
+						</select>
+						<span asp-validation-for="Sexo" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="NumeroDeTelefone" class="control-label"></label>
+						<input type="tel" asp-for="NumeroDeTelefone" class="form-control" />
+						<span asp-validation-for="NumeroDeTelefone" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="NumeroDeTelemovel" class="control-label"></label>
+						<input type="tel" asp-for="NumeroDeTelemovel" class="form-control" />
+						<span asp-validation-for="NumeroDeTelemovel" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="Email" class="control-label"></label>
+						<input type="email" asp-for="Email" class="form-control" />
+						<span asp-validation-for="Email" class="text-danger"></span>
+					</div>
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label asp-for="NumeroDeSocio" class="control-label"></label>
+						<input asp-for="NumeroDeSocio" class="form-control" />
+						<span asp-validation-for="NumeroDeSocio" class="text-danger"></span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label asp-for="NumeroColaborador" class="control-label"></label>
+						<input asp-for="NumeroColaborador" class="form-control" />
+						<span asp-validation-for="NumeroColaborador" class="text-danger"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="card-footer">
+			<a asp-action="ListaSocio" class="btn btn-secondary">Cancelar</a>
+			<button type="submit" class="btn btn-success">Guardar</button>
+		</div>
+	</form>
 </div>
 
 @Html.Hidden("RecuperaLinkPegarAgencia", Url.Action("PegarAgencia", "Socio"))
 
 <script>
-  $(function () {
-    $('#IdInstituicaoFinanceira').on('change', function () {
-    
-      $.ajax({
-        url: $("#RecuperaLinkPegarAgencia").val(),
-        data: { idInstituicaoFinanceira: this.value },
-        type: "get",
-        dataType: "json",
-        success: function (result) {
-          console.log(result)
-          var $label = $("<label>").text('Agencia :');
-          var select = $("<select></select>").attr("id", "IdAgencia").attr("name", "IdAgencia");
+	$(function () {
 
-          select.addClass("form-control")
-          select.append($("<option></option>").attr("value", result.idAgencia).text("--seleccione--").attr('disabled', 'disabled'));
 
-          $.each(result, function (index, result) {
-            select.append($("<option></option>").attr("value", result.idAgencia).text(result.nome));
-          });
+		document.getElementById('Imageinput').addEventListener('change', function (e) {
+			var fileName = e.target.files[0].name;
+			var label = document.querySelector('.custom-file-label');
+			label.innerHTML = fileName;
+		});
 
-          $("#div-agencia").html($label);
-          $("#div-agencia").append(select);
+		$('#IdInstituicaoFinanceira').on('change', function () {
 
-        }
-      });
-    });
-  });
+			$.ajax({
+				url: $("#RecuperaLinkPegarAgencia").val(),
+				data: { idInstituicaoFinanceira: this.value },
+				type: "get",
+				dataType: "json",
+				success: function (result) {
+					console.log(result)
+					var $label = $("<label>").text('Agencia :');
+					var select = $("<select></select>").attr("id", "IdAgencia").attr("name", "IdAgencia");
+
+					select.addClass("form-control")
+					select.append($("<option></option>").attr("value", result.idAgencia).text("--seleccione--").attr('disabled', 'disabled'));
+
+					$.each(result, function (index, result) {
+						select.append($("<option></option>").attr("value", result.idAgencia).text(result.nome));
+					});
+
+					$("#div-agencia").html($label);
+					$("#div-agencia").append(select);
+
+				}
+			});
+		});
+	});
 </script>

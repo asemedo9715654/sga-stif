@@ -16,24 +16,12 @@ namespace sga_stif.ViewModel.Socio
         public string Nif { get; set; }
         [Display(Name = "CNI/BI")]
         public string CinBi { get; set; }
-        [Display(Name = "Número de Passaporte")]
-        public string NumeroPassaporte { get; set; }
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Data de Nascimento")]
-        public DateTime DataDeNascimento { get; set; }
         public string Sexo { get; set; }
-        [Display(Name = "Número de Telefone")]
-        public string NumeroDeTelefone { get; set; }
-
         [Display(Name = "Estado Cívil")]
         public EstadoCivil EstadoCivil { get; set; }
-
         [Display(Name = "N- Benef")]
         public int TotalBeneficiario { get; set; }
-
         public int IdAgencia { get; set; }
-
         [Display(Name = "Instituição Financeira")]
         public string SiglaInstitucaoFinanceira { get; set; }
 

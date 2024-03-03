@@ -1,3 +1,4 @@
+using Org.BouncyCastle.Asn1.Ocsp;
 using sga_stif.Extensao;
 
 using System.ComponentModel;
@@ -12,7 +13,7 @@ namespace sga_stif.Models
         [Key]
         public int IdSocio { get; set; }
         public string NumeroDeSocio { get; set; }
-        public byte[]? Foto { get; set; }
+        public string? Foto { get; set; }
         public string Nome { get; set; }
         public string Apelido { get; set; }
         public string? Nif { get; set; }
@@ -142,13 +143,18 @@ namespace sga_stif.Models
 
         public string PegarLinkFotoGrande()
         {
-            if (Foto != null)
-            {
-                var aux = Convert.ToBase64String(Foto);
-                var imageDataUrl = string.Format("data:image/png;base64,{0}", aux);
-                return imageDataUrl;
-            }
-            return "../../dist/img/default-150x150.png";
+            //    if (Foto != null)
+            //    {
+            //        var aux = Convert.ToBase64String(Foto);
+            //        var imageDataUrl = string.Format("data:image/png;base64,{0}", aux);
+            //        return imageDataUrl;
+            //    }
+            //return "../../dist/img/default-150x150.png";
+            // Construct the full URL
+            //var baseUrl = Directory.GetCurrentDirectory() + "/" + Foto;
+            
+            //return baseUrl;
+            return Foto;
         }
 
     }

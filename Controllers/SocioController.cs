@@ -5,7 +5,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-
+using sga_stif.Extensao;
 using sga_stif.Models;
 using sga_stif.Models.ResultadoStoredProcedure;
 using sga_stif.ViewModel.Socio;
@@ -18,12 +18,16 @@ namespace sga_stif.Controllers
         private readonly ContextoBaseDados _context;
         private readonly INotyfService _notyf;
         private readonly IMapper _mapper;
+        private readonly ILogger<SocioController> _logger;
+        private readonly IWebHostEnvironment _hostingEnvironment;
 
-        public SocioController(ContextoBaseDados context, INotyfService notyf, IMapper mapper)
+        public SocioController(ContextoBaseDados context, INotyfService notyf, IMapper mapper, ILogger<SocioController> logger, IWebHostEnvironment hostingEnvironment)
         {
             _context = context;
             _notyf = notyf;
             _mapper = mapper;
+            _logger = logger;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         public Task<IActionResult> ListaSocioServerSide()
@@ -34,19 +38,25 @@ namespace sga_stif.Controllers
         //[Breadcrumb(FromAction = "ListaSocio", Title = "Lista de Sócio")]
         public async Task<IActionResult> ListaSocio()
         {
-            var socios = await _context.Socio.Where(s => s.Eliminado != true && ListaAgenciasPermitidas(_context).Contains(s.IdAgencia))
-                                      .Include(c => c.Agencia)
-                                      .Include(c => c.TipologiaSocio)
-                                      .Include(c => c.TipoQuota)
+            var socios = await _context.Socio.AsNoTracking().Where(s => s.Eliminado != true && ListaAgenciasPermitidas(_context).Contains(s.IdAgencia))
                                       .Include(c => c.Beneficiario)
-                                      .Include(c => c.Agencia).ThenInclude(c => c.InstituicaoFinanceira).Select( k => new ListaSocioViewModel(k))
-                                      .ToListAsync();
+                                      .Include(c => c.Agencia).ThenInclude(c => c.InstituicaoFinanceira).Select(s => new ListaSocioViewModel
+                                      {
+                                          IdSocio = s.IdSocio,
+                                          NumeroDeSocio = s.NumeroDeSocio,
+                                          NomeCompleto = s.NomeCompleto(),
+                                          CinBi = s.CinBi,
+                                          Sexo = s.Sexo.GetDescription(),
+                                          TotalBeneficiario = s.TotalBeneficiario(),
+                                          IdAgencia = s.IdAgencia,
+                                          SiglaInstitucaoFinanceira = s.Agencia.InstituicaoFinanceira.SiglaFormatado(),
+                                          NomeAgencia = s.Agencia.Nome
+                                      }).ToListAsync();
+                                    
 
-            // var sociocc = _mapper.Map<List<ListaSocioViewModel>>(socios);
+            var listaSocioViewModel = _mapper.Map<List<ListaSocioViewModel>>(socios);
 
-
-            //return View(sociocc);
-            return View(socios);
+            return View(listaSocioViewModel);
         }
 
 
@@ -91,15 +101,15 @@ namespace sga_stif.Controllers
         #endregion
         public async Task<IActionResult> ListaSocioInativos()
         {
-            var socios = await _context.Socio.Where(r => r.Eliminado == true && ListaAgenciasPermitidas(_context).Contains(r.IdAgencia)).Include(c => c.Agencia)
+            var socios = await _context.Socio.AsNoTracking().Where(r => r.Eliminado == true && ListaAgenciasPermitidas(_context).Contains(r.IdAgencia)).Include(c => c.Agencia)
                                         .Include(c => c.TipologiaSocio)
                                         .Include(c => c.TipoQuota)
                                         .Include(c => c.Beneficiario)
                                         .Include(c => c.Agencia).ThenInclude(c => c.InstituicaoFinanceira)
                                         .ToListAsync();
 
-            var sociocc = _mapper.Map<List<ListaSocioViewModel>>(socios);
-            return View(sociocc);
+            var listaSocioViewModel = _mapper.Map<List<ListaSocioViewModel>>(socios);
+            return View(listaSocioViewModel);
         }
 
         [HttpGet]
@@ -137,23 +147,34 @@ namespace sga_stif.Controllers
                     var resultadoValidacaoSocio = ValidaSocio(novoSocioViewModel);
                     if (resultadoValidacaoSocio.Item1 == true)
                     {
+                     
+                        var socio = _mapper.Map<Socio>(novoSocioViewModel);
+
                         if (Image != null)
                         {
-                            if (Image.Length > 0)
+                            //var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "Fotos");
+                            string uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "Fotos");
+                            if (!Directory.Exists(uploadsFolder))
                             {
-
-                                using (var fs1 = Image.OpenReadStream())
-                                using (var ms1 = new MemoryStream())
-                                {
-                                    fs1.CopyTo(ms1);
-                                    p1 = ms1.ToArray();
-                                }
-
+                                Directory.CreateDirectory(uploadsFolder);
                             }
-                        }
 
-                        var socio = _mapper.Map<Socio>(novoSocioViewModel);
-                        socio.Foto = p1;
+                           // var uniqueFileName = Guid.NewGuid().ToString() + "_" + Image.FileName;
+
+                            var extension = Path.GetExtension(Image.FileName);
+
+                            var uniqueFileName = socio.NumeroDeSocio + "" + extension;
+
+                            var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                            using (var fileStream = new FileStream(filePath, FileMode.Create))
+                            {
+                                await Image.CopyToAsync(fileStream);
+                            }
+
+                            // Save the relative path to the database
+                            socio.Foto = Path.Combine("\\Fotos", uniqueFileName);
+                        }
 
                         _notyf.Success("Sócio adicionado com sucesso!");
 
@@ -226,51 +247,67 @@ namespace sga_stif.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditaSocio([Bind("IdSocio,Nome,NumeroDeTelemovel,NumeroDeTelefone,Email,DataDeNascimento,Sexo,Apelido,CinBi,NumeroPassaporte,ValidadePassaporte,IdTipologiaSocio ,IdTipoQuota,IdAgencia,Nif,DataAtivacao,ValidadeCinBi,EstadoCivil,NumeroDeSocio,NumeroColaborador,HabilitacaoLiteraria,IdInstituicaoFinanceira")] EditaSocioViewModel editaSocioViewModel, IFormFile Image)
+        public async Task<IActionResult> EditaSocio([Bind("IdSocio,Nome,NumeroDeTelemovel,NumeroDeTelefone,Email,DataDeNascimento,Sexo,Apelido,CinBi,NumeroPassaporte,ValidadePassaporte,IdTipologiaSocio ,IdTipoQuota,IdAgencia,Nif,DataAtivacao,ValidadeCinBi,EstadoCivil,NumeroDeSocio,NumeroColaborador,HabilitacaoLiteraria,IdInstituicaoFinanceira")] EditaSocioViewModel editaSocioViewModel, IFormFile? Image)
         {
-
+            string allErrorsString;
             try
             {
                 if (ModelState.IsValid)
                 {
                     var socio = _mapper.Map<Socio>(editaSocioViewModel);
                     socio.Foto = null;
-                    _notyf.Success("Sócio editado com sucesso!");
+                   
                     socio.DataAtualizacao = DateTime.Now;
 
-                    byte[] p1 = null;
+                    //Save image to folder
                     if (Image != null)
                     {
-                        if (Image.Length > 0)
-                        {
+                        //var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "Fotos");
+                        string uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "Fotos");
 
-                            using (var fs1 = Image.OpenReadStream())
-                            using (var ms1 = new MemoryStream())
-                            {
-                                fs1.CopyTo(ms1);
-                                p1 = ms1.ToArray();
-                            }
+                        if (!Directory.Exists(uploadsFolder))
+                        {
+                            Directory.CreateDirectory(uploadsFolder);
                         }
-                        socio.Foto = p1;
+
+                        //var uniqueFileName = Guid.NewGuid().ToString() + "_" + Image.FileName;
+
+                        var extension = Path.GetExtension(Image.FileName);
+
+                        var uniqueFileName = socio.NumeroDeSocio + "" + extension;
+
+                        var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                        using (var fileStream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await Image.CopyToAsync(fileStream);
+                        }
+
+                        // Save the relative path to the database
+                        socio.Foto = Path.Combine("\\Fotos", uniqueFileName);
+                        //socio.Foto = "\\Fotos\\"+ uniqueFileName;
+                        //socio.Foto = uploadsFolder+"/"+ uniqueFileName;
+                        //socio.Foto = Path.Combine(uploadsFolder, uniqueFileName);
                     }
 
                     _context.Update(socio);
-                    await _context.SaveChangesAsync();
+                    await _context.SaveChangesAsync(); 
+                    _notyf.Success("Sócio editado com sucesso!");
                     return RedirectToAction("ListaSocio");
                 }
 
 
                 var allErrors = ModelState.Values.SelectMany(v => v.Errors);
-                var ee = 2;
-
+                allErrorsString = string.Join(Environment.NewLine, allErrors.Select(e => e.ErrorMessage));
             }
             catch (DbUpdateException ex)
             {
+                _logger.LogError(ex.Message);
                 ModelState.AddModelError("", "Não foi possível salvar as alterações. Tente novamente e, se o problema persistir, consulte o administrador do sistema. Erro => " + ex.Message);
                 throw;
             }
 
-            _notyf.Error("Erro na edição de Sócio!");
+            _notyf.Error("Erro na edição de Sócio!::"+ allErrorsString);
 
 
             var angencia = _context.Agencia.Include(j => j.Cidade).ToList();
@@ -295,7 +332,7 @@ namespace sga_stif.Controllers
         [HttpGet]
         public async Task<IActionResult> DetalhesSocio(int idSocio)
         {
-            var socios = await _context.Socio.Where(j => j.IdSocio == idSocio)
+            var socios = await _context.Socio.AsNoTracking().Where(j => j.IdSocio == idSocio)
                                         .Include(c => c.TipologiaSocio)
                                         .Include(c => c.Beneficiario)
                                         .Include(c => c.TipoQuota)
