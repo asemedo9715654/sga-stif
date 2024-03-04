@@ -27,7 +27,7 @@ namespace sga_stif.Controllers
 
         public async Task<IActionResult> ListaPerfil()
         {
-            var perfil = await _context.Perfil.Where(h => h.Eliminado == false).Include(g => g.Utilizador).ToListAsync();
+            var perfil = await _context.Perfil.AsNoTracking().Where(h => h.Eliminado == false).Include(g => g.Utilizador).ToListAsync();
             var listaPerfilViewModels = _mapper.Map<List<ListaPerfilViewModel>>(perfil);
             return View(listaPerfilViewModels);
         }
@@ -35,7 +35,7 @@ namespace sga_stif.Controllers
 
         public async Task<IActionResult> ListaPerfilInativo()
         {
-            var perfil = await _context.Perfil.Where(h => h.Eliminado == true).Include(g => g.Utilizador).ToListAsync();
+            var perfil = await _context.Perfil.AsNoTracking().Where(h => h.Eliminado == true).Include(g => g.Utilizador).ToListAsync();
             var listaPerfilViewModels = _mapper.Map<List<ListaPerfilViewModel>>(perfil);
             return View(listaPerfilViewModels);
         }
@@ -52,10 +52,8 @@ namespace sga_stif.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> NovoPerfil([Bind("Nome,Descricao")] NovoPerfilViewModel novoPerfilViewModel)
         {
-
             try
             {
-
                 if (ModelState.IsValid)
                 {
                     var perfil = _mapper.Map<Perfil>(novoPerfilViewModel);
@@ -102,7 +100,6 @@ namespace sga_stif.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditaPerfil([Bind("IdPerfil,Nome,Descricao")] EditaPerfilViewModel editaPerfilViewModel)
         {
-
             try
             {
                 if (ModelState.IsValid)
@@ -204,10 +201,8 @@ namespace sga_stif.Controllers
                 {
                     perfilInstituicaoFinanceira.Permitido = false;
                 }
-
                 _context.PerfilInstituicaoFinanceira.Update(perfilInstituicaoFinanceira);
                 _context.SaveChanges();
-
             }
 
             return Json(new object());
@@ -267,7 +262,6 @@ namespace sga_stif.Controllers
 
                 _context.PerfilMenuAcao.Remove(perfilMenuAcao);
                 _context.SaveChanges();
-
             }
             else
             {
@@ -327,7 +321,6 @@ namespace sga_stif.Controllers
             return RedirectToAction("ListaPerfil");
         }
 
-
         public async Task<IActionResult> ReativarPerfil(int idPerfil)
         {
             var perfil = await _context.Perfil.FindAsync(idPerfil);
@@ -336,7 +329,6 @@ namespace sga_stif.Controllers
                 perfil.Eliminado = false;
                 perfil.DataAtualizacao = DateTime.Now;
             }
-
             await _context.SaveChangesAsync();
             _notyf.Success("Perfil reativado com sucesso!");
             return RedirectToAction("ListaPerfil");

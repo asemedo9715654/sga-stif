@@ -18,6 +18,7 @@ namespace sga_stif.Controllers
             _notyf = notyf;
             _logger = logger;
         }
+
         public IActionResult Index()
         {
             _logger.LogInformation("LoginController - Index - Get");
@@ -64,7 +65,6 @@ namespace sga_stif.Controllers
             HttpContext.Session.SetString("Foto", utilizador.PegarLinkFoto());
         }
 
-
         [Route("logout")]
         [HttpGet]
         public IActionResult Logout()
@@ -76,7 +76,6 @@ namespace sga_stif.Controllers
             HttpContext.Session.Remove("Foto");
             return RedirectToAction("Index");
         }
-
 
         public Utilizador Authenticate(LoginViewModel model)
         {

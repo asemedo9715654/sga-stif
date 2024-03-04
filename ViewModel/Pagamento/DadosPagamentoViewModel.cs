@@ -36,12 +36,10 @@ namespace sga_stif.ViewModel.Pagamento
         [Range(1, Double.MaxValue, ErrorMessage = "O cammpo {0} tem de ser maior que {1}.")]
         public decimal Montante { get; set; }
 
-
         public DadosPagamentoViewModel()
         {
             
         }
-
 
         public DadosPagamentoViewModel(QuotaSocio quotaSocio,string nomeDoMes,string url)
         {

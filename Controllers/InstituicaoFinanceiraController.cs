@@ -19,7 +19,6 @@ namespace sga_stif.Controllers
 {
     public class InstituicaoFinanceiraController : BaseController
     {
-
         public readonly ContextoBaseDados _context;
         private readonly INotyfService _notyf;
         private readonly IMapper _mapper;
@@ -35,8 +34,6 @@ namespace sga_stif.Controllers
 
         public async Task<IActionResult> ListaInstituicaoFinanceira()
         {
-
-
             var instituicaoFinanceira = await _context.InstituicaoFinanceira.Where(e => e.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(e.IdInstituicaoFinanceira)).Include(i => i.Agencia).ThenInclude(k => k.Socio).ToListAsync();
             var listaInstituicaoFinanceiraViewModel = _mapper.Map<List<ListaInstituicaoFinanceiraViewModel>>(instituicaoFinanceira);
             return View(listaInstituicaoFinanceiraViewModel);
@@ -62,7 +59,6 @@ namespace sga_stif.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult NovoInstituicaoFinanceira([Bind("Nome,Sigla")] NovoInstituicaoFinanceiraViewModel novoInstituicaoFinanceiraViewModel)
         {
-
             try
             {
                 if (ModelState.IsValid)
@@ -81,7 +77,6 @@ namespace sga_stif.Controllers
             }
 
             _notyf.Error("Erro na adição de Instituição Financeira");
-
             return View(novoInstituicaoFinanceiraViewModel);
         }
 
@@ -89,7 +84,6 @@ namespace sga_stif.Controllers
         [HttpGet]
         public IActionResult EditaInstituicaoFinanceira(int idInstituicaoFinanceira)
         {
-
             var instituicaoFinanceira = _context.InstituicaoFinanceira.FirstOrDefault(i => i.IdInstituicaoFinanceira == idInstituicaoFinanceira);
 
             if (instituicaoFinanceira == null)
@@ -98,9 +92,7 @@ namespace sga_stif.Controllers
                 return RedirectToAction("ListaInstituicaoFinanceira");
 
             }
-
             var editaInstituicaoFinanceiraViewModel = _mapper.Map<EditaInstituicaoFinanceiraViewModel>(instituicaoFinanceira);
-
             return View(editaInstituicaoFinanceiraViewModel);
         }
 
@@ -138,7 +130,6 @@ namespace sga_stif.Controllers
             }
             catch (DbUpdateException ex)
             {
-
                 ModelState.AddModelError("", "Não foi possível salvar as alterações. Tente novamente e, se o problema persistir, consulte o administrador do sistema. Erro => " + ex.Message);
             }
 
@@ -164,9 +155,7 @@ namespace sga_stif.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> NovoInstituicaoFinanceiraColaboradores([Bind("IdInstituicaoFinanceira,NumeroColaboradores")] NovoInstituicaoFinanceiraColaboradoresViewModel novoInstituicaoFinanceiraColaboradoresViewModel)
         {
-
             var instituicaoFinanceira = _context.InstituicaoFinanceira.FirstOrDefault(j => j.IdInstituicaoFinanceira == novoInstituicaoFinanceiraColaboradoresViewModel.IdInstituicaoFinanceira);
-
             try
             {
                 if (ModelState.IsValid && instituicaoFinanceira != null)
@@ -429,45 +418,6 @@ namespace sga_stif.Controllers
             }
         }
 
-        //////////////////////////////
-        public ResultadoMetodo<string> SendEmail(List<string> toAddress, string subject, string body)
-        {
-            try
-            {
-                //var smtpClient = new SmtpClient("mail.stif.cv", 465)
-                //{
-                //    EnableSsl = true,
-                //    DeliveryMethod = SmtpDeliveryMethod.Network,
-                //    UseDefaultCredentials = false,
-                //    Credentials = new NetworkCredential("contact@stif.cv", "Cont@2023"),
-                //    Timeout = 300
-
-                //};
-
-                //var mailMessage = new MailMessage()
-                //{
-                //    Subject = subject,
-                //    Body = body,
-                //    From = new MailAddress("contact@stif.cv"),
-                //    IsBodyHtml = true,
-                //};
-
-                //foreach (var addresses in socios)
-                //    mailMessage.To.Add(addresses);
-
-                //mailMessage.To.Add("vamp9278493cv@gmail.com");
-                //smtpClient.Send(mailMessage);
-
-                return new ResultadoMetodo<string>("", "");
-            }
-            catch (Exception e)
-            {
-                _logger.LogError(e.Message);
-                return new ResultadoMetodo<string>(e);
-            }
-
-        }
-
         public ResultadoMetodo<string> SendEmailMailKit(List<Socio> socios, string subject, string body)
         {
             try
@@ -518,9 +468,7 @@ namespace sga_stif.Controllers
                 _logger.LogError(e.Message);
                 return new ResultadoMetodo<string>(e);
             }
-
         }
-
         #endregion
     }
 }

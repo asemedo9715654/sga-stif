@@ -1,6 +1,5 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
-using sga_stif.ViewModel.Base;
 
 namespace sga_stif.ViewModel.InstituicaoFinanceira
 {

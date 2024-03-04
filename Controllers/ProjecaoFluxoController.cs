@@ -25,7 +25,7 @@ namespace sga_stif.Controllers
         public async Task<IActionResult> ListaProjecaoFluxo(int? idInstituicaoFinanceira, decimal? percentagem)
         {
             var projecaoQuotasResultados = new List<ProjecaoQuotasResultado>();
-            var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(a => a.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(a.IdInstituicaoFinanceira)).ToList();
+            var instituicaoFinanceiras = _context.InstituicaoFinanceira.AsNoTracking().Where(a => a.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(a.IdInstituicaoFinanceira)).ToList();
             var instituicaoFinanceirasItem = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome };
             ViewBag.IdInstituicaoFinanceira = instituicaoFinanceirasItem;
 

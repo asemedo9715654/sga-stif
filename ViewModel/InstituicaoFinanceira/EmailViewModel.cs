@@ -2,7 +2,6 @@ using System.ComponentModel.DataAnnotations;
 using sga_stif.Models;
 namespace sga_stif.ViewModel.InstituicaoFinanceira;
 
-
 public class EmailViewModel
 {
     public int IdInstituicaoFinanceira { get; set; }
@@ -22,7 +21,6 @@ public class EmailViewModel
         {
             socios = socios.Where(d => d.Sexo == Models.Sexo.Masculino).ToList();
         }
-
         return socios;
     }
 }

@@ -23,7 +23,7 @@ namespace sga_stif.Controllers
 
         public async Task<IActionResult> ListaTipologiaSocio()
         {
-            var tipologiaSocio = await _context.TipologiaSocio.Where(j => j.Eliminado == false).Include(g => g.Socio.Where(a => ListaAgenciasPermitidas(_context).Contains(a.IdAgencia))).ToListAsync();
+            var tipologiaSocio = await _context.TipologiaSocio.AsNoTracking().Where(j => j.Eliminado == false).Include(g => g.Socio.Where(a => ListaAgenciasPermitidas(_context).Contains(a.IdAgencia))).ToListAsync();
             var listaTipologiaSocioViewModel = _mapper.Map<List<ListaTipologiaSocioViewModel>>(tipologiaSocio);
             return View(listaTipologiaSocioViewModel);
         }
@@ -32,7 +32,7 @@ namespace sga_stif.Controllers
         {
             ViewBag.NomeTipoQuota = nome;
 
-            var socios = await _context.Socio.Where(r => r.Eliminado != true && r.IdTipologiaSocio == idTipologiaSocio).Include(c => c.Agencia)
+            var socios = await _context.Socio.AsNoTracking().Where(r => r.Eliminado != true && r.IdTipologiaSocio == idTipologiaSocio).Include(c => c.Agencia)
                                         .Include(c => c.TipologiaSocio)
                                         .Include(c => c.TipoQuota)
                                         .Include(c => c.Beneficiario)

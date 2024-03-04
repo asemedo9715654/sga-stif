@@ -19,7 +19,6 @@ namespace sga_stif.ViewModel.InstituicaoFinanceira
             {
                 socios = socios.Where(d => d.Sexo == Models.Sexo.Masculino).ToList();
             }
-
             return socios;
         }
     }

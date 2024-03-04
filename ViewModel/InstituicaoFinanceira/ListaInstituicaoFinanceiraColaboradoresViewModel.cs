@@ -12,13 +12,11 @@ namespace sga_stif.ViewModel.InstituicaoFinanceira
         [Display(Name = "Data de Início")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-
         public DateTime DataInicio { get; set; }
 
         [Display(Name = "Data de Fim")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-
         public DateTime? DataFim { get; set; }
 
     }
