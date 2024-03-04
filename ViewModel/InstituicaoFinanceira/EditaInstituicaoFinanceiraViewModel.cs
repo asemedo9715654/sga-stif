@@ -9,8 +9,6 @@ namespace sga_stif.ViewModel.InstituicaoFinanceira
         public string Nome { get; set; }
 
         [Required(ErrorMessage = "A Sigla da Instituição é necessário!")]
-
         public string Sigla { get; set; }
-
     }
 }

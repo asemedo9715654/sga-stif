@@ -47,7 +47,6 @@ namespace sga_stif.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> NovoPagamento([Bind("IdQuotaSocio,Nome,Apelido,InstitucaoFinanceira,Agencia,Ilha,Cidade,Montante,Mes,Ano,Url")] DadosPagamentoViewModel dadosPagamentoViewModel)
         {
-
             try
             {
                 if (ModelState.IsValid)
@@ -80,13 +79,12 @@ namespace sga_stif.Controllers
 
         public IActionResult ConcluirPagamento(int idQuotaSocio, string url)
         {
-            var quotaSocio = _context.QuotaSocio.Where(h => h.IdQuotaSocio == idQuotaSocio)
-
-            .Include(j => j.PeriodoQuota)
-            .Include(j => j.Socio).ThenInclude(a => a.Agencia).ThenInclude(i => i.Cidade)
-            .Include(j => j.Socio).ThenInclude(a => a.Agencia).ThenInclude(i => i.InstituicaoFinanceira)
-            .Include(j => j.Socio).ThenInclude(a => a.Agencia).ThenInclude(i => i.Cidade).ThenInclude(J => J.Ilha)
-            .FirstOrDefault();
+            var quotaSocio = _context.QuotaSocio.AsNoTracking().Where(h => h.IdQuotaSocio == idQuotaSocio)
+                .Include(j => j.PeriodoQuota)
+                .Include(j => j.Socio).ThenInclude(a => a.Agencia).ThenInclude(i => i.Cidade)
+                .Include(j => j.Socio).ThenInclude(a => a.Agencia).ThenInclude(i => i.InstituicaoFinanceira)
+                .Include(j => j.Socio).ThenInclude(a => a.Agencia).ThenInclude(i => i.Cidade).ThenInclude(J => J.Ilha)
+                .FirstOrDefault();
 
             if (quotaSocio != null)
             {
@@ -132,13 +130,10 @@ namespace sga_stif.Controllers
             return Redirect(url);
         }
 
-
         [HttpPost]
         public IActionResult AnularMultiplosPagamento(int[] IdQuotasSociosParaPagar)
         {
-
             var anulado = 0;
-
             foreach (var item in IdQuotasSociosParaPagar)
             {
                 var quotaSocio = _context.QuotaSocio.FirstOrDefault(k => k.IdQuotaSocio == item);
@@ -148,14 +143,10 @@ namespace sga_stif.Controllers
                     quotaSocio.AnularPagamento(PegarNomeUtilizador());
                     _context.Update(quotaSocio);
                     _context.SaveChanges();
-
                 }
             }
-
             _notyf.Success($"Operação efectuada com sucesso : {anulado} pagamento(s) anulados : !");
             return RedirectToAction("ListaQuotasPendente", "ContaCorrentes");
         }
-
-
     }
 }

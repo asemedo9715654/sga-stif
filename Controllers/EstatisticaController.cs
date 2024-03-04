@@ -22,17 +22,16 @@ namespace sga_stif.Controllers
 
         public IActionResult Inicio()
         {
-            var socios = _context.Socio.ToList();
+            var socios = _context.Socio.AsNoTracking().ToList();
 
             ViewBag.TotalSocios = socios.Count();
             ViewBag.SocioInativos = socios.Where(g => g.Eliminado == true && ListaAgenciasPermitidas(_context).Contains(g.IdAgencia)).Count();
             ViewBag.SocioAtivos = socios.Where(g => g.Eliminado == false && ListaAgenciasPermitidas(_context).Contains(g.IdAgencia)).Count();
 
-            var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(e => ListaInstituicoesFinanceirasPermitidas(_context).Contains(e.IdInstituicaoFinanceira)).ToList();
+            var instituicaoFinanceiras = _context.InstituicaoFinanceira.AsNoTracking().Where(e => ListaInstituicoesFinanceirasPermitidas(_context).Contains(e.IdInstituicaoFinanceira)).ToList();
             ViewBag.TotalInstituicaoFinanceiras = instituicaoFinanceiras.Count();
 
-
-            var agencia = _context.Agencia.Where(r => ListaAgenciasPermitidas(_context).Contains(r.IdAgencia)).ToList();
+            var agencia = _context.Agencia.AsNoTracking().Where(r => ListaAgenciasPermitidas(_context).Contains(r.IdAgencia)).ToList();
             ViewBag.TotalAgencia = agencia.Count();
 
             return View();
@@ -46,18 +45,16 @@ namespace sga_stif.Controllers
             highChartSeries.colorByPoint = true;
             highChartSeries.data = new List<data>();
 
-            var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(e => e.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(e.IdInstituicaoFinanceira)).Include(g => g.Agencia).Select(j => new { Sigla = j.Sigla, Agencia = j.Agencia }).ToList();
+            var instituicaoFinanceiras = _context.InstituicaoFinanceira.AsNoTracking().Where(e => e.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(e.IdInstituicaoFinanceira)).Include(g => g.Agencia).Select(j => new { Sigla = j.Sigla, Agencia = j.Agencia }).ToList();
 
-            var listaDdeSocios = _context.Socio.Where(e => e.Eliminado == false).Select(k => k.IdAgencia).ToList();
+            var listaDdeSocios = _context.Socio.AsNoTracking().Where(e => e.Eliminado == false).Select(k => k.IdAgencia).ToList();
 
             foreach (var instituicaoFinanceira in instituicaoFinanceiras)
             {
                 var agencia = from j in instituicaoFinanceira.Agencia select j.IdAgencia;
-
                 agencia.Contains(3);
 
                 var total = listaDdeSocios.Where(a => agencia.Contains(a)).Count();
-
                 highChartSeries.data.Add(new data()
                 {
                     selected = instituicaoFinanceira.Sigla == "BCA" ? true : false,
@@ -65,7 +62,6 @@ namespace sga_stif.Controllers
                     name = instituicaoFinanceira.Sigla,
                     y = total
                 });
-
             }
 
             var highChartSeriesLista = new List<HighChartSeries>();
@@ -104,20 +100,17 @@ namespace sga_stif.Controllers
             var highChartSeriesLista = new List<HighChartSeries>();
             highChartSeriesLista.Add(highChartSeries);
             return Json(highChartSeriesLista);
-
         }
 
         public ActionResult OcorenciaPorTipoQuota()
         {
-
             var highChartSeries = new HighChartSeries();
             highChartSeries.name = "Sócio por Tipo Quota";
             highChartSeries.colorByPoint = true;
             highChartSeries.data = new List<data>();
 
-            var tipoQuotas = _context.TipoQuota.Where(e => e.Eliminado == false).ToList();
-
-            var todos = _context.Socio.Where(e => ListaAgenciasPermitidas(_context).Contains(e.IdAgencia)).Select(k => k.IdTipoQuota).ToList();
+            var tipoQuotas = _context.TipoQuota.AsNoTracking().Where(e => e.Eliminado == false).ToList();
+            var todos = _context.Socio.AsNoTracking().Where(e => ListaAgenciasPermitidas(_context).Contains(e.IdAgencia)).Select(k => k.IdTipoQuota).ToList();
 
             foreach (var ittipoQuota in tipoQuotas)
             {
@@ -139,7 +132,7 @@ namespace sga_stif.Controllers
             highChartSeries.colorByPoint = true;
             highChartSeries.data = new List<data>();
 
-            var listaDeSocio = _context.Socio.Where(e => e.Eliminado == false && ListaAgenciasPermitidas(_context).Contains(e.IdAgencia)).Select(j => j.Sexo).ToList();
+            var listaDeSocio = _context.Socio.AsNoTracking().Where(e => e.Eliminado == false && ListaAgenciasPermitidas(_context).Contains(e.IdAgencia)).Select(j => j.Sexo).ToList();
 
             var lista = new List<Sexo>(){
                 Sexo.Feminino,
@@ -165,7 +158,7 @@ namespace sga_stif.Controllers
             highChartSeries.colorByPoint = true;
             highChartSeries.data = new List<data>();
 
-            var listaDeSocio = _context.Socio.Where(e => e.Eliminado == false && ListaAgenciasPermitidas(_context).Contains(e.IdAgencia)).Select(k => k.EstadoCivil).ToList();
+            var listaDeSocio = _context.Socio.AsNoTracking().Where(e => e.Eliminado == false && ListaAgenciasPermitidas(_context).Contains(e.IdAgencia)).Select(k => k.EstadoCivil).ToList();
 
             var listaEstadoCivil = new List<EstadoCivil>(){
                  EstadoCivil.Casado,
@@ -190,13 +183,12 @@ namespace sga_stif.Controllers
 
         public ActionResult OcorenciaPorIlha()
         {
-
             var highChartSeries = new HighChartSeries();
             highChartSeries.name = "Sócio por ilhas";
             highChartSeries.colorByPoint = true;
             highChartSeries.data = new List<data>();
 
-            var ilhas = _context.Ilha.Where(e => e.Eliminado == false).Include(g => g.Cidade).ThenInclude(g => g.Agencia).ToList();
+            var ilhas = _context.Ilha.AsNoTracking().Where(e => e.Eliminado == false).Include(g => g.Cidade).ThenInclude(g => g.Agencia).ToList();
             var listaDeSocio = _context.Socio.Where(e => e.Eliminado == false && ListaAgenciasPermitidas(_context).Contains(e.IdAgencia)).Select(k => k.IdAgencia).ToList();
 
             foreach (var item in ilhas)
@@ -206,9 +198,7 @@ namespace sga_stif.Controllers
                 {
                     var idAgencias = from j in ilha.Agencia select j.IdAgencia;
                     agencia.AddRange(idAgencias);
-
                 }
-
                 var total = listaDeSocio.Where(a => agencia.Contains(a)).Count();
                 highChartSeries.data.Add(new data(item,total));
             }
@@ -221,24 +211,20 @@ namespace sga_stif.Controllers
 
         public ActionResult OcorenciaPorSexoTacadoComInstituicaoFinanceira()
         {
-
             var graficoColunaEmpilhadaAgrupada = new GraficoColunaEmpilhadaAgrupada
             {
                 dados = new List<Dados>()
             };
 
-            var socios = _context.Socio.Where(e => e.Eliminado == false && ListaAgenciasPermitidas(_context).Contains(e.IdAgencia)).Select(a => new { a.IdAgencia, a.Sexo }).ToList();
-            var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(e => e.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(e.IdInstituicaoFinanceira)).Include(g => g.Agencia).ToList();
+            var socios = _context.Socio.AsNoTracking().Where(e => e.Eliminado == false && ListaAgenciasPermitidas(_context).Contains(e.IdAgencia)).Select(a => new { a.IdAgencia, a.Sexo }).ToList();
+            var instituicaoFinanceiras = _context.InstituicaoFinanceira.AsNoTracking().Where(e => e.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(e.IdInstituicaoFinanceira)).Include(g => g.Agencia).ToList();
             var aux = from v in instituicaoFinanceiras select v.Sigla;
             graficoColunaEmpilhadaAgrupada.categorias = aux.ToList();
-
-
 
             var sexos = new List<Sexo>(){
                   Sexo.Feminino,
                   Sexo.Masculino
             };
-
 
             foreach (var sexo in sexos)
             {
@@ -248,38 +234,28 @@ namespace sga_stif.Controllers
                     data = new List<int>()
                 };
 
-
                 foreach (var instituicaoFinanceira in instituicaoFinanceiras)
                 {
                     var agencia = from j in instituicaoFinanceira.Agencia select j.IdAgencia;
-
                     var total = socios.Where(a => agencia.Contains(a.IdAgencia) && a.Sexo == sexo).Count();
-
                     dado.data.Add(total);
-
                 }
-
                 graficoColunaEmpilhadaAgrupada.dados.Add(dado);
-
             }
-
             return Json(graficoColunaEmpilhadaAgrupada);
-
-
         }
 
         /// iddadde
         public ActionResult OcorenciaPorSexoTacadoComIIdade()
         {
-
             var graficoColunaEmpilhadaAgrupada = new GraficoColunaEmpilhadaAgrupada
             {
                 dados = new List<Dados>(),
                 categorias = new List<string>()
             };
 
-            var listaDeSocios = _context.Socio.Where(e => e.Eliminado == false && ListaAgenciasPermitidas(_context).Contains(e.IdAgencia)).ToList();
-            var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(e => e.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(e.IdInstituicaoFinanceira)).Include(g => g.Agencia).ToList();
+            var listaDeSocios = _context.Socio.AsNoTracking().Where(e => e.Eliminado == false && ListaAgenciasPermitidas(_context).Contains(e.IdAgencia)).ToList();
+            var instituicaoFinanceiras = _context.InstituicaoFinanceira.AsNoTracking().Where(e => e.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(e.IdInstituicaoFinanceira)).Include(g => g.Agencia).ToList();
             var aux = from v in instituicaoFinanceiras select v.Sigla;
 
             var sexos = new List<Sexo>(){
@@ -315,7 +291,6 @@ namespace sga_stif.Controllers
                 foreach (var idade in listaDeIdades)
                 {
                     var total = 0;
-
                     if (idade == 60)
                         total = listaDeSocios.Where(a => a.PegarIdade() > idade && a.Sexo == sexo).Count();
                     else
@@ -328,21 +303,10 @@ namespace sga_stif.Controllers
                         total *= -1;
 
                     dados.data.Add(total);
-
                 }
-
                 graficoColunaEmpilhadaAgrupada.dados.Add(dados);
-
             }
-
             return Json(graficoColunaEmpilhadaAgrupada);
-
-
         }
-
-
-
     }
-
-
 }

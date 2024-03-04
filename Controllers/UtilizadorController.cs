@@ -30,7 +30,6 @@ namespace sga_stif.Controllers
             _logger = logger;
         }
 
-
         public async Task<IActionResult> ListaUtilizador()
         {
             var utilizadores = await _context.Utilizador.Where(t => t.Eliminado == false).Include(c => c.Perfil).ToListAsync();
@@ -196,7 +195,6 @@ namespace sga_stif.Controllers
 
             return View(resetePalavraPasseViewModel);
         }
-
 
 
         [HttpGet]

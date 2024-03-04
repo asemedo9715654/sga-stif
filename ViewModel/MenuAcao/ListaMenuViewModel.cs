@@ -13,14 +13,12 @@ namespace sga_stif.ViewModel.MenuAcao
         public string NomeDaAction { get; set; }
         public string Icone { get; set; }
         [Display(Name ="Tipo de Menu")]
-
         public string TipoMenu { get; set; }
         public int? IdMenuPai { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name ="Data de Criação")]
-
         public DateTime? DataCriacao { get; set; } = DateTime.Now;
         
         [DataType(DataType.Date)]

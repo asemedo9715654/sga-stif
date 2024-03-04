@@ -27,11 +27,10 @@ namespace sga_stif.Controllers
             _appEnvironment = env;
         }
 
-
         // GET: ClonePanel
         public ActionResult CarregamentoDeFicheiro()
         {
-            var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(a => a.Eliminado == false).ToList();
+            var instituicaoFinanceiras = _context.InstituicaoFinanceira.AsNoTracking().Where(a => a.Eliminado == false).ToList();
             var instituicaoFinanceirasItem = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome };
 
             ViewBag.IdInstituicaoFinanceira = instituicaoFinanceirasItem;
@@ -41,12 +40,9 @@ namespace sga_stif.Controllers
         [HttpPost]
         public ActionResult ImportarFicheiro()
         {
-
             var stringBuilder = new StringBuilder();
-
             try
             {
-
                 int contador = 0, IdInstituicaoFinanceira = 0;
                 var file = Request.Form.Files[0];
                 string instituicaoFinanceiraTratado = null;

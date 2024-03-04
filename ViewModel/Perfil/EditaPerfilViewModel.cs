@@ -11,8 +11,5 @@ namespace sga_stif.ViewModel.Perfil
     [Display(Name = "Descrição")]
     [Required(ErrorMessage = "A Descrição é necessário")]
     public string Descricao { get; set; }
-
-
-
   }
 }
