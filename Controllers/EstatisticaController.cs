@@ -78,7 +78,7 @@ namespace sga_stif.Controllers
             highChartSeries.colorByPoint = true;
             highChartSeries.data = new List<data>();
 
-            var tipologiaSocios = _context.TipologiaSocio.Where(e => e.Eliminado == false).ToList();
+            var tipologiaSocios = _context.TipologiaSocio.AsSplitQuery().Where(e => e.Eliminado == false).ToList();
 
             var todos = _context.Socio.Where(r => r.Eliminado == false && ListaAgenciasPermitidas(_context).Contains(r.IdAgencia)).Select(j => j.IdTipologiaSocio).ToList();
 
@@ -296,7 +296,6 @@ namespace sga_stif.Controllers
                     else
                         total = listaDeSocios.Where(a => a.PegarIdade() >= anterio && a.PegarIdade() <= idade && a.Sexo == sexo).Count();
                     
-
                     anterio = idade + 1;
 
                     if (sexo == Sexo.Feminino)

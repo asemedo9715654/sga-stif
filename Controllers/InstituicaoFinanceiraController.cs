@@ -249,8 +249,7 @@ namespace sga_stif.Controllers
         public async Task<IActionResult> ListaSocioPorInstituicaoFinanceira(int idInstituicaoFinanceira, string nomeDeInstituicaoFinanceira)
         {
 
-            var listaAgencias = from OKK in _context.Agencia.Where(j => j.IdInstituicaoFinanceira == idInstituicaoFinanceira).ToList() select OKK.IdAgencia;
-
+            var listaAgencias = from agencia in _context.Agencia.Where(j => j.IdInstituicaoFinanceira == idInstituicaoFinanceira).ToList() select agencia.IdAgencia;
             ViewBag.NomeDeInstituicaoFinanceira = nomeDeInstituicaoFinanceira;
 
             var socios = await _context.Socio.Where(r => r.Eliminado != true && listaAgencias.Contains(r.IdAgencia)).Include(c => c.Agencia)
@@ -285,11 +284,8 @@ namespace sga_stif.Controllers
                 List<string> toAddress = new List<string>();
                 if (ModelState.IsValid)
                 {
-
                     var socios = _context.Socio.AsNoTracking().Where(e => e.Eliminado == false && e.Agencia.IdInstituicaoFinanceira == emailViewModel.IdInstituicaoFinanceira).ToList();
-
                     socios = emailViewModel.FiltrarSocio(socios, emailViewModel.Sexo);
-
                     var lista = new List<Socio>();
 
                     foreach (var socio in socios)
@@ -313,7 +309,6 @@ namespace sga_stif.Controllers
                         }
                     }
 
-
                     if (sucesso)
                     {
                         _notyf.Success("Email enviado com sucesso!");
@@ -322,7 +317,6 @@ namespace sga_stif.Controllers
 
                     _notyf.Error(mensagemSucesso);
                     return RedirectToAction("ListaInstituicaoFinanceira");
-
 
                 }
                 _notyf.Error("Model invalido");
@@ -354,7 +348,6 @@ namespace sga_stif.Controllers
                 {
                     var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(g => ListaInstituicoesFinanceirasPermitidas(_context).Contains(g.IdInstituicaoFinanceira) && g.Eliminado == false).ToList();
                     var idInstituicoes = from d in instituicaoFinanceiras select d.IdInstituicaoFinanceira;
-
                     var socios = _context.Socio.Where(e => e.Eliminado == false && idInstituicoes.Contains(e.Agencia.IdInstituicaoFinanceira)).ToList();
 
                     socios = emailViewModel.FiltrarSocio(socios, emailViewModel.Sexo);

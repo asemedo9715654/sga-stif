@@ -1,1 +1,0 @@
-K 2csXhr:Models/ResultadoStoredProcedure/ProjecaoQuotasResultado.cs

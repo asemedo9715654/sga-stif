@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 using sga_stif.Models;
 using sga_stif.Models.ResultadoStoredProcedure;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace sga_stif.Controllers
 {
@@ -31,7 +32,7 @@ namespace sga_stif.Controllers
 
 
             var idInstituicaoFinanceira = IdInstituicaoFinanceira ?? 0;
-            var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(a => a.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(a.IdInstituicaoFinanceira)).ToList();
+            var instituicaoFinanceiras = _context.InstituicaoFinanceira.AsNoTracking().Where(a => a.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(a.IdInstituicaoFinanceira)).ToList();
             var instituicaoFinanceirasItem = from g in instituicaoFinanceiras
                                              select new SelectListItem
                                              {
@@ -48,12 +49,17 @@ namespace sga_stif.Controllers
                 var selected = instituicaoFinanceirasItem.First(x => x.Value == valorConvertido);
                 selected.Selected = true;
 
-                contaCorrenteIfResultados = _context.ContaCorrenteIFResultado.FromSqlRaw($"EXECUTE  [dbo].[ContaCorrenteIF] @ano = 2022, @mes=1,@idif = {IdInstituicaoFinanceira},@user ='{PegarNomeUtilizador()}', @status='QV'").ToList();
+				var query = $"EXECUTE  [dbo].[ContaCorrenteIF] @ano = 2022, @mes=1,@idif = {IdInstituicaoFinanceira},@user ='{PegarNomeUtilizador()}', @status='QV'";
+				_logger.LogInformation(query);
+				contaCorrenteIfResultados = _context.ContaCorrenteIFResultado.FromSqlRaw(query).ToList();
             }
             else
             {
-                instituicaoFinanceirasItem.Append(new SelectListItem { Text = "--- todos ---", Selected = true, Disabled = true });
-                contaCorrenteIfResultados = _context.ContaCorrenteIFResultado.FromSqlRaw($"EXECUTE  [dbo].[ContaCorrenteIF] @ano = 2022, @mes=1,@user ='{PegarNomeUtilizador()}', @status='QV'").ToList();
+
+                var query = $"EXECUTE  [dbo].[ContaCorrenteIF] @ano = 2022, @mes=1,@user ='{PegarNomeUtilizador()}', @status='QV'";
+                _logger.LogInformation(query);
+				instituicaoFinanceirasItem.Append(new SelectListItem { Text = "--- todos ---", Selected = true, Disabled = true });
+                contaCorrenteIfResultados = _context.ContaCorrenteIFResultado.FromSqlRaw(query).ToList();
             }
 
             ViewBag.IdInstituicaoFinanceira = instituicaoFinanceirasItem;
@@ -66,7 +72,7 @@ namespace sga_stif.Controllers
         {
             var idInstituicaoFinanceira = IdInstituicaoFinanceira ?? 0;
 
-            var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(h => h.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(h.IdInstituicaoFinanceira)).ToList();
+            var instituicaoFinanceiras = _context.InstituicaoFinanceira.AsNoTracking().Where(h => h.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(h.IdInstituicaoFinanceira)).ToList();
             var instituicaoFinanceirasItem = from g in instituicaoFinanceiras
                                              select new SelectListItem
                                              {
@@ -82,11 +88,15 @@ namespace sga_stif.Controllers
 
             if (IdInstituicaoFinanceira != null)
             {
-                contaCorrenteIfResultados = _context.ContaCorrenteIFResultado.FromSqlRaw($"EXECUTE  [dbo].[ContaCorrenteIF] @idif = {IdInstituicaoFinanceira},@user ='{PegarNomeUtilizador()}', @status='QN'").ToList();
-            }
+                var query = $"EXECUTE  [dbo].[ContaCorrenteIF] @idif = {IdInstituicaoFinanceira},@user ='{PegarNomeUtilizador()}', @status='QN'";
+                _logger.LogInformation(query);
+				contaCorrenteIfResultados = _context.ContaCorrenteIFResultado.FromSqlRaw(query).ToList();
+			}
             else
             {
-                contaCorrenteIfResultados = _context.ContaCorrenteIFResultado.FromSqlRaw($"EXECUTE  [dbo].[ContaCorrenteIF] @user ='{PegarNomeUtilizador()}', @status='QN'").ToList();
+                var query = $"EXECUTE  [dbo].[ContaCorrenteIF] @user ='{PegarNomeUtilizador()}', @status='QN'";
+				_logger.LogInformation(query);
+				contaCorrenteIfResultados = _context.ContaCorrenteIFResultado.FromSqlRaw(query).ToList();
             }
 
             return View(contaCorrenteIfResultados);
@@ -112,7 +122,7 @@ namespace sga_stif.Controllers
             ViewBag.DataPreenchido = ano + "-" + DataPesquisa.Value.Month.ToString("#00");
 
             var idInstituicaoFinanceira = IdInstituicaoFinanceira ?? 0;
-            var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(h => h.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(h.IdInstituicaoFinanceira)).ToList();
+            var instituicaoFinanceiras = _context.InstituicaoFinanceira.AsNoTracking().Where(h => h.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(h.IdInstituicaoFinanceira)).ToList();
             var instituicaoFinanceirasItem = from g in instituicaoFinanceiras
                                              select new SelectListItem
                                              {
@@ -126,11 +136,15 @@ namespace sga_stif.Controllers
 
             if (IdInstituicaoFinanceira != null)
             {
-                contaCorrenteIfResultados = _context.ContaCorrenteIFResultado.FromSqlRaw($"EXECUTE  [dbo].[ContaCorrenteIF] @ano = {ano}, @mes={mes},@idif = {IdInstituicaoFinanceira},@user ='{PegarNomeUtilizador()}', @status='QD'").ToList();
+                var query = $"EXECUTE  [dbo].[ContaCorrenteIF] @ano = {ano}, @mes={mes},@idif = {IdInstituicaoFinanceira},@user ='{PegarNomeUtilizador()}', @status='QD'";
+				_logger.LogInformation(query);
+				contaCorrenteIfResultados = _context.ContaCorrenteIFResultado.FromSqlRaw(query).ToList();
             }
             else
             {
-                contaCorrenteIfResultados = _context.ContaCorrenteIFResultado.FromSqlRaw($"EXECUTE  [dbo].[ContaCorrenteIF] @ano = {ano}, @mes={mes},@user ='{PegarNomeUtilizador()}', @status='QD'").ToList();
+                var query = $"EXECUTE  [dbo].[ContaCorrenteIF] @ano = {ano}, @mes={mes},@user ='{PegarNomeUtilizador()}', @status='QD'";
+                _logger.LogInformation(query);
+                contaCorrenteIfResultados = _context.ContaCorrenteIFResultado.FromSqlRaw(query).ToList();
             }
 
             return View(contaCorrenteIfResultados);
@@ -156,7 +170,7 @@ namespace sga_stif.Controllers
 
             ViewBag.DataPreenchido = ano + "-" + DataPesquisa.Value.Month.ToString("#00");
 
-            var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(h => h.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(h.IdInstituicaoFinanceira)).ToList();
+            var instituicaoFinanceiras = _context.InstituicaoFinanceira.AsNoTracking().Where(h => h.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(h.IdInstituicaoFinanceira)).ToList();
             var instituicaoFinanceirasItem = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome, Selected = idInstituicaoFinanceira == g.IdInstituicaoFinanceira };
             ViewBag.IdInstituicaoFinanceira = instituicaoFinanceirasItem;
             var listContaCorrenteIFResultado = new List<ContaCorrenteIFResultado>();
@@ -164,17 +178,17 @@ namespace sga_stif.Controllers
             if (IdInstituicaoFinanceira != null)
             {
                 var query = $"EXECUTE  [dbo].[ContaCorrenteIF] @ano = {ano}, @mes={mes},@idif = {IdInstituicaoFinanceira},@user ='{PegarNomeUtilizador()}', @status='QP'";
+                _logger.LogInformation(query);
                 listContaCorrenteIFResultado = _context.ContaCorrenteIFResultado.FromSqlRaw(query).ToList();
             }
             else
             {
                 var query = $"EXECUTE  [dbo].[ContaCorrenteIF] @ano = {ano}, @mes={mes},@user ='{PegarNomeUtilizador()}', @status='QP'";
+                _logger.LogInformation(query);  
                 listContaCorrenteIFResultado = _context.ContaCorrenteIFResultado.FromSqlRaw(query).ToList();
 
             }
-
             return View(listContaCorrenteIFResultado);
         }
-
     }
 }

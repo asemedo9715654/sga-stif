@@ -65,7 +65,6 @@ namespace sga_stif.Controllers
             }
             catch (DbUpdateException ex)
             {
-
                 ModelState.AddModelError("", "Não foi possível salvar as alterações. Tente novamente e, se o problema persistir, consulte o administrador do sistema. Erro => " + ex.Message);
             }
 

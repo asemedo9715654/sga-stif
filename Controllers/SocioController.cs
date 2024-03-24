@@ -38,7 +38,7 @@ namespace sga_stif.Controllers
         //[Breadcrumb(FromAction = "ListaSocio", Title = "Lista de Sócio")]
         public async Task<IActionResult> ListaSocio()
         {
-            var socios = await _context.Socio.AsNoTracking().Where(s => s.Eliminado != true && ListaAgenciasPermitidas(_context).Contains(s.IdAgencia))
+            var socios = await _context.Socio.AsSplitQuery().AsNoTracking().Where(s => s.Eliminado != true && ListaAgenciasPermitidas(_context).Contains(s.IdAgencia))
                                       .Include(c => c.Beneficiario)
                                       .Include(c => c.Agencia).ThenInclude(c => c.InstituicaoFinanceira).Select(s => new ListaSocioViewModel
                                       {
@@ -53,9 +53,7 @@ namespace sga_stif.Controllers
                                           NomeAgencia = s.Agencia.Nome
                                       }).ToListAsync();
                                     
-
             var listaSocioViewModel = _mapper.Map<List<ListaSocioViewModel>>(socios);
-
             return View(listaSocioViewModel);
         }
 
@@ -101,9 +99,7 @@ namespace sga_stif.Controllers
         #endregion
         public async Task<IActionResult> ListaSocioInativos()
         {
-            var socios = await _context.Socio.AsNoTracking().Where(r => r.Eliminado == true && ListaAgenciasPermitidas(_context).Contains(r.IdAgencia)).Include(c => c.Agencia)
-                                        .Include(c => c.TipologiaSocio)
-                                        .Include(c => c.TipoQuota)
+            var socios = await _context.Socio.AsSplitQuery().AsNoTracking().Where(r => r.Eliminado == true && ListaAgenciasPermitidas(_context).Contains(r.IdAgencia))
                                         .Include(c => c.Beneficiario)
                                         .Include(c => c.Agencia).ThenInclude(c => c.InstituicaoFinanceira)
                                         .ToListAsync();

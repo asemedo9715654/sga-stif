@@ -96,7 +96,7 @@
 							<span class="badge badge-pill badge-info"> @Html.DisplayFor(modelItem => item.TotalBeneficiario)</span>
 							Benef.
 						</td>
-						<td>
+					@* 	<td>
 							<a class="btn btn-success btn-xs " asp-action="EditaSocio" asp-route-idSocio="@item.IdSocio"
 						   asp-route-idAgencia="@item.IdAgencia"><i class="fas fa-pen"></i> Editar</a>
 							<a class="btn btn-default btn-xs " asp-action="DetalhesSocio" asp-route-idSocio="@item.IdSocio"
@@ -104,7 +104,22 @@
 							<a class="btn btn-warning btn-xs " asp-action="InativarSocio" asp-route-idSocio="@item.IdSocio">
 								<i class="fas fa-user-slash" title="Inativar Sócio"></i> Inativar
 							</a>
+						</td> *@
+
+						<td>
+							<div class="btn-group" role="group">
+								<a class="btn btn-success btn-xs" asp-action="EditaSocio" asp-route-idSocio="@item.IdSocio" asp-route-idAgencia="@item.IdAgencia">
+									<i class="fas fa-pen"></i> Editar
+								</a>
+								<a class="btn btn-default btn-xs" asp-action="DetalhesSocio" asp-route-idSocio="@item.IdSocio" title="Ver Detalhes Sócio e Adição de Beneficiário!">
+									<i class="fas fa-info"></i> Detalhes
+								</a>
+								<a class="btn btn-warning btn-xs" asp-action="InativarSocio" asp-route-idSocio="@item.IdSocio">
+									<i class="fas fa-user-slash" title="Inativar Sócio"></i> Inativar
+								</a>
+							</div>
 						</td>
+
 					</tr>
 				}
 			</tbody>

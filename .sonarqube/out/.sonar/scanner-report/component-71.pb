@@ -1,1 +1,0 @@
-G 2csX!hr;Models/ResultadoStoredProcedure/ContaCorrenteIFResultado.cs

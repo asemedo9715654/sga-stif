@@ -1,5 +1,0 @@
-d
-roslynCS8600DConverting null literal or possible null value to non-nullable type. 2776 :@Æ
-roslynCA1806çImportarFicheiro calls TryParse but does not explicitly check whether the conversion succeeded. Either use the return value in a conditional statement or verify that the call site expects that the out argument will be set to the default value when the conversion fails. 2ss  [@Æ
-roslynCA1806çImportarFicheiro calls TryParse but does not explicitly check whether the conversion succeeded. Either use the return value in a conditional statement or verify that the call site expects that the out argument will be set to the default value when the conversion fails. 2tt  R@Æ
-roslynCA1806çImportarFicheiro calls TryParse but does not explicitly check whether the conversion succeeded. Either use the return value in a conditional statement or verify that the call site expects that the out argument will be set to the default value when the conversion fails. 2uu  R@

@@ -28,9 +28,7 @@ namespace sga_stif.Controllers
         [HttpGet]
         public JsonResult GerarAcaoMaster()
         {
-
             var menus = _context.Menu.ToList();
-
             foreach (var item in menus)
             {
                 var acao = new Acao(item);
@@ -40,15 +38,9 @@ namespace sga_stif.Controllers
                 var menuAcao = new MenuAcao(acao, item);
                 _context.MenuAcao.Add(menuAcao);
                 _context.SaveChanges();
-
             }
 
             return Json(2);
-
         }
-
-
-
-
     }
 }

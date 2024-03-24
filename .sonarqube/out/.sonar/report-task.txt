@@ -1,6 +1,0 @@
-projectKey=aga-stif
-serverUrl=http://127.0.0.1:9090
-serverVersion=10.3.0.82913
-dashboardUrl=http://127.0.0.1:9090/dashboard?id=aga-stif
-ceTaskId=AYxBXlIJ0Y_QLeLVFTT2
-ceTaskUrl=http://127.0.0.1:9090/api/ce/task?id=AYxBXlIJ0Y_QLeLVFTT2

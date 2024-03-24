@@ -1,1 +1,0 @@
-N 2csXÓhrModels/Socio.cs

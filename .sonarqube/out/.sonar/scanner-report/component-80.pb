@@ -1,1 +1,0 @@
-P 2csX hrModels/TipoQuota.cs

@@ -30,7 +30,11 @@ namespace sga_stif.Controllers
 
         public async Task<IActionResult> ListaAgencia()
         {
-            var agencia = await _context.Agencia.Where(e => e.Eliminado == false && ListaAgenciasPermitidas(_context).Contains(e.IdAgencia)).Include(g => g.Cidade).Include(h => h.InstituicaoFinanceira).Include(h => h.Socio).ToListAsync();
+            var agencia = await _context.Agencia.AsSplitQuery().AsNoTracking().Where(e => e.Eliminado == false && ListaAgenciasPermitidas(_context).Contains(e.IdAgencia))
+                .Include(g => g.Cidade)
+                .Include(h => h.InstituicaoFinanceira)
+                .Include(h => h.Socio).ToListAsync();
+
             var listaAgenciaViewModel = _mapper.Map<List<ListaAgenciaViewModel>>(agencia);
             return View(listaAgenciaViewModel);
         }
@@ -38,7 +42,11 @@ namespace sga_stif.Controllers
 
         public async Task<IActionResult> ListaAgenciaInativos()
         {
-            var agencia = await _context.Agencia.Where(e => e.Eliminado == true && ListaAgenciasPermitidas(_context).Contains(e.IdAgencia)).Include(g => g.Cidade).Include(h => h.InstituicaoFinanceira).Include(h => h.Socio).ToListAsync();
+            var agencia = await _context.Agencia.AsSplitQuery().AsNoTracking().Where(e => e.Eliminado == true && ListaAgenciasPermitidas(_context).Contains(e.IdAgencia))
+                .Include(g => g.Cidade)
+                .Include(h => h.InstituicaoFinanceira)
+                .Include(h => h.Socio).ToListAsync();
+
             var listaAgenciaViewModel = _mapper.Map<List<ListaAgenciaViewModel>>(agencia);
             return View(listaAgenciaViewModel);
         }
@@ -48,7 +56,11 @@ namespace sga_stif.Controllers
         {
 
             ViewBag.NomeInstituicaoFinanceira = nomeInstituicao;
-            var agencia = await _context.Agencia.Where(r => r.IdInstituicaoFinanceira == idInstituicaoFinanceira && ListaAgenciasPermitidas(_context).Contains(r.IdAgencia)).Include(g => g.Cidade).Include(h => h.InstituicaoFinanceira).Include(h => h.Socio).ToListAsync();
+            var agencia = await _context.Agencia.AsSplitQuery().AsNoTracking().Where(r => r.IdInstituicaoFinanceira == idInstituicaoFinanceira && ListaAgenciasPermitidas(_context).Contains(r.IdAgencia))
+                .Include(g => g.Cidade)
+                .Include(h => h.InstituicaoFinanceira)
+                .Include(h => h.Socio).ToListAsync();
+
             var listaAgenciaViewModel = _mapper.Map<List<ListaAgenciaViewModel>>(agencia);
             return View(listaAgenciaViewModel);
         }
@@ -59,7 +71,7 @@ namespace sga_stif.Controllers
         public IActionResult NovaAgencia()
         {
 
-            var instituicaoFinanceiras = _context.InstituicaoFinanceira.Where(h => h.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(h.IdInstituicaoFinanceira)).ToList();
+            var instituicaoFinanceiras = _context.InstituicaoFinanceira.AsNoTracking().Where(h => h.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(h.IdInstituicaoFinanceira)).ToList();
             var instituicaoFinanceirasSelectLista = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome };
             var cidades = _context.Cidade.ToList();
             var cidadesSelectLista = from g in cidades select new SelectListItem { Value = g.IdCidade.ToString(), Text = g.Nome };
@@ -85,7 +97,6 @@ namespace sga_stif.Controllers
                     _notyf.Success("Agência adicionado com sucesso!");
                     return RedirectToAction("ListaAgencia");
                 }
-
             }
             catch (DbUpdateException ex)
             {
@@ -141,7 +152,6 @@ namespace sga_stif.Controllers
             }
             catch (DbUpdateException ex)
             {
-
                 ModelState.AddModelError("", "Não foi possível salvar as alterações. Tente novamente e, se o problema persistir, consulte o administrador do sistema. Erro => " + ex.Message);
             }
 
@@ -154,8 +164,8 @@ namespace sga_stif.Controllers
         {
             ViewBag.NomeAgencia = nomeAgencia;
 
-            var socios = await _context.Socio.Where(r => r.Eliminado != true && r.IdAgencia == idAgencia && ListaAgenciasPermitidas(_context).Contains(r.IdAgencia))
-                                         .Include(c => c.Agencia)
+            var socios = await _context.Socio.AsNoTracking().AsSplitQuery().Where(r => r.Eliminado != true && r.IdAgencia == idAgencia && ListaAgenciasPermitidas(_context).Contains(r.IdAgencia))
+                                        .Include(c => c.Agencia)
                                         .Include(c => c.TipologiaSocio)
                                         .Include(c => c.TipoQuota)
                                         .Include(c => c.Beneficiario)
@@ -175,9 +185,9 @@ namespace sga_stif.Controllers
                 return NotFound();
             }
             var agencia = await _context.Agencia.Where(m => m.IdAgencia == idAgencia)
-            .Include(n => n.Cidade)
-            .Include(n => n.InstituicaoFinanceira)
-            .FirstOrDefaultAsync(m => m.IdAgencia == idAgencia);
+                        .Include(n => n.Cidade)
+                        .Include(n => n.InstituicaoFinanceira)
+                        .FirstOrDefaultAsync(m => m.IdAgencia == idAgencia);
 
             var inativarPerfilViewModel = _mapper.Map<InativarAgenciaViewModel>(agencia);
             return View(inativarPerfilViewModel);

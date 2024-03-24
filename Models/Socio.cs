@@ -143,18 +143,9 @@ namespace sga_stif.Models
 
         public string PegarLinkFotoGrande()
         {
-            //    if (Foto != null)
-            //    {
-            //        var aux = Convert.ToBase64String(Foto);
-            //        var imageDataUrl = string.Format("data:image/png;base64,{0}", aux);
-            //        return imageDataUrl;
-            //    }
-            //return "../../dist/img/default-150x150.png";
-            // Construct the full URL
-            //var baseUrl = Directory.GetCurrentDirectory() + "/" + Foto;
-            
-            //return baseUrl;
-            return Foto;
+            if (Foto != null)
+                return Foto;
+            return "../../dist/img/default-150x150.png"; 
         }
 
     }

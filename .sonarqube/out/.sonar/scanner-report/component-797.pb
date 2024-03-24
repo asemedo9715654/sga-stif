@@ -1,1 +1,0 @@
-ù 2jsX±hr:wwwroot/plugins/codemirror/mode/mathematica/mathematica.js

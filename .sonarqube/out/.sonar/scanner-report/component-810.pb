@@ -1,1 +1,0 @@
-ª 2jsX‰hr0wwwroot/plugins/codemirror/mode/pascal/pascal.js

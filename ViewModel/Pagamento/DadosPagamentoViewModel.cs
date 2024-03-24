@@ -53,6 +53,7 @@ namespace sga_stif.ViewModel.Pagamento
             Ano = quotaSocio.PeriodoQuota.Ano;
             Mes = nomeDoMes;
             Url = url;
+            //Montante = quotaSocio.Montante
         }
          
 
