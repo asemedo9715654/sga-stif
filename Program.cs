@@ -3,10 +3,12 @@ using AspNetCoreHero.ToastNotification;
 using AspNetCoreHero.ToastNotification.Extensions;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 using NLog;
 
 using NLog.Web;
 using Serilog;
+using sga_stif;
 using sga_stif.Filtros;
 using sga_stif.Mapeamento;
 using sga_stif.Models;
@@ -14,9 +16,18 @@ using SmartBreadcrumbs.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Host.UseSerilog();
+
 builder.Logging.ClearProviders();
+
+//var logger = new LoggerConfiguration()
+//	.WriteTo.File("Logs/semedo.log")
+//	.CreateLogger();
+
+//Log.Logger = logger;
+
+//builder.Host.UseSerilog();
 builder.Logging.AddConsole();
+//builder.Logging.AddSerilog();
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromMinutes(10);
@@ -30,7 +41,7 @@ builder.Services.AddControllersWithViews(config =>
     config.Filters.Add(typeof(LogFiltro));
 });
 
-
+builder.Services.AddHostedService<ServicoSgaStif>();//serviço de backgroung
 
 builder.Services.AddBreadcrumbs(Assembly.GetExecutingAssembly(), options =>
 {

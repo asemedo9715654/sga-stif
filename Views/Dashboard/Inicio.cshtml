@@ -76,13 +76,14 @@
 
 
 <div class="row">
+   
     <div class="col-lg-3 col-6">
         <!-- small box -->
         <div class="small-box bg-success">
             <div class="inner">
-                <h3>@ViewBag.TotalSociosRegistradoHoje</h3>
+                <h3>@ViewBag.TotalSociosRegistradoMes</h3>
 
-                <p>Sócios Registrado Hoje</p>
+                <p>Sócios Registrado - @ViewBag.Mes</p>
             </div>
             <div class="icon">
                 <i class="ion ion-person"></i>
@@ -93,6 +94,23 @@
         </div>
     </div>
     <!-- ./col -->
+    <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-success">
+            <div class="inner">
+                <h3>@ViewBag.TotalSociosRegistradoAnual</h3>
+
+                <p>Sócios Registrado -  @ViewBag.Ano</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-person"></i>
+            </div>
+            @*  <a asp-action="ListaSocio" asp-controller="Socio" class="small-box-footer">
+            Ver mais <i class="fas fa-arrow-circle-right"></i>
+            </a> *@
+        </div>
+    </div>
+
     <div class="col-lg-3 col-6">
         <!-- small box -->
         <div class="small-box bg-success">
@@ -112,39 +130,24 @@
     <!-- ./col -->
     <div class="col-lg-3 col-6">
         <!-- small box -->
-        <div class="small-box bg-default">
+        <div class="small-box bg-success">
             <div class="inner">
-                <h3>@ViewBag.TotalTipologiaSocio</h3>
+                <h3>@ViewBag.TotalPagamentoMes</h3>
 
-                <p>Tipologia Sócio</p>
-            </div>
-         @*    <div class="icon">
-                <i class="ion ion-at"></i>
-            </div> *@
-          @*   <a asp-action="ListaInstituicaoFinanceira" asp-controller="InstituicaoFinanceira" class="small-box-footer">
-                Ver
-                mais <i class="fas fa-arrow-circle-right"></i>
-            </a> *@
-        </div>
-    </div>
-    <!-- ./col -->
-    <div class="col-lg-3 col-6">
-        <!-- small box -->
-        <div class="small-box bg-info">
-            <div class="inner">
-                <h3>@ViewBag.TotalTipoQuota</h3>
-
-                <p>Tipo Quota</p>
+                <p>Pagamento - @ViewBag.Mes</p>
             </div>
             <div class="icon">
-                <i class="ion ion-contacts"></i>
+                <i class="ion ion-social-usd"></i>
             </div>
-           @*  <a asp-action="ListaAgencia" asp-controller="Agencia" class="small-box-footer">
+           @*  <a asp-action="ListaSocioInativos" asp-controller="Socio" class="small-box-footer">
                 Ver mais <i class="fas fa-arrow-circle-right"></i>
             </a> *@
         </div>
     </div>
     <!-- ./col -->
+   
+   
+ 
 
 </div>
 

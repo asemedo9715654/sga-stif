@@ -32,6 +32,7 @@ namespace sga_stif.Models
         public DbSet<InstituicaoFinanceiraColaboradores> InstituicaoFinanceiraColaboradores { get; set; }
         public DbSet<QuotaSocio> QuotaSocio { get; set; }
         public DbSet<PerfilInstituicaoFinanceira> PerfilInstituicaoFinanceira { get; set; }
+        public DbSet<EmailEnviado> EmailEnviado { get; set; }
 
         //resultado stored procedure
         public DbSet<ContaCorrenteIFResultado> ContaCorrenteIFResultado { get; set; }
@@ -65,6 +66,7 @@ namespace sga_stif.Models
             modelBuilder.Entity<TipologiaSocio>().ToTable("TipologiaSocio");
             modelBuilder.Entity<InstituicaoFinanceiraColaboradores>().ToTable("InstituicaoFinanceiraColaboradores");
             modelBuilder.Entity<QuotaSocio>().ToTable("QuotaSocio");
+            modelBuilder.Entity<EmailEnviado>().ToTable("EmailEnviado");
 
 
             //nao vai ser criado na base de dados

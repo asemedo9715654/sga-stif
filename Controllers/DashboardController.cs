@@ -23,9 +23,13 @@ namespace sga_stif.Controllers
         {
 
 
-			var today = DateTime.Today;
+			var hoje = DateTime.Today;
 
-			var socios = _context.Socio.AsNoTracking().ToList();
+            ViewBag.Ano = hoje.Year;
+            ViewBag.Mes = hoje.ToString("MMMM", new System.Globalization.CultureInfo("pt-PT"));
+
+
+            var socios = _context.Socio.AsNoTracking().ToList();
             ViewBag.TotalSocios = socios.Count(e => ListaAgenciasPermitidas(_context).Contains(e.IdAgencia));
             ViewBag.SocioInativos = socios.Where(g => g.Eliminado == true && ListaAgenciasPermitidas(_context).Contains(g.IdAgencia)).Count();
             ViewBag.SocioAtivos = socios.Where(g => g.Eliminado == false).Count(e => ListaAgenciasPermitidas(_context).Contains(e.IdAgencia));
@@ -34,10 +38,19 @@ namespace sga_stif.Controllers
             var agencia = _context.Agencia.ToList();
             ViewBag.TotalAgencia = agencia.Count(e => ListaAgenciasPermitidas(_context).Contains(e.IdAgencia));
 			//new line
-			ViewBag.TotalSociosRegistradoHoje = socios.Count(e => e.DataCriacao.Value.Date ==   today && ListaAgenciasPermitidas(_context).Contains(e.IdAgencia));
-			ViewBag.TotalPagamentoHoje = _context.QuotaSocio.Count(e => e.DataCriacao.Value.Date ==   today );
-			ViewBag.TotalTipologiaSocio = _context.TipologiaSocio.Count(e => e.Eliminado ==   false );
-			ViewBag.TotalTipoQuota = _context.TipoQuota.Count(e => e.Eliminado ==   false );
+			
+			ViewBag.TotalPagamentoHoje = _context.QuotaSocio.Count(e => e.DataQueFoiEfectuadaPagamento.Value.Date ==   hoje && e.Estado==EstadoQuotaSocio.Pago);
+
+            ViewBag.TotalSociosRegistradoAnual = socios.Count(e => e.DataAtivacao.Value.Year == hoje.Year &&
+                   e.Eliminado == false &&
+            ListaAgenciasPermitidas(_context).Contains(e.IdAgencia));
+
+            ViewBag.TotalSociosRegistradoMes = socios.Count(e => e.DataAtivacao.Value.Year ==   hoje.Year &&
+                e.DataAtivacao.Value.Month==hoje.Month && 
+                e.Eliminado ==false &&
+                ListaAgenciasPermitidas(_context).Contains(e.IdAgencia));
+			ViewBag.TotalPagamentoMes = _context.QuotaSocio.Count(e => e.DataQueFoiEfectuadaPagamento.Value.Year ==   hoje.Year && e.DataQueFoiEfectuadaPagamento.Value.Month==hoje.Month && e.Estado==EstadoQuotaSocio.Pago);
+			
 
 
 			return View();
