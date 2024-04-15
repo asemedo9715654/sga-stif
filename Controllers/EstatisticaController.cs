@@ -211,11 +211,7 @@ namespace sga_stif.Controllers
 
         public ActionResult OcorenciaPorSexoTacadoComInstituicaoFinanceira()
         {
-            var graficoColunaEmpilhadaAgrupada = new GraficoColunaEmpilhadaAgrupada
-            {
-                dados = new List<Dados>()
-            };
-
+            var graficoColunaEmpilhadaAgrupada = new GraficoColunaEmpilhadaAgrupada();
             var socios = _context.Socio.AsNoTracking().Where(e => e.Eliminado == false && ListaAgenciasPermitidas(_context).Contains(e.IdAgencia)).Select(a => new { a.IdAgencia, a.Sexo }).ToList();
             var instituicaoFinanceiras = _context.InstituicaoFinanceira.AsNoTracking().Where(e => e.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(e.IdInstituicaoFinanceira)).Include(g => g.Agencia).ToList();
             var aux = from v in instituicaoFinanceiras select v.Sigla;

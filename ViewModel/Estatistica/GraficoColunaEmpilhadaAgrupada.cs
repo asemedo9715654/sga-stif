@@ -6,11 +6,13 @@ namespace sga_stif.ViewModel.Estatistica
     {
         public List<string> categorias { get; set; }
         public List<Dados> dados { get; set; }
+
+        public GraficoColunaEmpilhadaAgrupada()
+        {
+            categorias = new List<string>();
+            dados = new List<Dados>();
+        }
     }
 
-    public class Dados
-    {
-        public string name { get; set; }
-        public List<int> data { get; set; }
-    }
+   
 }
