@@ -1,0 +1,111 @@
+@model IEnumerable<sga_stif.ViewModel.Ilha.ListaIlhaViewModel>
+
+@{
+    ViewData["Title"] = "Lista de Ilhas";
+}
+
+<div class="card">
+    <div class="card-header">
+
+        <div class="row no-print">
+
+            <div class="col-12">
+                <p class="lead">Lista de Ilhas</p>
+
+               @*  <a asp-action="EnvioDeEmailTodasInstituicao" class="btn btn-info btn-sm float-right" style="margin-right: 5px;">Contactar</a>
+
+                <a asp-action="NovoInstituicaoFinanceira" class="btn btn-success btn-sm float-right" style="margin-right: 5px;">Novo</a>
+
+                <a asp-action="ListaInstituicaoFinanceiraInativos" class="btn btn-default btn-sm  float-right" style="margin-right: 5px;">Lista de Instituição Financeiras Inativos</a> *@
+
+            </div>
+        </div>
+
+
+    </div>
+    <div class="card-body">
+        <table id="example2" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NomeFormatado)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TotalSocios)
+                    </th>
+                    <th>
+                        Ação
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NomeFormatado)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TotalSocios)
+                        </td>  
+                        <td>
+                            <a class="btn btn-info btn-xs" asp-action="EnvioDeEmailPorIlha" asp-route-idIlha="@item.IdIlha"><i class="fas fa-envelope"></i>Contactar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('#example2').DataTable({
+            language: {
+                //url: 'dataTables.german.json',
+                url: 'https://cdn.datatables.net/plug-ins/1.12.1/i18n/pt-PT.json'
+                //url:"@Url.Content("~/pt-PT.json")"
+            },
+            pageLenght: 50,
+            paging: true,
+            lengthChange: true,
+            //searching: true,
+            ordering: true,
+            responsive: true,
+            //dom: 'Bfrtip',
+            dom: 'lBfrtip',
+            buttons: [
+                {
+                    extend: 'pdf',
+                    footer: true,
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5]
+                    }
+                },
+                {
+                    extend: 'excel',
+                    footer: false,
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5]
+                    }
+
+                },
+                {
+                    extend: 'print',
+                    footer: false,
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5]
+                    }
+                }
+                //'copy', 'csv', 'excel', 'pdf', 'print'
+                //'excel', 'pdf', 'print'
+            ],
+            "lengthMenu": [
+                [10, 25, 50, -1],
+                [10, 25, 50, "All"]
+            ]
+        });
+    });
+</script>

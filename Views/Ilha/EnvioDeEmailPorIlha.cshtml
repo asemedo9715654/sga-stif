@@ -1,0 +1,64 @@
+@model sga_stif.ViewModel.InstituicaoFinanceira.EmailViewModel
+
+@{
+    ViewData["Title"] = "Novo Email";
+}
+<script src="https://cdn.ckeditor.com/4.20.2/standard/ckeditor.js"></script>
+
+
+<hr />
+
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title">E-mail para Ilha - <small>@ViewBag.NomeIlha</small></h3>
+    </div>
+
+    <form asp-action="EnvioDeEmailPorInstituicao" method="post" enctype="multipart/form-data">
+        <div class="card-body">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="form-group" style="display: none">
+                        <label asp-for="IdInstituicaoFinanceira" class="control-label"></label>
+                        <input asp-for="IdInstituicaoFinanceira" class="form-control" />
+                        <span asp-validation-for="IdInstituicaoFinanceira" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Assunto" class="control-label"></label>
+                        <input asp-for="Assunto" class="form-control" />
+                        <span asp-validation-for="Assunto" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Sexo" class="control-label"></label>
+                        <select asp-for="Sexo" class="form-control">
+                            <option value="Todos" selected>Todos</option>
+                            <option value="Feminino">Feminino</option>
+                            <option value="Masculino">Masculino</option>
+                        </select>
+                        <span asp-validation-for="Sexo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CorpoDoEmail" class="control-label"></label>
+                        <textarea class="form-control" asp-for="CorpoDoEmail" rows="4" cols="50" id="CorpoDoEmail"></textarea>
+
+                        <span asp-validation-for="CorpoDoEmail" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="card-footer">
+            <a asp-action="ListaInstituicaoFinanceira" class="btn btn-secondary" title="Cancelar envio">Cancelar</a>
+            <button type="submit" class="btn btn-success" title="Enviar email">Enviar</button>
+        </div>
+
+    </form>
+
+</div>
+
+@* @Html.Hidden("RecuperaLinkPegarAgencia", Url.Action("PegarAgencia", "Socio")) *@
+
+<script>
+    CKEDITOR.replace('CorpoDoEmail');
+</script>

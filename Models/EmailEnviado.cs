@@ -1,4 +1,5 @@
-﻿using sga_stif.ViewModel.InstituicaoFinanceira;
+﻿using sga_stif.ViewModel.Ilha;
+using sga_stif.ViewModel.InstituicaoFinanceira;
 using System.ComponentModel.DataAnnotations;
 
 namespace sga_stif.Models
@@ -23,6 +24,21 @@ namespace sga_stif.Models
         }
 
         public EmailEnviado(Socio soc, EmailViewModel emailViewModel)
+        {
+            Obs = null;
+            Apelido = soc.Apelido;
+            Nome = soc.Nome;
+            NumeroSocio = soc.NumeroDeSocio;
+            Assunto = emailViewModel.Assunto;
+            Email = soc.Email;
+            Corpo = emailViewModel.CorpoDoEmail;
+            JaFoiEnviado = false;
+            Eliminado = false;
+            DataAtualizacao = DateTime.Now;
+            DataCriacao = DateTime.Now;
+        }
+        
+        public EmailEnviado(Socio soc, EmailIlhaViewModel emailViewModel)
         {
             Obs = null;
             Apelido = soc.Apelido;

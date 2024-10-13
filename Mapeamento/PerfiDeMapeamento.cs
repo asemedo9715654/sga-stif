@@ -4,6 +4,7 @@ using sga_stif.Extensao;
 using sga_stif.Models;
 using sga_stif.ViewModel.Agencia;
 using sga_stif.ViewModel.Beneficiario;
+using sga_stif.ViewModel.Ilha;
 using sga_stif.ViewModel.InstituicaoFinanceira;
 using sga_stif.ViewModel.MenuAcao;
 using sga_stif.ViewModel.Perfil;
@@ -140,6 +141,12 @@ namespace sga_stif.Mapeamento
             .ForMember(dest => dest.NomeInstituicaoFinanceira, opt => opt.MapFrom(src => src.Agencia.InstituicaoFinanceira.NomeFormatado()))
             .ForMember(dest => dest.IdInstituicaoFinanceira, opt => opt.MapFrom(src => src.Agencia.InstituicaoFinanceira.IdInstituicaoFinanceira))
             ;
+
+
+
+            CreateMap<Ilha, ListaIlhaViewModel>()
+            .ForMember(dest => dest.NomeFormatado, opt => opt.MapFrom(src => src.NomeFormatado())) // Mapeia o nome formatado
+            .ForMember(dest => dest.TotalSocios, opt => opt.MapFrom(src => src.TotalSocios())); // Mapeia o total de sócios
 
         }
 
