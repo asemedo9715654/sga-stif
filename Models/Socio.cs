@@ -117,7 +117,7 @@ namespace sga_stif.Models
 
         public string PegarDDescricaoEstadoCivil()
         {
-            return EstadoCivil.GetDescription();
+            return EstadoCivil.PegarDescricao();
         }
 
 

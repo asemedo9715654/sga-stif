@@ -46,7 +46,7 @@ namespace sga_stif.Controllers
                                           NumeroDeSocio = s.NumeroDeSocio,
                                           NomeCompleto = s.NomeCompleto(),
                                           CinBi = s.CinBi,
-                                          Sexo = s.Sexo.GetDescription(),
+                                          Sexo = s.Sexo.PegarDescricao(),
                                           TotalBeneficiario = s.TotalBeneficiario(),
                                           IdAgencia = s.IdAgencia,
                                           SiglaInstitucaoFinanceira = s.Agencia.InstituicaoFinanceira.SiglaFormatado(),

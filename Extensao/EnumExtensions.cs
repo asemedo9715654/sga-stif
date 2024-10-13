@@ -24,7 +24,7 @@ namespace sga_stif.Extensao
                        .Description ?? string.Empty;
         }
 
-        public static string GetDescription<T>(this T enumValue) where T : struct, IConvertible
+        public static string PegarDescricao<T>(this T enumValue) where T : struct, IConvertible
         {
             if (!typeof(T).IsEnum)
                 return null;

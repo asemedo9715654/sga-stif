@@ -39,7 +39,7 @@ namespace sga_stif.ViewModel.Socio
             NumeroDeSocio = socio.NumeroDeSocio;
             NomeCompleto = socio.NomeCompleto();
             CinBi = socio.CinBi;
-            Sexo = socio.Sexo.GetDescription();
+            Sexo = socio.Sexo.PegarDescricao();
             TotalBeneficiario = socio.TotalBeneficiario();
             IdAgencia = socio.IdAgencia;
             SiglaInstitucaoFinanceira = socio.Agencia.InstituicaoFinanceira.SiglaFormatado();

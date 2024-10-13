@@ -26,7 +26,7 @@ namespace sga_stif.ViewModel.Estatistica
         {
             selected = sexo == Sexo.Masculino ? true : false;
             sliced = sexo == Sexo.Masculino ? true : false;
-            name = sexo.GetDescription();
+            name = sexo.PegarDescricao();
             y = total;
         }
 
@@ -34,7 +34,7 @@ namespace sga_stif.ViewModel.Estatistica
         {
             selected = estadoCivil == EstadoCivil.Casado ? true : false;
             sliced = estadoCivil == EstadoCivil.Casado ? true : false;
-            name = estadoCivil.GetDescription();
+            name = estadoCivil.PegarDescricao();
             y = total;
         }
 
