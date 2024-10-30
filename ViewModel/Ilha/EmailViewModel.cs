@@ -10,5 +10,18 @@ public class EmailIlhaViewModel
     [Display(Name = "Texto do e-mail")]
     public string CorpoDoEmail { get; set; }
 
+     public List<sga_stif.Models.Socio> FiltrarSocio(List<sga_stif.Models.Socio> socios, string sexo)
+        {
+            if (sexo == "Feminino")
+            {
+                socios = socios.Where(d => d.Sexo == Models.Sexo.Feminino).ToList();
+            }
+            else if (sexo == "Masculino")
+            {
+                socios = socios.Where(d => d.Sexo == Models.Sexo.Masculino).ToList();
+            }
+            return socios;
+        }
+
 
 }

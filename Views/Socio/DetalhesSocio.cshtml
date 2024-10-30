@@ -36,6 +36,7 @@
             <b>Data de Nascimento :</b> @Html.DisplayFor(modelItem =>@Model.DataDeNascimento)<br>
             <b>Habilitação Literária :</b> @Html.DisplayFor(modelItem =>@Model.HabilitacaoLiteraria)<br>
             <b>Número de Identificação Fiscal :</b> @Model.Nif<br>
+            <b>Derigente Stif :</b> @Model.DerigenteStiff - <a asp-action="MudarTipoDirigente" asp-controller="Socio" asp-route-idSocio="@Model.IdSocio">Mudar</a> <br>
             <b>Data Criação :</b> @Html.DisplayFor(modelItem => @Model.DataCriacao)<br>
             <b>Data Ativação :</b> <span class="badge badge-pill badge-info">@Html.DisplayFor(modelItem => @Model.DataAtivacao) </span>
         </div>
@@ -58,7 +59,11 @@
             <b>Tipologia Sócio : </b> @Model.NomeTipologia <br>
             <b>E-mail : </b><a href = "mailto:@Model.Email?subject = Contactar Socio&body = Nova Mensagem"> @Model.Email</a><br>
             <b>Telefone : </b> @Model.NumeroDeTelefone <br>
-            <b>Móvel : </b><a href="tel:+238 @Model.NumeroDeTelemovel">@Model.NumeroDeTelemovel</a>  
+            <b>Móvel : </b><a href="tel:+238 @Model.NumeroDeTelemovel">@Model.NumeroDeTelemovel</a>  <br />
+            <b>Data Entrega de Cartão : </b>@Model.DataEntregaCartao @if (@Model.DataEntregaCartao.Contains("Não"))
+            {
+                <a asp-action="EntregarCartao" asp-controller="Socio" asp-route-idSocio="@Model.IdSocio">Marcar como rntregue</a>
+            }
         </div>
         <!-- /.col -->
     </div>

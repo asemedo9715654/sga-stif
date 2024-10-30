@@ -31,11 +31,12 @@ namespace sga_stif.Controllers
         }
         public IActionResult ListaIlhas()
         {
-            var ilhas = _context.Ilha.AsNoTracking().Where(e => e.Eliminado == false).Include(g => g.Cidade).ThenInclude(g => g.Agencia).ToList();
-            var listaIlhaViewModel = _mapper.Map<ListaIlhaViewModel>(ilhas);
+            var ilhas = _context.Ilha.AsNoTracking().Where(e => e.Eliminado == false).Include(g => g.Cidade).ThenInclude(g => g.Agencia).ThenInclude(g=> g.Socio).ToList();
+            var listaIlhaViewModel = _mapper.Map<List<ListaIlhaViewModel>>(ilhas);
             return View(listaIlhaViewModel);
         }
 
+        [HttpGet]
         public IActionResult EnvioDeEmailPorIlha(int idIlha)
         {
 
@@ -64,6 +65,8 @@ namespace sga_stif.Controllers
                     }
 
                     var socios = ilha.ObterSocios();
+                    socios = emailViewModel.FiltrarSocio(socios, emailViewModel.Sexo);
+                    
                     if (socios == null)
                     {
                         _notyf.Error("Erro : 0 sócio encontrado!");
@@ -84,7 +87,70 @@ namespace sga_stif.Controllers
                     _context.SaveChanges();
 
                     _notyf.Success("Email enviado com sucesso!");
-                    return RedirectToAction("ListaInstituicaoFinanceira");
+                    return RedirectToAction("ListaIlhas");
+
+
+                }
+                _notyf.Error("Model invalido");
+            }
+            catch (Exception e)
+            {
+                _notyf.Error("Erro : " + e.Message);
+            }
+
+            ViewBag.NomeIlha = _context.Ilha.FirstOrDefault(d => d.IdIlha == emailViewModel.IdIlha).Nome;
+            return View(emailViewModel);
+        }
+
+        public IActionResult EnvioDeEmailTodasIlha()
+        {
+            var emailViewModel = new EmailTodasIlhaViewModel()
+            {
+               
+            };
+            return View(emailViewModel);
+        }
+
+        [HttpPost]
+        public IActionResult EnvioDeEmailTodasIlha(EmailTodasIlhaViewModel emailViewModel)
+        {
+            try
+            {
+                List<string> toAddress = new List<string>();
+                if (ModelState.IsValid)
+                {
+                    var ilha = _context.Ilha.AsNoTracking().FirstOrDefault(e => e.Eliminado == false && e.IdIlha == emailViewModel.IdIlha);
+
+                    if (ilha == null)
+                    {
+                        _notyf.Error("Erro : Ilha não encontrada!");
+                        return View(emailViewModel);
+                    }
+
+                    var socios = ilha.ObterSocios();
+                    socios = emailViewModel.FiltrarSocioPorRegiao(socios, emailViewModel.Regiao);
+
+                    if (socios == null)
+                    {
+                        _notyf.Error("Erro : 0 sócio encontrado!");
+                        return View(emailViewModel);
+                    }
+
+                    var lista = new List<Socio>();
+
+                    foreach (var socio in socios)
+                        if (IsValidEmail(socio.Email))
+                        {
+                            lista.Add(socio);
+                        }
+
+                    var listssss = from soc in lista select new EmailEnviado(soc, emailViewModel);
+
+                    _context.EmailEnviado.AddRange(listssss);
+                    _context.SaveChanges();
+
+                    _notyf.Success("Email enviado com sucesso!");
+                    return RedirectToAction("ListaIlhas");
 
 
                 }

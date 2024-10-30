@@ -57,10 +57,12 @@ namespace sga_stif.ViewModel.Socio
     public string NomeCidade { get; set; }
     public string NomeTipologia { get; set; }
     public string NomeTipoQuota { get; set; }
+    public string? DataEntregaCartao { get; set; }
+    public string? DerigenteStiff { get; set; }
 
 
 
-    public List<ListaBeneficiarioViewModel> ListaBeneficiarioViewModel { get; set; }
+        public List<ListaBeneficiarioViewModel> ListaBeneficiarioViewModel { get; set; }
     public List<ContaCorrenteSocioResultado> ListaContaCorrenteSocioResultado_Pagas { get; set; } = new List<ContaCorrenteSocioResultado>();
     public List<ContaCorrenteSocioResultado> ListaContaCorrenteSocioResultado_Vencidas { get; set; } = new List<ContaCorrenteSocioResultado>();
     public List<ContaCorrenteSocioResultado> ListaContaCorrenteSocioResultado_PorPagar { get; set; } = new List<ContaCorrenteSocioResultado>();

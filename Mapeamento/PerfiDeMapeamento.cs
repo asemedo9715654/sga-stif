@@ -131,6 +131,11 @@ namespace sga_stif.Mapeamento
             .ForMember(dest => dest.HabilitacaoLiteraria, opt => opt.MapFrom(src => src.HabilitacaoLiteraria.PegarDescricao()))
             .ForMember(dest => dest.Sexo, opt => opt.MapFrom(src => src.Sexo.PegarDescricao()))
             .ForMember(dest => dest.EstadoCivil, opt => opt.MapFrom(src => src.EstadoCivil.PegarDescricao()))
+            .ForMember(dest => dest.DataEntregaCartao, opt => opt.MapFrom(src => src.DataEntregaCartao == null?"Não Entregue!": src.DataEntregaCartao.Value.ToString("dd-MM-yyyy")))
+            //.ForMember(dest => dest.DataEntregaCartao, opt => opt.MapFrom(src => src.DataEntregaCartao ?? DateTime.MinValue))
+
+            //.ForMember(dest => dest.DerigenteStiff, opt => opt.MapFrom(src => src.DerigenteStiff.PegarDescricao()))
+            .ForMember(dest => dest.DerigenteStiff,opt => opt.MapFrom(src => src.DerigenteStiff != null ? src.DerigenteStiff.PegarDescricao() : "Indefinido"))
             .ForMember(dest => dest.Foto, opt => opt.MapFrom(src => src.PegarLinkFotoGrande()))
             .ForMember(dest => dest.ListaBeneficiarioViewModel, opt => opt.MapFrom(src => src.Beneficiario))
             .ForMember(dest => dest.NomeAgencia, opt => opt.MapFrom(src => src.Agencia.NomeFormatado()))

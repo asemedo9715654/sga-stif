@@ -411,7 +411,7 @@ namespace sga_stif.Models
                 .AddJsonFile("appsettings.json")
                 .Build();
 
-            var connectionString = configuration.GetConnectionString("sgastif-remote");
+            var connectionString = configuration.GetConnectionString("sgastif-remote4");
             optionsBuilder.UseSqlServer(connectionString, builder =>
             {
                 builder.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null);

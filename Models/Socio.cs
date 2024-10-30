@@ -33,6 +33,8 @@ namespace sga_stif.Models
         public string NumeroColaborador { get; set; }
         public EstadoDeSocio EstadoSocio { get; set; }
         public HabilitacaoLiteraria HabilitacaoLiteraria { get; set; }
+        public DateTime? DataEntregaCartao { get; set; }
+        public DerigenteStiff? DerigenteStiff { get; set; }
 
         //chaves estrangeiras
 
@@ -199,6 +201,44 @@ namespace sga_stif.Models
         Mestrado,
         [Description("Doutorado")]
         Doutorado
+
+    }
+
+    public enum DerigenteStiff
+    {
+        // Centrais
+        [Description("Assembleia Geral")]
+        Centrais_AssembleiaGeral,
+
+        [Description("Conselho Geral")]
+        Centrais_ConselhoGeral,
+
+        [Description("Mesa AG/CG")]
+        Centrais_MesaAG_CG,
+
+        [Description("Direção")]
+        Centrais_Direcao,
+
+        [Description("Conselho Fiscal")]
+        Centrais_ConselhoFiscal,
+
+        [Description("Conselho de Disciplina")]
+        Centrais_ConselhoDisciplina,
+
+        // Regionais - Norte
+        [Description("Direção Regional Norte")]
+        Regionais_DirecaoRegionalNorte,
+
+        [Description("Mesa de Assembleia Regional Norte")]
+        Regionais_MesaAssembleiaRegionalNorte,
+
+        // Regionais - Sul
+        [Description("Direção Regional Sul")]
+        Regionais_DirecaoRegionalSul,
+
+        [Description("Mesa de Assembleia Regional Sul")]
+        Regionais_MesaAssembleiaRegionalSul
+
 
     }
 }

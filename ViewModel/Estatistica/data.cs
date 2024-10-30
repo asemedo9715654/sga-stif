@@ -38,7 +38,7 @@ namespace sga_stif.ViewModel.Estatistica
             y = total;
         }
 
-        public data(Ilha item, int total)
+        public data(sga_stif.Models.Ilha item, int total)
         {
             selected = item.Nome == "Santiago" ? true : false;
             sliced = item.Nome == "Santiago" ? true : false;

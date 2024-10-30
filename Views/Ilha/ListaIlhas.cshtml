@@ -12,8 +12,8 @@
             <div class="col-12">
                 <p class="lead">Lista de Ilhas</p>
 
-               @*  <a asp-action="EnvioDeEmailTodasInstituicao" class="btn btn-info btn-sm float-right" style="margin-right: 5px;">Contactar</a>
-
+                <a asp-action="EnvioDeEmailTodasIlha" class="btn btn-info btn-sm float-right" style="margin-right: 5px;">Contactar</a>
+ @* 
                 <a asp-action="NovoInstituicaoFinanceira" class="btn btn-success btn-sm float-right" style="margin-right: 5px;">Novo</a>
 
                 <a asp-action="ListaInstituicaoFinanceiraInativos" class="btn btn-default btn-sm  float-right" style="margin-right: 5px;">Lista de Instituição Financeiras Inativos</a> *@
@@ -46,7 +46,7 @@
                             @Html.DisplayFor(modelItem => item.NomeFormatado)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.TotalSocios)
+                            @Html.DisplayFor(modelItem => item.TotalSocios) <b>Socio(s)</b>
                         </td>  
                         <td>
                             <a class="btn btn-info btn-xs" asp-action="EnvioDeEmailPorIlha" asp-route-idIlha="@item.IdIlha"><i class="fas fa-envelope"></i>Contactar</a>

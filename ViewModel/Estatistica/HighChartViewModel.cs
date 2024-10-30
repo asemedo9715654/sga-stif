@@ -24,7 +24,7 @@ namespace sga_stif.ViewModel.Estatistica
             data = new List<data>();
         }
 
-        public void PreencherDadosIlhas(List<Ilha> ilhas,List<int> listaDeSocio)
+        public void PreencherDadosIlhas(List<sga_stif.Models.Ilha> ilhas,List<int> listaDeSocio)
         {
             foreach (var item in ilhas)
             {

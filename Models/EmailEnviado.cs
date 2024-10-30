@@ -52,7 +52,21 @@ namespace sga_stif.Models
             DataAtualizacao = DateTime.Now;
             DataCriacao = DateTime.Now;
         }
-        
+        public EmailEnviado(Socio soc, EmailTodasIlhaViewModel emailViewModel)
+        {
+            Obs = null;
+            Apelido = soc.Apelido;
+            Nome = soc.Nome;
+            NumeroSocio = soc.NumeroDeSocio;
+            Assunto = emailViewModel.Assunto;
+            Email = soc.Email;
+            Corpo = emailViewModel.CorpoDoEmail;
+            JaFoiEnviado = false;
+            Eliminado = false;
+            DataAtualizacao = DateTime.Now;
+            DataCriacao = DateTime.Now;
+        }
+
         public EmailEnviado(Socio soc, EmailTodosViewModel emailViewModel)
         {
             Obs = null;

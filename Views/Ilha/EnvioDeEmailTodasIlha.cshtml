@@ -1,4 +1,4 @@
-@model sga_stif.ViewModel.Ilha.EmailIlhaViewModel
+@model sga_stif.ViewModel.Ilha.EmailTodasIlhaViewModel
 
 @{
     ViewData["Title"] = "Novo Email";
@@ -10,7 +10,7 @@
 
 <div class="card card-primary">
     <div class="card-header">
-        <h3 class="card-title">E-mail para Ilha - <small>@ViewBag.NomeIlha</small></h3>
+        <h3 class="card-title">E-mail para Ilha - <small>Todos</small></h3>
     </div>
 
     <form asp-action="EnvioDeEmailPorIlha" method="post" enctype="multipart/form-data">
@@ -30,13 +30,13 @@
                         <span asp-validation-for="Assunto" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="Sexo" class="control-label"></label>
-                        <select asp-for="Sexo" class="form-control">
+                        <label asp-for="Regiao" class="control-label"></label>
+                        <select asp-for="Regiao" class="form-control">
                             <option value="Todos" selected>Todos</option>
-                            <option value="Feminino">Feminino</option>
-                            <option value="Masculino">Masculino</option>
+                            <option value="Norte">Norte</option>
+                            <option value="Sul">Sul</option>
                         </select>
-                        <span asp-validation-for="Sexo" class="text-danger"></span>
+                        <span asp-validation-for="Regiao" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="CorpoDoEmail" class="control-label"></label>

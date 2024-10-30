@@ -5,6 +5,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using NLog.Web.LayoutRenderers;
 using sga_stif.Extensao;
 using sga_stif.Models;
 using sga_stif.Models.ResultadoStoredProcedure;
@@ -52,7 +53,7 @@ namespace sga_stif.Controllers
                                           SiglaInstitucaoFinanceira = s.Agencia.InstituicaoFinanceira.SiglaFormatado(),
                                           NomeAgencia = s.Agencia.Nome
                                       }).ToListAsync();
-                                    
+
             var listaSocioViewModel = _mapper.Map<List<ListaSocioViewModel>>(socios);
             return View(listaSocioViewModel);
         }
@@ -143,7 +144,7 @@ namespace sga_stif.Controllers
                     var resultadoValidacaoSocio = ValidaSocio(novoSocioViewModel);
                     if (resultadoValidacaoSocio.Item1 == true)
                     {
-                     
+
                         var socio = _mapper.Map<Socio>(novoSocioViewModel);
 
                         if (Image != null)
@@ -155,7 +156,7 @@ namespace sga_stif.Controllers
                                 Directory.CreateDirectory(uploadsFolder);
                             }
 
-                           // var uniqueFileName = Guid.NewGuid().ToString() + "_" + Image.FileName;
+                            // var uniqueFileName = Guid.NewGuid().ToString() + "_" + Image.FileName;
 
                             var extension = Path.GetExtension(Image.FileName);
 
@@ -252,7 +253,7 @@ namespace sga_stif.Controllers
                 {
                     var socio = _mapper.Map<Socio>(editaSocioViewModel);
                     socio.Foto = null;
-                   
+
                     socio.DataAtualizacao = DateTime.Now;
 
                     //Save image to folder
@@ -287,7 +288,7 @@ namespace sga_stif.Controllers
                     }
 
                     _context.Update(socio);
-                    await _context.SaveChangesAsync(); 
+                    await _context.SaveChangesAsync();
                     _notyf.Success("Sócio editado com sucesso!");
                     return RedirectToAction("ListaSocio");
                 }
@@ -303,7 +304,7 @@ namespace sga_stif.Controllers
                 throw;
             }
 
-            _notyf.Error("Erro na edição de Sócio!::"+ allErrorsString);
+            _notyf.Error("Erro na edição de Sócio!::" + allErrorsString);
 
 
             var angencia = _context.Agencia.Include(j => j.Cidade).ToList();
@@ -488,6 +489,97 @@ namespace sga_stif.Controllers
         {
             var rakingSocioResultados = _context.RakingSocioResultado.FromSqlRaw($"EXECUTE  [dbo].[RakingSocio]").ToList();
             return View(rakingSocioResultados);
+        }
+		//_________________________________________________________________________________________________________________________
+		// Método POST para atualizar o tipo de dirigente de um sócio
+
+
+		[HttpGet]
+		public async Task<IActionResult> EntregarCartao(int idSocio)
+		{
+            var socio = _context.Socio.FirstOrDefault(a => a.IdSocio == idSocio);
+            EntregarCartaoViewModel f = new EntregarCartaoViewModel()
+            {
+                IdSocio = idSocio,
+                DataEntrega = socio.DataEntregaCartao
+            };
+
+            return View(f);
+        }
+
+		[HttpPost]
+		public async Task<IActionResult> EntregarCartao(EntregarCartaoViewModel entregarCartaoViewModel)
+		{
+			if (entregarCartaoViewModel == null || entregarCartaoViewModel.IdSocio <= 0)
+			{
+				return BadRequest("Dados inválidos.");
+			}
+
+			var socio = await _context.Socio.FindAsync(entregarCartaoViewModel.IdSocio);
+
+			if (socio == null)
+			{
+				return NotFound("Sócio não encontrado.");
+			}
+
+			socio.DataEntregaCartao = entregarCartaoViewModel.DataEntrega;
+
+			try
+			{
+				await _context.SaveChangesAsync();
+				_notyf.Success("Dados entrega guardado com sucesso!");
+				return RedirectToAction("DetalhesSocio", new { idSocio = entregarCartaoViewModel.IdSocio });
+
+			}
+			catch (Exception ex)
+			{
+				_notyf.Error("Erro na atualização de dados de entrega de cartão!");
+				return RedirectToAction("DetalhesSocio", new { idSocio = entregarCartaoViewModel.IdSocio });
+			}
+		}
+
+		[HttpGet]
+        public async Task<IActionResult> MudarTipoDirigente(int idSocio)
+        {
+            var socio = _context.Socio.FirstOrDefault(a => a.IdSocio == idSocio);
+            MudaDirigente f = new MudaDirigente()
+            {
+                IdSocio = idSocio,
+                DerigenteStiff = socio.DerigenteStiff
+            };
+
+            return View(f);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> MudarTipoDirigente(MudaDirigente mudaDirigente)
+        {
+            if (mudaDirigente == null || mudaDirigente.IdSocio <= 0)
+            {
+                return BadRequest("Dados inválidos.");
+            }
+
+            var socio = await _context.Socio.FindAsync(mudaDirigente.IdSocio);
+
+            if (socio == null)
+            {
+                return NotFound("Sócio não encontrado.");
+            }
+
+            socio.DerigenteStiff = mudaDirigente.DerigenteStiff;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+                _notyf.Success("Mudança do derigente com sucesso!");
+                return RedirectToAction("DetalhesSocio", new { idSocio = mudaDirigente.IdSocio });
+
+            }
+            catch (Exception ex)
+            {
+                _notyf.Error("Erro na mudança do derigente!");
+                return RedirectToAction("DetalhesSocio", new { idSocio = mudaDirigente.IdSocio });
+            }
         }
     }
 }
