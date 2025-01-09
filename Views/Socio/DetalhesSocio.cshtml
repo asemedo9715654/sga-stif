@@ -62,7 +62,7 @@
             <b>Móvel : </b><a href="tel:+238 @Model.NumeroDeTelemovel">@Model.NumeroDeTelemovel</a>  <br />
             <b>Data Entrega de Cartão : </b>@Model.DataEntregaCartao @if (@Model.DataEntregaCartao.Contains("Não"))
             {
-                <a asp-action="EntregarCartao" asp-controller="Socio" asp-route-idSocio="@Model.IdSocio">Marcar como rntregue</a>
+                <a asp-action="EntregarCartao" asp-controller="Socio" asp-route-idSocio="@Model.IdSocio">Marcar como entregue</a>
             }
         </div>
         <!-- /.col -->

@@ -3,6 +3,7 @@
 using AutoMapper;
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 using MimeKit;
@@ -45,7 +46,11 @@ namespace sga_stif.Controllers
             {
                 IdIlha = idIlha
             };
-            return View(emailViewModel);
+
+			var instituicaoFinanceiras = _context.InstituicaoFinanceira.AsNoTracking().Where(h => h.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(h.IdInstituicaoFinanceira)).ToList();
+			var instituicaoFinanceirasSelectLista = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome };
+			ViewBag.IdInstituicaoFinanceira = instituicaoFinanceirasSelectLista;
+			return View(emailViewModel);
         }
 
         [HttpPost]
@@ -56,7 +61,7 @@ namespace sga_stif.Controllers
                 List<string> toAddress = new List<string>();
                 if (ModelState.IsValid)
                 {
-                    var ilha = _context.Ilha.AsNoTracking().FirstOrDefault(e => e.Eliminado == false && e.IdIlha == emailViewModel.IdIlha);
+                    var ilha = _context.Ilha.AsNoTracking().Include(i => i.Cidade).ThenInclude(i=>i.Agencia).ThenInclude(y=>y.Socio).FirstOrDefault(e => e.Eliminado == false && e.IdIlha == emailViewModel.IdIlha);
 
                     if (ilha == null)
                     {
@@ -66,6 +71,7 @@ namespace sga_stif.Controllers
 
                     var socios = ilha.ObterSocios();
                     socios = emailViewModel.FiltrarSocio(socios, emailViewModel.Sexo);
+                    socios = emailViewModel.FiltrarSocioPorInstituicaoFinanceira(socios);
                     
                     if (socios == null)
                     {
@@ -99,6 +105,11 @@ namespace sga_stif.Controllers
             }
 
             ViewBag.NomeIlha = _context.Ilha.FirstOrDefault(d => d.IdIlha == emailViewModel.IdIlha).Nome;
+
+            var instituicaoFinanceiras = _context.InstituicaoFinanceira.AsNoTracking().Where(h => h.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(h.IdInstituicaoFinanceira)).ToList();
+            var instituicaoFinanceirasSelectLista = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome };
+            ViewBag.IdInstituicaoFinanceira = instituicaoFinanceirasSelectLista;
+
             return View(emailViewModel);
         }
 
@@ -108,31 +119,33 @@ namespace sga_stif.Controllers
             {
                
             };
+            var instituicaoFinanceiras = _context.InstituicaoFinanceira.AsNoTracking().Where(h => h.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(h.IdInstituicaoFinanceira)).ToList();
+            var instituicaoFinanceirasSelectLista = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome };
+            ViewBag.IdInstituicaoFinanceira = instituicaoFinanceirasSelectLista;
+
             return View(emailViewModel);
         }
 
         [HttpPost]
         public IActionResult EnvioDeEmailTodasIlha(EmailTodasIlhaViewModel emailViewModel)
         {
-            try
+
+			var instituicaoFinanceiras = _context.InstituicaoFinanceira.AsNoTracking().Where(h => h.Eliminado == false && ListaInstituicoesFinanceirasPermitidas(_context).Contains(h.IdInstituicaoFinanceira)).ToList();
+			var instituicaoFinanceirasSelectLista = from g in instituicaoFinanceiras select new SelectListItem { Value = g.IdInstituicaoFinanceira.ToString(), Text = g.Nome };
+			ViewBag.IdInstituicaoFinanceira = instituicaoFinanceirasSelectLista;
+			try
             {
                 List<string> toAddress = new List<string>();
                 if (ModelState.IsValid)
                 {
-                    var ilha = _context.Ilha.AsNoTracking().FirstOrDefault(e => e.Eliminado == false && e.IdIlha == emailViewModel.IdIlha);
-
-                    if (ilha == null)
-                    {
-                        _notyf.Error("Erro : Ilha não encontrada!");
-                        return View(emailViewModel);
-                    }
-
-                    var socios = ilha.ObterSocios();
+                    var socios = _context.Socio.AsNoTracking().Include(a=>a.Agencia).Where(e => e.Eliminado == false ).ToList();
+  
                     socios = emailViewModel.FiltrarSocioPorRegiao(socios, emailViewModel.Regiao);
+                    socios = emailViewModel.FiltrarSocioPorInstituicaoFinanceira(socios);
 
                     if (socios == null)
                     {
-                        _notyf.Error("Erro : 0 sócio encontrado!");
+						_notyf.Error("Erro : (0) sócio encontrado!");
                         return View(emailViewModel);
                     }
 
@@ -160,8 +173,7 @@ namespace sga_stif.Controllers
             {
                 _notyf.Error("Erro : " + e.Message);
             }
-
-            ViewBag.NomeIlha = _context.Ilha.FirstOrDefault(d => d.IdIlha == emailViewModel.IdIlha).Nome;
+           
             return View(emailViewModel);
         }
 
